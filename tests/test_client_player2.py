@@ -125,8 +125,9 @@ def test_cli_ack_without_server_msg_id_does_not_create_recallable_id():
     assert cli._pending_acks == {}
 
 
-def test_cli_send_file_uses_string_file_id():
-    sample = Path("now.md")
+def test_cli_send_file_uses_string_file_id(tmp_path):
+    sample = tmp_path / "now.md"
+    sample.write_text("demo", encoding="utf-8")
 
     cli = ChatCLI.__new__(ChatCLI)
     cli.handler = DummyHandler()

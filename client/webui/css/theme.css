@@ -1,0 +1,154 @@
+/* ============================================================
+   深色主题 — CSS 自定义属性 & 基础重置
+   ============================================================ */
+
+:root {
+  /* --- 背景色系 --- */
+  --bg-primary: #0d0e1a;
+  --bg-secondary: #16172b;
+  --bg-tertiary: #1e1f36;
+  --bg-hover: #282945;
+  --bg-active: #32335a;
+  --bg-elevated: #1a1c32;
+
+  /* --- 文字色系 --- */
+  --text-primary: #e8e8f0;
+  --text-secondary: #9898b0;
+  --text-muted: #5a5a78;
+  --text-inverse: #ffffff;
+
+  /* --- 主题色 --- */
+  --accent-primary: #6c63ff;
+  --accent-hover: #7b73ff;
+  --accent-active: #5b52e8;
+  --accent-subtle: rgba(108, 99, 255, 0.12);
+  --accent-glow: rgba(108, 99, 255, 0.35);
+
+  /* --- 语义色 --- */
+  --success: #4CAF50;
+  --success-bg: rgba(76, 175, 80, 0.12);
+  --warning: #FF9800;
+  --warning-bg: rgba(255, 152, 0, 0.12);
+  --danger: #ff5252;
+  --danger-bg: rgba(255, 82, 82, 0.12);
+  --info: #42a5f5;
+  --info-bg: rgba(66, 165, 245, 0.12);
+
+  /* --- 消息气泡 --- */
+  --msg-self-bg: linear-gradient(135deg, #6c63ff, #5a52e0);
+  --msg-self-text: #ffffff;
+  --msg-other-bg: #2a2b45;
+  --msg-other-text: #e0e0ea;
+  --msg-system-text: #686888;
+  --msg-time-text: rgba(255, 255, 255, 0.45);
+
+  /* --- 边框 & 圆角 --- */
+  --border-color: #2a2b45;
+  --border-light: #22233a;
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  /* --- 阴影 --- */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 20px rgba(108, 99, 255, 0.25);
+
+  /* --- 字体 --- */
+  --font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+
+  /* --- 间距 --- */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+  --space-3xl: 48px;
+
+  /* --- 布局 --- */
+  --sidebar-width: 280px;
+  --sidebar-collapsed-width: 0px;
+  --header-height: 56px;
+  --input-area-height: 60px;
+  --status-bar-height: 28px;
+
+  /* --- 过渡 --- */
+  --transition-fast: 120ms ease;
+  --transition-normal: 200ms ease;
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================
+   全局重置
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: var(--font-family);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+}
+
+#app {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-active);
+  border-radius: 3px;
+  transition: background var(--transition-fast);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* 选中文本 */
+::selection {
+  background: var(--accent-primary);
+  color: var(--text-inverse);
+}
+
+/* 聚焦环 */
+:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+a {
+  color: var(--accent-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent-hover);
+}

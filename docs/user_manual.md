@@ -2,13 +2,13 @@
 
 ## 一、系统概述
 
-分布式即时聊天系统，支持文字聊天、群组聊天、AI 智能回复、端到端加密文件传输等功能。
+分布式即时聊天系统，支持文字聊天、群组聊天、AI 智能回复、服务端中继文件传输等功能。
 
 ### 技术栈
 - **语言**: Python 3.10+
-- **网络**: TCP（文字/控制消息）+ UDP（P2P 文件传输）
+- **网络**: TCP（文字/控制消息、服务端中继文件传输）+ UDP（实验性 P2P）
 - **数据库**: SQLite（服务端持久化）/ JSON（客户端本地存储）
-- **AI**: 智谱清言 BigModel API（GLM-4-Flash-250414）
+- **AI**: BigModel 优先，兼容 DashScope OpenAI-compatible 接口
 - **界面**: CLI (rich) + GUI (tkinter) 双模
 
 ---
@@ -21,7 +21,7 @@
 ### 依赖安装
 
 ```bash
-pip install rich prompt_toolkit aiohttp cryptography pytest
+python -m pip install -r requirements.txt
 ```
 
 ---
@@ -127,18 +127,12 @@ CLI 支持从服务器拉取私聊或群聊历史：
 
 ### 4.6 文件传输
 
-支持两种文件传输方式：
-
-**服务端中继模式**（默认）：文件经过服务器转发，适合所有网络环境。
+默认演示和日常使用建议选择服务端中继模式：文件经过服务器转发，适合所有网络环境。
 ```
 /sendfile bob ./document.pdf
 ```
 
-**P2P 直连模式**（如果双方网络支持 UDP 打洞）：文件通过 UDP 直连传输，不经服务器，支持断点续传。
-```
-/sendfile bob ./large_file.zip
-```
-系统会自动检测是否支持 P2P 直连，如不支持则回退到中继模式。
+项目中保留了 P2P UDP 打洞实验代码，可在同机或局域网环境尝试。P2P 成功率受 NAT、防火墙和校园网隔离影响，现场演示不建议把它作为必成路径。
 
 ### 4.7 @AI 智能回复
 
@@ -183,7 +177,7 @@ CLI 支持从服务器拉取私聊或群聊历史：
 
 ### 设置 API Key
 
-AI 功能使用智谱清言 BigModel API。需要设置环境变量：
+AI 功能优先使用 BigModel；如果只设置了 `DASHSCOPE_API_KEY`，服务端会默认切换到 DashScope OpenAI-compatible 接口。
 
 ```bash
 # Windows (CMD)
@@ -196,7 +190,14 @@ $env:BIGMODEL_API_KEY="your_api_key_here"
 export BIGMODEL_API_KEY=your_api_key_here
 ```
 
-API Key 可在 [智谱AI开放平台](https://open.bigmodel.cn/) 获取。
+也可以使用 DashScope：
+
+```bash
+# Windows (PowerShell)
+$env:DASHSCOPE_API_KEY="your_api_key_here"
+```
+
+高级配置可用 `AI_API_BASE` / `AI_MODEL` 覆盖默认接口地址和模型名。详见 `docs/ai_setup.md`。
 
 ---
 
@@ -207,10 +208,10 @@ API Key 可在 [智谱AI开放平台](https://open.bigmodel.cn/) 获取。
 | 连接失败 | 服务器未启动 | 确认已运行 `python -m server.main` |
 | 连接被拒绝 | 端口错误 | 检查服务器端口（默认 8888） |
 | 注册失败（用户名已存在） | 用户名被占用 | 更换用户名 |
-| AI 无回复 | API Key 未设置 | 设置 `BIGMODEL_API_KEY` 环境变量 |
+| AI 无回复 | API Key 未设置 | 设置 `BIGMODEL_API_KEY` 或 `DASHSCOPE_API_KEY` 环境变量 |
 | AI 回复超时 | 网络问题 | 检查网络连接，稍后重试 |
 | 文件传输失败 | 文件路径错误 | 确认文件路径正确 |
-| P2P 传输失败 | NAT 类型不支持 | 自动回退到中继模式 |
+| P2P 传输失败 | NAT/防火墙/局域网隔离 | 使用默认服务端中继文件传输 |
 | GUI 界面无法启动 | tkinter 未安装 | `pip install tk`（Linux 需额外安装） |
 
 ---

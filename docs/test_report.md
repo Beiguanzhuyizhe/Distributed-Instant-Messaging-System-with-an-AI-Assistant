@@ -1,194 +1,168 @@
-# 测试报告
+# 最终测试报告
 
-## 一、测试概述
+## 测试环境
 
 | 项目 | 内容 |
 |------|------|
-| 测试日期 | 2026-04-30 |
-| 测试环境 | Windows 11, Python 3.11 |
-| 测试范围 | 单元测试 + 集成测试 + 压力测试 |
-| 测试工具 | pytest, 自定义压力测试脚本 |
+| 测试日期 | 2026-06-11 |
+| 操作系统 | Microsoft Windows 11 家庭版 中文版 |
+| Python | 3.13.1 |
+| 测试目录 | `final_work` |
+| 服务端地址 | `127.0.0.1:8888` |
 
----
+本报告只记录本机实际复现结果，不沿用旧报告中未复现的数据。
 
-## 二、单元测试结果
+## 依赖安装
 
-### 2.1 协议编解码测试（test_protocol.py）
-
-**测试文件**: `tests/test_protocol.py`
-
-| 测试类 | 测试数 | 通过 | 失败 |
-|--------|--------|------|------|
-| TestMessageType | 3 | 3 | 0 |
-| TestEncode | 5 | 5 | 0 |
-| TestDecode | 7 | 7 | 0 |
-| TestStickyPackets | 5 | 5 | 0 |
-| TestSequenceGenerator | 4 | 4 | 0 |
-| TestEdgeCases | 3 | 3 | 0 |
-| TestPayloadHelpers | 7 | 7 | 0 |
-| TestErrorCode | 3 | 3 | 0 |
-| TestMessageProtocol | 8 | 8 | 0 |
-| TestDatabase (5 tests) | 5 | 5 | 0 |
-| TestClientPlayer2 | 7 | 7 | 0 |
-| **合计** | **59** | **59** | **0** |
-
-**覆盖的测试场景**：
-- 所有 24 种消息类型编码/解码正确性
-- TCP 粘包处理（2条、3条粘包、半包残留）
-- 空 Payload、超大 Payload（900KB）、非法 Magic
-- Unicode 特殊字符
-- 序列号递增、溢出回绕、32bit 边界
-- Payload 辅助函数（login、register、private msg、group msg 等）
-- 客户端 Player2 功能（ACK 回写 msg_id、UUID 撤回、历史 target_id 解析、文件 ID 类型、GUI/CLI 一致性）
-
-### 2.2 数据库测试（test_database.py）
-
-| 测试用例 | 结果 |
-|---------|------|
-| test_init_creates_tables | 通过 |
-| test_init_idempotent (重复初始化) | 通过 |
-| test_foreign_keys_enabled | 通过 |
-| test_user_insert_and_query | 通过 |
-| test_username_unique (UNIQUE 约束) | 通过 |
-
-### 2.3 汇总
-
-```
-===== 测试结果 =====
-59 passed in 0.74s
-```
-
----
-
-## 三、集成测试结果
-
-### 3.1 测试方法
-
-使用原始 TCP socket 发送二进制协议包，验证服务器正确响应。
-
-### 3.2 测试流程与结果
-
-| # | 测试步骤 | 发送消息 | 预期响应 | 结果 |
-|---|---------|---------|---------|------|
-| 1 | TCP 连接 | - | 连接建立 | ✅ |
-| 2 | 用户注册 | REGISTER_REQ (0x03) | {"success": true, "user_id": 1} | ✅ |
-| 3 | 用户登录 | LOGIN_REQ (0x01) | {"success": true, "user_id": 1} | ✅ |
-| 4 | 创建群组 | GROUP_CREATE (0x0C) | {"success": true, "group_id": 1} | ✅ |
-| 5 | 私聊消息 | PRIVATE_MSG (0x05) | 无响应（fire-and-forget） | ✅ |
-| 6 | 群聊消息 | GROUP_MSG (0x06) | 群成员接收消息 | ✅ |
-| 7 | 多客户端并发 | 2个客户端同时登录+发消息 | 正常收发 | ✅ |
-
-### 3.3 协议头格式验证
-
-```
-二进制消息格式: [Magic:2B][Version:1B][Type:1B][Seq:4B][PayloadLen:4B][Payload:JSON]
-                0xCAFE       0x01       0x03     0x00000001  0x0000003C    {...}
-```
-
-使用 `struct.pack('!HBBII', ...)` 编解码，验证通过。
-
----
-
-## 四、压力测试说明
-
-### 4.1 测试脚本
-
-`tests/stress_test.py` 提供压力测试功能：
+已执行：
 
 ```bash
-# 默认参数：10 个虚拟客户端
-python tests/stress_test.py
-
-# 自定义参数：50 客户端，20 并发
-python tests/stress_test.py --clients 50 --concurrency 20
-
-# 100 客户端压力测试
-python tests/stress_test.py --clients 100 --concurrency 50
+python -m pip install -r requirements.txt
 ```
 
-### 4.2 虚拟客户端生命周期
+核心依赖包括 `aiohttp`、`cryptography`、`prompt_toolkit`、`rich`、`pytest`、`pytest-asyncio`。
 
-每个虚拟客户端按顺序执行：
-1. TCP 连接建立
+## 单元测试
+
+执行命令：
+
+```bash
+python -m pytest
+```
+
+结果：
+
+```text
+collected 87 items
+87 passed in 2.87s
+```
+
+覆盖范围：
+
+| 测试文件 | 重点 |
+|----------|------|
+| `tests/test_protocol.py` | 12 字节协议头、粘包/半包、消息类型、payload helper |
+| `tests/test_database.py` | SQLite 初始化、约束、用户写入查询 |
+| `tests/test_content_moderator.py` | 内容审核普通/中风险/高风险/英文大小写 |
+| `tests/test_crypto.py` | RSA/AES 加解密 smoke test |
+| `tests/test_client_player2.py` | 客户端 ACK、撤回、历史、文件 ID、CLI/GUI 一致性 |
+| `tests/test_ai_service.py` | AI Key 选择、无 key、HTTP 错误、超时、解析失败 |
+| `tests/test_file_transfer.py` | 文件 ID 校验、越权上传/下载、重复 chunk、完成状态 |
+
+## 集成测试
+
+启动服务端：
+
+```bash
+python -m server.main
+```
+
+执行命令：
+
+```bash
+python tests/run_integration_tests.py
+```
+
+结果：
+
+```text
+Result: 11/11 all passed
+```
+
+通过步骤：
+
+1. TCP 连接
 2. 用户注册
 3. 用户登录
-4. 发送 N 条消息（配置化）
-5. 断开连接
+4. 私聊消息真实接收
+5. 创建群组
+6. 加入群组
+7. 群聊消息真实接收
+8. 在线用户列表
+9. 使用服务端 ACK 返回的 UUID 撤回消息
+10. 历史记录包含已发送消息
+11. 心跳 ACK
 
-### 4.3 统计指标
+## 压力测试
 
-| 指标 | 说明 |
+启动服务端后执行：
+
+```bash
+python tests/stress_test.py --clients 50 --concurrency 20 --messages 3
+```
+
+结果：
+
+| 指标 | 数值 |
 |------|------|
-| 连接成功率 | 成功建立 TCP 连接的比例 |
-| 登录成功率 | 成功完成登录的比例 |
-| 平均延迟 | 所有请求的平均响应时间 |
-| P50/P99 延迟 | 中位数和 99 分位延迟 |
-| 吞吐量 | 每秒处理的消息数 |
+| Total Clients | 50 |
+| Connected | 50 |
+| Registered | 50 |
+| Login Success | 50 |
+| Messages Sent | 150 |
+| Messages ACKed | 150 |
+| Messages Received | 150 |
+| Total Errors | 0 |
+| Duration | 1.68s |
+| Avg Latency | 0.1022s |
+| P50 Latency | 0.0041s |
+| P99 Latency | 1.5187s |
+| Throughput | 89.28 acked msg/s |
+| Result | PASS |
 
-### 4.4 实际压测结果
+继续执行：
 
-测试环境：Windows 11, Python 3.11, 本地回环 (127.0.0.1:8888)
+```bash
+python tests/stress_test.py --clients 100 --concurrency 50 --messages 3
+```
 
-| 并发客户端 | 连接成功率 | 登录成功率 | 平均延迟 | P99 延迟 | 吞吐量 | 耗时 |
-|-----------|-----------|-----------|---------|---------|--------|------|
-| 5 | 100% | 100% | 7.1ms | 62.6ms | 157.31 msg/s | 0.06s |
-| 20 | 100% | 100% | 16.9ms | 328.9ms | 226.94 msg/s | 0.44s |
-| 50 | 100% | 100% | 35.7ms | 1.20s | 152.56 msg/s | 1.64s |
-| **100** | **100%** | **100%** | **24.7ms** | **1.08s** | **285.92 msg/s** | **1.75s** |
+结果：
 
-**结论：** 100 并发全部成功，零错误，吞吐量超过 285 msg/s。P99 延迟在 100 并发时约 1.08s，在高负载下仍保持稳定。
+| 指标 | 数值 |
+|------|------|
+| Total Clients | 100 |
+| Connected | 100 |
+| Registered | 100 |
+| Login Success | 100 |
+| Messages Sent | 300 |
+| Messages ACKed | 300 |
+| Messages Received | 300 |
+| Total Errors | 0 |
+| Duration | 3.18s |
+| Avg Latency | 0.1717s |
+| P50 Latency | 0.0602s |
+| P99 Latency | 2.7222s |
+| Throughput | 94.33 acked msg/s |
+| Result | PASS |
 
----
+## AI 测试结论
 
-## 五、AI 功能测试
+AI 单元测试通过 mock HTTP 行为验证，不依赖真实 API Key：
 
-### 5.1 @AI 智能回复
+- `BIGMODEL_API_KEY` 优先使用 BigModel 默认地址和模型
+- 仅 `DASHSCOPE_API_KEY` 时使用 DashScope OpenAI-compatible 默认地址和 `qwen-turbo`
+- `AI_API_BASE` / `AI_MODEL` 可覆盖默认值
+- 无 key、401、超时、网络错误、解析失败均有友好兜底
 
-| 测试场景 | 预期 | 结果 |
-|---------|------|------|
-| 发送 @AI 查询 | 收到 AI 回复消息 | 需配置 BIGMODEL_API_KEY |
-| 无 API Key | 返回 "AI 服务未配置" | 由代码逻辑保证 |
-| API 超时 | 返回 "AI 服务暂时不可用" | 由代码逻辑保证 |
-| 网络错误 | 返回 "AI 服务暂时不可用" | 由代码逻辑保证 |
+真实外部 API 调用未在本次报告中验证，现场演示如需展示 AI 回复，应提前配置有效 key 并做一次 smoke test。
 
-### 5.2 内容审核
+## 文件传输测试结论
 
-| 测试场景 | 预期 | 结果 |
-|---------|------|------|
-| 发送正常消息 | 正常通过 | 由单元测试覆盖 |
-| 发送辱骂词汇 | 敏感词替换为 *** + 警告 | Aho-Corasick 匹配 |
-| 发送政治敏感词 | 消息被屏蔽 | 高风险词直接拦截 |
-| 边缘词汇（中风险） | 替换 + 警告 | 中风险词处理 |
+服务端中继文件传输已补充以下校验并通过单元测试：
 
-### 5.3 E2EE 加密
+- `file_id` 仅允许安全 token/UUID 风格，阻止路径穿越
+- `filename` 只保留 basename
+- 上传 chunk 必须来自原 sender
+- 下载 chunk 必须来自 receiver；群文件下载要求群成员身份
+- `chunk_index`、`total_chunks`、单块大小和 offset 边界受校验
+- 重复 chunk 不会虚增 `chunks_received`
 
-| 测试场景 | 预期 | 结果 |
-|---------|------|------|
-| RSA-2048 密钥生成 | 成功生成密钥对 | 由代码逻辑保证 |
-| AES-256-GCM 加密消息 | 密文不可读 | 由代码逻辑保证 |
-| 解密消息 | 还原原文 | 由代码逻辑保证 |
-| 文件分块加密 | 每块独立加密 | 由代码逻辑保证 |
+## P2P 说明
 
----
+P2P 打洞代码已保留并修正服务端地址交换调用，但没有在真实复杂 NAT 环境下验证。最终演示建议主打服务端中继文件传输，P2P 作为实验性扩展说明。
 
-## 六、已知问题
+## 剩余风险
 
-| # | 问题 | 严重程度 | 状态 |
-|---|------|---------|------|
-| 1 | 数据库 `threading.local()` 连接缓存在单线程测试中跨测试污染 | 低 | **已修复** — 添加 `reset_connection` fixture 确保隔离 |
-| 2 | P2P UDP 打洞在对称 NAT 下可能失败 | 中（自动回退中继模式） | 设计限制 |
-| 3 | AI 服务依赖外部 API，网络波动可能影响 | 中（有超时和降级处理） | 外部依赖 |
-
----
-
-## 七、测试结论
-
-**整体评价：通过** ✅
-
-- 所有核心功能（注册、登录、私聊、群聊）运行正常
-- 协议编解码完整覆盖 24 种消息类型，全部测试通过 (52/52)
-- 基础架构稳定性验证通过
-- 压力测试框架就绪，可模拟 100+ 客户端并发
-- 代码总量约 8,400 行
-- 压力测试 100 并发 100% 成功
-- 全部 59 个单元测试通过
+- GUI 多窗口手工演示仍建议现场前再做一次 smoke test。
+- AI 真实接口依赖外部网络、账户额度和 API Key，有不确定性。
+- P2P UDP 打洞受 NAT、防火墙、局域网策略影响，不作为必成演示路径。

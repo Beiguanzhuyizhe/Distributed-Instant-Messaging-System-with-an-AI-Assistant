@@ -449,16 +449,27 @@ class ChatServer:
             await conn.send_message(MessageType.FILE_INIT, result, seq=seq)
 
     async def _handle_file_data(self, conn_id: int, seq: int, payload: dict):
+        sender_id = self.conn_manager.get_user_id(conn_id)
+        if not sender_id:
+            await self._send_error(conn_id, seq, "未登录")
+            return
         file_id = payload.get("file_id")
         chunk_index = payload.get("chunk_index", 0)
+        total_chunks = payload.get("total_chunks")
         data_b64 = payload.get("data", "")
         try:
-            data = base64.b64decode(data_b64)
+            data = base64.b64decode(data_b64, validate=True)
         except Exception:
             await self._send_error(conn_id, seq, "文件数据编码错误")
             return
 
-        result = await self.file_transfer.store_chunk(file_id, chunk_index, data)
+        result = await self.file_transfer.store_chunk(
+            file_id,
+            chunk_index,
+            data,
+            sender_id=sender_id,
+            total_chunks=total_chunks,
+        )
         conn = self.conn_manager.get_conn(conn_id)
         if conn:
             await conn.send_message(MessageType.FILE_DATA, result, seq=seq)
@@ -478,10 +489,18 @@ class ChatServer:
                 )
 
     async def _handle_file_ack(self, conn_id: int, seq: int, payload: dict):
+        requester_id = self.conn_manager.get_user_id(conn_id)
+        if not requester_id:
+            await self._send_error(conn_id, seq, "未登录")
+            return
         file_id = payload.get("file_id")
         offset = payload.get("offset", 0)
 
-        result = await self.file_transfer.get_chunk(file_id, offset)
+        result = await self.file_transfer.get_chunk(
+            file_id,
+            offset,
+            requester_id=requester_id,
+        )
         conn = self.conn_manager.get_conn(conn_id)
         if not conn:
             return
@@ -593,6 +612,11 @@ class ChatServer:
             return
 
         group_id = payload.get("group_id")
+        if group_id:
+            is_member = await self.group_manager.is_member(group_id, user_id)
+            if not is_member:
+                await self._send_error(conn_id, seq, "不是群成员")
+                return
 
         from server.ai_service import get_ai_service
         ai = get_ai_service(self.config)
@@ -651,20 +675,27 @@ class ChatServer:
         if not target_id:
             await self._send_error(conn_id, seq, "缺少目标用户")
             return
+        try:
+            target_id = int(target_id)
+        except (TypeError, ValueError):
+            await self._send_error(conn_id, seq, "目标用户ID无效")
+            return
 
         conn = self.conn_manager.get_conn(conn_id)
+        target_conn = self.conn_manager.get_by_user(target_id)
+        payload = dict(payload)
         payload["user_id"] = from_id
-        if conn and conn.remote_addr:
+        if not payload.get("addr") and conn and conn.remote_addr:
             payload["addr"] = f"{conn.remote_addr[0]}:{conn.remote_addr[1]}"
 
         ok = await self.p2p_helper.handle_hole_punch(
             req_conn=conn,
             payload=payload,
+            target_conn=target_conn,
         )
 
         # 同时通知目标用户有 P2P 连接请求
         if ok:
-            target_conn = self.conn_manager.get_by_user(target_id)
             if target_conn:
                 await self.p2p_helper.notify_p2p_ready(
                     user_id=from_id,

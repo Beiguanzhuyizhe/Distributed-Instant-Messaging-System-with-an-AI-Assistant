@@ -153,7 +153,7 @@ Client A                     Server                    Client B
   |                            |--- FILE_DATA (chunk 1) ->|  转发分块
   |<-- FILE_ACK ---------------|                          |  确认已接收
   |--- FILE_DATA (chunk N) --->|                          |  最后一块
-  |                            |--- FILE_DATA (chunk N) ->|  is_last=true
+  |                            |--- FILE_DATA (chunk N) ->|  chunk_index / total_chunks
 ```
 
 ### 2.7 消息撤回
@@ -253,9 +253,9 @@ Client A                   Server                   Client B
 ```json
 {
     "file_id": "a1b2c3d4-uuid",
-    "offset": 0,
+    "chunk_index": 0,
+    "total_chunks": 16,
     "data": "base64-encoded-chunk...",
-    "is_last": false
 }
 ```
 
@@ -263,10 +263,10 @@ Client A                   Server                   Client B
 ```json
 {
     "file_id": "a1b2c3d4-uuid",
-    "offset": 1024,
-    "received": 1024
+    "offset": 0
 }
 ```
+响应中包含 `data`（base64）、`offset`、`size`。服务端会校验下载者是否为接收方；群文件要求请求者是群成员。
 
 ### GROUP_CREATE (0x0C) — 请求
 ```json
@@ -291,15 +291,15 @@ Client A                   Server                   Client B
 
 ### STATUS_UPDATE (0x0F)
 ```json
-{"user_id": 1, "status": "online"}
+{"user_id": 1, "username": "alice", "is_online": 1}
 ```
-`status` 取值: `online`, `offline`, `away`
+`is_online` 取值：`1` 在线，`0` 离线。
 
 ### MSG_RECALL (0x10)
 ```json
-{"msg_id": 100, "user_id": 1}
+{"msg_id": "6f1b1e8d-9c84-4e6f-9d8c-123456789abc"}
 ```
-响应：`{"success": true}`
+响应：`{"success": true, "msg_id": "...", "receiver_id": 2, "group_id": null}`
 
 ### AI_QUERY (0x11)
 ```json
@@ -340,7 +340,7 @@ Client A                   Server                   Client B
 ```
 ### ONLINE_USERS (0x16) — 响应
 ```json
-{"user_ids": [1, 2, 3]}
+{"users": [{"id": 1, "username": "alice", "public_key": ""}], "count": 1}
 ```
 
 ### P2P_HOLE_PUNCH (0x17)

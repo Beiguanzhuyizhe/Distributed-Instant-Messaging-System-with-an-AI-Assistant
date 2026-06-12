@@ -6,6 +6,32 @@ from dataclasses import dataclass, field
 from typing import Optional
 
 
+BIGMODEL_API_BASE = "https://open.bigmodel.cn/api/paas/v4"
+BIGMODEL_MODEL = "glm-4-flash-250414"
+DASHSCOPE_API_BASE = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+DASHSCOPE_MODEL = "qwen-turbo"
+
+
+def _env_has_dashscope_only() -> bool:
+    return not os.environ.get("BIGMODEL_API_KEY") and bool(os.environ.get("DASHSCOPE_API_KEY"))
+
+
+def _default_ai_api_key() -> str:
+    return os.environ.get("BIGMODEL_API_KEY") or os.environ.get("DASHSCOPE_API_KEY") or ""
+
+
+def _default_ai_model() -> str:
+    if os.environ.get("AI_MODEL"):
+        return os.environ["AI_MODEL"]
+    return DASHSCOPE_MODEL if _env_has_dashscope_only() else BIGMODEL_MODEL
+
+
+def _default_ai_api_base() -> str:
+    if os.environ.get("AI_API_BASE"):
+        return os.environ["AI_API_BASE"]
+    return DASHSCOPE_API_BASE if _env_has_dashscope_only() else BIGMODEL_API_BASE
+
+
 @dataclass
 class ServerConfig:
     # 服务器网络配置
@@ -22,19 +48,10 @@ class ServerConfig:
     heartbeat_interval: int = 30       # 心跳间隔 (秒)
     heartbeat_timeout: int = 90        # 心跳超时 (秒)
 
-    # AI 服务 (默认智谱清言 BigModel API，也兼容通义千问)
-    ai_api_key: str = field(default_factory=lambda: (
-        os.environ.get("BIGMODEL_API_KEY") or
-        os.environ.get("DASHSCOPE_API_KEY") or
-        ""
-    ))
-    ai_model: str = field(default_factory=lambda: (
-        os.environ.get("AI_MODEL", "glm-4-flash-250414")
-    ))
-    ai_api_base: str = field(default_factory=lambda: (
-        os.environ.get("AI_API_BASE",
-                       "https://open.bigmodel.cn/api/paas/v4")
-    ))
+    # AI 服务：BIGMODEL_API_KEY 优先；仅配置 DASHSCOPE_API_KEY 时默认切到 DashScope
+    ai_api_key: str = field(default_factory=_default_ai_api_key)
+    ai_model: str = field(default_factory=_default_ai_model)
+    ai_api_base: str = field(default_factory=_default_ai_api_base)
 
     # 内容审核
     enable_content_moderation: bool = True

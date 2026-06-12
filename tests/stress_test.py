@@ -1,74 +1,58 @@
 """
-压力测试脚本：模拟多个虚拟客户端并发连接服务器。
+Concurrent TCP stress test for the chat server.
 
-使用方法：
-    python tests/stress_test.py             # 默认参数
-    python tests/stress_test.py --clients 50 --host 127.0.0.1 --port 8888
+Usage:
+  python tests/stress_test.py
+  python tests/stress_test.py --clients 50 --concurrency 20 --messages 3
 
-测试流程：
-    每个虚拟客户端：连接 -> 注册 -> 登录 -> 发消息 -> 收消息 -> 断开
-    统计指标：连接成功率、消息延迟、吞吐量
+Start the server first with:
+  python -m server.main
 """
 
 import argparse
 import asyncio
-import json
 import logging
-import random
-import struct
 import sys
 import time
+import uuid
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Optional
 
-# 确保可以导入 server 模块（仅添加项目根目录）
+
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from server.protocol import (
-    HEADER_FORMAT,
-    HEADER_SIZE,
-    MAGIC,
-    MessageType,
-    decode_messages,
-    encode_message,
-)
+from server.protocol import MessageType, decode_messages, encode_message
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(message)s",
-)
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger("stress_test")
-
-
-# ── 数据结构 ──────────────────────────────────────────────────────
 
 
 @dataclass
 class Stats:
-    """单个客户端的测试统计"""
-
     client_id: int
     connected: bool = False
     registered: bool = False
     logged_in: bool = False
+    user_id: Optional[int] = None
     messages_sent: int = 0
+    messages_acked: int = 0
     messages_received: int = 0
     errors: list[str] = field(default_factory=list)
     latencies: list[float] = field(default_factory=list)
-    timeline: dict[str, float] = field(default_factory=dict)
 
 
 @dataclass
 class AggregateReport:
-    """聚合测试报告"""
-
     total_clients: int = 0
     connected: int = 0
+    registered: int = 0
     login_success: int = 0
     total_messages_sent: int = 0
+    total_messages_acked: int = 0
     total_messages_received: int = 0
     total_errors: int = 0
     avg_latency: float = 0.0
@@ -76,19 +60,23 @@ class AggregateReport:
     p99_latency: float = 0.0
     max_latency: float = 0.0
     min_latency: float = 0.0
-    throughput: float = 0.0  # msg/s
+    throughput: float = 0.0
     duration: float = 0.0
+    sample_errors: list[str] = field(default_factory=list)
 
-
-# ── 虚拟客户端 ─────────────────────────────────────────────────────
+    @property
+    def ok(self) -> bool:
+        return (
+            self.connected == self.total_clients
+            and self.registered == self.total_clients
+            and self.login_success == self.total_clients
+            and self.total_errors == 0
+            and self.total_messages_sent == self.total_messages_acked
+            and self.total_messages_sent == self.total_messages_received
+        )
 
 
 class VirtualClient:
-    """
-    模拟一个客户端完整生命周期:
-    连接 -> 注册 -> 登录 -> 发消息 -> 收消息 -> 断开
-    """
-
     def __init__(
         self,
         client_id: int,
@@ -105,12 +93,17 @@ class VirtualClient:
         self.stats = Stats(client_id=client_id)
         self._reader: Optional[asyncio.StreamReader] = None
         self._writer: Optional[asyncio.StreamWriter] = None
-        self._username = f"stress_user_{client_id}_{int(time.time())}"
+        self._username = f"stress_{int(time.time())}_{client_id}_{uuid.uuid4().hex[:6]}"
         self._password = "stress_pass"
         self._buffer = b""
+        self._inbox: list[tuple[int, int, dict]] = []
+        self._seq = client_id * 100000
+
+    def _next_seq(self) -> int:
+        self._seq += 1
+        return self._seq & 0xFFFFFFFF
 
     async def run(self) -> Stats:
-        """执行完整的客户端测试流程"""
         try:
             if not await self._connect():
                 return self.stats
@@ -123,123 +116,139 @@ class VirtualClient:
             self.stats.errors.append("timeout")
         except ConnectionResetError:
             self.stats.errors.append("connection_reset")
-        except Exception as e:
-            self.stats.errors.append(f"unexpected:{e}")
+        except Exception as exc:
+            self.stats.errors.append(f"unexpected:{type(exc).__name__}:{exc}")
         finally:
             await self._disconnect()
         return self.stats
 
     async def _connect(self) -> bool:
-        """建立 TCP 连接"""
         try:
             self._reader, self._writer = await asyncio.wait_for(
                 asyncio.open_connection(self.host, self.port),
                 timeout=self.timeout,
             )
             self.stats.connected = True
-            self.stats.timeline["connected"] = time.time()
             return True
-        except Exception as e:
-            self.stats.errors.append(f"connect_failed:{e}")
+        except Exception as exc:
+            self.stats.errors.append(f"connect_failed:{type(exc).__name__}:{exc}")
             return False
 
-    async def _send_and_wait(self, msg_type: int, payload: dict, timeout: float = 5.0) -> Optional[tuple]:
-        """发送消息并等待响应"""
-        data = encode_message(msg_type, payload)
-        self._writer.write(data)
+    async def _send(self, msg_type: int, payload: dict, seq: int = None):
+        if seq is None:
+            seq = self._next_seq()
+        self._writer.write(encode_message(msg_type, payload, seq=seq))
         await self._writer.drain()
+        return seq
 
-        # 从流中读取响应
+    async def _read_matching(self, expected_type=None, predicate=None, timeout: float = 5.0):
         deadline = time.time() + timeout
         while time.time() < deadline:
+            for idx, msg in enumerate(list(self._inbox)):
+                msg_type, seq, payload = msg
+                if expected_type is not None and msg_type != expected_type:
+                    continue
+                if predicate is not None and not predicate(seq, payload):
+                    continue
+                self._inbox.pop(idx)
+                return msg
+
+            remaining = max(0.05, deadline - time.time())
             try:
-                chunk = await asyncio.wait_for(
-                    self._reader.read(4096),
-                    max(0.1, deadline - time.time()),
-                )
+                chunk = await asyncio.wait_for(self._reader.read(4096), timeout=remaining)
             except asyncio.TimeoutError:
                 return None
-
             if not chunk:
                 return None
 
             self._buffer += chunk
             messages, self._buffer = decode_messages(self._buffer)
-            if messages:
-                return messages[0]
+            for msg_type, seq, payload in messages:
+                if msg_type in (MessageType.PRIVATE_MSG, MessageType.GROUP_MSG) and not payload.get("_ack"):
+                    self.stats.messages_received += 1
+                self._inbox.append((msg_type, seq, payload))
 
         return None
 
+    async def _send_and_wait(self, msg_type: int, payload: dict, expected_type: int, predicate, timeout=5.0):
+        seq = await self._send(msg_type, payload)
+        return await self._read_matching(
+            expected_type,
+            predicate=lambda resp_seq, resp_payload: resp_seq == seq and predicate(resp_payload),
+            timeout=timeout,
+        )
+
     async def _register(self) -> bool:
-        """发送注册请求"""
         start = time.time()
-        payload = {"username": self._username, "password_hash": self._password}
-        response = await self._send_and_wait(MessageType.REGISTER_REQ, payload)
-        latency = time.time() - start
-
-        if response:
-            msg_type, seq, resp_payload = response
-            self.stats.registered = True
-            self.stats.timeline["registered"] = time.time()
-            self.stats.latencies.append(latency)
-            return True
-
-        self.stats.errors.append("register_no_response")
-        return False
+        response = await self._send_and_wait(
+            MessageType.REGISTER_REQ,
+            {"username": self._username, "password_hash": self._password},
+            MessageType.REGISTER_RESP,
+            lambda payload: payload.get("success") is True,
+            timeout=self.timeout,
+        )
+        if not response:
+            self.stats.errors.append("register_failed")
+            return False
+        self.stats.registered = True
+        self.stats.user_id = response[2].get("user_id")
+        self.stats.latencies.append(time.time() - start)
+        return True
 
     async def _login(self) -> bool:
-        """发送登录请求"""
         start = time.time()
-        payload = {"username": self._username, "password_hash": self._password}
-        response = await self._send_and_wait(MessageType.LOGIN_REQ, payload)
-        latency = time.time() - start
-
-        if response:
-            msg_type, seq, resp_payload = response
-            self.stats.logged_in = True
-            self.stats.timeline["logged_in"] = time.time()
-            self.stats.latencies.append(latency)
-            return True
-
-        self.stats.errors.append("login_no_response")
-        return False
+        response = await self._send_and_wait(
+            MessageType.LOGIN_REQ,
+            {"username": self._username, "password_hash": self._password},
+            MessageType.LOGIN_RESP,
+            lambda payload: payload.get("success") is True,
+            timeout=self.timeout,
+        )
+        if not response:
+            self.stats.errors.append("login_failed")
+            return False
+        self.stats.logged_in = True
+        self.stats.user_id = response[2].get("user_id")
+        self.stats.latencies.append(time.time() - start)
+        return True
 
     async def _exchange_messages(self):
-        """发送并接收消息（简化为只发不收，或发给自己）"""
+        if not self.stats.user_id:
+            self.stats.errors.append("missing_user_id")
+            return
+
         for i in range(self.messages_per_client):
+            content = f"stress_msg_{i}_from_{self.client_id}"
             start = time.time()
-            payload = {
-                "from_id": self.client_id,
-                "to_id": self.client_id,  # 发给自己
-                "content": f"stress_test_msg_{i}_from_{self.client_id}",
-                "msg_id": hash(f"stress_{self.client_id}_{i}") & 0x7FFFFFFF,
-                "timestamp": int(time.time()),
-            }
-            data = encode_message(MessageType.PRIVATE_MSG, payload)
-            self._writer.write(data)
-            await self._writer.drain()
-            latency = time.time() - start
-
+            response = await self._send_and_wait(
+                MessageType.PRIVATE_MSG,
+                {
+                    "to_id": self.stats.user_id,
+                    "content": content,
+                    "msg_id": f"stress-{self.client_id}-{i}",
+                    "timestamp": int(time.time()),
+                },
+                MessageType.PRIVATE_MSG,
+                lambda payload: payload.get("_ack") is True and payload.get("status") in {"delivered", "stored"},
+                timeout=self.timeout,
+            )
             self.stats.messages_sent += 1
-            self.stats.latencies.append(latency)
-
-        self.stats.timeline["messages_done"] = time.time()
+            if not response:
+                self.stats.errors.append(f"message_ack_missing:{i}")
+                continue
+            self.stats.messages_acked += 1
+            self.stats.latencies.append(time.time() - start)
 
     async def _disconnect(self):
-        """关闭连接"""
         if self._writer:
             try:
                 self._writer.close()
+                await self._writer.wait_closed()
             except Exception:
                 pass
 
 
-# ── 测试调度器 ─────────────────────────────────────────────────────
-
-
 class StressTester:
-    """压力测试调度器"""
-
     def __init__(
         self,
         host: str = "127.0.0.1",
@@ -257,14 +266,12 @@ class StressTester:
         self.timeout = timeout
 
     async def run(self) -> AggregateReport:
-        """执行压力测试"""
         logger.info(
-            "Starting stress test | clients=%d concurrency=%d msgs/client=%d",
+            "Starting stress test | clients=%d concurrency=%d messages/client=%d",
             self.num_clients,
             self.concurrency,
             self.messages_per_client,
         )
-
         start_time = time.time()
         semaphore = asyncio.Semaphore(self.concurrency)
 
@@ -279,49 +286,37 @@ class StressTester:
                 )
                 return await client.run()
 
-        tasks = [_run_client(i) for i in range(self.num_clients)]
-        results = await asyncio.gather(*tasks)
-        duration = time.time() - start_time
-
-        return self._aggregate(results, duration)
+        results = await asyncio.gather(*[_run_client(i) for i in range(self.num_clients)])
+        return self._aggregate(results, time.time() - start_time)
 
     def _aggregate(self, results: list[Stats], duration: float) -> AggregateReport:
-        """汇总所有客户端统计"""
         report = AggregateReport(duration=duration)
-        all_latencies: list[float] = []
+        latencies: list[float] = []
 
-        for s in results:
-            if s.connected:
-                report.connected += 1
-            if s.logged_in:
-                report.login_success += 1
-            report.total_messages_sent += s.messages_sent
-            report.total_messages_received += s.messages_received
-            report.total_errors += len(s.errors)
-            all_latencies.extend(s.latencies)
+        for stats in results:
+            report.connected += int(stats.connected)
+            report.registered += int(stats.registered)
+            report.login_success += int(stats.logged_in)
+            report.total_messages_sent += stats.messages_sent
+            report.total_messages_acked += stats.messages_acked
+            report.total_messages_received += stats.messages_received
+            report.total_errors += len(stats.errors)
+            report.sample_errors.extend(f"client#{stats.client_id}:{err}" for err in stats.errors[:3])
+            latencies.extend(stats.latencies)
 
         report.total_clients = len(results)
-        report.total_messages_received = report.total_messages_sent  # 简化统计
-
-        if all_latencies:
-            all_latencies.sort()
-            report.avg_latency = sum(all_latencies) / len(all_latencies)
-            report.min_latency = all_latencies[0]
-            report.max_latency = all_latencies[-1]
-            report.p50_latency = all_latencies[len(all_latencies) // 2]
-            report.p99_latency = all_latencies[int(len(all_latencies) * 0.99)]
-            report.throughput = (
-                report.total_messages_received / duration if duration > 0 else 0
-            )
-
+        if latencies:
+            latencies.sort()
+            report.avg_latency = sum(latencies) / len(latencies)
+            report.min_latency = latencies[0]
+            report.max_latency = latencies[-1]
+            report.p50_latency = latencies[len(latencies) // 2]
+            report.p99_latency = latencies[min(len(latencies) - 1, int(len(latencies) * 0.99))]
+        report.throughput = report.total_messages_acked / duration if duration > 0 else 0.0
         return report
 
 
-# ── 报告输出 ─────────────────────────────────────────────────────
-
-
 def print_report(report: AggregateReport):
-    """格式化输出测试报告"""
     separator = "=" * 60
     print(f"\n{separator}")
     print("  STRESS TEST REPORT")
@@ -329,8 +324,10 @@ def print_report(report: AggregateReport):
     print(f"  Duration:              {report.duration:.2f} s")
     print(f"  Total Clients:         {report.total_clients}")
     print(f"  Connected:             {report.connected}")
+    print(f"  Registered:            {report.registered}")
     print(f"  Login Success:         {report.login_success}")
     print(f"  Messages Sent:         {report.total_messages_sent}")
+    print(f"  Messages ACKed:        {report.total_messages_acked}")
     print(f"  Messages Received:     {report.total_messages_received}")
     print(f"  Total Errors:          {report.total_errors}")
     print(separator)
@@ -341,28 +338,27 @@ def print_report(report: AggregateReport):
     print(f"  P50 Latency:           {report.p50_latency:.4f}")
     print(f"  P99 Latency:           {report.p99_latency:.4f}")
     print(separator)
-    print(f"  Throughput:            {report.throughput:.2f} msg/s")
+    print(f"  Throughput:            {report.throughput:.2f} acked msg/s")
     print(separator)
 
-    # 错误汇总
-    if report.total_errors > 0:
-        print(f"\n  WARNING: {report.total_errors} errors occurred!")
-        print(f"  Connect success rate: {report.connected / report.total_clients * 100:.1f}%")
-        print(f"  Login success rate:   {report.login_success / report.total_clients * 100:.1f}%")
+    if report.total_errors:
+        print("  Sample errors:")
+        for err in report.sample_errors[:10]:
+            print(f"    - {err}")
         print(separator)
 
-
-# ── CLI ────────────────────────────────────────────────────────────
+    print(f"  Result:                {'PASS' if report.ok else 'FAIL'}")
+    print(separator)
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description="简聊压力测试工具")
-    parser.add_argument("--host", default="127.0.0.1", help="服务器地址")
-    parser.add_argument("--port", type=int, default=8888, help="服务器端口")
-    parser.add_argument("--clients", type=int, default=10, help="虚拟客户端数量")
-    parser.add_argument("--concurrency", type=int, default=10, help="并发连接数")
-    parser.add_argument("--messages", type=int, default=5, help="每个客户端发送消息数")
-    parser.add_argument("--timeout", type=float, default=10.0, help="超时秒数")
+    parser = argparse.ArgumentParser(description="Chat server stress test")
+    parser.add_argument("--host", default="127.0.0.1", help="server host")
+    parser.add_argument("--port", type=int, default=8888, help="server TCP port")
+    parser.add_argument("--clients", type=int, default=10, help="virtual client count")
+    parser.add_argument("--concurrency", type=int, default=10, help="concurrent clients")
+    parser.add_argument("--messages", type=int, default=5, help="messages per client")
+    parser.add_argument("--timeout", type=float, default=10.0, help="operation timeout seconds")
     return parser.parse_args()
 
 
@@ -378,7 +374,8 @@ async def main():
     )
     report = await tester.run()
     print_report(report)
+    return 0 if report.ok else 1
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    sys.exit(asyncio.run(main()))

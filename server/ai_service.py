@@ -1,10 +1,9 @@
 """
 @AI 智能回复模块
-调用智谱清言 BigModel API（兼容 OpenAI 接口格式）
-支持通过环境变量 BIGMODEL_API_KEY 配置 API Key
+调用 BigModel / DashScope OpenAI-compatible API。
+API Key 由 ServerConfig 从 BIGMODEL_API_KEY 或 DASHSCOPE_API_KEY 读取。
 """
 
-import os
 import json
 import asyncio
 import logging
@@ -22,12 +21,12 @@ class AIService:
     """
     AI 智能回复服务
     通过 aiohttp 异步调用大模型 API，不阻塞事件循环
-    默认使用智谱清言 API（兼容 OpenAI 接口格式），可通过配置切换其他兼容接口
+    默认优先使用 BigModel；仅配置 DashScope Key 时使用 DashScope 兼容接口。
     """
 
     def __init__(self, config: Optional[ServerConfig] = None):
         self.config = config or ServerConfig()
-        self._api_key = self.config.ai_api_key or os.environ.get("BIGMODEL_API_KEY", "")
+        self._api_key = self.config.ai_api_key or ""
         self._api_base = getattr(self.config, "ai_api_base",
                                  "https://open.bigmodel.cn/api/paas/v4")
         self._model = self.config.ai_model or "glm-4-flash-250414"
@@ -45,7 +44,7 @@ class AIService:
         }
 
         if not self._api_key:
-            logger.warning("BIGMODEL_API_KEY 未设置，AI 服务将不可用")
+            logger.warning("BIGMODEL_API_KEY/DASHSCOPE_API_KEY 未设置，AI 服务将不可用")
 
     @property
     def available(self) -> bool:
@@ -64,7 +63,7 @@ class AIService:
             回复文本，失败时返回错误提示
         """
         if not self._api_key:
-            return "AI 服务未配置（BIGMODEL_API_KEY 未设置）"
+            return "AI 服务未配置（请设置 BIGMODEL_API_KEY 或 DASHSCOPE_API_KEY）"
 
         if not prompt or not prompt.strip():
             return "请输入有效的问题"
