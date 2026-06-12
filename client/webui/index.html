@@ -24,6 +24,22 @@
   <!-- Bridge (must load first) -->
   <script src="js/bridge.js"></script>
 
+  <!-- 全局错误捕获（帮助定位黑屏原因） -->
+  <script>
+  window.addEventListener('error', function (e) {
+    var el = document.createElement('div');
+    el.style.cssText = 'position:fixed;bottom:0;left:0;right:0;background:#ff5252;color:#fff;padding:12px;font-size:13px;z-index:9999;font-family:monospace;white-space:pre-wrap;max-height:120px;overflow:auto;';
+    el.textContent = '[JS Error] ' + (e.error ? e.error.stack || e.error.message : e.message || e);
+    document.body.appendChild(el);
+  });
+  window.addEventListener('unhandledrejection', function (e) {
+    var el = document.createElement('div');
+    el.style.cssText = 'position:fixed;bottom:0;left:0;right:0;background:#ff9800;color:#fff;padding:12px;font-size:13px;z-index:9999;font-family:monospace;white-space:pre-wrap';
+    el.textContent = '[Promise Error] ' + (e.reason ? e.reason.stack || e.reason.message : e.reason || e);
+    document.body.appendChild(el);
+  });
+  </script>
+
   <!-- Particles background -->
   <script src="js/particles.js"></script>
 

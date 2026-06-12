@@ -77,7 +77,7 @@ class ChatGUI:
             resizable=True,
         )
 
-        webview.start(debug=False)
+        webview.start(debug=True)
 
     # =============================================================
     # 向后兼容方法（供 test_client_player2.py 等测试使用）

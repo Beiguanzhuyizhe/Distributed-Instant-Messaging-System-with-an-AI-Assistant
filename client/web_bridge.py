@@ -520,58 +520,23 @@ class WebBridge:
         self.handler.send_recall(msg_id)
         return {"ok": True}
 
-    def _win32_open_file_dialog(self, title="Select a file"):
-        """使用 Win32 GetOpenFileNameW API 打开文件选择对话框（线程安全）"""
-        import ctypes
-        from ctypes import wintypes
-
-        MAX_PATH = 260
-
-        class OPENFILENAME(ctypes.Structure):
-            _fields_ = [
-                ("lStructSize", wintypes.DWORD),
-                ("hwndOwner", wintypes.HWND),
-                ("hInstance", wintypes.HINSTANCE),
-                ("lpstrFilter", wintypes.LPCWSTR),
-                ("lpstrCustomFilter", wintypes.LPWSTR),
-                ("nMaxCustFilter", wintypes.DWORD),
-                ("nFilterIndex", wintypes.DWORD),
-                ("lpstrFile", ctypes.POINTER(ctypes.c_wchar)),
-                ("nMaxFile", wintypes.DWORD),
-                ("lpstrFileTitle", wintypes.LPWSTR),
-                ("nMaxFileTitle", wintypes.DWORD),
-                ("lpstrInitialDir", wintypes.LPCWSTR),
-                ("lpstrTitle", wintypes.LPCWSTR),
-                ("Flags", wintypes.DWORD),
-                ("nFileOffset", wintypes.WORD),
-                ("nFileExtension", wintypes.WORD),
-                ("lpstrDefExt", wintypes.LPCWSTR),
-                ("lCustData", wintypes.LPARAM),
-                ("lpfnHook", ctypes.c_void_p),
-                ("lpTemplateName", wintypes.LPCWSTR),
-            ]
-
-        buf = (ctypes.c_wchar * MAX_PATH)()
-        ofn = OPENFILENAME()
-        ofn.lStructSize = ctypes.sizeof(OPENFILENAME)
-        ofn.lpstrFile = buf
-        ofn.nMaxFile = MAX_PATH
-        ofn.lpstrTitle = title
-        ofn.lpstrFilter = "All Files (*.*)\0*.*\0"
-        ofn.Flags = 0x00000800 | 0x00001000 | 0x00000200
-
-        comdlg32 = ctypes.windll.comdlg32
-        comdlg32.GetOpenFileNameW.argtypes = [ctypes.POINTER(OPENFILENAME)]
-        comdlg32.GetOpenFileNameW.restype = wintypes.BOOL
-
-        if comdlg32.GetOpenFileNameW(ctypes.byref(ofn)):
-            return buf.value
-        return None
+    def _tk_file_dialog(self, title="Select a file"):
+        """使用 tkinter filedialog 打开 Windows 原生文件选择对话框（同最原始代码）"""
+        import tkinter as tk
+        from tkinter import filedialog
+        root = tk.Tk()
+        root.withdraw()
+        root.wm_attributes('-topmost', 1)
+        try:
+            filepath = filedialog.askopenfilename(title=title)
+            return filepath if filepath else None
+        finally:
+            root.destroy()
 
     def select_and_send_file(self) -> dict:
-        """JS 调用：打开文件选择对话框并发送文件（线程安全，Win32 API）"""
+        """JS 调用：打开文件选择对话框并发送文件（使用 tkinter 原生对话框）"""
         try:
-            filepath = self._win32_open_file_dialog()
+            filepath = self._tk_file_dialog()
             if not filepath:
                 return {"ok": False, "error": "No file selected"}
             filesize = os.path.getsize(filepath)

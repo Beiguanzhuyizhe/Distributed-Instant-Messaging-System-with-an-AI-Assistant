@@ -136,10 +136,10 @@
     var _useState = useState(false), atBottom = _useState[0], setAtBottom = _useState[1];
     var autoScrollRef = useRef(true);
 
-    // 自动滚动到底部
+    // 自动滚动到底部（直接操作 scrollTop，彻底消除滚动动画）
     useEffect(function () {
-      if (autoScrollRef.current && bottomRef.current) {
-        bottomRef.current.scrollIntoView({ behavior: 'smooth' });
+      if (autoScrollRef.current && areaRef.current) {
+        areaRef.current.scrollTop = areaRef.current.scrollHeight;
       }
     }, [messages]);
 
@@ -153,10 +153,10 @@
       setAtBottom(isNearBottom);
     }, []);
 
-    // 新的消息列表到来时，自动滚到底部
+    // 滚动到底部（直接操作 scrollTop）
     var scrollToBottom = useCallback(function () {
-      if (bottomRef.current) {
-        bottomRef.current.scrollIntoView({ behavior: 'smooth' });
+      if (areaRef.current) {
+        areaRef.current.scrollTop = areaRef.current.scrollHeight;
         autoScrollRef.current = true;
         setAtBottom(true);
       }

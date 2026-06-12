@@ -223,9 +223,9 @@
         h('div', { className: 'form-group' },
           h('input', {
             type: props.dialogType === 'join' ? 'number' : 'text',
-            placeholder: props.dialogType === 'join'
-              ? 'Enter group ID...'
-              : 'Enter group name...',
+            placeholder: props.dialogType === 'create'
+              ? 'Enter group name...'
+              : 'Enter group ID...',
             value: props.value,
             onChange: function (e) { props.onChange(e.target.value); },
             autoFocus: true,
@@ -306,22 +306,23 @@
       }
     }, []);
 
-    // ---- Animation: 切换聊天目标 ----
+    // ---- Animation: 切换聊天目标（只在 target 真正改变时触发一次） ----
     useEffect(function () {
       if (!currentTarget) return;
       if (prevTargetRef.current === currentTarget) return;
       prevTargetRef.current = currentTarget;
 
       if (typeof gsap !== 'undefined') {
-        // 聊天头部动画
+        // 先杀掉元素上所有 GSAP 动画，防止冲突
         if (headerRef.current) {
+          gsap.killTweensOf(headerRef.current);
           gsap.fromTo(headerRef.current,
             { y: -10, opacity: 0 },
             { y: 0, opacity: 1, duration: 0.3, ease: 'power2.out' }
           );
         }
-        // 输入区域动画
         if (inputRef.current) {
+          gsap.killTweensOf(inputRef.current);
           gsap.fromTo(inputRef.current,
             { y: 10, opacity: 0 },
             { y: 0, opacity: 1, duration: 0.3, ease: 'power2.out', delay: 0.1 }
@@ -340,10 +341,11 @@
       }
     }, [currentTarget]);
 
-    // 当前聊天的消息过滤
+    // 当前聊天的消息过滤（系统消息始终显示）
     var filteredMessages = useMemo(function () {
       if (!currentTarget) return [];
       return messages.filter(function (m) {
+        if (m.type === 'system') return true;
         if (currentChatType === 'private') {
           return m.type === 'private' && (
             m.sender === currentTarget ||
@@ -430,11 +432,35 @@
       }));
 
       unsubs.push(window.Bridge.on('file_sent', function (data) {
-        // 文件发送成功通知
+        setMessages(function (prev) {
+          return prev.concat([{
+            type: 'system',
+            content: '[System] File sent: ' + (data.filename || 'unknown') + ' (' + (data.filesize || 0) + ' bytes)',
+            timestamp: Math.floor(Date.now() / 1000)
+          }]);
+        });
       }));
 
       unsubs.push(window.Bridge.on('file_download_result', function (data) {
-        // 文件下载结果
+        setMessages(function (prev) {
+          return prev.concat([{
+            type: 'system',
+            content: data.success
+              ? '[System] File saved: ' + data.filename + ' (' + (data.filesize || 0) + ' bytes) -> ' + (data.path || 'downloads/')
+              : '[System] File download failed: ' + (data.error || 'unknown error'),
+            timestamp: Math.floor(Date.now() / 1000)
+          }]);
+        });
+      }));
+
+      unsubs.push(window.Bridge.on('file_incoming', function (data) {
+        setMessages(function (prev) {
+          return prev.concat([{
+            type: 'system',
+            content: '[System] Incoming file from ' + (data.sender || ('User#' + (data.from_id || '?'))) + ': ' + data.filename + ' (' + (data.filesize || 0) + ' bytes)',
+            timestamp: Math.floor(Date.now() / 1000)
+          }]);
+        });
       }));
 
       return function () {

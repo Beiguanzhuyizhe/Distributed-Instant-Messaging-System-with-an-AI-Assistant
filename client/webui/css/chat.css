@@ -296,7 +296,7 @@
 }
 
 /* ============================================================
-   动态聊天背景 — 浮动渐变光晕
+   动态聊天背景 — 浮动渐变光晕（提高可见度）
    ============================================================ */
 
 .chat-main::before,
@@ -304,28 +304,28 @@
   content: '';
   position: absolute;
   border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.15;
   pointer-events: none;
   z-index: 0;
   will-change: transform;
 }
 
 .chat-main::before {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, var(--accent-primary), transparent 70%);
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(108, 99, 255, 0.5), transparent 70%);
+  filter: blur(80px);
   top: -15%;
-  right: -15%;
+  right: -10%;
   animation: orbFloat1 14s ease-in-out infinite alternate;
 }
 
 .chat-main::after {
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, #e91e63, transparent 70%);
-  bottom: -10%;
-  left: -10%;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(233, 30, 99, 0.4), transparent 70%);
+  filter: blur(80px);
+  bottom: -5%;
+  left: -5%;
   animation: orbFloat2 18s ease-in-out infinite alternate;
 }
 
@@ -340,18 +340,18 @@
 
 @keyframes orbFloat1 {
   0%   { transform: translate(0, 0) scale(1); }
-  25%  { transform: translate(-80px, 40px) scale(1.08); }
-  50%  { transform: translate(60px, 100px) scale(0.92); }
-  75%  { transform: translate(-40px, 60px) scale(1.05); }
-  100% { transform: translate(30px, 0) scale(0.98); }
+  25%  { transform: translate(-60px, 30px) scale(1.08); }
+  50%  { transform: translate(40px, 80px) scale(0.92); }
+  75%  { transform: translate(-30px, 50px) scale(1.05); }
+  100% { transform: translate(20px, 0) scale(0.98); }
 }
 
 @keyframes orbFloat2 {
   0%   { transform: translate(0, 0) scale(1); }
-  25%  { transform: translate(60px, -80px) scale(1.1); }
-  50%  { transform: translate(-50px, -40px) scale(0.9); }
-  75%  { transform: translate(80px, -20px) scale(1.03); }
-  100% { transform: translate(-30px, -60px) scale(0.95); }
+  25%  { transform: translate(50px, -60px) scale(1.1); }
+  50%  { transform: translate(-40px, -30px) scale(0.9); }
+  75%  { transform: translate(60px, -10px) scale(1.03); }
+  100% { transform: translate(-20px, -50px) scale(0.95); }
 }
 
 .no-chat-selected {
