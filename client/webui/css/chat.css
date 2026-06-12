@@ -866,6 +866,7 @@
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-.message-wrapper {
+/* 消息动画已移至 GSAP 控制，只保留 keyframe 定义供参考 */
+/* .message-wrapper {
   animation: msgAppear 0.3s ease forwards;
-}
+} */

@@ -520,17 +520,60 @@ class WebBridge:
         self.handler.send_recall(msg_id)
         return {"ok": True}
 
-    async def select_and_send_file(self) -> dict:
-        """JS 调用：打开文件选择对话框并发送文件（pywebview 6.x 协程版）"""
+    def _win32_open_file_dialog(self, title="Select a file"):
+        """使用 Win32 GetOpenFileNameW API 打开文件选择对话框（线程安全）"""
+        import ctypes
+        from ctypes import wintypes
+
+        MAX_PATH = 260
+
+        class OPENFILENAME(ctypes.Structure):
+            _fields_ = [
+                ("lStructSize", wintypes.DWORD),
+                ("hwndOwner", wintypes.HWND),
+                ("hInstance", wintypes.HINSTANCE),
+                ("lpstrFilter", wintypes.LPCWSTR),
+                ("lpstrCustomFilter", wintypes.LPWSTR),
+                ("nMaxCustFilter", wintypes.DWORD),
+                ("nFilterIndex", wintypes.DWORD),
+                ("lpstrFile", ctypes.POINTER(ctypes.c_wchar)),
+                ("nMaxFile", wintypes.DWORD),
+                ("lpstrFileTitle", wintypes.LPWSTR),
+                ("nMaxFileTitle", wintypes.DWORD),
+                ("lpstrInitialDir", wintypes.LPCWSTR),
+                ("lpstrTitle", wintypes.LPCWSTR),
+                ("Flags", wintypes.DWORD),
+                ("nFileOffset", wintypes.WORD),
+                ("nFileExtension", wintypes.WORD),
+                ("lpstrDefExt", wintypes.LPCWSTR),
+                ("lCustData", wintypes.LPARAM),
+                ("lpfnHook", ctypes.c_void_p),
+                ("lpTemplateName", wintypes.LPCWSTR),
+            ]
+
+        buf = (ctypes.c_wchar * MAX_PATH)()
+        ofn = OPENFILENAME()
+        ofn.lStructSize = ctypes.sizeof(OPENFILENAME)
+        ofn.lpstrFile = buf
+        ofn.nMaxFile = MAX_PATH
+        ofn.lpstrTitle = title
+        ofn.lpstrFilter = "All Files (*.*)\0*.*\0"
+        ofn.Flags = 0x00000800 | 0x00001000 | 0x00000200
+
+        comdlg32 = ctypes.windll.comdlg32
+        comdlg32.GetOpenFileNameW.argtypes = [ctypes.POINTER(OPENFILENAME)]
+        comdlg32.GetOpenFileNameW.restype = wintypes.BOOL
+
+        if comdlg32.GetOpenFileNameW(ctypes.byref(ofn)):
+            return buf.value
+        return None
+
+    def select_and_send_file(self) -> dict:
+        """JS 调用：打开文件选择对话框并发送文件（线程安全，Win32 API）"""
         try:
-            # create_file_dialog 是 pywebview 6.x 的协程，需要 await
-            result = await webview.windows[0].create_file_dialog(
-                webview.OPEN_DIALOG, allow_multiple=False,
-                title="Select file to send"
-            )
-            if not result or not result[0]:
+            filepath = self._win32_open_file_dialog()
+            if not filepath:
                 return {"ok": False, "error": "No file selected"}
-            filepath = result[0]
             filesize = os.path.getsize(filepath)
             filename = os.path.basename(filepath)
             file_id = str(uuid.uuid4())
@@ -539,8 +582,7 @@ class WebBridge:
             if not target_id or not self._user_id:
                 return {"ok": False, "error": "No target selected"}
             self.handler.send_file_init(self._user_id, target_id, filename, filesize, file_id)
-            # 后台发送
-            import threading
+            # 后台发送文件数据
             threading.Thread(target=self._send_file_worker,
                              args=(filepath, file_id, filesize, filename), daemon=True).start()
             return {"ok": True, "filename": filename, "filesize": filesize}
