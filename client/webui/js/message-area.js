@@ -79,6 +79,7 @@
     var isSelf = msg.sender === username;
     var isSystem = msg.type === 'system';
     var isGroup = msg.type === 'group';
+    var isAi = msg.type === 'ai';
 
     // 判断是否与上一条消息连续（同一发送者，时间间隔 < 5 分钟）
     var isSameSender = false;
@@ -101,18 +102,20 @@
       showDateSeparator && h(DateSeparator, { label: formatDateSeparator(msg.timestamp) }),
       h('div', {
         className: 'message-wrapper' +
-          (isSystem ? ' system' : isSelf ? ' self' : ' other') +
+          (isSystem ? ' system' : isAi ? ' ai-message' : isSelf ? ' self' : ' other') +
           (isSameSender ? ' same-sender' : ''),
       },
-        // 群聊中显示发送者名称
-        isGroup && !isSelf && !isSameSender && !isSystem &&
-          h('div', { className: 'message-sender' }, msg.sender),
+        // 群聊/AI 中显示发送者名称
+        (isGroup || isAi) && !isSystem &&
+          h('div', { className: 'message-sender' +
+            (isSelf ? ' self-sender' : '') + (isAi && !isSelf ? ' ai-sender' : '') }, msg.sender),
 
         // 消息气泡主体
         h('div', {
-          className: 'message-bubble' + (isRecalled ? ' recalled' : ''),
+          className: 'message-bubble' + (isRecalled ? ' recalled' : '') + (isAi ? ' ai-bubble' : ''),
           title: msg.timestamp ? formatTime(msg.timestamp) : '',
         },
+          isAi && !isSelf && h('span', { className: 'ai-label' }, 'AI'),
           isRecalled
             ? '[Message recalled]'
             : msg.content

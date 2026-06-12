@@ -265,6 +265,24 @@
   flex: 1;
 }
 
+/* 未读红点 */
+.unread-badge {
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 10px;
+  background: var(--danger);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  line-height: 1;
+  box-shadow: 0 0 6px rgba(255, 82, 82, 0.4);
+}
+
 /* 群组图标 */
 .group-icon {
   width: 32px;
@@ -425,6 +443,26 @@
   white-space: nowrap;
 }
 
+.chat-header .header-ai-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  color: #4CAF50;
+  margin-left: 6px;
+  padding: 1px 6px;
+  background: rgba(76, 175, 80, 0.15);
+  border-radius: 4px;
+  vertical-align: middle;
+}
+
+.chat-header .header-avatar.ai-avatar {
+  background: linear-gradient(135deg, #1a3a2a, #2d6a4f) !important;
+}
+
+.chat-header.ai-header {
+  border-bottom-color: rgba(76, 175, 80, 0.2);
+}
+
 .chat-header .header-status {
   font-size: 11px;
   color: var(--text-muted);
@@ -527,6 +565,49 @@
   padding: 0 2px;
 }
 
+/* 自己的群聊消息发送者标签使用稍浅颜色 */
+.message-sender.self-sender {
+  color: var(--text-secondary);
+}
+
+/* AI 消息气泡样式 */
+.message-wrapper.ai-message {
+  max-width: 80%;
+}
+
+.message-wrapper.ai-message .message-bubble.ai-bubble {
+  background: linear-gradient(135deg, #1a3a2a, #0d2818);
+  color: #b8e6c8;
+  border: 1px solid rgba(76, 175, 80, 0.2);
+  border-bottom-left-radius: var(--radius-xs);
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.1);
+}
+
+.message-wrapper.ai-message.self .message-bubble.ai-bubble {
+  background: var(--msg-self-bg);
+  color: var(--msg-self-text);
+  border: none;
+  border-bottom-right-radius: var(--radius-xs);
+  box-shadow: 0 2px 8px rgba(108, 99, 255, 0.2);
+}
+
+.ai-label {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  color: #4CAF50;
+  margin-right: 6px;
+  padding: 1px 5px;
+  background: rgba(76, 175, 80, 0.12);
+  border-radius: 3px;
+  vertical-align: middle;
+  letter-spacing: 0.3px;
+}
+
+.message-sender.ai-sender {
+  color: #4CAF50;
+}
+
 .message-time {
   font-size: 10px;
   color: var(--msg-time-text);
@@ -596,13 +677,9 @@
   color: var(--text-muted);
 }
 
-/* 连续消息 */
+/* 连续消息（仅缩小间距，仍显示发送者名） */
 .message-wrapper + .message-wrapper.same-sender {
   margin-top: -2px;
-}
-
-.message-wrapper.same-sender .message-sender {
-  display: none;
 }
 
 /* "新消息"浮动按钮 */

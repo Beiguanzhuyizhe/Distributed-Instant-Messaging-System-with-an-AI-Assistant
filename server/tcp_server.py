@@ -630,7 +630,11 @@ class ChatServer:
 
         # 获取群聊历史作为上下文
         history = []
-        if group_id:
+        # 优先使用客户端携带的会话上下文
+        context = payload.get("context")
+        if context and isinstance(context, list):
+            history = context
+        elif group_id:
             msgs = await self.msg_history.get_group_history(group_id, limit=10)
             for m in msgs:
                 role = "user"

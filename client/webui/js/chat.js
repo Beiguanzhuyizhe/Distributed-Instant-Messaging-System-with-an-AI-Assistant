@@ -38,18 +38,23 @@
     var chatType = props.chatType;
     var onlineUsers = props.onlineUsers || {};
 
+    var isAi = chatType === 'ai';
     var isOnline = chatType === 'private' && onlineUsers[targetName];
-    var statusText = chatType === 'group' ? 'Group' : (isOnline ? 'Online' : 'Offline');
-    var avatarColor = getAvatarColor(targetName || '?');
+    var statusText = isAi ? 'Powered by BigModel AI' : (chatType === 'group' ? 'Group' : (isOnline ? 'Online' : 'Offline'));
+    var avatarColor = getAvatarColor(isAi ? 'AI' : (targetName || '?'));
+    var displayName = targetName;
 
     if (!targetName) return null;
 
-    return h('div', { className: 'chat-header', ref: function(el) { props.headerRef && props.headerRef(el); } },
-      h('div', { className: 'header-avatar', style: { background: avatarColor } },
-        getInitials(targetName)
+    return h('div', { className: 'chat-header' + (isAi ? ' ai-header' : ''), ref: function(el) { props.headerRef && props.headerRef(el); } },
+      h('div', { className: 'header-avatar' + (isAi ? ' ai-avatar' : ''), style: { background: avatarColor } },
+        isAi ? 'AI' : getInitials(targetName)
       ),
       h('div', { className: 'header-info' },
-        h('div', { className: 'header-name' }, targetName),
+        h('div', { className: 'header-name' },
+          displayName,
+          isAi && h('span', { className: 'header-ai-tag' }, 'AI'),
+        ),
         h('div', { className: 'header-status' }, statusText),
       ),
     );
@@ -262,6 +267,8 @@
     var _useState9 = useState(true), connected = _useState9[0], setConnected = _useState9[1];
     var _useState15 = useState(null), contextMenu = _useState15[0], setContextMenu = _useState15[1];
     var _useState16 = useState(''), searchQuery = _useState16[0], setSearchQuery = _useState16[1];
+    // 未读计数 state
+    var _useState17 = useState({}), unreadCounts = _useState17[0], setUnreadCounts = _useState17[1];
 
     // 对话框状态
     var _useState10 = useState(false), showAiDialog = _useState10[0], setShowAiDialog = _useState10[1];
@@ -341,11 +348,37 @@
       }
     }, [currentTarget]);
 
-    // 当前聊天的消息过滤（系统消息始终显示）
+    // 当前聊天的消息过滤（系统消息 + AI 消息按上下文过滤）
     var filteredMessages = useMemo(function () {
       if (!currentTarget) return [];
       return messages.filter(function (m) {
-        if (m.type === 'system') return true;
+        // AI 聊天：显示所有 type=ai 的消息
+        if (currentChatType === 'ai') {
+          return m.type === 'ai';
+        }
+        if (m.type === 'ai') {
+          // AI 响应可以关联到某个聊天（通过 @AI 快捷方式发出的）
+          if (currentChatType === 'private' && m.related_type === 'private') {
+            return String(m.related_target) === String(currentTargetId);
+          }
+          if (currentChatType === 'group' && m.related_type === 'group') {
+            return String(m.related_target) === String(currentTarget);
+          }
+          return false;
+        }
+        if (m.type === 'system') {
+          // 无上下文 = 全局系统消息，显示在所有聊天
+          if (!m.related_target) return true;
+          // 有上下文：只在匹配的聊天中显示
+          if (currentChatType === 'private' && m.related_type === 'private') {
+            return String(m.related_target) === String(currentTargetId) ||
+                   String(m.related_target) === String(currentTarget);
+          }
+          if (currentChatType === 'group' && m.related_type === 'group') {
+            return String(m.related_target) === String(currentTarget);
+          }
+          return false;
+        }
         if (currentChatType === 'private') {
           return m.type === 'private' && (
             m.sender === currentTarget ||
@@ -378,6 +411,26 @@
 
       unsubs.push(window.Bridge.on('new_message', function (data) {
         setMessages(function (prev) { return prev.concat([data]); });
+        // 未读计数：非当前聊天的新消息才计数
+        var isCurrent = false;
+        if (data.type === 'private') {
+          isCurrent = currentChatType === 'private' &&
+            (String(data.from_id) === String(currentTargetId) || data.sender === currentTarget);
+        } else if (data.type === 'group') {
+          isCurrent = currentChatType === 'group' && String(data.group_id) === String(currentTarget);
+        } else if (data.type === 'ai') {
+          isCurrent = currentChatType === 'ai';
+        }
+        if (!isCurrent) {
+          setUnreadCounts(function (prev) {
+            var key = data.type === 'group' ? 'group:' + data.group_id :
+                      data.type === 'ai' ? 'ai:AI Assistant' :
+                      'private:' + (data.sender || data.from_id);
+            var next = Object.assign({}, prev);
+            next[key] = (next[key] || 0) + 1;
+            return next;
+          });
+        }
       }));
 
       unsubs.push(window.Bridge.on('online_users', function (data) {
@@ -393,13 +446,27 @@
       unsubs.push(window.Bridge.on('history', function (data) {
         if (data.messages) {
           setMessages(function (prev) {
-            var filtered = prev.filter(function (m) {
-              if (data.type === 'private') {
-                return m.type !== 'private';
-              }
-              return m.group_id !== currentTarget;
+            var historyIds = new Set();
+            data.messages.forEach(function (hm) {
+              if (hm.msg_id) historyIds.add(hm.msg_id);
+              if (hm.local_msg_id) historyIds.add(hm.local_msg_id);
             });
-            return filtered.concat(data.messages);
+            if (data.type === 'private') {
+              var kept = prev.filter(function (m) {
+                if (m.type !== 'private') return true;
+                // 如果这条消息已在历史记录中，去掉本地版本（用历史版本替换）
+                if (m.msg_id && historyIds.has(m.msg_id)) return false;
+                if (m.server_msg_id && historyIds.has(m.server_msg_id)) return false;
+                if (m.local_msg_id && historyIds.has(m.local_msg_id)) return false;
+                return true;
+              });
+              return kept.concat(data.messages);
+            } else {
+              var filtered = prev.filter(function (m) {
+                return m.group_id !== currentTarget;
+              });
+              return filtered.concat(data.messages);
+            }
           });
         }
       }));
@@ -409,6 +476,17 @@
           return prev.map(function (m) {
             if (m.msg_id === data.msg_id || m.local_msg_id === data.msg_id || m.server_msg_id === data.msg_id) {
               return Object.assign({}, m, { is_recalled: true, content: '[Message recalled]' });
+            }
+            return m;
+          });
+        });
+      }));
+
+      unsubs.push(window.Bridge.on('message_acked', function (data) {
+        setMessages(function (prev) {
+          return prev.map(function (m) {
+            if (m.local_msg_id === data.local_msg_id || m.msg_id === data.msg_id) {
+              return Object.assign({}, m, { status: 'sent', msg_id: data.msg_id, server_msg_id: data.msg_id, timestamp: data.timestamp || m.timestamp });
             }
             return m;
           });
@@ -429,6 +507,11 @@
 
       unsubs.push(window.Bridge.on('group_left', function (data) {
         if (data.groups) setGroups(data.groups);
+        // 如果当前正在查看的群组被退出，清空聊天界面
+        if (currentChatType === 'group' && data.group_id && String(data.group_id) === String(currentTarget)) {
+          setCurrentTarget(null);
+          setCurrentTargetId(null);
+        }
       }));
 
       unsubs.push(window.Bridge.on('file_sent', function (data) {
@@ -436,7 +519,9 @@
           return prev.concat([{
             type: 'system',
             content: '[System] File sent: ' + (data.filename || 'unknown') + ' (' + (data.filesize || 0) + ' bytes)',
-            timestamp: Math.floor(Date.now() / 1000)
+            timestamp: Math.floor(Date.now() / 1000),
+            related_type: data.related_type || 'private',
+            related_target: data.related_target || '',
           }]);
         });
       }));
@@ -448,7 +533,9 @@
             content: data.success
               ? '[System] File saved: ' + data.filename + ' (' + (data.filesize || 0) + ' bytes) -> ' + (data.path || 'downloads/')
               : '[System] File download failed: ' + (data.error || 'unknown error'),
-            timestamp: Math.floor(Date.now() / 1000)
+            timestamp: Math.floor(Date.now() / 1000),
+            related_type: data.related_type || 'private',
+            related_target: data.related_target || '',
           }]);
         });
       }));
@@ -458,7 +545,9 @@
           return prev.concat([{
             type: 'system',
             content: '[System] Incoming file from ' + (data.sender || ('User#' + (data.from_id || '?'))) + ': ' + data.filename + ' (' + (data.filesize || 0) + ' bytes)',
-            timestamp: Math.floor(Date.now() / 1000)
+            timestamp: Math.floor(Date.now() / 1000),
+            related_type: data.related_type || 'private',
+            related_target: data.related_target || String(data.from_id || ''),
           }]);
         });
       }));
@@ -474,21 +563,47 @@
       setCurrentTargetId(id);
       setCurrentChatType(type);
       window.Bridge.setCurrentTarget(name, id, type);
-      if (type === 'private') {
+      // 清除该目标的未读计数
+      var key = type === 'group' ? 'group:' + name :
+                type === 'ai' ? 'ai:' + name :
+                'private:' + (name || id);
+      setUnreadCounts(function (prev) {
+        var next = Object.assign({}, prev);
+        delete next[key];
+        return next;
+      });
+      if (type === 'ai') {
+        // AI 聊天：不请求服务器历史（用本地消息）
+      } else if (type === 'private') {
         window.Bridge.requestHistory('private', id);
       } else {
         window.Bridge.requestHistory('group', parseInt(name));
       }
     }, []);
 
-    // 发送消息
+    // 发送消息（包含 AI 聊天路由）
     var handleSend = useCallback(function (content) {
-      if (currentChatType === 'private' && currentTargetId) {
+      if (currentChatType === 'ai') {
+        // 收集最近对话作为上下文
+        var ctx = messages.filter(function (m) { return m.type === 'ai'; }).slice(-10).map(function (m) {
+          return { sender: m.sender, content: m.content };
+        });
+        window.Bridge.sendAiQuery(content, 0, ctx);
+        // 本地显示用户消息
+        setMessages(function (prev) {
+          return prev.concat([{
+            type: 'ai',
+            sender: username,
+            content: content,
+            timestamp: Math.floor(Date.now() / 1000)
+          }]);
+        });
+      } else if (currentChatType === 'private' && currentTargetId) {
         window.Bridge.sendPrivateMsg(currentTargetId, content);
       } else if (currentChatType === 'group') {
         window.Bridge.sendGroupMsg(parseInt(currentTarget), content);
       }
-    }, [currentChatType, currentTargetId, currentTarget]);
+    }, [currentChatType, currentTargetId, currentTarget, username, messages]);
 
     // AI 查询
     var handleAI = useCallback(function (query) {
@@ -498,12 +613,14 @@
       }
       var gid = currentChatType === 'group' ? parseInt(currentTarget) : 0;
       window.Bridge.sendAiQuery(query, gid);
-      // 显示发送中提示
+      // 显示发送中提示（带聊天上下文）
       setMessages(function (prev) {
         return prev.concat([{
           type: 'system',
           content: '[AI] Query sent: "' + query.substring(0, 40) + (query.length > 40 ? '...' : '') + '"',
-          timestamp: Math.floor(Date.now() / 1000)
+          timestamp: Math.floor(Date.now() / 1000),
+          related_type: currentChatType,
+          related_target: currentChatType === 'group' ? currentTarget : String(currentTargetId),
         }]);
       });
     }, [currentChatType, currentTarget]);
@@ -616,6 +733,7 @@
           currentChatType: currentChatType,
           onSelectTarget: handleSelectTarget,
           searchQuery: searchQuery,
+          unreadCounts: unreadCounts,
         }),
       ),
 

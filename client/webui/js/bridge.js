@@ -164,8 +164,8 @@
     sendGroupMsg: function (groupId, content) {
       return call('send_group_msg', groupId, content);
     },
-    sendAiQuery: function (query, groupId) {
-      return call('send_ai_query', query, groupId || 0);
+    sendAiQuery: function (query, groupId, context) {
+      return call('send_ai_query', query, groupId || 0, context);
     },
     sendRecall: function (msgId) {
       return call('send_recall', msgId);

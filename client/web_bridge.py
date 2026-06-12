@@ -26,6 +26,9 @@ def _now() -> int:
 class WebBridge:
     """Python 侧桥接：接收 JS 命令、维护状态、推送服务器事件到 JS"""
 
+    AI_USERNAME = "AI Assistant"
+    AI_USER_ID = -1
+
     def __init__(self, conn, handler, store, p2p, download_dir):
         self.conn = conn
         self.handler = handler
@@ -48,6 +51,8 @@ class WebBridge:
         self._pending_acks = {}
         self._last_sent_msg_id = None
         self._dl_state = {}
+        self._pending_ai_context = None
+        self._pending_recall_context = None
 
         self._register_callbacks()
 
@@ -124,6 +129,7 @@ class WebBridge:
         server_msg_id = str(payload.get("msg_id", "") or "")
         if not server_msg_id:
             return
+        old_msg_id = str(msg.get("msg_id", ""))
         msg["server_msg_id"] = server_msg_id
         msg["msg_id"] = server_msg_id
         self._last_sent_msg_id = server_msg_id
@@ -132,6 +138,12 @@ class WebBridge:
                 self._username, local_msg_id, server_msg_id,
                 timestamp=msg.get("timestamp"), status=msg.get("status", ""),
             )
+        # 通知 JS 消息已确认（更新 msg_id 和 status）
+        self._push("message_acked", {
+            "local_msg_id": old_msg_id or local_msg_id,
+            "msg_id": server_msg_id,
+            "timestamp": msg.get("timestamp", _now()),
+        })
 
     def _mark_recalled(self, msg_id: str):
         target = str(msg_id)
@@ -247,7 +259,17 @@ class WebBridge:
     def _on_ai_resp(self, msg_type, seq, payload):
         content = payload.get("content", "")
         if content:
-            msg = {"type": "system", "content": f"[AI] {content}", "timestamp": _now()}
+            # 创建 ai 类型消息，显示为 AI Assistant 发送的聊天消息
+            msg = {
+                "type": "ai",
+                "sender": self.AI_USERNAME,
+                "from_id": self.AI_USER_ID,
+                "content": content,
+                "timestamp": _now(),
+            }
+            if self._pending_ai_context:
+                msg.update(self._pending_ai_context)
+                self._pending_ai_context = None
             self._append_and_store(msg)
             self._push_msg(msg)
 
@@ -260,15 +282,20 @@ class WebBridge:
         self._push_msg(msg)
 
     def _on_recall(self, msg_type, seq, payload):
+        ctx = getattr(self, '_pending_recall_context', None) or {}
         if payload.get("success") is False:
             err = payload.get("error") or payload.get("message", "recall failed")
-            self._push_msg({"type": "system", "content": f"Recall failed: {err}"})
+            msg = {"type": "system", "content": f"Recall failed: {err}"}
+            msg.update(ctx)
+            self._push_msg(msg)
             return
         msg_id = str(payload.get("msg_id", ""))
         self._mark_recalled(msg_id)
         mid = msg_id[:8]
         self._push("message_recalled", {"msg_id": msg_id})
-        self._push_msg({"type": "system", "content": f"Message {mid}... was recalled"})
+        msg = {"type": "system", "content": f"Message {mid}... was recalled"}
+        msg.update(ctx)
+        self._push_msg(msg)
 
     def _on_history(self, msg_type, seq, payload):
         history = payload.get("messages", [])
@@ -364,9 +391,11 @@ class WebBridge:
             "filesize": filesize,
             "sender": sender,
             "from_id": from_id,
+            "related_type": "private",
+            "related_target": str(from_id),
         })
         threading.Thread(target=self._gui_download_file,
-                         args=(file_id, filename, filesize), daemon=True).start()
+                         args=(file_id, filename, filesize, str(from_id)), daemon=True).start()
 
     def _on_file_ack(self, msg_type, seq, payload):
         file_id = payload.get("file_id", "")
@@ -384,7 +413,7 @@ class WebBridge:
         if state["remaining"] <= 0:
             state["event"].set()
 
-    def _gui_download_file(self, file_id, filename, filesize):
+    def _gui_download_file(self, file_id, filename, filesize, related_target=""):
         CHUNK_SIZE = 64 * 1024
         state = {"data": {}, "remaining": filesize,
                  "event": threading.Event(), "chunk_size": CHUNK_SIZE}
@@ -395,6 +424,7 @@ class WebBridge:
             self._push("file_download_result", {
                 "filename": filename, "success": False,
                 "error": "Download timed out",
+                "related_type": "private", "related_target": related_target,
             })
             self._dl_state.pop(file_id, None)
             return
@@ -407,10 +437,12 @@ class WebBridge:
             self._push("file_download_result", {
                 "filename": filename, "filesize": filesize,
                 "success": True, "path": dest,
+                "related_type": "private", "related_target": related_target,
             })
         except Exception as e:
             self._push("file_download_result", {
                 "filename": filename, "success": False, "error": str(e),
+                "related_type": "private", "related_target": related_target,
             })
         self._dl_state.pop(file_id, None)
 
@@ -477,11 +509,22 @@ class WebBridge:
         self._push_msg(msg)
         return {"ok": True, "msg": msg}
 
-    def send_ai_query(self, query: str, group_id: int = 0) -> dict:
+    def send_ai_query(self, query: str, group_id: int = 0, context_msgs=None) -> dict:
         """JS 调用：发送 AI 查询"""
         if not self._user_id:
             return {"ok": False, "error": "Not logged in"}
-        self.handler.send_ai_query(self._user_id, group_id, query)
+        # 保存上下文，以便 AI 回复能关联到正确的聊天
+        self._pending_ai_context = {
+            "related_type": "group" if group_id else "private",
+            "related_target": str(group_id) if group_id else str(self._current_target_id) if self._current_target_id else None,
+        }
+        # 携带会话上下文（最近对话历史）
+        ctx_list = []
+        if context_msgs and isinstance(context_msgs, list):
+            for cm in context_msgs[-10:]:  # 最多携带最近10条
+                role = "user" if cm.get("sender") != self.AI_USERNAME else "assistant"
+                ctx_list.append({"role": role, "content": cm.get("content", "")})
+        self.handler.send_ai_query(self._user_id, group_id, query, context=ctx_list)
         return {"ok": True}
 
     def request_history(self, target_type: str, target_id: int) -> dict:
@@ -517,6 +560,10 @@ class WebBridge:
 
     def send_recall(self, msg_id: str) -> dict:
         """JS 调用：撤回消息"""
+        self._pending_recall_context = {
+            "related_type": self._chat_type,
+            "related_target": str(self._current_target_id) if self._chat_type == 'private' else str(self._current_target),
+        }
         self.handler.send_recall(msg_id)
         return {"ok": True}
 
@@ -547,14 +594,19 @@ class WebBridge:
             if not target_id or not self._user_id:
                 return {"ok": False, "error": "No target selected"}
             self.handler.send_file_init(self._user_id, target_id, filename, filesize, file_id)
+            # 捕获文件上下文（在后台线程完成前聊天可能已切换）
+            file_context = {
+                "related_type": self._chat_type,
+                "related_target": str(self._current_target_id) if self._chat_type == 'private' else str(self._current_target),
+            }
             # 后台发送文件数据
             threading.Thread(target=self._send_file_worker,
-                             args=(filepath, file_id, filesize, filename), daemon=True).start()
+                             args=(filepath, file_id, filesize, filename, file_context), daemon=True).start()
             return {"ok": True, "filename": filename, "filesize": filesize}
         except Exception as e:
             return {"ok": False, "error": str(e)}
 
-    def _send_file_worker(self, filepath, file_id, filesize, filename):
+    def _send_file_worker(self, filepath, file_id, filesize, filename, context=None):
         chunk_size = 64 * 1024
         with open(filepath, "rb") as f:
             idx = 0
@@ -566,7 +618,10 @@ class WebBridge:
                 self.handler.send_file_data(file_id, chunk, idx, total)
                 idx += 1
                 time.sleep(0.01)
-        self._push("file_sent", {"filename": filename, "filesize": filesize})
+        event = {"filename": filename, "filesize": filesize}
+        if context:
+            event.update(context)
+        self._push("file_sent", event)
 
     def set_current_target(self, target_name: str, target_id, chat_type: str):
         """JS 调用：切换当前聊天目标"""

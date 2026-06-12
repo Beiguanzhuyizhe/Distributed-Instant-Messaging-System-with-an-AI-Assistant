@@ -101,11 +101,13 @@ class MessageHandler:
             payload
         )
 
-    def send_ai_query(self, from_id, group_id, query):
+    def send_ai_query(self, from_id, group_id, query, context=None):
         from protocol import make_ai_query_payload
+        payload = make_ai_query_payload(from_id, group_id, query)
+        if context:
+            payload["context"] = context
         return self._send_tracked(
-            MessageType.AI_QUERY,
-            make_ai_query_payload(from_id, group_id, query)
+            MessageType.AI_QUERY, payload
         )
 
     def send_recall(self, msg_id):
