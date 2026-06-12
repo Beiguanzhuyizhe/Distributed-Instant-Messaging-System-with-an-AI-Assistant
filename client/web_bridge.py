@@ -167,11 +167,17 @@ class WebBridge:
             self._user_id = payload.get("user_id")
             self._username = payload.get("username", self._username)
             self._logged_in = True
+            # 立即将自己加入在线列表（服务器可能还未返回 ONLINE_USERS）
+            if self._username and self._user_id:
+                self._online_users[self._username] = self._user_id
+            # 将当前已有状态一起推送给 JS
             self._push("login_success", {
                 "user_id": self._user_id,
                 "username": self._username,
+                "online_users": {k: v for k, v in self._online_users.items()},
+                "groups": {k: v for k, v in self._groups.items()},
             })
-            # 主动请求在线用户列表
+            # 主动请求在线用户列表（响应会通过 _on_online_users 补充其他用户）
             self.handler.request_online_users()
         else:
             msg = payload.get("error") or payload.get("message", "Login failed")
@@ -514,13 +520,11 @@ class WebBridge:
         self.handler.send_recall(msg_id)
         return {"ok": True}
 
-    def select_and_send_file(self) -> dict:
-        """JS 调用：打开文件选择对话框并发送文件"""
-        # 文件对话框由 pywebview 原生提供
-        # 此方法通过 JS 侧触发，实际文件选择在 Python 中用 filedialog
-        # 但 pywebview 不支持直接调用 tkinter filedialog，改用 webview.windows[0].create_file_dialog
+    async def select_and_send_file(self) -> dict:
+        """JS 调用：打开文件选择对话框并发送文件（pywebview 6.x 协程版）"""
         try:
-            result = webview.windows[0].create_file_dialog(
+            # create_file_dialog 是 pywebview 6.x 的协程，需要 await
+            result = await webview.windows[0].create_file_dialog(
                 webview.OPEN_DIALOG, allow_multiple=False,
                 title="Select file to send"
             )
@@ -536,6 +540,7 @@ class WebBridge:
                 return {"ok": False, "error": "No target selected"}
             self.handler.send_file_init(self._user_id, target_id, filename, filesize, file_id)
             # 后台发送
+            import threading
             threading.Thread(target=self._send_file_worker,
                              args=(filepath, file_id, filesize, filename), daemon=True).start()
             return {"ok": True, "filename": filename, "filesize": filesize}

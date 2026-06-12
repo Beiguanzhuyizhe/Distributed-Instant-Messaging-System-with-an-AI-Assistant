@@ -251,9 +251,11 @@
 
   function ChatLayout(props) {
     var username = props.username;
+    var initialOnlineUsers = props.initialOnlineUsers || {};
+    var initialGroups = props.initialGroups || {};
     var _useState3 = useState([]), messages = _useState3[0], setMessages = _useState3[1];
-    var _useState4 = useState({}), onlineUsers = _useState4[0], setOnlineUsers = _useState4[1];
-    var _useState5 = useState({}), groups = _useState5[0], setGroups = _useState5[1];
+    var _useState4 = useState(initialOnlineUsers), onlineUsers = _useState4[0], setOnlineUsers = _useState4[1];
+    var _useState5 = useState(initialGroups), groups = _useState5[0], setGroups = _useState5[1];
     var _useState6 = useState(null), currentTarget = _useState6[0], setCurrentTarget = _useState6[1];
     var _useState7 = useState(null), currentTargetId = _useState7[0], setCurrentTargetId = _useState7[1];
     var _useState8 = useState('private'), currentChatType = _useState8[0], setCurrentChatType = _useState8[1];
@@ -354,6 +356,19 @@
         }
       });
     }, [messages, currentTarget, currentTargetId, currentChatType, username]);
+
+    // 挂载时主动拉取当前在线用户/群组状态（解决事件丢失问题）
+    useEffect(function () {
+      window.Bridge.getOnlineUsersSnapshot().then(function (data) {
+        if (!data) return;
+        if (data.online_users && Object.keys(data.online_users).length > 0) {
+          setOnlineUsers(data.online_users);
+        }
+        if (data.groups) setGroups(data.groups);
+      }).catch(function () {});
+      // 同时发起一次新的请求，确保拿到最新数据
+      window.Bridge.requestOnlineUsers();
+    }, []);
 
     // 监听 Python 事件
     useEffect(function () {

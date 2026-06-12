@@ -291,6 +291,67 @@
   min-width: 0;
   background: var(--bg-primary);
   height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ============================================================
+   动态聊天背景 — 浮动渐变光晕
+   ============================================================ */
+
+.chat-main::before,
+.chat-main::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform;
+}
+
+.chat-main::before {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--accent-primary), transparent 70%);
+  top: -15%;
+  right: -15%;
+  animation: orbFloat1 14s ease-in-out infinite alternate;
+}
+
+.chat-main::after {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #e91e63, transparent 70%);
+  bottom: -10%;
+  left: -10%;
+  animation: orbFloat2 18s ease-in-out infinite alternate;
+}
+
+/* 确保聊天内容在光晕之上 */
+.chat-header,
+.message-container,
+.no-chat-selected,
+.input-area {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes orbFloat1 {
+  0%   { transform: translate(0, 0) scale(1); }
+  25%  { transform: translate(-80px, 40px) scale(1.08); }
+  50%  { transform: translate(60px, 100px) scale(0.92); }
+  75%  { transform: translate(-40px, 60px) scale(1.05); }
+  100% { transform: translate(30px, 0) scale(0.98); }
+}
+
+@keyframes orbFloat2 {
+  0%   { transform: translate(0, 0) scale(1); }
+  25%  { transform: translate(60px, -80px) scale(1.1); }
+  50%  { transform: translate(-50px, -40px) scale(0.9); }
+  75%  { transform: translate(80px, -20px) scale(1.03); }
+  100% { transform: translate(-30px, -60px) scale(0.95); }
 }
 
 .no-chat-selected {
