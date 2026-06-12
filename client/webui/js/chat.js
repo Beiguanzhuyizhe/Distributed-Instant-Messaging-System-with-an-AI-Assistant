@@ -267,8 +267,9 @@
     var _useState9 = useState(true), connected = _useState9[0], setConnected = _useState9[1];
     var _useState15 = useState(null), contextMenu = _useState15[0], setContextMenu = _useState15[1];
     var _useState16 = useState(''), searchQuery = _useState16[0], setSearchQuery = _useState16[1];
-    // 未读计数 state
+    // 未读计数 state + 最后消息时间（用于联系人排序）
     var _useState17 = useState({}), unreadCounts = _useState17[0], setUnreadCounts = _useState17[1];
+    var _useState18 = useState({}), lastMsgTimes = _useState18[0], setLastMsgTimes = _useState18[1];
 
     // 对话框状态
     var _useState10 = useState(false), showAiDialog = _useState10[0], setShowAiDialog = _useState10[1];
@@ -352,9 +353,10 @@
     var filteredMessages = useMemo(function () {
       if (!currentTarget) return [];
       return messages.filter(function (m) {
-        // AI 聊天：显示所有 type=ai 的消息
+        // AI 聊天：只显示纯 AI 对话消息（没有 related_target 的），
+        // 不显示在其他聊天中 @AI 发出的消息
         if (currentChatType === 'ai') {
-          return m.type === 'ai';
+          return m.type === 'ai' && !m.related_target;
         }
         if (m.type === 'ai') {
           // AI 响应可以关联到某个聊天（通过 @AI 快捷方式发出的）
@@ -411,7 +413,8 @@
 
       unsubs.push(window.Bridge.on('new_message', function (data) {
         setMessages(function (prev) { return prev.concat([data]); });
-        // 未读计数：非当前聊天的新消息才计数
+
+        var isOwn = data.sender === username;
         var isCurrent = false;
         if (data.type === 'private') {
           isCurrent = currentChatType === 'private' &&
@@ -421,11 +424,16 @@
         } else if (data.type === 'ai') {
           isCurrent = currentChatType === 'ai';
         }
-        if (!isCurrent) {
+        var key = data.type === 'group' ? 'group:' + data.group_id :
+                  data.type === 'ai' ? 'ai:AI Assistant' :
+                  'private:' + (data.sender || data.from_id);
+        // 更新最后消息时间（用于排序，自己的消息也更新）
+        setLastMsgTimes(function (prev) {
+          return Object.assign({}, prev, { [key]: data.timestamp || Math.floor(Date.now() / 1000) });
+        });
+        // 自己的消息不触发未读红点
+        if (!isOwn && !isCurrent) {
           setUnreadCounts(function (prev) {
-            var key = data.type === 'group' ? 'group:' + data.group_id :
-                      data.type === 'ai' ? 'ai:AI Assistant' :
-                      'private:' + (data.sender || data.from_id);
             var next = Object.assign({}, prev);
             next[key] = (next[key] || 0) + 1;
             return next;
@@ -460,12 +468,17 @@
                 if (m.local_msg_id && historyIds.has(m.local_msg_id)) return false;
                 return true;
               });
-              return kept.concat(data.messages);
+              var merged = kept.concat(data.messages);
+              // 按时间戳严格排序，确保顺序不混乱（AI 消息等会保持正确位置）
+              merged.sort(function (a, b) { return (a.timestamp || 0) - (b.timestamp || 0); });
+              return merged;
             } else {
               var filtered = prev.filter(function (m) {
                 return m.group_id !== currentTarget;
               });
-              return filtered.concat(data.messages);
+              var merged = filtered.concat(data.messages);
+              merged.sort(function (a, b) { return (a.timestamp || 0) - (b.timestamp || 0); });
+              return merged;
             }
           });
         }
@@ -734,6 +747,7 @@
           onSelectTarget: handleSelectTarget,
           searchQuery: searchQuery,
           unreadCounts: unreadCounts,
+          lastMsgTimes: lastMsgTimes,
         }),
       ),
 

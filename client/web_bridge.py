@@ -267,8 +267,9 @@ class WebBridge:
                 "content": content,
                 "timestamp": _now(),
             }
-            if self._pending_ai_context:
-                msg.update(self._pending_ai_context)
+            ctx = getattr(self, '_pending_ai_context', None)
+            if ctx:
+                msg.update(ctx)
                 self._pending_ai_context = None
             self._append_and_store(msg)
             self._push_msg(msg)
@@ -514,10 +515,14 @@ class WebBridge:
         if not self._user_id:
             return {"ok": False, "error": "Not logged in"}
         # 保存上下文，以便 AI 回复能关联到正确的聊天
-        self._pending_ai_context = {
-            "related_type": "group" if group_id else "private",
-            "related_target": str(group_id) if group_id else str(self._current_target_id) if self._current_target_id else None,
-        }
+        # 注意：AI Assistant 独立对话（chat_type=ai 时）不加 related_target，保持纯 AI 对话独立
+        if self._chat_type == 'ai' or self._current_target == self.AI_USERNAME:
+            self._pending_ai_context = {}
+        else:
+            self._pending_ai_context = {
+                "related_type": self._chat_type,
+                "related_target": str(self._current_target_id) if self._chat_type == 'private' else str(self._current_target),
+            }
         # 携带会话上下文（最近对话历史）
         ctx_list = []
         if context_msgs and isinstance(context_msgs, list):

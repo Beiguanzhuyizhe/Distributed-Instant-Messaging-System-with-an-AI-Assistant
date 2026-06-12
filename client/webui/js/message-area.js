@@ -102,7 +102,7 @@
       showDateSeparator && h(DateSeparator, { label: formatDateSeparator(msg.timestamp) }),
       h('div', {
         className: 'message-wrapper' +
-          (isSystem ? ' system' : isAi ? ' ai-message' : isSelf ? ' self' : ' other') +
+          (isSystem ? ' system' : isSelf ? ' self' : isAi ? ' ai-message' : ' other') +
           (isSameSender ? ' same-sender' : ''),
       },
         // 群聊/AI 中显示发送者名称

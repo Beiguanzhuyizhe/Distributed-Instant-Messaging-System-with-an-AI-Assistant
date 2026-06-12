@@ -1,5 +1,5 @@
 /**
- * sidebar.js — 联系人 & 群组列表组件（含未读红点）
+ * sidebar.js — 联系人 & 群组列表组件（含未读红点 + 时间排序）
  */
 
 (function () {
@@ -67,8 +67,9 @@
     var onSelectTarget = props.onSelectTarget;
     var searchQuery = props.searchQuery || '';
     var unreadCounts = props.unreadCounts || {};
+    var lastMsgTimes = props.lastMsgTimes || {};
 
-    // 过滤 + 排序联系人（有未读的排前面，在线次之，最后字母序）
+    // 过滤 + 排序联系人（按最后消息时间倒序, 类似微信）
     var filteredUsers = useMemo(function () {
       var entries = Object.entries(onlineUsers);
       if (searchQuery) {
@@ -83,12 +84,17 @@
         var keyB = 'private:' + b[0];
         var unreadA = unreadCounts[keyA] || 0;
         var unreadB = unreadCounts[keyB] || 0;
-        if (unreadA !== unreadB) return unreadB - unreadA; // 未读多的在前
-        // 在线用户已在 onlineUsers 中，所以都是在线
+        // 有未读的排前面
+        if (unreadA !== unreadB) return unreadB - unreadA;
+        // 然后按最后消息时间倒序（最新的在上面）
+        var timeA = lastMsgTimes[keyA] || 0;
+        var timeB = lastMsgTimes[keyB] || 0;
+        if (timeA !== timeB) return timeB - timeA;
+        // 最后按字母序
         return a[0].localeCompare(b[0]);
       });
       return entries;
-    }, [onlineUsers, searchQuery, props.username, unreadCounts]);
+    }, [onlineUsers, searchQuery, props.username, unreadCounts, lastMsgTimes]);
 
     var filteredGroups = useMemo(function () {
       var entries = Object.entries(groups);
@@ -102,10 +108,14 @@
         var unreadA = unreadCounts[keyA] || 0;
         var unreadB = unreadCounts[keyB] || 0;
         if (unreadA !== unreadB) return unreadB - unreadA;
+        // 按最后消息时间倒序
+        var timeA = lastMsgTimes[keyA] || 0;
+        var timeB = lastMsgTimes[keyB] || 0;
+        if (timeA !== timeB) return timeB - timeA;
         return a[1].localeCompare(b[1]);
       });
       return entries;
-    }, [groups, searchQuery, unreadCounts]);
+    }, [groups, searchQuery, unreadCounts, lastMsgTimes]);
 
     return h('div', { className: 'contact-list' },
       // AI 助手（置顶）
@@ -116,7 +126,7 @@
         name: 'AI Assistant',
         isActive: currentTarget === 'AI Assistant' && currentChatType === 'ai',
         isOnline: true,
-        unreadCount: 0,
+        unreadCount: unreadCounts['ai:AI Assistant'] || 0,
         onClick: function () { onSelectTarget('ai', 'AI Assistant', -1); },
       }),
 
