@@ -4,9 +4,24 @@
 
 .chat-layout {
   display: flex;
+  flex-direction: column;
   height: 100%;
   width: 100%;
   background: var(--bg-primary);
+}
+
+.chat-layout > .sidebar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: var(--status-bar-height);
+  width: var(--sidebar-width);
+  z-index: 1;
+}
+
+.chat-layout > .chat-main {
+  margin-left: var(--sidebar-width);
+  height: calc(100% - var(--status-bar-height));
 }
 
 /* ============================================================
@@ -31,10 +46,70 @@
   gap: var(--space-md);
   padding: var(--space-lg);
   border-bottom: 1px solid var(--border-color);
-  height: var(--header-height);
+  height: 56px;
   flex-shrink: 0;
 }
 
+/* 群组管理工具栏 */
+.sidebar-toolbar {
+  display: flex;
+  gap: 4px;
+  padding: 6px var(--space-lg);
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.toolbar-btn {
+  flex: 1;
+  padding: 4px 8px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-family: var(--font-family);
+  white-space: nowrap;
+}
+
+.toolbar-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+  border-color: var(--accent-primary);
+}
+
+/* 搜索框 */
+.sidebar-search {
+  padding: 6px var(--space-lg) 4px;
+  flex-shrink: 0;
+}
+
+.sidebar-search input {
+  width: 100%;
+  padding: 7px 12px;
+  background: var(--bg-tertiary);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 13px;
+  font-family: var(--font-family);
+  transition: all var(--transition-fast);
+  outline: none;
+  box-sizing: border-box;
+}
+
+.sidebar-search input::placeholder {
+  color: var(--text-muted);
+}
+
+.sidebar-search input:focus {
+  border-color: var(--accent-primary);
+  background: var(--bg-hover);
+}
+
+/* --- 头像 --- */
 .avatar {
   width: 36px;
   height: 36px;
@@ -86,52 +161,23 @@
   color: var(--success);
 }
 
-/* 搜索框 */
-.sidebar-search {
-  padding: var(--space-sm) var(--space-lg);
-  flex-shrink: 0;
-}
-
-.sidebar-search input {
-  width: 100%;
-  padding: 8px 12px;
-  background: var(--bg-tertiary);
-  border: 1px solid transparent;
-  border-radius: var(--radius-sm);
-  color: var(--text-primary);
-  font-size: 13px;
-  font-family: var(--font-family);
-  transition: all var(--transition-fast);
-  outline: none;
-}
-
-.sidebar-search input::placeholder {
-  color: var(--text-muted);
-}
-
-.sidebar-search input:focus {
-  border-color: var(--accent-primary);
-  background: var(--bg-hover);
-}
-
 /* 联系人列表 */
 .contact-list {
   flex: 1;
   overflow-y: auto;
-  padding: var(--space-xs) 0;
+  padding: 4px 0;
 }
 
 .contact-section-title {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-  padding: var(--space-sm) var(--space-lg) var(--space-xs);
+  padding: 6px var(--space-lg) 4px;
   font-size: 11px;
   font-weight: 700;
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  cursor: pointer;
   user-select: none;
 }
 
@@ -148,7 +194,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-md);
-  padding: 10px var(--space-lg);
+  padding: 8px var(--space-lg);
   cursor: pointer;
   transition: background var(--transition-fast);
   position: relative;
@@ -244,6 +290,7 @@
   flex-direction: column;
   min-width: 0;
   background: var(--bg-primary);
+  height: 100%;
 }
 
 .no-chat-selected {
@@ -257,24 +304,25 @@
 }
 
 .no-chat-selected .icon {
-  width: 64px;
-  height: 64px;
+  width: 72px;
+  height: 72px;
   background: var(--bg-tertiary);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 28px;
+  font-size: 32px;
 }
 
 .no-chat-selected h2 {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
   color: var(--text-secondary);
 }
 
 .no-chat-selected p {
-  font-size: 13px;
+  font-size: 14px;
+  color: var(--text-muted);
 }
 
 /* ---- 聊天头部 ---- */
@@ -325,7 +373,7 @@
 .message-area {
   flex: 1;
   overflow-y: auto;
-  padding: var(--space-lg);
+  padding: var(--space-md) var(--space-lg);
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -361,8 +409,6 @@
   flex-direction: column;
   max-width: 70%;
   margin-bottom: 2px;
-  opacity: 0;
-  animation: msgAppear 0.3s ease forwards;
 }
 
 .message-wrapper.self {
@@ -378,11 +424,6 @@
 .message-wrapper.system {
   align-self: center;
   max-width: 90%;
-}
-
-@keyframes msgAppear {
-  from { opacity: 0; transform: translateY(8px) scale(0.98); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .message-bubble {
@@ -494,21 +535,9 @@
   color: var(--text-muted);
 }
 
-/* 连续消息（同一发送者相邻） */
+/* 连续消息 */
 .message-wrapper + .message-wrapper.same-sender {
   margin-top: -2px;
-}
-
-.message-wrapper.same-sender .message-bubble {
-  border-radius: var(--radius-lg);
-}
-
-.message-wrapper.same-sender.self .message-bubble {
-  border-bottom-right-radius: var(--radius-sm);
-}
-
-.message-wrapper.same-sender.other .message-bubble {
-  border-bottom-left-radius: var(--radius-sm);
 }
 
 .message-wrapper.same-sender .message-sender {
@@ -518,7 +547,7 @@
 /* "新消息"浮动按钮 */
 .scroll-bottom-btn {
   position: absolute;
-  bottom: 80px;
+  bottom: 12px;
   right: var(--space-xl);
   width: 36px;
   height: 36px;
@@ -550,7 +579,7 @@
 
 /* ---- 输入区域 ---- */
 .input-area {
-  padding: var(--space-md) var(--space-xl);
+  padding: var(--space-sm) var(--space-xl) var(--space-md);
   border-top: 1px solid var(--border-color);
   background: var(--bg-secondary);
   flex-shrink: 0;
@@ -559,11 +588,11 @@
 .input-container {
   display: flex;
   align-items: flex-end;
-  gap: var(--space-sm);
+  gap: var(--space-xs);
   background: var(--bg-tertiary);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  padding: var(--space-xs);
+  padding: 2px;
   transition: border-color var(--transition-fast);
 }
 
@@ -595,23 +624,21 @@
   display: flex;
   align-items: center;
   gap: 2px;
-  padding-right: 4px;
-  padding-bottom: 4px;
+  padding: 4px;
 }
 
 .input-btn {
-  width: 32px;
-  height: 32px;
+  padding: 6px 12px;
   border: none;
   background: transparent;
   border-radius: var(--radius-sm);
   color: var(--text-muted);
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: var(--font-family);
   transition: all var(--transition-fast);
+  white-space: nowrap;
 }
 
 .input-btn:hover {
@@ -619,22 +646,35 @@
   color: var(--text-secondary);
 }
 
+.input-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.input-btn.file-btn:hover {
+  color: var(--accent-primary);
+}
+
+.input-btn.ai-btn:hover {
+  color: var(--success);
+}
+
 .input-btn.send-btn {
-  width: 36px;
-  height: 36px;
+  padding: 6px 16px;
   background: var(--accent-primary);
   color: white;
   border-radius: var(--radius-sm);
-  font-size: 14px;
+  font-size: 12px;
+  font-weight: 700;
 }
 
 .input-btn.send-btn:hover {
   background: var(--accent-hover);
-  transform: scale(1.05);
 }
 
-.input-btn.send-btn:active {
-  transform: scale(0.95);
+.input-btn.send-btn:disabled {
+  background: var(--bg-active);
+  color: var(--text-muted);
 }
 
 /* ---- 状态栏 ---- */
@@ -675,10 +715,11 @@
 }
 
 /* ============================================================
-   AI 对话框（Modal）
+   对话框 (Modal)
    ============================================================ */
 
-.modal-overlay {
+.modal-overlay,
+.group-dialog {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.6);
@@ -690,6 +731,7 @@
   animation: fadeIn 0.2s ease;
 }
 
+.dialog-content,
 .modal-content {
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
@@ -700,6 +742,7 @@
   box-shadow: var(--shadow-lg);
 }
 
+.dialog-content h3,
 .modal-content h3 {
   font-size: 16px;
   font-weight: 600;
@@ -720,6 +763,7 @@
   min-height: 80px;
   outline: none;
   transition: border-color var(--transition-fast);
+  box-sizing: border-box;
 }
 
 .modal-content .form-group textarea:focus {
@@ -735,80 +779,7 @@
 }
 
 /* ============================================================
-   群组对话框
-   ============================================================ */
-
-.group-dialog {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
-  animation: fadeIn 0.2s ease;
-}
-
-.group-dialog .dialog-content {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-xl);
-  padding: var(--space-xl);
-  width: 360px;
-  max-width: 90vw;
-  box-shadow: var(--shadow-lg);
-}
-
-.group-dialog h3 {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: var(--space-lg);
-  color: var(--text-primary);
-}
-
-/* ============================================================
-   右键菜单
-   ============================================================ */
-
-.context-menu {
-  position: fixed;
-  background: var(--bg-elevated);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  padding: var(--space-xs);
-  box-shadow: var(--shadow-lg);
-  z-index: 200;
-  min-width: 150px;
-  animation: fadeIn 0.1s ease;
-}
-
-.context-menu-item {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  padding: 8px 12px;
-  font-size: 13px;
-  color: var(--text-primary);
-  cursor: pointer;
-  border-radius: var(--radius-xs);
-  transition: background var(--transition-fast);
-}
-
-.context-menu-item:hover {
-  background: var(--bg-hover);
-}
-
-.context-menu-item.danger {
-  color: var(--danger);
-}
-
-.context-menu-item.danger:hover {
-  background: var(--danger-bg);
-}
-
-/* ============================================================
-   消息容器（相对定位，用于浮动按钮）
+   消息容器
    ============================================================ */
 
 .message-container {
@@ -818,4 +789,22 @@
   flex-direction: column;
   min-height: 0;
   overflow: hidden;
+}
+
+/* ============================================================
+   动画
+   ============================================================ */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes msgAppear {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.message-wrapper {
+  animation: msgAppear 0.3s ease forwards;
 }

@@ -1,5 +1,5 @@
 /**
- * chat.jsx — 聊天主界面（布局 + 输入栏 + 状态栏）
+ * chat.js — 聊天主界面（布局 + 输入栏 + 状态栏 + 动画 + 群组管理）
  */
 
 (function () {
@@ -44,7 +44,7 @@
 
     if (!targetName) return null;
 
-    return h('div', { className: 'chat-header' },
+    return h('div', { className: 'chat-header', ref: function(el) { props.headerRef && props.headerRef(el); } },
       h('div', { className: 'header-avatar', style: { background: avatarColor } },
         getInitials(targetName)
       ),
@@ -56,7 +56,7 @@
   }
 
   // ============================================================
-  // 输入栏
+  // 输入栏 — 按钮改为文字
   // ============================================================
 
   function ChatInput(props) {
@@ -71,7 +71,6 @@
     var handleSend = useCallback(function () {
       var content = text.trim();
       if (!content || disabled) return;
-      // 检测是否为 @AI 命令
       if (content.toUpperCase().startsWith('@AI')) {
         var query = content.substring(3).trim();
         if (query && onAI) onAI(query);
@@ -79,7 +78,6 @@
         onSend(content);
       }
       setText('');
-      // 重置 textarea 高度
       if (textareaRef.current) {
         textareaRef.current.style.height = 'auto';
       }
@@ -92,7 +90,6 @@
       }
     }, [handleSend]);
 
-    // Auto-resize textarea
     var handleInput = useCallback(function (e) {
       setText(e.target.value);
       var el = e.target;
@@ -113,25 +110,23 @@
         }),
         h('div', { className: 'input-actions' },
           h('button', {
-            className: 'input-btn',
+            className: 'input-btn file-btn',
             onClick: onFile,
             disabled: disabled,
-            title: 'Send file',
-          }, '📎'),
+            title: 'Upload file',
+          }, 'Upload'),
           h('button', {
-            className: 'input-btn',
-            onClick: function () {
-              if (onAI) onAI('');
-            },
+            className: 'input-btn ai-btn',
+            onClick: function () { if (onAI) onAI(''); },
             disabled: disabled,
-            title: 'Ask AI',
-          }, '🤖'),
+            title: 'Ask AI assistant',
+          }, '@AI'),
           h('button', {
             className: 'input-btn send-btn',
             onClick: handleSend,
             disabled: disabled || !text.trim(),
-            title: 'Send',
-          }, '➡'),
+            title: 'Send message',
+          }, 'Send'),
         ),
       ),
     );
@@ -263,6 +258,8 @@
     var _useState7 = useState(null), currentTargetId = _useState7[0], setCurrentTargetId = _useState7[1];
     var _useState8 = useState('private'), currentChatType = _useState8[0], setCurrentChatType = _useState8[1];
     var _useState9 = useState(true), connected = _useState9[0], setConnected = _useState9[1];
+    var _useState15 = useState(null), contextMenu = _useState15[0], setContextMenu = _useState15[1];
+    var _useState16 = useState(''), searchQuery = _useState16[0], setSearchQuery = _useState16[1];
 
     // 对话框状态
     var _useState10 = useState(false), showAiDialog = _useState10[0], setShowAiDialog = _useState10[1];
@@ -270,6 +267,76 @@
     var _useState12 = useState('create'), groupDialogType = _useState12[0], setGroupDialogType = _useState12[1];
     var _useState13 = useState(''), groupDialogValue = _useState13[0], setGroupDialogValue = _useState13[1];
     var _useState14 = useState(''), groupDialogTitle = _useState14[0], setGroupDialogTitle = _useState14[1];
+
+    // Refs for GSAP animations
+    var chatMainRef = useRef(null);
+    var sidebarRef = useRef(null);
+    var headerRef = useRef(null);
+    var inputRef = useRef(null);
+    var welcomeRef = useRef(null);
+    var prevTargetRef = useRef(null);
+
+    // ---- Animation: 页面入场 ----
+    useEffect(function () {
+      if (typeof gsap !== 'undefined') {
+        // 侧边栏从左侧滑入
+        if (sidebarRef.current) {
+          gsap.fromTo(sidebarRef.current,
+            { x: -30, opacity: 0 },
+            { x: 0, opacity: 1, duration: 0.5, ease: 'power3.out' }
+          );
+        }
+        // 主内容区淡入
+        if (chatMainRef.current) {
+          gsap.fromTo(chatMainRef.current,
+            { opacity: 0, y: 10 },
+            { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out', delay: 0.1 }
+          );
+        }
+        // 状态栏从下方滑入
+        var statusBar = document.querySelector('.status-bar');
+        if (statusBar) {
+          gsap.fromTo(statusBar,
+            { y: 20, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.3, ease: 'power2.out', delay: 0.2 }
+          );
+        }
+      }
+    }, []);
+
+    // ---- Animation: 切换聊天目标 ----
+    useEffect(function () {
+      if (!currentTarget) return;
+      if (prevTargetRef.current === currentTarget) return;
+      prevTargetRef.current = currentTarget;
+
+      if (typeof gsap !== 'undefined') {
+        // 聊天头部动画
+        if (headerRef.current) {
+          gsap.fromTo(headerRef.current,
+            { y: -10, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.3, ease: 'power2.out' }
+          );
+        }
+        // 输入区域动画
+        if (inputRef.current) {
+          gsap.fromTo(inputRef.current,
+            { y: 10, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.3, ease: 'power2.out', delay: 0.1 }
+          );
+        }
+      }
+    }, [currentTarget]);
+
+    // ---- Animation: 欢迎界面 ----
+    useEffect(function () {
+      if (!currentTarget && welcomeRef.current && typeof gsap !== 'undefined') {
+        gsap.fromTo(welcomeRef.current,
+          { scale: 0.95, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 0.5, ease: 'power3.out' }
+        );
+      }
+    }, [currentTarget]);
 
     // 当前聊天的消息过滤
     var filteredMessages = useMemo(function () {
@@ -308,7 +375,6 @@
 
       unsubs.push(window.Bridge.on('history', function (data) {
         if (data.messages) {
-          // 先清掉旧的该聊天消息，再添加历史
           setMessages(function (prev) {
             var filtered = prev.filter(function (m) {
               if (data.type === 'private') {
@@ -325,7 +391,7 @@
         setMessages(function (prev) {
           return prev.map(function (m) {
             if (m.msg_id === data.msg_id || m.local_msg_id === data.msg_id || m.server_msg_id === data.msg_id) {
-              return Object.assign({}, m, { is_recalled: true, content: '[已撤回]' });
+              return Object.assign({}, m, { is_recalled: true, content: '[Message recalled]' });
             }
             return m;
           });
@@ -348,6 +414,14 @@
         if (data.groups) setGroups(data.groups);
       }));
 
+      unsubs.push(window.Bridge.on('file_sent', function (data) {
+        // 文件发送成功通知
+      }));
+
+      unsubs.push(window.Bridge.on('file_download_result', function (data) {
+        // 文件下载结果
+      }));
+
       return function () {
         unsubs.forEach(function (fn) { fn(); });
       };
@@ -359,7 +433,6 @@
       setCurrentTargetId(id);
       setCurrentChatType(type);
       window.Bridge.setCurrentTarget(name, id, type);
-      // 请求历史消息
       if (type === 'private') {
         window.Bridge.requestHistory('private', id);
       } else {
@@ -384,11 +457,39 @@
       }
       var gid = currentChatType === 'group' ? parseInt(currentTarget) : 0;
       window.Bridge.sendAiQuery(query, gid);
+      // 显示发送中提示
+      setMessages(function (prev) {
+        return prev.concat([{
+          type: 'system',
+          content: '[AI] Query sent: "' + query.substring(0, 40) + (query.length > 40 ? '...' : '') + '"',
+          timestamp: Math.floor(Date.now() / 1000)
+        }]);
+      });
     }, [currentChatType, currentTarget]);
 
     // 文件发送
     var handleFile = useCallback(function () {
-      window.Bridge.selectAndSendFile();
+      window.Bridge.selectAndSendFile().then(function (result) {
+        if (result && !result.ok) {
+          setMessages(function (prev) {
+            return prev.concat([{
+              type: 'system',
+              content: '[System] File upload: ' + (result.error || 'failed'),
+              timestamp: Math.floor(Date.now() / 1000)
+            }]);
+          });
+        } else if (result && result.ok) {
+          setMessages(function (prev) {
+            return prev.concat([{
+              type: 'system',
+              content: '[System] Sending file: ' + result.filename + ' (' + result.filesize + ' bytes)',
+              timestamp: Math.floor(Date.now() / 1000)
+            }]);
+          });
+        }
+      }).catch(function (err) {
+        console.warn('File upload error:', err);
+      });
     }, []);
 
     // 群组操作
@@ -429,9 +530,6 @@
       window.Bridge.sendRecall(msgId);
     }, []);
 
-    // 右键菜单
-    var _useState15 = useState(null), contextMenu = _useState15[0], setContextMenu = _useState15[1];
-
     // 关闭右键菜单
     useEffect(function () {
       var handler = function () { setContextMenu(null); };
@@ -440,20 +538,57 @@
     }, []);
 
     return h('div', { className: 'chat-layout' },
-      // 侧边栏
-      h(window.App.Sidebar, {
-        username: username,
-        onlineUsers: onlineUsers,
-        groups: groups,
-        currentTarget: currentTarget,
-        currentChatType: currentChatType,
-        onSelectTarget: handleSelectTarget,
-      }),
+      // 侧边栏（附带群组管理按钮）
+      h('div', { className: 'sidebar', ref: sidebarRef },
+        // 用户信息头
+        h('div', { className: 'sidebar-header' },
+          h('div', { className: 'avatar', style: { background: getAvatarColor(username || 'Me') } },
+            getInitials(username),
+            h('div', { className: 'status-dot online' }),
+          ),
+          h('div', { className: 'user-info' },
+            h('div', { className: 'username' }, username || 'Loading...'),
+            h('div', { className: 'status-text' }, 'Online'),
+          ),
+        ),
+        // 群组管理工具栏
+        h('div', { className: 'sidebar-toolbar' },
+          h('button', { className: 'toolbar-btn', onClick: handleGroupCreate, title: 'Create Group' }, '+ New Group'),
+          h('button', { className: 'toolbar-btn', onClick: handleGroupJoin, title: 'Join Group' }, '+ Join'),
+          h('button', { className: 'toolbar-btn', onClick: handleGroupLeave, title: 'Leave Group' }, '- Leave'),
+        ),
+        // 搜索框
+        h('div', { className: 'sidebar-search' },
+          h('input', {
+            type: 'text',
+            placeholder: 'Search contacts...',
+            value: searchQuery,
+            onChange: function (e) { setSearchQuery(e.target.value); },
+          }),
+        ),
+        // 联系人列表 (Sidebar component)
+        h(window.App.Sidebar, {
+          username: username,
+          onlineUsers: onlineUsers,
+          groups: groups,
+          currentTarget: currentTarget,
+          currentChatType: currentChatType,
+          onSelectTarget: handleSelectTarget,
+          searchQuery: searchQuery,
+        }),
+      ),
 
       // 聊天主区域
-      h('div', { className: 'chat-main' },
+      h('div', {
+        className: 'chat-main',
+        ref: chatMainRef,
+      },
         !currentTarget
-          ? h('div', { className: 'no-chat-selected' },
+          ? h('div', {
+              className: 'no-chat-selected',
+              ref: welcomeRef,
+              key: 'welcome-' + (username || 'guest'),
+            },
               h('div', { className: 'icon' }, '💬'),
               h('h2', null, 'Welcome, ' + (username || '') + '!'),
               h('p', null, 'Select a contact or group to start chatting'),
@@ -463,6 +598,7 @@
                 targetName: currentTarget,
                 chatType: currentChatType,
                 onlineUsers: onlineUsers,
+                headerRef: function(el) { headerRef.current = el; },
               }),
               h(window.App.MessageArea, {
                 messages: filteredMessages,
@@ -470,12 +606,14 @@
                 targetId: currentTargetId,
                 chatType: currentChatType,
               }),
-              h(ChatInput, {
-                onSend: handleSend,
-                onAI: handleAI,
-                onFile: handleFile,
-                disabled: !currentTarget,
-              }),
+              h('div', { ref: inputRef },
+                h(ChatInput, {
+                  onSend: handleSend,
+                  onAI: handleAI,
+                  onFile: handleFile,
+                  disabled: !currentTarget,
+                }),
+              ),
             ),
       ),
 
@@ -501,8 +639,6 @@
         onSubmit: handleGroupSubmit,
         onClose: function () { setShowGroupDialog(false); },
       }),
-
-      // 右键菜单（通过 CSS 实现更简单，暂用系统右键菜单）
     );
   }
 
