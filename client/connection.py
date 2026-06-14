@@ -65,6 +65,7 @@ class ChatConnection:
         return ok
 
     def _do_connect(self):
+        sock = None
         try:
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             sock.settimeout(10)
@@ -78,6 +79,11 @@ class ChatConnection:
             self._last_heartbeat = time.time()
             return True
         except Exception:
+            if sock is not None:
+                try:
+                    sock.close()
+                except OSError:
+                    pass
             self.connected = False
             return False
 

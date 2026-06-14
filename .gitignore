@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 .pytest_cache/
 .pytest_tmp/
+.test_runtime/
 pytest-cache-files-*/
 tmp_client_file_test.txt
 compile_cache/
@@ -23,6 +24,7 @@ server.log
 # Agent/development workspace state
 .claude/
 agent-workspace/
+final_work_another_person_debug/
 
 # Assignment input files kept locally for reference
 作业要求.pdf

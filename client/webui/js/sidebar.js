@@ -71,7 +71,9 @@
 
     // 过滤 + 排序联系人（按最后消息时间倒序, 类似微信）
     var filteredUsers = useMemo(function () {
-      var entries = Object.entries(onlineUsers);
+      var entries = Object.entries(onlineUsers).filter(function (e) {
+        return e[0] !== props.username;
+      });
       if (searchQuery) {
         var q = searchQuery.toLowerCase();
         entries = entries.filter(function (e) { return e[0].toLowerCase().includes(q); });

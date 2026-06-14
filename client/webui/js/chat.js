@@ -34,15 +34,17 @@
     return String(chatType) + ':' + String(target);
   }
 
-  function sameValue(a, b) {
-    return a != null && b != null && String(a) === String(b);
-  }
-
   function chatKeyForMessage(m, username) {
     if (!m) return '';
     if (m.chat_key) return String(m.chat_key);
     if (m.related_type && m.related_target != null && m.related_target !== '') {
       return makeChatKey(m.related_type, m.related_target);
+    }
+    if (m.type === 'system') {
+      return '';
+    }
+    if (m.type === 'ai' && m.group_id != null && m.group_id !== '') {
+      return makeChatKey('group', m.group_id);
     }
     if (m.type === 'group') {
       return makeChatKey('group', m.group_id || m.target_id);
@@ -51,11 +53,10 @@
       return makeChatKey('ai', 'AI Assistant');
     }
     if (m.type === 'private') {
-      if (m.sender && m.sender !== username && m.from_id != null && m.from_id !== '') return makeChatKey('private', m.from_id);
-      if (m.receiver_id != null && m.receiver_id !== '') return makeChatKey('private', m.receiver_id);
-      if (m.to_id != null && m.to_id !== '') return makeChatKey('private', m.to_id);
       if (m.target_id != null && m.target_id !== '') return makeChatKey('private', m.target_id);
-      if (m.from_id != null && m.from_id !== '') return makeChatKey('private', m.from_id);
+      if (m.sender && m.sender !== username && m.from_id != null && m.from_id !== '') return makeChatKey('private', m.from_id);
+      if (m.sender === username && m.receiver_id != null && m.receiver_id !== '') return makeChatKey('private', m.receiver_id);
+      if (m.sender === username && m.to_id != null && m.to_id !== '') return makeChatKey('private', m.to_id);
       if (m.receiver && m.sender === username) return makeChatKey('private', m.receiver);
       if (m.sender && m.sender !== username) return makeChatKey('private', m.sender);
     }
@@ -68,55 +69,50 @@
     var targetName = ctx.targetName;
     var targetId = ctx.targetId;
     var username = ctx.username;
-    var keyTarget = chatType === 'private' ? targetId : targetName;
+    var keyTarget = chatType === 'private' ? targetId : chatType === 'ai' ? 'AI Assistant' : targetName;
     var currentKey = makeChatKey(chatType, keyTarget);
     var msgKey = chatKeyForMessage(m, username);
 
     if (chatType === 'ai') {
-      return m.type === 'ai' && !m.related_target && !m.chat_key;
+      return msgKey === makeChatKey('ai', 'AI Assistant');
     }
 
-    if (m.type === 'ai') {
-      return !!currentKey && msgKey === currentKey;
-    }
-
-    if (m.type === 'system') {
-      if (!m.related_target && !m.chat_key) return true;
-      return !!currentKey && msgKey === currentKey;
-    }
+    if (!currentKey || !msgKey || msgKey !== currentKey) return false;
 
     if (chatType === 'private') {
-      if (m.type !== 'private') return false;
-      if (currentKey && msgKey === currentKey) return true;
-      if (m.related_type && m.related_type !== 'private') return false;
-      if (m.related_target || m.target_id || m.receiver_id || m.to_id) {
-        return sameValue(m.related_target, targetId) ||
-          sameValue(m.target_id, targetId) ||
-          sameValue(m.receiver_id, targetId) ||
-          sameValue(m.to_id, targetId);
-      }
-      return sameValue(m.from_id, targetId) ||
-        sameValue(m.target_id, targetId) ||
-        sameValue(m.sender, targetName) ||
-        sameValue(m.receiver, targetName);
+      return m.type === 'private' || m.type === 'system' || m.type === 'ai';
     }
 
     if (chatType === 'group') {
-      if (m.type !== 'group') return false;
-      if (currentKey && msgKey === currentKey) return true;
-      if (m.related_type && m.related_type !== 'group') return false;
-      return sameValue(m.related_target, targetName) ||
-        sameValue(m.group_id, targetName) ||
-        sameValue(m.target_id, targetName);
+      return m.type === 'group' || m.type === 'system' || m.type === 'ai';
     }
 
     return false;
+  }
+
+  function messageIdentity(m, username) {
+    var key = chatKeyForMessage(m, username);
+    var id = m.server_msg_id || m.msg_id || m.local_msg_id;
+    if (key && id) return key + '|' + String(id);
+    if (!key) return '';
+    return key + '|fallback|' + String(m.timestamp || '') + '|' +
+      String(m.sender || '') + '|' + String(m.content || '');
   }
 
   function messageIdInSet(m, ids) {
     return (m.msg_id && ids.has(m.msg_id)) ||
       (m.server_msg_id && ids.has(m.server_msg_id)) ||
       (m.local_msg_id && ids.has(m.local_msg_id));
+  }
+
+  function messageSortValue(m) {
+    return Number(m.sort_ts || m.timestamp || 0);
+  }
+
+  function sortMessages(messages) {
+    return messages.slice().sort(function (a, b) {
+      return messageSortValue(a) - messageSortValue(b);
+    });
   }
 
   // ============================================================
@@ -470,7 +466,13 @@
       var unsubs = [];
 
       unsubs.push(window.Bridge.on('new_message', function (data) {
-        setMessages(function (prev) { return prev.concat([data]); });
+        setMessages(function (prev) {
+          var identity = messageIdentity(data, username);
+          if (identity && prev.some(function (m) { return messageIdentity(m, username) === identity; })) {
+            return prev;
+          }
+          return sortMessages(prev.concat([data]));
+        });
 
         var isOwn = data.sender === username;
         var isCurrent = messageBelongsToChat(data, {
@@ -509,33 +511,29 @@
       unsubs.push(window.Bridge.on('history', function (data) {
         if (data.messages) {
           setMessages(function (prev) {
-            var historyIds = new Set();
-            data.messages.forEach(function (hm) {
-              if (hm.msg_id) historyIds.add(hm.msg_id);
-              if (hm.local_msg_id) historyIds.add(hm.local_msg_id);
+            var historyKey = data.chat_key || (
+              data.type === 'group'
+                ? makeChatKey('group', data.target_id != null ? data.target_id : currentTarget)
+                : makeChatKey('private', data.target_id)
+            );
+            var incoming = data.messages.map(function (hm) {
+              if (!hm.chat_key && historyKey) {
+                return Object.assign({}, hm, { chat_key: historyKey });
+              }
+              return hm;
             });
-            if (data.type === 'private') {
-              var historyKey = data.chat_key || (data.target_id != null ? makeChatKey('private', data.target_id) : '');
-              var kept = prev.filter(function (m) {
-                if (m.type !== 'private') return true;
-                var sameHistoryChat = historyKey && chatKeyForMessage(m, username) === historyKey;
-                // 只替换当前私聊窗口内的本地版本，不动其他私聊窗口。
-                if (sameHistoryChat && messageIdInSet(m, historyIds)) return false;
-                return true;
-              });
-              var merged = kept.concat(data.messages);
-              // 按时间戳严格排序，确保顺序不混乱（AI 消息等会保持正确位置）
-              merged.sort(function (a, b) { return (a.timestamp || 0) - (b.timestamp || 0); });
-              return merged;
-            } else {
-              var historyGroupKey = data.chat_key || (data.target_id != null ? makeChatKey('group', data.target_id) : makeChatKey('group', currentTarget));
-              var filtered = prev.filter(function (m) {
-                return chatKeyForMessage(m, username) !== historyGroupKey;
-              });
-              var merged = filtered.concat(data.messages);
-              merged.sort(function (a, b) { return (a.timestamp || 0) - (b.timestamp || 0); });
-              return merged;
-            }
+            var incomingIdentities = new Set();
+            incoming.forEach(function (hm) {
+              var identity = messageIdentity(hm, username);
+              if (identity) incomingIdentities.add(identity);
+            });
+            var kept = prev.filter(function (m) {
+              var key = chatKeyForMessage(m, username);
+              if (historyKey && key !== historyKey) return true;
+              var identity = messageIdentity(m, username);
+              return !identity || !incomingIdentities.has(identity);
+            });
+            return sortMessages(kept.concat(incoming));
           });
         }
       }));
@@ -555,7 +553,17 @@
         setMessages(function (prev) {
           return prev.map(function (m) {
             if (m.local_msg_id === data.local_msg_id || m.msg_id === data.msg_id) {
-              return Object.assign({}, m, { status: 'sent', msg_id: data.msg_id, server_msg_id: data.msg_id, timestamp: data.timestamp || m.timestamp });
+              var status = data.status || m.status || 'sent';
+              var next = Object.assign({}, m, {
+                status: status,
+                timestamp: data.timestamp || m.timestamp
+              });
+              if (data.msg_id && data.msg_id !== data.local_msg_id) {
+                next.msg_id = data.msg_id;
+                next.server_msg_id = data.msg_id;
+              }
+              if (data.error) next.error = data.error;
+              return next;
             }
             return m;
           });
@@ -576,6 +584,18 @@
 
       unsubs.push(window.Bridge.on('group_left', function (data) {
         if (data.groups) setGroups(data.groups);
+        if (data.group_id) {
+          setUnreadCounts(function (prev) {
+            var next = Object.assign({}, prev);
+            delete next['group:' + data.group_id];
+            return next;
+          });
+          setLastMsgTimes(function (prev) {
+            var next = Object.assign({}, prev);
+            delete next['group:' + data.group_id];
+            return next;
+          });
+        }
         // 如果当前正在查看的群组被退出，清空聊天界面
         if (currentChatType === 'group' && data.group_id && String(data.group_id) === String(currentTarget)) {
           setCurrentTarget(null);
@@ -667,7 +687,10 @@
             type: 'ai',
             sender: username,
             content: content,
-            timestamp: Math.floor(Date.now() / 1000)
+            timestamp: Math.floor(Date.now() / 1000),
+            related_type: 'ai',
+            related_target: 'AI Assistant',
+            chat_key: makeChatKey('ai', 'AI Assistant'),
           }]);
         });
       } else if (currentChatType === 'private' && currentTargetId) {
@@ -684,6 +707,11 @@
         return;
       }
       var gid = currentChatType === 'group' ? parseInt(currentTarget) : 0;
+      var contextTarget = currentChatType === 'group'
+        ? currentTarget
+        : currentChatType === 'ai'
+          ? 'AI Assistant'
+          : currentTargetId;
       window.Bridge.sendAiQuery(query, gid);
       // 显示发送中提示（带聊天上下文）
       setMessages(function (prev) {
@@ -692,21 +720,26 @@
           content: '[AI] Query sent: "' + query.substring(0, 40) + (query.length > 40 ? '...' : '') + '"',
           timestamp: Math.floor(Date.now() / 1000),
           related_type: currentChatType,
-          related_target: currentChatType === 'group' ? currentTarget : String(currentTargetId),
-          chat_key: makeChatKey(currentChatType, currentChatType === 'group' ? currentTarget : currentTargetId),
+          related_target: String(contextTarget),
+          chat_key: makeChatKey(currentChatType, contextTarget),
         }]);
       });
     }, [currentChatType, currentTarget, currentTargetId]);
 
     // 文件发送
     var handleFile = useCallback(function () {
+      var fileContextTarget = currentChatType === 'group' ? currentTarget : currentTargetId;
+      var fileChatKey = makeChatKey(currentChatType, fileContextTarget);
       window.Bridge.selectAndSendFile().then(function (result) {
         if (result && !result.ok) {
           setMessages(function (prev) {
             return prev.concat([{
               type: 'system',
               content: '[System] File upload: ' + (result.error || 'failed'),
-              timestamp: Math.floor(Date.now() / 1000)
+              timestamp: Math.floor(Date.now() / 1000),
+              related_type: currentChatType,
+              related_target: String(fileContextTarget || ''),
+              chat_key: fileChatKey,
             }]);
           });
         } else if (result && result.ok) {
@@ -714,14 +747,17 @@
             return prev.concat([{
               type: 'system',
               content: '[System] Sending file: ' + result.filename + ' (' + result.filesize + ' bytes)',
-              timestamp: Math.floor(Date.now() / 1000)
+              timestamp: Math.floor(Date.now() / 1000),
+              related_type: currentChatType,
+              related_target: String(fileContextTarget || ''),
+              chat_key: fileChatKey,
             }]);
           });
         }
       }).catch(function (err) {
         console.warn('File upload error:', err);
       });
-    }, []);
+    }, [currentChatType, currentTarget, currentTargetId]);
 
     // 群组操作
     var handleGroupCreate = useCallback(function () {

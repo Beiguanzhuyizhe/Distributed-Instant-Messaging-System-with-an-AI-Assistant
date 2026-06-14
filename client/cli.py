@@ -171,6 +171,15 @@ class ChatCLI:
             msg["timestamp"] = payload["timestamp"]
         server_msg_id = str(payload.get("msg_id", "") or "")
         if not server_msg_id:
+            if self._username:
+                self.store.update_message_status(
+                    self._username, local_msg_id, msg["status"],
+                )
+            if payload.get("error"):
+                self._print(
+                    "system", _fmt_time(_now()), "",
+                    f"Message rejected: {payload['error']}",
+                )
             return
         msg["server_msg_id"] = server_msg_id
         msg["msg_id"] = server_msg_id
@@ -491,6 +500,12 @@ class ChatCLI:
 
     def _download_file(self, file_id, filename, filesize):
         CHUNK_SIZE = 64 * 1024
+        dest = os.path.join(self._download_dir, filename)
+        if filesize == 0:
+            with open(dest, "wb"):
+                pass
+            self._print("system", _fmt_time(_now()), "", f"Downloaded: {filename} (0 bytes)")
+            return
         state = {"data": {}, "remaining": filesize, "event": threading.Event(), "chunk_size": CHUNK_SIZE}
         self._dl_state[file_id] = state
         for offset in range(0, filesize, CHUNK_SIZE):
@@ -499,7 +514,6 @@ class ChatCLI:
             self._print("system", _fmt_time(_now()), "", f"File download timed out: {filename}")
             self._dl_state.pop(file_id, None)
             return
-        dest = os.path.join(self._download_dir, filename)
         with open(dest, "wb") as f:
             for offset in sorted(state["data"].keys()):
                 f.write(state["data"][offset])

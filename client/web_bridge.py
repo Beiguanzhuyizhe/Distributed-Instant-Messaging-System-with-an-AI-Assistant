@@ -51,8 +51,9 @@ class WebBridge:
         self._pending_acks = {}
         self._last_sent_msg_id = None
         self._dl_state = {}
-        self._pending_ai_context = None
+        self._pending_ai_context = {}
         self._pending_recall_context = None
+        self._pending_group_leave = {}
 
         self._register_callbacks()
 
@@ -128,6 +129,26 @@ class WebBridge:
             msg["timestamp"] = payload["timestamp"]
         server_msg_id = str(payload.get("msg_id", "") or "")
         if not server_msg_id:
+            if self._username:
+                self.store.update_message_status(
+                    self._username, local_msg_id, msg["status"],
+                )
+            ack_event = {
+                "local_msg_id": local_msg_id,
+                "msg_id": local_msg_id,
+                "timestamp": msg.get("timestamp", _now()),
+                "status": msg["status"],
+            }
+            if payload.get("error"):
+                ack_event["error"] = payload["error"]
+                system_msg = {
+                    "type": "system",
+                    "content": f"Message rejected: {payload['error']}",
+                    "timestamp": _now(),
+                }
+                system_msg.update(self._current_chat_context())
+                self._push_msg(system_msg)
+            self._push("message_acked", ack_event)
             return
         old_msg_id = str(msg.get("msg_id", ""))
         msg["server_msg_id"] = server_msg_id
@@ -186,6 +207,8 @@ class WebBridge:
     def _current_chat_context(self) -> dict:
         if self._chat_type == "private":
             target = self._current_target_id
+        elif self._chat_type == "ai":
+            target = self.AI_USERNAME
         else:
             target = self._current_target
         if target is None or target == "":
@@ -297,10 +320,20 @@ class WebBridge:
                 "content": content,
                 "timestamp": _now(),
             }
-            ctx = getattr(self, '_pending_ai_context', None)
+            group_id = payload.get("group_id")
+            if group_id not in (None, "", 0, "0"):
+                ctx = {
+                    "related_type": "group",
+                    "related_target": str(group_id),
+                    "chat_key": self._chat_key("group", group_id),
+                    "group_id": str(group_id),
+                    "target_id": str(group_id),
+                }
+            else:
+                pending = getattr(self, '_pending_ai_context', {})
+                ctx = pending.pop(seq, {}) if isinstance(pending, dict) else {}
             if ctx:
                 msg.update(ctx)
-                self._pending_ai_context = None
             self._append_and_store(msg)
             self._push_msg(msg)
 
@@ -406,7 +439,7 @@ class WebBridge:
             self._push_msg({"type": "system", "content": f"Join failed: {err}"})
 
     def _on_group_leave_resp(self, msg_type, seq, payload):
-        gid = str(payload.get("group_id", ""))
+        gid = str(payload.get("group_id") or self._pending_group_leave.pop(seq, "") or "")
         if payload.get("success"):
             self._groups.pop(gid, None)
             self._push("group_left", {
@@ -462,6 +495,25 @@ class WebBridge:
 
     def _gui_download_file(self, file_id, filename, filesize, related_target=""):
         CHUNK_SIZE = 64 * 1024
+        dest = os.path.join(self._download_dir, filename)
+        if filesize == 0:
+            try:
+                os.makedirs(self._download_dir, exist_ok=True)
+                with open(dest, "wb"):
+                    pass
+                self._push("file_download_result", {
+                    "filename": filename, "filesize": filesize,
+                    "success": True, "path": dest,
+                    "related_type": "private", "related_target": related_target,
+                    "chat_key": self._chat_key("private", related_target),
+                })
+            except Exception as e:
+                self._push("file_download_result", {
+                    "filename": filename, "success": False, "error": str(e),
+                    "related_type": "private", "related_target": related_target,
+                    "chat_key": self._chat_key("private", related_target),
+                })
+            return
         state = {"data": {}, "remaining": filesize,
                  "event": threading.Event(), "chunk_size": CHUNK_SIZE}
         self._dl_state[file_id] = state
@@ -476,7 +528,6 @@ class WebBridge:
             })
             self._dl_state.pop(file_id, None)
             return
-        dest = os.path.join(self._download_dir, filename)
         try:
             os.makedirs(self._download_dir, exist_ok=True)
             with open(dest, "wb") as f:
@@ -568,9 +619,13 @@ class WebBridge:
         # 保存上下文，以便 AI 回复能关联到正确的聊天
         # 注意：AI Assistant 独立对话（chat_type=ai 时）不加 related_target，保持纯 AI 对话独立
         if self._chat_type == 'ai' or self._current_target == self.AI_USERNAME:
-            self._pending_ai_context = {}
+            ai_context = {
+                "related_type": "ai",
+                "related_target": self.AI_USERNAME,
+                "chat_key": self._chat_key("ai", self.AI_USERNAME),
+            }
         else:
-            self._pending_ai_context = {
+            ai_context = {
                 "related_type": self._chat_type,
                 "related_target": str(self._current_target_id) if self._chat_type == 'private' else str(self._current_target),
                 "chat_key": self._chat_key(
@@ -584,7 +639,10 @@ class WebBridge:
             for cm in context_msgs[-10:]:  # 最多携带最近10条
                 role = "user" if cm.get("sender") != self.AI_USERNAME else "assistant"
                 ctx_list.append({"role": role, "content": cm.get("content", "")})
-        self.handler.send_ai_query(self._user_id, group_id, query, context=ctx_list)
+        result = self.handler.send_ai_query(self._user_id, group_id, query, context=ctx_list)
+        seq = result.get("seq") if result else None
+        if seq is not None:
+            self._pending_ai_context[seq] = ai_context
         return {"ok": True}
 
     def request_history(self, target_type: str, target_id: int) -> dict:
@@ -615,7 +673,10 @@ class WebBridge:
         """JS 调用：退出群组"""
         if not self._user_id:
             return {"ok": False, "error": "Not logged in"}
-        self.handler.group_leave(group_id, self._user_id)
+        result = self.handler.group_leave(group_id, self._user_id)
+        seq = result.get("seq") if result else None
+        if seq is not None:
+            self._pending_group_leave[seq] = str(group_id)
         return {"ok": True}
 
     def send_recall(self, msg_id: str) -> dict:

@@ -151,3 +151,20 @@ def test_save_user_data_writes_valid_json_atomically(storage_dir):
         data = json.load(f)
 
     assert data["messages"][0]["content"] == "你好"
+
+
+def test_update_message_status_handles_rejected_ack(storage_dir):
+    store = MessageStore(str(storage_dir))
+    store.add_message("alice", {
+        "type": "private",
+        "msg_id": "local-1",
+        "local_msg_id": "local-1",
+        "status": "pending",
+        "chat_key": "private:2",
+        "content": "will reject",
+    })
+
+    assert store.update_message_status("alice", "local-1", "rejected") is True
+
+    messages = store.get_messages("alice", "private:2", limit=10)
+    assert messages[0]["status"] == "rejected"

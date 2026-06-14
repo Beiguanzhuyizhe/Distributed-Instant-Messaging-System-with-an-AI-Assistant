@@ -59,6 +59,30 @@ class DummyHandler:
         self.calls.append(("file_data", file_id, chunk_index, total_chunks, chunk_data))
         return {"ok": True}
 
+    def send_ai_query(self, from_id, group_id, query, context=None):
+        self._seq += 1
+        self.calls.append(("ai", from_id, group_id, query, context))
+        return {"ok": True, "seq": self._seq}
+
+    def group_leave(self, group_id, user_id):
+        self._seq += 1
+        self.calls.append(("leave", group_id, user_id))
+        return {"ok": True, "seq": self._seq}
+
+
+class DummyStore:
+    def __init__(self):
+        self.status_updates = []
+        self.id_updates = []
+
+    def update_message_status(self, username, msg_id, status):
+        self.status_updates.append((username, msg_id, status))
+        return True
+
+    def update_message_id(self, username, local_msg_id, server_msg_id, timestamp=None, status=""):
+        self.id_updates.append((username, local_msg_id, server_msg_id, timestamp, status))
+        return True
+
 
 def test_message_handler_returns_tracking_info_for_private_message():
     conn = DummyConnection()
@@ -278,3 +302,107 @@ def test_web_bridge_history_formats_private_messages_for_requested_peer():
     assert data["target_id"] == 2
     assert [m["chat_key"] for m in data["messages"]] == ["private:2", "private:2"]
     assert [m["related_target"] for m in data["messages"]] == ["2", "2"]
+
+
+def test_web_bridge_rejected_ack_updates_pending_status():
+    bridge = WebBridge.__new__(WebBridge)
+    bridge._pending_acks = {
+        7: {
+            "local_msg_id": "local-7",
+            "msg_id": "local-7",
+            "status": "pending",
+        }
+    }
+    bridge._username = "alice"
+    bridge._chat_type = "private"
+    bridge._current_target_id = 2
+    bridge._current_target = "bob"
+    bridge.store = DummyStore()
+    events = []
+    bridge._push = lambda event_type, data: events.append((event_type, data))
+    bridge._push_msg = lambda msg: events.append(("new_message", msg))
+
+    bridge._apply_message_ack(7, {
+        "msg_id": "",
+        "status": "rejected",
+        "error": "不能给自己发送私聊",
+    })
+
+    assert bridge._pending_acks == {}
+    assert bridge.store.status_updates == [("alice", "local-7", "rejected")]
+    assert events[-2][0] == "new_message"
+    assert "不能给自己发送私聊" in events[-2][1]["content"]
+    assert events[-1] == (
+        "message_acked",
+        {
+            "local_msg_id": "local-7",
+            "msg_id": "local-7",
+            "timestamp": events[-1][1]["timestamp"],
+            "status": "rejected",
+            "error": "不能给自己发送私聊",
+        },
+    )
+
+
+def test_web_bridge_ai_context_is_correlated_by_sequence():
+    bridge = WebBridge.__new__(WebBridge)
+    bridge.handler = DummyHandler()
+    bridge.store = DummyStore()
+    bridge._pending_ai_context = {}
+    bridge._username = "alice"
+    bridge._user_id = 1
+    bridge._chat_type = "private"
+    bridge._current_target = "bob"
+    bridge._current_target_id = 2
+    bridge._messages = []
+    events = []
+    bridge._push_msg = lambda msg: events.append(msg)
+    bridge._append_and_store = lambda msg: bridge._messages.append(msg)
+
+    bridge.send_ai_query("first")
+    first_seq = bridge.handler._seq
+    bridge._current_target = "carol"
+    bridge._current_target_id = 3
+    bridge.send_ai_query("second")
+    second_seq = bridge.handler._seq
+
+    bridge._on_ai_resp(MessageType.AI_RESP, second_seq, {"content": "second reply"})
+    bridge._on_ai_resp(MessageType.AI_RESP, first_seq, {"content": "first reply"})
+
+    assert [m["chat_key"] for m in bridge._messages] == ["private:3", "private:2"]
+    assert [m["related_target"] for m in bridge._messages] == ["3", "2"]
+
+
+def test_web_bridge_group_ai_broadcast_uses_group_context():
+    bridge = WebBridge.__new__(WebBridge)
+    bridge.store = DummyStore()
+    bridge._messages = []
+    bridge._append_and_store = lambda msg: bridge._messages.append(msg)
+    bridge._push_msg = lambda msg: None
+
+    bridge._on_ai_resp(MessageType.AI_RESP, None, {
+        "content": "group reply",
+        "group_id": 9,
+    })
+
+    assert bridge._messages[0]["chat_key"] == "group:9"
+    assert bridge._messages[0]["related_type"] == "group"
+    assert bridge._messages[0]["related_target"] == "9"
+
+
+def test_web_bridge_leave_group_removes_sidebar_entry_without_payload_group_id():
+    bridge = WebBridge.__new__(WebBridge)
+    bridge.handler = DummyHandler()
+    bridge._user_id = 1
+    bridge._groups = {"9": "demo"}
+    bridge._pending_group_leave = {}
+    events = []
+    bridge._push = lambda event_type, data: events.append((event_type, data))
+    bridge._push_msg = lambda msg: events.append(("new_message", msg))
+
+    bridge.group_leave(9)
+    seq = bridge.handler._seq
+    bridge._on_group_leave_resp(MessageType.GROUP_LEAVE, seq, {"success": True})
+
+    assert "9" not in bridge._groups
+    assert ("group_left", {"group_id": "9", "groups": {}}) in events

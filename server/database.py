@@ -11,15 +11,17 @@ from typing import Optional, List, Dict, Any
 
 
 _local = threading.local()
+SQLITE_BUSY_TIMEOUT_MS = 30000
 
 
 def get_connection(db_path: str) -> sqlite3.Connection:
     """获取当前线程的数据库连接（线程局部）"""
     if not hasattr(_local, "conn") or _local.conn is None:
-        _local.conn = sqlite3.connect(db_path)
+        _local.conn = sqlite3.connect(db_path, timeout=SQLITE_BUSY_TIMEOUT_MS / 1000)
         _local.conn.row_factory = sqlite3.Row
         _local.conn.execute("PRAGMA journal_mode=WAL")
         _local.conn.execute("PRAGMA foreign_keys=ON")
+        _local.conn.execute(f"PRAGMA busy_timeout={SQLITE_BUSY_TIMEOUT_MS}")
     return _local.conn
 
 

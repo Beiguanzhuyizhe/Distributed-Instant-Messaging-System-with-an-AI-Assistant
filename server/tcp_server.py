@@ -33,9 +33,11 @@ class ConnectionManager:
         self._user_conn = {}     # user_id -> conn_id
         self._next_id = 0
 
-    async def add(self, conn: Connection) -> int:
+    async def add(self, conn: Connection, max_connections: int = None):
         """注册新连接，返回分配的唯一 conn_id"""
         async with self._lock:
+            if max_connections is not None and len(self._connections) >= max_connections:
+                return None
             self._next_id += 1
             conn_id = self._next_id
             self._connections[conn_id] = {
@@ -47,6 +49,7 @@ class ConnectionManager:
 
     async def bind_user(self, conn_id: int, user_id: int):
         """将连接绑定到已认证用户。如果该用户已有连接，关闭旧连接"""
+        old_conn = None
         async with self._lock:
             info = self._connections.get(conn_id)
             if not info:
@@ -56,26 +59,33 @@ class ConnectionManager:
                 old_info = self._connections.get(old_conn_id)
                 if old_info:
                     old_info["user_id"] = None
-                    try:
-                        old_info["conn"].close()
-                    except Exception:
-                        pass
+                    old_conn = old_info["conn"]
                     del self._connections[old_conn_id]
             info["user_id"] = user_id
             info["last_heartbeat"] = time.time()
             self._user_conn[user_id] = conn_id
+        if old_conn:
+            try:
+                old_conn.close()
+                await old_conn.wait_closed()
+            except Exception:
+                pass
 
     async def remove(self, conn_id: int):
         """移除连接并清理关联资源"""
+        conn = None
         async with self._lock:
             info = self._connections.pop(conn_id, None)
             if info:
                 if info["user_id"]:
                     self._user_conn.pop(info["user_id"], None)
-                try:
-                    info["conn"].close()
-                except Exception:
-                    pass
+                conn = info["conn"]
+        if conn:
+            try:
+                conn.close()
+                await conn.wait_closed()
+            except Exception:
+                pass
 
     def get_conn(self, conn_id: int):
         """根据 conn_id 获取 Connection 对象"""
@@ -154,12 +164,12 @@ class ChatServer:
             self.conn_manager, self.msg_history,
             self.user_manager, self.group_manager,
         )
+        self.p2p_helper = P2PHolePunchHelper(config)
         self.heartbeat = HeartbeatMonitor(
             self.conn_manager, self.user_manager,
             self.msg_router, config.heartbeat_interval,
-            config.heartbeat_timeout,
+            config.heartbeat_timeout, self.p2p_helper,
         )
-        self.p2p_helper = P2PHolePunchHelper(config)
 
         self._server = None
 
@@ -171,6 +181,7 @@ class ChatServer:
         """启动服务器"""
         self.config.ensure_dirs()
         await asyncio.to_thread(init_db, self.config.db_path)
+        await self.user_manager.reset_online_statuses()
 
         self.heartbeat.start()
 
@@ -202,7 +213,17 @@ class ChatServer:
     async def _handle_client(self, reader, writer):
         """处理单个客户端连接的协程"""
         conn = Connection(reader, writer)
-        conn_id = await self.conn_manager.add(conn)
+        conn_id = await self.conn_manager.add(conn, self.config.max_connections)
+        if conn_id is None:
+            try:
+                await conn.send_message(
+                    MessageType.ERROR,
+                    {"code": 1, "message": "服务器连接数已满"},
+                )
+            finally:
+                conn.close()
+                await conn.wait_closed()
+            return
         addr = conn.remote_addr
         logger.info("New connection #%s from %s", conn_id, addr)
 
@@ -223,12 +244,19 @@ class ChatServer:
     async def _cleanup_connection(self, conn_id: int):
         """清理断开连接：更新在线状态、广播通知、移除连接"""
         user_id = self.conn_manager.get_user_id(conn_id)
-        if user_id:
-            logger.info("Cleaning up connection #%s (user_id=%s)", conn_id, user_id)
-            await self.user_manager.set_online_status(user_id, False)
-            await self.msg_router.broadcast_online_status(user_id, False)
-            self.p2p_helper.unregister_user(user_id)
         await self.conn_manager.remove(conn_id)
+        if not user_id or self.conn_manager.get_by_user(user_id):
+            return
+
+        logger.info("Cleaning up connection #%s (user_id=%s)", conn_id, user_id)
+        self.p2p_helper.unregister_user(user_id)
+        await self.user_manager.set_online_status(user_id, False)
+
+        # 关闭旧连接与新登录可能并发发生；广播离线前再确认一次，避免新连接被旧连接清理误伤。
+        if self.conn_manager.get_by_user(user_id):
+            await self.user_manager.set_online_status(user_id, True)
+            return
+        await self.msg_router.broadcast_online_status(user_id, False)
 
     # ---------------------------------------------------------------
     # 消息派发
@@ -237,6 +265,9 @@ class ChatServer:
     async def _dispatch(self, conn_id: int, msg_type: int, seq: int, payload: dict):
         """根据消息类型派发到对应的处理方法"""
         try:
+            if not isinstance(payload, dict):
+                await self._send_error(conn_id, seq, "消息载荷格式无效")
+                return
             if msg_type == MessageType.LOGIN_REQ:
                 await self._handle_login(conn_id, seq, payload)
             elif msg_type == MessageType.REGISTER_REQ:
@@ -293,7 +324,19 @@ class ChatServer:
 
     async def _handle_login(self, conn_id: int, seq: int, payload: dict):
         username = payload.get("username", "")
+        username = username.strip() if isinstance(username, str) else ""
         password_hash = payload.get("password_hash", "")
+        current_user_id = self.conn_manager.get_user_id(conn_id)
+        if current_user_id:
+            current_user = await self.user_manager.get_user_info(current_user_id)
+            if not current_user or current_user.get("username") != username:
+                conn = self.conn_manager.get_conn(conn_id)
+                if conn:
+                    await conn.send_message(MessageType.LOGIN_RESP, {
+                        "success": False,
+                        "error": "当前连接已登录其他账号，请重新连接后再登录",
+                    }, seq=seq)
+                return
         result = await self.user_manager.login(username, password_hash)
         conn = self.conn_manager.get_conn(conn_id)
         if not conn:
@@ -302,7 +345,7 @@ class ChatServer:
             user_id = result["user_id"]
             await self.conn_manager.bind_user(conn_id, user_id)
             await conn.send_message(MessageType.LOGIN_RESP, {
-                "success": True, "user_id": user_id,
+                "success": True, "user_id": user_id, "username": username,
             }, seq=seq)
             # 注册 P2P 地址
             if conn.remote_addr:
@@ -315,6 +358,7 @@ class ChatServer:
 
     async def _handle_register(self, conn_id: int, seq: int, payload: dict):
         username = payload.get("username", "")
+        username = username.strip() if isinstance(username, str) else ""
         password_hash = payload.get("password_hash", "")
         public_key = payload.get("public_key", "")
         result = await self.user_manager.register(username, password_hash, public_key)
@@ -336,16 +380,61 @@ class ChatServer:
     # 消息处理
     # ---------------------------------------------------------------
 
+    async def _send_private_rejection(
+        self, conn_id: int, seq: int, from_id, to_id, message: str
+    ):
+        """私聊发送失败也用 PRIVATE_MSG ACK 回复，方便客户端更新 pending 状态。"""
+        conn = self.conn_manager.get_conn(conn_id)
+        if conn:
+            await conn.send_message(MessageType.PRIVATE_MSG, {
+                "from_id": from_id,
+                "to_id": to_id,
+                "msg_id": "",
+                "timestamp": int(time.time()),
+                "status": "rejected",
+                "error": message,
+                "_ack": True,
+            }, seq=seq)
+
+    async def _send_group_rejection(
+        self, conn_id: int, seq: int, from_id, group_id, message: str
+    ):
+        """群聊发送失败也用 GROUP_MSG ACK 回复，避免发送方界面一直显示 pending。"""
+        conn = self.conn_manager.get_conn(conn_id)
+        if conn:
+            await conn.send_message(MessageType.GROUP_MSG, {
+                "from_id": from_id,
+                "group_id": group_id,
+                "msg_id": "",
+                "timestamp": int(time.time()),
+                "status": "rejected",
+                "error": message,
+                "_ack": True,
+            }, seq=seq)
+
     async def _handle_private_msg(self, conn_id: int, seq: int, payload: dict):
         from_id = self.conn_manager.get_user_id(conn_id)
         if not from_id:
             await self._send_error(conn_id, seq, "未登录")
             return
-        to_id = payload.get("to_id")
-        if not to_id:
-            await self._send_error(conn_id, seq, "缺少接收方")
+        try:
+            to_id = int(payload.get("to_id"))
+        except (TypeError, ValueError):
+            await self._send_private_rejection(conn_id, seq, from_id, None, "接收方ID无效")
+            return
+        if to_id <= 0:
+            await self._send_private_rejection(conn_id, seq, from_id, to_id, "接收方ID无效")
+            return
+        if to_id == from_id:
+            await self._send_private_rejection(conn_id, seq, from_id, to_id, "不能给自己发送私聊")
+            return
+        if not await self.user_manager.get_user_info(to_id):
+            await self._send_private_rejection(conn_id, seq, from_id, to_id, "接收方不存在")
             return
         content = payload.get("content", "")
+        if not isinstance(content, str) or not content.strip():
+            await self._send_private_rejection(conn_id, seq, from_id, to_id, "消息内容为空")
+            return
         client_msg_id = payload.get("msg_id", 0)
 
         result = await self.msg_router.route_private_msg(
@@ -369,17 +458,24 @@ class ChatServer:
         if not from_id:
             await self._send_error(conn_id, seq, "未登录")
             return
-        group_id = payload.get("group_id")
-        if not group_id:
-            await self._send_error(conn_id, seq, "缺少群组ID")
+        try:
+            group_id = int(payload.get("group_id"))
+        except (TypeError, ValueError):
+            await self._send_group_rejection(conn_id, seq, from_id, None, "群组ID无效")
+            return
+        if group_id <= 0:
+            await self._send_group_rejection(conn_id, seq, from_id, group_id, "群组ID无效")
             return
         content = payload.get("content", "")
+        if not isinstance(content, str) or not content.strip():
+            await self._send_group_rejection(conn_id, seq, from_id, group_id, "消息内容为空")
+            return
         client_msg_id = payload.get("msg_id", 0)
 
         # 验证群成员身份
         is_member = await self.group_manager.is_member(group_id, from_id)
         if not is_member:
-            await self._send_error(conn_id, seq, "不是群成员")
+            await self._send_group_rejection(conn_id, seq, from_id, group_id, "不是群成员")
             return
 
         result = await self.msg_router.route_group_msg(
@@ -404,6 +500,15 @@ class ChatServer:
             await self._send_error(conn_id, seq, "未登录")
             return
         msg_id = payload.get("msg_id", "")
+        if not isinstance(msg_id, str) or not msg_id.strip():
+            conn = self.conn_manager.get_conn(conn_id)
+            if conn:
+                await conn.send_message(
+                    MessageType.MSG_RECALL,
+                    {"success": False, "error": "消息ID无效"},
+                    seq=seq,
+                )
+            return
         result = await self.msg_history.recall_message(msg_id, user_id)
         conn = self.conn_manager.get_conn(conn_id)
         if conn:
@@ -447,6 +552,18 @@ class ChatServer:
         conn = self.conn_manager.get_conn(conn_id)
         if conn:
             await conn.send_message(MessageType.FILE_INIT, result, seq=seq)
+        if result.get("success") and result.get("completed"):
+            transfer = await self.file_transfer.get_transfer_progress(result["file_id"])
+            if transfer and transfer["receiver_id"]:
+                await self.conn_manager.send_to_user(
+                    transfer["receiver_id"], MessageType.FILE_INIT, {
+                        "file_id": result["file_id"],
+                        "from_id": transfer["sender_id"],
+                        "filename": transfer["filename"],
+                        "filesize": transfer["filesize"],
+                        "status": "completed",
+                    },
+                )
 
     async def _handle_file_data(self, conn_id: int, seq: int, payload: dict):
         sender_id = self.conn_manager.get_user_id(conn_id)
@@ -535,7 +652,13 @@ class ChatServer:
         if not user_id:
             await self._send_error(conn_id, seq, "未登录")
             return
-        group_id = payload.get("group_id")
+        try:
+            group_id = int(payload.get("group_id"))
+            if group_id <= 0:
+                raise ValueError
+        except (TypeError, ValueError):
+            await self._send_error(conn_id, seq, "群组ID无效")
+            return
         result = await self.group_manager.join_group(group_id, user_id)
         conn = self.conn_manager.get_conn(conn_id)
         if conn:
@@ -546,8 +669,15 @@ class ChatServer:
         if not user_id:
             await self._send_error(conn_id, seq, "未登录")
             return
-        group_id = payload.get("group_id")
+        try:
+            group_id = int(payload.get("group_id"))
+            if group_id <= 0:
+                raise ValueError
+        except (TypeError, ValueError):
+            await self._send_error(conn_id, seq, "群组ID无效")
+            return
         result = await self.group_manager.leave_group(group_id, user_id)
+        result.setdefault("group_id", group_id)
         conn = self.conn_manager.get_conn(conn_id)
         if conn:
             await conn.send_message(MessageType.GROUP_LEAVE, result, seq=seq)
@@ -562,9 +692,26 @@ class ChatServer:
             await self._send_error(conn_id, seq, "未登录")
             return
         chat_type = payload.get("type", payload.get("target_type", "private"))
-        target_id = payload.get("target_id")
-        limit = payload.get("limit", 50)
-        before_id = payload.get("before_id")
+        if chat_type not in {"private", "group"}:
+            await self._send_error(conn_id, seq, "历史记录类型无效")
+            return
+        try:
+            target_id = int(payload.get("target_id"))
+            if target_id <= 0:
+                raise ValueError
+            limit = min(int(payload.get("limit", 50)), 200)
+            if limit <= 0:
+                raise ValueError
+            before_id = payload.get("before_id")
+            if before_id not in (None, ""):
+                before_id = int(before_id)
+                if before_id <= 0:
+                    raise ValueError
+            else:
+                before_id = None
+        except (TypeError, ValueError):
+            await self._send_error(conn_id, seq, "历史记录参数无效")
+            return
 
         if chat_type == "group":
             is_member = await self.group_manager.is_member(target_id, user_id)
@@ -573,6 +720,12 @@ class ChatServer:
                 return
             messages = await self.msg_history.get_group_history(target_id, limit, before_id)
         else:
+            if target_id == user_id:
+                await self._send_error(conn_id, seq, "不能查询自己和自己的私聊")
+                return
+            if not await self.user_manager.get_user_info(target_id):
+                await self._send_error(conn_id, seq, "目标用户不存在")
+                return
             messages = await self.msg_history.get_private_history(user_id, target_id, limit, before_id)
 
         conn = self.conn_manager.get_conn(conn_id)
@@ -588,6 +741,9 @@ class ChatServer:
     # ---------------------------------------------------------------
 
     async def _handle_online_users(self, conn_id: int, seq: int):
+        if not self.conn_manager.get_user_id(conn_id):
+            await self._send_error(conn_id, seq, "未登录")
+            return
         users = await self.user_manager.get_online_users()
         conn = self.conn_manager.get_conn(conn_id)
         if conn:
@@ -607,16 +763,34 @@ class ChatServer:
             return
 
         query = payload.get("query", "")
-        if not query.strip():
+        if not isinstance(query, str) or not query.strip():
             await self._send_error(conn_id, seq, "查询内容为空")
+            return
+        query = query.strip()
+        if len(query) > 8000:
+            await self._send_error(conn_id, seq, "查询内容过长")
             return
 
         group_id = payload.get("group_id")
-        if group_id:
+        if group_id not in (None, "", 0, "0"):
+            try:
+                group_id = int(group_id)
+                if group_id <= 0:
+                    raise ValueError
+            except (TypeError, ValueError):
+                await self._send_error(conn_id, seq, "群组ID无效")
+                return
             is_member = await self.group_manager.is_member(group_id, user_id)
             if not is_member:
                 await self._send_error(conn_id, seq, "不是群成员")
                 return
+        else:
+            group_id = None
+
+        context = payload.get("context")
+        if context is not None and not isinstance(context, list):
+            await self._send_error(conn_id, seq, "上下文格式无效")
+            return
 
         from server.ai_service import get_ai_service
         ai = get_ai_service(self.config)
@@ -631,9 +805,14 @@ class ChatServer:
         # 获取群聊历史作为上下文
         history = []
         # 优先使用客户端携带的会话上下文
-        context = payload.get("context")
-        if context and isinstance(context, list):
-            history = context
+        if context:
+            for item in context[-10:]:
+                if not isinstance(item, dict):
+                    continue
+                role = item.get("role")
+                content = item.get("content")
+                if role in {"user", "assistant"} and isinstance(content, str):
+                    history.append({"role": role, "content": content[:8000]})
         elif group_id:
             msgs = await self.msg_history.get_group_history(group_id, limit=10)
             for m in msgs:
@@ -656,13 +835,24 @@ class ChatServer:
                 "reply": reply,
                 "content": reply,
                 "group_id": group_id,
+                "related_type": "group" if group_id else None,
+                "related_target": str(group_id) if group_id else None,
+                "chat_key": f"group:{group_id}" if group_id else None,
             }, seq=seq)
 
         # 如果在群聊中，也广播给群成员
         if group_id:
             await self.msg_router.send_to_group(
                 group_id, MessageType.AI_RESP,
-                {"from_id": user_id, "reply": reply, "content": reply, "group_id": group_id},
+                {
+                    "from_id": user_id,
+                    "reply": reply,
+                    "content": reply,
+                    "group_id": group_id,
+                    "related_type": "group",
+                    "related_target": str(group_id),
+                    "chat_key": f"group:{group_id}",
+                },
                 exclude_user_id=user_id,
             )
 
@@ -682,6 +872,9 @@ class ChatServer:
         try:
             target_id = int(target_id)
         except (TypeError, ValueError):
+            await self._send_error(conn_id, seq, "目标用户ID无效")
+            return
+        if target_id <= 0 or target_id == from_id:
             await self._send_error(conn_id, seq, "目标用户ID无效")
             return
 

@@ -4,6 +4,7 @@
 """
 import time
 import asyncio
+import sqlite3
 from server.database import get_db
 
 
@@ -15,22 +16,42 @@ class UserManager:
 
     async def register(self, username: str, password_hash: str, public_key: str = "") -> dict:
         """注册新用户，用户名唯一性由数据库 UNIQUE 约束保证"""
+        if not isinstance(username, str) or not username.strip():
+            return {"success": False, "error": "用户名不能为空"}
+        username = username.strip()
+        if len(username) > 64:
+            return {"success": False, "error": "用户名过长"}
+        if any(ch.isspace() for ch in username):
+            return {"success": False, "error": "用户名不能包含空白字符"}
+        if not isinstance(password_hash, str) or not password_hash:
+            return {"success": False, "error": "密码不能为空"}
+        if len(password_hash) > 512:
+            return {"success": False, "error": "密码摘要过长"}
+        if not isinstance(public_key, str):
+            return {"success": False, "error": "公钥格式无效"}
+
         def _run():
-            with get_db(self._db_path) as conn:
-                cur = conn.execute("SELECT id FROM users WHERE username = ?", (username,))
-                if cur.fetchone():
-                    return {"success": False, "error": "用户名已存在"}
-                now = time.time()
-                cur = conn.execute(
-                    "INSERT INTO users (username, password_hash, public_key, created_at) VALUES (?, ?, ?, ?)",
-                    (username, password_hash, public_key, now),
-                )
-                conn.commit()
-                return {"success": True, "user_id": cur.lastrowid}
+            try:
+                with get_db(self._db_path) as conn:
+                    now = time.time()
+                    cur = conn.execute(
+                        "INSERT INTO users (username, password_hash, public_key, created_at) VALUES (?, ?, ?, ?)",
+                        (username, password_hash, public_key, now),
+                    )
+                    conn.commit()
+                    return {"success": True, "user_id": cur.lastrowid}
+            except sqlite3.IntegrityError:
+                return {"success": False, "error": "用户名已存在"}
         return await asyncio.to_thread(_run)
 
     async def login(self, username: str, password_hash: str) -> dict:
         """登录验证，成功返回 user_id，失败返回错误信息"""
+        if not isinstance(username, str) or not username.strip():
+            return {"success": False, "error": "用户名不能为空"}
+        username = username.strip()
+        if not isinstance(password_hash, str) or not password_hash:
+            return {"success": False, "error": "密码不能为空"}
+
         def _run():
             with get_db(self._db_path) as conn:
                 cur = conn.execute(
@@ -90,5 +111,13 @@ class UserManager:
                     "UPDATE users SET is_online = ? WHERE id = ?",
                     (1 if status else 0, user_id),
                 )
+                conn.commit()
+        return await asyncio.to_thread(_run)
+
+    async def reset_online_statuses(self):
+        """服务端异常退出后可能留下在线标记，启动时统一清理。"""
+        def _run():
+            with get_db(self._db_path) as conn:
+                conn.execute("UPDATE users SET is_online = 0")
                 conn.commit()
         return await asyncio.to_thread(_run)

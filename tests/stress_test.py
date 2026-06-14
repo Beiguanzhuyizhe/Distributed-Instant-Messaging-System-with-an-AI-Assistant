@@ -103,7 +103,7 @@ class VirtualClient:
         self._seq += 1
         return self._seq & 0xFFFFFFFF
 
-    async def run(self) -> Stats:
+    async def connect_register_login(self) -> Stats:
         try:
             if not await self._connect():
                 return self.stats
@@ -111,15 +111,12 @@ class VirtualClient:
                 return self.stats
             if not await self._login():
                 return self.stats
-            await self._exchange_messages()
         except asyncio.TimeoutError:
             self.stats.errors.append("timeout")
         except ConnectionResetError:
             self.stats.errors.append("connection_reset")
         except Exception as exc:
             self.stats.errors.append(f"unexpected:{type(exc).__name__}:{exc}")
-        finally:
-            await self._disconnect()
         return self.stats
 
     async def _connect(self) -> bool:
@@ -212,9 +209,12 @@ class VirtualClient:
         self.stats.latencies.append(time.time() - start)
         return True
 
-    async def _exchange_messages(self):
+    async def exchange_messages(self, target_user_id: int):
         if not self.stats.user_id:
             self.stats.errors.append("missing_user_id")
+            return
+        if not target_user_id or target_user_id == self.stats.user_id:
+            self.stats.errors.append("invalid_target_user_id")
             return
 
         for i in range(self.messages_per_client):
@@ -223,7 +223,7 @@ class VirtualClient:
             response = await self._send_and_wait(
                 MessageType.PRIVATE_MSG,
                 {
-                    "to_id": self.stats.user_id,
+                    "to_id": target_user_id,
                     "content": content,
                     "msg_id": f"stress-{self.client_id}-{i}",
                     "timestamp": int(time.time()),
@@ -239,7 +239,16 @@ class VirtualClient:
             self.stats.messages_acked += 1
             self.stats.latencies.append(time.time() - start)
 
-    async def _disconnect(self):
+    async def drain_incoming(self, timeout: float = 2.0):
+        """读取一小段时间内已经到达的推送消息，用于统计真实收件数。"""
+        deadline = time.time() + timeout
+        while time.time() < deadline:
+            remaining = max(0.05, deadline - time.time())
+            msg = await self._read_matching(timeout=remaining)
+            if msg is None:
+                return
+
+    async def disconnect(self):
         if self._writer:
             try:
                 self._writer.close()
@@ -274,8 +283,9 @@ class StressTester:
         )
         start_time = time.time()
         semaphore = asyncio.Semaphore(self.concurrency)
+        clients: list[VirtualClient] = []
 
-        async def _run_client(client_id: int) -> Stats:
+        async def _login_client(client_id: int) -> VirtualClient:
             async with semaphore:
                 client = VirtualClient(
                     client_id=client_id,
@@ -284,10 +294,38 @@ class StressTester:
                     timeout=self.timeout,
                     messages_per_client=self.messages_per_client,
                 )
-                return await client.run()
+                await client.connect_register_login()
+                return client
 
-        results = await asyncio.gather(*[_run_client(i) for i in range(self.num_clients)])
-        return self._aggregate(results, time.time() - start_time)
+        async def _exchange_client(client: VirtualClient, target_user_id: int):
+            async with semaphore:
+                await client.exchange_messages(target_user_id)
+
+        async def _drain_client(client: VirtualClient):
+            async with semaphore:
+                await client.drain_incoming(timeout=min(5.0, self.timeout))
+
+        try:
+            clients = await asyncio.gather(*[_login_client(i) for i in range(self.num_clients)])
+            active_clients = [client for client in clients if client.stats.logged_in and client.stats.user_id]
+
+            if len(active_clients) >= 2:
+                exchange_tasks = []
+                for idx, client in enumerate(active_clients):
+                    target = active_clients[(idx + 1) % len(active_clients)]
+                    exchange_tasks.append(_exchange_client(client, target.stats.user_id))
+                await asyncio.gather(*exchange_tasks)
+                await asyncio.gather(*[_drain_client(client) for client in active_clients])
+            elif active_clients:
+                active_clients[0].stats.errors.append("not_enough_peers_for_private_messages")
+
+            results = [client.stats for client in clients]
+            return self._aggregate(results, time.time() - start_time)
+        finally:
+            await asyncio.gather(
+                *(client.disconnect() for client in clients),
+                return_exceptions=True,
+            )
 
     def _aggregate(self, results: list[Stats], duration: float) -> AggregateReport:
         report = AggregateReport(duration=duration)

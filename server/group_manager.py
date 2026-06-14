@@ -15,6 +15,12 @@ class GroupManager:
 
     async def create_group(self, name: str, owner_id: int) -> dict:
         """创建群组，创建者自动成为群主并加入群组"""
+        if not isinstance(name, str) or not name.strip():
+            return {"success": False, "error": "群名称不能为空"}
+        name = name.strip()
+        if len(name) > 128:
+            return {"success": False, "error": "群名称过长"}
+
         def _run():
             with get_db(self._db_path) as conn:
                 now = time.time()

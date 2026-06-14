@@ -220,6 +220,22 @@ class MessageStore:
                 self._save_user_data_unlocked(username, data)
             return changed
 
+    def update_message_status(self, username: str, msg_id: str, status: str) -> bool:
+        """只更新消息状态，用于服务端拒绝 ACK 这类没有 server_msg_id 的场景。"""
+        if not str(msg_id or ""):
+            return False
+        with self._lock:
+            data = self._load_user_data_unlocked(username)
+            changed = False
+            for msg in data.get("messages", []):
+                if self._match_msg_id(msg, msg_id):
+                    msg["status"] = status
+                    changed = True
+                    break
+            if changed:
+                self._save_user_data_unlocked(username, data)
+            return changed
+
     def mark_recalled(self, username: str, msg_id: str) -> bool:
         """按服务端 msg_id 将本地消息标记为已撤回。"""
         if not str(msg_id):

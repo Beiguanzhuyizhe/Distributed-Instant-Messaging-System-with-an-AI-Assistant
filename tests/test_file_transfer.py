@@ -6,13 +6,15 @@ import pytest
 from server.config import ServerConfig
 from server.database import close_connection, get_db, init_db
 from server.file_transfer import FileTransfer
+from tests.temp_utils import make_runtime_dir, remove_runtime_dir
 
 
 @pytest.fixture
-def file_transfer(tmp_path):
+def file_transfer():
+    runtime_dir = make_runtime_dir("file_transfer_")
     close_connection()
-    db_path = str(tmp_path / "chat.db")
-    storage_dir = str(tmp_path / "files")
+    db_path = str(runtime_dir / "chat.db")
+    storage_dir = str(runtime_dir / "files")
     init_db(db_path)
     now = time.time()
     with get_db(db_path) as conn:
@@ -50,6 +52,7 @@ def file_transfer(tmp_path):
     )
     yield FileTransfer(config)
     close_connection()
+    remove_runtime_dir(runtime_dir)
 
 
 def test_rejects_unsafe_file_id(file_transfer):
@@ -81,6 +84,78 @@ def test_sanitizes_filename(file_transfer):
     assert result["filename"] == "secret.txt"
     progress = asyncio.run(file_transfer.get_transfer_progress("file_a"))
     assert progress["filename"] == "secret.txt"
+
+
+def test_sanitizes_windows_reserved_filename(file_transfer):
+    result = asyncio.run(
+        file_transfer.init_transfer(
+            from_id=1,
+            to_id=2,
+            filename="CON.txt",
+            filesize=4,
+            client_file_id="file_reserved",
+        )
+    )
+
+    assert result["success"] is True
+    assert result["filename"].startswith("_CON")
+
+
+def test_rejects_ambiguous_or_self_receiver(file_transfer):
+    ambiguous = asyncio.run(
+        file_transfer.init_transfer(
+            from_id=1,
+            to_id=2,
+            filename="a.txt",
+            filesize=4,
+            group_id=1,
+            client_file_id="file_ambiguous",
+        )
+    )
+    self_send = asyncio.run(
+        file_transfer.init_transfer(
+            from_id=1,
+            to_id=1,
+            filename="a.txt",
+            filesize=4,
+            client_file_id="file_self",
+        )
+    )
+
+    assert ambiguous == {"success": False, "error": "ambiguous_receiver"}
+    assert self_send == {"success": False, "error": "cannot_send_to_self"}
+
+
+def test_rejects_missing_receiver_user(file_transfer):
+    result = asyncio.run(
+        file_transfer.init_transfer(
+            from_id=1,
+            to_id=999,
+            filename="a.txt",
+            filesize=4,
+            client_file_id="file_missing_receiver",
+        )
+    )
+
+    assert result == {"success": False, "error": "receiver_not_found"}
+
+
+def test_zero_byte_file_completes_immediately(file_transfer):
+    result = asyncio.run(
+        file_transfer.init_transfer(
+            from_id=1,
+            to_id=2,
+            filename="empty.txt",
+            filesize=0,
+            client_file_id="file_empty",
+        )
+    )
+
+    assert result["success"] is True
+    assert result["chunks_total"] == 0
+    assert result["completed"] is True
+    progress = asyncio.run(file_transfer.get_transfer_progress("file_empty"))
+    assert progress["status"] == "completed"
 
 
 def test_store_chunk_requires_original_sender(file_transfer):
@@ -172,12 +247,12 @@ def test_rejects_bad_chunk_bounds(file_transfer):
     out_of_range = asyncio.run(
         file_transfer.store_chunk("file_f", 2, b"x", sender_id=1, total_chunks=2)
     )
-    too_large = asyncio.run(
-        file_transfer.store_chunk("file_f", 1, b"toolong", sender_id=1, total_chunks=2)
+    wrong_size = asyncio.run(
+        file_transfer.store_chunk("file_f", 1, b"xy", sender_id=1, total_chunks=2)
     )
 
     assert out_of_range == {"success": False, "error": "chunk_index_out_of_range"}
-    assert too_large == {"success": False, "error": "invalid_chunk_size"}
+    assert wrong_size == {"success": False, "error": "invalid_chunk_size"}
 
 
 def test_rejects_invalid_total_chunks_without_raising(file_transfer):

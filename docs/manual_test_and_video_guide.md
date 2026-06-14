@@ -4,7 +4,36 @@
 
 ## 录制前准备
 
+### 0. 固定演示目录，避开本机文件系统风险
+
+本项目在当前机器上曾遇到两类本机环境问题：
+
+- `pytest` 在 `C:\Users\yeyiwen\AppData\Local\Temp\pytest-of-yeyiwen` 或 `--basetemp` 目录创建/清理临时目录时触发 `PermissionError: [WinError 5] 拒绝访问`。
+- SQLite 在当前 D 盘工作区路径下创建或写入数据库时触发 `sqlite3.OperationalError: disk I/O error`。
+
+这两类问题不是聊天业务断言失败，但会影响录屏稳定性。正式演示建议不要直接使用带空格的课程目录录制，而是先复制一份项目到短路径、非同步盘、非受保护目录，例如：
+
+```text
+C:\chat_demo\final_work
+```
+
+或：
+
+```text
+C:\final_work_demo
+```
+
+不要放在 OneDrive、桌面、下载目录、Windows 受保护目录、杀毒软件强管控目录，录制时也不要用 DB Browser、VS Code SQLite 插件等工具打开 `server\data\chat.db`。
+
 ### 1. 打开终端并进入项目目录
+
+如果已经复制到推荐路径，后续命令以该路径为准：
+
+```powershell
+cd "C:\chat_demo\final_work"
+```
+
+如果确认当前课程目录可以稳定启动，也可以继续使用：
 
 ```powershell
 cd "D:\Courses Learning\Computer Network\final_work"
@@ -40,7 +69,32 @@ python -c "import os; print(bool(os.environ.get('BIGMODEL_API_KEY')))"
 
 输出 `True` 表示当前终端能使用 AI；输出 `False` 时，本次演示可以改为展示“AI 服务未配置”的友好错误。
 
-### 4. 处理默认数据库启动风险
+### 4. 清理旧端口和旧运行数据
+
+录屏前先确认没有旧服务端占用 8888 端口：
+
+```powershell
+netstat -ano | findstr :8888
+```
+
+如果看到 `LISTENING` 行，记录最后一列 PID，并结束该进程：
+
+```powershell
+taskkill /F /PID <PID>
+```
+
+关闭所有服务端和客户端窗口后，再清理旧数据库文件，避免历史演示数据影响录屏：
+
+```powershell
+Remove-Item -LiteralPath .\server\data\chat.db -Force -ErrorAction SilentlyContinue
+Remove-Item -LiteralPath .\server\data\chat.db-wal -Force -ErrorAction SilentlyContinue
+Remove-Item -LiteralPath .\server\data\chat.db-shm -Force -ErrorAction SilentlyContinue
+Remove-Item -LiteralPath .\server\data\chat.db-journal -Force -ErrorAction SilentlyContinue
+```
+
+注意：只能在服务端关闭后清理这些文件。服务端运行时不要删除 SQLite 数据库、WAL 或 journal 文件。
+
+### 5. 处理默认数据库启动风险
 
 本次自动化测试发现当前工作区内 SQLite 文件可能出现 `disk I/O error`。正式录屏前先测试默认启动：
 
@@ -78,13 +132,45 @@ sqlite3.OperationalError: disk I/O error
    python -m server.main
    ```
 
-如果仍失败，可把项目复制到系统盘的普通英文路径再录制，例如：
+如果仍失败，不要在录屏现场继续排查。直接把项目复制到系统盘的普通短路径再录制，例如：
 
 ```text
-C:\chat_final_work
+C:\chat_demo\final_work
 ```
 
 然后在新路径中重新运行服务端。这个处理只影响运行期数据，不影响源码和文档。
+
+如果复制到短路径后仍出现 `disk I/O error`，按顺序尝试：
+
+1. 确认没有数据库查看器或编辑器插件打开 `server\data\chat.db`。
+2. 关闭 Windows 安全中心的“受控文件夹访问”，或临时允许当前 Python 解释器访问项目目录。
+3. 右键 PowerShell，选择“以管理员身份运行”，重新进入演示目录启动服务端。
+4. 换到更简单的目录，例如 `C:\final_work_demo`。
+
+### 6. 不要在录屏现场运行不稳定 pytest 命令
+
+不要在录屏中运行：
+
+```powershell
+python -m pytest tests\test_file_transfer.py -q
+```
+
+这条命令在当前机器上可能因为 pytest 临时目录权限失败，失败点发生在测试准备阶段，而不是文件传输业务断言。演示时应展示真实客户端文件发送/接收流程；自动化结果以 `docs/test_report.md` 和本指南中的彩排流程为准。
+
+### 7. 录屏前完整彩排
+
+正式录制前至少完整跑一遍：
+
+1. 启动服务端，确认监听 `0.0.0.0:8888` 或 `127.0.0.1:8888`。
+2. 启动 Alice、Bob、Carol 三个客户端。
+3. 三个账号注册/登录。
+4. `/users` 能看到 3 个在线用户。
+5. Alice 和 Bob 私聊互发，消息不串到其他会话，也不出现在“自己和自己”的聊天中。
+6. 创建群聊，Bob 和 Carol 加入，三人互发群消息。
+7. 查询私聊和群聊历史，确认消息没有消失。
+8. 发送一个小 `.txt` 文件，确认接收方能下载并读取。
+9. 演示内容审核或 `@AI`，AI Key 只来自当前环境变量。
+10. 停止并重启服务端，展示客户端断线提示和重新登录后恢复通信。
 
 ## 推荐录屏窗口布局
 

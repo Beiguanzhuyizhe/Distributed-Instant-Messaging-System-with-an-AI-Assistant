@@ -17,6 +17,11 @@ from server.database import get_db
 
 
 _SAFE_FILE_ID = re.compile(r"^[A-Za-z0-9_-]{1,128}$")
+_WINDOWS_RESERVED = {
+    "CON", "PRN", "AUX", "NUL",
+    *(f"COM{i}" for i in range(1, 10)),
+    *(f"LPT{i}" for i in range(1, 10)),
+}
 
 
 class FileTransfer:
@@ -53,7 +58,14 @@ class FileTransfer:
     @staticmethod
     def _sanitize_filename(filename: str) -> str:
         basename = os.path.basename(str(filename or "").replace("\\", "/")).strip()
-        return (basename or "unnamed_file")[:255]
+        basename = "".join(
+            "_" if ord(ch) < 32 or ch in '<>:"/\\|?*' else ch
+            for ch in basename
+        ).rstrip(" .")
+        basename = (basename or "unnamed_file")[:255]
+        if basename.split(".", 1)[0].upper() in _WINDOWS_RESERVED:
+            basename = "_" + basename
+        return basename[:255]
 
     @staticmethod
     def _to_int_or_none(value):
@@ -96,6 +108,10 @@ class FileTransfer:
         group_id = self._to_int_or_none(group_id)
         if receiver_id is None and group_id is None:
             return {"success": False, "error": "missing_receiver"}
+        if receiver_id is not None and group_id is not None:
+            return {"success": False, "error": "ambiguous_receiver"}
+        if receiver_id == int(from_id):
+            return {"success": False, "error": "cannot_send_to_self"}
 
         safe_filename = self._sanitize_filename(filename)
         chunks_total = (filesize + self._chunk_size - 1) // self._chunk_size if filesize else 0
@@ -113,6 +129,13 @@ class FileTransfer:
                         )
                         if not cur.fetchone():
                             return {"success": False, "error": "not_group_member"}
+                    elif receiver_id is not None:
+                        cur = conn.execute(
+                            "SELECT 1 FROM users WHERE id = ?",
+                            (receiver_id,),
+                        )
+                        if not cur.fetchone():
+                            return {"success": False, "error": "receiver_not_found"}
 
                     conn.execute(
                         """INSERT INTO file_transfers
@@ -151,6 +174,7 @@ class FileTransfer:
                     "chunk_size": self._chunk_size,
                     "chunks_total": chunks_total,
                     "filename": safe_filename,
+                    "completed": chunks_total == 0,
                 }
             except Exception as exc:
                 return {"success": False, "error": f"init_failed:{type(exc).__name__}"}
@@ -219,7 +243,7 @@ class FileTransfer:
             max_len = min(int(transfer["chunk_size"]), remaining)
             if offset < 0 or offset >= int(transfer["filesize"]):
                 return {"success": False, "error": "offset_out_of_range"}
-            if len(chunk_data) <= 0 or len(chunk_data) > max_len:
+            if len(chunk_data) != max_len:
                 return {"success": False, "error": "invalid_chunk_size"}
 
             with self._chunk_lock:
@@ -256,6 +280,10 @@ class FileTransfer:
                     ),
                 )
                 conn.commit()
+
+            if completed:
+                with self._chunk_lock:
+                    self._received_chunks.pop(str(file_id), None)
 
             return {"success": True, "chunk_index": chunk_index, "completed": completed}
 

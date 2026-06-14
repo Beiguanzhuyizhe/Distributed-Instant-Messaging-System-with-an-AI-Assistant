@@ -13,12 +13,13 @@ class HeartbeatMonitor:
     """心跳检测器，后台任务周期性检查连接活性"""
 
     def __init__(self, conn_manager, user_manager, msg_router,
-                 check_interval: int = 5, timeout: int = 30):
+                 check_interval: int = 5, timeout: int = 30, p2p_helper=None):
         self.conn_manager = conn_manager
         self.user_manager = user_manager
         self.msg_router = msg_router
         self._check_interval = check_interval
         self._timeout = timeout
+        self._p2p_helper = p2p_helper
         self._task = None
 
     def start(self):
@@ -54,8 +55,16 @@ class HeartbeatMonitor:
 
         for conn_id in stale_conn_ids:
             user_id = self.conn_manager.get_user_id(conn_id)
-            if user_id:
-                logger.info("Heartbeat timeout for user %s (conn_id=%s), cleaning up", user_id, conn_id)
-                await self.user_manager.set_online_status(user_id, False)
-                await self.msg_router.broadcast_online_status(user_id, False)
             await self.conn_manager.remove(conn_id)
+            if not user_id or self.conn_manager.get_by_user(user_id):
+                continue
+
+            logger.info("Heartbeat timeout for user %s (conn_id=%s), cleaning up", user_id, conn_id)
+            if self._p2p_helper:
+                self._p2p_helper.unregister_user(user_id)
+            await self.user_manager.set_online_status(user_id, False)
+            # 连接清理和重新登录可能并发发生，广播前再确认一次。
+            if self.conn_manager.get_by_user(user_id):
+                await self.user_manager.set_online_status(user_id, True)
+                continue
+            await self.msg_router.broadcast_online_status(user_id, False)
