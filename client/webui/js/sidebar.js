@@ -80,8 +80,8 @@
         // 自己始终排在最前面
         if (a[0] === props.username) return -1;
         if (b[0] === props.username) return 1;
-        var keyA = 'private:' + a[0];
-        var keyB = 'private:' + b[0];
+        var keyA = 'private:' + a[1];
+        var keyB = 'private:' + b[1];
         var unreadA = unreadCounts[keyA] || 0;
         var unreadB = unreadCounts[keyB] || 0;
         // 有未读的排前面
@@ -139,7 +139,7 @@
         var name = entry[0];
         var uid = entry[1];
         var isActive = currentTarget === name && currentChatType === 'private';
-        var key = 'private:' + name;
+        var key = 'private:' + uid;
         return h(ContactItem, {
           key: 'user-' + uid,
           name: name,

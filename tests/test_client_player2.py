@@ -5,12 +5,12 @@ Player2 客户端功能回归测试。
 测试不启动真实服务器，而是用假连接/假 handler 捕获客户端发出的协议 payload。
 """
 
-from pathlib import Path
-
 from client.message_handler import MessageHandler
 from client.protocol import MessageType
 from client.cli import ChatCLI
 from client.gui import ChatGUI
+from client.web_bridge import WebBridge
+from tests.temp_utils import make_runtime_dir, remove_runtime_dir
 
 
 class DummyConnection:
@@ -33,9 +33,20 @@ class DummyHandler:
 
     def __init__(self):
         self.calls = []
+        self._seq = 0
 
     def request_history(self, target_type, target_id, limit=50):
         self.calls.append(("history", target_type, target_id, limit))
+
+    def send_private_msg(self, from_id, to_id, content):
+        self._seq += 1
+        self.calls.append(("private", from_id, to_id, content))
+        return {"ok": True, "seq": self._seq, "client_msg_id": f"local-{self._seq}"}
+
+    def send_group_msg(self, from_id, group_id, content):
+        self._seq += 1
+        self.calls.append(("group", from_id, group_id, content))
+        return {"ok": True, "seq": self._seq, "client_msg_id": f"local-{self._seq}"}
 
     def send_recall(self, msg_id):
         self.calls.append(("recall", msg_id))
@@ -125,23 +136,27 @@ def test_cli_ack_without_server_msg_id_does_not_create_recallable_id():
     assert cli._pending_acks == {}
 
 
-def test_cli_send_file_uses_string_file_id(tmp_path):
-    sample = tmp_path / "now.md"
-    sample.write_text("demo", encoding="utf-8")
+def test_cli_send_file_uses_string_file_id():
+    tmp_dir = make_runtime_dir("client_player2_")
+    try:
+        sample = tmp_dir / "now.md"
+        sample.write_text("demo", encoding="utf-8")
 
-    cli = ChatCLI.__new__(ChatCLI)
-    cli.handler = DummyHandler()
-    cli._print = lambda *args, **kwargs: None
-    cli._online_users = {"bob": 2}
-    cli._user_id = 1
+        cli = ChatCLI.__new__(ChatCLI)
+        cli.handler = DummyHandler()
+        cli._print = lambda *args, **kwargs: None
+        cli._online_users = {"bob": 2}
+        cli._user_id = 1
 
-    cli._send_file("bob", str(sample))
+        cli._send_file("bob", str(sample))
 
-    init_call = cli.handler.calls[0]
-    data_call = cli.handler.calls[1]
-    assert init_call[0] == "file_init"
-    assert isinstance(init_call[-1], str)
-    assert data_call[1] == init_call[-1]
+        init_call = cli.handler.calls[0]
+        data_call = cli.handler.calls[1]
+        assert init_call[0] == "file_init"
+        assert isinstance(init_call[-1], str)
+        assert data_call[1] == init_call[-1]
+    finally:
+        remove_runtime_dir(tmp_dir)
 
 
 def test_gui_private_history_resolves_selected_user_id():
@@ -154,3 +169,112 @@ def test_gui_private_history_resolves_selected_user_id():
     gui._menu_history()
 
     assert gui.handler.calls == [("history", "private", 2, 50)]
+
+
+def test_cli_private_messages_use_stable_peer_context():
+    cli = ChatCLI.__new__(ChatCLI)
+    cli.handler = DummyHandler()
+    cli._print = lambda *args, **kwargs: None
+    cli._online_users = {"bob": 2, "carol": 3}
+    cli._user_id = 1
+    cli._username = "alice"
+    captured = []
+    cli._append_and_store = captured.append
+    cli._pending_acks = {}
+
+    cli._send_private("bob", "hello bob")
+    cli._send_private("carol", "hello carol")
+
+    assert [m["chat_key"] for m in captured] == ["private:2", "private:3"]
+    assert [m["related_target"] for m in captured] == ["2", "3"]
+    assert captured[0]["target_id"] == 2
+    assert captured[1]["target_id"] == 3
+
+
+def test_cli_incoming_private_message_is_bound_to_sender_peer():
+    cli = ChatCLI.__new__(ChatCLI)
+    cli._user_id = 1
+    cli._username = "alice"
+    cli._print = lambda *args, **kwargs: None
+    captured = []
+    cli._append_and_store = captured.append
+
+    cli._on_private_msg(MessageType.PRIVATE_MSG, 1, {
+        "from_id": 2,
+        "to_id": 1,
+        "from_username": "bob",
+        "content": "from bob",
+        "msg_id": "server-1",
+        "timestamp": 1700000000,
+    })
+
+    assert captured == [{
+        "type": "private",
+        "sender": "bob",
+        "receiver_id": 1,
+        "content": "from bob",
+        "msg_id": "server-1",
+        "timestamp": 1700000000,
+        "from_id": 2,
+        "target_id": 2,
+        "related_type": "private",
+        "related_target": "2",
+        "chat_key": "private:2",
+    }]
+
+
+def test_web_bridge_private_messages_use_stable_peer_context():
+    bridge = WebBridge.__new__(WebBridge)
+    bridge.handler = DummyHandler()
+    bridge._user_id = 1
+    bridge._username = "alice"
+    bridge._messages = []
+    bridge._pending_acks = {}
+    captured = []
+    bridge._append_and_store = captured.append
+    bridge._remember_pending = lambda result, msg: None
+    bridge._push_msg = lambda msg: None
+
+    result = bridge.send_private_msg(3, "hello carol")
+
+    assert result["ok"] is True
+    assert captured[0]["chat_key"] == "private:3"
+    assert captured[0]["related_target"] == "3"
+    assert captured[0]["receiver_id"] == 3
+
+
+def test_web_bridge_history_formats_private_messages_for_requested_peer():
+    bridge = WebBridge.__new__(WebBridge)
+    bridge._user_id = 1
+    bridge._username = "alice"
+    bridge._online_users = {"alice": 1, "bob": 2, "carol": 3}
+    bridge._messages = []
+    pushed = []
+    bridge._push = lambda event_type, data: pushed.append((event_type, data))
+
+    bridge._on_history(MessageType.HISTORY_RESP, 10, {
+        "type": "private",
+        "target_id": 2,
+        "messages": [
+            {
+                "msg_id": "m1",
+                "sender_id": 1,
+                "receiver_id": 2,
+                "content": "to bob",
+                "created_at": 1700000000.0,
+            },
+            {
+                "msg_id": "m2",
+                "sender_id": 2,
+                "receiver_id": 1,
+                "content": "from bob",
+                "created_at": 1700000001.0,
+            },
+        ],
+    })
+
+    assert pushed[0][0] == "history"
+    data = pushed[0][1]
+    assert data["target_id"] == 2
+    assert [m["chat_key"] for m in data["messages"]] == ["private:2", "private:2"]
+    assert [m["related_target"] for m in data["messages"]] == ["2", "2"]

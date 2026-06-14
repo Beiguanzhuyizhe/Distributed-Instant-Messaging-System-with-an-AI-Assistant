@@ -170,6 +170,32 @@ class WebBridge:
                 return name
         return f"User#{sender_id}" if sender_id else msg.get("sender", "unknown")
 
+    @staticmethod
+    def _chat_key(chat_type: str, target_id) -> str:
+        return f"{chat_type}:{target_id}"
+
+    @classmethod
+    def _with_chat_context(cls, msg: dict, chat_type: str, target_id) -> dict:
+        """给消息补上稳定会话键，避免前端再用显示名/发送者做模糊匹配。"""
+        target = str(target_id)
+        msg["related_type"] = chat_type
+        msg["related_target"] = target
+        msg["chat_key"] = cls._chat_key(chat_type, target)
+        return msg
+
+    def _current_chat_context(self) -> dict:
+        if self._chat_type == "private":
+            target = self._current_target_id
+        else:
+            target = self._current_target
+        if target is None or target == "":
+            return {}
+        return {
+            "related_type": self._chat_type,
+            "related_target": str(target),
+            "chat_key": self._chat_key(self._chat_type, target),
+        }
+
     # =============================================================
     # 消息回调（在后台线程执行）
     # =============================================================
@@ -209,14 +235,17 @@ class WebBridge:
         if payload.get("from_id") == self._user_id:
             return
         sender = payload.get("from_username", payload.get("sender", f"User#{payload.get('from_id', '')}"))
+        peer_id = payload.get("from_id", 0)
         msg = {
             "type": "private", "sender": sender,
+            "receiver_id": payload.get("to_id", self._user_id),
             "content": payload.get("content", ""),
             "msg_id": str(payload.get("msg_id", "")),
             "timestamp": payload.get("timestamp", _now()),
-            "from_id": payload.get("from_id", 0),
-            "target_id": payload.get("from_id", 0),
+            "from_id": peer_id,
+            "target_id": peer_id,
         }
+        self._with_chat_context(msg, "private", peer_id)
         self._append_and_store(msg)
         self._push_msg(msg)
 
@@ -237,6 +266,7 @@ class WebBridge:
             "from_id": payload.get("from_id", 0),
             "target_id": gid,
         }
+        self._with_chat_context(msg, "group", gid)
         self._append_and_store(msg)
         self._push_msg(msg)
 
@@ -276,10 +306,12 @@ class WebBridge:
 
     def _on_content_warn(self, msg_type, seq, payload):
         msg = {"type": "system", "content": f"[WARN] {payload.get('message', 'Content warning')}", "timestamp": _now()}
+        msg.update(self._current_chat_context())
         self._push_msg(msg)
 
     def _on_error(self, msg_type, seq, payload):
         msg = {"type": "system", "content": f"[Error {payload.get('code', -1)}] {payload.get('message', '')}", "timestamp": _now()}
+        msg.update(self._current_chat_context())
         self._push_msg(msg)
 
     def _on_recall(self, msg_type, seq, payload):
@@ -300,22 +332,35 @@ class WebBridge:
 
     def _on_history(self, msg_type, seq, payload):
         history = payload.get("messages", [])
-        for m in history:
-            self._messages.append(m)
         formatted = []
         for m in history:
             kind = "group" if payload.get("type") == "group" or m.get("group_id") else "private"
-            formatted.append({
+            if kind == "group":
+                target_id = str(m.get("group_id") or payload.get("target_id") or "")
+            else:
+                sender_id = m.get("sender_id", m.get("from_id", 0))
+                receiver_id = m.get("receiver_id", m.get("to_id", 0))
+                target_id = payload.get("target_id") or (
+                    receiver_id if str(sender_id) == str(self._user_id) else sender_id
+                )
+            item = {
                 "type": kind,
                 "sender": self._history_sender(m),
                 "content": "[已撤回]" if m.get("recalled") or m.get("is_recalled") else m.get("content", ""),
-                "group_id": str(m.get("group_id", "")),
-                "timestamp": m.get("timestamp", 0),
+                "group_id": str(m.get("group_id") or (target_id if kind == "group" else "")),
+                "timestamp": int(m.get("timestamp") or m.get("created_at") or 0),
                 "msg_id": str(m.get("msg_id", "")),
                 "from_id": m.get("sender_id", m.get("from_id", 0)),
-            })
+                "receiver_id": m.get("receiver_id", m.get("to_id", 0)),
+                "target_id": str(target_id),
+            }
+            self._with_chat_context(item, kind, target_id)
+            formatted.append(item)
+        self._messages.extend(formatted)
         self._push("history", {
             "type": payload.get("type", "private"),
+            "target_id": payload.get("target_id"),
+            "chat_key": self._chat_key(payload.get("type", "private"), payload.get("target_id")),
             "messages": formatted,
             "count": len(formatted),
         })
@@ -394,6 +439,7 @@ class WebBridge:
             "from_id": from_id,
             "related_type": "private",
             "related_target": str(from_id),
+            "chat_key": self._chat_key("private", from_id),
         })
         threading.Thread(target=self._gui_download_file,
                          args=(file_id, filename, filesize, str(from_id)), daemon=True).start()
@@ -426,6 +472,7 @@ class WebBridge:
                 "filename": filename, "success": False,
                 "error": "Download timed out",
                 "related_type": "private", "related_target": related_target,
+                "chat_key": self._chat_key("private", related_target),
             })
             self._dl_state.pop(file_id, None)
             return
@@ -439,11 +486,13 @@ class WebBridge:
                 "filename": filename, "filesize": filesize,
                 "success": True, "path": dest,
                 "related_type": "private", "related_target": related_target,
+                "chat_key": self._chat_key("private", related_target),
             })
         except Exception as e:
             self._push("file_download_result", {
                 "filename": filename, "success": False, "error": str(e),
                 "related_type": "private", "related_target": related_target,
+                "chat_key": self._chat_key("private", related_target),
             })
         self._dl_state.pop(file_id, None)
 
@@ -480,11 +529,12 @@ class WebBridge:
         local_msg_id = str(result.get("client_msg_id", "")) if result else ""
         msg = {
             "type": "private", "sender": self._username or "You",
-            "receiver": None, "target_id": target_id,
+            "receiver": None, "receiver_id": target_id, "target_id": target_id,
             "content": content, "local_msg_id": local_msg_id,
             "msg_id": local_msg_id, "timestamp": _now(),
             "status": "pending", "from_id": self._user_id,
         }
+        self._with_chat_context(msg, "private", target_id)
         self._append_and_store(msg)
         self._remember_pending(result, msg)
         self._push_msg(msg)
@@ -505,6 +555,7 @@ class WebBridge:
             "timestamp": _now(), "status": "pending",
             "from_id": self._user_id, "target_id": gid,
         }
+        self._with_chat_context(msg, "group", gid)
         self._append_and_store(msg)
         self._remember_pending(result, msg)
         self._push_msg(msg)
@@ -522,6 +573,10 @@ class WebBridge:
             self._pending_ai_context = {
                 "related_type": self._chat_type,
                 "related_target": str(self._current_target_id) if self._chat_type == 'private' else str(self._current_target),
+                "chat_key": self._chat_key(
+                    self._chat_type,
+                    self._current_target_id if self._chat_type == 'private' else self._current_target,
+                ),
             }
         # 携带会话上下文（最近对话历史）
         ctx_list = []
@@ -568,6 +623,10 @@ class WebBridge:
         self._pending_recall_context = {
             "related_type": self._chat_type,
             "related_target": str(self._current_target_id) if self._chat_type == 'private' else str(self._current_target),
+            "chat_key": self._chat_key(
+                self._chat_type,
+                self._current_target_id if self._chat_type == 'private' else self._current_target,
+            ),
         }
         self.handler.send_recall(msg_id)
         return {"ok": True}
@@ -603,6 +662,10 @@ class WebBridge:
             file_context = {
                 "related_type": self._chat_type,
                 "related_target": str(self._current_target_id) if self._chat_type == 'private' else str(self._current_target),
+                "chat_key": self._chat_key(
+                    self._chat_type,
+                    self._current_target_id if self._chat_type == 'private' else self._current_target,
+                ),
             }
             # 后台发送文件数据
             threading.Thread(target=self._send_file_worker,

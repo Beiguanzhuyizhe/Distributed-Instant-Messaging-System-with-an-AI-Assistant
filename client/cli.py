@@ -230,6 +230,32 @@ class ChatCLI:
                 return name
         return f"User#{sender_id}" if sender_id else msg.get("sender", "unknown")
 
+    @staticmethod
+    def _chat_key(chat_type: str, target_id) -> str:
+        return f"{chat_type}:{target_id}"
+
+    @classmethod
+    def _with_chat_context(cls, msg: dict, chat_type: str, target_id) -> dict:
+        """为本地历史添加稳定会话键，避免用用户名/发送者做模糊过滤。"""
+        target = str(target_id)
+        msg["related_type"] = chat_type
+        msg["related_target"] = target
+        msg["chat_key"] = cls._chat_key(chat_type, target)
+        return msg
+
+    def _current_chat_context(self) -> dict:
+        if self._chat_type == "private":
+            target = self._current_target_id
+        else:
+            target = self._current_target
+        if target is None or target == "":
+            return {}
+        return {
+            "related_type": self._chat_type,
+            "related_target": str(target),
+            "chat_key": self._chat_key(self._chat_type, target),
+        }
+
     # =============================================================
     # 消息回调
     # =============================================================
@@ -255,10 +281,12 @@ class ChatCLI:
         sender = payload.get("from_username", payload.get("sender", f"User#{payload.get('from_id', '')}"))
         content = payload.get("content", "")
         ts = _fmt_time(payload.get("timestamp", _now()))
+        peer_id = payload.get("from_id", 0)
         msg = {"type": "private", "sender": sender, "content": content,
-               "msg_id": str(payload.get("msg_id", "")), "timestamp": _now(),
-               "from_id": payload.get("from_id", 0),
-               "target_id": payload.get("from_id", 0)}
+               "msg_id": str(payload.get("msg_id", "")), "timestamp": payload.get("timestamp", _now()),
+               "from_id": peer_id, "receiver_id": payload.get("to_id", self._user_id),
+               "target_id": peer_id}
+        self._with_chat_context(msg, "private", peer_id)
         self._append_and_store(msg)
         self._print("private", ts, sender, content)
 
@@ -278,6 +306,7 @@ class ChatCLI:
                "sender": sender, "content": content,
                "msg_id": str(payload.get("msg_id", "")), "timestamp": _now(),
                "from_id": payload.get("from_id", 0), "target_id": gid}
+        self._with_chat_context(msg, "group", gid)
         self._append_and_store(msg)
         self._print("group", ts, sender, content, extra=f"@{gname}")
 
@@ -295,23 +324,29 @@ class ChatCLI:
         if content:
             ts = _fmt_time(_now())
             self._print("system", ts, "", f"[AI] {content}")
+            msg = {"type": "system", "content": f"[AI] {content}", "timestamp": _now()}
+            msg.update(self._current_chat_context())
             with self._msg_lock:
-                self._messages.append({"type": "system", "content": f"[AI] {content}", "timestamp": _now()})
+                self._messages.append(msg)
 
     def _on_content_warn(self, msg_type, seq, payload):
         msg = payload.get("message", "Content warning")
         ts = _fmt_time(_now())
         self._print("system", ts, "", f"[WARN] {msg}")
+        item = {"type": "system", "content": f"[WARN] {msg}", "timestamp": _now()}
+        item.update(self._current_chat_context())
         with self._msg_lock:
-            self._messages.append({"type": "system", "content": f"[WARN] {msg}", "timestamp": _now()})
+            self._messages.append(item)
 
     def _on_error(self, msg_type, seq, payload):
         code = payload.get("code", -1)
         msg = payload.get("message", "Unknown error")
         ts = _fmt_time(_now())
         self._print("system", ts, "", f"[Error {code}] {msg}")
+        item = {"type": "system", "content": f"[Error {code}] {msg}", "timestamp": _now()}
+        item.update(self._current_chat_context())
         with self._msg_lock:
-            self._messages.append({"type": "system", "content": f"[Error {code}] {msg}", "timestamp": _now()})
+            self._messages.append(item)
 
     def _on_recall(self, msg_type, seq, payload):
         if payload.get("success") is False:
@@ -323,12 +358,30 @@ class ChatCLI:
         mid = msg_id[:8]
         ts = _fmt_time(_now())
         self._print("system", ts, "", f"Message {mid}... was recalled")
-        self._append_and_store({"type": "system", "content": f"Message {mid}... recalled", "timestamp": _now()})
+        msg = {"type": "system", "content": f"Message {mid}... recalled", "timestamp": _now()}
+        msg.update(self._current_chat_context())
+        self._append_and_store(msg)
 
     def _on_history(self, msg_type, seq, payload):
         history = payload.get("messages", [])
+        formatted_history = []
+        for m in history:
+            msg_kind = "group" if payload.get("type") == "group" or m.get("group_id") else "private"
+            if msg_kind == "group":
+                target_id = str(m.get("group_id") or payload.get("target_id") or "")
+            else:
+                sender_id = m.get("sender_id", m.get("from_id", 0))
+                receiver_id = m.get("receiver_id", m.get("to_id", 0))
+                target_id = payload.get("target_id") or (
+                    receiver_id if str(sender_id) == str(self._user_id) else sender_id
+                )
+            item = dict(m)
+            item["type"] = msg_kind
+            item["target_id"] = str(target_id)
+            self._with_chat_context(item, msg_kind, target_id)
+            formatted_history.append(item)
         with self._msg_lock:
-            for m in history:
+            for m in formatted_history:
                 self._messages.append(m)
         ts = _fmt_time(_now())
         self._print("system", ts, "", f"Loaded {len(history)} history messages")
@@ -684,10 +737,11 @@ class ChatCLI:
         self._print("private", ts, self._username or "You", content)
         local_msg_id = str(result.get("client_msg_id", "")) if result else ""
         msg = {"type": "private", "sender": self._username or "You",
-               "receiver": target, "target_id": target_id,
+               "receiver": target, "receiver_id": target_id, "target_id": target_id,
                "content": content, "local_msg_id": local_msg_id,
                "msg_id": local_msg_id, "timestamp": _now(),
-               "status": "pending"}
+               "status": "pending", "from_id": self._user_id}
+        self._with_chat_context(msg, "private", target_id)
         self._append_and_store(msg)
         self._remember_pending(result, msg)
 
@@ -703,7 +757,8 @@ class ChatCLI:
                "group_name": gname, "sender": self._username or "You",
                "content": content, "local_msg_id": local_msg_id,
                "msg_id": local_msg_id, "timestamp": _now(),
-               "status": "pending"}
+               "status": "pending", "from_id": self._user_id}
+        self._with_chat_context(msg, "group", gid)
         self._append_and_store(msg)
         self._remember_pending(result, msg)
 

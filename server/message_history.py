@@ -50,8 +50,8 @@ class MessageHistory:
         """获取私聊历史消息，按时间正序返回"""
         def _run():
             with get_db(self._db_path) as conn:
-                where = """(sender_id = ? AND receiver_id = ?)
-                            OR (sender_id = ? AND receiver_id = ?)"""
+                where = """((sender_id = ? AND receiver_id = ?)
+                            OR (sender_id = ? AND receiver_id = ?))"""
                 params = [user_id, target_id, target_id, user_id]
                 if before_id:
                     where += " AND id < ?"
