@@ -8,11 +8,9 @@ for /f "tokens=5" %%a in ('netstat -ano ^| findstr ":8888"') do (
 )
 timeout /t 2 /nobreak >nul
 
-:: 2. Delete old database
-echo [2/4] Cleaning old database...
-if exist server\data\chat.db del /f /q server\data\chat.db 2>nul
-if exist server\data\chat.db-wal del /f /q server\data\chat.db-wal 2>nul
-if exist server\data\chat.db-shm del /f /q server\data\chat.db-shm 2>nul
+:: 2. Keep database for reconnect/history demo
+echo [2/4] Keeping existing database...
+echo INFO: server\data\chat.db is preserved so groups and chat history survive server restart.
 
 :: 3. Verify port is free
 echo [3/4] Checking port...

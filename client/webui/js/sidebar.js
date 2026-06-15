@@ -30,7 +30,7 @@
   function formatGroupLabel(groupId, groupName) {
     var gid = String(groupId || '').trim();
     var name = String(groupName || '').trim();
-    return '#' + gid + (name ? '  ' + name : '');
+    return name || ('Group #' + gid);
   }
 
   // ---- 联系人项（含未读红点） ----

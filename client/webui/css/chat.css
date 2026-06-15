@@ -909,6 +909,24 @@
   box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.15);
 }
 
+.dialog-content .form-group select {
+  width: 100%;
+  padding: 12px 14px;
+  background: rgba(13, 14, 26, 0.6);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: 14px;
+  font-family: var(--font-family);
+  outline: none;
+  box-sizing: border-box;
+}
+
+.dialog-content .form-group select:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.15);
+}
+
 .modal-actions {
   display: flex;
   gap: var(--space-md);

@@ -286,6 +286,15 @@ CLI 更适合稳定录制命令和输出。
 
 ## 群聊测试
 
+GUI 演示建议使用左侧按钮完成群组操作：
+
+1. Alice 点击 `+ New Group`，输入群名，例如 `demo_group`，点击 Confirm。
+2. Bob 和 Carol 点击 `+ Join`，在下拉列表中选择 `demo_group`，点击 Confirm。
+3. 左侧 Groups 区域应显示群名 `demo_group`，不需要也不应该手动输入群组数字 ID。
+4. 关闭任意客户端后重新登录，之前加入的群组仍应显示在左侧 Groups 区域；点击群名后会自动请求群聊历史。
+
+CLI 模式仍然可以用下面命令测试，`<群ID>` 是 CLI 创建成功时输出的内部 ID。
+
 ### 1. Alice 创建群组
 
 在 Alice 客户端输入：
@@ -529,7 +538,7 @@ python -m server.main
 
 ## 服务器断线重连测试
 
-当前客户端底层支持 TCP 自动重连，但重连后不会自动重新登录。推荐按下面方式录制，既展示断线检测，也避免把未实现的自动恢复说成已实现。
+当前客户端会检测 TCP 断线、状态栏显示 Disconnected，并在服务端恢复后自动重连和重新登录。演示时不要用会删除数据库的方式重启服务端，否则群组、群成员和历史记录会被清空。
 
 ### 1. 正常通信
 
@@ -551,7 +560,9 @@ Ctrl+C
 
 预期现象：
 
-- 客户端显示断线或正在重连，例如 `Disconnected. Reconnecting...`。
+- GUI 状态栏从 Connected 变为 Disconnected。
+- 当前聊天区出现类似 `Disconnected from server. Reconnecting...` 的系统提示。
+- 此时尝试发送消息，应出现 `Cannot send while disconnected. Waiting for reconnect...`，不会误以为消息已经发出。
 
 ### 3. 重启服务端
 
@@ -563,12 +574,13 @@ python -m server.main
 
 预期现象：
 
-- 客户端可能显示 `Reconnected.`。
-- 如果消息发送提示未登录或无响应，重启客户端并重新登录。
+- 客户端状态栏自动恢复 Connected。
+- 当前聊天区出现类似 `Reconnected to server. Restoring session...` 的系统提示。
+- 客户端会自动重新登录，并刷新在线用户、已加入群组和可加入群组。
 
 ### 4. 恢复通信
 
-重新登录 Alice 和 Bob 后，再发送：
+无需手动重新登录，直接再发送：
 
 ```text
 /msg bob_demo_0614 服务端重启后恢复通信。
@@ -577,11 +589,12 @@ python -m server.main
 预期现象：
 
 - Bob 收到消息。
+- 如果断线前 Alice 已加入群组，重连后该群组仍显示在左侧 Groups 区域；点击群名可以继续查看群聊历史。
 
 录制讲解建议：
 
 ```text
-客户端能够检测 TCP 断线并尝试重连。当前版本重连后还需要重新登录恢复认证态，这是后续可以改进为自动重新登录的点。
+客户端通过心跳和发送失败检测 TCP 断线，断线后持续尝试重连。服务端恢复后客户端会自动重新登录，并恢复在线状态、群组列表和正常收发消息。
 ```
 
 ## 压力测试展示

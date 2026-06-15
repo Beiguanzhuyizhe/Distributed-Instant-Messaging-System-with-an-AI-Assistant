@@ -344,9 +344,11 @@ class ChatServer:
         if result["success"]:
             user_id = result["user_id"]
             await self.conn_manager.bind_user(conn_id, user_id)
-            await conn.send_message(MessageType.LOGIN_RESP, {
+            login_payload = {
                 "success": True, "user_id": user_id, "username": username,
-            }, seq=seq)
+            }
+            login_payload.update(await self._group_state_payload(user_id))
+            await conn.send_message(MessageType.LOGIN_RESP, login_payload, seq=seq)
             # 注册 P2P 地址
             if conn.remote_addr:
                 self.p2p_helper.register_user(user_id, conn.remote_addr)
@@ -355,6 +357,22 @@ class ChatServer:
             await conn.send_message(MessageType.LOGIN_RESP, {
                 "success": False, "error": result["error"],
             }, seq=seq)
+
+    async def _group_state_payload(self, user_id: int) -> dict:
+        """返回当前用户已加入群组和全部可加入群组，供客户端登录、重连和刷新侧边栏使用。"""
+        user_groups = await self.group_manager.get_user_groups(user_id)
+        all_groups = await self.group_manager.get_all_groups()
+        groups = {str(g["id"]): g["name"] for g in user_groups}
+        available_groups = {
+            str(g["id"]): {
+                "id": g["id"],
+                "name": g["name"],
+                "member_count": g.get("member_count", 0),
+                "joined": str(g["id"]) in groups,
+            }
+            for g in all_groups
+        }
+        return {"groups": groups, "available_groups": available_groups}
 
     async def _handle_register(self, conn_id: int, seq: int, payload: dict):
         username = payload.get("username", "")
@@ -757,16 +775,19 @@ class ChatServer:
     # ---------------------------------------------------------------
 
     async def _handle_online_users(self, conn_id: int, seq: int):
-        if not self.conn_manager.get_user_id(conn_id):
+        user_id = self.conn_manager.get_user_id(conn_id)
+        if not user_id:
             await self._send_error(conn_id, seq, "未登录")
             return
         users = await self.user_manager.get_online_users()
+        payload = {
+            "users": users,
+            "count": len(users),
+        }
+        payload.update(await self._group_state_payload(user_id))
         conn = self.conn_manager.get_conn(conn_id)
         if conn:
-            await conn.send_message(MessageType.ONLINE_USERS, {
-                "users": users,
-                "count": len(users),
-            }, seq=seq)
+            await conn.send_message(MessageType.ONLINE_USERS, payload, seq=seq)
 
     # ---------------------------------------------------------------
     # AI 智能回复

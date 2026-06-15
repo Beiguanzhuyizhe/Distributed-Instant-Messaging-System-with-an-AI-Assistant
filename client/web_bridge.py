@@ -44,6 +44,7 @@ class WebBridge:
         self._logged_in = False
         self._online_users = {}  # name -> id
         self._groups = {}  # gid -> name
+        self._available_groups = {}  # gid -> {id, name, member_count, joined}
         self._messages = []
         self._current_target = None
         self._current_target_id = None
@@ -104,6 +105,37 @@ class WebBridge:
     def _push_msg(self, msg: dict):
         """推送一条消息对象到 JS（统一格式）"""
         self._push("new_message", msg)
+
+    def _sync_group_state(self, payload: dict):
+        """同步服务端返回的群组状态：groups 是已加入群，available_groups 是可加入群。"""
+        if not isinstance(payload, dict):
+            return
+        groups = payload.get("groups")
+        if isinstance(groups, dict):
+            self._groups = {str(k): v for k, v in groups.items()}
+        available = payload.get("available_groups")
+        if isinstance(available, dict):
+            self._available_groups = {str(k): v for k, v in available.items()}
+
+    def _group_payload(self) -> dict:
+        return {
+            "groups": {k: v for k, v in getattr(self, "_groups", {}).items()},
+            "available_groups": {k: v for k, v in getattr(self, "_available_groups", {}).items()},
+        }
+
+    def _connected_or_warn(self) -> bool:
+        conn = getattr(self, "conn", None)
+        if conn is None or conn.is_connected:
+            return True
+        msg = {
+            "type": "system",
+            "content": "Cannot send while disconnected. Waiting for reconnect...",
+            "timestamp": _now(),
+        }
+        msg.update(self._current_chat_context())
+        self._push_msg(msg)
+        self._push("connection_status", {"status": "disconnected"})
+        return False
 
     # =============================================================
     # 状态管理（与旧 gui.py 逻辑一致）
@@ -228,6 +260,7 @@ class WebBridge:
             self._user_id = payload.get("user_id")
             self._username = payload.get("username", self._username)
             self._logged_in = True
+            self._sync_group_state(payload)
             # 立即将自己加入在线列表（服务器可能还未返回 ONLINE_USERS）
             if self._username and self._user_id:
                 self._online_users[self._username] = self._user_id
@@ -236,7 +269,8 @@ class WebBridge:
                 "user_id": self._user_id,
                 "username": self._username,
                 "online_users": {k: v for k, v in self._online_users.items()},
-                "groups": {k: v for k, v in self._groups.items()},
+                "connected": getattr(getattr(self, "conn", None), "is_connected", True),
+                **self._group_payload(),
             })
             # 主动请求在线用户列表（响应会通过 _on_online_users 补充其他用户）
             self.handler.request_online_users()
@@ -306,7 +340,7 @@ class WebBridge:
             "user_id": uid,
             "is_online": is_online,
             "online_users": {k: v for k, v in self._online_users.items()},
-            "groups": {k: v for k, v in self._groups.items()},
+            **self._group_payload(),
         })
 
     def _on_ai_resp(self, msg_type, seq, payload):
@@ -399,6 +433,7 @@ class WebBridge:
         })
 
     def _on_online_users(self, msg_type, seq, payload):
+        self._sync_group_state(payload)
         users = payload.get("users", [])
         self._online_users = {}
         for u in users:
@@ -407,7 +442,7 @@ class WebBridge:
             self._online_users[name] = uid
         self._push("online_users", {
             "online_users": {k: v for k, v in self._online_users.items()},
-            "groups": {k: v for k, v in self._groups.items()},
+            **self._group_payload(),
         })
 
     def _on_group_create_resp(self, msg_type, seq, payload):
@@ -417,9 +452,10 @@ class WebBridge:
             self._groups[gid] = name
             self._push("group_created", {
                 "group_id": gid, "name": name,
-                "groups": {k: v for k, v in self._groups.items()},
+                **self._group_payload(),
             })
             self._push_msg({"type": "system", "content": f"Created group #{gid} \"{name}\""})
+            self.handler.request_online_users()
         else:
             err = payload.get("error") or payload.get("message", "")
             self._push_msg({"type": "system", "content": f"Create group failed: {err}"})
@@ -431,9 +467,10 @@ class WebBridge:
             self._groups[gid] = name
             self._push("group_joined", {
                 "group_id": gid, "name": name,
-                "groups": {k: v for k, v in self._groups.items()},
+                **self._group_payload(),
             })
             self._push_msg({"type": "system", "content": f"Joined group #{gid} \"{name}\""})
+            self.handler.request_online_users()
         else:
             err = payload.get("error") or payload.get("message", "")
             self._push_msg({"type": "system", "content": f"Join failed: {err}"})
@@ -444,9 +481,10 @@ class WebBridge:
             self._groups.pop(gid, None)
             self._push("group_left", {
                 "group_id": gid,
-                "groups": {k: v for k, v in self._groups.items()},
+                **self._group_payload(),
             })
             self._push_msg({"type": "system", "content": f"Left group {gid}"})
+            self.handler.request_online_users()
         else:
             err = payload.get("error") or payload.get("message", "")
             self._push_msg({"type": "system", "content": f"Leave failed: {err}"})
@@ -566,9 +604,15 @@ class WebBridge:
 
     def _on_disconnected(self):
         self._push("connection_status", {"status": "disconnected"})
+        msg = {"type": "system", "content": "Disconnected from server. Reconnecting...", "timestamp": _now()}
+        msg.update(self._current_chat_context())
+        self._push_msg(msg)
 
     def _on_reconnected(self):
         self._push("connection_status", {"status": "reconnected"})
+        msg = {"type": "system", "content": "Reconnected to server. Restoring session...", "timestamp": _now()}
+        msg.update(self._current_chat_context())
+        self._push_msg(msg)
         if self._username and self._password_hash:
             self.handler.send_login(self._username, self._password_hash)
 
@@ -593,6 +637,8 @@ class WebBridge:
         """JS 调用：发送私聊消息"""
         if not self._user_id:
             return {"ok": False, "error": "Not logged in"}
+        if not self._connected_or_warn():
+            return {"ok": False, "error": "Disconnected"}
         result = self.handler.send_private_msg(self._user_id, target_id, content)
         local_msg_id = str(result.get("client_msg_id", "")) if result else ""
         msg = {
@@ -612,6 +658,8 @@ class WebBridge:
         """JS 调用：发送群聊消息"""
         if not self._user_id:
             return {"ok": False, "error": "Not logged in"}
+        if not self._connected_or_warn():
+            return {"ok": False, "error": "Disconnected"}
         result = self.handler.send_group_msg(self._user_id or 0, group_id, content)
         local_msg_id = str(result.get("client_msg_id", "")) if result else ""
         gid = str(group_id)
@@ -656,6 +704,8 @@ class WebBridge:
             for cm in context_msgs[-10:]:  # 最多携带最近10条
                 role = "user" if cm.get("sender") != self.AI_USERNAME else "assistant"
                 ctx_list.append({"role": role, "content": cm.get("content", "")})
+        if not self._connected_or_warn():
+            return {"ok": False, "error": "Disconnected"}
         result = self.handler.send_ai_query(self._user_id, group_id, query, context=ctx_list)
         seq = result.get("seq") if result else None
         if seq is not None:
@@ -676,6 +726,8 @@ class WebBridge:
         """JS 调用：创建群组"""
         if not self._user_id:
             return {"ok": False, "error": "Not logged in"}
+        if not self._connected_or_warn():
+            return {"ok": False, "error": "Disconnected"}
         self.handler.group_create(name, self._user_id)
         return {"ok": True}
 
@@ -683,6 +735,8 @@ class WebBridge:
         """JS 调用：加入群组"""
         if not self._user_id:
             return {"ok": False, "error": "Not logged in"}
+        if not self._connected_or_warn():
+            return {"ok": False, "error": "Disconnected"}
         self.handler.group_join(group_id, self._user_id)
         return {"ok": True}
 
@@ -690,6 +744,8 @@ class WebBridge:
         """JS 调用：退出群组"""
         if not self._user_id:
             return {"ok": False, "error": "Not logged in"}
+        if not self._connected_or_warn():
+            return {"ok": False, "error": "Disconnected"}
         result = self.handler.group_leave(group_id, self._user_id)
         seq = result.get("seq") if result else None
         if seq is not None:
@@ -725,6 +781,8 @@ class WebBridge:
     def select_and_send_file(self) -> dict:
         """JS 调用：打开文件选择对话框并发送文件（使用 tkinter 原生对话框）"""
         try:
+            if not self._connected_or_warn():
+                return {"ok": False, "error": "Disconnected"}
             filepath = self._tk_file_dialog()
             if not filepath:
                 return {"ok": False, "error": "No file selected"}
@@ -785,7 +843,7 @@ class WebBridge:
         """JS 调用：获取初始状态"""
         return {
             "online_users": {k: v for k, v in self._online_users.items()},
-            "groups": {k: v for k, v in self._groups.items()},
+            **self._group_payload(),
             "username": self._username,
             "user_id": self._user_id,
             "connected": self.conn.is_connected,
@@ -803,5 +861,5 @@ class WebBridge:
         """JS 调用：获取当前在线用户快照"""
         return {
             "online_users": {k: v for k, v in self._online_users.items()},
-            "groups": {k: v for k, v in self._groups.items()},
+            **self._group_payload(),
         }

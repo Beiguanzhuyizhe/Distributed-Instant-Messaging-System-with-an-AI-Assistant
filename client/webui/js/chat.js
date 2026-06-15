@@ -175,7 +175,7 @@
   function formatGroupTitle(groupId, groupName) {
     var gid = String(groupId || '').trim();
     var name = String(groupName || '').trim();
-    return '#' + gid + (name ? '  ' + name : '');
+    return name || ('Group #' + gid);
   }
 
   // ============================================================
@@ -366,6 +366,8 @@
 
   function GroupDialog(props) {
     if (!props.visible) return null;
+    var isCreate = props.dialogType === 'create';
+    var options = props.options || [];
     return h('div', {
       className: 'group-dialog',
       onClick: props.onClose,
@@ -376,21 +378,30 @@
       },
         h('h3', null, props.title || 'Group'),
         h('div', { className: 'form-group' },
-          h('input', {
-            type: props.dialogType === 'join' ? 'number' : 'text',
-            placeholder: props.dialogType === 'create'
-              ? 'Enter group name...'
-              : 'Enter group ID...',
-            value: props.value,
-            onChange: function (e) { props.onChange(e.target.value); },
-            autoFocus: true,
-            onKeyDown: function (e) {
-              if (e.key === 'Enter') {
-                e.preventDefault();
-                props.onSubmit();
-              }
-            },
-          }),
+          isCreate
+            ? h('input', {
+                type: 'text',
+                placeholder: 'Enter group name...',
+                value: props.value,
+                onChange: function (e) { props.onChange(e.target.value); },
+                autoFocus: true,
+                onKeyDown: function (e) {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                    props.onSubmit();
+                  }
+                },
+              })
+            : h('select', {
+                value: props.value,
+                onChange: function (e) { props.onChange(e.target.value); },
+                autoFocus: true,
+              },
+                h('option', { value: '' }, options.length ? 'Select a group...' : 'No groups available'),
+                options.map(function (opt) {
+                  return h('option', { key: String(opt.id), value: String(opt.id) }, opt.name);
+                }),
+              ),
         ),
         h('div', { className: 'modal-actions' },
           h('button', { className: 'btn btn-ghost', onClick: props.onClose }, 'Cancel'),
@@ -408,13 +419,16 @@
     var username = props.username;
     var initialOnlineUsers = props.initialOnlineUsers || {};
     var initialGroups = props.initialGroups || {};
+    var initialAvailableGroups = props.initialAvailableGroups || {};
+    var initialConnected = typeof props.initialConnected === 'boolean' ? props.initialConnected : true;
     var _useState3 = useState([]), messages = _useState3[0], setMessages = _useState3[1];
     var _useState4 = useState(initialOnlineUsers), onlineUsers = _useState4[0], setOnlineUsers = _useState4[1];
     var _useState5 = useState(initialGroups), groups = _useState5[0], setGroups = _useState5[1];
+    var _useState19 = useState(initialAvailableGroups), availableGroups = _useState19[0], setAvailableGroups = _useState19[1];
     var _useState6 = useState(null), currentTarget = _useState6[0], setCurrentTarget = _useState6[1];
     var _useState7 = useState(null), currentTargetId = _useState7[0], setCurrentTargetId = _useState7[1];
     var _useState8 = useState('private'), currentChatType = _useState8[0], setCurrentChatType = _useState8[1];
-    var _useState9 = useState(true), connected = _useState9[0], setConnected = _useState9[1];
+    var _useState9 = useState(initialConnected), connected = _useState9[0], setConnected = _useState9[1];
     var _useState15 = useState(null), contextMenu = _useState15[0], setContextMenu = _useState15[1];
     var _useState16 = useState(''), searchQuery = _useState16[0], setSearchQuery = _useState16[1];
     // 未读计数 state + 最后消息时间（用于联系人排序）
@@ -427,6 +441,25 @@
     var _useState12 = useState('create'), groupDialogType = _useState12[0], setGroupDialogType = _useState12[1];
     var _useState13 = useState(''), groupDialogValue = _useState13[0], setGroupDialogValue = _useState13[1];
     var _useState14 = useState(''), groupDialogTitle = _useState14[0], setGroupDialogTitle = _useState14[1];
+
+    var joinGroupOptions = useMemo(function () {
+      return Object.keys(availableGroups).map(function (gid) {
+        var item = availableGroups[gid] || {};
+        return {
+          id: gid,
+          name: item.name || ('Group #' + gid),
+          joined: Boolean(item.joined || Object.prototype.hasOwnProperty.call(groups, gid)),
+        };
+      }).filter(function (item) {
+        return !item.joined;
+      });
+    }, [availableGroups, groups]);
+
+    var leaveGroupOptions = useMemo(function () {
+      return Object.keys(groups).map(function (gid) {
+        return { id: gid, name: groups[gid] || ('Group #' + gid) };
+      });
+    }, [groups]);
 
     // Refs for GSAP animations
     var chatMainRef = useRef(null);
@@ -520,6 +553,7 @@
           setOnlineUsers(data.online_users);
         }
         if (data.groups) setGroups(data.groups);
+        if (data.available_groups) setAvailableGroups(data.available_groups);
       }).catch(function () {});
       // 同时发起一次新的请求，确保拿到最新数据
       window.Bridge.requestOnlineUsers();
@@ -561,11 +595,13 @@
       unsubs.push(window.Bridge.on('online_users', function (data) {
         if (data.online_users) setOnlineUsers(data.online_users);
         if (data.groups) setGroups(data.groups);
+        if (data.available_groups) setAvailableGroups(data.available_groups);
       }));
 
       unsubs.push(window.Bridge.on('status_update', function (data) {
         if (data.online_users) setOnlineUsers(data.online_users);
         if (data.groups) setGroups(data.groups);
+        if (data.available_groups) setAvailableGroups(data.available_groups);
       }));
 
       unsubs.push(window.Bridge.on('history', function (data) {
@@ -636,14 +672,17 @@
 
       unsubs.push(window.Bridge.on('group_created', function (data) {
         if (data.groups) setGroups(data.groups);
+        if (data.available_groups) setAvailableGroups(data.available_groups);
       }));
 
       unsubs.push(window.Bridge.on('group_joined', function (data) {
         if (data.groups) setGroups(data.groups);
+        if (data.available_groups) setAvailableGroups(data.available_groups);
       }));
 
       unsubs.push(window.Bridge.on('group_left', function (data) {
         if (data.groups) setGroups(data.groups);
+        if (data.available_groups) setAvailableGroups(data.available_groups);
         if (data.group_id) {
           setUnreadCounts(function (prev) {
             var next = Object.assign({}, prev);
@@ -830,24 +869,24 @@
     var handleGroupJoin = useCallback(function () {
       setGroupDialogType('join');
       setGroupDialogTitle('Join Group');
-      setGroupDialogValue('');
+      setGroupDialogValue(joinGroupOptions.length ? String(joinGroupOptions[0].id) : '');
       setShowGroupDialog(true);
-    }, []);
+    }, [joinGroupOptions]);
 
     var handleGroupLeave = useCallback(function () {
       setGroupDialogType('leave');
       setGroupDialogTitle('Leave Group');
-      setGroupDialogValue('');
+      setGroupDialogValue(leaveGroupOptions.length ? String(leaveGroupOptions[0].id) : '');
       setShowGroupDialog(true);
-    }, []);
+    }, [leaveGroupOptions]);
 
     var handleGroupSubmit = useCallback(function () {
       if (groupDialogType === 'create') {
-        window.Bridge.groupCreate(groupDialogValue);
+        if (groupDialogValue.trim()) window.Bridge.groupCreate(groupDialogValue.trim());
       } else if (groupDialogType === 'join') {
-        window.Bridge.groupJoin(parseInt(groupDialogValue));
+        if (groupDialogValue) window.Bridge.groupJoin(parseInt(groupDialogValue));
       } else if (groupDialogType === 'leave') {
-        window.Bridge.groupLeave(parseInt(groupDialogValue));
+        if (groupDialogValue) window.Bridge.groupLeave(parseInt(groupDialogValue));
       }
       setShowGroupDialog(false);
     }, [groupDialogType, groupDialogValue]);
@@ -965,6 +1004,7 @@
         title: groupDialogTitle,
         dialogType: groupDialogType,
         value: groupDialogValue,
+        options: groupDialogType === 'join' ? joinGroupOptions : leaveGroupOptions,
         onChange: setGroupDialogValue,
         onSubmit: handleGroupSubmit,
         onClose: function () { setShowGroupDialog(false); },

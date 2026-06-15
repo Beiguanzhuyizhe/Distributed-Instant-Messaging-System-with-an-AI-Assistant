@@ -143,6 +143,61 @@ async def test_group_file_completion_is_broadcast_with_group_context(server):
 
 
 @pytest.mark.asyncio
+async def test_login_response_includes_user_and_available_groups(server):
+    conn = DummyConnection()
+    conn_id = await server.conn_manager.add(conn)
+    server.user_manager.login = _async_return({
+        "success": True,
+        "user_id": 1,
+    })
+    server.group_manager.get_user_groups = _async_return([
+        {"id": 2, "name": "demo_group"},
+    ])
+    server.group_manager.get_all_groups = _async_return([
+        {"id": 2, "name": "demo_group", "member_count": 1},
+        {"id": 3, "name": "other_group", "member_count": 0},
+    ])
+    calls = []
+    server.msg_router.broadcast_online_status = _record_async(calls, "broadcast")
+
+    await server._handle_login(conn_id, 20, {
+        "username": "alice",
+        "password_hash": "pw",
+    })
+
+    msg_type, seq, payload = conn.sent[-1]
+    assert msg_type == MessageType.LOGIN_RESP
+    assert seq == 20
+    assert payload["groups"] == {"2": "demo_group"}
+    assert payload["available_groups"]["2"]["joined"] is True
+    assert payload["available_groups"]["3"]["joined"] is False
+
+
+@pytest.mark.asyncio
+async def test_online_users_response_includes_group_state(server):
+    conn = DummyConnection()
+    conn_id = await server.conn_manager.add(conn)
+    await server.conn_manager.bind_user(conn_id, 1)
+    server.user_manager.get_online_users = _async_return([
+        {"id": 1, "username": "alice"},
+    ])
+    server.group_manager.get_user_groups = _async_return([
+        {"id": 2, "name": "demo_group"},
+    ])
+    server.group_manager.get_all_groups = _async_return([
+        {"id": 2, "name": "demo_group", "member_count": 1},
+    ])
+
+    await server._handle_online_users(conn_id, 21)
+
+    msg_type, seq, payload = conn.sent[-1]
+    assert msg_type == MessageType.ONLINE_USERS
+    assert seq == 21
+    assert payload["groups"] == {"2": "demo_group"}
+    assert payload["available_groups"]["2"]["name"] == "demo_group"
+
+
+@pytest.mark.asyncio
 async def test_group_ai_reply_strips_member_name_prefix(monkeypatch, server):
     class FakeAI:
         available = True

@@ -27,10 +27,11 @@ class ChatConnection:
         self._port = None
         self._on_connected_cb = None
         self._on_disconnected_cb = None
-        self._heartbeat_interval = 15  # seconds
+        self._heartbeat_interval = 3  # seconds，演示断线重连时需要较快暴露状态
         self._last_heartbeat = 0
         self.connected = False
         self._connect_lock = threading.Lock()
+        self._disconnect_notified = False
 
     # --- Callback 注册 ---
 
@@ -76,6 +77,7 @@ class ChatConnection:
             self.protocol.reset()
             self._reconnect_attempts = 0
             self.connected = True
+            self._disconnect_notified = False
             self._last_heartbeat = time.time()
             return True
         except Exception:
@@ -93,18 +95,42 @@ class ChatConnection:
         """发送编码后的消息，线程安全"""
         from protocol import encode_message
         data = encode_message(msg_type, payload, seq)
+        failed = False
         with self._lock:
             if self.sock:
                 try:
                     self.sock.sendall(data)
                     return True
                 except Exception:
-                    return False
+                    failed = True
+        if failed:
+            self._mark_disconnected()
         return False
 
     def send_heartbeat(self):
         """发送心跳包"""
-        self.send_message(MessageType.HEARTBEAT, {})
+        return self.send_message(MessageType.HEARTBEAT, {})
+
+    def _mark_disconnected(self):
+        """统一处理断线状态和通知，避免发送失败时 UI 仍显示在线。"""
+        old_sock = None
+        with self._lock:
+            old_sock = self.sock
+            self.sock = None
+        self.connected = False
+        if old_sock:
+            try:
+                old_sock.close()
+            except OSError:
+                pass
+        if not self._disconnect_notified:
+            self._disconnect_notified = True
+            cb = self._on_disconnected_cb
+            if cb:
+                try:
+                    cb()
+                except Exception:
+                    pass
 
     # --- 接收循环（运行在后台线程） ---
 
@@ -118,7 +144,8 @@ class ChatConnection:
                 # 定时心跳
                 now = time.time()
                 if now - self._last_heartbeat >= self._heartbeat_interval:
-                    self.send_heartbeat()
+                    if not self.send_heartbeat():
+                        raise ConnectionError("heartbeat send failed")
                     self._last_heartbeat = now
 
                 data = self.sock.recv(4096)
@@ -132,14 +159,7 @@ class ChatConnection:
             except socket.timeout:
                 continue
             except (ConnectionError, OSError):
-                self.connected = False
-                self.sock = None
-                cb = self._on_disconnected_cb
-                if cb:
-                    try:
-                        cb()
-                    except Exception:
-                        pass
+                self._mark_disconnected()
                 if self._running:
                     if self._reconnect():
                         continue
@@ -157,7 +177,7 @@ class ChatConnection:
 
     def _reconnect(self):
         delay = 1
-        while self._running and self._reconnect_attempts < self._max_reconnect:
+        while self._running:
             time.sleep(delay)
             self._reconnect_attempts += 1
             if self._do_connect():

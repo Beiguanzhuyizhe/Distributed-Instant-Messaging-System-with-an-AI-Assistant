@@ -259,7 +259,8 @@ assert.strictEqual(repeatedRealMessages.length, 2);
 
 assert.strictEqual(sidebarLogic.isSelfUser('alice', 'alice'), true);
 assert.strictEqual(sidebarLogic.isSelfUser('bob', 'alice'), false);
-assert.strictEqual(sidebarLogic.formatGroupLabel('2', '1'), '#2  1');
-assert.strictEqual(sidebarLogic.formatGroupLabel('1', 'group'), '#1  group');
+assert.strictEqual(sidebarLogic.formatGroupLabel('2', '1'), '1');
+assert.strictEqual(sidebarLogic.formatGroupLabel('1', 'group'), 'group');
 assert.notStrictEqual(sidebarLogic.formatGroupLabel('2', '1'), '1 (2)');
-assert.strictEqual(routing.formatGroupTitle('2', '1'), '#2  1');
+assert.notStrictEqual(sidebarLogic.formatGroupLabel('2', '1'), '#2  1');
+assert.strictEqual(routing.formatGroupTitle('2', '1'), '1');

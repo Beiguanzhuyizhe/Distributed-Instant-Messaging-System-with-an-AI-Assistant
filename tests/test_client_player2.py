@@ -28,6 +28,16 @@ class DummyConnection:
         self.sent.append({"msg_type": msg_type, "payload": payload, "seq": seq})
         return True
 
+    @property
+    def is_connected(self):
+        return True
+
+
+class OfflineConnection(DummyConnection):
+    @property
+    def is_connected(self):
+        return False
+
 
 class DummyHandler:
     """记录 CLI/GUI 调用的高层发送接口。"""
@@ -38,6 +48,9 @@ class DummyHandler:
 
     def request_history(self, target_type, target_id, limit=50):
         self.calls.append(("history", target_type, target_id, limit))
+
+    def request_online_users(self):
+        self.calls.append(("online_users",))
 
     def send_private_msg(self, from_id, to_id, content):
         self._seq += 1
@@ -63,6 +76,16 @@ class DummyHandler:
     def send_ai_query(self, from_id, group_id, query, context=None):
         self._seq += 1
         self.calls.append(("ai", from_id, group_id, query, context))
+        return {"ok": True, "seq": self._seq}
+
+    def group_create(self, name, user_id):
+        self._seq += 1
+        self.calls.append(("create", name, user_id))
+        return {"ok": True, "seq": self._seq}
+
+    def group_join(self, group_id, user_id):
+        self._seq += 1
+        self.calls.append(("join", group_id, user_id))
         return {"ok": True, "seq": self._seq}
 
     def group_leave(self, group_id, user_id):
@@ -263,6 +286,7 @@ def test_cli_incoming_private_message_is_bound_to_sender_peer():
 
 def test_web_bridge_private_messages_use_stable_peer_context():
     bridge = WebBridge.__new__(WebBridge)
+    bridge.conn = DummyConnection()
     bridge.handler = DummyHandler()
     bridge._user_id = 1
     bridge._username = "alice"
@@ -279,6 +303,58 @@ def test_web_bridge_private_messages_use_stable_peer_context():
     assert captured[0]["chat_key"] == "private:3"
     assert captured[0]["related_target"] == "3"
     assert captured[0]["receiver_id"] == 3
+
+
+def test_web_bridge_login_restores_groups_and_available_groups():
+    bridge = WebBridge.__new__(WebBridge)
+    bridge.handler = DummyHandler()
+    bridge._username = "alice"
+    bridge._user_id = None
+    bridge._logged_in = False
+    bridge._online_users = {}
+    bridge._groups = {}
+    bridge._available_groups = {}
+    events = []
+    bridge._push = lambda event_type, data: events.append((event_type, data))
+
+    bridge._on_login_resp(MessageType.LOGIN_RESP, 1, {
+        "success": True,
+        "user_id": 1,
+        "username": "alice",
+        "groups": {"2": "demo_group"},
+        "available_groups": {
+            "2": {"id": 2, "name": "demo_group", "joined": True},
+            "3": {"id": 3, "name": "other_group", "joined": False},
+        },
+    })
+
+    assert bridge._groups == {"2": "demo_group"}
+    assert bridge._available_groups["3"]["name"] == "other_group"
+    assert events[-1][0] == "login_success"
+    assert events[-1][1]["groups"] == {"2": "demo_group"}
+    assert "available_groups" in events[-1][1]
+    assert ("online_users",) in bridge.handler.calls
+
+
+def test_web_bridge_offline_send_reports_system_message():
+    bridge = WebBridge.__new__(WebBridge)
+    bridge.conn = OfflineConnection()
+    bridge.handler = DummyHandler()
+    bridge._user_id = 1
+    bridge._username = "alice"
+    bridge._chat_type = "private"
+    bridge._current_target = "bob"
+    bridge._current_target_id = 2
+    events = []
+    bridge._push_msg = lambda msg: events.append(("new_message", msg))
+    bridge._push = lambda event_type, data: events.append((event_type, data))
+
+    result = bridge.send_private_msg(2, "offline")
+
+    assert result == {"ok": False, "error": "Disconnected"}
+    assert ("private", 1, 2, "offline") not in bridge.handler.calls
+    assert any("Cannot send while disconnected" in event[1].get("content", "") for event in events if event[0] == "new_message")
+    assert ("connection_status", {"status": "disconnected"}) in events
 
 
 def test_web_bridge_history_formats_private_messages_for_requested_peer():
@@ -419,12 +495,14 @@ def test_web_bridge_leave_group_removes_sidebar_entry_without_payload_group_id()
     bridge._on_group_leave_resp(MessageType.GROUP_LEAVE, seq, {"success": True})
 
     assert "9" not in bridge._groups
-    assert ("group_left", {"group_id": "9", "groups": {}}) in events
+    assert ("group_left", {"group_id": "9", "groups": {}, "available_groups": {}}) in events
 
 
 def test_web_bridge_group_create_join_keep_server_id_clear():
     bridge = WebBridge.__new__(WebBridge)
+    bridge.handler = DummyHandler()
     bridge._groups = {}
+    bridge._available_groups = {}
     events = []
     bridge._push = lambda event_type, data: events.append((event_type, data))
     bridge._push_msg = lambda msg: events.append(("new_message", msg))
@@ -462,6 +540,7 @@ def test_web_bridge_group_file_init_uses_group_context(monkeypatch):
     bridge._chat_type = "group"
     bridge._current_target = "9"
     bridge._current_target_id = 9
+    bridge.conn = DummyConnection()
     bridge.handler = DummyHandler()
     tmp_dir = make_runtime_dir("web_bridge_file_")
     sample = tmp_dir / "group.txt"

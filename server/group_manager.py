@@ -110,6 +110,20 @@ class GroupManager:
                 return [dict(r) for r in cur.fetchall()]
         return await asyncio.to_thread(_run)
 
+    async def get_all_groups(self) -> list:
+        """获取所有可见群组，供客户端用下拉列表加入，避免用户手动输入内部数据库 ID。"""
+        def _run():
+            with get_db(self._db_path) as conn:
+                cur = conn.execute(
+                    """SELECT g.id, g.name, g.owner_id, COUNT(gm.user_id) AS member_count
+                       FROM groups g
+                       LEFT JOIN group_members gm ON gm.group_id = g.id
+                       GROUP BY g.id, g.name, g.owner_id
+                       ORDER BY g.id ASC"""
+                )
+                return [dict(r) for r in cur.fetchall()]
+        return await asyncio.to_thread(_run)
+
     async def is_member(self, group_id: int, user_id: int) -> bool:
         """检查用户是否为群组成员"""
         def _run():

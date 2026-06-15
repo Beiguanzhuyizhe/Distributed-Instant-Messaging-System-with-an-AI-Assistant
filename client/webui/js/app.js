@@ -64,10 +64,13 @@
     if (view === 'chat') {
       var initOnlineUsers = (userData && userData.online_users) || {};
       var initGroups = (userData && userData.groups) || {};
+      var initAvailableGroups = (userData && userData.available_groups) || {};
       return h(window.App.ChatLayout, {
         username: userData ? userData.username : 'User',
         initialOnlineUsers: initOnlineUsers,
         initialGroups: initGroups,
+        initialAvailableGroups: initAvailableGroups,
+        initialConnected: userData && typeof userData.connected === 'boolean' ? userData.connected : true,
       });
     }
 
