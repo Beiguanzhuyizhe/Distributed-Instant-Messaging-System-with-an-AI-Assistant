@@ -419,7 +419,7 @@ class WebBridge:
                 "group_id": gid, "name": name,
                 "groups": {k: v for k, v in self._groups.items()},
             })
-            self._push_msg({"type": "system", "content": f"Group '{name}' created (ID: {gid})"})
+            self._push_msg({"type": "system", "content": f"Created group #{gid} \"{name}\""})
         else:
             err = payload.get("error") or payload.get("message", "")
             self._push_msg({"type": "system", "content": f"Create group failed: {err}"})
@@ -433,7 +433,7 @@ class WebBridge:
                 "group_id": gid, "name": name,
                 "groups": {k: v for k, v in self._groups.items()},
             })
-            self._push_msg({"type": "system", "content": f"Joined group '{name}'"})
+            self._push_msg({"type": "system", "content": f"Joined group #{gid} \"{name}\""})
         else:
             err = payload.get("error") or payload.get("message", "")
             self._push_msg({"type": "system", "content": f"Join failed: {err}"})

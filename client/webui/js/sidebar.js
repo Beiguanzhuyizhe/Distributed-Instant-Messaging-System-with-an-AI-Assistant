@@ -27,6 +27,12 @@
     return name.charAt(0).toUpperCase();
   }
 
+  function formatGroupLabel(groupId, groupName) {
+    var gid = String(groupId || '').trim();
+    var name = String(groupName || '').trim();
+    return '#' + gid + (name ? '  ' + name : '');
+  }
+
   // ---- 联系人项（含未读红点） ----
   function ContactItem(props) {
     var name = props.name;
@@ -163,9 +169,10 @@
         var gname = entry[1];
         var isActive = currentTarget === gid && currentChatType === 'group';
         var key = 'group:' + gid;
+        var label = formatGroupLabel(gid, gname);
         return h(ContactItem, {
           key: 'group-' + gid,
-          name: gname + ' (' + gid + ')',
+          name: label,
           isActive: isActive,
           isGroup: true,
           unreadCount: unreadCounts[key] || 0,
@@ -178,6 +185,7 @@
   window.App = window.App || {};
   window.App.__sidebarLogic = {
     isSelfUser: function (name, username) { return name === username; },
+    formatGroupLabel: formatGroupLabel,
   };
   window.App.Sidebar = Sidebar;
 })();

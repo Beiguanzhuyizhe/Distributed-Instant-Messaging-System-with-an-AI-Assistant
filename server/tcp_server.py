@@ -772,6 +772,43 @@ class ChatServer:
     # AI 智能回复
     # ---------------------------------------------------------------
 
+    @staticmethod
+    def _add_ai_speaker_alias(aliases: set, value):
+        """记录可能被模型误当前缀的群成员显示名。纯数字不作为别名，避免误删“1: ...”编号列表。"""
+        if value is None:
+            return
+        alias = str(value).strip()
+        if not alias or alias.isdigit():
+            return
+        aliases.add(alias)
+
+    @staticmethod
+    def _strip_ai_speaker_prefix(reply: str, aliases: set) -> str:
+        """群聊 AI 回复应直接显示内容；若模型模仿“用户名: 内容”格式，这里在广播前统一清理。"""
+        if not isinstance(reply, str):
+            return ""
+        text = reply.strip()
+        if not text or not aliases:
+            return text
+
+        # 最多连续清理三层前缀，覆盖 “Bob: Alice: ...” 这类模型复读格式，同时避免无限循环。
+        for _ in range(3):
+            matched = False
+            for alias in sorted(aliases, key=len, reverse=True):
+                if not alias:
+                    continue
+                head = text[:len(alias)]
+                if head.casefold() != alias.casefold():
+                    continue
+                rest = text[len(alias):].lstrip()
+                if rest.startswith(":") or rest.startswith("："):
+                    text = rest[1:].lstrip()
+                    matched = True
+                    break
+            if not matched:
+                break
+        return text
+
     async def _handle_ai_query(self, conn_id: int, seq: int, payload: dict):
         user_id = self.conn_manager.get_user_id(conn_id)
         if not user_id:
@@ -818,8 +855,36 @@ class ChatServer:
         user_info = await self.user_manager.get_user_info(user_id)
         username = user_info.get("username", f"用户{user_id}") if user_info else f"用户{user_id}"
 
+        speaker_aliases = set()
+        self._add_ai_speaker_alias(speaker_aliases, username)
+        self._add_ai_speaker_alias(speaker_aliases, f"User#{user_id}")
+        self._add_ai_speaker_alias(speaker_aliases, f"用户{user_id}")
+        group_member_names = {}
+        if group_id:
+            try:
+                members = await self.group_manager.get_group_members(group_id)
+            except Exception:
+                members = []
+            for member in members:
+                member_id = member.get("id") or member.get("user_id")
+                member_name = member.get("username")
+                if member_id is not None and member_name:
+                    group_member_names[member_id] = member_name
+                self._add_ai_speaker_alias(speaker_aliases, member_name)
+                if member_id is not None:
+                    self._add_ai_speaker_alias(speaker_aliases, f"User#{member_id}")
+                    self._add_ai_speaker_alias(speaker_aliases, f"用户{member_id}")
+
         # 获取群聊历史作为上下文
         history = []
+        if group_id:
+            history.append({
+                "role": "system",
+                "content": (
+                    "以下内容是群聊历史上下文，仅用于理解问题。请以 AI Assistant 身份直接回答，"
+                    "不要在回复开头添加任何群成员姓名、User#编号或“姓名:”格式前缀。"
+                ),
+            })
         # 优先使用客户端携带的会话上下文
         if context:
             for item in context[-10:]:
@@ -837,11 +902,20 @@ class ChatServer:
                     continue
                 if m.get("sender_id") == user_id:
                     role = "user"
-                sender_info = await self.user_manager.get_user_info(m["sender_id"])
-                sender_name = sender_info.get("username", str(m["sender_id"])) if sender_info else str(m["sender_id"])
-                history.append({"role": role, "content": f"{sender_name}: {m['content']}"})
+                sender_id = m["sender_id"]
+                sender_name = group_member_names.get(sender_id)
+                if not sender_name:
+                    sender_info = await self.user_manager.get_user_info(sender_id)
+                    sender_name = sender_info.get("username", str(sender_id)) if sender_info else str(sender_id)
+                content = str(m.get("content", ""))
+                history.append({
+                    "role": role,
+                    "content": f"群聊历史消息（发送者：{sender_name}）：{content}"[:8000],
+                })
 
         reply = await ai.query_with_context(query, username=username, history=history)
+        if group_id:
+            reply = self._strip_ai_speaker_prefix(reply, speaker_aliases)
 
         # 回复发起者
         conn = self.conn_manager.get_conn(conn_id)

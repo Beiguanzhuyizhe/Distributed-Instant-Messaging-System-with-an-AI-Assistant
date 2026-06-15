@@ -422,6 +422,29 @@ def test_web_bridge_leave_group_removes_sidebar_entry_without_payload_group_id()
     assert ("group_left", {"group_id": "9", "groups": {}}) in events
 
 
+def test_web_bridge_group_create_join_keep_server_id_clear():
+    bridge = WebBridge.__new__(WebBridge)
+    bridge._groups = {}
+    events = []
+    bridge._push = lambda event_type, data: events.append((event_type, data))
+    bridge._push_msg = lambda msg: events.append(("new_message", msg))
+
+    bridge._on_group_create_resp(MessageType.GROUP_CREATE, 1, {
+        "success": True,
+        "group_id": 2,
+        "name": "1",
+    })
+    bridge._on_group_join_resp(MessageType.GROUP_JOIN, 2, {
+        "success": True,
+        "group_id": 1,
+        "name": "group",
+    })
+
+    assert bridge._groups == {"2": "1", "1": "group"}
+    assert ("new_message", {"type": "system", "content": "Created group #2 \"1\""}) in events
+    assert ("new_message", {"type": "system", "content": "Joined group #1 \"group\""}) in events
+
+
 def test_web_bridge_group_file_init_uses_group_context(monkeypatch):
     class InlineThread:
         def __init__(self, target, args=(), daemon=None):

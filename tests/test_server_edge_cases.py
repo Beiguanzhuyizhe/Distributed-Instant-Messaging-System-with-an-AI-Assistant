@@ -3,6 +3,7 @@ import pytest
 from server.config import ServerConfig
 from server.protocol import MessageType
 from server.tcp_server import ChatServer, ConnectionManager
+import server.ai_service as ai_service_module
 from tests.temp_utils import make_runtime_dir, remove_runtime_dir
 
 
@@ -142,6 +143,56 @@ async def test_group_file_completion_is_broadcast_with_group_context(server):
 
 
 @pytest.mark.asyncio
+async def test_group_ai_reply_strips_member_name_prefix(monkeypatch, server):
+    class FakeAI:
+        available = True
+
+        async def query_with_context(self, query, username="", history=None):
+            self.query = query
+            self.username = username
+            self.history = history or []
+            return "bob: 这是群内可见的回答"
+
+    fake_ai = FakeAI()
+    monkeypatch.setattr(ai_service_module, "get_ai_service", lambda _config: fake_ai)
+
+    conn = DummyConnection()
+    conn_id = await server.conn_manager.add(conn)
+    await server.conn_manager.bind_user(conn_id, 1)
+    server.user_manager.get_user_info = _user_info({
+        1: "alice",
+        2: "bob",
+    })
+    server.group_manager.is_member = _async_return(True)
+    server.group_manager.get_group_members = _async_return([
+        {"id": 1, "username": "alice"},
+        {"id": 2, "username": "bob"},
+    ])
+    server.msg_history.get_group_history = _async_return([
+        {"sender_id": 2, "content": "之前的问题", "recalled": 0},
+    ])
+    broadcasts = []
+
+    async def fake_send_to_group(group_id, msg_type, payload, exclude_user_id=None):
+        broadcasts.append((group_id, msg_type, payload, exclude_user_id))
+
+    server.msg_router.send_to_group = fake_send_to_group
+
+    await server._handle_ai_query(conn_id, 21, {
+        "query": "@ai 帮我总结",
+        "group_id": 9,
+    })
+
+    msg_type, seq, payload = conn.sent[-1]
+    assert msg_type == MessageType.AI_RESP
+    assert seq == 21
+    assert payload["content"] == "这是群内可见的回答"
+    assert payload["chat_key"] == "group:9"
+    assert broadcasts[0][2]["content"] == "这是群内可见的回答"
+    assert all("bob:" not in item["content"] for item in fake_ai.history)
+
+
+@pytest.mark.asyncio
 async def test_non_object_payload_is_rejected(server):
     conn = DummyConnection()
     conn_id = await server.conn_manager.add(conn)
@@ -184,4 +235,13 @@ def _async_return(value):
 def _record_async(calls, name):
     async def inner(*args, **_kwargs):
         calls.append((name, args))
+    return inner
+
+
+def _user_info(names):
+    async def inner(user_id):
+        username = names.get(user_id)
+        if username is None:
+            return None
+        return {"id": user_id, "username": username}
     return inner

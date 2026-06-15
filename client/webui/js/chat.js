@@ -172,6 +172,12 @@
     });
   }
 
+  function formatGroupTitle(groupId, groupName) {
+    var gid = String(groupId || '').trim();
+    var name = String(groupName || '').trim();
+    return '#' + gid + (name ? '  ' + name : '');
+  }
+
   // ============================================================
   // 聊天头部
   // ============================================================
@@ -180,12 +186,13 @@
     var targetName = props.targetName;
     var chatType = props.chatType;
     var onlineUsers = props.onlineUsers || {};
+    var groupName = props.groupName || '';
 
     var isAi = chatType === 'ai';
     var isOnline = chatType === 'private' && onlineUsers[targetName];
     var statusText = isAi ? 'Powered by BigModel AI' : (chatType === 'group' ? 'Group' : (isOnline ? 'Online' : 'Offline'));
     var avatarColor = getAvatarColor(isAi ? 'AI' : (targetName || '?'));
-    var displayName = targetName;
+    var displayName = chatType === 'group' ? formatGroupTitle(targetName, groupName) : targetName;
 
     if (!targetName) return null;
 
@@ -920,6 +927,7 @@
                 targetName: currentTarget,
                 chatType: currentChatType,
                 onlineUsers: onlineUsers,
+                groupName: currentChatType === 'group' ? groups[currentTarget] : '',
                 headerRef: function(el) { headerRef.current = el; },
               }),
               h(window.App.MessageArea, {
@@ -971,6 +979,7 @@
     messageBelongsToChat: messageBelongsToChat,
     messageEquivalent: messageEquivalent,
     mergeMessages: mergeMessages,
+    formatGroupTitle: formatGroupTitle,
   };
   window.App.ChatLayout = ChatLayout;
 })();
