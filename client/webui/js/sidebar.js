@@ -33,14 +33,15 @@
     var isActive = props.isActive;
     var isOnline = props.isOnline;
     var isGroup = props.isGroup;
+    var isSelf = props.isSelf;
     var onClick = props.onClick;
     var unreadCount = props.unreadCount || 0;
 
     var avatarColor = useMemo(function () { return getAvatarColor(name); }, [name]);
 
     return h('div', {
-      className: 'contact-item' + (isActive ? ' active' : ''),
-      onClick: onClick,
+      className: 'contact-item' + (isActive ? ' active' : '') + (isSelf ? ' self' : ''),
+      onClick: isSelf ? undefined : onClick,
       title: name,
     },
       isGroup
@@ -51,7 +52,7 @@
               ? h('div', { className: 'online-dot' })
               : h('div', { className: 'offline-dot' }),
           ),
-      h('div', { className: 'contact-name' }, name),
+      h('div', { className: 'contact-name' }, isSelf ? name + ' (You)' : name),
       unreadCount > 0 && h('div', { className: 'unread-badge' },
         unreadCount > 99 ? '99+' : String(unreadCount)
       ),
@@ -71,9 +72,7 @@
 
     // 过滤 + 排序联系人（按最后消息时间倒序, 类似微信）
     var filteredUsers = useMemo(function () {
-      var entries = Object.entries(onlineUsers).filter(function (e) {
-        return e[0] !== props.username;
-      });
+      var entries = Object.entries(onlineUsers);
       if (searchQuery) {
         var q = searchQuery.toLowerCase();
         entries = entries.filter(function (e) { return e[0].toLowerCase().includes(q); });
@@ -140,14 +139,16 @@
       filteredUsers.map(function (entry) {
         var name = entry[0];
         var uid = entry[1];
-        var isActive = currentTarget === name && currentChatType === 'private';
+        var isSelf = name === props.username;
+        var isActive = !isSelf && currentTarget === name && currentChatType === 'private';
         var key = 'private:' + uid;
         return h(ContactItem, {
           key: 'user-' + uid,
           name: name,
           isActive: isActive,
           isOnline: true,
-          unreadCount: unreadCounts[key] || 0,
+          isSelf: isSelf,
+          unreadCount: isSelf ? 0 : (unreadCounts[key] || 0),
           onClick: function () { onSelectTarget('private', name, uid); },
         });
       }),
@@ -175,5 +176,8 @@
   }
 
   window.App = window.App || {};
+  window.App.__sidebarLogic = {
+    isSelfUser: function (name, username) { return name === username; },
+  };
   window.App.Sidebar = Sidebar;
 })();

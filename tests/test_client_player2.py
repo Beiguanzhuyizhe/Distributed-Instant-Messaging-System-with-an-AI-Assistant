@@ -9,6 +9,7 @@ from client.message_handler import MessageHandler
 from client.protocol import MessageType
 from client.cli import ChatCLI
 from client.gui import ChatGUI
+import client.web_bridge as web_bridge_module
 from client.web_bridge import WebBridge
 from tests.temp_utils import make_runtime_dir, remove_runtime_dir
 
@@ -51,8 +52,8 @@ class DummyHandler:
     def send_recall(self, msg_id):
         self.calls.append(("recall", msg_id))
 
-    def send_file_init(self, from_id, to_id, filename, filesize, file_id):
-        self.calls.append(("file_init", from_id, to_id, filename, filesize, file_id))
+    def send_file_init(self, from_id, to_id, filename, filesize, file_id, group_id=None):
+        self.calls.append(("file_init", from_id, to_id, filename, filesize, file_id, group_id))
         return {"ok": True, "seq": 1, "client_file_id": file_id}
 
     def send_file_data(self, file_id, chunk_data, chunk_index, total_chunks):
@@ -95,6 +96,19 @@ def test_message_handler_returns_tracking_info_for_private_message():
     assert result["payload"] == conn.sent[-1]["payload"]
     assert result["client_msg_id"] == conn.sent[-1]["payload"]["msg_id"]
     assert conn.sent[-1]["msg_type"] == MessageType.PRIVATE_MSG
+
+
+def test_message_handler_file_init_supports_group_id():
+    conn = DummyConnection()
+    handler = MessageHandler(conn)
+
+    result = handler.send_file_init(1, None, "group.txt", 4, "file-g", group_id=9)
+
+    assert result["ok"] is True
+    payload = conn.sent[-1]["payload"]
+    assert payload["group_id"] == 9
+    assert "to_id" not in payload
+    assert payload["file_id"] == "file-g"
 
 
 def test_cli_recall_accepts_server_uuid_msg_id():
@@ -177,8 +191,8 @@ def test_cli_send_file_uses_string_file_id():
         init_call = cli.handler.calls[0]
         data_call = cli.handler.calls[1]
         assert init_call[0] == "file_init"
-        assert isinstance(init_call[-1], str)
-        assert data_call[1] == init_call[-1]
+        assert isinstance(init_call[5], str)
+        assert data_call[1] == init_call[5]
     finally:
         remove_runtime_dir(tmp_dir)
 
@@ -406,3 +420,80 @@ def test_web_bridge_leave_group_removes_sidebar_entry_without_payload_group_id()
 
     assert "9" not in bridge._groups
     assert ("group_left", {"group_id": "9", "groups": {}}) in events
+
+
+def test_web_bridge_group_file_init_uses_group_context(monkeypatch):
+    class InlineThread:
+        def __init__(self, target, args=(), daemon=None):
+            self.target = target
+            self.args = args
+
+        def start(self):
+            self.target(*self.args)
+
+    monkeypatch.setattr(web_bridge_module.threading, "Thread", InlineThread)
+
+    bridge = WebBridge.__new__(WebBridge)
+    bridge._user_id = 1
+    bridge._username = "alice"
+    bridge._chat_type = "group"
+    bridge._current_target = "9"
+    bridge._current_target_id = 9
+    bridge.handler = DummyHandler()
+    tmp_dir = make_runtime_dir("web_bridge_file_")
+    sample = tmp_dir / "group.txt"
+    sample.write_text("demo", encoding="utf-8")
+    bridge._tk_file_dialog = lambda: str(sample)
+    events = []
+    bridge._push = lambda event_type, data: events.append((event_type, data))
+
+    try:
+        result = bridge.select_and_send_file()
+    finally:
+        remove_runtime_dir(tmp_dir)
+
+    assert result["ok"] is True
+    init_call = bridge.handler.calls[0]
+    assert init_call[0] == "file_init"
+    assert init_call[2] is None
+    assert init_call[6] == 9
+    assert events[-1][0] == "file_sent"
+    assert events[-1][1]["chat_key"] == "group:9"
+    assert events[-1][1]["related_type"] == "group"
+    assert events[-1][1]["related_target"] == "9"
+
+
+def test_web_bridge_group_file_notification_routes_download_to_group():
+    bridge = WebBridge.__new__(WebBridge)
+    bridge._online_users = {"alice": 1, "bob": 2}
+    bridge._download_dir = "."
+    pushed = []
+    bridge._push = lambda event_type, data: pushed.append((event_type, data))
+    downloads = []
+    bridge._gui_download_file = lambda file_id, filename, filesize, context: downloads.append(
+        (file_id, filename, filesize, context)
+    )
+
+    bridge._on_file_init(MessageType.FILE_INIT, 1, {
+        "status": "completed",
+        "file_id": "file-g",
+        "from_id": 2,
+        "filename": "group.txt",
+        "filesize": 4,
+        "group_id": 9,
+        "chat_key": "group:9",
+    })
+
+    assert pushed[0][0] == "file_incoming"
+    assert pushed[0][1]["chat_key"] == "group:9"
+    assert pushed[0][1]["related_type"] == "group"
+    assert pushed[0][1]["related_target"] == "9"
+    assert downloads == [(
+        "file-g", "group.txt", 4,
+        {
+            "related_type": "group",
+            "related_target": "9",
+            "chat_key": "group:9",
+            "group_id": "9",
+        },
+    )]

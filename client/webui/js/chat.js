@@ -99,10 +99,67 @@
       String(m.sender || '') + '|' + String(m.content || '');
   }
 
-  function messageIdInSet(m, ids) {
-    return (m.msg_id && ids.has(m.msg_id)) ||
-      (m.server_msg_id && ids.has(m.server_msg_id)) ||
-      (m.local_msg_id && ids.has(m.local_msg_id));
+  function isLocalMessage(m) {
+    if (!m) return false;
+    var localId = m.local_msg_id ? String(m.local_msg_id) : '';
+    var serverId = m.server_msg_id ? String(m.server_msg_id) : '';
+    var msgId = m.msg_id ? String(m.msg_id) : '';
+    return m.status === 'pending' ||
+      Boolean(localId && (!serverId || serverId === localId || msgId === localId));
+  }
+
+  function messageEquivalent(a, b, username) {
+    if (!a || !b) return false;
+    if (messageIdentity(a, username) && messageIdentity(a, username) === messageIdentity(b, username)) {
+      return true;
+    }
+    var keyA = chatKeyForMessage(a, username);
+    var keyB = chatKeyForMessage(b, username);
+    if (!keyA || keyA !== keyB) return false;
+    if (String(a.type || '') !== String(b.type || '')) return false;
+    if (String(a.sender || '') !== String(b.sender || '')) return false;
+    if (String(a.content || '') !== String(b.content || '')) return false;
+    var aIsLocal = isLocalMessage(a);
+    var bIsLocal = isLocalMessage(b);
+    if (aIsLocal === bIsLocal) return false;
+    var tsA = Number(a.timestamp || 0);
+    var tsB = Number(b.timestamp || 0);
+    if (!tsA || !tsB) return false;
+    return Math.abs(tsA - tsB) <= 120;
+  }
+
+  function preferMergedMessage(existing, incoming) {
+    var merged = Object.assign({}, existing, incoming);
+    if (existing.local_msg_id && !merged.local_msg_id) merged.local_msg_id = existing.local_msg_id;
+    if (incoming.server_msg_id || (incoming.msg_id && !isLocalMessage(incoming))) {
+      merged.server_msg_id = incoming.server_msg_id || incoming.msg_id;
+      merged.msg_id = incoming.msg_id || incoming.server_msg_id;
+      if (existing.local_msg_id) merged.local_msg_id = existing.local_msg_id;
+      if (!incoming.status || incoming.status === 'pending') merged.status = 'sent';
+    } else if (existing.server_msg_id) {
+      merged.server_msg_id = existing.server_msg_id;
+      merged.msg_id = existing.msg_id || existing.server_msg_id;
+    }
+    return merged;
+  }
+
+  function mergeMessages(prev, incoming, username) {
+    var next = prev.slice();
+    incoming.forEach(function (msg) {
+      var idx = -1;
+      for (var i = 0; i < next.length; i++) {
+        if (messageEquivalent(next[i], msg, username)) {
+          idx = i;
+          break;
+        }
+      }
+      if (idx >= 0) {
+        next[idx] = preferMergedMessage(next[idx], msg);
+      } else {
+        next.push(msg);
+      }
+    });
+    return sortMessages(next);
   }
 
   function messageSortValue(m) {
@@ -467,11 +524,7 @@
 
       unsubs.push(window.Bridge.on('new_message', function (data) {
         setMessages(function (prev) {
-          var identity = messageIdentity(data, username);
-          if (identity && prev.some(function (m) { return messageIdentity(m, username) === identity; })) {
-            return prev;
-          }
-          return sortMessages(prev.concat([data]));
+          return mergeMessages(prev, [data], username);
         });
 
         var isOwn = data.sender === username;
@@ -530,8 +583,7 @@
             var kept = prev.filter(function (m) {
               var key = chatKeyForMessage(m, username);
               if (historyKey && key !== historyKey) return true;
-              var identity = messageIdentity(m, username);
-              return !identity || !incomingIdentities.has(identity);
+              return !incoming.some(function (hm) { return messageEquivalent(m, hm, username); });
             });
             return sortMessages(kept.concat(incoming));
           });
@@ -553,7 +605,8 @@
         setMessages(function (prev) {
           return prev.map(function (m) {
             if (m.local_msg_id === data.local_msg_id || m.msg_id === data.msg_id) {
-              var status = data.status || m.status || 'sent';
+              var hasServerId = data.msg_id && data.msg_id !== data.local_msg_id;
+              var status = data.status || (hasServerId ? 'sent' : (m.status || 'sent'));
               var next = Object.assign({}, m, {
                 status: status,
                 timestamp: data.timestamp || m.timestamp
@@ -605,20 +658,20 @@
 
       unsubs.push(window.Bridge.on('file_sent', function (data) {
         setMessages(function (prev) {
-          return prev.concat([{
+          return mergeMessages(prev, [{
             type: 'system',
             content: '[System] File sent: ' + (data.filename || 'unknown') + ' (' + (data.filesize || 0) + ' bytes)',
             timestamp: Math.floor(Date.now() / 1000),
             related_type: data.related_type || 'private',
             related_target: data.related_target || '',
             chat_key: data.chat_key || makeChatKey(data.related_type || 'private', data.related_target || ''),
-          }]);
+          }], username);
         });
       }));
 
       unsubs.push(window.Bridge.on('file_download_result', function (data) {
         setMessages(function (prev) {
-          return prev.concat([{
+          return mergeMessages(prev, [{
             type: 'system',
             content: data.success
               ? '[System] File saved: ' + data.filename + ' (' + (data.filesize || 0) + ' bytes) -> ' + (data.path || 'downloads/')
@@ -627,20 +680,20 @@
             related_type: data.related_type || 'private',
             related_target: data.related_target || '',
             chat_key: data.chat_key || makeChatKey(data.related_type || 'private', data.related_target || ''),
-          }]);
+          }], username);
         });
       }));
 
       unsubs.push(window.Bridge.on('file_incoming', function (data) {
         setMessages(function (prev) {
-          return prev.concat([{
+          return mergeMessages(prev, [{
             type: 'system',
             content: '[System] Incoming file from ' + (data.sender || ('User#' + (data.from_id || '?'))) + ': ' + data.filename + ' (' + (data.filesize || 0) + ' bytes)',
             timestamp: Math.floor(Date.now() / 1000),
             related_type: data.related_type || 'private',
             related_target: data.related_target || String(data.from_id || ''),
             chat_key: data.chat_key || makeChatKey(data.related_type || 'private', data.related_target || String(data.from_id || '')),
-          }]);
+          }], username);
         });
       }));
 
@@ -916,6 +969,8 @@
     makeChatKey: makeChatKey,
     chatKeyForMessage: chatKeyForMessage,
     messageBelongsToChat: messageBelongsToChat,
+    messageEquivalent: messageEquivalent,
+    mergeMessages: mergeMessages,
   };
   window.App.ChatLayout = ChatLayout;
 })();

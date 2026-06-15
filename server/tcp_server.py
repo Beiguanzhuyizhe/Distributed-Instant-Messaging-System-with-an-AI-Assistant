@@ -554,16 +554,7 @@ class ChatServer:
             await conn.send_message(MessageType.FILE_INIT, result, seq=seq)
         if result.get("success") and result.get("completed"):
             transfer = await self.file_transfer.get_transfer_progress(result["file_id"])
-            if transfer and transfer["receiver_id"]:
-                await self.conn_manager.send_to_user(
-                    transfer["receiver_id"], MessageType.FILE_INIT, {
-                        "file_id": result["file_id"],
-                        "from_id": transfer["sender_id"],
-                        "filename": transfer["filename"],
-                        "filesize": transfer["filesize"],
-                        "status": "completed",
-                    },
-                )
+            await self._notify_file_completed(result["file_id"], transfer)
 
     async def _handle_file_data(self, conn_id: int, seq: int, payload: dict):
         sender_id = self.conn_manager.get_user_id(conn_id)
@@ -594,16 +585,7 @@ class ChatServer:
         # 文件传输完成，通知接收方
         if result.get("completed"):
             transfer = await self.file_transfer.get_transfer_progress(file_id)
-            if transfer and transfer["receiver_id"]:
-                await self.conn_manager.send_to_user(
-                    transfer["receiver_id"], MessageType.FILE_INIT, {
-                        "file_id": file_id,
-                        "from_id": transfer["sender_id"],
-                        "filename": transfer["filename"],
-                        "filesize": transfer["filesize"],
-                        "status": "completed",
-                    }
-                )
+            await self._notify_file_completed(file_id, transfer)
 
     async def _handle_file_ack(self, conn_id: int, seq: int, payload: dict):
         requester_id = self.conn_manager.get_user_id(conn_id)
@@ -631,6 +613,40 @@ class ChatServer:
             }, seq=seq)
         else:
             await conn.send_message(MessageType.FILE_ACK, result, seq=seq)
+
+    async def _notify_file_completed(self, file_id: str, transfer: dict):
+        if not transfer:
+            return
+        payload = {
+            "file_id": file_id,
+            "from_id": transfer["sender_id"],
+            "filename": transfer["filename"],
+            "filesize": transfer["filesize"],
+            "status": "completed",
+        }
+        group_id = transfer.get("group_id")
+        if group_id:
+            payload.update({
+                "group_id": group_id,
+                "related_type": "group",
+                "related_target": str(group_id),
+                "chat_key": f"group:{group_id}",
+            })
+            await self.msg_router.send_to_group(
+                group_id, MessageType.FILE_INIT, payload,
+                exclude_user_id=transfer["sender_id"],
+            )
+            return
+        receiver_id = transfer.get("receiver_id")
+        if receiver_id:
+            payload.update({
+                "related_type": "private",
+                "related_target": str(transfer["sender_id"]),
+                "chat_key": f"private:{transfer['sender_id']}",
+            })
+            await self.conn_manager.send_to_user(
+                receiver_id, MessageType.FILE_INIT, payload
+            )
 
     # ---------------------------------------------------------------
     # 群组管理

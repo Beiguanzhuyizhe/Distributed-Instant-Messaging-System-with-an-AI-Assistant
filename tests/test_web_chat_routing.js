@@ -7,6 +7,10 @@ const chatJs = fs.readFileSync(
   path.join(__dirname, '..', 'client', 'webui', 'js', 'chat.js'),
   'utf8',
 );
+const sidebarJs = fs.readFileSync(
+  path.join(__dirname, '..', 'client', 'webui', 'js', 'sidebar.js'),
+  'utf8',
+);
 
 const noop = () => {};
 const React = {
@@ -27,9 +31,12 @@ const sandbox = {
 
 vm.createContext(sandbox);
 vm.runInContext(chatJs, sandbox);
+vm.runInContext(sidebarJs, sandbox);
 
 const routing = sandbox.window.App.__chatRouting;
 assert(routing, 'chat routing test hooks should be exposed');
+const sidebarLogic = sandbox.window.App.__sidebarLogic;
+assert(sidebarLogic, 'sidebar logic test hooks should be exposed');
 
 const messages = [
   {
@@ -201,3 +208,54 @@ assert.strictEqual(routing.messageBelongsToChat(aiDirect, {
   targetId: 2,
   username: 'alice',
 }), false);
+
+const pendingOwn = {
+  type: 'private',
+  sender: 'alice',
+  from_id: 1,
+  receiver_id: 2,
+  target_id: 2,
+  content: 'same message',
+  timestamp: 1700000000,
+  local_msg_id: 'local-1',
+  msg_id: 'local-1',
+  status: 'pending',
+  chat_key: 'private:2',
+};
+const historyOwn = {
+  type: 'private',
+  sender: 'alice',
+  from_id: 1,
+  receiver_id: 2,
+  target_id: '2',
+  content: 'same message',
+  timestamp: 1700000001,
+  msg_id: 'server-1',
+  chat_key: 'private:2',
+};
+const merged = routing.mergeMessages([pendingOwn], [historyOwn], 'alice');
+assert.strictEqual(merged.length, 1);
+assert.strictEqual(merged[0].msg_id, 'server-1');
+assert.strictEqual(merged[0].server_msg_id, 'server-1');
+assert.strictEqual(merged[0].local_msg_id, 'local-1');
+assert.strictEqual(merged[0].status, 'sent');
+
+const repeatedRealMessages = routing.mergeMessages([{
+  type: 'private',
+  sender: 'alice',
+  content: 'repeat',
+  timestamp: 1700000000,
+  msg_id: 'server-a',
+  chat_key: 'private:2',
+}], [{
+  type: 'private',
+  sender: 'alice',
+  content: 'repeat',
+  timestamp: 1700000001,
+  msg_id: 'server-b',
+  chat_key: 'private:2',
+}], 'alice');
+assert.strictEqual(repeatedRealMessages.length, 2);
+
+assert.strictEqual(sidebarLogic.isSelfUser('alice', 'alice'), true);
+assert.strictEqual(sidebarLogic.isSelfUser('bob', 'alice'), false);

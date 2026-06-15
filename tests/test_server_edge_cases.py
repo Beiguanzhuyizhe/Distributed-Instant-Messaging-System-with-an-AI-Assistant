@@ -114,6 +114,34 @@ async def test_history_rejects_self_private_chat(server):
 
 
 @pytest.mark.asyncio
+async def test_group_file_completion_is_broadcast_with_group_context(server):
+    calls = []
+
+    async def fake_send_to_group(group_id, msg_type, payload, exclude_user_id=None):
+        calls.append((group_id, msg_type, payload, exclude_user_id))
+
+    server.msg_router.send_to_group = fake_send_to_group
+
+    await server._notify_file_completed("file-g", {
+        "sender_id": 1,
+        "receiver_id": None,
+        "group_id": 9,
+        "filename": "group.txt",
+        "filesize": 4,
+    })
+
+    assert len(calls) == 1
+    group_id, msg_type, payload, exclude_user_id = calls[0]
+    assert group_id == 9
+    assert msg_type == MessageType.FILE_INIT
+    assert exclude_user_id == 1
+    assert payload["chat_key"] == "group:9"
+    assert payload["related_type"] == "group"
+    assert payload["related_target"] == "9"
+    assert payload["from_id"] == 1
+
+
+@pytest.mark.asyncio
 async def test_non_object_payload_is_rejected(server):
     conn = DummyConnection()
     conn_id = await server.conn_manager.add(conn)

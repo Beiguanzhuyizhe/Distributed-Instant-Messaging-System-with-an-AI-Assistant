@@ -146,11 +146,20 @@ class MessageHandler:
             {"group_id": group_id, "user_id": user_id}
         )
 
-    def send_file_init(self, from_id, to_id, filename, filesize, file_id):
+    def send_file_init(self, from_id, to_id, filename, filesize, file_id, group_id=None):
+        payload = {
+            "from_id": from_id,
+            "filename": filename,
+            "filesize": filesize,
+            "file_id": str(file_id),
+        }
+        if group_id:
+            payload["group_id"] = group_id
+        else:
+            payload["to_id"] = to_id
         return self._send_tracked(
             MessageType.FILE_INIT,
-            {"from_id": from_id, "to_id": to_id,
-             "filename": filename, "filesize": filesize, "file_id": str(file_id)}
+            payload,
         )
 
     def send_file_data(self, file_id, chunk_data, chunk_index, total_chunks):

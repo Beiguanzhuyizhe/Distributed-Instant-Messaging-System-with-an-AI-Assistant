@@ -459,23 +459,35 @@ class WebBridge:
         from_id = payload.get("from_id", 0)
         filename = payload.get("filename", "unknown")
         filesize = payload.get("filesize", 0)
+        group_id = payload.get("group_id")
         sender = f"User#{from_id}"
         for name, uid in self._online_users.items():
             if uid == from_id:
                 sender = name
                 break
+        if group_id not in (None, "", 0, "0"):
+            context = {
+                "related_type": "group",
+                "related_target": str(group_id),
+                "chat_key": payload.get("chat_key") or self._chat_key("group", group_id),
+                "group_id": str(group_id),
+            }
+        else:
+            context = {
+                "related_type": "private",
+                "related_target": str(from_id),
+                "chat_key": payload.get("chat_key") or self._chat_key("private", from_id),
+            }
         self._push("file_incoming", {
             "file_id": file_id,
             "filename": filename,
             "filesize": filesize,
             "sender": sender,
             "from_id": from_id,
-            "related_type": "private",
-            "related_target": str(from_id),
-            "chat_key": self._chat_key("private", from_id),
+            **context,
         })
         threading.Thread(target=self._gui_download_file,
-                         args=(file_id, filename, filesize, str(from_id)), daemon=True).start()
+                         args=(file_id, filename, filesize, context), daemon=True).start()
 
     def _on_file_ack(self, msg_type, seq, payload):
         file_id = payload.get("file_id", "")
@@ -493,26 +505,31 @@ class WebBridge:
         if state["remaining"] <= 0:
             state["event"].set()
 
-    def _gui_download_file(self, file_id, filename, filesize, related_target=""):
+    def _gui_download_file(self, file_id, filename, filesize, context=None):
         CHUNK_SIZE = 64 * 1024
         dest = os.path.join(self._download_dir, filename)
+        context = context or {
+            "related_type": "private",
+            "related_target": "",
+            "chat_key": self._chat_key("private", ""),
+        }
         if filesize == 0:
             try:
                 os.makedirs(self._download_dir, exist_ok=True)
                 with open(dest, "wb"):
                     pass
-                self._push("file_download_result", {
+                event = {
                     "filename": filename, "filesize": filesize,
                     "success": True, "path": dest,
-                    "related_type": "private", "related_target": related_target,
-                    "chat_key": self._chat_key("private", related_target),
-                })
+                }
+                event.update(context)
+                self._push("file_download_result", event)
             except Exception as e:
-                self._push("file_download_result", {
+                event = {
                     "filename": filename, "success": False, "error": str(e),
-                    "related_type": "private", "related_target": related_target,
-                    "chat_key": self._chat_key("private", related_target),
-                })
+                }
+                event.update(context)
+                self._push("file_download_result", event)
             return
         state = {"data": {}, "remaining": filesize,
                  "event": threading.Event(), "chunk_size": CHUNK_SIZE}
@@ -520,12 +537,12 @@ class WebBridge:
         for offset in range(0, filesize, CHUNK_SIZE):
             self.handler.request_file_chunk(file_id, offset)
         if not state["event"].wait(timeout=30):
-            self._push("file_download_result", {
+            event = {
                 "filename": filename, "success": False,
                 "error": "Download timed out",
-                "related_type": "private", "related_target": related_target,
-                "chat_key": self._chat_key("private", related_target),
-            })
+            }
+            event.update(context)
+            self._push("file_download_result", event)
             self._dl_state.pop(file_id, None)
             return
         try:
@@ -533,18 +550,18 @@ class WebBridge:
             with open(dest, "wb") as f:
                 for offset in sorted(state["data"].keys()):
                     f.write(state["data"][offset])
-            self._push("file_download_result", {
+            event = {
                 "filename": filename, "filesize": filesize,
                 "success": True, "path": dest,
-                "related_type": "private", "related_target": related_target,
-                "chat_key": self._chat_key("private", related_target),
-            })
+            }
+            event.update(context)
+            self._push("file_download_result", event)
         except Exception as e:
-            self._push("file_download_result", {
+            event = {
                 "filename": filename, "success": False, "error": str(e),
-                "related_type": "private", "related_target": related_target,
-                "chat_key": self._chat_key("private", related_target),
-            })
+            }
+            event.update(context)
+            self._push("file_download_result", event)
         self._dl_state.pop(file_id, None)
 
     def _on_disconnected(self):
@@ -714,20 +731,25 @@ class WebBridge:
             filesize = os.path.getsize(filepath)
             filename = os.path.basename(filepath)
             file_id = str(uuid.uuid4())
-            # 获取当前聊天目标
-            target_id = self._current_target_id
-            if not target_id or not self._user_id:
+            if not self._user_id:
+                return {"ok": False, "error": "Not logged in"}
+            is_group = self._chat_type == "group"
+            target_id = None if is_group else self._current_target_id
+            group_id = int(self._current_target) if is_group and self._current_target else None
+            if (not is_group and not target_id) or (is_group and not group_id):
                 return {"ok": False, "error": "No target selected"}
-            self.handler.send_file_init(self._user_id, target_id, filename, filesize, file_id)
+            self.handler.send_file_init(
+                self._user_id, target_id, filename, filesize, file_id, group_id=group_id
+            )
             # 捕获文件上下文（在后台线程完成前聊天可能已切换）
+            context_target = group_id if is_group else target_id
             file_context = {
                 "related_type": self._chat_type,
-                "related_target": str(self._current_target_id) if self._chat_type == 'private' else str(self._current_target),
-                "chat_key": self._chat_key(
-                    self._chat_type,
-                    self._current_target_id if self._chat_type == 'private' else self._current_target,
-                ),
+                "related_target": str(context_target),
+                "chat_key": self._chat_key(self._chat_type, context_target),
             }
+            if is_group:
+                file_context["group_id"] = str(group_id)
             # 后台发送文件数据
             threading.Thread(target=self._send_file_worker,
                              args=(filepath, file_id, filesize, filename, file_context), daemon=True).start()
