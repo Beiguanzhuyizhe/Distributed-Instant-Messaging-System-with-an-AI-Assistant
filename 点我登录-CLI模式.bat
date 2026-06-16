@@ -1,6 +1,1 @@
-@echo off
-echo ===== Chat Client (Text Mode) =====
-echo Make sure server is running (double-click restart.bat first)
-echo.
-python -m client.main --cli
-pause
+QGVjaG8gb2ZmCmVjaG8gPT09PT0gQ2hhdCBDbGllbnQgKFRleHQgTW9kZSkgPT09PT0KZWNobyBNYWtlIHN1cmUgc2VydmVyIGlzIHJ1bm5pbmcgKGRvdWJsZS1jbGljayByZXN0YXJ0LmJhdCBmaXJzdCkKZWNoby4KcHl0aG9uIC1tIGNsaWVudC5tYWluIC0tY2xpCnBhdXNlCg==

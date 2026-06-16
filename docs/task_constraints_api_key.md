@@ -1,16 +1,1 @@
-# 本次任务补充约束：API Key 处理
-
-## 问题语境
-
-在根据 `作业要求.pdf` 进行压力测试、真实 AI smoke test、更新测试报告和编写手动测试/录屏指南时，用户允许使用现有环境变量中的 `DEEPSEEK_API_KEY`。
-
-## 用户补充要求
-
-测试过程中不得因为调用 AI 接口而把用户的 API Key 写入项目文件。
-
-## 执行要求
-
-- 只能从当前进程环境变量或用户级环境变量读取 `DEEPSEEK_API_KEY`。
-- 如需适配项目现有 AI 配置，只能在测试进程环境中临时映射为服务端读取的变量，例如 `BIGMODEL_API_KEY`、`AI_API_BASE`、`AI_MODEL`。
-- 不得把 API Key 原文写入源码、文档、日志、测试报告、临时脚本或 Git 提交。
-- 测试报告和手动指南中只能记录“环境变量存在”“真实 AI smoke test 通过/失败”等结论，不记录密钥内容。
+IyDmnKzmrKHku7vliqHooaXlhYXnuqbmnZ/vvJpBUEkgS2V5IOWkhOeQhgoKIyMg6Zeu6aKY6K+t5aKDCgrlnKjmoLnmja4gYOS9nOS4muimgeaxgi5wZGZgIOi/m+ihjOWOi+WKm+a1i+ivleOAgeecn+WuniBBSSBzbW9rZSB0ZXN044CB5pu05paw5rWL6K+V5oql5ZGK5ZKM57yW5YaZ5omL5Yqo5rWL6K+VL+W9leWxj+aMh+WNl+aXtu+8jOeUqOaIt+WFgeiuuOS9v+eUqOeOsOacieeOr+Wig+WPmOmHj+S4reeahCBgREVFUFNFRUtfQVBJX0tFWWDjgIIKCiMjIOeUqOaIt+ihpeWFheimgeaxggoK5rWL6K+V6L+H56iL5Lit5LiN5b6X5Zug5Li66LCD55SoIEFJIOaOpeWPo+iAjOaKiueUqOaIt+eahCBBUEkgS2V5IOWGmeWFpemhueebruaWh+S7tuOAggoKIyMg5omn6KGM6KaB5rGCCgotIOWPquiDveS7juW9k+WJjei/m+eoi+eOr+Wig+WPmOmHj+aIlueUqOaIt+e6p+eOr+Wig+WPmOmHj+ivu+WPliBgREVFUFNFRUtfQVBJX0tFWWDjgIIKLSDlpoLpnIDpgILphY3pobnnm67njrDmnIkgQUkg6YWN572u77yM5Y+q6IO95Zyo5rWL6K+V6L+b56iL546v5aKD5Lit5Li05pe25pig5bCE5Li65pyN5Yqh56uv6K+75Y+W55qE5Y+Y6YeP77yM5L6L5aaCIGBCSUdNT0RFTF9BUElfS0VZYOOAgWBBSV9BUElfQkFTRWDjgIFgQUlfTU9ERUxg44CCCi0g5LiN5b6X5oqKIEFQSSBLZXkg5Y6f5paH5YaZ5YWl5rqQ56CB44CB5paH5qGj44CB5pel5b+X44CB5rWL6K+V5oql5ZGK44CB5Li05pe26ISa5pys5oiWIEdpdCDmj5DkuqTjgIIKLSDmtYvor5XmiqXlkYrlkozmiYvliqjmjIfljZfkuK3lj6rog73orrDlvZXigJznjq/looPlj5jph4/lrZjlnKjigJ3igJznnJ/lrp4gQUkgc21va2UgdGVzdCDpgJrov4cv5aSx6LSl4oCd562J57uT6K6677yM5LiN6K6w5b2V5a+G6ZKl5YaF5a6544CCCg==

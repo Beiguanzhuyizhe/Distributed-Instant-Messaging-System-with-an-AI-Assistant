@@ -1,7 +1,1 @@
-aiohttp>=3.9
-cryptography>=42.0
-prompt_toolkit>=3.0
-pytest>=8.0
-pytest-asyncio>=0.23
-rich>=13.0
-pywebview>=6.0
+YWlvaHR0cD49My45CmNyeXB0b2dyYXBoeT49NDIuMApwcm9tcHRfdG9vbGtpdD49My4wCnB5dGVzdD49OC4wCnB5dGVzdC1hc3luY2lvPj0wLjIzCnJpY2g+PTEzLjAKcHl3ZWJ2aWV3Pj02LjAK
