@@ -92,11 +92,13 @@
 
   function messageIdentity(m, username) {
     var key = chatKeyForMessage(m, username);
-    var id = m.server_msg_id || m.msg_id || m.local_msg_id;
+    var id = m.server_msg_id || m.msg_id || m.local_msg_id || m.event_id;
     if (key && id) return key + '|' + String(id);
-    if (!key) return '';
-    return key + '|fallback|' + String(m.timestamp || '') + '|' +
-      String(m.sender || '') + '|' + String(m.content || '');
+    return '';
+  }
+
+  function newEventId(prefix) {
+    return String(prefix || 'evt') + '-' + Date.now() + '-' + Math.random().toString(36).slice(2);
   }
 
   function isLocalMessage(m) {
@@ -113,19 +115,7 @@
     if (messageIdentity(a, username) && messageIdentity(a, username) === messageIdentity(b, username)) {
       return true;
     }
-    var keyA = chatKeyForMessage(a, username);
-    var keyB = chatKeyForMessage(b, username);
-    if (!keyA || keyA !== keyB) return false;
-    if (String(a.type || '') !== String(b.type || '')) return false;
-    if (String(a.sender || '') !== String(b.sender || '')) return false;
-    if (String(a.content || '') !== String(b.content || '')) return false;
-    var aIsLocal = isLocalMessage(a);
-    var bIsLocal = isLocalMessage(b);
-    if (aIsLocal === bIsLocal) return false;
-    var tsA = Number(a.timestamp || 0);
-    var tsB = Number(b.timestamp || 0);
-    if (!tsA || !tsB) return false;
-    return Math.abs(tsA - tsB) <= 120;
+    return false;
   }
 
   function preferMergedMessage(existing, incoming) {
@@ -169,6 +159,19 @@
   function sortMessages(messages) {
     return messages.slice().sort(function (a, b) {
       return messageSortValue(a) - messageSortValue(b);
+    });
+  }
+
+  function buildAiDirectContext(messages, username) {
+    return (messages || []).filter(function (m) {
+      return m.type === 'ai' && messageBelongsToChat(m, {
+        chatType: 'ai',
+        targetName: 'AI Assistant',
+        targetId: -1,
+        username: username,
+      });
+    }).slice(-10).map(function (m) {
+      return { sender: m.sender, content: m.content };
     });
   }
 
@@ -646,7 +649,7 @@
 
       unsubs.push(window.Bridge.on('message_acked', function (data) {
         setMessages(function (prev) {
-          return prev.map(function (m) {
+          var updated = prev.map(function (m) {
             if (m.local_msg_id === data.local_msg_id || m.msg_id === data.msg_id) {
               var hasServerId = data.msg_id && data.msg_id !== data.local_msg_id;
               var status = data.status || (hasServerId ? 'sent' : (m.status || 'sent'));
@@ -663,6 +666,7 @@
             }
             return m;
           });
+          return mergeMessages([], updated, username);
         });
       }));
 
@@ -708,6 +712,7 @@
             type: 'system',
             content: '[System] File sent: ' + (data.filename || 'unknown') + ' (' + (data.filesize || 0) + ' bytes)',
             timestamp: Math.floor(Date.now() / 1000),
+            event_id: newEventId('file-sent'),
             related_type: data.related_type || 'private',
             related_target: data.related_target || '',
             chat_key: data.chat_key || makeChatKey(data.related_type || 'private', data.related_target || ''),
@@ -723,6 +728,7 @@
               ? '[System] File saved: ' + data.filename + ' (' + (data.filesize || 0) + ' bytes) -> ' + (data.path || 'downloads/')
               : '[System] File download failed: ' + (data.error || 'unknown error'),
             timestamp: Math.floor(Date.now() / 1000),
+            event_id: newEventId('file-download'),
             related_type: data.related_type || 'private',
             related_target: data.related_target || '',
             chat_key: data.chat_key || makeChatKey(data.related_type || 'private', data.related_target || ''),
@@ -736,6 +742,7 @@
             type: 'system',
             content: '[System] Incoming file from ' + (data.sender || ('User#' + (data.from_id || '?'))) + ': ' + data.filename + ' (' + (data.filesize || 0) + ' bytes)',
             timestamp: Math.floor(Date.now() / 1000),
+            event_id: newEventId('file-incoming'),
             related_type: data.related_type || 'private',
             related_target: data.related_target || String(data.from_id || ''),
             chat_key: data.chat_key || makeChatKey(data.related_type || 'private', data.related_target || String(data.from_id || '')),
@@ -776,9 +783,7 @@
     var handleSend = useCallback(function (content) {
       if (currentChatType === 'ai') {
         // 收集最近对话作为上下文
-        var ctx = messages.filter(function (m) { return m.type === 'ai'; }).slice(-10).map(function (m) {
-          return { sender: m.sender, content: m.content };
-        });
+        var ctx = buildAiDirectContext(messages, username);
         window.Bridge.sendAiQuery(content, 0, ctx);
         // 本地显示用户消息
         setMessages(function (prev) {
@@ -787,6 +792,7 @@
             sender: username,
             content: content,
             timestamp: Math.floor(Date.now() / 1000),
+            event_id: newEventId('ai-user'),
             related_type: 'ai',
             related_target: 'AI Assistant',
             chat_key: makeChatKey('ai', 'AI Assistant'),
@@ -818,6 +824,7 @@
           type: 'system',
           content: '[AI] Query sent: "' + query.substring(0, 40) + (query.length > 40 ? '...' : '') + '"',
           timestamp: Math.floor(Date.now() / 1000),
+          event_id: newEventId('ai-query'),
           related_type: currentChatType,
           related_target: String(contextTarget),
           chat_key: makeChatKey(currentChatType, contextTarget),
@@ -836,6 +843,7 @@
               type: 'system',
               content: '[System] File upload: ' + (result.error || 'failed'),
               timestamp: Math.floor(Date.now() / 1000),
+              event_id: newEventId('file-error'),
               related_type: currentChatType,
               related_target: String(fileContextTarget || ''),
               chat_key: fileChatKey,
@@ -847,6 +855,7 @@
               type: 'system',
               content: '[System] Sending file: ' + result.filename + ' (' + result.filesize + ' bytes)',
               timestamp: Math.floor(Date.now() / 1000),
+              event_id: newEventId('file-start'),
               related_type: currentChatType,
               related_target: String(fileContextTarget || ''),
               chat_key: fileChatKey,
@@ -1019,6 +1028,7 @@
     messageBelongsToChat: messageBelongsToChat,
     messageEquivalent: messageEquivalent,
     mergeMessages: mergeMessages,
+    buildAiDirectContext: buildAiDirectContext,
     formatGroupTitle: formatGroupTitle,
   };
   window.App.ChatLayout = ChatLayout;

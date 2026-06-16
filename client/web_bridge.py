@@ -55,6 +55,7 @@ class WebBridge:
         self._pending_ai_context = {}
         self._pending_recall_context = None
         self._pending_group_leave = {}
+        self._pending_file_uploads = {}
 
         self._register_callbacks()
 
@@ -104,6 +105,8 @@ class WebBridge:
 
     def _push_msg(self, msg: dict):
         """推送一条消息对象到 JS（统一格式）"""
+        if not any(msg.get(key) for key in ("msg_id", "local_msg_id", "server_msg_id", "event_id")):
+            msg["event_id"] = f"evt-{uuid.uuid4()}"
         self._push("new_message", msg)
 
     def _sync_group_state(self, payload: dict):
@@ -151,6 +154,14 @@ class WebBridge:
         if seq is not None:
             self._pending_acks[seq] = msg
 
+    def _context_from_message(self, msg: dict) -> dict:
+        context = {}
+        for key in ("related_type", "related_target", "chat_key", "group_id"):
+            value = msg.get(key)
+            if value not in (None, ""):
+                context[key] = value
+        return context or self._current_chat_context()
+
     def _apply_message_ack(self, seq: int, payload: dict):
         msg = self._pending_acks.pop(seq, None)
         if not msg:
@@ -178,7 +189,7 @@ class WebBridge:
                     "content": f"Message rejected: {payload['error']}",
                     "timestamp": _now(),
                 }
-                system_msg.update(self._current_chat_context())
+                system_msg.update(self._context_from_message(msg))
                 self._push_msg(system_msg)
             self._push("message_acked", ack_event)
             return
@@ -373,12 +384,12 @@ class WebBridge:
 
     def _on_content_warn(self, msg_type, seq, payload):
         msg = {"type": "system", "content": f"[WARN] {payload.get('message', 'Content warning')}", "timestamp": _now()}
-        msg.update(self._current_chat_context())
+        msg.update(self._context_from_message(payload))
         self._push_msg(msg)
 
     def _on_error(self, msg_type, seq, payload):
         msg = {"type": "system", "content": f"[Error {payload.get('code', -1)}] {payload.get('message', '')}", "timestamp": _now()}
-        msg.update(self._current_chat_context())
+        msg.update(self._context_from_message(payload))
         self._push_msg(msg)
 
     def _on_recall(self, msg_type, seq, payload):
@@ -490,6 +501,27 @@ class WebBridge:
             self._push_msg({"type": "system", "content": f"Leave failed: {err}"})
 
     def _on_file_init(self, msg_type, seq, payload):
+        pending_uploads = getattr(self, "_pending_file_uploads", {})
+        pending_upload = pending_uploads.pop(seq, None)
+        if pending_upload is not None:
+            filepath, file_id, filesize, filename, context = pending_upload
+            if payload.get("success"):
+                safe_filename = payload.get("filename") or filename
+                threading.Thread(
+                    target=self._send_file_worker,
+                    args=(filepath, file_id, filesize, safe_filename, context),
+                    daemon=True,
+                ).start()
+            else:
+                event = {
+                    "type": "system",
+                    "content": "File send failed: " + str(payload.get("error") or "unknown error"),
+                    "timestamp": _now(),
+                }
+                event.update(context)
+                self._push_msg(event)
+            return
+
         status = payload.get("status", "")
         if status != "completed":
             return
@@ -532,6 +564,10 @@ class WebBridge:
         offset = payload.get("offset", 0)
         data_b64 = payload.get("data", "")
         if payload.get("success") is False or not data_b64:
+            state = self._dl_state.get(file_id)
+            if state:
+                state["error"] = payload.get("error") or "Download failed"
+                state["event"].set()
             return
         state = self._dl_state.get(file_id)
         if not state:
@@ -545,6 +581,7 @@ class WebBridge:
 
     def _gui_download_file(self, file_id, filename, filesize, context=None):
         CHUNK_SIZE = 64 * 1024
+        filename = os.path.basename(str(filename or "unknown").replace("\\", "/")) or "unknown"
         dest = os.path.join(self._download_dir, filename)
         context = context or {
             "related_type": "private",
@@ -578,6 +615,15 @@ class WebBridge:
             event = {
                 "filename": filename, "success": False,
                 "error": "Download timed out",
+            }
+            event.update(context)
+            self._push("file_download_result", event)
+            self._dl_state.pop(file_id, None)
+            return
+        if state.get("error"):
+            event = {
+                "filename": filename, "success": False,
+                "error": state["error"],
             }
             event.update(context)
             self._push("file_download_result", event)
@@ -796,7 +842,7 @@ class WebBridge:
             group_id = int(self._current_target) if is_group and self._current_target else None
             if (not is_group and not target_id) or (is_group and not group_id):
                 return {"ok": False, "error": "No target selected"}
-            self.handler.send_file_init(
+            result = self.handler.send_file_init(
                 self._user_id, target_id, filename, filesize, file_id, group_id=group_id
             )
             # 捕获文件上下文（在后台线程完成前聊天可能已切换）
@@ -808,9 +854,14 @@ class WebBridge:
             }
             if is_group:
                 file_context["group_id"] = str(group_id)
-            # 后台发送文件数据
-            threading.Thread(target=self._send_file_worker,
-                             args=(filepath, file_id, filesize, filename, file_context), daemon=True).start()
+            seq = result.get("seq") if result else None
+            if not result or not result.get("ok"):
+                return {"ok": False, "error": "Failed to initialize file transfer"}
+            if seq is None:
+                return {"ok": False, "error": "File transfer init missing sequence"}
+            self._pending_file_uploads[seq] = (
+                filepath, file_id, filesize, filename, file_context,
+            )
             return {"ok": True, "filename": filename, "filesize": filesize}
         except Exception as e:
             return {"ok": False, "error": str(e)}
