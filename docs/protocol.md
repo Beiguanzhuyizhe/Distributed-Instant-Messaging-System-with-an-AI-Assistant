@@ -1,1 +1,638 @@
-IyDpgJrkv6HljY/orq7mlofmoaMgdjEuMAoKIyMgMS4g5LqM6L+b5Yi25raI5oGv5qC85byPCgrmr4/mnaHmtojmga/nlLHkuIDkuKogKioxMiDlrZfoioLnmoTlm7rlrprlpLTpg6gqKiDlkI7ot58gKirlj5jplb8gSlNPTiBQYXlsb2FkKiog57uE5oiQ44CCCgojIyMgMS4xIOWktOmDqOe7k+aehAoKYGBgdGV4dAogMCAgICAgICAgICAgICAgICAgICAxICAgICAgICAgICAgICAgICAgIDIgICAgICAgICAgICAgICAgICAgMwogMCAxIDIgMyA0IDUgNiA3IDggOSAwIDEgMiAzIDQgNSA2IDcgOCA5IDAgMSAyIDMgNCA1IDYgNyA4IDkgMCAxCistKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rCnwgICAgICAgICAgTWFnaWMgKDB4Q0FGRSkgICAgICAgfCAgVmVyc2lvbiAgfCAgICBUeXBlICAgIHwKKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rLSsKfCAgICAgICAgICAgICAgICAgICAgICAgU2VxdWVuY2UgTnVtYmVyICAgICAgICAgICAgICAgICAgICAgICAgIHwKKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rLSsKfCAgICAgICAgICAgICAgICAgICAgICBQYXlsb2FkIExlbmd0aCAgICAgICAgICAgICAgICAgICAgICAgICAgIHwKKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rLSsKfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwKfCAgICAgICAgICAgICAgICAgICAgIFBheWxvYWQgKEpTT04gYnl0ZXMpICAgICAgICAgICAgICAgICAgICAgIHwKfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwKKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rLSstKy0rLSsKYGBgCgp8IOWBj+enuyB8IOWkp+WwjyB8IOWtl+autSB8IHN0cnVjdCDmoLzlvI8gfCDor7TmmI4gfAp8LS0tLS0tfC0tLS0tLXwtLS0tLS18LS0tLS0tLS0tLS0tLXwtLS0tLS18CnwgMCB8IDJCIHwgTWFnaWMgfCBgSGAgfCDprZTmnK/lrZcgYDB4Q0FGRWDvvIznlKjkuo7moKHpqowgfAp8IDIgfCAxQiB8IFZlcnNpb24gfCBgQmAgfCDljY/orq7niYjmnKzlj7fvvIzlvZPliY0gYDB4MDFgIHwKfCAzIHwgMUIgfCBUeXBlIHwgYEJgIHwg5raI5oGv57G75Z6L77yI6KeB57G75Z6L6KGo77yJIHwKfCA0IHwgNEIgfCBTZXEgfCBgSWAgfCDluo/liJflj7fvvIzlpKfnq6/luo/vvIznlKjkuo7or7fmsYIt5ZON5bqU5Yy56YWNIHwKfCA4IHwgNEIgfCBQYXlsb2FkTGVuIHwgYElgIHwgSlNPTiBwYXlsb2FkIOWtl+iKgumVv+W6pu+8jOWkp+err+W6jyB8CnwgMTIgfCAtIHwgUGF5bG9hZCB8IOKAlCB8IFVURi04IOe8lueggeeahCBKU09OIOWvueixoSB8CgoqKue8lueggSoqOiBgc3RydWN0LnBhY2soIiFIIEIgQiBJIEkiLCBNQUdJQywgVkVSU0lPTiwgbXNnX3R5cGUsIHNlcSwgcGF5bG9hZF9sZW4pICsganNvbl9wYXlsb2FkYAoKIyMjIDEuMiDmtojmga/nsbvlnovooagKCnwgQ29kZSB8IOW4uOmHj+WQjSB8IOaWueWQkSB8IOivtOaYjiB8CnwtLS0tLS18LS0tLS0tLS18LS0tLS0tfC0tLS0tLXwKfCAweDAxIHwgTE9HSU5fUkVRIHwgQyAtPiBTIHwg55m75b2V6K+35rGCIHwKfCAweDAyIHwgTE9HSU5fUkVTUCB8IFMgLT4gQyB8IOeZu+W9leWTjeW6lCB8CnwgMHgwMyB8IFJFR0lTVEVSX1JFUSB8IEMgLT4gUyB8IOazqOWGjOivt+axgiB8CnwgMHgwNCB8IFJFR0lTVEVSX1JFU1AgfCBTIC0+IEMgfCDms6jlhozlk43lupQgfAp8IDB4MDUgfCBQUklWQVRFX01TRyB8IEMgPC0+IFMgfCDnp4HogYrmtojmga8gfAp8IDB4MDYgfCBHUk9VUF9NU0cgfCBDIDwtPiBTIHwg576k6IGK5raI5oGvIHwKfCAweDA3IHwgSEVBUlRCRUFUIHwgQyAtPiBTIHwg5b+D6Lez5YyFIHwKfCAweDA4IHwgSEVBUlRCRUFUX0FDSyB8IFMgLT4gQyB8IOW/g+i3s+ehruiupCB8CnwgMHgwOSB8IEZJTEVfSU5JVCB8IEMgPC0+IFMgfCDmlofku7bkvKDovpPliJ3lp4vljJYgfAp8IDB4MEEgfCBGSUxFX0RBVEEgfCBDIDwtPiBTIHwg5paH5Lu25pWw5o2u5Z2XIHwKfCAweDBCIHwgRklMRV9BQ0sgfCBDIDwtPiBTIHwg5paH5Lu25Z2X56Gu6K6k77yI5pat54K557ut5Lyg77yJIHwKfCAweDBDIHwgR1JPVVBfQ1JFQVRFIHwgQyA8LT4gUyB8IOWIm+W7uue+pOe7hCB8CnwgMHgwRCB8IEdST1VQX0pPSU4gfCBDIDwtPiBTIHwg5Yqg5YWl576k57uEIHwKfCAweDBFIHwgR1JPVVBfTEVBVkUgfCBDIDwtPiBTIHwg6YCA5Ye6576k57uEIHwKfCAweDBGIHwgU1RBVFVTX1VQREFURSB8IFMgLT4gQyB8IOWcqOe6v+eKtuaAgeaOqOmAgSB8CnwgMHgxMCB8IE1TR19SRUNBTEwgfCBDIDwtPiBTIHwg5raI5oGv5pKk5ZueIHwKfCAweDExIHwgQUlfUVVFUlkgfCBDIC0+IFMgfCBAQUkg5p+l6K+iIHwKfCAweDEyIHwgQUlfUkVTUCB8IFMgLT4gQyB8IEFJIOWbnuWkjSB8CnwgMHgxMyB8IENPTlRFTlRfV0FSTiB8IFMgLT4gQyB8IOWGheWuuei/neinhOitpuWRiiB8CnwgMHgxNCB8IEhJU1RPUllfUkVRIHwgQyAtPiBTIHwg5Y6G5Y+y5raI5oGv6K+35rGCIHwKfCAweDE1IHwgSElTVE9SWV9SRVNQIHwgUyAtPiBDIHwg5Y6G5Y+y5raI5oGv5ZON5bqUIHwKfCAweDE2IHwgT05MSU5FX1VTRVJTIHwgQyA8LT4gUyB8IOWcqOe6v+eUqOaIt+WIl+ihqCB8CnwgMHgxNyB8IFAyUF9IT0xFX1BVTkNIIHwgQyA8LT4gUyB8IFAyUCDmiZPmtJ7ljY/liqkgfAp8IDB4MTggfCBQMlBfUkVBRFkgfCBDIDwtPiBTIHwgUDJQIOWwsee7qumAmuefpSB8CnwgMHhGRiB8IEVSUk9SIHwgUyAtPiBDIHwg6ZSZ6K+v5ZON5bqUIHwKCiMjIyAxLjMg6ZSZ6K+v56CBCgp8IENvZGUgfCDluLjph4/lkI0gfCDor7TmmI4gfAp8LS0tLS0tfC0tLS0tLS0tfC0tLS0tLXwKfCAwIHwgU1VDQ0VTUyB8IOaIkOWKnyB8CnwgMSB8IElOVkFMSURfUkVRVUVTVCB8IOaXoOaViOivt+axgiB8CnwgMiB8IEFVVEhfRkFJTEVEIHwg6K6k6K+B5aSx6LSlIHwKfCAzIHwgVVNFUl9FWElTVFMgfCDnlKjmiLflt7LlrZjlnKggfAp8IDQgfCBVU0VSX05PVF9GT1VORCB8IOeUqOaIt+S4jeWtmOWcqCB8CnwgNSB8IEdST1VQX05PVF9GT1VORCB8IOe+pOe7hOS4jeWtmOWcqCB8CnwgNiB8IE5PVF9HUk9VUF9NRU1CRVIgfCDpnZ7nvqTnu4TmiJDlkZggfAp8IDcgfCBNRVNTQUdFX1RPT19MQVJHRSB8IOa2iOaBr+i/h+WkpyB8CnwgOCB8IEZJTEVfVE9PX0xBUkdFIHwg5paH5Lu26L+H5aSnIHwKfCA5IHwgUkFURV9MSU1JVEVEIHwg6K+35rGC6aKR546H6ZmQ5Yi2IHwKfCAxMCB8IElOVEVSTkFMX0VSUk9SIHwg5pyN5Yqh56uv5YaF6YOo6ZSZ6K+vIHwKfCAxMSB8IFAyUF9GQUlMRUQgfCBQMlAg6L+e5o6l5aSx6LSlIHwKfCAxMiB8IE1TR19OT1RfRk9VTkQgfCDmtojmga/mnKrmib7liLAgfAp8IDEzIHwgUkVDQUxMX1RJTUVPVVQgfCDmkqTlm57otoXml7bvvIjotoXov4cgMiDliIbpkp/vvIkgfAp8IDE0IHwgQ09OVEVOVF9SRUpFQ1RFRCB8IOWGheWuueiiq+aLkue7nSB8CnwgMTUgfCBJTlZBTElEX1BBWUxPQUQgfCDml6DmlYjnmoQgcGF5bG9hZCB8CgotLS0KCiMjIDEuNCDlhbjlnovmtojmga/npLrkvosKCuS7peS4i+ekuuS+i+WPquWxleekuiBKU09OIHBheWxvYWTjgILlrp7pmYXnvZHnu5zkvKDovpPml7bvvIzmr4/kuKogcGF5bG9hZCDliY3pg73kvJrpmYTliqAgMTIg5a2X6IqC5LqM6L+b5Yi25aS06YOo77yaCgpgYGB0ZXh0Ck1hZ2ljPTB4Q0FGRSwgVmVyc2lvbj0weDAxLCBUeXBlPTzmtojmga/nsbvlnos+LCBTZXE9POW6j+WIl+WPtz4sIFBheWxvYWRMZW49PEpTT04g5a2X6IqC5pWwPgpgYGAKCiMjIyDnmbvlvZXor7fmsYLkuI7lk43lupQKCmBgYGpzb24KewogICJ1c2VybmFtZSI6ICJhbGljZSIsCiAgInBhc3N3b3JkX2hhc2giOiAic2hhMjU2X3Bhc3N3b3JkX2RpZ2VzdCIKfQpgYGAKCmBgYGpzb24KewogICJzdWNjZXNzIjogdHJ1ZSwKICAidXNlcl9pZCI6IDEsCiAgInVzZXJuYW1lIjogImFsaWNlIiwKICAiZ3JvdXBzIjogewogICAgIjIiOiAiZGVtb19ncm91cCIKICB9LAogICJhdmFpbGFibGVfZ3JvdXBzIjogewogICAgIjIiOiB7CiAgICAgICJpZCI6IDIsCiAgICAgICJuYW1lIjogImRlbW9fZ3JvdXAiLAogICAgICAibWVtYmVyX2NvdW50IjogMywKICAgICAgImpvaW5lZCI6IHRydWUKICAgIH0KICB9Cn0KYGBgCgojIyMg56eB6IGK5raI5oGvCgpgYGBqc29uCnsKICAidG9faWQiOiAyLAogICJjb250ZW50IjogIuS9oOWlvSBCb2IiLAogICJlbmNyeXB0ZWQiOiBmYWxzZQp9CmBgYAoK5pyN5Yqh56uv56Gu6K6k5ZKM6L2s5Y+R5pe25Lya6KGl5YWF6Lev55Sx5a2X5q6177yaCgpgYGBqc29uCnsKICAiZnJvbV9pZCI6IDEsCiAgInRvX2lkIjogMiwKICAic2VuZGVyIjogImFsaWNlIiwKICAiY29udGVudCI6ICLkvaDlpb0gQm9iIiwKICAibXNnX2lkIjogIjZmMWIxZThkLTljODQtNGU2Zi05ZDhjLTEyMzQ1Njc4OWFiYyIsCiAgInRpbWVzdGFtcCI6IDE3ODE1MTI2OTUuMiwKICAicmVsYXRlZF90eXBlIjogInByaXZhdGUiLAogICJyZWxhdGVkX3RhcmdldCI6ICIyIiwKICAiY2hhdF9rZXkiOiAicHJpdmF0ZToyIgp9CmBgYAoKIyMjIOe+pOiBiua2iOaBrwoKYGBganNvbgp7CiAgImdyb3VwX2lkIjogMiwKICAiY29udGVudCI6ICLlpKflrrblpb0iLAogICJlbmNyeXB0ZWQiOiBmYWxzZQp9CmBgYAoKYGBganNvbgp7CiAgImdyb3VwX2lkIjogMiwKICAiZnJvbV9pZCI6IDEsCiAgInNlbmRlciI6ICJhbGljZSIsCiAgImNvbnRlbnQiOiAi5aSn5a625aW9IiwKICAibXNnX2lkIjogImQ4YzVmNTk0LTZiMjgtNGE1ZC05MWUyLTkyNzhkNGU4YzZhZSIsCiAgInRpbWVzdGFtcCI6IDE3ODE1MTI3MDAuNCwKICAicmVsYXRlZF90eXBlIjogImdyb3VwIiwKICAicmVsYXRlZF90YXJnZXQiOiAiMiIsCiAgImNoYXRfa2V5IjogImdyb3VwOjIiCn0KYGBgCgojIyMg5paH5Lu25Yid5aeL5YyW5LiO5YiG5Z2XCgpgYGBqc29uCnsKICAidG9faWQiOiAyLAogICJmaWxlbmFtZSI6ICJyZXBvcnQucGRmIiwKICAiZmlsZXNpemUiOiAyMDQ4MDAsCiAgImZpbGVfaGFzaCI6ICJzaGEyNTZfaGV4IiwKICAiY2h1bmtfc2l6ZSI6IDY1NTM2Cn0KYGBgCgpgYGBqc29uCnsKICAidHJhbnNmZXJfaWQiOiAiYjdhNDhkZDItN2YzNy00YWQ3LThlZDYtMjViZjhhYjQwY2YzIiwKICAiY2h1bmtfaW5kZXgiOiAwLAogICJkYXRhIjogImJhc2U2NF9lbmNvZGVkX2NodW5rIiwKICAib2Zmc2V0IjogMAp9CmBgYAoKIyMjIEFJIOafpeivouS4jue+pOWGheWbnuWkjQoKYGBganNvbgp7CiAgImdyb3VwX2lkIjogMiwKICAicXVlcnkiOiAi6K+355So5LiA5Y+l6K+d6Kej6YeKIFRDUCDkuInmrKHmj6HmiYvjgIIiCn0KYGBgCgpgYGBqc29uCnsKICAiZ3JvdXBfaWQiOiAyLAogICJ1c2VyX2lkIjogMSwKICAiZnJvbV9pZCI6IDEsCiAgInF1ZXJ5IjogIuivt+eUqOS4gOWPpeivneino+mHiiBUQ1Ag5LiJ5qyh5o+h5omL44CCIiwKICAiY29udGVudCI6ICJUQ1Ag5LiJ5qyh5o+h5omL5piv5a6i5oi356uv5ZKM5pyN5Yqh56uv6YCa6L+HIFNZTuOAgVNZTi1BQ0vjgIFBQ0sg5LiJ5q2l56Gu6K6k5Y+M5pa55pS25Y+R6IO95Yqb5bm25bu656uL6L+e5o6l55qE6L+H56iL44CCIiwKICAicmVwbHkiOiAiVENQIOS4ieasoeaPoeaJi+aYr+WuouaIt+err+WSjOacjeWKoeerr+mAmui/hyBTWU7jgIFTWU4tQUNL44CBQUNLIOS4ieatpeehruiupOWPjOaWueaUtuWPkeiDveWKm+W5tuW7uueri+i/nuaOpeeahOi/h+eoi+OAgiIsCiAgInNlbmRlciI6ICJBSSIsCiAgInJlbGF0ZWRfdHlwZSI6ICJncm91cCIsCiAgInJlbGF0ZWRfdGFyZ2V0IjogIjIiLAogICJjaGF0X2tleSI6ICJncm91cDoyIgp9CmBgYAoKIyMjIOWGheWuueWuoeaguOitpuWRigoKYGBganNvbgp7CiAgImxldmVsIjogImhpZ2giLAogICJyZWFzb24iOiAiY29udGVudF9yZWplY3RlZCIsCiAgIm1lc3NhZ2UiOiAi5raI5oGv5YyF5ZCr6auY6aOO6Zmp5YaF5a6577yM5bey6KKr5pyN5Yqh56uv5oum5oiq44CCIgp9CmBgYAoKIyMjIOmUmeivr+WTjeW6lAoKYGBganNvbgp7CiAgImNvZGUiOiA2LAogICJlcnJvciI6ICLkuI3mmK/nvqTmiJDlkZgiCn0KYGBgCgotLS0KCiMjIDIuIOS6pOS6kua1geeoiwoKIyMjIDIuMSDnmbvlvZXmtYHnqIsKCmBgYHRleHQKQ2xpZW50ICAgICAgICAgICAgICAgICAgICAgICAgICBTZXJ2ZXIKICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwKICB8LS0tIExPR0lOX1JFUSAtLS0tLS0tLS0tLS0tLS0tPnwgIHt1c2VybmFtZSwgcGFzc3dvcmRfaGFzaH0KICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgIOmqjOivgeeUqOaItwogIHw8LS0gTE9HSU5fUkVTUCAtLS0tLS0tLS0tLS0tLS0tLXwgIHtzdWNjZXNzLCB1c2VyX2lkLCB0b2tlbn0KYGBgCgojIyMgMi4yIOazqOWGjOa1geeoiwoKYGBgdGV4dApDbGllbnQgICAgICAgICAgICAgICAgICAgICAgICAgIFNlcnZlcgogIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfAogIHwtLS0gUkVHSVNURVJfUkVRIC0tLS0tLS0tLS0tLS0+fCAge3VzZXJuYW1lLCBwYXNzd29yZF9oYXNoLCBwdWJsaWNfa2V5P30KICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgIOWIm+W7uueUqOaItwogIHw8LS0gUkVHSVNURVJfUkVTUCAtLS0tLS0tLS0tLS0tLXwgIHtzdWNjZXNzLCB1c2VyX2lkfQpgYGAKCiMjIyAyLjMg56eB6IGK5raI5oGv5rWB56iLCgpgYGB0ZXh0CkNsaWVudCBBICAgICAgICAgICAgICAgICAgICAgU2VydmVyICAgICAgICAgICAgICAgICAgICBDbGllbnQgQgogIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgfAogIHwtLS0gUFJJVkFURV9NU0cgLS0tLS0tLS0tLS0+fCAgICAgICAgICAgICAgICAgICAgICAgICAgfCAge2Zyb21faWQsIHRvX2lkLCBjb250ZW50LCBtc2dfaWQsIHRpbWVzdGFtcH0KICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwtLS0gUFJJVkFURV9NU0cgLS0tLS0tLS0+fCAg6L2s5Y+R5raI5oGvCiAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAoQiDlnKjnur/liJnlrp7ml7bmjqjpgIEpCmBgYAoKIyMjIDIuNCDnvqTogYrmtojmga/mtYHnqIsKCmBgYHRleHQKQ2xpZW50IEEgICAgICAgICAgICAgICAgICAgICBTZXJ2ZXIgICAgICAgICAgICAgICAgICAgIENsaWVudCBCLEMsLi4uCiAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICB8CiAgfC0tLSBHUk9VUF9NU0cgLS0tLS0tLS0tLS0tLT58ICAgICAgICAgICAgICAgICAgICAgICAgICB8ICB7ZnJvbV9pZCwgZ3JvdXBfaWQsIGNvbnRlbnQsIG1zZ19pZCwgdGltZXN0YW1wfQogIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgfC0tLSBHUk9VUF9NU0cgLS0tLS0tLS0tLT58ICDovazlj5Hnu5nmiYDmnInnvqTmiJDlkZjvvIjpmaTlj5HpgIHogIXvvIkKYGBgCgojIyMgMi41IOW/g+i3s+acuuWItgoKYGBgdGV4dApDbGllbnQgICAgICAgICAgICAgICAgICAgICAgICAgIFNlcnZlcgogIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfAogIHwtLS0gSEVBUlRCRUFUIC0tLS0tLS0tLS0tLS0tLS0+fCAge30KICB8PC0tIEhFQVJUQkVBVF9BQ0sgLS0tLS0tLS0tLS0tLXwgIHt9CiAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8CiAgKOWuouaIt+err+avjyAyNXMg5Y+R6YCB5LiA5qyhKQogICjmnI3liqHnq68gOTBzIOaXoOWTjeW6lOWIpOWumuemu+e6vykKYGBgCgojIyMgMi42IOaWh+S7tuS8oOi+k+a1geeoi++8iOS4ree7p+aooeW8j++8iQoKYGBgdGV4dApDbGllbnQgQSAgICAgICAgICAgICAgICAgICAgIFNlcnZlciAgICAgICAgICAgICAgICAgICAgQ2xpZW50IEIKICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICAgICAgICAgICAgIHwKICB8LS0tIEZJTEVfSU5JVCAtLS0tLS0tLS0tLS0tPnwgICAgICAgICAgICAgICAgICAgICAgICAgIHwgIOivt+axguS8oOaWh+S7tgogIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgfC0tLSBGSUxFX0lOSVQgLS0tLS0tLS0tLT58ICDpgJrnn6UgQgogIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgfDwtLSBGSUxFX0FDSyAtLS0tLS0tLS0tLS0tfCAgQiDnoa7orqTmjqXmlLYKICB8PC0tIEZJTEVfQUNLIC0tLS0tLS0tLS0tLS0tLXwgICAgICAgICAgICAgICAgICAgICAgICAgIHwgIOWIhumFjSBmaWxlX2lkCiAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICB8CiAgfC0tLSBGSUxFX0RBVEEgKGNodW5rIDEpIC0tLT58ICAgICAgICAgICAgICAgICAgICAgICAgICB8ICDkvKDovpPliIblnZcKICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwtLS0gRklMRV9EQVRBIChjaHVuayAxKSAtPnwgIOi9rOWPkeWIhuWdlwogIHw8LS0gRklMRV9BQ0sgLS0tLS0tLS0tLS0tLS0tfCAgICAgICAgICAgICAgICAgICAgICAgICAgfCAg56Gu6K6k5bey5o6l5pS2CiAgfC0tLSBGSUxFX0RBVEEgKGNodW5rIE4pIC0tLT58ICAgICAgICAgICAgICAgICAgICAgICAgICB8ICDmnIDlkI7kuIDlnZcKICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwtLS0gRklMRV9EQVRBIChjaHVuayBOKSAtPnwgIGNodW5rX2luZGV4IC8gdG90YWxfY2h1bmtzCmBgYAoKIyMjIDIuNyDmtojmga/mkqTlm54KCmBgYHRleHQKQ2xpZW50ICAgICAgICAgICAgICAgICAgICAgIFNlcnZlciAgICAgICAgICAgICAgICAgICAgUmVjZWl2ZXIKICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgfAogIHwtLS0gTVNHX1JFQ0FMTCAtLS0tLS0tLS0tLT58ICB7bXNnX2lkLCB1c2VyX2lkfQogIHwgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICDmo4Dmn6XmmK/lkKblnKggMiDliIbpkp/lhoUKICB8PC0tIE1TR19SRUNBTEwgLS0tLS0tLS0tLS0tfCAge3N1Y2Nlc3M6IHRydWUvZmFsc2V9CiAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgIHwtLS0gU1RBVFVTX1VQREFURSAtLS0tLS0+fCAge3R5cGU6ICJyZWNhbGwiLCBtc2dfaWR9CmBgYAoKIyMjIDIuOCBQMlAg5omT5rSe5rWB56iLCgpgYGB0ZXh0CkNsaWVudCBBICAgICAgICAgICAgICAgICAgIFNlcnZlciAgICAgICAgICAgICAgICAgICBDbGllbnQgQgogIHwgICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICAgICAgICAgICAgfAogIHwtLS0gUDJQX0hPTEVfUFVOQ0ggLS0tLS0tPnwgICAgICAgICAgICAgICAgICAgICAgICAgfCAg6K+35rGC5LiOIEIg5bu656uLIFAyUAogIHwgICAgICAgICAgICAgICAgICAgICAgICAgIHwtLS0gUDJQX0hPTEVfUFVOQ0ggLS0tLS0+fCAg5YyF5ZCrIEEg55qE5Zyw5Z2ACiAgfDwtLSBQMlBfSE9MRV9QVU5DSCAtLS0tLS0tfCAgICAgICAgICAgICAgICAgICAgICAgICB8ICDljIXlkKsgQiDnmoTlnLDlnYAKICB8ICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgIHwKICB8PT09PT0gVURQIOaJk+a0numYtuautSA9PT09PT09fCAgICAgICAgICAgICAgICAgICAgICAgICB8CiAgfC0tLS0tIFVEUCDljIUgLS0tPnwgICAgICAgICAgICAgICAgICAgICAgICAgfCAg5Y+M5pa55LqS5Y+RIFVEUCDmjqLmtYsKICB8ICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgIHwKICB8LS0tLS0gUDJQX1JFQURZIC0tLS0tLS0tLT58ICAgICAgICAgICAgICAgICAgICAgICAgIHwgIFAyUCDpgJrpgZPlsLHnu6oKICB8ICAgICAgICAgICAgICAgICAgICAgICAgICB8LS0tIFAyUF9SRUFEWSAtLS0tLS0tLS0tPnwKYGBgCgotLS0KCiMjIDMuIFBheWxvYWQg5qC85byP5a6a5LmJCgojIyMgTE9HSU5fUkVRICgweDAxKQpgYGBqc29uCnsidXNlcm5hbWUiOiAiYWxpY2UiLCAicGFzc3dvcmRfaGFzaCI6ICJzaGEyNTZoYXNoLi4uIn0KYGBgCgojIyMgTE9HSU5fUkVTUCAoMHgwMikg4oCUIOaIkOWKnwpgYGBqc29uCnsic3VjY2VzcyI6IHRydWUsICJ1c2VyX2lkIjogMSwgInRva2VuIjogImp3dC10b2tlbi4uLiJ9CmBgYAojIyMgTE9HSU5fUkVTUCAoMHgwMikg4oCUIOWksei0pQpgYGBqc29uCnsic3VjY2VzcyI6IGZhbHNlLCAiY29kZSI6IDIsICJtZXNzYWdlIjogIueUqOaIt+WQjeaIluWvhueggemUmeivryJ9CmBgYAoKIyMjIFJFR0lTVEVSX1JFUSAoMHgwMykKYGBganNvbgp7InVzZXJuYW1lIjogImJvYiIsICJwYXNzd29yZF9oYXNoIjogInNoYTI1Nmhhc2guLi4iLCAicHVibGljX2tleSI6ICItLS0tLUJFR0lOIFBVQkxJQyBLRVktLS0tLS4uLiJ9CmBgYAoKIyMjIFJFR0lTVEVSX1JFU1AgKDB4MDQpIOKAlCDmiJDlip8KYGBganNvbgp7InN1Y2Nlc3MiOiB0cnVlLCAidXNlcl9pZCI6IDJ9CmBgYAoKIyMjIFBSSVZBVEVfTVNHICgweDA1KQpgYGBqc29uCnsKICAgICJmcm9tX2lkIjogMSwKICAgICJ0b19pZCI6IDIsCiAgICAiY29udGVudCI6ICLkvaDlpb3vvIEiLAogICAgIm1zZ19pZCI6IDEwMCwKICAgICJ0aW1lc3RhbXAiOiAxNzAwMDAwMDAwCn0KYGBgCgojIyMgR1JPVVBfTVNHICgweDA2KQpgYGBqc29uCnsKICAgICJmcm9tX2lkIjogMSwKICAgICJncm91cF9pZCI6IDEsCiAgICAiY29udGVudCI6ICLlpKflrrblpb3vvIEiLAogICAgIm1zZ19pZCI6IDEwMSwKICAgICJ0aW1lc3RhbXAiOiAxNzAwMDAwMDAxCn0KYGBgCgojIyMgSEVBUlRCRUFUICgweDA3KSAvIEhFQVJUQkVBVF9BQ0sgKDB4MDgpCmBgYGpzb24Ke30KYGBgCgojIyMgRklMRV9JTklUICgweDA5KQpgYGBqc29uCnsKICAgICJmcm9tX2lkIjogMSwKICAgICJ0b19pZCI6IDIsCiAgICAiZmlsZW5hbWUiOiAiZG9jLnBkZiIsCiAgICAiZmlsZXNpemUiOiAxMDI0MDAwLAogICAgImZpbGVfaWQiOiAiYTFiMmMzZDQtdXVpZCIKfQpgYGAKCiMjIyBGSUxFX0RBVEEgKDB4MEEpCmBgYGpzb24KewogICAgImZpbGVfaWQiOiAiYTFiMmMzZDQtdXVpZCIsCiAgICAiY2h1bmtfaW5kZXgiOiAwLAogICAgInRvdGFsX2NodW5rcyI6IDE2LAogICAgImRhdGEiOiAiYmFzZTY0LWVuY29kZWQtY2h1bmsuLi4iLAp9CmBgYAoKIyMjIEZJTEVfQUNLICgweDBCKQpgYGBqc29uCnsKICAgICJmaWxlX2lkIjogImExYjJjM2Q0LXV1aWQiLAogICAgIm9mZnNldCI6IDAKfQpgYGAK5ZON5bqU5Lit5YyF5ZCrIGBkYXRhYO+8iGJhc2U2NO+8ieOAgWBvZmZzZXRg44CBYHNpemVg44CC5pyN5Yqh56uv5Lya5qCh6aqM5LiL6L296ICF5piv5ZCm5Li65o6l5pS25pa577yb576k5paH5Lu26KaB5rGC6K+35rGC6ICF5piv576k5oiQ5ZGY44CCCgojIyMgR1JPVVBfQ1JFQVRFICgweDBDKSDigJQg6K+35rGCCmBgYGpzb24KeyJ1c2VyX2lkIjogMSwgIm5hbWUiOiAi6IGK5aSp576kIn0KYGBgCiMjIyBHUk9VUF9DUkVBVEUgKDB4MEMpIOKAlCDlk43lupQKYGBganNvbgp7Imdyb3VwX2lkIjogMSwgInN1Y2Nlc3MiOiB0cnVlfQpgYGAKCiMjIyBHUk9VUF9KT0lOICgweDBEKQpgYGBqc29uCnsidXNlcl9pZCI6IDEsICJncm91cF9pZCI6IDF9CmBgYArlk43lupTvvJpgeyJzdWNjZXNzIjogdHJ1ZX1gCgojIyMgR1JPVVBfTEVBVkUgKDB4MEUpCmBgYGpzb24KeyJ1c2VyX2lkIjogMSwgImdyb3VwX2lkIjogMX0KYGBgCuWTjeW6lO+8mmB7InN1Y2Nlc3MiOiB0cnVlfWAKCiMjIyBTVEFUVVNfVVBEQVRFICgweDBGKQpgYGBqc29uCnsidXNlcl9pZCI6IDEsICJ1c2VybmFtZSI6ICJhbGljZSIsICJpc19vbmxpbmUiOiAxfQpgYGAKYGlzX29ubGluZWAg5Y+W5YC877yaYDFgIOWcqOe6v++8jGAwYCDnprvnur/jgIIKCiMjIyBNU0dfUkVDQUxMICgweDEwKQpgYGBqc29uCnsibXNnX2lkIjogIjZmMWIxZThkLTljODQtNGU2Zi05ZDhjLTEyMzQ1Njc4OWFiYyJ9CmBgYArlk43lupTvvJpgeyJzdWNjZXNzIjogdHJ1ZSwgIm1zZ19pZCI6ICIuLi4iLCAicmVjZWl2ZXJfaWQiOiAyLCAiZ3JvdXBfaWQiOiBudWxsfWAKCiMjIyBBSV9RVUVSWSAoMHgxMSkKYGBganNvbgp7Imdyb3VwX2lkIjogMSwgInVzZXJfaWQiOiAxLCAiZnJvbV9pZCI6IDEsICJxdWVyeSI6ICLku4rlpKnlpKnmsJTlpoLkvZUiLCAibXNnX2lkIjogMjAwfQpgYGAK5a2X5q616K+05piO77ya5a6i5oi356uv5a6e6ZmF5Y+R6YCBIGBxdWVyeWAg5L2c5Li655So5oi36Zeu6aKY77ybYGZyb21faWRgIOS4jiBgdXNlcl9pZGAg5YW85a655L+d55WZ77yM5pyN5Yqh56uv5Lul55m75b2V5oCB57uR5a6a55qEIGB1c2VyX2lkYCDkuLrlh4bjgIIKCiMjIyBBSV9SRVNQICgweDEyKQpgYGBqc29uCnsiZ3JvdXBfaWQiOiAxLCAidXNlcl9pZCI6IDEsICJmcm9tX2lkIjogMSwgInF1ZXJ5IjogIuS7iuWkqeWkqeawlOWmguS9lSIsICJjb250ZW50IjogIuaIkeaYr0FJ5Yqp5omLLi4uIiwgInJlcGx5IjogIuaIkeaYr0FJ5Yqp5omLLi4uIiwgIm1zZ19pZCI6IDIwMX0KYGBgCuWtl+auteivtOaYju+8mmBjb250ZW50YCDmmK/nlKjkuo7lrqLmiLfnq6/mmL7npLrnmoTmoIflh4blrZfmrrXvvJtgcmVwbHlgIOS/neeVmee7meaXp+eJiOWuouaIt+err+WFvOWuueOAggoKIyMjIENPTlRFTlRfV0FSTiAoMHgxMykKYGBganNvbgp7InVzZXJfaWQiOiAxLCAibXNnX2lkIjogMzAwLCAicmVhc29uIjogIuWMheWQq+i/neinhOivjeaxhyIsICJtZXNzYWdlIjogIuWMheWQq+i/neinhOivjeaxhyIsICJsZXZlbCI6ICJtaWQifQpgYGAKYGxldmVsYCDlj5blgLzvvJpgbG93YOOAgWBtaWRg44CBYGhpZ2hg44CCYGhpZ2hgIOihqOekuuacjeWKoeerr+W3suaLpuaIqu+8jGBtaWRgIOihqOekuuabv+aNouaVj+aEn+ivjeWQjuWPr+aUvuihjOOAggoKIyMjIEhJU1RPUllfUkVRICgweDE0KQpgYGBqc29uCnsidXNlcl9pZCI6IDEsICJ0YXJnZXRfdHlwZSI6ICJwcml2YXRlIiwgInRhcmdldF9pZCI6IDIsICJsaW1pdCI6IDUwLCAiYmVmb3JlX2lkIjogMH0KYGBgCmB0YXJnZXRfdHlwZWA6IGBwcml2YXRlYCAvIGBncm91cGAKCiMjIyBISVNUT1JZX1JFU1AgKDB4MTUpCmBgYGpzb24KewogICAgIm1lc3NhZ2VzIjogWwogICAgICAgIHsiaWQiOiAxLCAibXNnX3R5cGUiOiA1LCAic2VuZGVyX2lkIjogMSwgInRhcmdldF9pZCI6IDIsICJjb250ZW50IjogIi4uLiIsICJjcmVhdGVkX2F0IjogIi4uLiJ9CiAgICBdCn0KYGBgCgojIyMgT05MSU5FX1VTRVJTICgweDE2KSDigJQg6K+35rGCCmBgYGpzb24Ke30KYGBgCiMjIyBPTkxJTkVfVVNFUlMgKDB4MTYpIOKAlCDlk43lupQKYGBganNvbgp7InVzZXJzIjogW3siaWQiOiAxLCAidXNlcm5hbWUiOiAiYWxpY2UiLCAicHVibGljX2tleSI6ICIifV0sICJjb3VudCI6IDF9CmBgYAoKIyMjIFAyUF9IT0xFX1BVTkNIICgweDE3KQpgYGBqc29uCnsidXNlcl9pZCI6IDEsICJ0YXJnZXRfaWQiOiAyLCAiYWRkciI6ICIxOTIuMTY4LjEuMjo5MDAwIn0KYGBgCgojIyMgUDJQX1JFQURZICgweDE4KQpgYGBqc29uCnsidXNlcl9pZCI6IDEsICJ0YXJnZXRfaWQiOiAyLCAiYWRkciI6ICIxOTIuMTY4LjEuMjo5MDAxIn0KYGBgCgojIyMgRVJST1IgKDB4RkYpCmBgYGpzb24KeyJjb2RlIjogNDAxLCAibWVzc2FnZSI6ICLmnKrmjojmnYMifQpgYGAKCi0tLQoKIyMgNC4gVENQIOeymOWMheWkhOeQhgoKVENQIOaYr+a1geW8j+WNj+iuru+8jOaXoOa2iOaBr+i+ueeVjOOAguacrOmhueebrumHh+eUqCAqKumVv+W6puWJjee8gCoqIOaWueW8j+ino+WGs+eymOWMhS/ljYrljIXpl67popjvvJoKCjEuIOWPkemAgeerr++8muWcqOavj+S4quaVsOaNruWMheWJjeWKoOS4iiAxMiDlrZfoioLnmoTlm7rlrprlpLTvvIzlpLTkuK3ljIXlkKsgYFBheWxvYWRMZW5ndGhgCjIuIOaOpeaUtuerr++8muWFiOivu+WPliAxMiDlrZfoioLlpLTvvIzop6PmnpDlh7ogcGF5bG9hZF9sZW7vvIzlho3or7vlj5YgcGF5bG9hZF9sZW4g5a2X6IqC55qEIFBheWxvYWQKMy4g5aaC5p6c5pWw5o2u5LiN6Laz5LiA5Liq5a6M5pW05YyF77yM5YiZ562J5b6F5pu05aSa5pWw5o2uCgojIyMgTWVzc2FnZVByb3RvY29sIOekuuS+iwoKYGBgcHl0aG9uCmZyb20gc2VydmVyLnByb3RvY29sIGltcG9ydCBNZXNzYWdlUHJvdG9jb2wsIGVuY29kZV9tZXNzYWdlLCBNZXNzYWdlVHlwZQoKcHJvdG9jb2wgPSBNZXNzYWdlUHJvdG9jb2woKQpwcm90b2NvbC5mZWVkKHJlY2VpdmVkX2J5dGVzKQoKZm9yIG1zZ190eXBlLCBzZXEsIHBheWxvYWQgaW4gcHJvdG9jb2wubmV4dF9tZXNzYWdlcygpOgogICAgaWYgbXNnX3R5cGUgPT0gTWVzc2FnZVR5cGUuUFJJVkFURV9NU0c6CiAgICAgICAgcHJpbnQocGF5bG9hZFsiY29udGVudCJdKQpgYGAKCiMjIyBDb25uZWN0aW9uIOekuuS+iwoKYGBgcHl0aG9uCmZyb20gc2VydmVyLnByb3RvY29sIGltcG9ydCBDb25uZWN0aW9uCgphc3luYyBkZWYgaGFuZGxlX2NsaWVudChyZWFkZXIsIHdyaXRlcik6CiAgICBjb25uID0gQ29ubmVjdGlvbihyZWFkZXIsIHdyaXRlcikKICAgIGF3YWl0IGNvbm4uc2VuZF9tZXNzYWdlKE1lc3NhZ2VUeXBlLkhFQVJUQkVBVCwge30pCiAgICBtc2dfdHlwZSwgc2VxLCBwYXlsb2FkID0gYXdhaXQgY29ubi5yZWFkX21lc3NhZ2UoKQpgYGAKCi0tLQoKIyMgNS4g6YWN572u5Y+C5pWwCgp8IOWPguaVsCB8IOm7mOiupOWAvCB8IOivtOaYjiB8CnwtLS0tLS18LS0tLS0tLS18LS0tLS0tfAp8IOacjeWKoeerr+WcsOWdgCB8IDAuMC4wLjAgfCBUQ1Ag55uR5ZCs5Zyw5Z2AIHwKfCDmnI3liqHnq6/nq6/lj6MgfCA4ODg4IHwgVENQIOebkeWQrOerr+WPoyB8Cnwg5b+D6Lez6Ze06ZqU77yI5a6i5oi356uv77yJIHwgMjVzIHwg55Wl55+t5LqO5pyN5Yqh56uv6LaF5pe2IHwKfCDlv4Pot7PotoXml7bvvIjmnI3liqHnq6/vvIkgfCA5MHMgfCDotoXml7bliJnmlq3lvIDov57mjqUgfAp8IOe8k+WGsuWMuuWkp+WwjyB8IDQwOTYgfCDnvZHnu5wgSS9PIOe8k+WGsuWMuiB8Cnwg5paH5Lu25Z2X5aSn5bCPIHwgNjRLQiB8IOaWh+S7tuS8oOi+k+WIhuWdl+Wkp+WwjyB8Cnwg5pyA5aSn5paH5Lu25aSn5bCPIHwgMTAwTUIgfCDljZXmlofku7bkuIrpmZAgfAp8IOaSpOWbnueql+WPoyB8IDEyMHMgfCDmtojmga/lj6/mkqTlm57ml7bpl7QgfAp8IOacgOWkp+i0n+i9vSB8IDFNQiB8IOWNlea2iOaBr+acgOWkpyBwYXlsb2FkIHwKCi0tLQoKIyMgNi4g5pWw5o2u5bqTIFNjaGVtYQoKIyMjIHVzZXJzCnwg5YiXIHwg57G75Z6LIHwg57qm5p2fIHwKfC0tLS18LS0tLS0tfC0tLS0tLXwKfCBpZCB8IElOVEVHRVIgfCBQUklNQVJZIEtFWSBBVVRPSU5DUkVNRU5UIHwKfCB1c2VybmFtZSB8IFRFWFQgfCBVTklRVUUgTk9UIE5VTEwgfAp8IHBhc3N3b3JkX2hhc2ggfCBURVhUIHwgTk9UIE5VTEwgfAp8IHB1YmxpY19rZXkgfCBURVhUIHwgTlVMTEFCTEXvvIhSU0Eg5YWs6ZKlIFBFTe+8iSB8CnwgY3JlYXRlZF9hdCB8IFRJTUVTVEFNUCB8IERFRkFVTFQgQ1VSUkVOVF9USU1FU1RBTVAgfAoKIyMjIGdyb3Vwcwp8IOWIlyB8IOexu+WeiyB8IOe6puadnyB8CnwtLS0tfC0tLS0tLXwtLS0tLS18CnwgaWQgfCBJTlRFR0VSIHwgUFJJTUFSWSBLRVkgQVVUT0lOQ1JFTUVOVCB8CnwgbmFtZSB8IFRFWFQgfCBOT1QgTlVMTCB8Cnwgb3duZXJfaWQgfCBJTlRFR0VSIHwgTk9UIE5VTEwsIEZLIC0+IHVzZXJzKGlkKSB8CnwgY3JlYXRlZF9hdCB8IFRJTUVTVEFNUCB8IERFRkFVTFQgQ1VSUkVOVF9USU1FU1RBTVAgfAoKIyMjIGdyb3VwX21lbWJlcnMKfCDliJcgfCDnsbvlnosgfCDnuqbmnZ8gfAp8LS0tLXwtLS0tLS18LS0tLS0tfAp8IGdyb3VwX2lkIHwgSU5URUdFUiB8IE5PVCBOVUxMLCBGSyAtPiBncm91cHMoaWQpIHwKfCB1c2VyX2lkIHwgSU5URUdFUiB8IE5PVCBOVUxMLCBGSyAtPiB1c2VycyhpZCkgfAp8IFBSSU1BUlkgS0VZIHwgKGdyb3VwX2lkLCB1c2VyX2lkKSB8CgojIyMgbWVzc2FnZXMKfCDliJcgfCDnsbvlnosgfCDnuqbmnZ8gfAp8LS0tLXwtLS0tLS18LS0tLS0tfAp8IGlkIHwgSU5URUdFUiB8IFBSSU1BUlkgS0VZIEFVVE9JTkNSRU1FTlQgfAp8IG1zZ190eXBlIHwgSU5URUdFUiB8IE5PVCBOVUxMIHwKfCBzZW5kZXJfaWQgfCBJTlRFR0VSIHwgTk9UIE5VTEwsIEZLIC0+IHVzZXJzKGlkKSB8CnwgdGFyZ2V0X2lkIHwgSU5URUdFUiB8IE5PVCBOVUxM77yI55So5oi3SUQg5oiWIOe+pOe7hElE77yJIHwKfCBjb250ZW50IHwgVEVYVCB8IE5VTExBQkxFIHwKfCBmaWxlX3BhdGggfCBURVhUIHwgTlVMTEFCTEUgfAp8IGZpbGVfc2l6ZSB8IElOVEVHRVIgfCBOVUxMQUJMRSB8CnwgaXNfcmVjYWxsZWQgfCBJTlRFR0VSIHwgREVGQVVMVCAwIHwKfCBjcmVhdGVkX2F0IHwgVElNRVNUQU1QIHwgREVGQVVMVCBDVVJSRU5UX1RJTUVTVEFNUCB8CgotLS0KCiMjIDcuIOWuouaIt+err+acrOWcsOWtmOWCqAoK5a6i5oi356uv5L2/55SoIEpTT04g5paH5Lu25a2Y5YKo5raI5oGv5Y6G5Y+y77yM5oyJ5Lya6K+d5YiG5paH5Lu277yaCgpgYGB0ZXh0Cm1lc3NhZ2Vfc3RvcmUvCuKUnOKUgOKUgCBwcml2YXRlXzxteV9pZD5fPHBlZXJfaWQ+Lmpzb24gICAjIOengeiBiuiusOW9lQrilJzilIDilIAgZ3JvdXBfPGdyb3VwX2lkPi5qc29uICAgICAgICAgICAgICMg576k6IGK6K6w5b2VCuKUlOKUgOKUgCBpbmRleC5qc29uICAgICAgICAgICAgICAgICAgICAgICAgIyDkvJror53ntKLlvJUKYGBgCgrljZXmnaHmtojmga/moLzlvI/vvJoKYGBganNvbgp7CiAgICAibXNnX2lkIjogMTIzLAogICAgIm1zZ190eXBlIjogNSwKICAgICJzZW5kZXJfaWQiOiAxLAogICAgImZyb21fbWUiOiB0cnVlLAogICAgImNvbnRlbnQiOiAi5L2g5aW9IiwKICAgICJpc19yZWNhbGxlZCI6IGZhbHNlLAogICAgInRpbWVzdGFtcCI6IDE3MDAwMDAwMDAsCiAgICAiZmlsZV9wYXRoIjogbnVsbCwKICAgICJmaWxlX3NpemUiOiBudWxsCn0KYGBgCgotLS0KCiMjIDguIOWPmOabtOiusOW9lQoKfCDniYjmnKwgfCDml6XmnJ8gfCDlj5jmm7TlhoXlrrkgfAp8LS0tLS0tfC0tLS0tLXwtLS0tLS0tLS0tfAp8IHYxLjAgfCAyMDI2LTA0LTMwIHwg5Yid5aeL54mI5pys77yM5a6a5LmJ5a6M5pW05Y2P6K6u77yIMTJCIOWktCArIEpTT04gcGF5bG9hZO+8iSB8Cg==
+# 通信协议文档 v1.0
+
+## 1. 二进制消息格式
+
+每条消息由一个 **12 字节的固定头部** 后跟 **变长 JSON Payload** 组成。
+
+### 1.1 头部结构
+
+```text
+ 0                   1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|          Magic (0xCAFE)       |  Version  |    Type    |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                       Sequence Number                         |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                      Payload Length                           |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                                                               |
+|                     Payload (JSON bytes)                      |
+|                                                               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+```
+
+| 偏移 | 大小 | 字段 | struct 格式 | 说明 |
+|------|------|------|-------------|------|
+| 0 | 2B | Magic | `H` | 魔术字 `0xCAFE`，用于校验 |
+| 2 | 1B | Version | `B` | 协议版本号，当前 `0x01` |
+| 3 | 1B | Type | `B` | 消息类型（见类型表） |
+| 4 | 4B | Seq | `I` | 序列号，大端序，用于请求-响应匹配 |
+| 8 | 4B | PayloadLen | `I` | JSON payload 字节长度，大端序 |
+| 12 | - | Payload | — | UTF-8 编码的 JSON 对象 |
+
+**编码**: `struct.pack("!H B B I I", MAGIC, VERSION, msg_type, seq, payload_len) + json_payload`
+
+### 1.2 消息类型表
+
+| Code | 常量名 | 方向 | 说明 |
+|------|--------|------|------|
+| 0x01 | LOGIN_REQ | C -> S | 登录请求 |
+| 0x02 | LOGIN_RESP | S -> C | 登录响应 |
+| 0x03 | REGISTER_REQ | C -> S | 注册请求 |
+| 0x04 | REGISTER_RESP | S -> C | 注册响应 |
+| 0x05 | PRIVATE_MSG | C <-> S | 私聊消息 |
+| 0x06 | GROUP_MSG | C <-> S | 群聊消息 |
+| 0x07 | HEARTBEAT | C -> S | 心跳包 |
+| 0x08 | HEARTBEAT_ACK | S -> C | 心跳确认 |
+| 0x09 | FILE_INIT | C <-> S | 文件传输初始化 |
+| 0x0A | FILE_DATA | C <-> S | 文件数据块 |
+| 0x0B | FILE_ACK | C <-> S | 文件块确认（断点续传） |
+| 0x0C | GROUP_CREATE | C <-> S | 创建群组 |
+| 0x0D | GROUP_JOIN | C <-> S | 加入群组 |
+| 0x0E | GROUP_LEAVE | C <-> S | 退出群组 |
+| 0x0F | STATUS_UPDATE | S -> C | 在线状态推送 |
+| 0x10 | MSG_RECALL | C <-> S | 消息撤回 |
+| 0x11 | AI_QUERY | C -> S | @AI 查询 |
+| 0x12 | AI_RESP | S -> C | AI 回复 |
+| 0x13 | CONTENT_WARN | S -> C | 内容违规警告 |
+| 0x14 | HISTORY_REQ | C -> S | 历史消息请求 |
+| 0x15 | HISTORY_RESP | S -> C | 历史消息响应 |
+| 0x16 | ONLINE_USERS | C <-> S | 在线用户列表 |
+| 0x17 | P2P_HOLE_PUNCH | C <-> S | P2P 打洞协助 |
+| 0x18 | P2P_READY | C <-> S | P2P 就绪通知 |
+| 0xFF | ERROR | S -> C | 错误响应 |
+
+### 1.3 错误码
+
+| Code | 常量名 | 说明 |
+|------|--------|------|
+| 0 | SUCCESS | 成功 |
+| 1 | INVALID_REQUEST | 无效请求 |
+| 2 | AUTH_FAILED | 认证失败 |
+| 3 | USER_EXISTS | 用户已存在 |
+| 4 | USER_NOT_FOUND | 用户不存在 |
+| 5 | GROUP_NOT_FOUND | 群组不存在 |
+| 6 | NOT_GROUP_MEMBER | 非群组成员 |
+| 7 | MESSAGE_TOO_LARGE | 消息过大 |
+| 8 | FILE_TOO_LARGE | 文件过大 |
+| 9 | RATE_LIMITED | 请求频率限制 |
+| 10 | INTERNAL_ERROR | 服务端内部错误 |
+| 11 | P2P_FAILED | P2P 连接失败 |
+| 12 | MSG_NOT_FOUND | 消息未找到 |
+| 13 | RECALL_TIMEOUT | 撤回超时（超过 2 分钟） |
+| 14 | CONTENT_REJECTED | 内容被拒绝 |
+| 15 | INVALID_PAYLOAD | 无效的 payload |
+
+---
+
+## 1.4 典型消息示例
+
+以下示例只展示 JSON payload。实际网络传输时，每个 payload 前都会附加 12 字节二进制头部：
+
+```text
+Magic=0xCAFE, Version=0x01, Type=<消息类型>, Seq=<序列号>, PayloadLen=<JSON 字节数>
+```
+
+### 登录请求与响应
+
+```json
+{
+  "username": "alice",
+  "password_hash": "sha256_password_digest"
+}
+```
+
+```json
+{
+  "success": true,
+  "user_id": 1,
+  "username": "alice",
+  "groups": {
+    "2": "demo_group"
+  },
+  "available_groups": {
+    "2": {
+      "id": 2,
+      "name": "demo_group",
+      "member_count": 3,
+      "joined": true
+    }
+  }
+}
+```
+
+### 私聊消息
+
+```json
+{
+  "to_id": 2,
+  "content": "你好 Bob",
+  "encrypted": false
+}
+```
+
+服务端确认和转发时会补充路由字段：
+
+```json
+{
+  "from_id": 1,
+  "to_id": 2,
+  "sender": "alice",
+  "content": "你好 Bob",
+  "msg_id": "6f1b1e8d-9c84-4e6f-9d8c-123456789abc",
+  "timestamp": 1781512695.2,
+  "related_type": "private",
+  "related_target": "2",
+  "chat_key": "private:2"
+}
+```
+
+### 群聊消息
+
+```json
+{
+  "group_id": 2,
+  "content": "大家好",
+  "encrypted": false
+}
+```
+
+```json
+{
+  "group_id": 2,
+  "from_id": 1,
+  "sender": "alice",
+  "content": "大家好",
+  "msg_id": "d8c5f594-6b28-4a5d-91e2-9278d4e8c6ae",
+  "timestamp": 1781512700.4,
+  "related_type": "group",
+  "related_target": "2",
+  "chat_key": "group:2"
+}
+```
+
+### 文件初始化与分块
+
+```json
+{
+  "to_id": 2,
+  "filename": "report.pdf",
+  "filesize": 204800,
+  "file_hash": "sha256_hex",
+  "chunk_size": 65536
+}
+```
+
+```json
+{
+  "transfer_id": "b7a48dd2-7f37-4ad7-8ed6-25bf8ab40cf3",
+  "chunk_index": 0,
+  "data": "base64_encoded_chunk",
+  "offset": 0
+}
+```
+
+### AI 查询与群内回复
+
+```json
+{
+  "group_id": 2,
+  "query": "请用一句话解释 TCP 三次握手。"
+}
+```
+
+```json
+{
+  "group_id": 2,
+  "user_id": 1,
+  "from_id": 1,
+  "query": "请用一句话解释 TCP 三次握手。",
+  "content": "TCP 三次握手是客户端和服务端通过 SYN、SYN-ACK、ACK 三步确认双方收发能力并建立连接的过程。",
+  "reply": "TCP 三次握手是客户端和服务端通过 SYN、SYN-ACK、ACK 三步确认双方收发能力并建立连接的过程。",
+  "sender": "AI",
+  "related_type": "group",
+  "related_target": "2",
+  "chat_key": "group:2"
+}
+```
+
+### 内容审核警告
+
+```json
+{
+  "level": "high",
+  "reason": "content_rejected",
+  "message": "消息包含高风险内容，已被服务端拦截。"
+}
+```
+
+### 错误响应
+
+```json
+{
+  "code": 6,
+  "error": "不是群成员"
+}
+```
+
+---
+
+## 2. 交互流程
+
+### 2.1 登录流程
+
+```text
+Client                          Server
+  |                               |
+  |--- LOGIN_REQ ---------------->|  {username, password_hash}
+  |                               |  验证用户
+  |<-- LOGIN_RESP -----------------|  {success, user_id, token}
+```
+
+### 2.2 注册流程
+
+```text
+Client                          Server
+  |                               |
+  |--- REGISTER_REQ ------------->|  {username, password_hash, public_key?}
+  |                               |  创建用户
+  |<-- REGISTER_RESP --------------|  {success, user_id}
+```
+
+### 2.3 私聊消息流程
+
+```text
+Client A                     Server                    Client B
+  |                            |                          |
+  |--- PRIVATE_MSG ----------->|                          |  {from_id, to_id, content, msg_id, timestamp}
+  |                            |--- PRIVATE_MSG -------->|  转发消息
+  |                            |                          |  (B 在线则实时推送)
+```
+
+### 2.4 群聊消息流程
+
+```text
+Client A                     Server                    Client B,C,...
+  |                            |                          |
+  |--- GROUP_MSG ------------->|                          |  {from_id, group_id, content, msg_id, timestamp}
+  |                            |--- GROUP_MSG ---------->|  转发给所有群成员（除发送者）
+```
+
+### 2.5 心跳机制
+
+```text
+Client                          Server
+  |                               |
+  |--- HEARTBEAT ---------------->|  {}
+  |<-- HEARTBEAT_ACK -------------|  {}
+  |                               |
+  (客户端每 25s 发送一次)
+  (服务端 90s 无响应判定离线)
+```
+
+### 2.6 文件传输流程（中继模式）
+
+```text
+Client A                     Server                    Client B
+  |                            |                          |
+  |--- FILE_INIT ------------->|                          |  请求传文件
+  |                            |--- FILE_INIT ---------->|  通知 B
+  |                            |<-- FILE_ACK -------------|  B 确认接收
+  |<-- FILE_ACK ---------------|                          |  分配 file_id
+  |                            |                          |
+  |--- FILE_DATA (chunk 1) --->|                          |  传输分块
+  |                            |--- FILE_DATA (chunk 1) ->|  转发分块
+  |<-- FILE_ACK ---------------|                          |  确认已接收
+  |--- FILE_DATA (chunk N) --->|                          |  最后一块
+  |                            |--- FILE_DATA (chunk N) ->|  chunk_index / total_chunks
+```
+
+### 2.7 消息撤回
+
+```text
+Client                      Server                    Receiver
+  |                           |                          |
+  |--- MSG_RECALL ----------->|  {msg_id, user_id}
+  |                           |  检查是否在 2 分钟内
+  |<-- MSG_RECALL ------------|  {success: true/false}
+  |                           |--- STATUS_UPDATE ------>|  {type: "recall", msg_id}
+```
+
+### 2.8 P2P 打洞流程
+
+```text
+Client A                   Server                   Client B
+  |                          |                         |
+  |--- P2P_HOLE_PUNCH ------>|                         |  请求与 B 建立 P2P
+  |                          |--- P2P_HOLE_PUNCH ----->|  包含 A 的地址
+  |<-- P2P_HOLE_PUNCH -------|                         |  包含 B 的地址
+  |                          |                         |
+  |===== UDP 打洞阶段 =======|                         |
+  |----- UDP 包 --->|                         |  双方互发 UDP 探测
+  |                          |                         |
+  |----- P2P_READY --------->|                         |  P2P 通道就绪
+  |                          |--- P2P_READY ---------->|
+```
+
+---
+
+## 3. Payload 格式定义
+
+### LOGIN_REQ (0x01)
+```json
+{"username": "alice", "password_hash": "sha256hash..."}
+```
+
+### LOGIN_RESP (0x02) — 成功
+```json
+{"success": true, "user_id": 1, "token": "jwt-token..."}
+```
+### LOGIN_RESP (0x02) — 失败
+```json
+{"success": false, "code": 2, "message": "用户名或密码错误"}
+```
+
+### REGISTER_REQ (0x03)
+```json
+{"username": "bob", "password_hash": "sha256hash...", "public_key": "-----BEGIN PUBLIC KEY-----..."}
+```
+
+### REGISTER_RESP (0x04) — 成功
+```json
+{"success": true, "user_id": 2}
+```
+
+### PRIVATE_MSG (0x05)
+```json
+{
+    "from_id": 1,
+    "to_id": 2,
+    "content": "你好！",
+    "msg_id": 100,
+    "timestamp": 1700000000
+}
+```
+
+### GROUP_MSG (0x06)
+```json
+{
+    "from_id": 1,
+    "group_id": 1,
+    "content": "大家好！",
+    "msg_id": 101,
+    "timestamp": 1700000001
+}
+```
+
+### HEARTBEAT (0x07) / HEARTBEAT_ACK (0x08)
+```json
+{}
+```
+
+### FILE_INIT (0x09)
+```json
+{
+    "from_id": 1,
+    "to_id": 2,
+    "filename": "doc.pdf",
+    "filesize": 1024000,
+    "file_id": "a1b2c3d4-uuid"
+}
+```
+
+### FILE_DATA (0x0A)
+```json
+{
+    "file_id": "a1b2c3d4-uuid",
+    "chunk_index": 0,
+    "total_chunks": 16,
+    "data": "base64-encoded-chunk...",
+}
+```
+
+### FILE_ACK (0x0B)
+```json
+{
+    "file_id": "a1b2c3d4-uuid",
+    "offset": 0
+}
+```
+响应中包含 `data`（base64）、`offset`、`size`。服务端会校验下载者是否为接收方；群文件要求请求者是群成员。
+
+### GROUP_CREATE (0x0C) — 请求
+```json
+{"user_id": 1, "name": "聊天群"}
+```
+### GROUP_CREATE (0x0C) — 响应
+```json
+{"group_id": 1, "success": true}
+```
+
+### GROUP_JOIN (0x0D)
+```json
+{"user_id": 1, "group_id": 1}
+```
+响应：`{"success": true}`
+
+### GROUP_LEAVE (0x0E)
+```json
+{"user_id": 1, "group_id": 1}
+```
+响应：`{"success": true}`
+
+### STATUS_UPDATE (0x0F)
+```json
+{"user_id": 1, "username": "alice", "is_online": 1}
+```
+`is_online` 取值：`1` 在线，`0` 离线。
+
+### MSG_RECALL (0x10)
+```json
+{"msg_id": "6f1b1e8d-9c84-4e6f-9d8c-123456789abc"}
+```
+响应：`{"success": true, "msg_id": "...", "receiver_id": 2, "group_id": null}`
+
+### AI_QUERY (0x11)
+```json
+{"group_id": 1, "user_id": 1, "from_id": 1, "query": "今天天气如何", "msg_id": 200}
+```
+字段说明：客户端实际发送 `query` 作为用户问题；`from_id` 与 `user_id` 兼容保留，服务端以登录态绑定的 `user_id` 为准。
+
+### AI_RESP (0x12)
+```json
+{"group_id": 1, "user_id": 1, "from_id": 1, "query": "今天天气如何", "content": "我是AI助手...", "reply": "我是AI助手...", "msg_id": 201}
+```
+字段说明：`content` 是用于客户端显示的标准字段；`reply` 保留给旧版客户端兼容。
+
+### CONTENT_WARN (0x13)
+```json
+{"user_id": 1, "msg_id": 300, "reason": "包含违规词汇", "message": "包含违规词汇", "level": "mid"}
+```
+`level` 取值：`low`、`mid`、`high`。`high` 表示服务端已拦截，`mid` 表示替换敏感词后可放行。
+
+### HISTORY_REQ (0x14)
+```json
+{"user_id": 1, "target_type": "private", "target_id": 2, "limit": 50, "before_id": 0}
+```
+`target_type`: `private` / `group`
+
+### HISTORY_RESP (0x15)
+```json
+{
+    "messages": [
+        {"id": 1, "msg_type": 5, "sender_id": 1, "target_id": 2, "content": "...", "created_at": "..."}
+    ]
+}
+```
+
+### ONLINE_USERS (0x16) — 请求
+```json
+{}
+```
+### ONLINE_USERS (0x16) — 响应
+```json
+{"users": [{"id": 1, "username": "alice", "public_key": ""}], "count": 1}
+```
+
+### P2P_HOLE_PUNCH (0x17)
+```json
+{"user_id": 1, "target_id": 2, "addr": "192.168.1.2:9000"}
+```
+
+### P2P_READY (0x18)
+```json
+{"user_id": 1, "target_id": 2, "addr": "192.168.1.2:9001"}
+```
+
+### ERROR (0xFF)
+```json
+{"code": 401, "message": "未授权"}
+```
+
+---
+
+## 4. TCP 粘包处理
+
+TCP 是流式协议，无消息边界。本项目采用 **长度前缀** 方式解决粘包/半包问题：
+
+1. 发送端：在每个数据包前加上 12 字节的固定头，头中包含 `PayloadLength`
+2. 接收端：先读取 12 字节头，解析出 payload_len，再读取 payload_len 字节的 Payload
+3. 如果数据不足一个完整包，则等待更多数据
+
+### MessageProtocol 示例
+
+```python
+from server.protocol import MessageProtocol, encode_message, MessageType
+
+protocol = MessageProtocol()
+protocol.feed(received_bytes)
+
+for msg_type, seq, payload in protocol.next_messages():
+    if msg_type == MessageType.PRIVATE_MSG:
+        print(payload["content"])
+```
+
+### Connection 示例
+
+```python
+from server.protocol import Connection
+
+async def handle_client(reader, writer):
+    conn = Connection(reader, writer)
+    await conn.send_message(MessageType.HEARTBEAT, {})
+    msg_type, seq, payload = await conn.read_message()
+```
+
+---
+
+## 5. 配置参数
+
+| 参数 | 默认值 | 说明 |
+|------|--------|------|
+| 服务端地址 | 0.0.0.0 | TCP 监听地址 |
+| 服务端端口 | 8888 | TCP 监听端口 |
+| 心跳间隔（客户端） | 25s | 略短于服务端超时 |
+| 心跳超时（服务端） | 90s | 超时则断开连接 |
+| 缓冲区大小 | 4096 | 网络 I/O 缓冲区 |
+| 文件块大小 | 64KB | 文件传输分块大小 |
+| 最大文件大小 | 100MB | 单文件上限 |
+| 撤回窗口 | 120s | 消息可撤回时间 |
+| 最大负载 | 1MB | 单消息最大 payload |
+
+---
+
+## 6. 数据库 Schema
+
+### users
+| 列 | 类型 | 约束 |
+|----|------|------|
+| id | INTEGER | PRIMARY KEY AUTOINCREMENT |
+| username | TEXT | UNIQUE NOT NULL |
+| password_hash | TEXT | NOT NULL |
+| public_key | TEXT | NULLABLE（RSA 公钥 PEM） |
+| created_at | TIMESTAMP | DEFAULT CURRENT_TIMESTAMP |
+
+### groups
+| 列 | 类型 | 约束 |
+|----|------|------|
+| id | INTEGER | PRIMARY KEY AUTOINCREMENT |
+| name | TEXT | NOT NULL |
+| owner_id | INTEGER | NOT NULL, FK -> users(id) |
+| created_at | TIMESTAMP | DEFAULT CURRENT_TIMESTAMP |
+
+### group_members
+| 列 | 类型 | 约束 |
+|----|------|------|
+| group_id | INTEGER | NOT NULL, FK -> groups(id) |
+| user_id | INTEGER | NOT NULL, FK -> users(id) |
+| PRIMARY KEY | (group_id, user_id) |
+
+### messages
+| 列 | 类型 | 约束 |
+|----|------|------|
+| id | INTEGER | PRIMARY KEY AUTOINCREMENT |
+| msg_type | INTEGER | NOT NULL |
+| sender_id | INTEGER | NOT NULL, FK -> users(id) |
+| target_id | INTEGER | NOT NULL（用户ID 或 群组ID） |
+| content | TEXT | NULLABLE |
+| file_path | TEXT | NULLABLE |
+| file_size | INTEGER | NULLABLE |
+| is_recalled | INTEGER | DEFAULT 0 |
+| created_at | TIMESTAMP | DEFAULT CURRENT_TIMESTAMP |
+
+---
+
+## 7. 客户端本地存储
+
+客户端使用 JSON 文件存储消息历史，按会话分文件：
+
+```text
+message_store/
+├── private_<my_id>_<peer_id>.json   # 私聊记录
+├── group_<group_id>.json             # 群聊记录
+└── index.json                        # 会话索引
+```
+
+单条消息格式：
+```json
+{
+    "msg_id": 123,
+    "msg_type": 5,
+    "sender_id": 1,
+    "from_me": true,
+    "content": "你好",
+    "is_recalled": false,
+    "timestamp": 1700000000,
+    "file_path": null,
+    "file_size": null
+}
+```
+
+---
+
+## 8. 变更记录
+
+| 版本 | 日期 | 变更内容 |
+|------|------|----------|
+| v1.0 | 2026-04-30 | 初始版本，定义完整协议（12B 头 + JSON payload） |

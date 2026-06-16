@@ -1,1 +1,273 @@
-Y29uc3QgYXNzZXJ0ID0gcmVxdWlyZSgnYXNzZXJ0Jyk7CmNvbnN0IGZzID0gcmVxdWlyZSgnZnMnKTsKY29uc3QgcGF0aCA9IHJlcXVpcmUoJ3BhdGgnKTsKY29uc3Qgdm0gPSByZXF1aXJlKCd2bScpOwoKY29uc3QgY2hhdEpzID0gZnMucmVhZEZpbGVTeW5jKAogIHBhdGguam9pbihfX2Rpcm5hbWUsICcuLicsICdjbGllbnQnLCAnd2VidWknLCAnanMnLCAnY2hhdC5qcycpLAogICd1dGY4JywKKTsKY29uc3Qgc2lkZWJhckpzID0gZnMucmVhZEZpbGVTeW5jKAogIHBhdGguam9pbihfX2Rpcm5hbWUsICcuLicsICdjbGllbnQnLCAnd2VidWknLCAnanMnLCAnc2lkZWJhci5qcycpLAogICd1dGY4JywKKTsKCmNvbnN0IG5vb3AgPSAoKSA9PiB7fTsKY29uc3QgUmVhY3QgPSB7CiAgY3JlYXRlRWxlbWVudDogKCkgPT4gbnVsbCwKICBGcmFnbWVudDogU3ltYm9sKCdGcmFnbWVudCcpLAogIHVzZVN0YXRlOiAoKSA9PiBbbnVsbCwgbm9vcF0sCiAgdXNlRWZmZWN0OiBub29wLAogIHVzZVJlZjogKCkgPT4gKHsgY3VycmVudDogbnVsbCB9KSwKICB1c2VDYWxsYmFjazogKGZuKSA9PiBmbiwKICB1c2VNZW1vOiAoZm4pID0+IGZuKCksCn07Cgpjb25zdCBzYW5kYm94ID0gewogIFJlYWN0LAogIHdpbmRvdzogeyBBcHA6IHt9IH0sCiAgY29uc29sZSwKfTsKCnZtLmNyZWF0ZUNvbnRleHQoc2FuZGJveCk7CnZtLnJ1bkluQ29udGV4dChjaGF0SnMsIHNhbmRib3gpOwp2bS5ydW5JbkNvbnRleHQoc2lkZWJhckpzLCBzYW5kYm94KTsKCmNvbnN0IHJvdXRpbmcgPSBzYW5kYm94LndpbmRvdy5BcHAuX19jaGF0Um91dGluZzsKYXNzZXJ0KHJvdXRpbmcsICdjaGF0IHJvdXRpbmcgdGVzdCBob29rcyBzaG91bGQgYmUgZXhwb3NlZCcpOwpjb25zdCBzaWRlYmFyTG9naWMgPSBzYW5kYm94LndpbmRvdy5BcHAuX19zaWRlYmFyTG9naWM7CmFzc2VydChzaWRlYmFyTG9naWMsICdzaWRlYmFyIGxvZ2ljIHRlc3QgaG9va3Mgc2hvdWxkIGJlIGV4cG9zZWQnKTsKCmNvbnN0IG1lc3NhZ2VzID0gWwogIHsKICAgIHR5cGU6ICdwcml2YXRlJywKICAgIHNlbmRlcjogJ2FsaWNlJywKICAgIGZyb21faWQ6IDEsCiAgICB0YXJnZXRfaWQ6IDIsCiAgICByZWxhdGVkX3R5cGU6ICdwcml2YXRlJywKICAgIHJlbGF0ZWRfdGFyZ2V0OiAnMicsCiAgICBjaGF0X2tleTogJ3ByaXZhdGU6MicsCiAgICBjb250ZW50OiAnYWxpY2UgdG8gYm9iJywKICB9LAogIHsKICAgIHR5cGU6ICdwcml2YXRlJywKICAgIHNlbmRlcjogJ2FsaWNlJywKICAgIGZyb21faWQ6IDEsCiAgICB0YXJnZXRfaWQ6IDMsCiAgICByZWxhdGVkX3R5cGU6ICdwcml2YXRlJywKICAgIHJlbGF0ZWRfdGFyZ2V0OiAnMycsCiAgICBjaGF0X2tleTogJ3ByaXZhdGU6MycsCiAgICBjb250ZW50OiAnYWxpY2UgdG8gY2Fyb2wnLAogIH0sCiAgewogICAgdHlwZTogJ3ByaXZhdGUnLAogICAgc2VuZGVyOiAnYm9iJywKICAgIGZyb21faWQ6IDIsCiAgICB0YXJnZXRfaWQ6IDIsCiAgICByZWxhdGVkX3R5cGU6ICdwcml2YXRlJywKICAgIHJlbGF0ZWRfdGFyZ2V0OiAnMicsCiAgICBjaGF0X2tleTogJ3ByaXZhdGU6MicsCiAgICBjb250ZW50OiAnYm9iIHRvIGFsaWNlJywKICB9LApdOwoKY29uc3QgYm9iVmlzaWJsZSA9IG1lc3NhZ2VzLmZpbHRlcigobWVzc2FnZSkgPT4gcm91dGluZy5tZXNzYWdlQmVsb25nc1RvQ2hhdChtZXNzYWdlLCB7CiAgY2hhdFR5cGU6ICdwcml2YXRlJywKICB0YXJnZXROYW1lOiAnYm9iJywKICB0YXJnZXRJZDogMiwKICB1c2VybmFtZTogJ2FsaWNlJywKfSkpOwphc3NlcnQuZGVlcFN0cmljdEVxdWFsKGJvYlZpc2libGUubWFwKChtKSA9PiBtLmNvbnRlbnQpLCBbJ2FsaWNlIHRvIGJvYicsICdib2IgdG8gYWxpY2UnXSk7Cgpjb25zdCBjYXJvbFZpc2libGUgPSBtZXNzYWdlcy5maWx0ZXIoKG1lc3NhZ2UpID0+IHJvdXRpbmcubWVzc2FnZUJlbG9uZ3NUb0NoYXQobWVzc2FnZSwgewogIGNoYXRUeXBlOiAncHJpdmF0ZScsCiAgdGFyZ2V0TmFtZTogJ2Nhcm9sJywKICB0YXJnZXRJZDogMywKICB1c2VybmFtZTogJ2FsaWNlJywKfSkpOwphc3NlcnQuZGVlcFN0cmljdEVxdWFsKGNhcm9sVmlzaWJsZS5tYXAoKG0pID0+IG0uY29udGVudCksIFsnYWxpY2UgdG8gY2Fyb2wnXSk7Cgphc3NlcnQuc3RyaWN0RXF1YWwocm91dGluZy5jaGF0S2V5Rm9yTWVzc2FnZShtZXNzYWdlc1swXSwgJ2FsaWNlJyksICdwcml2YXRlOjInKTsKYXNzZXJ0LnN0cmljdEVxdWFsKHJvdXRpbmcuY2hhdEtleUZvck1lc3NhZ2UobWVzc2FnZXNbMl0sICdhbGljZScpLCAncHJpdmF0ZToyJyk7CmFzc2VydC5zdHJpY3RFcXVhbChyb3V0aW5nLmNoYXRLZXlGb3JNZXNzYWdlKHsKICB0eXBlOiAncHJpdmF0ZScsCiAgc2VuZGVyOiAnYm9iJywKICBmcm9tX2lkOiAyLAogIHJlY2VpdmVyX2lkOiAxLAogIGNvbnRlbnQ6ICdsZWdhY3kgaW5ib3VuZCcsCn0sICdhbGljZScpLCAncHJpdmF0ZToyJyk7Cgpjb25zdCBvd25DaGF0ID0gbWVzc2FnZXMuZmlsdGVyKChtZXNzYWdlKSA9PiByb3V0aW5nLm1lc3NhZ2VCZWxvbmdzVG9DaGF0KG1lc3NhZ2UsIHsKICBjaGF0VHlwZTogJ3ByaXZhdGUnLAogIHRhcmdldE5hbWU6ICdhbGljZScsCiAgdGFyZ2V0SWQ6IDEsCiAgdXNlcm5hbWU6ICdhbGljZScsCn0pKTsKYXNzZXJ0LmRlZXBTdHJpY3RFcXVhbChvd25DaGF0Lm1hcCgobSkgPT4gbS5jb250ZW50KSwgW10pOwoKY29uc3QgZ3JvdXBNZXNzYWdlID0gewogIHR5cGU6ICdncm91cCcsCiAgc2VuZGVyOiAnYm9iJywKICBmcm9tX2lkOiAyLAogIGdyb3VwX2lkOiAnOScsCiAgdGFyZ2V0X2lkOiAnOScsCiAgcmVsYXRlZF90eXBlOiAnZ3JvdXAnLAogIHJlbGF0ZWRfdGFyZ2V0OiAnOScsCiAgY2hhdF9rZXk6ICdncm91cDo5JywKICBjb250ZW50OiAnZ3JvdXAgb25seScsCn07CmFzc2VydC5zdHJpY3RFcXVhbChyb3V0aW5nLm1lc3NhZ2VCZWxvbmdzVG9DaGF0KGdyb3VwTWVzc2FnZSwgewogIGNoYXRUeXBlOiAnZ3JvdXAnLAogIHRhcmdldE5hbWU6ICc5JywKICB0YXJnZXRJZDogOSwKICB1c2VybmFtZTogJ2FsaWNlJywKfSksIHRydWUpOwphc3NlcnQuc3RyaWN0RXF1YWwocm91dGluZy5tZXNzYWdlQmVsb25nc1RvQ2hhdChncm91cE1lc3NhZ2UsIHsKICBjaGF0VHlwZTogJ3ByaXZhdGUnLAogIHRhcmdldE5hbWU6ICdib2InLAogIHRhcmdldElkOiAyLAogIHVzZXJuYW1lOiAnYWxpY2UnLAp9KSwgZmFsc2UpOwphc3NlcnQuc3RyaWN0RXF1YWwocm91dGluZy5tZXNzYWdlQmVsb25nc1RvQ2hhdChncm91cE1lc3NhZ2UsIHsKICBjaGF0VHlwZTogJ3ByaXZhdGUnLAogIHRhcmdldE5hbWU6ICdhbGljZScsCiAgdGFyZ2V0SWQ6IDEsCiAgdXNlcm5hbWU6ICdhbGljZScsCn0pLCBmYWxzZSk7Cgpjb25zdCBnbG9iYWxTeXN0ZW0gPSB7CiAgdHlwZTogJ3N5c3RlbScsCiAgY29udGVudDogJ3Vuc2NvcGVkIHN5c3RlbSBtZXNzYWdlJywKfTsKYXNzZXJ0LnN0cmljdEVxdWFsKHJvdXRpbmcubWVzc2FnZUJlbG9uZ3NUb0NoYXQoZ2xvYmFsU3lzdGVtLCB7CiAgY2hhdFR5cGU6ICdwcml2YXRlJywKICB0YXJnZXROYW1lOiAnYm9iJywKICB0YXJnZXRJZDogMiwKICB1c2VybmFtZTogJ2FsaWNlJywKfSksIGZhbHNlKTsKCmNvbnN0IHNjb3BlZFN5c3RlbSA9IHsKICB0eXBlOiAnc3lzdGVtJywKICBjb250ZW50OiAnc2NvcGVkIHN5c3RlbSBtZXNzYWdlJywKICByZWxhdGVkX3R5cGU6ICdwcml2YXRlJywKICByZWxhdGVkX3RhcmdldDogJzInLAogIGNoYXRfa2V5OiAncHJpdmF0ZToyJywKfTsKYXNzZXJ0LnN0cmljdEVxdWFsKHJvdXRpbmcubWVzc2FnZUJlbG9uZ3NUb0NoYXQoc2NvcGVkU3lzdGVtLCB7CiAgY2hhdFR5cGU6ICdwcml2YXRlJywKICB0YXJnZXROYW1lOiAnYm9iJywKICB0YXJnZXRJZDogMiwKICB1c2VybmFtZTogJ2FsaWNlJywKfSksIHRydWUpOwphc3NlcnQuc3RyaWN0RXF1YWwocm91dGluZy5tZXNzYWdlQmVsb25nc1RvQ2hhdChzY29wZWRTeXN0ZW0sIHsKICBjaGF0VHlwZTogJ3ByaXZhdGUnLAogIHRhcmdldE5hbWU6ICdjYXJvbCcsCiAgdGFyZ2V0SWQ6IDMsCiAgdXNlcm5hbWU6ICdhbGljZScsCn0pLCBmYWxzZSk7Cgpjb25zdCBncm91cEFpID0gewogIHR5cGU6ICdhaScsCiAgc2VuZGVyOiAnQUkgQXNzaXN0YW50JywKICBjb250ZW50OiAnZ3JvdXAgYWknLAogIGdyb3VwX2lkOiA5LAogIHJlbGF0ZWRfdHlwZTogJ2dyb3VwJywKICByZWxhdGVkX3RhcmdldDogJzknLAogIGNoYXRfa2V5OiAnZ3JvdXA6OScsCn07CmFzc2VydC5zdHJpY3RFcXVhbChyb3V0aW5nLm1lc3NhZ2VCZWxvbmdzVG9DaGF0KGdyb3VwQWksIHsKICBjaGF0VHlwZTogJ2dyb3VwJywKICB0YXJnZXROYW1lOiAnOScsCiAgdGFyZ2V0SWQ6IDksCiAgdXNlcm5hbWU6ICdhbGljZScsCn0pLCB0cnVlKTsKYXNzZXJ0LnN0cmljdEVxdWFsKHJvdXRpbmcubWVzc2FnZUJlbG9uZ3NUb0NoYXQoZ3JvdXBBaSwgewogIGNoYXRUeXBlOiAnYWknLAogIHRhcmdldE5hbWU6ICdBSSBBc3Npc3RhbnQnLAogIHRhcmdldElkOiAtMSwKICB1c2VybmFtZTogJ2FsaWNlJywKfSksIGZhbHNlKTsKCmNvbnN0IGFpRGlyZWN0ID0gewogIHR5cGU6ICdhaScsCiAgc2VuZGVyOiAnQUkgQXNzaXN0YW50JywKICBjb250ZW50OiAnZGlyZWN0IGFpJywKICByZWxhdGVkX3R5cGU6ICdhaScsCiAgcmVsYXRlZF90YXJnZXQ6ICdBSSBBc3Npc3RhbnQnLAogIGNoYXRfa2V5OiAnYWk6QUkgQXNzaXN0YW50JywKfTsKYXNzZXJ0LnN0cmljdEVxdWFsKHJvdXRpbmcubWVzc2FnZUJlbG9uZ3NUb0NoYXQoYWlEaXJlY3QsIHsKICBjaGF0VHlwZTogJ2FpJywKICB0YXJnZXROYW1lOiAnQUkgQXNzaXN0YW50JywKICB0YXJnZXRJZDogLTEsCiAgdXNlcm5hbWU6ICdhbGljZScsCn0pLCB0cnVlKTsKYXNzZXJ0LnN0cmljdEVxdWFsKHJvdXRpbmcubWVzc2FnZUJlbG9uZ3NUb0NoYXQoYWlEaXJlY3QsIHsKICBjaGF0VHlwZTogJ3ByaXZhdGUnLAogIHRhcmdldE5hbWU6ICdib2InLAogIHRhcmdldElkOiAyLAogIHVzZXJuYW1lOiAnYWxpY2UnLAp9KSwgZmFsc2UpOwoKY29uc3QgcGVuZGluZ093biA9IHsKICB0eXBlOiAncHJpdmF0ZScsCiAgc2VuZGVyOiAnYWxpY2UnLAogIGZyb21faWQ6IDEsCiAgcmVjZWl2ZXJfaWQ6IDIsCiAgdGFyZ2V0X2lkOiAyLAogIGNvbnRlbnQ6ICdzYW1lIG1lc3NhZ2UnLAogIHRpbWVzdGFtcDogMTcwMDAwMDAwMCwKICBsb2NhbF9tc2dfaWQ6ICdsb2NhbC0xJywKICBtc2dfaWQ6ICdsb2NhbC0xJywKICBzdGF0dXM6ICdwZW5kaW5nJywKICBjaGF0X2tleTogJ3ByaXZhdGU6MicsCn07CmNvbnN0IGhpc3RvcnlPd24gPSB7CiAgdHlwZTogJ3ByaXZhdGUnLAogIHNlbmRlcjogJ2FsaWNlJywKICBmcm9tX2lkOiAxLAogIHJlY2VpdmVyX2lkOiAyLAogIHRhcmdldF9pZDogJzInLAogIGNvbnRlbnQ6ICdzYW1lIG1lc3NhZ2UnLAogIHRpbWVzdGFtcDogMTcwMDAwMDAwMSwKICBtc2dfaWQ6ICdzZXJ2ZXItMScsCiAgY2hhdF9rZXk6ICdwcml2YXRlOjInLAp9Owpjb25zdCBtZXJnZWQgPSByb3V0aW5nLm1lcmdlTWVzc2FnZXMoW3BlbmRpbmdPd25dLCBbaGlzdG9yeU93bl0sICdhbGljZScpOwphc3NlcnQuc3RyaWN0RXF1YWwobWVyZ2VkLmxlbmd0aCwgMSk7CmFzc2VydC5zdHJpY3RFcXVhbChtZXJnZWRbMF0ubXNnX2lkLCAnc2VydmVyLTEnKTsKYXNzZXJ0LnN0cmljdEVxdWFsKG1lcmdlZFswXS5zZXJ2ZXJfbXNnX2lkLCAnc2VydmVyLTEnKTsKYXNzZXJ0LnN0cmljdEVxdWFsKG1lcmdlZFswXS5sb2NhbF9tc2dfaWQsICdsb2NhbC0xJyk7CmFzc2VydC5zdHJpY3RFcXVhbChtZXJnZWRbMF0uc3RhdHVzLCAnc2VudCcpOwoKY29uc3QgcmVwZWF0ZWRSZWFsTWVzc2FnZXMgPSByb3V0aW5nLm1lcmdlTWVzc2FnZXMoW3sKICB0eXBlOiAncHJpdmF0ZScsCiAgc2VuZGVyOiAnYWxpY2UnLAogIGNvbnRlbnQ6ICdyZXBlYXQnLAogIHRpbWVzdGFtcDogMTcwMDAwMDAwMCwKICBtc2dfaWQ6ICdzZXJ2ZXItYScsCiAgY2hhdF9rZXk6ICdwcml2YXRlOjInLAp9XSwgW3sKICB0eXBlOiAncHJpdmF0ZScsCiAgc2VuZGVyOiAnYWxpY2UnLAogIGNvbnRlbnQ6ICdyZXBlYXQnLAogIHRpbWVzdGFtcDogMTcwMDAwMDAwMSwKICBtc2dfaWQ6ICdzZXJ2ZXItYicsCiAgY2hhdF9rZXk6ICdwcml2YXRlOjInLAp9XSwgJ2FsaWNlJyk7CmFzc2VydC5zdHJpY3RFcXVhbChyZXBlYXRlZFJlYWxNZXNzYWdlcy5sZW5ndGgsIDIpOwoKYXNzZXJ0LnN0cmljdEVxdWFsKHNpZGViYXJMb2dpYy5pc1NlbGZVc2VyKCdhbGljZScsICdhbGljZScpLCB0cnVlKTsKYXNzZXJ0LnN0cmljdEVxdWFsKHNpZGViYXJMb2dpYy5pc1NlbGZVc2VyKCdib2InLCAnYWxpY2UnKSwgZmFsc2UpOwphc3NlcnQuc3RyaWN0RXF1YWwoc2lkZWJhckxvZ2ljLmZvcm1hdEdyb3VwTGFiZWwoJzInLCAnMScpLCAnMScpOwphc3NlcnQuc3RyaWN0RXF1YWwoc2lkZWJhckxvZ2ljLmZvcm1hdEdyb3VwTGFiZWwoJzEnLCAnZ3JvdXAnKSwgJ2dyb3VwJyk7CmFzc2VydC5ub3RTdHJpY3RFcXVhbChzaWRlYmFyTG9naWMuZm9ybWF0R3JvdXBMYWJlbCgnMicsICcxJyksICcxICgyKScpOwphc3NlcnQubm90U3RyaWN0RXF1YWwoc2lkZWJhckxvZ2ljLmZvcm1hdEdyb3VwTGFiZWwoJzInLCAnMScpLCAnIzIgIDEnKTsKYXNzZXJ0LnN0cmljdEVxdWFsKHJvdXRpbmcuZm9ybWF0R3JvdXBUaXRsZSgnMicsICcxJyksICcxJyk7CmFzc2VydC5zdHJpY3RFcXVhbChyb3V0aW5nLmF2YXRhck5hbWVGb3JDaGF0KCdncm91cCcsICczJywgJzIyJyksICcyMicpOwphc3NlcnQuc3RyaWN0RXF1YWwocm91dGluZy5hdmF0YXJOYW1lRm9yQ2hhdCgnZ3JvdXAnLCAnMycsICcnKSwgJ0dyb3VwICMzJyk7CmFzc2VydC5zdHJpY3RFcXVhbChyb3V0aW5nLmF2YXRhck5hbWVGb3JDaGF0KCdhaScsICdEZWVwU2VlaycsICcnKSwgJ0FJJyk7CmFzc2VydC5zdHJpY3RFcXVhbChyb3V0aW5nLmNvbm5lY3Rpb25TdGF0dXNUZXh0KHRydWUpLCAnT25saW5lJyk7CmFzc2VydC5zdHJpY3RFcXVhbChyb3V0aW5nLmNvbm5lY3Rpb25TdGF0dXNUZXh0KGZhbHNlKSwgJ09mZmxpbmUnKTsKYXNzZXJ0LnN0cmljdEVxdWFsKHJvdXRpbmcuY29ubmVjdGlvblN0YXR1c0NsYXNzKHRydWUpLCAnc3RhdHVzLWRvdCBvbmxpbmUnKTsKYXNzZXJ0LnN0cmljdEVxdWFsKHJvdXRpbmcuY29ubmVjdGlvblN0YXR1c0NsYXNzKGZhbHNlKSwgJ3N0YXR1cy1kb3Qgb2ZmbGluZScpOwo=
+const assert = require('assert');
+const fs = require('fs');
+const path = require('path');
+const vm = require('vm');
+
+const chatJs = fs.readFileSync(
+  path.join(__dirname, '..', 'client', 'webui', 'js', 'chat.js'),
+  'utf8',
+);
+const sidebarJs = fs.readFileSync(
+  path.join(__dirname, '..', 'client', 'webui', 'js', 'sidebar.js'),
+  'utf8',
+);
+
+const noop = () => {};
+const React = {
+  createElement: () => null,
+  Fragment: Symbol('Fragment'),
+  useState: () => [null, noop],
+  useEffect: noop,
+  useRef: () => ({ current: null }),
+  useCallback: (fn) => fn,
+  useMemo: (fn) => fn(),
+};
+
+const sandbox = {
+  React,
+  window: { App: {} },
+  console,
+};
+
+vm.createContext(sandbox);
+vm.runInContext(chatJs, sandbox);
+vm.runInContext(sidebarJs, sandbox);
+
+const routing = sandbox.window.App.__chatRouting;
+assert(routing, 'chat routing test hooks should be exposed');
+const sidebarLogic = sandbox.window.App.__sidebarLogic;
+assert(sidebarLogic, 'sidebar logic test hooks should be exposed');
+
+const messages = [
+  {
+    type: 'private',
+    sender: 'alice',
+    from_id: 1,
+    target_id: 2,
+    related_type: 'private',
+    related_target: '2',
+    chat_key: 'private:2',
+    content: 'alice to bob',
+  },
+  {
+    type: 'private',
+    sender: 'alice',
+    from_id: 1,
+    target_id: 3,
+    related_type: 'private',
+    related_target: '3',
+    chat_key: 'private:3',
+    content: 'alice to carol',
+  },
+  {
+    type: 'private',
+    sender: 'bob',
+    from_id: 2,
+    target_id: 2,
+    related_type: 'private',
+    related_target: '2',
+    chat_key: 'private:2',
+    content: 'bob to alice',
+  },
+];
+
+const bobVisible = messages.filter((message) => routing.messageBelongsToChat(message, {
+  chatType: 'private',
+  targetName: 'bob',
+  targetId: 2,
+  username: 'alice',
+}));
+assert.deepStrictEqual(bobVisible.map((m) => m.content), ['alice to bob', 'bob to alice']);
+
+const carolVisible = messages.filter((message) => routing.messageBelongsToChat(message, {
+  chatType: 'private',
+  targetName: 'carol',
+  targetId: 3,
+  username: 'alice',
+}));
+assert.deepStrictEqual(carolVisible.map((m) => m.content), ['alice to carol']);
+
+assert.strictEqual(routing.chatKeyForMessage(messages[0], 'alice'), 'private:2');
+assert.strictEqual(routing.chatKeyForMessage(messages[2], 'alice'), 'private:2');
+assert.strictEqual(routing.chatKeyForMessage({
+  type: 'private',
+  sender: 'bob',
+  from_id: 2,
+  receiver_id: 1,
+  content: 'legacy inbound',
+}, 'alice'), 'private:2');
+
+const ownChat = messages.filter((message) => routing.messageBelongsToChat(message, {
+  chatType: 'private',
+  targetName: 'alice',
+  targetId: 1,
+  username: 'alice',
+}));
+assert.deepStrictEqual(ownChat.map((m) => m.content), []);
+
+const groupMessage = {
+  type: 'group',
+  sender: 'bob',
+  from_id: 2,
+  group_id: '9',
+  target_id: '9',
+  related_type: 'group',
+  related_target: '9',
+  chat_key: 'group:9',
+  content: 'group only',
+};
+assert.strictEqual(routing.messageBelongsToChat(groupMessage, {
+  chatType: 'group',
+  targetName: '9',
+  targetId: 9,
+  username: 'alice',
+}), true);
+assert.strictEqual(routing.messageBelongsToChat(groupMessage, {
+  chatType: 'private',
+  targetName: 'bob',
+  targetId: 2,
+  username: 'alice',
+}), false);
+assert.strictEqual(routing.messageBelongsToChat(groupMessage, {
+  chatType: 'private',
+  targetName: 'alice',
+  targetId: 1,
+  username: 'alice',
+}), false);
+
+const globalSystem = {
+  type: 'system',
+  content: 'unscoped system message',
+};
+assert.strictEqual(routing.messageBelongsToChat(globalSystem, {
+  chatType: 'private',
+  targetName: 'bob',
+  targetId: 2,
+  username: 'alice',
+}), false);
+
+const scopedSystem = {
+  type: 'system',
+  content: 'scoped system message',
+  related_type: 'private',
+  related_target: '2',
+  chat_key: 'private:2',
+};
+assert.strictEqual(routing.messageBelongsToChat(scopedSystem, {
+  chatType: 'private',
+  targetName: 'bob',
+  targetId: 2,
+  username: 'alice',
+}), true);
+assert.strictEqual(routing.messageBelongsToChat(scopedSystem, {
+  chatType: 'private',
+  targetName: 'carol',
+  targetId: 3,
+  username: 'alice',
+}), false);
+
+const groupAi = {
+  type: 'ai',
+  sender: 'AI Assistant',
+  content: 'group ai',
+  group_id: 9,
+  related_type: 'group',
+  related_target: '9',
+  chat_key: 'group:9',
+};
+assert.strictEqual(routing.messageBelongsToChat(groupAi, {
+  chatType: 'group',
+  targetName: '9',
+  targetId: 9,
+  username: 'alice',
+}), true);
+assert.strictEqual(routing.messageBelongsToChat(groupAi, {
+  chatType: 'ai',
+  targetName: 'AI Assistant',
+  targetId: -1,
+  username: 'alice',
+}), false);
+
+const aiDirect = {
+  type: 'ai',
+  sender: 'AI Assistant',
+  content: 'direct ai',
+  related_type: 'ai',
+  related_target: 'AI Assistant',
+  chat_key: 'ai:AI Assistant',
+};
+assert.strictEqual(routing.messageBelongsToChat(aiDirect, {
+  chatType: 'ai',
+  targetName: 'AI Assistant',
+  targetId: -1,
+  username: 'alice',
+}), true);
+assert.strictEqual(routing.messageBelongsToChat(aiDirect, {
+  chatType: 'private',
+  targetName: 'bob',
+  targetId: 2,
+  username: 'alice',
+}), false);
+
+const pendingOwn = {
+  type: 'private',
+  sender: 'alice',
+  from_id: 1,
+  receiver_id: 2,
+  target_id: 2,
+  content: 'same message',
+  timestamp: 1700000000,
+  local_msg_id: 'local-1',
+  msg_id: 'local-1',
+  status: 'pending',
+  chat_key: 'private:2',
+};
+const historyOwn = {
+  type: 'private',
+  sender: 'alice',
+  from_id: 1,
+  receiver_id: 2,
+  target_id: '2',
+  content: 'same message',
+  timestamp: 1700000001,
+  msg_id: 'server-1',
+  chat_key: 'private:2',
+};
+const merged = routing.mergeMessages([pendingOwn], [historyOwn], 'alice');
+assert.strictEqual(merged.length, 1);
+assert.strictEqual(merged[0].msg_id, 'server-1');
+assert.strictEqual(merged[0].server_msg_id, 'server-1');
+assert.strictEqual(merged[0].local_msg_id, 'local-1');
+assert.strictEqual(merged[0].status, 'sent');
+
+const repeatedRealMessages = routing.mergeMessages([{
+  type: 'private',
+  sender: 'alice',
+  content: 'repeat',
+  timestamp: 1700000000,
+  msg_id: 'server-a',
+  chat_key: 'private:2',
+}], [{
+  type: 'private',
+  sender: 'alice',
+  content: 'repeat',
+  timestamp: 1700000001,
+  msg_id: 'server-b',
+  chat_key: 'private:2',
+}], 'alice');
+assert.strictEqual(repeatedRealMessages.length, 2);
+
+assert.strictEqual(sidebarLogic.isSelfUser('alice', 'alice'), true);
+assert.strictEqual(sidebarLogic.isSelfUser('bob', 'alice'), false);
+assert.strictEqual(sidebarLogic.formatGroupLabel('2', '1'), '1');
+assert.strictEqual(sidebarLogic.formatGroupLabel('1', 'group'), 'group');
+assert.notStrictEqual(sidebarLogic.formatGroupLabel('2', '1'), '1 (2)');
+assert.notStrictEqual(sidebarLogic.formatGroupLabel('2', '1'), '#2  1');
+assert.strictEqual(routing.formatGroupTitle('2', '1'), '1');
+assert.strictEqual(routing.avatarNameForChat('group', '3', '22'), '22');
+assert.strictEqual(routing.avatarNameForChat('group', '3', ''), 'Group #3');
+assert.strictEqual(routing.avatarNameForChat('ai', 'DeepSeek', ''), 'AI');
+assert.strictEqual(routing.connectionStatusText(true), 'Online');
+assert.strictEqual(routing.connectionStatusText(false), 'Offline');
+assert.strictEqual(routing.connectionStatusClass(true), 'status-dot online');
+assert.strictEqual(routing.connectionStatusClass(false), 'status-dot offline');

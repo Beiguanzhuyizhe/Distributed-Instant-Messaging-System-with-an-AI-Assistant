@@ -1,1 +1,40 @@
-aW1wb3J0IGpzb24KCmltcG9ydCBweXRlc3QKCmNyeXB0b19tb2R1bGUgPSBweXRlc3QuaW1wb3J0b3Jza2lwKCJjbGllbnQuY3J5cHRvIiwgcmVhc29uPSJjcnlwdG9ncmFwaHkgaXMgcmVxdWlyZWQiKQpweXRlc3QuaW1wb3J0b3Jza2lwKCJjcnlwdG9ncmFwaHkiLCByZWFzb249ImNyeXB0b2dyYXBoeSBpcyByZXF1aXJlZCIpCgpFMkVFQ3J5cHRvID0gY3J5cHRvX21vZHVsZS5FMkVFQ3J5cHRvCgoKZGVmIHRlc3RfcnNhX2Flc19tZXNzYWdlX3JvdW5kdHJpcCgpOgogICAgcHJpdmF0ZV9rZXksIHB1YmxpY19rZXkgPSBFMkVFQ3J5cHRvLmdlbmVyYXRlX2tleV9wYWlyKCkKICAgIHBsYWludGV4dCA9ICLnq6/liLDnq6/liqDlr4bmtojmga/vvJpoZWxsbyAxMjMiCgogICAgZW5jcnlwdGVkID0gRTJFRUNyeXB0by5lbmNyeXB0X21lc3NhZ2UocGxhaW50ZXh0LCBwdWJsaWNfa2V5KQogICAgZGVjcnlwdGVkID0gRTJFRUNyeXB0by5kZWNyeXB0X21lc3NhZ2UoZW5jcnlwdGVkLCBwcml2YXRlX2tleSkKCiAgICBhc3NlcnQgZGVjcnlwdGVkID09IHBsYWludGV4dAoKCmRlZiB0ZXN0X2VuY3J5cHRlZF9tZXNzYWdlX3BheWxvYWRfc2hhcGUoKToKICAgIHByaXZhdGVfa2V5LCBwdWJsaWNfa2V5ID0gRTJFRUNyeXB0by5nZW5lcmF0ZV9rZXlfcGFpcigpCgogICAgZW5jcnlwdGVkID0gRTJFRUNyeXB0by5lbmNyeXB0X21lc3NhZ2UoInNoYXBlIGNoZWNrIiwgcHVibGljX2tleSkKICAgIHBheWxvYWQgPSBqc29uLmxvYWRzKGVuY3J5cHRlZCkKCiAgICBhc3NlcnQgc2V0KHBheWxvYWQpID09IHsiYWVzX2tleV9lbmMiLCAibm9uY2UiLCAiY2lwaGVydGV4dCIsICJ0YWcifQogICAgYXNzZXJ0IEUyRUVDcnlwdG8uZGVjcnlwdF9tZXNzYWdlKGVuY3J5cHRlZCwgcHJpdmF0ZV9rZXkpID09ICJzaGFwZSBjaGVjayIKCgpkZWYgdGVzdF9hZXNfZmlsZV9jaHVua19yb3VuZHRyaXAoKToKICAgIGtleSA9IEUyRUVDcnlwdG8uZ2VuZXJhdGVfZmlsZV9rZXkoKQogICAgbm9uY2UgPSBiIjAiICogMTIKICAgIGNodW5rID0gYiJmaWxlLWJ5dGVzLTAwMSIgKiAxMjgKCiAgICBlbmNyeXB0ZWQgPSBFMkVFQ3J5cHRvLmVuY3J5cHRfZmlsZV9jaHVuayhjaHVuaywga2V5LCBub25jZSkKICAgIGRlY3J5cHRlZCA9IEUyRUVDcnlwdG8uZGVjcnlwdF9maWxlX2NodW5rKGVuY3J5cHRlZCwga2V5LCBub25jZSkKCiAgICBhc3NlcnQgZGVjcnlwdGVkID09IGNodW5rCiAgICBhc3NlcnQgZW5jcnlwdGVkICE9IGNodW5rCg==
+import json
+
+import pytest
+
+crypto_module = pytest.importorskip("client.crypto", reason="cryptography is required")
+pytest.importorskip("cryptography", reason="cryptography is required")
+
+E2EECrypto = crypto_module.E2EECrypto
+
+
+def test_rsa_aes_message_roundtrip():
+    private_key, public_key = E2EECrypto.generate_key_pair()
+    plaintext = "端到端加密消息：hello 123"
+
+    encrypted = E2EECrypto.encrypt_message(plaintext, public_key)
+    decrypted = E2EECrypto.decrypt_message(encrypted, private_key)
+
+    assert decrypted == plaintext
+
+
+def test_encrypted_message_payload_shape():
+    private_key, public_key = E2EECrypto.generate_key_pair()
+
+    encrypted = E2EECrypto.encrypt_message("shape check", public_key)
+    payload = json.loads(encrypted)
+
+    assert set(payload) == {"aes_key_enc", "nonce", "ciphertext", "tag"}
+    assert E2EECrypto.decrypt_message(encrypted, private_key) == "shape check"
+
+
+def test_aes_file_chunk_roundtrip():
+    key = E2EECrypto.generate_file_key()
+    nonce = b"0" * 12
+    chunk = b"file-bytes-001" * 128
+
+    encrypted = E2EECrypto.encrypt_file_chunk(chunk, key, nonce)
+    decrypted = E2EECrypto.decrypt_file_chunk(encrypted, key, nonce)
+
+    assert decrypted == chunk
+    assert encrypted != chunk

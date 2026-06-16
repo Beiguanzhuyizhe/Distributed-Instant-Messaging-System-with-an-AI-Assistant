@@ -1,1 +1,447 @@
-IyDmnIDnu4jmtYvor5XmiqXlkYoKCiMjIOa1i+ivleeOr+WigwoKfCDpobnnm64gfCDlhoXlrrkgfAp8LS0tLS0tfC0tLS0tLXwKfCDmtYvor5Xml6XmnJ8gfCAyMDI2LTA2LTE0IHwKfCDmk43kvZzns7vnu58gfCBNaWNyb3NvZnQgV2luZG93cyAxMSDlrrbluq3niYgg5Lit5paH54mIIHwKfCBQeXRob24gfCAzLjEzLjUgfAp8IOa1i+ivleebruW9lSB8IGBEOlxDb3Vyc2VzIExlYXJuaW5nXENvbXB1dGVyIE5ldHdvcmtcZmluYWxfd29ya2AgfAp8IOacjeWKoeerr+WcsOWdgCB8IGAxMjcuMC4wLjE6ODg4OGAgfAp8IOS4u+imgea1i+ivleebruaghyB8IOazqOWGjC/nmbvlvZXjgIHnp4HogYrjgIHnvqTogYrjgIHlnKjnur/nlKjmiLfjgIHljoblj7LjgIHmkqTlm57jgIHlv4Pot7PjgIHmlofku7bkvKDovpPjgIHlhoXlrrnlrqHmoLjjgIFBSeOAgeW5tuWPkeWOi+WKmyB8CgrmnKzmiqXlkYrlj6rorrDlvZXmnKzmrKHlrp7pmYXlpI3njrDnu5PmnpzjgILnnJ/lrp4gQUkgc21va2UgdGVzdCDkvb/nlKjnlKjmiLfnuqfnjq/looPlj5jph4/kuK3nmoQgYERFRVBTRUVLX0FQSV9LRVlg77yM5rWL6K+V6L+b56iL5YaF5Li05pe25pig5bCE5Li66aG555uu546w5pyJIE9wZW5BSS1jb21wYXRpYmxlIOmFjee9ruWPmOmHj++8m+a1i+ivleaKpeWRiuOAgea6kOeggeOAgeaXpeW/l+WSjOaWh+aho+Wdh+S4jeiusOW9lSBBUEkgS2V5IOWOn+aWh+OAggoKIyMg5L6d6LWW5a6J6KOFCgrlt7LmiafooYzvvJoKCmBgYGJhc2gKcHl0aG9uIC1tIHBpcCBpbnN0YWxsIC1yIHJlcXVpcmVtZW50cy50eHQKcHl0aG9uIC1tIHBpcCBpbnN0YWxsIHB5dGVzdD09OC4zLjQgcHl0ZXN0LWFzeW5jaW89PTAuMjMuOApgYGAKCuihpeWFheivtOaYju+8mgoKLSDliJ3mrKHlrozmlbTov5DooYwgYHB5dGhvbiAtbSBweXRlc3RgIOaXtue8uuWwkSBgcHl3ZWJ2aWV3YCDlkowgYHB5dGVzdC1hc3luY2lvYO+8jOWvvOiHtCBHVUkg55u45YWz5rWL6K+V5peg5rOV5pS26ZuG77yb5a6J6KOFIGByZXF1aXJlbWVudHMudHh0YCDlkI7op6PlhrPkvp3otZbnvLrlpLHjgIIKLSDlronoo4Xkvp3otZbml7bmm77nn63mmoLlronoo4XliLAgYHB5dGVzdCA5LjEuMGDvvIzor6XniYjmnKzlnKjmnKwgV2luZG93cyDnjq/looPkuK3op6blj5HkuLTml7bnm67lvZXmuIXnkIYgYFBlcm1pc3Npb25FcnJvcmDjgILlt7LmgaLlpI3liLAgYHB5dGVzdCA4LjMuNGDvvIzov5nmmK/pobnnm67mraTliY3miqXlkYrkuK3kvb/nlKjov4fkuJTmm7TnqLPlrprnmoTniYjmnKzjgIIKLSBgcGlwIHNob3cgcHl0ZXN0IHB5dGVzdC1hc3luY2lvIHB5d2Vidmlld2Ag5ZyoIEdCSyDmjqfliLblj7DkuIvovpPlh7rnrKzkuInmlrnljIXkvZzogIXkv6Hmga/ml7blh7rnjrAgVW5pY29kZSDml6Xlv5fnvJbnoIHplJnor6/vvIzkuI3lvbHlk43lt7Llronoo4XljIXmnKzouqvjgIIKCiMjIOWNleWFg+S4juaooeWdl+a1i+ivlQoKIyMjIOWPr+ebtOaOpemAmui/h+eahCBweXRlc3Qg55So5L6LCgrmiafooYzlkb3ku6TvvJoKCmBgYGJhc2gKcHl0aG9uIC1tIHB5dGVzdCB0ZXN0c1x0ZXN0X2FpX3NlcnZpY2UucHkgdGVzdHNcdGVzdF9jb250ZW50X21vZGVyYXRvci5weSB0ZXN0c1x0ZXN0X2NyeXB0by5weSB0ZXN0c1x0ZXN0X2RhdGFiYXNlLnB5IHRlc3RzXHRlc3RfcHJvdG9jb2wucHkgdGVzdHNcdGVzdF9jbGllbnRfcGxheWVyMi5weSAtayAibm90IHNlbmRfZmlsZSIKYGBgCgrnu5PmnpzvvJoKCmBgYHRleHQKNzggcGFzc2VkLCAxIGRlc2VsZWN0ZWQgaW4gMy40OHMKYGBgCgropobnm5bojIPlm7TvvJoKCnwg5rWL6K+V5paH5Lu2IHwg6YeN54K5IHwKfC0tLS0tLS0tLS18LS0tLS0tfAp8IGB0ZXN0cy90ZXN0X3Byb3RvY29sLnB5YCB8IDEyIOWtl+iKguWNj+iuruWktOOAgeeymOWMhS/ljYrljIXjgIHmtojmga/nsbvlnovjgIFwYXlsb2FkIGhlbHBlciB8CnwgYHRlc3RzL3Rlc3RfZGF0YWJhc2UucHlgIHwgU1FMaXRlIOWIneWni+WMluOAgee6puadn+OAgeeUqOaIt+WGmeWFpeafpeivoiB8CnwgYHRlc3RzL3Rlc3RfY29udGVudF9tb2RlcmF0b3IucHlgIHwg5YaF5a655a6h5qC45pmu6YCaL+S4remjjumZqS/pq5jpo47pmakv6Iux5paH5aSn5bCP5YaZIHwKfCBgdGVzdHMvdGVzdF9jcnlwdG8ucHlgIHwgUlNBL0FFUyDliqDop6Plr4Ygc21va2UgdGVzdCB8CnwgYHRlc3RzL3Rlc3RfY2xpZW50X3BsYXllcjIucHlgIHwg5a6i5oi356uvIEFDS+OAgeaSpOWbnuOAgeWOhuWPsuOAgUNMSS9HVUkg5LiA6Ie05oCnIHwKfCBgdGVzdHMvdGVzdF9haV9zZXJ2aWNlLnB5YCB8IEFJIEtleSDpgInmi6njgIHml6Aga2V544CBSFRUUCDplJnor6/jgIHotoXml7bjgIHop6PmnpDlpLHotKUgfAoKIyMjIHB5dGVzdCDkuLTml7bnm67lvZXlvILluLgKCuWujOaVtOWRveS7pO+8mgoKYGBgYmFzaApweXRob24gLW0gcHl0ZXN0IHRlc3RzIC0tYmFzZXRlbXAgPOezu+e7n+S4tOaXtuebruW9lT4KYGBgCgrlnKjmnKzmnLrmiafooYzml7bvvIxgdG1wX3BhdGhgIGZpeHR1cmUg5Yib5bu6L+a4heeQhuS4tOaXtuebruW9lemYtuauteWHuueOsO+8mgoKYGBgdGV4dApQZXJtaXNzaW9uRXJyb3I6IFtXaW5FcnJvciA1XSDmi5Lnu53orr/pl64KYGBgCgrlj5flvbHlk43nlKjkvovpm4bkuK3lnKjvvJoKCi0gYHRlc3RzL3Rlc3RfZmlsZV90cmFuc2Zlci5weWAKLSBgdGVzdHMvdGVzdF9jbGllbnRfcGxheWVyMi5weTo6dGVzdF9jbGlfc2VuZF9maWxlX3VzZXNfc3RyaW5nX2ZpbGVfaWRgCgrov5nkupvplJnor6/lj5HnlJ/lnKggcHl0ZXN0IOS4tOaXtuebruW9leWkhOeQhumYtuaute+8jOa1i+ivleS9k+acquecn+ato+i/m+WFpeS4muWKoeaWreiogOOAguS4uumBv+WFjeaKiueOr+Wig+mXrumimOivr+WIpOS4uumhueebruWKn+iDveWksei0pe+8jOWQjue7reS9v+eUqOebtOaOpemqjOivgeiEmuacrOWkjeeOsOWQjOetieS4muWKoei3r+W+hOOAggoKIyMjIOaWh+S7tuS8oOi+k+ebtOaOpemqjOivgQoK55Sx5LqOIHB5dGVzdCDnmoQgYHRtcF9wYXRoYCBmaXh0dXJlIOWcqOW9k+WJjSBXaW5kb3dzIOeOr+Wig+S4reiiq+S4tOaXtuebruW9leadg+mZkOmXrumimOmYu+aWre+8jOacrOasoeS9v+eUqOS4tOaXtumqjOivgeiEmuacrOebtOaOpeiwg+eUqOS4jiBgdGVzdHMvdGVzdF9maWxlX3RyYW5zZmVyLnB5YCDlkowgYHRlc3RzL3Rlc3RfY2xpZW50X3BsYXllcjIucHk6OnRlc3RfY2xpX3NlbmRfZmlsZV91c2VzX3N0cmluZ19maWxlX2lkYCDnrYnku7fnmoTkuJrliqHot6/lvoTjgILkuLTml7bohJrmnKzku4XnlKjkuo7mnKzmrKHmtYvor5XvvIzmnKrkvZzkuLrkuqTku5jmlofku7bkv53nlZnjgIIKCue7k+aenO+8mgoKYGBgdGV4dApyZWplY3RzIHVuc2FmZSBmaWxlX2lkOiBQQVNTCnNhbml0aXplcyBmaWxlbmFtZTogUEFTUwpyZXF1aXJlcyBvcmlnaW5hbCBzZW5kZXI6IFBBU1MKZHVwbGljYXRlIGNodW5rIGlkZW1wb3RlbnQ6IFBBU1MKZG93bmxvYWQgcmVxdWlyZXMgcmVjZWl2ZXI6IFBBU1MKZ3JvdXAgZG93bmxvYWQgbWVtYmVycyBvbmx5OiBQQVNTCnJlamVjdHMgYmFkIGNodW5rIGJvdW5kczogUEFTUwpyZWplY3RzIGludmFsaWQgdG90YWxfY2h1bmtzOiBQQVNTCnJlc3VsdDogUEFTUwoKY2xpIHNlbmQgZmlsZSB1c2VzIHN0cmluZyBmaWxlX2lkOiBQQVNTCmNhbGxzOiAyCmBgYAoK6aqM6K+B57uT6K6677yaCgotIGBmaWxlX2lkYCDku4XlhYHorrjlronlhaggdG9rZW4vVVVJRCDpo47moLzvvIzog73pmLvmraLot6/lvoTnqb/otorjgIIKLSBgZmlsZW5hbWVgIOS8muiiq+W9kuS4gOWMluS4uiBiYXNlbmFtZeOAggotIOS4iuS8oCBjaHVuayDlv4XpobvmnaXoh6rljp8gc2VuZGVy44CCCi0g56eB6IGK5paH5Lu25Y+q6IO955SxIHJlY2VpdmVyIOS4i+i9ve+8m+e+pOaWh+S7tuWPquiDveeUsee+pOaIkOWRmOS4i+i9veOAggotIGBjaHVua19pbmRleGDjgIFgdG90YWxfY2h1bmtzYOOAgeWNleWdl+Wkp+Wwj+WSjCBvZmZzZXQg6L6555WM5Y+X5qCh6aqM44CCCi0g6YeN5aSNIGNodW5rIOS4jeS8muiZmuWinui/m+W6puOAggotIENMSSDlj5HpgIHmlofku7bml7bkvb/nlKjlrZfnrKbkuLIgYGZpbGVfaWRg77yM5bm26IO95Y+R5Ye65Yid5aeL5YyW6K+35rGC5ZKM5pWw5o2u5Z2X44CCCgojIyDov5DooYzmlbDmja7ot6/lvoTlvILluLgKCuacrOasoea1i+ivleWPkeeOsOW9k+WJjeW3peS9nOWMuuaJgOWcqCBEIOebmOi3r+W+hOS4i++8jFNRTGl0ZSDmlofku7blu7rooajkvJrop6blj5EgYHNxbGl0ZTMuT3BlcmF0aW9uYWxFcnJvcjogZGlzayBJL08gZXJyb3Jg44CC5aSN546w6IyD5Zu05YyF5ous77yaCgotIOm7mOiupOi/kOihjOaVsOaNruW6k++8mmBzZXJ2ZXIvZGF0YS9jaGF0LmRiYCDlvZPliY3kuLogMCDlrZfoioLvvIzlubblrZjlnKggYGNoYXQuZGItam91cm5hbGDjgIIKLSDlt6XkvZzljLrkuLTml7bmlbDmja7lupPvvJpgdG1wL3J1bnRpbWUvKi5kYmDjgIIKCuacgOWwj+WkjeeOsO+8mgoKYGBgYmFzaApweXRob24gLWMgImltcG9ydCBzcWxpdGUzLCBwYXRobGliOyBwPXBhdGhsaWIuUGF0aCgndG1wL3J1bnRpbWUvc3FsaXRlX25vdy5kYicpOyBwLnBhcmVudC5ta2RpcihwYXJlbnRzPVRydWUsIGV4aXN0X29rPVRydWUpOyBjb249c3FsaXRlMy5jb25uZWN0KHApOyBjb24uZXhlY3V0ZSgnY3JlYXRlIHRhYmxlIGlmIG5vdCBleGlzdHMgdCh4KScpOyBjb24uY29tbWl0KCkiCmBgYAoK57uT5p6c77yaCgpgYGB0ZXh0CnNxbGl0ZTMuT3BlcmF0aW9uYWxFcnJvcjogZGlzayBJL08gZXJyb3IKYGBgCgrlkIzkuIAgUHl0aG9uIOeOr+Wig+WcqOezu+e7n+S4tOaXtuebruW9lSBgQzpcVXNlcnNceWV5aXdlblxBcHBEYXRhXExvY2FsXFRlbXBgIOS4i+WPr+S7peato+W4uOWIm+W7uiBTUUxpdGUg5pWw5o2u5bqT44CC5Zug5q2k77yM5pys5qyh5pyN5Yqh56uv6ZuG5oiQ5rWL6K+V44CB5Y6L5Yqb5rWL6K+V5ZKMIEFJIHNtb2tlIHRlc3Qg5L2/55So57O757uf5Li05pe255uu5b2V5Lit55qE6ZqU56a75pWw5o2u5bqT77yaCgpgYGB0ZXh0CkM6XFVzZXJzXHlleWl3ZW5cQXBwRGF0YVxMb2NhbFxUZW1wXGNvZGV4X2NoYXRfc3RyZXNzX3J1bnRpbWVcY2hhdC5kYgpgYGAKCui/meS4qumXrumimOS4jeW9seWTjSBUQ1Ag5Y2P6K6u44CB5raI5oGv6Lev55Sx44CB5bm25Y+R5ZKMIEFJIOmAu+i+keeahOa1i+ivlee7k+iuuu+8jOS9huS8muW9seWTjem7mOiupOaWueW8jyBgcHl0aG9uIC1tIHNlcnZlci5tYWluYCDlnKjlvZPliY3lt6XkvZzljLrnm7TmjqXlkK/liqjjgILmvJTnpLrliY3lu7rorq7muIXnkIbmiJbkv67lpI3pu5jorqTov5DooYzmlbDmja7nm67lvZXvvIzop4HigJzmlLnov5vlu7rorq7igJ3jgIIKCiMjIOmbhuaIkOa1i+ivlQoK5rWL6K+V5pyN5Yqh56uv55Sx5Li05pe2IG9yY2hlc3RyYXRpb24g6ISa5pys5ZCv5Yqo77yM6YWN572u5LuN5L2/55So6aG555uu55qEIGBDaGF0U2VydmVyYOOAgWBTZXJ2ZXJDb25maWdgIOWSjOS4muWKoeaooeWdl++8jOWPquaKiuaVsOaNruW6k+S4juaWh+S7tuWtmOWCqOebruW9leaUvuWIsOezu+e7n+S4tOaXtuebruW9leS7pemBv+W8gOW9k+WJjeW3peS9nOWMuiBTUUxpdGUgSS9PIOW8guW4uOOAguS4tOaXtiBvcmNoZXN0cmF0aW9uIOiEmuacrOi0n+i0o+WQr+WKqOacjeWKoeerr+OAgeetieW+heerr+WPo+Wwsee7quOAgei/kOihjOa1i+ivleWRveS7pOW5tuWcqCBgZmluYWxseWAg5Lit5YWz6Zet5pyN5Yqh56uv77yM5pyq5L2c5Li65Lqk5LuY5paH5Lu25L+d55WZ44CCCgrlhbbkuK3pm4bmiJDmtYvor5XlrZDmraXpqqTmiafooYzvvJoKCmBgYGJhc2gKcHl0aG9uIHRlc3RzL3J1bl9pbnRlZ3JhdGlvbl90ZXN0cy5weQpgYGAKCue7k+aenO+8mgoKYGBgdGV4dApSZXN1bHQ6IDExLzExIGFsbCBwYXNzZWQKYGBgCgrpgJrov4fmraXpqqTvvJoKCjEuIFRDUCDov57mjqXjgIIKMi4g55So5oi35rOo5YaM44CCCjMuIOeUqOaIt+eZu+W9leOAggo0LiDnp4HogYrmtojmga/nnJ/lrp7mjqXmlLbjgIIKNS4g5Yib5bu6576k57uE44CCCjYuIOWKoOWFpee+pOe7hOOAggo3LiDnvqTogYrmtojmga/nnJ/lrp7mjqXmlLbjgIIKOC4g5Zyo57q/55So5oi35YiX6KGo44CCCjkuIOS9v+eUqOacjeWKoeerryBBQ0sg6L+U5Zue55qEIFVVSUQg5pKk5Zue5raI5oGv44CCCjEwLiDljoblj7LorrDlvZXljIXlkKvlt7Llj5HpgIHmtojmga/jgIIKMTEuIOW/g+i3syBBQ0vjgIIKCiMjIOWOi+WKm+a1i+ivlQoK5Y6L5Yqb5rWL6K+V6ISa5pys5rWL6K+V55qE5piv5aSn6YeP6Jma5ouf5a6i5oi356uv5bm25Y+R6L+e5o6l44CB5rOo5YaM44CB55m75b2V44CB5Y+R6YCB56eB6IGK5raI5oGv5bm2562J5b6FIEFDS+OAguW9k+WJjeiEmuacrOS4reeahOavj+S4quiZmuaLn+WuouaIt+err+WQkeiHquW3seWPkemAgeengeiBiu+8jOWboOatpOiDveWkn+mqjOivgei/nuaOpeaVsOOAgeiupOivgeOAgea2iOaBr+WFpeW6ky9BQ0sg5ZKM5Y2P6K6u5pS25Y+R5Y6L5Yqb77yM5L2G5LiN562J5Lu35LqO5aSN5p2C5aSa5Lq65LqS5Y+R5oiW5aSn6KeE5qih576k6IGK5bm/5pKt5Y6L5Yqb44CCCgojIyMg5Y6L5Yqb5rWL6K+V5rGH5oC7Cgp8IOWcuuaZryB8IENvbm5lY3RlZCB8IExvZ2luIFN1Y2Nlc3MgfCBNZXNzYWdlcyBBQ0tlZCB8IFRvdGFsIEVycm9ycyB8IFJlc3VsdCB8CnwtLS0tLS18LS0tLS0tLS0tLS18LS0tLS0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tLS0tLS18LS0tLS0tLS0tLS0tLS18LS0tLS0tLS18CnwgNTAg5a6i5oi356uv5bm25Y+RIHwgNTAvNTAgfCA1MC81MCB8IDE1MC8xNTAgfCAwIHwgUEFTUyB8CnwgMTAwIOWuouaIt+err+W5tuWPkSB8IDEwMC8xMDAgfCAxMDAvMTAwIHwgMzAwLzMwMCB8IDAgfCBQQVNTIHwKfCAxNTAg5a6i5oi356uv5bm25Y+RIHwgMTUwLzE1MCB8IDE1MC8xNTAgfCA0NTAvNDUwIHwgMCB8IFBBU1MgfAp8IDEwMCDlrqLmiLfnq6/pq5jmtojmga/ph48gfCAxMDAvMTAwIHwgMTAwLzEwMCB8IDEwMDAvMTAwMCB8IDAgfCBQQVNTIHwKfCAyMDAg5a6i5oi356uv6L+e5o6l5LiK6ZmQIHwgMjAwLzIwMCB8IDIwMC8yMDAgfCA2MDAvNjAwIHwgMCB8IFBBU1MgfAoK5YW25Lit4oCcMTAwIOWuouaIt+err+W5tuWPkeKAneWvueW6lOS9nOS4muimgeaxguS4reeahOKAnDEwMCDnlKjmiLflkIzml7blnKjnur/igJ3lsZXnpLrngrnvvJrmtYvor5XkuK0gMTAwIOS4quiZmuaLn+WuouaIt+err+Wdh+aIkOWKn+i/nuaOpeOAgeazqOWGjOOAgeeZu+W9leW5tuWujOaIkOa2iOaBryBBQ0vjgIIKCiMjIyA1MCDlrqLmiLfnq6/lubblj5EKCuWRveS7pO+8mgoKYGBgYmFzaApweXRob24gdGVzdHMvc3RyZXNzX3Rlc3QucHkgLS1jbGllbnRzIDUwIC0tY29uY3VycmVuY3kgMjAgLS1tZXNzYWdlcyAzIC0tdGltZW91dCAxMApgYGAKCue7k+aenO+8mgoKfCDmjIfmoIcgfCDmlbDlgLwgfAp8LS0tLS0tfC0tLS0tLXwKfCBUb3RhbCBDbGllbnRzIHwgNTAgfAp8IENvbm5lY3RlZCB8IDUwIHwKfCBSZWdpc3RlcmVkIHwgNTAgfAp8IExvZ2luIFN1Y2Nlc3MgfCA1MCB8CnwgTWVzc2FnZXMgU2VudCB8IDE1MCB8CnwgTWVzc2FnZXMgQUNLZWQgfCAxNTAgfAp8IE1lc3NhZ2VzIFJlY2VpdmVkIHwgMTUwIHwKfCBUb3RhbCBFcnJvcnMgfCAwIHwKfCBEdXJhdGlvbiB8IDEuMDZzIHwKfCBBdmcgTGF0ZW5jeSB8IDAuMDU5MHMgfAp8IFA1MCBMYXRlbmN5IHwgMC4wMDgxcyB8CnwgUDk5IExhdGVuY3kgfCAwLjg4NzhzIHwKfCBUaHJvdWdocHV0IHwgMTQxLjQxIGFja2VkIG1zZy9zIHwKfCBSZXN1bHQgfCBQQVNTIHwKCiMjIyAxMDAg5a6i5oi356uv5bm25Y+RCgrlkb3ku6TvvJoKCmBgYGJhc2gKcHl0aG9uIHRlc3RzL3N0cmVzc190ZXN0LnB5IC0tY2xpZW50cyAxMDAgLS1jb25jdXJyZW5jeSA1MCAtLW1lc3NhZ2VzIDMgLS10aW1lb3V0IDEwCmBgYAoK57uT5p6c77yaCgp8IOaMh+aghyB8IOaVsOWAvCB8CnwtLS0tLS18LS0tLS0tfAp8IFRvdGFsIENsaWVudHMgfCAxMDAgfAp8IENvbm5lY3RlZCB8IDEwMCB8CnwgUmVnaXN0ZXJlZCB8IDEwMCB8CnwgTG9naW4gU3VjY2VzcyB8IDEwMCB8CnwgTWVzc2FnZXMgU2VudCB8IDMwMCB8CnwgTWVzc2FnZXMgQUNLZWQgfCAzMDAgfAp8IE1lc3NhZ2VzIFJlY2VpdmVkIHwgMzAwIHwKfCBUb3RhbCBFcnJvcnMgfCAwIHwKfCBEdXJhdGlvbiB8IDIuMzBzIHwKfCBBdmcgTGF0ZW5jeSB8IDAuMTA1NHMgfAp8IFA1MCBMYXRlbmN5IHwgMC4wNTczcyB8CnwgUDk5IExhdGVuY3kgfCAxLjgyOTFzIHwKfCBUaHJvdWdocHV0IHwgMTMwLjY3IGFja2VkIG1zZy9zIHwKfCBSZXN1bHQgfCBQQVNTIHwKCiMjIyAxNTAg5a6i5oi356uv5bm25Y+RCgrlkb3ku6TvvJoKCmBgYGJhc2gKcHl0aG9uIHRlc3RzL3N0cmVzc190ZXN0LnB5IC0tY2xpZW50cyAxNTAgLS1jb25jdXJyZW5jeSA3NSAtLW1lc3NhZ2VzIDMgLS10aW1lb3V0IDE1CmBgYAoK57uT5p6c77yaCgp8IOaMh+aghyB8IOaVsOWAvCB8CnwtLS0tLS18LS0tLS0tfAp8IFRvdGFsIENsaWVudHMgfCAxNTAgfAp8IENvbm5lY3RlZCB8IDE1MCB8CnwgUmVnaXN0ZXJlZCB8IDE1MCB8CnwgTG9naW4gU3VjY2VzcyB8IDE1MCB8CnwgTWVzc2FnZXMgU2VudCB8IDQ1MCB8CnwgTWVzc2FnZXMgQUNLZWQgfCA0NTAgfAp8IE1lc3NhZ2VzIFJlY2VpdmVkIHwgNDUwIHwKfCBUb3RhbCBFcnJvcnMgfCAwIHwKfCBEdXJhdGlvbiB8IDIuODVzIHwKfCBBdmcgTGF0ZW5jeSB8IDAuMTc2MHMgfAp8IFA1MCBMYXRlbmN5IHwgMC4xNDMwcyB8CnwgUDk5IExhdGVuY3kgfCAxLjUwODhzIHwKfCBUaHJvdWdocHV0IHwgMTU4LjA2IGFja2VkIG1zZy9zIHwKfCBSZXN1bHQgfCBQQVNTIHwKCiMjIyAxMDAg5a6i5oi356uv6auY5raI5oGv6YePCgrlkb3ku6TvvJoKCmBgYGJhc2gKcHl0aG9uIHRlc3RzL3N0cmVzc190ZXN0LnB5IC0tY2xpZW50cyAxMDAgLS1jb25jdXJyZW5jeSA1MCAtLW1lc3NhZ2VzIDEwIC0tdGltZW91dCAxNQpgYGAKCue7k+aenO+8mgoKfCDmjIfmoIcgfCDmlbDlgLwgfAp8LS0tLS0tfC0tLS0tLXwKfCBUb3RhbCBDbGllbnRzIHwgMTAwIHwKfCBDb25uZWN0ZWQgfCAxMDAgfAp8IFJlZ2lzdGVyZWQgfCAxMDAgfAp8IExvZ2luIFN1Y2Nlc3MgfCAxMDAgfAp8IE1lc3NhZ2VzIFNlbnQgfCAxMDAwIHwKfCBNZXNzYWdlcyBBQ0tlZCB8IDEwMDAgfAp8IE1lc3NhZ2VzIFJlY2VpdmVkIHwgMTAwMCB8CnwgVG90YWwgRXJyb3JzIHwgMCB8CnwgRHVyYXRpb24gfCAzLjIycyB8CnwgQXZnIExhdGVuY3kgfCAwLjEwODNzIHwKfCBQNTAgTGF0ZW5jeSB8IDAuMDc1M3MgfAp8IFA5OSBMYXRlbmN5IHwgMS40OTg5cyB8CnwgVGhyb3VnaHB1dCB8IDMxMC4zMyBhY2tlZCBtc2cvcyB8CnwgUmVzdWx0IHwgUEFTUyB8CgojIyMgMjAwIOWuouaIt+err+i/nuaOpeS4iumZkOa1i+ivlQoKYHNlcnZlci9jb25maWcucHlgIOS4rSBgbWF4X2Nvbm5lY3Rpb25zYCDphY3nva7kuLogMjAw44CC5pys5qyh5rWL6K+V6L6+5YiwIDIwMCDlrqLmiLfnq6/jgIIKCuWRveS7pO+8mgoKYGBgYmFzaApweXRob24gdGVzdHMvc3RyZXNzX3Rlc3QucHkgLS1jbGllbnRzIDIwMCAtLWNvbmN1cnJlbmN5IDEwMCAtLW1lc3NhZ2VzIDMgLS10aW1lb3V0IDIwCmBgYAoK57uT5p6c77yaCgp8IOaMh+aghyB8IOaVsOWAvCB8CnwtLS0tLS18LS0tLS0tfAp8IFRvdGFsIENsaWVudHMgfCAyMDAgfAp8IENvbm5lY3RlZCB8IDIwMCB8CnwgUmVnaXN0ZXJlZCB8IDIwMCB8CnwgTG9naW4gU3VjY2VzcyB8IDIwMCB8CnwgTWVzc2FnZXMgU2VudCB8IDYwMCB8CnwgTWVzc2FnZXMgQUNLZWQgfCA2MDAgfAp8IE1lc3NhZ2VzIFJlY2VpdmVkIHwgNjAwIHwKfCBUb3RhbCBFcnJvcnMgfCAwIHwKfCBEdXJhdGlvbiB8IDMuMjdzIHwKfCBBdmcgTGF0ZW5jeSB8IDAuMjI0OHMgfAp8IFA1MCBMYXRlbmN5IHwgMC4xODAzcyB8CnwgUDk5IExhdGVuY3kgfCAxLjk5MzFzIHwKfCBUaHJvdWdocHV0IHwgMTgzLjMzIGFja2VkIG1zZy9zIHwKfCBSZXN1bHQgfCBQQVNTIHwKCiMjIEFJIOa1i+ivlee7k+iuugoKIyMjIE1vY2sg5Y2V5YWD5rWL6K+VCgpgdGVzdHMvdGVzdF9haV9zZXJ2aWNlLnB5YCDlt7LpgJrov4cgbW9jayBIVFRQIOihjOS4uumqjOivge+8mgoKLSBgQklHTU9ERUxfQVBJX0tFWWAg5LyY5YWI5L2/55SoIEJpZ01vZGVsIOm7mOiupOWcsOWdgOWSjOaooeWei+OAggotIOS7hSBgREFTSFNDT1BFX0FQSV9LRVlgIOaXtuS9v+eUqCBEYXNoU2NvcGUgT3BlbkFJLWNvbXBhdGlibGUg6buY6K6k5Zyw5Z2A5ZKMIGBxd2VuLXR1cmJvYOOAggotIGBBSV9BUElfQkFTRWAgLyBgQUlfTU9ERUxgIOWPr+imhueblum7mOiupOWAvOOAggotIOaXoCBrZXnjgIE0MDHjgIHotoXml7bjgIHnvZHnu5zplJnor6/jgIHop6PmnpDlpLHotKXlnYfmnInlj4vlpb3lhZzlupXjgIIKCiMjIyBEZWVwU2VlayDnnJ/lrp4gc21va2UgdGVzdAoK5pys5qyh55yf5a6eIHNtb2tlIHRlc3Qg5L2/55SoIERlZXBTZWVrIE9wZW5BSS1jb21wYXRpYmxlIOaOpeWPo+OAgua1i+ivlei/m+eoi+S4tOaXtuiuvue9ru+8mgoKYGBgdGV4dApBSV9BUElfQkFTRT1odHRwczovL2FwaS5kZWVwc2Vlay5jb20KQUlfTU9ERUw9ZGVlcHNlZWstY2hhdApCSUdNT0RFTF9BUElfS0VZPTznlLEgREVFUFNFRUtfQVBJX0tFWSDkuLTml7bmmKDlsITvvIzkuI3lhpnlhaXmlofku7Y+CmBgYAoK5omn6KGM6Lev5b6E77yaCgoxLiDov57mjqXmtYvor5XmnI3liqHnq6/jgIIKMi4g5rOo5YaM5bm255m75b2V5rWL6K+V55So5oi344CCCjMuIOWIm+W7uue+pOe7hOOAggo0LiDlj5HpgIEgYEFJX1FVRVJZYO+8mmDor7fnlKjkuIDlj6XkuK3mlofop6Pph4ogVENQIOS4ieasoeaPoeaJi+OAgmAKNS4g562J5b6F5pyN5Yqh56uv6L+U5ZueIGBBSV9SRVNQYOOAggoK57uT5p6c77yaCgpgYGB0ZXh0CkFJIHJlcGx5IGxlbmd0aDogNjAKQUkgcmVwbHkgcHJldmlldzogVENQ5LiJ5qyh5o+h5omL5piv5bu656uL6L+e5o6l5pe277yM5a6i5oi356uv5ZKM5pyN5Yqh5Zmo6YCa6L+H5LiJ5qyh5raI5oGv5Lqk5o2i77yIU1lO44CBU1lOLUFDS+OAgUFDS++8ieehruiupOWPjOaWueaUtuWPkeiDveWKm+ato+W4uOeahOi/h+eoi+OAggpgYGAKCue7k+iuuu+8muecn+WunuWklumDqCBBSSDosIPnlKjmiJDlip/vvIzmnI3liqHnq6/og73mlLbliLAgQUkg5Zue5aSN5bm26YCa6L+H5Y2P6K6u6L+U5Zue5a6i5oi356uv44CC546w5Zy65ryU56S65LuN5L6d6LWW572R57uc44CBQVBJIEtleSDmnInmlYjmgKflkozotKbmiLfpop3luqbvvIzmvJTnpLrliY3lupTph43mlrDlgZrkuIDmrKEgc21va2UgdGVzdOOAggoKIyMjIEFJIOWKn+iDvea8lOekuuivgeaNruivtOaYjgoKR1VJIOa8lOekuuS4re+8jOS7u+aEj+e+pOaIkOWRmOWcqOe+pOiBiui+k+WFpe+8mgoKYGBgdGV4dApAQUkg6K+355So5LiA5Y+l6K+d6Kej6YeKIFRDUCDkuInmrKHmj6HmiYvjgIIKYGBgCgrpooTmnJ/nu5PmnpzvvJoKCi0g5pyN5Yqh56uv5o6l5pS2IGBBSV9RVUVSWWAg5bm26LCD55SoIGBBSVNlcnZpY2UucXVlcnlfd2l0aF9jb250ZXh0KClg44CCCi0gQUkg5Zue5aSN5Lul57u/6ImyIEFJIOawlOazoeaYvuekuuWcqOW9k+WJjee+pOiBiuOAggotIOWQjOS4gOe+pOe7hOWGheWFtuS7luWcqOe6v+aIkOWRmOS5n+iDveeci+WIsOivpSBBSSDlm57lpI3jgIIKLSBBSSDlm57lpI3kuI3kvJrlkIzmraXliLDnlKjmiLfnp4HogYrmiJYgQUkgYXNzaXN0YW50IOS+p+agj+eahOacquivu+aPkOekuuS4reOAggoK6Iul546w5Zy6572R57uc5oiWIEFQSSBLZXkg5LiN5Y+v55So77yM5pyN5Yqh56uv5Lya6L+U5Zue4oCcQUkg5pyN5Yqh5pyq6YWN572u4oCd5oiW57G75Ly85Y+L5aW96ZSZ6K+v77yb6K+l5Zy65pmv5Y+q6K+05piO5aSW6YOoIEFJIOeOr+Wig+S4jeWPr+eUqO+8jOS4jeW9seWTjeaZrumAmuiBiuWkqeOAgee+pOiBiuOAgeaWh+S7tuWSjOWGheWuueWuoeaguOWKn+iDveOAggoKIyMg5YaF5a655a6h5qC45rWL6K+V57uT6K66CgrlhoXlrrnlrqHmoLjpgJrov4cgYHRlc3RzL3Rlc3RfY29udGVudF9tb2RlcmF0b3IucHlgIOmqjOivge+8mgoKLSDmma7pgJrmlofmnKzmlL7ooYzjgIIKLSDkuK3po47pmanor43msYfvvIzlpoIgYGZ1Y2tg44CBYHNoaXRg44CBYOiJsuaDhWDvvIzlj6/or4bliKvkuLrkuI3lvZPoqIDorrrjgIIKLSDpq5jpo47pmanor43msYfvvIzlpoIgYGF0dGFja2DjgIFg5p2A5LqG5L2gYO+8jOWPr+ivhuWIq+S4uumrmOmjjumZqeW5tumYu+atouOAggotIOiLseaWh+Wkp+Wwj+WGmeW9kuS4gOWMlu+8jGBGdWNrYOOAgWBTQmAg562J5Y+Y5L2T5Y+v6KKr6K+G5Yir44CCCgojIyMg5YaF5a655a6h5qC45Yqf6IO95ryU56S66K+B5o2u6K+05piOCgrmvJTnpLrml7blj6/lj5HpgIHmma7pgJrmtojmga/lkozmlY/mhJ/or43mtojmga/lr7nmr5TvvJoKCnwg6L6T5YWl57G75Z6LIHwg56S65L6LIHwg6aKE5pyf57uT5p6cIHwKfC0tLS0tLS0tLS18LS0tLS0tfC0tLS0tLS0tLS18Cnwg5pmu6YCa5paH5pysIHwgYOS7iuWkqee9kee7nOWunumqjOato+W4uOi/m+ihjOOAgmAgfCDmtojmga/mraPluLjlj5HpgIHlkozmjqXmlLYgfAp8IOS4remjjumZqeivjSB8IOWMheWQq+S4remjjumZqeivjeaxh+eahOaZrumAmuiBiuWkqeaWh+acrCB8IOacjeWKoeerr+i/lOWbnuWGheWuueitpuWRiiB8Cnwg6auY6aOO6Zmp6K+NIHwg5YyF5ZCr6auY6aOO6Zmp5pS75Ye76K+N5rGH55qE5paH5pysIHwg5pyN5Yqh56uv5oum5oiq77yM5LiN5YaZ5YWl5q2j5bi46IGK5aSp6K6w5b2VIHwKCuWGheWuueWuoeaguOWcqOacjeWKoeerr+aJp+ihjO+8jOiDveWkn+mYsuatouiiq+aLpuaIquWGheWuuee7p+e7rei9rOWPkee7meWFtuS7luWuouaIt+err+OAggoKIyMg5pyN5Yqh5Zmo5pat57q/5LiO5b+D6Lez57uT6K66Cgrlt7LpgJrov4fpm4bmiJDmtYvor5Xpqozor4HlrqLmiLfnq6/lj5HpgIEgYEhFQVJUQkVBVGAg5ZCO5pyN5Yqh56uv6L+U5ZueIGBIRUFSVEJFQVRfQUNLYOOAggoK5a6i5oi356uvIGBjbGllbnQvY29ubmVjdGlvbi5weWAg5YW35aSH5pat57q/5qOA5rWL5LiO5oyH5pWw6YCA6YG/6YeN6L+e6YC76L6R44CCR1VJIOWuouaIt+err+WcqOacjeWKoeerr+aWreW8gOWQjuS8muaKiumhtumDqOi/nuaOpeeKtuaAgeS7jiBDb25uZWN0ZWQg5YiH5o2i5Li6IERpc2Nvbm5lY3RlZO+8jOW3puS4iuinkueUqOaIt+eKtuaAgeS7jue7v+eCuSBgT25saW5lYCDliIfmjaLkuLrnuqLngrkgYE9mZmxpbmVg77yM5bm26Zi75q2i55So5oi36K+v5Lul5Li656a757q/5raI5oGv5bey5oiQ5Yqf5Y+R5Ye644CC5pyN5Yqh56uv5oGi5aSN5ZCO77yM5a6i5oi356uv5Lya6Ieq5Yqo6YeN6L+e44CB6YeN5paw55m75b2V5bm25Yi35paw5Zyo57q/55So5oi35ZKM576k57uE54q25oCB44CCCgpDTEkg5Lit5pat57q/5pe25Lya5pi+56S677yaCgpgYGB0ZXh0CkRpc2Nvbm5lY3RlZC4gUmVjb25uZWN0aW5nLi4uClJlY29ubmVjdGVkLgpgYGAKCiMjIFAyUCDor7TmmI4KClAyUCDmiZPmtJ7ku6PnoIHkv53nlZnkuLrlrp7pqozmgKfmianlsZXvvIzkvYbmsqHmnInlnKjlpI3mnYIgTkFU44CB6Ziy54Gr5aKZ5oiW5qCh5Zut572R6ZqU56a7546v5aKD5LiL6aqM6K+B44CC5pyA57uI5ryU56S65bu66K6u5Li75omT5pyN5Yqh56uv5Lit57un5paH5Lu25Lyg6L6T77yMUDJQIOS9nOS4uuaJqeWxleivtOaYju+8jOS4jeS9nOS4uuW/heaIkOa8lOekuui3r+W+hOOAggoKIyMg5pS56L+b5bu66K6uCgoxLiAqKuS/ruWkjem7mOiupOi/kOihjOaVsOaNruW6k+WQr+WKqOmXrumimCoqCgogICDlvZPliY0gYHNlcnZlci9kYXRhL2NoYXQuZGJgIOS4uiAwIOWtl+iKgu+8jOW5tuS4lOW3peS9nOWMuiBEIOebmOi3r+W+hOS4iyBTUUxpdGUg5bu66KGo5Lya6Kem5Y+RIGBkaXNrIEkvTyBlcnJvcmDjgILlu7rorq7mvJTnpLrliY3lpITnkIbvvJoKCiAgIC0g5YWz6Zet5omA5pyJ5pyN5Yqh56uv6L+b56iL44CCCiAgIC0g5aSH5Lu95oiW5Yig6ZmkIGBzZXJ2ZXIvZGF0YS9jaGF0LmRiYOOAgWBzZXJ2ZXIvZGF0YS9jaGF0LmRiLWpvdXJuYWxg44CCCiAgIC0g5Zyo5pmu6YCa57uI56uv6YeN5paw6L+Q6KGMIGBweXRob24gLW0gc2VydmVyLm1haW5gIOmqjOivgem7mOiupOi3r+W+hOiDveWQpuWQr+WKqOOAggogICAtIOWmguaenCBEIOebmOebruW9leS7jeaKpSBTUUxpdGUgSS9PIOmUmeivr++8jOWPr+S4tOaXtuaKiumhueebruWkjeWItuWIsOacrOacuuezu+e7n+ebmO+8jOaIluS/ruaUuSBgU2VydmVyQ29uZmlnLmRiX3BhdGhgIOaMh+WQkeWPr+ato+W4uOWGmSBTUUxpdGUg55qE55uu5b2V44CCCgoyLiAqKuaJqeWxleW8see9kemHjei/nua1i+ivleimhueblioqCgogICBHVUkg5a6i5oi356uv5bey5pSv5oyB5pat57q/5o+Q56S644CB6Ieq5Yqo6YeN6L+e44CB6Ieq5Yqo6YeN5paw55m75b2V44CB5Zyo57q/55So5oi35Yi35paw5ZKM576k57uE54q25oCB5oGi5aSN44CC5ZCO57ut5Y+v5Lul57un57ut6KGl5YWF5pu05aSN5p2C55qE5byx572R5rWL6K+V77yM5L6L5aaC5aSa5qyh6L+e57ut5pat57q/44CB5pyN5Yqh56uv6ZW/5pe26Ze05LiN5Y+v55So5ZCO5oGi5aSN44CB5pat57q/5pyf6Ze05aSa5a6i5oi356uv5ZCM5pe25Y+R6YCB5aSx6LSl562J5Zy65pmv44CCCgozLiAqKuaJqeWxleWOi+WKm+a1i+ivlee7tOW6pioqCgogICDlvZPliY0gYHRlc3RzL3N0cmVzc190ZXN0LnB5YCDkuLvopoHpqozor4Hoh6rlj5Hoh6rmlLbnp4HogYogQUNL44CC5bu66K6u5aKe5Yqg77yaCgogICAtIOWkmueUqOaIt+S6pOWPieengeiBiuOAggogICAtIOWkp+e+pOW5v+aSreWOi+WKm+OAggogICAtIOWkp+aWh+S7ti/lpJrmlofku7blubblj5HkvKDovpPljovlipvjgIIKICAgLSDnprvnur/mtojmga/loIbnp6/lkI7nmbvlvZXmi4nlj5bljovlipvjgIIKCjQuICoq5paH5Lu25Lyg6L6T5pat54K557ut5Lyg6IO95Yqb6ZyA6KaB5pu05piO56GuKioKCiAgIOacjeWKoeerr+W3suaUr+aMgeWIhuWdl+OAgemHjeWkjSBjaHVuayDluYLnrYnlkozmjIkgb2Zmc2V0IOS4i+i9ve+8jOS9huWuouaIt+err+W4uOinhOWPkemAgea1geeoi+aYr+S4gOasoeaAp+mhuuW6j+WPkemAgeaWh+S7tuOAguiLpeimgeS4peagvOa7oei2s+KAnOaWreeCuee7reS8oOKAne+8jOW7uuiuruWcqOWuouaIt+err+WKoOWFpeWksei0peWQjuafpeivoui/m+W6puOAgeS7jue8uuWksSBjaHVuayDnu6fnu63lj5HpgIEv5LiL6L2955qE5Lqk5LqS5oiW6Ieq5Yqo5oGi5aSN6YC76L6R44CCCgo1LiAqKua8lOekuuWJjemHjeaWsOWBmiBBSSBzbW9rZSB0ZXN0KioKCiAgIEFJIOecn+WunuaOpeWPo+S+nei1lue9kee7nOOAgUFQSSBLZXkg5ZKM6aKd5bqm44CC5ryU56S65YmN5bu66K6u5YWI55So5LiA5Liq55+t6Zeu6aKY6aqM6K+BIGBAQUlg77yM5bm25YeG5aSH4oCc5pegIEtleSDml7bmmL7npLrlj4vlpb3plJnor6/igJ3nmoTlpIfnlKjlsZXnpLrot6/lvoTjgIIKCiMjIOaAu+S9k+e7k+iuugoK5Zyo6ZqU56a75Y+v5YaZ5pWw5o2u5bqT6Lev5b6E5LiL77yM6aG555uu5qC45b+D5Yqf6IO96YCa6L+H56uv5Yiw56uv5rWL6K+V77ya5rOo5YaM44CB55m75b2V44CB56eB6IGK44CB576k6IGK44CB5Zyo57q/55So5oi344CB5pKk5Zue44CB5Y6G5Y+y5ZKM5b+D6Lez5Z2H6YCa6L+H44CC5Y6L5Yqb5rWL6K+V6L6+5Yiw5L2c5Lia6KaB5rGC55qEIDUwIOWuouaIt+err+W5tuWPkeWSjCAxMDAg55So5oi35ZCM5pe25Zyo57q/77yM5bm26L+b5LiA5q2l6YCa6L+HIDE1MCDlrqLmiLfnq6/jgIExMDAg5a6i5oi356uvIDEwMDAg5p2h5raI5oGv44CBMjAwIOWuouaIt+err+i/nuaOpeS4iumZkOa1i+ivleOAguecn+WuniBEZWVwU2VlayBBSSBzbW9rZSB0ZXN0IOaIkOWKn+i/lOWbnuS4reaWh+WbnuetlOOAguW9k+WJjeS4u+imgemjjumZqembhuS4reWcqOacrOacuuW3peS9nOWMuiBTUUxpdGUgSS9PIOeOr+Wig++8jOS7peWPiuaWh+S7tuS8oOi+k+KAnOaWreeCuee7reS8oOKAneivreS5iei/mOS4jeWkn+WujOaVtO+8m+a8lOekuuaXtuW7uuiuruS9v+eUqOWPr+ato+W4uOWGmeWFpSBTUUxpdGUg55qE55uu5b2V5bm25LyY5YWI5bGV56S65pyN5Yqh56uv5Lit57un5paH5Lu25Lyg6L6T44CCCg==
+# 最终测试报告
+
+## 测试环境
+
+| 项目 | 内容 |
+|------|------|
+| 测试日期 | 2026-06-14 |
+| 操作系统 | Microsoft Windows 11 家庭版 中文版 |
+| Python | 3.13.5 |
+| 测试目录 | `D:\Courses Learning\Computer Network\final_work` |
+| 服务端地址 | `127.0.0.1:8888` |
+| 主要测试目标 | 注册/登录、私聊、群聊、在线用户、历史、撤回、心跳、文件传输、内容审核、AI、并发压力 |
+
+本报告只记录本次实际复现结果。真实 AI smoke test 使用用户级环境变量中的 `DEEPSEEK_API_KEY`，测试进程内临时映射为项目现有 OpenAI-compatible 配置变量；测试报告、源码、日志和文档均不记录 API Key 原文。
+
+## 依赖安装
+
+已执行：
+
+```bash
+python -m pip install -r requirements.txt
+python -m pip install pytest==8.3.4 pytest-asyncio==0.23.8
+```
+
+补充说明：
+
+- 初次完整运行 `python -m pytest` 时缺少 `pywebview` 和 `pytest-asyncio`，导致 GUI 相关测试无法收集；安装 `requirements.txt` 后解决依赖缺失。
+- 安装依赖时曾短暂安装到 `pytest 9.1.0`，该版本在本 Windows 环境中触发临时目录清理 `PermissionError`。已恢复到 `pytest 8.3.4`，这是项目此前报告中使用过且更稳定的版本。
+- `pip show pytest pytest-asyncio pywebview` 在 GBK 控制台下输出第三方包作者信息时出现 Unicode 日志编码错误，不影响已安装包本身。
+
+## 单元与模块测试
+
+### 可直接通过的 pytest 用例
+
+执行命令：
+
+```bash
+python -m pytest tests\test_ai_service.py tests\test_content_moderator.py tests\test_crypto.py tests\test_database.py tests\test_protocol.py tests\test_client_player2.py -k "not send_file"
+```
+
+结果：
+
+```text
+78 passed, 1 deselected in 3.48s
+```
+
+覆盖范围：
+
+| 测试文件 | 重点 |
+|----------|------|
+| `tests/test_protocol.py` | 12 字节协议头、粘包/半包、消息类型、payload helper |
+| `tests/test_database.py` | SQLite 初始化、约束、用户写入查询 |
+| `tests/test_content_moderator.py` | 内容审核普通/中风险/高风险/英文大小写 |
+| `tests/test_crypto.py` | RSA/AES 加解密 smoke test |
+| `tests/test_client_player2.py` | 客户端 ACK、撤回、历史、CLI/GUI 一致性 |
+| `tests/test_ai_service.py` | AI Key 选择、无 key、HTTP 错误、超时、解析失败 |
+
+### pytest 临时目录异常
+
+完整命令：
+
+```bash
+python -m pytest tests --basetemp <系统临时目录>
+```
+
+在本机执行时，`tmp_path` fixture 创建/清理临时目录阶段出现：
+
+```text
+PermissionError: [WinError 5] 拒绝访问
+```
+
+受影响用例集中在：
+
+- `tests/test_file_transfer.py`
+- `tests/test_client_player2.py::test_cli_send_file_uses_string_file_id`
+
+这些错误发生在 pytest 临时目录处理阶段，测试体未真正进入业务断言。为避免把环境问题误判为项目功能失败，后续使用直接验证脚本复现同等业务路径。
+
+### 文件传输直接验证
+
+由于 pytest 的 `tmp_path` fixture 在当前 Windows 环境中被临时目录权限问题阻断，本次使用临时验证脚本直接调用与 `tests/test_file_transfer.py` 和 `tests/test_client_player2.py::test_cli_send_file_uses_string_file_id` 等价的业务路径。临时脚本仅用于本次测试，未作为交付文件保留。
+
+结果：
+
+```text
+rejects unsafe file_id: PASS
+sanitizes filename: PASS
+requires original sender: PASS
+duplicate chunk idempotent: PASS
+download requires receiver: PASS
+group download members only: PASS
+rejects bad chunk bounds: PASS
+rejects invalid total_chunks: PASS
+result: PASS
+
+cli send file uses string file_id: PASS
+calls: 2
+```
+
+验证结论：
+
+- `file_id` 仅允许安全 token/UUID 风格，能阻止路径穿越。
+- `filename` 会被归一化为 basename。
+- 上传 chunk 必须来自原 sender。
+- 私聊文件只能由 receiver 下载；群文件只能由群成员下载。
+- `chunk_index`、`total_chunks`、单块大小和 offset 边界受校验。
+- 重复 chunk 不会虚增进度。
+- CLI 发送文件时使用字符串 `file_id`，并能发出初始化请求和数据块。
+
+## 运行数据路径异常
+
+本次测试发现当前工作区所在 D 盘路径下，SQLite 文件建表会触发 `sqlite3.OperationalError: disk I/O error`。复现范围包括：
+
+- 默认运行数据库：`server/data/chat.db` 当前为 0 字节，并存在 `chat.db-journal`。
+- 工作区临时数据库：`tmp/runtime/*.db`。
+
+最小复现：
+
+```bash
+python -c "import sqlite3, pathlib; p=pathlib.Path('tmp/runtime/sqlite_now.db'); p.parent.mkdir(parents=True, exist_ok=True); con=sqlite3.connect(p); con.execute('create table if not exists t(x)'); con.commit()"
+```
+
+结果：
+
+```text
+sqlite3.OperationalError: disk I/O error
+```
+
+同一 Python 环境在系统临时目录 `C:\Users\yeyiwen\AppData\Local\Temp` 下可以正常创建 SQLite 数据库。因此，本次服务端集成测试、压力测试和 AI smoke test 使用系统临时目录中的隔离数据库：
+
+```text
+C:\Users\yeyiwen\AppData\Local\Temp\codex_chat_stress_runtime\chat.db
+```
+
+这个问题不影响 TCP 协议、消息路由、并发和 AI 逻辑的测试结论，但会影响默认方式 `python -m server.main` 在当前工作区直接启动。演示前建议清理或修复默认运行数据目录，见“改进建议”。
+
+## 集成测试
+
+测试服务端由临时 orchestration 脚本启动，配置仍使用项目的 `ChatServer`、`ServerConfig` 和业务模块，只把数据库与文件存储目录放到系统临时目录以避开当前工作区 SQLite I/O 异常。临时 orchestration 脚本负责启动服务端、等待端口就绪、运行测试命令并在 `finally` 中关闭服务端，未作为交付文件保留。
+
+其中集成测试子步骤执行：
+
+```bash
+python tests/run_integration_tests.py
+```
+
+结果：
+
+```text
+Result: 11/11 all passed
+```
+
+通过步骤：
+
+1. TCP 连接。
+2. 用户注册。
+3. 用户登录。
+4. 私聊消息真实接收。
+5. 创建群组。
+6. 加入群组。
+7. 群聊消息真实接收。
+8. 在线用户列表。
+9. 使用服务端 ACK 返回的 UUID 撤回消息。
+10. 历史记录包含已发送消息。
+11. 心跳 ACK。
+
+## 压力测试
+
+压力测试脚本测试的是大量虚拟客户端并发连接、注册、登录、发送私聊消息并等待 ACK。当前脚本中的每个虚拟客户端向自己发送私聊，因此能够验证连接数、认证、消息入库/ACK 和协议收发压力，但不等价于复杂多人互发或大规模群聊广播压力。
+
+### 压力测试汇总
+
+| 场景 | Connected | Login Success | Messages ACKed | Total Errors | Result |
+|------|-----------|---------------|----------------|--------------|--------|
+| 50 客户端并发 | 50/50 | 50/50 | 150/150 | 0 | PASS |
+| 100 客户端并发 | 100/100 | 100/100 | 300/300 | 0 | PASS |
+| 150 客户端并发 | 150/150 | 150/150 | 450/450 | 0 | PASS |
+| 100 客户端高消息量 | 100/100 | 100/100 | 1000/1000 | 0 | PASS |
+| 200 客户端连接上限 | 200/200 | 200/200 | 600/600 | 0 | PASS |
+
+其中“100 客户端并发”对应作业要求中的“100 用户同时在线”展示点：测试中 100 个虚拟客户端均成功连接、注册、登录并完成消息 ACK。
+
+### 50 客户端并发
+
+命令：
+
+```bash
+python tests/stress_test.py --clients 50 --concurrency 20 --messages 3 --timeout 10
+```
+
+结果：
+
+| 指标 | 数值 |
+|------|------|
+| Total Clients | 50 |
+| Connected | 50 |
+| Registered | 50 |
+| Login Success | 50 |
+| Messages Sent | 150 |
+| Messages ACKed | 150 |
+| Messages Received | 150 |
+| Total Errors | 0 |
+| Duration | 1.06s |
+| Avg Latency | 0.0590s |
+| P50 Latency | 0.0081s |
+| P99 Latency | 0.8878s |
+| Throughput | 141.41 acked msg/s |
+| Result | PASS |
+
+### 100 客户端并发
+
+命令：
+
+```bash
+python tests/stress_test.py --clients 100 --concurrency 50 --messages 3 --timeout 10
+```
+
+结果：
+
+| 指标 | 数值 |
+|------|------|
+| Total Clients | 100 |
+| Connected | 100 |
+| Registered | 100 |
+| Login Success | 100 |
+| Messages Sent | 300 |
+| Messages ACKed | 300 |
+| Messages Received | 300 |
+| Total Errors | 0 |
+| Duration | 2.30s |
+| Avg Latency | 0.1054s |
+| P50 Latency | 0.0573s |
+| P99 Latency | 1.8291s |
+| Throughput | 130.67 acked msg/s |
+| Result | PASS |
+
+### 150 客户端并发
+
+命令：
+
+```bash
+python tests/stress_test.py --clients 150 --concurrency 75 --messages 3 --timeout 15
+```
+
+结果：
+
+| 指标 | 数值 |
+|------|------|
+| Total Clients | 150 |
+| Connected | 150 |
+| Registered | 150 |
+| Login Success | 150 |
+| Messages Sent | 450 |
+| Messages ACKed | 450 |
+| Messages Received | 450 |
+| Total Errors | 0 |
+| Duration | 2.85s |
+| Avg Latency | 0.1760s |
+| P50 Latency | 0.1430s |
+| P99 Latency | 1.5088s |
+| Throughput | 158.06 acked msg/s |
+| Result | PASS |
+
+### 100 客户端高消息量
+
+命令：
+
+```bash
+python tests/stress_test.py --clients 100 --concurrency 50 --messages 10 --timeout 15
+```
+
+结果：
+
+| 指标 | 数值 |
+|------|------|
+| Total Clients | 100 |
+| Connected | 100 |
+| Registered | 100 |
+| Login Success | 100 |
+| Messages Sent | 1000 |
+| Messages ACKed | 1000 |
+| Messages Received | 1000 |
+| Total Errors | 0 |
+| Duration | 3.22s |
+| Avg Latency | 0.1083s |
+| P50 Latency | 0.0753s |
+| P99 Latency | 1.4989s |
+| Throughput | 310.33 acked msg/s |
+| Result | PASS |
+
+### 200 客户端连接上限测试
+
+`server/config.py` 中 `max_connections` 配置为 200。本次测试达到 200 客户端。
+
+命令：
+
+```bash
+python tests/stress_test.py --clients 200 --concurrency 100 --messages 3 --timeout 20
+```
+
+结果：
+
+| 指标 | 数值 |
+|------|------|
+| Total Clients | 200 |
+| Connected | 200 |
+| Registered | 200 |
+| Login Success | 200 |
+| Messages Sent | 600 |
+| Messages ACKed | 600 |
+| Messages Received | 600 |
+| Total Errors | 0 |
+| Duration | 3.27s |
+| Avg Latency | 0.2248s |
+| P50 Latency | 0.1803s |
+| P99 Latency | 1.9931s |
+| Throughput | 183.33 acked msg/s |
+| Result | PASS |
+
+## AI 测试结论
+
+### Mock 单元测试
+
+`tests/test_ai_service.py` 已通过 mock HTTP 行为验证：
+
+- `BIGMODEL_API_KEY` 优先使用 BigModel 默认地址和模型。
+- 仅 `DASHSCOPE_API_KEY` 时使用 DashScope OpenAI-compatible 默认地址和 `qwen-turbo`。
+- `AI_API_BASE` / `AI_MODEL` 可覆盖默认值。
+- 无 key、401、超时、网络错误、解析失败均有友好兜底。
+
+### DeepSeek 真实 smoke test
+
+本次真实 smoke test 使用 DeepSeek OpenAI-compatible 接口。测试进程临时设置：
+
+```text
+AI_API_BASE=https://api.deepseek.com
+AI_MODEL=deepseek-chat
+BIGMODEL_API_KEY=<由 DEEPSEEK_API_KEY 临时映射，不写入文件>
+```
+
+执行路径：
+
+1. 连接测试服务端。
+2. 注册并登录测试用户。
+3. 创建群组。
+4. 发送 `AI_QUERY`：`请用一句中文解释 TCP 三次握手。`
+5. 等待服务端返回 `AI_RESP`。
+
+结果：
+
+```text
+AI reply length: 60
+AI reply preview: TCP三次握手是建立连接时，客户端和服务器通过三次消息交换（SYN、SYN-ACK、ACK）确认双方收发能力正常的过程。
+```
+
+结论：真实外部 AI 调用成功，服务端能收到 AI 回复并通过协议返回客户端。现场演示仍依赖网络、API Key 有效性和账户额度，演示前应重新做一次 smoke test。
+
+### AI 功能演示证据说明
+
+GUI 演示中，任意群成员在群聊输入：
+
+```text
+@AI 请用一句话解释 TCP 三次握手。
+```
+
+预期结果：
+
+- 服务端接收 `AI_QUERY` 并调用 `AIService.query_with_context()`。
+- AI 回复以绿色 AI 气泡显示在当前群聊。
+- 同一群组内其他在线成员也能看到该 AI 回复。
+- AI 回复不会同步到用户私聊或 AI assistant 侧栏的未读提示中。
+
+若现场网络或 API Key 不可用，服务端会返回“AI 服务未配置”或类似友好错误；该场景只说明外部 AI 环境不可用，不影响普通聊天、群聊、文件和内容审核功能。
+
+## 内容审核测试结论
+
+内容审核通过 `tests/test_content_moderator.py` 验证：
+
+- 普通文本放行。
+- 中风险词汇，如 `fuck`、`shit`、`色情`，可识别为不当言论。
+- 高风险词汇，如 `attack`、`杀了你`，可识别为高风险并阻止。
+- 英文大小写归一化，`Fuck`、`SB` 等变体可被识别。
+
+### 内容审核功能演示证据说明
+
+演示时可发送普通消息和敏感词消息对比：
+
+| 输入类型 | 示例 | 预期结果 |
+|----------|------|----------|
+| 普通文本 | `今天网络实验正常进行。` | 消息正常发送和接收 |
+| 中风险词 | 包含中风险词汇的普通聊天文本 | 服务端返回内容警告 |
+| 高风险词 | 包含高风险攻击词汇的文本 | 服务端拦截，不写入正常聊天记录 |
+
+内容审核在服务端执行，能够防止被拦截内容继续转发给其他客户端。
+
+## 服务器断线与心跳结论
+
+已通过集成测试验证客户端发送 `HEARTBEAT` 后服务端返回 `HEARTBEAT_ACK`。
+
+客户端 `client/connection.py` 具备断线检测与指数退避重连逻辑。GUI 客户端在服务端断开后会把顶部连接状态从 Connected 切换为 Disconnected，左上角用户状态从绿点 `Online` 切换为红点 `Offline`，并阻止用户误以为离线消息已成功发出。服务端恢复后，客户端会自动重连、重新登录并刷新在线用户和群组状态。
+
+CLI 中断线时会显示：
+
+```text
+Disconnected. Reconnecting...
+Reconnected.
+```
+
+## P2P 说明
+
+P2P 打洞代码保留为实验性扩展，但没有在复杂 NAT、防火墙或校园网隔离环境下验证。最终演示建议主打服务端中继文件传输，P2P 作为扩展说明，不作为必成演示路径。
+
+## 改进建议
+
+1. **修复默认运行数据库启动问题**
+
+   当前 `server/data/chat.db` 为 0 字节，并且工作区 D 盘路径下 SQLite 建表会触发 `disk I/O error`。建议演示前处理：
+
+   - 关闭所有服务端进程。
+   - 备份或删除 `server/data/chat.db`、`server/data/chat.db-journal`。
+   - 在普通终端重新运行 `python -m server.main` 验证默认路径能否启动。
+   - 如果 D 盘目录仍报 SQLite I/O 错误，可临时把项目复制到本机系统盘，或修改 `ServerConfig.db_path` 指向可正常写 SQLite 的目录。
+
+2. **扩展弱网重连测试覆盖**
+
+   GUI 客户端已支持断线提示、自动重连、自动重新登录、在线用户刷新和群组状态恢复。后续可以继续补充更复杂的弱网测试，例如多次连续断线、服务端长时间不可用后恢复、断线期间多客户端同时发送失败等场景。
+
+3. **扩展压力测试维度**
+
+   当前 `tests/stress_test.py` 主要验证自发自收私聊 ACK。建议增加：
+
+   - 多用户交叉私聊。
+   - 大群广播压力。
+   - 大文件/多文件并发传输压力。
+   - 离线消息堆积后登录拉取压力。
+
+4. **文件传输断点续传能力需要更明确**
+
+   服务端已支持分块、重复 chunk 幂等和按 offset 下载，但客户端常规发送流程是一次性顺序发送文件。若要严格满足“断点续传”，建议在客户端加入失败后查询进度、从缺失 chunk 继续发送/下载的交互或自动恢复逻辑。
+
+5. **演示前重新做 AI smoke test**
+
+   AI 真实接口依赖网络、API Key 和额度。演示前建议先用一个短问题验证 `@AI`，并准备“无 Key 时显示友好错误”的备用展示路径。
+
+## 总体结论
+
+在隔离可写数据库路径下，项目核心功能通过端到端测试：注册、登录、私聊、群聊、在线用户、撤回、历史和心跳均通过。压力测试达到作业要求的 50 客户端并发和 100 用户同时在线，并进一步通过 150 客户端、100 客户端 1000 条消息、200 客户端连接上限测试。真实 DeepSeek AI smoke test 成功返回中文回答。当前主要风险集中在本机工作区 SQLite I/O 环境，以及文件传输“断点续传”语义还不够完整；演示时建议使用可正常写入 SQLite 的目录并优先展示服务端中继文件传输。

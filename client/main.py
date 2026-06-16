@@ -1,1 +1,57 @@
-IiIiCuWuouaIt+err+WFpeWPoyDigJQg5pSv5oyBIENMSSDlkowgR1VJIOWPjOaooeWQr+WKqAoK55So5rOV77yaCiAgICBweXRob24gLW0gY2xpZW50Lm1haW4gICAgICAgICAgICAgICAgICAjIENMSSDmqKHlvI/vvIjpu5jorqTvvIkKICAgIHB5dGhvbiAtbSBjbGllbnQubWFpbiAtLWd1aSAgICAgICAgICAgICMgR1VJIOaooeW8jwogICAgcHl0aG9uIC1tIGNsaWVudC5tYWluIC0taG9zdCAwLjAuMC4wIC0tcG9ydCA4ODg4CiIiIgoKaW1wb3J0IGFyZ3BhcnNlCmltcG9ydCBzeXMKaW1wb3J0IG9zCgoKZGVmIF9lbnN1cmVfcGF0aCgpOgogICAgIiIi56Gu5L+dIGNsaWVudC8g55uu5b2V5ZyoIHN5cy5wYXRoIOS4rSIiIgogICAgY2xpZW50X2RpciA9IG9zLnBhdGguZGlybmFtZShvcy5wYXRoLmFic3BhdGgoX19maWxlX18pKQogICAgaWYgY2xpZW50X2RpciBub3QgaW4gc3lzLnBhdGg6CiAgICAgICAgc3lzLnBhdGguaW5zZXJ0KDAsIGNsaWVudF9kaXIpCgoKZGVmIG1haW4oKToKICAgIF9lbnN1cmVfcGF0aCgpCgogICAgcGFyc2VyID0gYXJncGFyc2UuQXJndW1lbnRQYXJzZXIoCiAgICAgICAgZGVzY3JpcHRpb249IkNoYXQgU3lzdGVtIENsaWVudCAtIERpc3RyaWJ1dGVkIEluc3RhbnQgTWVzc2FnaW5nIgogICAgKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgiLS1ob3N0IiwgZGVmYXVsdD0iMTI3LjAuMC4xIiwKICAgICAgICAgICAgICAgICAgICAgICAgaGVscD0iU2VydmVyIGhvc3QgKGRlZmF1bHQ6IDEyNy4wLjAuMSkiKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgiLS1wb3J0IiwgdHlwZT1pbnQsIGRlZmF1bHQ9ODg4OCwKICAgICAgICAgICAgICAgICAgICAgICAgaGVscD0iU2VydmVyIHBvcnQgKGRlZmF1bHQ6IDg4ODgpIikKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoIi0tY2xpIiwgYWN0aW9uPSJzdG9yZV90cnVlIiwgZGVmYXVsdD1UcnVlLAogICAgICAgICAgICAgICAgICAgICAgICBoZWxwPSJMYXVuY2ggQ0xJIG1vZGUgKGRlZmF1bHQpIikKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoIi0tZ3VpIiwgYWN0aW9uPSJzdG9yZV90cnVlIiwKICAgICAgICAgICAgICAgICAgICAgICAgaGVscD0iTGF1bmNoIEdVSSBtb2RlIikKICAgIGFyZ3MgPSBwYXJzZXIucGFyc2VfYXJncygpCgogICAgaWYgYXJncy5ndWk6CiAgICAgICAgX3N0YXJ0X2d1aShhcmdzLmhvc3QsIGFyZ3MucG9ydCkKICAgIGVsc2U6CiAgICAgICAgX3N0YXJ0X2NsaShhcmdzLmhvc3QsIGFyZ3MucG9ydCkKCgpkZWYgX3N0YXJ0X2NsaShob3N0LCBwb3J0KToKICAgIGZyb20gY2xpIGltcG9ydCBDaGF0Q0xJCiAgICBjbGkgPSBDaGF0Q0xJKGhvc3Q9aG9zdCwgcG9ydD1wb3J0KQogICAgY2xpLnJ1bigpCgoKZGVmIF9zdGFydF9ndWkoaG9zdCwgcG9ydCk6CiAgICBmcm9tIGd1aSBpbXBvcnQgQ2hhdEdVSQogICAgZ3VpID0gQ2hhdEdVSShob3N0PWhvc3QsIHBvcnQ9cG9ydCkKICAgIGd1aS5ydW4oKQoKCmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAgICBtYWluKCkK
+"""
+客户端入口 — 支持 CLI 和 GUI 双模启动
+
+用法：
+    python -m client.main                  # CLI 模式（默认）
+    python -m client.main --gui            # GUI 模式
+    python -m client.main --host 0.0.0.0 --port 8888
+"""
+
+import argparse
+import sys
+import os
+
+
+def _ensure_path():
+    """确保 client/ 目录在 sys.path 中"""
+    client_dir = os.path.dirname(os.path.abspath(__file__))
+    if client_dir not in sys.path:
+        sys.path.insert(0, client_dir)
+
+
+def main():
+    _ensure_path()
+
+    parser = argparse.ArgumentParser(
+        description="Chat System Client - Distributed Instant Messaging"
+    )
+    parser.add_argument("--host", default="127.0.0.1",
+                        help="Server host (default: 127.0.0.1)")
+    parser.add_argument("--port", type=int, default=8888,
+                        help="Server port (default: 8888)")
+    parser.add_argument("--cli", action="store_true", default=True,
+                        help="Launch CLI mode (default)")
+    parser.add_argument("--gui", action="store_true",
+                        help="Launch GUI mode")
+    args = parser.parse_args()
+
+    if args.gui:
+        _start_gui(args.host, args.port)
+    else:
+        _start_cli(args.host, args.port)
+
+
+def _start_cli(host, port):
+    from cli import ChatCLI
+    cli = ChatCLI(host=host, port=port)
+    cli.run()
+
+
+def _start_gui(host, port):
+    from gui import ChatGUI
+    gui = ChatGUI(host=host, port=port)
+    gui.run()
+
+
+if __name__ == "__main__":
+    main()

@@ -1,1 +1,170 @@
-aW1wb3J0IGpzb24KaW1wb3J0IHRocmVhZGluZwoKaW1wb3J0IHB5dGVzdApmcm9tIGNsaWVudC5tZXNzYWdlX3N0b3JlIGltcG9ydCBNZXNzYWdlU3RvcmUKZnJvbSB0ZXN0cy50ZW1wX3V0aWxzIGltcG9ydCBtYWtlX3J1bnRpbWVfZGlyLCByZW1vdmVfcnVudGltZV9kaXIKCgpAcHl0ZXN0LmZpeHR1cmUKZGVmIHN0b3JhZ2VfZGlyKCk6CiAgICBwYXRoID0gbWFrZV9ydW50aW1lX2RpcigibWVzc2FnZV9zdG9yZV8iKQogICAgeWllbGQgcGF0aAogICAgcmVtb3ZlX3J1bnRpbWVfZGlyKHBhdGgpCgoKZGVmIHRlc3RfZ2V0X21lc3NhZ2VzX2ZpbHRlcnNfcHJpdmF0ZV9jaGF0c19ieV9zdGFibGVfdGFyZ2V0KHN0b3JhZ2VfZGlyKToKICAgIHN0b3JlID0gTWVzc2FnZVN0b3JlKHN0cihzdG9yYWdlX2RpcikpCgogICAgc3RvcmUuYWRkX21lc3NhZ2UoImFsaWNlIiwgewogICAgICAgICJ0eXBlIjogInByaXZhdGUiLAogICAgICAgICJzZW5kZXIiOiAiYWxpY2UiLAogICAgICAgICJ0YXJnZXRfaWQiOiAyLAogICAgICAgICJyZWxhdGVkX3R5cGUiOiAicHJpdmF0ZSIsCiAgICAgICAgInJlbGF0ZWRfdGFyZ2V0IjogIjIiLAogICAgICAgICJjaGF0X2tleSI6ICJwcml2YXRlOjIiLAogICAgICAgICJjb250ZW50IjogInRvIGJvYiIsCiAgICB9KQogICAgc3RvcmUuYWRkX21lc3NhZ2UoImFsaWNlIiwgewogICAgICAgICJ0eXBlIjogInByaXZhdGUiLAogICAgICAgICJzZW5kZXIiOiAiYWxpY2UiLAogICAgICAgICJ0YXJnZXRfaWQiOiAzLAogICAgICAgICJyZWxhdGVkX3R5cGUiOiAicHJpdmF0ZSIsCiAgICAgICAgInJlbGF0ZWRfdGFyZ2V0IjogIjMiLAogICAgICAgICJjaGF0X2tleSI6ICJwcml2YXRlOjMiLAogICAgICAgICJjb250ZW50IjogInRvIGNhcm9sIiwKICAgIH0pCiAgICBzdG9yZS5hZGRfbWVzc2FnZSgiYWxpY2UiLCB7CiAgICAgICAgInR5cGUiOiAicHJpdmF0ZSIsCiAgICAgICAgInNlbmRlciI6ICJib2IiLAogICAgICAgICJmcm9tX2lkIjogMiwKICAgICAgICAidGFyZ2V0X2lkIjogMiwKICAgICAgICAicmVsYXRlZF90eXBlIjogInByaXZhdGUiLAogICAgICAgICJyZWxhdGVkX3RhcmdldCI6ICIyIiwKICAgICAgICAiY2hhdF9rZXkiOiAicHJpdmF0ZToyIiwKICAgICAgICAiY29udGVudCI6ICJmcm9tIGJvYiIsCiAgICB9KQoKICAgIG1lc3NhZ2VzID0gc3RvcmUuZ2V0X21lc3NhZ2VzKCJhbGljZSIsICJwcml2YXRlOjIiLCBsaW1pdD0xMCkKCiAgICBhc3NlcnQgW21bImNvbnRlbnQiXSBmb3IgbSBpbiBtZXNzYWdlc10gPT0gWyJ0byBib2IiLCAiZnJvbSBib2IiXQoKCmRlZiB0ZXN0X2dldF9tZXNzYWdlc19rZWVwc19sZWdhY3lfcHJpdmF0ZV9mYWxsYmFja3Nfc2VwYXJhdGUoc3RvcmFnZV9kaXIpOgogICAgc3RvcmUgPSBNZXNzYWdlU3RvcmUoc3RyKHN0b3JhZ2VfZGlyKSkKCiAgICBzdG9yZS5hZGRfbWVzc2FnZSgiYWxpY2UiLCB7CiAgICAgICAgInR5cGUiOiAicHJpdmF0ZSIsCiAgICAgICAgInNlbmRlciI6ICJhbGljZSIsCiAgICAgICAgInJlY2VpdmVyIjogImJvYiIsCiAgICAgICAgInRhcmdldF9pZCI6IDIsCiAgICAgICAgImNvbnRlbnQiOiAibGVnYWN5IHRvIGJvYiIsCiAgICB9KQogICAgc3RvcmUuYWRkX21lc3NhZ2UoImFsaWNlIiwgewogICAgICAgICJ0eXBlIjogInByaXZhdGUiLAogICAgICAgICJzZW5kZXIiOiAiYWxpY2UiLAogICAgICAgICJyZWNlaXZlciI6ICJjYXJvbCIsCiAgICAgICAgInRhcmdldF9pZCI6IDMsCiAgICAgICAgImNvbnRlbnQiOiAibGVnYWN5IHRvIGNhcm9sIiwKICAgIH0pCiAgICBzdG9yZS5hZGRfbWVzc2FnZSgiYWxpY2UiLCB7CiAgICAgICAgInR5cGUiOiAicHJpdmF0ZSIsCiAgICAgICAgInNlbmRlciI6ICJib2IiLAogICAgICAgICJmcm9tX2lkIjogMiwKICAgICAgICAiY29udGVudCI6ICJsZWdhY3kgZnJvbSBib2IiLAogICAgfSkKCiAgICBieV9pZCA9IHN0b3JlLmdldF9tZXNzYWdlcygiYWxpY2UiLCAicHJpdmF0ZToyIiwgbGltaXQ9MTApCiAgICBieV9uYW1lID0gc3RvcmUuZ2V0X21lc3NhZ2VzKCJhbGljZSIsICJib2IiLCBsaW1pdD0xMCkKCiAgICBhc3NlcnQgW21bImNvbnRlbnQiXSBmb3IgbSBpbiBieV9pZF0gPT0gWyJsZWdhY3kgdG8gYm9iIiwgImxlZ2FjeSBmcm9tIGJvYiJdCiAgICBhc3NlcnQgW21bImNvbnRlbnQiXSBmb3IgbSBpbiBieV9uYW1lXSA9PSBbImxlZ2FjeSB0byBib2IiLCAibGVnYWN5IGZyb20gYm9iIl0KCgpkZWYgdGVzdF9nZXRfbWVzc2FnZXNfZG9lc19ub3RfcHV0X2luYm91bmRfcHJpdmF0ZV9tZXNzYWdlX2luX3NlbGZfY2hhdChzdG9yYWdlX2Rpcik6CiAgICBzdG9yZSA9IE1lc3NhZ2VTdG9yZShzdHIoc3RvcmFnZV9kaXIpKQoKICAgIHN0b3JlLmFkZF9tZXNzYWdlKCJhbGljZSIsIHsKICAgICAgICAidHlwZSI6ICJwcml2YXRlIiwKICAgICAgICAic2VuZGVyIjogImJvYiIsCiAgICAgICAgImZyb21faWQiOiAyLAogICAgICAgICJyZWNlaXZlcl9pZCI6IDEsCiAgICAgICAgImNvbnRlbnQiOiAibGVnYWN5IGluYm91bmQgZnJvbSBib2IiLAogICAgfSkKCiAgICBib2JfbWVzc2FnZXMgPSBzdG9yZS5nZXRfbWVzc2FnZXMoImFsaWNlIiwgInByaXZhdGU6MiIsIGxpbWl0PTEwKQogICAgc2VsZl9tZXNzYWdlcyA9IHN0b3JlLmdldF9tZXNzYWdlcygiYWxpY2UiLCAicHJpdmF0ZToxIiwgbGltaXQ9MTApCgogICAgYXNzZXJ0IFttWyJjb250ZW50Il0gZm9yIG0gaW4gYm9iX21lc3NhZ2VzXSA9PSBbImxlZ2FjeSBpbmJvdW5kIGZyb20gYm9iIl0KICAgIGFzc2VydCBzZWxmX21lc3NhZ2VzID09IFtdCgoKZGVmIHRlc3RfYWRkX21lc3NhZ2VfZG9lc19ub3RfbG9zZV9jb25jdXJyZW50X3dyaXRlcyhzdG9yYWdlX2Rpcik6CiAgICBzdG9yZSA9IE1lc3NhZ2VTdG9yZShzdHIoc3RvcmFnZV9kaXIpKQogICAgdG90YWwgPSA4MAogICAgcmVhZHkgPSB0aHJlYWRpbmcuQmFycmllcih0b3RhbCkKCiAgICBkZWYgd29ya2VyKGlkeCk6CiAgICAgICAgcmVhZHkud2FpdCh0aW1lb3V0PTUpCiAgICAgICAgc3RvcmUuYWRkX21lc3NhZ2UoImFsaWNlIiwgewogICAgICAgICAgICAidHlwZSI6ICJwcml2YXRlIiwKICAgICAgICAgICAgIm1zZ19pZCI6IGYibS17aWR4fSIsCiAgICAgICAgICAgICJyZWxhdGVkX3R5cGUiOiAicHJpdmF0ZSIsCiAgICAgICAgICAgICJyZWxhdGVkX3RhcmdldCI6ICIyIiwKICAgICAgICAgICAgImNoYXRfa2V5IjogInByaXZhdGU6MiIsCiAgICAgICAgICAgICJjb250ZW50IjogZiJtZXNzYWdlIHtpZHh9IiwKICAgICAgICB9KQoKICAgIHRocmVhZHMgPSBbdGhyZWFkaW5nLlRocmVhZCh0YXJnZXQ9d29ya2VyLCBhcmdzPShpLCkpIGZvciBpIGluIHJhbmdlKHRvdGFsKV0KICAgIGZvciB0aHJlYWQgaW4gdGhyZWFkczoKICAgICAgICB0aHJlYWQuc3RhcnQoKQogICAgZm9yIHRocmVhZCBpbiB0aHJlYWRzOgogICAgICAgIHRocmVhZC5qb2luKHRpbWVvdXQ9MTApCgogICAgbWVzc2FnZXMgPSBzdG9yZS5nZXRfbWVzc2FnZXMoImFsaWNlIiwgInByaXZhdGU6MiIsIGxpbWl0PXRvdGFsICsgMTApCiAgICBhc3NlcnQgbGVuKHttWyJtc2dfaWQiXSBmb3IgbSBpbiBtZXNzYWdlc30pID09IHRvdGFsCgoKZGVmIHRlc3RfY29ycnVwdF91c2VyX2pzb25faXNfYmFja2VkX3VwX2FuZF9yZXNldChzdG9yYWdlX2Rpcik6CiAgICB1c2VyX2ZpbGUgPSBzdG9yYWdlX2RpciAvICJhbGljZS5qc29uIgogICAgdXNlcl9maWxlLndyaXRlX3RleHQoIntiYWQganNvbiIsIGVuY29kaW5nPSJ1dGYtOCIpCiAgICBzdG9yZSA9IE1lc3NhZ2VTdG9yZShzdHIoc3RvcmFnZV9kaXIpKQoKICAgIGRhdGEgPSBzdG9yZS5sb2FkX3VzZXJfZGF0YSgiYWxpY2UiKQoKICAgIGFzc2VydCBkYXRhID09IHsKICAgICAgICAidXNlcm5hbWUiOiAiYWxpY2UiLAogICAgICAgICJjb250YWN0cyI6IFtdLAogICAgICAgICJzZXNzaW9ucyI6IFtdLAogICAgICAgICJtZXNzYWdlcyI6IFtdLAogICAgfQogICAgYmFja3VwcyA9IGxpc3Qoc3RvcmFnZV9kaXIuZ2xvYigiYWxpY2UuanNvbi5jb3JydXB0LioiKSkKICAgIGFzc2VydCBsZW4oYmFja3VwcykgPT0gMQogICAgYXNzZXJ0IGJhY2t1cHNbMF0ucmVhZF90ZXh0KGVuY29kaW5nPSJ1dGYtOCIpID09ICJ7YmFkIGpzb24iCgoKZGVmIHRlc3Rfc2F2ZV91c2VyX2RhdGFfd3JpdGVzX3ZhbGlkX2pzb25fYXRvbWljYWxseShzdG9yYWdlX2Rpcik6CiAgICBzdG9yZSA9IE1lc3NhZ2VTdG9yZShzdHIoc3RvcmFnZV9kaXIpKQogICAgc3RvcmUuc2F2ZV91c2VyX2RhdGEoImFsaWNlIiwgeyJ1c2VybmFtZSI6ICJhbGljZSIsICJtZXNzYWdlcyI6IFt7ImNvbnRlbnQiOiAi5L2g5aW9In1dfSkKCiAgICB3aXRoIG9wZW4oc3RvcmFnZV9kaXIgLyAiYWxpY2UuanNvbiIsICJyIiwgZW5jb2Rpbmc9InV0Zi04IikgYXMgZjoKICAgICAgICBkYXRhID0ganNvbi5sb2FkKGYpCgogICAgYXNzZXJ0IGRhdGFbIm1lc3NhZ2VzIl1bMF1bImNvbnRlbnQiXSA9PSAi5L2g5aW9IgoKCmRlZiB0ZXN0X3VwZGF0ZV9tZXNzYWdlX3N0YXR1c19oYW5kbGVzX3JlamVjdGVkX2FjayhzdG9yYWdlX2Rpcik6CiAgICBzdG9yZSA9IE1lc3NhZ2VTdG9yZShzdHIoc3RvcmFnZV9kaXIpKQogICAgc3RvcmUuYWRkX21lc3NhZ2UoImFsaWNlIiwgewogICAgICAgICJ0eXBlIjogInByaXZhdGUiLAogICAgICAgICJtc2dfaWQiOiAibG9jYWwtMSIsCiAgICAgICAgImxvY2FsX21zZ19pZCI6ICJsb2NhbC0xIiwKICAgICAgICAic3RhdHVzIjogInBlbmRpbmciLAogICAgICAgICJjaGF0X2tleSI6ICJwcml2YXRlOjIiLAogICAgICAgICJjb250ZW50IjogIndpbGwgcmVqZWN0IiwKICAgIH0pCgogICAgYXNzZXJ0IHN0b3JlLnVwZGF0ZV9tZXNzYWdlX3N0YXR1cygiYWxpY2UiLCAibG9jYWwtMSIsICJyZWplY3RlZCIpIGlzIFRydWUKCiAgICBtZXNzYWdlcyA9IHN0b3JlLmdldF9tZXNzYWdlcygiYWxpY2UiLCAicHJpdmF0ZToyIiwgbGltaXQ9MTApCiAgICBhc3NlcnQgbWVzc2FnZXNbMF1bInN0YXR1cyJdID09ICJyZWplY3RlZCIK
+import json
+import threading
+
+import pytest
+from client.message_store import MessageStore
+from tests.temp_utils import make_runtime_dir, remove_runtime_dir
+
+
+@pytest.fixture
+def storage_dir():
+    path = make_runtime_dir("message_store_")
+    yield path
+    remove_runtime_dir(path)
+
+
+def test_get_messages_filters_private_chats_by_stable_target(storage_dir):
+    store = MessageStore(str(storage_dir))
+
+    store.add_message("alice", {
+        "type": "private",
+        "sender": "alice",
+        "target_id": 2,
+        "related_type": "private",
+        "related_target": "2",
+        "chat_key": "private:2",
+        "content": "to bob",
+    })
+    store.add_message("alice", {
+        "type": "private",
+        "sender": "alice",
+        "target_id": 3,
+        "related_type": "private",
+        "related_target": "3",
+        "chat_key": "private:3",
+        "content": "to carol",
+    })
+    store.add_message("alice", {
+        "type": "private",
+        "sender": "bob",
+        "from_id": 2,
+        "target_id": 2,
+        "related_type": "private",
+        "related_target": "2",
+        "chat_key": "private:2",
+        "content": "from bob",
+    })
+
+    messages = store.get_messages("alice", "private:2", limit=10)
+
+    assert [m["content"] for m in messages] == ["to bob", "from bob"]
+
+
+def test_get_messages_keeps_legacy_private_fallbacks_separate(storage_dir):
+    store = MessageStore(str(storage_dir))
+
+    store.add_message("alice", {
+        "type": "private",
+        "sender": "alice",
+        "receiver": "bob",
+        "target_id": 2,
+        "content": "legacy to bob",
+    })
+    store.add_message("alice", {
+        "type": "private",
+        "sender": "alice",
+        "receiver": "carol",
+        "target_id": 3,
+        "content": "legacy to carol",
+    })
+    store.add_message("alice", {
+        "type": "private",
+        "sender": "bob",
+        "from_id": 2,
+        "content": "legacy from bob",
+    })
+
+    by_id = store.get_messages("alice", "private:2", limit=10)
+    by_name = store.get_messages("alice", "bob", limit=10)
+
+    assert [m["content"] for m in by_id] == ["legacy to bob", "legacy from bob"]
+    assert [m["content"] for m in by_name] == ["legacy to bob", "legacy from bob"]
+
+
+def test_get_messages_does_not_put_inbound_private_message_in_self_chat(storage_dir):
+    store = MessageStore(str(storage_dir))
+
+    store.add_message("alice", {
+        "type": "private",
+        "sender": "bob",
+        "from_id": 2,
+        "receiver_id": 1,
+        "content": "legacy inbound from bob",
+    })
+
+    bob_messages = store.get_messages("alice", "private:2", limit=10)
+    self_messages = store.get_messages("alice", "private:1", limit=10)
+
+    assert [m["content"] for m in bob_messages] == ["legacy inbound from bob"]
+    assert self_messages == []
+
+
+def test_add_message_does_not_lose_concurrent_writes(storage_dir):
+    store = MessageStore(str(storage_dir))
+    total = 80
+    ready = threading.Barrier(total)
+
+    def worker(idx):
+        ready.wait(timeout=5)
+        store.add_message("alice", {
+            "type": "private",
+            "msg_id": f"m-{idx}",
+            "related_type": "private",
+            "related_target": "2",
+            "chat_key": "private:2",
+            "content": f"message {idx}",
+        })
+
+    threads = [threading.Thread(target=worker, args=(i,)) for i in range(total)]
+    for thread in threads:
+        thread.start()
+    for thread in threads:
+        thread.join(timeout=10)
+
+    messages = store.get_messages("alice", "private:2", limit=total + 10)
+    assert len({m["msg_id"] for m in messages}) == total
+
+
+def test_corrupt_user_json_is_backed_up_and_reset(storage_dir):
+    user_file = storage_dir / "alice.json"
+    user_file.write_text("{bad json", encoding="utf-8")
+    store = MessageStore(str(storage_dir))
+
+    data = store.load_user_data("alice")
+
+    assert data == {
+        "username": "alice",
+        "contacts": [],
+        "sessions": [],
+        "messages": [],
+    }
+    backups = list(storage_dir.glob("alice.json.corrupt.*"))
+    assert len(backups) == 1
+    assert backups[0].read_text(encoding="utf-8") == "{bad json"
+
+
+def test_save_user_data_writes_valid_json_atomically(storage_dir):
+    store = MessageStore(str(storage_dir))
+    store.save_user_data("alice", {"username": "alice", "messages": [{"content": "你好"}]})
+
+    with open(storage_dir / "alice.json", "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    assert data["messages"][0]["content"] == "你好"
+
+
+def test_update_message_status_handles_rejected_ack(storage_dir):
+    store = MessageStore(str(storage_dir))
+    store.add_message("alice", {
+        "type": "private",
+        "msg_id": "local-1",
+        "local_msg_id": "local-1",
+        "status": "pending",
+        "chat_key": "private:2",
+        "content": "will reject",
+    })
+
+    assert store.update_message_status("alice", "local-1", "rejected") is True
+
+    messages = store.get_messages("alice", "private:2", limit=10)
+    assert messages[0]["status"] == "rejected"

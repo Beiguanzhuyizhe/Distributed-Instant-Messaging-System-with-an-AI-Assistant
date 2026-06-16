@@ -1,1 +1,45 @@
-IyDor77nqIvlpKfkvZzkuJrmj5DkuqTmlofmoaPmuIXljZUKCuacrOaWh+aho+eUqOS6juWvueW6lOivvueoi+Wkp+S9nOS4muimgeaxguS4reeahOaWh+aho+S6pOS7mOmhue+8jOS+v+S6juiAgeW4iOaIluWKqeaVmeW/q+mAn+WumuS9jeiuvuiuoeOAgea1i+ivleWSjOS9v+eUqOivtOaYjuOAggoKIyMgMS4g6K6+6K6h5paH5qGjCgp8IOimgeaxgiB8IOWvueW6lOaWh+S7tiB8IOivtOaYjiB8CnwtLS0tLS18LS0tLS0tLS0tLXwtLS0tLS18Cnwg57O757uf5p625p6E5Zu+IHwgYGRvY3MvZGVzaWduLm1kYCDnrKwgMSDoioIgfCDlsZXnpLrlrqLmiLfnq6/jgIHmnI3liqHnq6/jgIHmlbDmja7lupPjgIFBSeOAgeWGheWuueWuoeaguOOAgeaWh+S7tuS8oOi+k+OAgVAyUCDmianlsZXkuYvpl7TnmoTlhbPns7vjgIIgfAp8IOWNj+iuruWumuS5iSB8IGBkb2NzL3Byb3RvY29sLm1kYCDnrKwgMeOAgTLjgIEzIOiKgiB8IOWumuS5iSAxMiDlrZfoioLkuozov5vliLblpLTpg6jjgIHmtojmga/nsbvlnovjgIHplJnor6/noIHjgIHkuqTkupLmtYHnqIvlkowgSlNPTiBwYXlsb2Fk44CCIHwKfCDmtojmga/moLzlvI/npLrkvosgfCBgZG9jcy9wcm90b2NvbC5tZGAg56ysIDMg6IqC5ZKM4oCc5YW45Z6L5raI5oGv56S65L6L4oCdIHwg6KaG55uW55m75b2V44CB56eB6IGK44CB576k6IGK44CB5paH5Lu25Lyg6L6T44CBQUnjgIHlhoXlrrnlrqHmoLjlkozplJnor6/lk43lupTjgIIgfAp8IEFJIOWKn+iDveWunueOsOmAu+i+kSB8IGBkb2NzL2Rlc2lnbi5tZGAg56ysIDUg6IqCIHwg6K+05piOIGBAQUlgIOinpuWPkeOAgeacjeWKoeerr+W8guatpeiwg+eUqCBPcGVuQUktY29tcGF0aWJsZSDmjqXlj6PjgIHnvqTogYrlub/mkq3lkozlvILluLjlhZzlupXjgIIgfAoKIyMgMi4g5rWL6K+V5oql5ZGKCgp8IOimgeaxgiB8IOWvueW6lOaWh+S7tiB8IOivtOaYjiB8CnwtLS0tLS18LS0tLS0tLS0tLXwtLS0tLS18Cnwg5bm25Y+R5Y6L5Yqb5rWL6K+V57uT5p6cIHwgYGRvY3MvdGVzdF9yZXBvcnQubWRgIOKAnOWOi+WKm+a1i+ivleKAnSB8IOWMheWQqyA1MOOAgTEwMOOAgTE1MOOAgTIwMCDlrqLmiLfnq6/vvIzku6Xlj4ogMTAwIOWuouaIt+erryAxMDAwIOadoea2iOaBr+a1i+ivlee7k+aenOOAgiB8CnwgMTAwIOeUqOaIt+WQjOaXtuWcqOe6vyB8IGBkb2NzL3Rlc3RfcmVwb3J0Lm1kYCDigJwxMDAg5a6i5oi356uv5bm25Y+R4oCdIHwg6K6w5b2VIGBDb25uZWN0ZWQ9MTAwYOOAgWBMb2dpbiBTdWNjZXNzPTEwMGDjgIFgUmVzdWx0PVBBU1Ng44CCIHwKfCDmmbrog73lm57lpI3mtYvor5UgfCBgZG9jcy90ZXN0X3JlcG9ydC5tZGAg4oCcQUkg5rWL6K+V57uT6K664oCdIHwg5YyF5ZCrIG1vY2sg5rWL6K+V5ZKM55yf5a6eIERlZXBTZWVrIHNtb2tlIHRlc3Qg57uT6K6677yM5LiN6K6w5b2VIEFQSSBLZXkg5Y6f5paH44CCIHwKfCDlhoXlrrnlrqHmoLjmtYvor5UgfCBgZG9jcy90ZXN0X3JlcG9ydC5tZGAg4oCc5YaF5a655a6h5qC45rWL6K+V57uT6K664oCdIHwg6KaG55uW5pmu6YCa5paH5pys44CB5Lit6aOO6Zmp6K+N44CB6auY6aOO6Zmp6K+N5ZKM6Iux5paH5aSn5bCP5YaZ5b2S5LiA5YyW44CCIHwKCiMjIDMuIOeUqOaIt+aJi+WGjAoKfCDopoHmsYIgfCDlr7nlupTmlofku7YgfCDor7TmmI4gfAp8LS0tLS0tfC0tLS0tLS0tLS18LS0tLS0tfAp8IOWuouaIt+err+WuieijhSB8IGBkb2NzL3VzZXJfbWFudWFsLm1kYCDnrKwgMuOAgTMg6IqCIHwg6K+05piOIFB5dGhvbiDniYjmnKzjgIHkvp3otZblronoo4XjgIHmnI3liqHnq6/lkozlrqLmiLfnq6/lkK/liqjmlrnlvI/jgIIgfAp8IENMSSDkvb/nlKjor7TmmI4gfCBgZG9jcy91c2VyX21hbnVhbC5tZGAg56ysIDQg6IqCIHwg6K+05piO5rOo5YaM55m75b2V44CB56eB6IGK44CB576k6IGK44CB5paH5Lu244CB5Y6G5Y+y44CB5pKk5Zue5ZKMIGBAQUlgIOWRveS7pOOAgiB8CnwgR1VJIOS9v+eUqOivtOaYjiB8IGBkb2NzL3VzZXJfbWFudWFsLm1kYCDnrKwgNSDoioIgfCDor7TmmI7nmbvlvZXjgIHogZTns7vkurrjgIHnvqTnu4TjgIHmlofku7bjgIFBSeOAgeWOhuWPsuWSjOaWree6v+eKtuaAgeOAgiB8CnwgQUkg6YWN572u6K+05piOIHwgYGRvY3MvdXNlcl9tYW51YWwubWRgIOesrCA2IOiKguOAgWBkb2NzL2FpX3NldHVwLm1kYCB8IOivtOaYjiBBUEkgS2V5IOWPquS7jueOr+Wig+WPmOmHj+ivu+WPlu+8jOS4jeWGmeWFpeS7o+eggeaIluaWh+aho+OAgiB8CgojIyA0LiDlhbbku5bovoXliqnmlofmoaMKCnwg5paH5Lu2IHwg55So6YCUIHwKfC0tLS0tLXwtLS0tLS18CnwgYGRvY3MvbWFudWFsX3Rlc3RfYW5kX3ZpZGVvX2d1aWRlLm1kYCB8IOW9leWItua8lOekuuinhumikeaXtueahOaTjeS9nOa1geeoi+WSjOmqjOaUtueCueOAgiB8CnwgYGRvY3Mvc2VjdXJpdHkubWRgIHwg5Y2P6K6u5a6J5YWo6L6555WM44CB56uv5Yiw56uv5Yqg5a+G5ZKM5YaF5a655a6h5qC46K+05piO44CCIHwKfCBgZG9jcy9wMnBfbm90ZXMubWRgIHwgUDJQIOaJk+a0nuaJqeWxleivtOaYjuWSjOa8lOekuuW7uuiuruOAgiB8CnwgYFJFQURNRS5tZGAgfCDpobnnm67lhaXlj6Por7TmmI7jgIHlv6vpgJ/lkK/liqjlkozmtYvor5Xlkb3ku6TjgIIgfAoKIyMgNS4g5o+Q5Lqk5a6J5YWo6K+05piOCgotIEFQSSBLZXkg5LiN5YaZ5YWl5rqQ56CB44CB5paH5qGj44CB5pel5b+X5oiW5rWL6K+V5oql5ZGK77ybQUkg5Yqf6IO95Y+q6K+75Y+W546v5aKD5Y+Y6YeP44CCCi0g6L+Q6KGM5pWw5o2u55uu5b2VIGBzZXJ2ZXIvZGF0YS9g44CBYHNlcnZlci9maWxlX3N0b3JhZ2UvYOOAgWBjbGllbnQvZGF0YS9g44CBYGNsaWVudC9kb3dubG9hZHMvYCDkuI3kvZzkuLrmj5DkuqTlhoXlrrnjgIIKLSDmtYvor5XnvJPlrZjjgIFQeXRob24g57yT5a2Y5ZKM5Li05pe255uu5b2V5LiN5L2c5Li65o+Q5Lqk5YaF5a6544CCCg==
+# 课程大作业提交文档清单
+
+本文档用于对应课程大作业要求中的文档交付项，便于老师或助教快速定位设计、测试和使用说明。
+
+## 1. 设计文档
+
+| 要求 | 对应文件 | 说明 |
+|------|----------|------|
+| 系统架构图 | `docs/design.md` 第 1 节 | 展示客户端、服务端、数据库、AI、内容审核、文件传输、P2P 扩展之间的关系。 |
+| 协议定义 | `docs/protocol.md` 第 1、2、3 节 | 定义 12 字节二进制头部、消息类型、错误码、交互流程和 JSON payload。 |
+| 消息格式示例 | `docs/protocol.md` 第 3 节和“典型消息示例” | 覆盖登录、私聊、群聊、文件传输、AI、内容审核和错误响应。 |
+| AI 功能实现逻辑 | `docs/design.md` 第 5 节 | 说明 `@AI` 触发、服务端异步调用 OpenAI-compatible 接口、群聊广播和异常兜底。 |
+
+## 2. 测试报告
+
+| 要求 | 对应文件 | 说明 |
+|------|----------|------|
+| 并发压力测试结果 | `docs/test_report.md` “压力测试” | 包含 50、100、150、200 客户端，以及 100 客户端 1000 条消息测试结果。 |
+| 100 用户同时在线 | `docs/test_report.md` “100 客户端并发” | 记录 `Connected=100`、`Login Success=100`、`Result=PASS`。 |
+| 智能回复测试 | `docs/test_report.md` “AI 测试结论” | 包含 mock 测试和真实 DeepSeek smoke test 结论，不记录 API Key 原文。 |
+| 内容审核测试 | `docs/test_report.md` “内容审核测试结论” | 覆盖普通文本、中风险词、高风险词和英文大小写归一化。 |
+
+## 3. 用户手册
+
+| 要求 | 对应文件 | 说明 |
+|------|----------|------|
+| 客户端安装 | `docs/user_manual.md` 第 2、3 节 | 说明 Python 版本、依赖安装、服务端和客户端启动方式。 |
+| CLI 使用说明 | `docs/user_manual.md` 第 4 节 | 说明注册登录、私聊、群聊、文件、历史、撤回和 `@AI` 命令。 |
+| GUI 使用说明 | `docs/user_manual.md` 第 5 节 | 说明登录、联系人、群组、文件、AI、历史和断线状态。 |
+| AI 配置说明 | `docs/user_manual.md` 第 6 节、`docs/ai_setup.md` | 说明 API Key 只从环境变量读取，不写入代码或文档。 |
+
+## 4. 其他辅助文档
+
+| 文件 | 用途 |
+|------|------|
+| `docs/manual_test_and_video_guide.md` | 录制演示视频时的操作流程和验收点。 |
+| `docs/security.md` | 协议安全边界、端到端加密和内容审核说明。 |
+| `docs/p2p_notes.md` | P2P 打洞扩展说明和演示建议。 |
+| `README.md` | 项目入口说明、快速启动和测试命令。 |
+
+## 5. 提交安全说明
+
+- API Key 不写入源码、文档、日志或测试报告；AI 功能只读取环境变量。
+- 运行数据目录 `server/data/`、`server/file_storage/`、`client/data/`、`client/downloads/` 不作为提交内容。
+- 测试缓存、Python 缓存和临时目录不作为提交内容。

@@ -1,1 +1,123 @@
-IiIiCueUqOaIt+euoeeQhuaooeWdlwrmj5DkvpvnlKjmiLfms6jlhozjgIHnmbvlvZXjgIHlnKjnur/nirbmgIHnrqHnkIbnrYnlip/og73jgIIKIiIiCmltcG9ydCB0aW1lCmltcG9ydCBhc3luY2lvCmltcG9ydCBzcWxpdGUzCmZyb20gc2VydmVyLmRhdGFiYXNlIGltcG9ydCBnZXRfZGIKCgpjbGFzcyBVc2VyTWFuYWdlcjoKICAgICIiIueUqOaIt+euoeeQhuWZqO+8jOWwgeijheaJgOacieeUqOaIt+ebuOWFs+aTjeS9nCIiIgoKICAgIGRlZiBfX2luaXRfXyhzZWxmLCBkYl9wYXRoOiBzdHIpOgogICAgICAgIHNlbGYuX2RiX3BhdGggPSBkYl9wYXRoCgogICAgYXN5bmMgZGVmIHJlZ2lzdGVyKHNlbGYsIHVzZXJuYW1lOiBzdHIsIHBhc3N3b3JkX2hhc2g6IHN0ciwgcHVibGljX2tleTogc3RyID0gIiIpIC0+IGRpY3Q6CiAgICAgICAgIiIi5rOo5YaM5paw55So5oi377yM55So5oi35ZCN5ZSv5LiA5oCn55Sx5pWw5o2u5bqTIFVOSVFVRSDnuqbmnZ/kv53or4EiIiIKICAgICAgICBpZiBub3QgaXNpbnN0YW5jZSh1c2VybmFtZSwgc3RyKSBvciBub3QgdXNlcm5hbWUuc3RyaXAoKToKICAgICAgICAgICAgcmV0dXJuIHsic3VjY2VzcyI6IEZhbHNlLCAiZXJyb3IiOiAi55So5oi35ZCN5LiN6IO95Li656m6In0KICAgICAgICB1c2VybmFtZSA9IHVzZXJuYW1lLnN0cmlwKCkKICAgICAgICBpZiBsZW4odXNlcm5hbWUpID4gNjQ6CiAgICAgICAgICAgIHJldHVybiB7InN1Y2Nlc3MiOiBGYWxzZSwgImVycm9yIjogIueUqOaIt+WQjei/h+mVvyJ9CiAgICAgICAgaWYgYW55KGNoLmlzc3BhY2UoKSBmb3IgY2ggaW4gdXNlcm5hbWUpOgogICAgICAgICAgICByZXR1cm4geyJzdWNjZXNzIjogRmFsc2UsICJlcnJvciI6ICLnlKjmiLflkI3kuI3og73ljIXlkKvnqbrnmb3lrZfnrKYifQogICAgICAgIGlmIG5vdCBpc2luc3RhbmNlKHBhc3N3b3JkX2hhc2gsIHN0cikgb3Igbm90IHBhc3N3b3JkX2hhc2g6CiAgICAgICAgICAgIHJldHVybiB7InN1Y2Nlc3MiOiBGYWxzZSwgImVycm9yIjogIuWvhueggeS4jeiDveS4uuepuiJ9CiAgICAgICAgaWYgbGVuKHBhc3N3b3JkX2hhc2gpID4gNTEyOgogICAgICAgICAgICByZXR1cm4geyJzdWNjZXNzIjogRmFsc2UsICJlcnJvciI6ICLlr4bnoIHmkZjopoHov4fplb8ifQogICAgICAgIGlmIG5vdCBpc2luc3RhbmNlKHB1YmxpY19rZXksIHN0cik6CiAgICAgICAgICAgIHJldHVybiB7InN1Y2Nlc3MiOiBGYWxzZSwgImVycm9yIjogIuWFrOmSpeagvOW8j+aXoOaViCJ9CgogICAgICAgIGRlZiBfcnVuKCk6CiAgICAgICAgICAgIHRyeToKICAgICAgICAgICAgICAgIHdpdGggZ2V0X2RiKHNlbGYuX2RiX3BhdGgpIGFzIGNvbm46CiAgICAgICAgICAgICAgICAgICAgbm93ID0gdGltZS50aW1lKCkKICAgICAgICAgICAgICAgICAgICBjdXIgPSBjb25uLmV4ZWN1dGUoCiAgICAgICAgICAgICAgICAgICAgICAgICJJTlNFUlQgSU5UTyB1c2VycyAodXNlcm5hbWUsIHBhc3N3b3JkX2hhc2gsIHB1YmxpY19rZXksIGNyZWF0ZWRfYXQpIFZBTFVFUyAoPywgPywgPywgPykiLAogICAgICAgICAgICAgICAgICAgICAgICAodXNlcm5hbWUsIHBhc3N3b3JkX2hhc2gsIHB1YmxpY19rZXksIG5vdyksCiAgICAgICAgICAgICAgICAgICAgKQogICAgICAgICAgICAgICAgICAgIGNvbm4uY29tbWl0KCkKICAgICAgICAgICAgICAgICAgICByZXR1cm4geyJzdWNjZXNzIjogVHJ1ZSwgInVzZXJfaWQiOiBjdXIubGFzdHJvd2lkfQogICAgICAgICAgICBleGNlcHQgc3FsaXRlMy5JbnRlZ3JpdHlFcnJvcjoKICAgICAgICAgICAgICAgIHJldHVybiB7InN1Y2Nlc3MiOiBGYWxzZSwgImVycm9yIjogIueUqOaIt+WQjeW3suWtmOWcqCJ9CiAgICAgICAgcmV0dXJuIGF3YWl0IGFzeW5jaW8udG9fdGhyZWFkKF9ydW4pCgogICAgYXN5bmMgZGVmIGxvZ2luKHNlbGYsIHVzZXJuYW1lOiBzdHIsIHBhc3N3b3JkX2hhc2g6IHN0cikgLT4gZGljdDoKICAgICAgICAiIiLnmbvlvZXpqozor4HvvIzmiJDlip/ov5Tlm54gdXNlcl9pZO+8jOWksei0pei/lOWbnumUmeivr+S/oeaBryIiIgogICAgICAgIGlmIG5vdCBpc2luc3RhbmNlKHVzZXJuYW1lLCBzdHIpIG9yIG5vdCB1c2VybmFtZS5zdHJpcCgpOgogICAgICAgICAgICByZXR1cm4geyJzdWNjZXNzIjogRmFsc2UsICJlcnJvciI6ICLnlKjmiLflkI3kuI3og73kuLrnqboifQogICAgICAgIHVzZXJuYW1lID0gdXNlcm5hbWUuc3RyaXAoKQogICAgICAgIGlmIG5vdCBpc2luc3RhbmNlKHBhc3N3b3JkX2hhc2gsIHN0cikgb3Igbm90IHBhc3N3b3JkX2hhc2g6CiAgICAgICAgICAgIHJldHVybiB7InN1Y2Nlc3MiOiBGYWxzZSwgImVycm9yIjogIuWvhueggeS4jeiDveS4uuepuiJ9CgogICAgICAgIGRlZiBfcnVuKCk6CiAgICAgICAgICAgIHdpdGggZ2V0X2RiKHNlbGYuX2RiX3BhdGgpIGFzIGNvbm46CiAgICAgICAgICAgICAgICBjdXIgPSBjb25uLmV4ZWN1dGUoCiAgICAgICAgICAgICAgICAgICAgIlNFTEVDVCBpZCwgcGFzc3dvcmRfaGFzaCwgaXNfb25saW5lIEZST00gdXNlcnMgV0hFUkUgdXNlcm5hbWUgPSA/IiwKICAgICAgICAgICAgICAgICAgICAodXNlcm5hbWUsKSwKICAgICAgICAgICAgICAgICkKICAgICAgICAgICAgICAgIHJvdyA9IGN1ci5mZXRjaG9uZSgpCiAgICAgICAgICAgICAgICBpZiBub3Qgcm93OgogICAgICAgICAgICAgICAgICAgIHJldHVybiB7InN1Y2Nlc3MiOiBGYWxzZSwgImVycm9yIjogIueUqOaIt+S4jeWtmOWcqCJ9CiAgICAgICAgICAgICAgICB1c2VyX2lkLCBzdG9yZWRfaGFzaCA9IHJvd1siaWQiXSwgcm93WyJwYXNzd29yZF9oYXNoIl0KICAgICAgICAgICAgICAgIGlmIHN0b3JlZF9oYXNoICE9IHBhc3N3b3JkX2hhc2g6CiAgICAgICAgICAgICAgICAgICAgcmV0dXJuIHsic3VjY2VzcyI6IEZhbHNlLCAiZXJyb3IiOiAi5a+G56CB6ZSZ6K+vIn0KICAgICAgICAgICAgICAgIG5vdyA9IHRpbWUudGltZSgpCiAgICAgICAgICAgICAgICBjb25uLmV4ZWN1dGUoCiAgICAgICAgICAgICAgICAgICAgIlVQREFURSB1c2VycyBTRVQgbGFzdF9sb2dpbiA9ID8sIGlzX29ubGluZSA9IDEgV0hFUkUgaWQgPSA/IiwKICAgICAgICAgICAgICAgICAgICAobm93LCB1c2VyX2lkKSwKICAgICAgICAgICAgICAgICkKICAgICAgICAgICAgICAgIGNvbm4uY29tbWl0KCkKICAgICAgICAgICAgICAgIHJldHVybiB7InN1Y2Nlc3MiOiBUcnVlLCAidXNlcl9pZCI6IHVzZXJfaWR9CiAgICAgICAgcmV0dXJuIGF3YWl0IGFzeW5jaW8udG9fdGhyZWFkKF9ydW4pCgogICAgYXN5bmMgZGVmIGxvZ291dChzZWxmLCB1c2VyX2lkOiBpbnQpOgogICAgICAgICIiIueUqOaIt+eZu+WHuu+8jOa4hemZpOWcqOe6v+eKtuaAgSIiIgogICAgICAgIGRlZiBfcnVuKCk6CiAgICAgICAgICAgIHdpdGggZ2V0X2RiKHNlbGYuX2RiX3BhdGgpIGFzIGNvbm46CiAgICAgICAgICAgICAgICBjb25uLmV4ZWN1dGUoIlVQREFURSB1c2VycyBTRVQgaXNfb25saW5lID0gMCBXSEVSRSBpZCA9ID8iLCAodXNlcl9pZCwpKQogICAgICAgICAgICAgICAgY29ubi5jb21taXQoKQogICAgICAgIHJldHVybiBhd2FpdCBhc3luY2lvLnRvX3RocmVhZChfcnVuKQoKICAgIGFzeW5jIGRlZiBnZXRfb25saW5lX3VzZXJzKHNlbGYpIC0+IGxpc3Q6CiAgICAgICAgIiIi6I635Y+W5omA5pyJ5Zyo57q/55So5oi35YiX6KGoIiIiCiAgICAgICAgZGVmIF9ydW4oKToKICAgICAgICAgICAgd2l0aCBnZXRfZGIoc2VsZi5fZGJfcGF0aCkgYXMgY29ubjoKICAgICAgICAgICAgICAgIGN1ciA9IGNvbm4uZXhlY3V0ZSgKICAgICAgICAgICAgICAgICAgICAiU0VMRUNUIGlkLCB1c2VybmFtZSwgcHVibGljX2tleSBGUk9NIHVzZXJzIFdIRVJFIGlzX29ubGluZSA9IDEiLAogICAgICAgICAgICAgICAgKQogICAgICAgICAgICAgICAgcmV0dXJuIFtkaWN0KHIpIGZvciByIGluIGN1ci5mZXRjaGFsbCgpXQogICAgICAgIHJldHVybiBhd2FpdCBhc3luY2lvLnRvX3RocmVhZChfcnVuKQoKICAgIGFzeW5jIGRlZiBnZXRfdXNlcl9pbmZvKHNlbGYsIHVzZXJfaWQ6IGludCkgLT4gZGljdDoKICAgICAgICAiIiLojrflj5bnlKjmiLfln7rmnKzkv6Hmga/vvIzkuI3lrZjlnKjml7bov5Tlm54gTm9uZSIiIgogICAgICAgIGRlZiBfcnVuKCk6CiAgICAgICAgICAgIHdpdGggZ2V0X2RiKHNlbGYuX2RiX3BhdGgpIGFzIGNvbm46CiAgICAgICAgICAgICAgICBjdXIgPSBjb25uLmV4ZWN1dGUoCiAgICAgICAgICAgICAgICAgICAgIlNFTEVDVCBpZCwgdXNlcm5hbWUsIHB1YmxpY19rZXksIGNyZWF0ZWRfYXQsIGlzX29ubGluZSBGUk9NIHVzZXJzIFdIRVJFIGlkID0gPyIsCiAgICAgICAgICAgICAgICAgICAgKHVzZXJfaWQsKSwKICAgICAgICAgICAgICAgICkKICAgICAgICAgICAgICAgIHJvdyA9IGN1ci5mZXRjaG9uZSgpCiAgICAgICAgICAgICAgICByZXR1cm4gZGljdChyb3cpIGlmIHJvdyBlbHNlIE5vbmUKICAgICAgICByZXR1cm4gYXdhaXQgYXN5bmNpby50b190aHJlYWQoX3J1bikKCiAgICBhc3luYyBkZWYgc2V0X29ubGluZV9zdGF0dXMoc2VsZiwgdXNlcl9pZDogaW50LCBzdGF0dXM6IGJvb2wpOgogICAgICAgICIiIuiuvue9rueUqOaIt+eahOWcqOe6v+eKtuaAgSIiIgogICAgICAgIGRlZiBfcnVuKCk6CiAgICAgICAgICAgIHdpdGggZ2V0X2RiKHNlbGYuX2RiX3BhdGgpIGFzIGNvbm46CiAgICAgICAgICAgICAgICBjb25uLmV4ZWN1dGUoCiAgICAgICAgICAgICAgICAgICAgIlVQREFURSB1c2VycyBTRVQgaXNfb25saW5lID0gPyBXSEVSRSBpZCA9ID8iLAogICAgICAgICAgICAgICAgICAgICgxIGlmIHN0YXR1cyBlbHNlIDAsIHVzZXJfaWQpLAogICAgICAgICAgICAgICAgKQogICAgICAgICAgICAgICAgY29ubi5jb21taXQoKQogICAgICAgIHJldHVybiBhd2FpdCBhc3luY2lvLnRvX3RocmVhZChfcnVuKQoKICAgIGFzeW5jIGRlZiByZXNldF9vbmxpbmVfc3RhdHVzZXMoc2VsZik6CiAgICAgICAgIiIi5pyN5Yqh56uv5byC5bi46YCA5Ye65ZCO5Y+v6IO955WZ5LiL5Zyo57q/5qCH6K6w77yM5ZCv5Yqo5pe257uf5LiA5riF55CG44CCIiIiCiAgICAgICAgZGVmIF9ydW4oKToKICAgICAgICAgICAgd2l0aCBnZXRfZGIoc2VsZi5fZGJfcGF0aCkgYXMgY29ubjoKICAgICAgICAgICAgICAgIGNvbm4uZXhlY3V0ZSgiVVBEQVRFIHVzZXJzIFNFVCBpc19vbmxpbmUgPSAwIikKICAgICAgICAgICAgICAgIGNvbm4uY29tbWl0KCkKICAgICAgICByZXR1cm4gYXdhaXQgYXN5bmNpby50b190aHJlYWQoX3J1bikK
+"""
+用户管理模块
+提供用户注册、登录、在线状态管理等功能。
+"""
+import time
+import asyncio
+import sqlite3
+from server.database import get_db
+
+
+class UserManager:
+    """用户管理器，封装所有用户相关操作"""
+
+    def __init__(self, db_path: str):
+        self._db_path = db_path
+
+    async def register(self, username: str, password_hash: str, public_key: str = "") -> dict:
+        """注册新用户，用户名唯一性由数据库 UNIQUE 约束保证"""
+        if not isinstance(username, str) or not username.strip():
+            return {"success": False, "error": "用户名不能为空"}
+        username = username.strip()
+        if len(username) > 64:
+            return {"success": False, "error": "用户名过长"}
+        if any(ch.isspace() for ch in username):
+            return {"success": False, "error": "用户名不能包含空白字符"}
+        if not isinstance(password_hash, str) or not password_hash:
+            return {"success": False, "error": "密码不能为空"}
+        if len(password_hash) > 512:
+            return {"success": False, "error": "密码摘要过长"}
+        if not isinstance(public_key, str):
+            return {"success": False, "error": "公钥格式无效"}
+
+        def _run():
+            try:
+                with get_db(self._db_path) as conn:
+                    now = time.time()
+                    cur = conn.execute(
+                        "INSERT INTO users (username, password_hash, public_key, created_at) VALUES (?, ?, ?, ?)",
+                        (username, password_hash, public_key, now),
+                    )
+                    conn.commit()
+                    return {"success": True, "user_id": cur.lastrowid}
+            except sqlite3.IntegrityError:
+                return {"success": False, "error": "用户名已存在"}
+        return await asyncio.to_thread(_run)
+
+    async def login(self, username: str, password_hash: str) -> dict:
+        """登录验证，成功返回 user_id，失败返回错误信息"""
+        if not isinstance(username, str) or not username.strip():
+            return {"success": False, "error": "用户名不能为空"}
+        username = username.strip()
+        if not isinstance(password_hash, str) or not password_hash:
+            return {"success": False, "error": "密码不能为空"}
+
+        def _run():
+            with get_db(self._db_path) as conn:
+                cur = conn.execute(
+                    "SELECT id, password_hash, is_online FROM users WHERE username = ?",
+                    (username,),
+                )
+                row = cur.fetchone()
+                if not row:
+                    return {"success": False, "error": "用户不存在"}
+                user_id, stored_hash = row["id"], row["password_hash"]
+                if stored_hash != password_hash:
+                    return {"success": False, "error": "密码错误"}
+                now = time.time()
+                conn.execute(
+                    "UPDATE users SET last_login = ?, is_online = 1 WHERE id = ?",
+                    (now, user_id),
+                )
+                conn.commit()
+                return {"success": True, "user_id": user_id}
+        return await asyncio.to_thread(_run)
+
+    async def logout(self, user_id: int):
+        """用户登出，清除在线状态"""
+        def _run():
+            with get_db(self._db_path) as conn:
+                conn.execute("UPDATE users SET is_online = 0 WHERE id = ?", (user_id,))
+                conn.commit()
+        return await asyncio.to_thread(_run)
+
+    async def get_online_users(self) -> list:
+        """获取所有在线用户列表"""
+        def _run():
+            with get_db(self._db_path) as conn:
+                cur = conn.execute(
+                    "SELECT id, username, public_key FROM users WHERE is_online = 1",
+                )
+                return [dict(r) for r in cur.fetchall()]
+        return await asyncio.to_thread(_run)
+
+    async def get_user_info(self, user_id: int) -> dict:
+        """获取用户基本信息，不存在时返回 None"""
+        def _run():
+            with get_db(self._db_path) as conn:
+                cur = conn.execute(
+                    "SELECT id, username, public_key, created_at, is_online FROM users WHERE id = ?",
+                    (user_id,),
+                )
+                row = cur.fetchone()
+                return dict(row) if row else None
+        return await asyncio.to_thread(_run)
+
+    async def set_online_status(self, user_id: int, status: bool):
+        """设置用户的在线状态"""
+        def _run():
+            with get_db(self._db_path) as conn:
+                conn.execute(
+                    "UPDATE users SET is_online = ? WHERE id = ?",
+                    (1 if status else 0, user_id),
+                )
+                conn.commit()
+        return await asyncio.to_thread(_run)
+
+    async def reset_online_statuses(self):
+        """服务端异常退出后可能留下在线标记，启动时统一清理。"""
+        def _run():
+            with get_db(self._db_path) as conn:
+                conn.execute("UPDATE users SET is_online = 0")
+                conn.commit()
+        return await asyncio.to_thread(_run)

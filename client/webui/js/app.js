@@ -1,1 +1,85 @@
-LyoqCiAqIGFwcC5qc3gg4oCUIOW6lOeUqOaguee7hOS7tu+8iOi3r+eUse+8mkxvZ2luIOKGlCBDaGF077yJCiAqLwoKKGZ1bmN0aW9uICgpIHsKICAndXNlIHN0cmljdCc7CgogIHZhciBoID0gUmVhY3QuY3JlYXRlRWxlbWVudDsKICB2YXIgdXNlU3RhdGUgPSBSZWFjdC51c2VTdGF0ZTsKICB2YXIgdXNlRWZmZWN0ID0gUmVhY3QudXNlRWZmZWN0OwoKICBmdW5jdGlvbiBBcHAoKSB7CiAgICB2YXIgX3VzZVN0YXRlID0gdXNlU3RhdGUoJ2xvZ2luJyksIHZpZXcgPSBfdXNlU3RhdGVbMF0sIHNldFZpZXcgPSBfdXNlU3RhdGVbMV07CiAgICB2YXIgX3VzZVN0YXRlMiA9IHVzZVN0YXRlKG51bGwpLCB1c2VyRGF0YSA9IF91c2VTdGF0ZTJbMF0sIHNldFVzZXJEYXRhID0gX3VzZVN0YXRlMlsxXTsKICAgIHZhciBfdXNlU3RhdGUzID0gdXNlU3RhdGUoJzEyNy4wLjAuMScpLCBzZXJ2ZXJIb3N0ID0gX3VzZVN0YXRlM1swXSwgc2V0U2VydmVySG9zdCA9IF91c2VTdGF0ZTNbMV07CiAgICB2YXIgX3VzZVN0YXRlNCA9IHVzZVN0YXRlKCc4ODg4JyksIHNlcnZlclBvcnQgPSBfdXNlU3RhdGU0WzBdLCBzZXRTZXJ2ZXJQb3J0ID0gX3VzZVN0YXRlNFsxXTsKICAgIHZhciBsb2FkZWRSZWYgPSBSZWFjdC51c2VSZWYoZmFsc2UpOwoKICAgIC8vIOW6lOeUqOWQr+WKqOaXtuiOt+WPluWIneWni+eKtuaAgQogICAgdXNlRWZmZWN0KGZ1bmN0aW9uICgpIHsKICAgICAgaWYgKGxvYWRlZFJlZi5jdXJyZW50KSByZXR1cm47CiAgICAgIGxvYWRlZFJlZi5jdXJyZW50ID0gdHJ1ZTsKCiAgICAgIHdpbmRvdy5CcmlkZ2UucmVhZHkoKS50aGVuKGZ1bmN0aW9uICgpIHsKICAgICAgICAvLyDojrflj5bov57mjqXkv6Hmga8KICAgICAgICB3aW5kb3cuQnJpZGdlLmdldENvbm5lY3Rpb25TdGF0dXMoKS50aGVuKGZ1bmN0aW9uIChzdGF0dXMpIHsKICAgICAgICAgIGlmIChzdGF0dXMgJiYgc3RhdHVzLmhvc3QpIHsKICAgICAgICAgICAgc2V0U2VydmVySG9zdChzdGF0dXMuaG9zdCk7CiAgICAgICAgICAgIHNldFNlcnZlclBvcnQoU3RyaW5nKHN0YXR1cy5wb3J0KSk7CiAgICAgICAgICB9CiAgICAgICAgfSkuY2F0Y2goZnVuY3Rpb24gKCkge30pOwogICAgICB9KTsKICAgIH0sIFtdKTsKCiAgICAvLyDnmbvlvZXmiJDlip/lm57osIMKICAgIGZ1bmN0aW9uIGhhbmRsZUxvZ2luKGRhdGEpIHsKICAgICAgc2V0VXNlckRhdGEoZGF0YSk7CiAgICAgIC8vIOS9v+eUqCBHU0FQIOWBmuS4qui/h+a4oeaViOaenAogICAgICBpZiAodHlwZW9mIGdzYXAgIT09ICd1bmRlZmluZWQnKSB7CiAgICAgICAgdmFyIGFwcEVsID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2FwcCcpOwogICAgICAgIGlmIChhcHBFbCkgewogICAgICAgICAgZ3NhcC50byhhcHBFbCwgewogICAgICAgICAgICBvcGFjaXR5OiAwLAogICAgICAgICAgICBkdXJhdGlvbjogMC4yLAogICAgICAgICAgICBvbkNvbXBsZXRlOiBmdW5jdGlvbiAoKSB7CiAgICAgICAgICAgICAgc2V0VmlldygnY2hhdCcpOwogICAgICAgICAgICAgIGdzYXAuc2V0KGFwcEVsLCB7IG9wYWNpdHk6IDEgfSk7CiAgICAgICAgICAgIH0KICAgICAgICAgIH0pOwogICAgICAgICAgcmV0dXJuOwogICAgICAgIH0KICAgICAgfQogICAgICBzZXRWaWV3KCdjaGF0Jyk7CiAgICB9CgogICAgaWYgKHZpZXcgPT09ICdsb2dpbicpIHsKICAgICAgcmV0dXJuIGgod2luZG93LkFwcC5Mb2dpblBhZ2UsIHsKICAgICAgICBvbkxvZ2luOiBoYW5kbGVMb2dpbiwKICAgICAgICBzZXJ2ZXJIb3N0OiBzZXJ2ZXJIb3N0LAogICAgICAgIHNlcnZlclBvcnQ6IHNlcnZlclBvcnQsCiAgICAgIH0pOwogICAgfQoKICAgIGlmICh2aWV3ID09PSAnY2hhdCcpIHsKICAgICAgdmFyIGluaXRPbmxpbmVVc2VycyA9ICh1c2VyRGF0YSAmJiB1c2VyRGF0YS5vbmxpbmVfdXNlcnMpIHx8IHt9OwogICAgICB2YXIgaW5pdEdyb3VwcyA9ICh1c2VyRGF0YSAmJiB1c2VyRGF0YS5ncm91cHMpIHx8IHt9OwogICAgICB2YXIgaW5pdEF2YWlsYWJsZUdyb3VwcyA9ICh1c2VyRGF0YSAmJiB1c2VyRGF0YS5hdmFpbGFibGVfZ3JvdXBzKSB8fCB7fTsKICAgICAgcmV0dXJuIGgod2luZG93LkFwcC5DaGF0TGF5b3V0LCB7CiAgICAgICAgdXNlcm5hbWU6IHVzZXJEYXRhID8gdXNlckRhdGEudXNlcm5hbWUgOiAnVXNlcicsCiAgICAgICAgaW5pdGlhbE9ubGluZVVzZXJzOiBpbml0T25saW5lVXNlcnMsCiAgICAgICAgaW5pdGlhbEdyb3VwczogaW5pdEdyb3VwcywKICAgICAgICBpbml0aWFsQXZhaWxhYmxlR3JvdXBzOiBpbml0QXZhaWxhYmxlR3JvdXBzLAogICAgICAgIGluaXRpYWxDb25uZWN0ZWQ6IHVzZXJEYXRhICYmIHR5cGVvZiB1c2VyRGF0YS5jb25uZWN0ZWQgPT09ICdib29sZWFuJyA/IHVzZXJEYXRhLmNvbm5lY3RlZCA6IHRydWUsCiAgICAgIH0pOwogICAgfQoKICAgIHJldHVybiBudWxsOwogIH0KCiAgLy8g5oyC6L29IFJlYWN0IOW6lOeUqAogIGRvY3VtZW50LmFkZEV2ZW50TGlzdGVuZXIoJ0RPTUNvbnRlbnRMb2FkZWQnLCBmdW5jdGlvbiAoKSB7CiAgICB2YXIgcm9vdCA9IFJlYWN0RE9NLmNyZWF0ZVJvb3QoZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2FwcCcpKTsKICAgIHJvb3QucmVuZGVyKGgoQXBwKSk7CiAgfSk7Cn0pKCk7Cg==
+/**
+ * app.jsx — 应用根组件（路由：Login ↔ Chat）
+ */
+
+(function () {
+  'use strict';
+
+  var h = React.createElement;
+  var useState = React.useState;
+  var useEffect = React.useEffect;
+
+  function App() {
+    var _useState = useState('login'), view = _useState[0], setView = _useState[1];
+    var _useState2 = useState(null), userData = _useState2[0], setUserData = _useState2[1];
+    var _useState3 = useState('127.0.0.1'), serverHost = _useState3[0], setServerHost = _useState3[1];
+    var _useState4 = useState('8888'), serverPort = _useState4[0], setServerPort = _useState4[1];
+    var loadedRef = React.useRef(false);
+
+    // 应用启动时获取初始状态
+    useEffect(function () {
+      if (loadedRef.current) return;
+      loadedRef.current = true;
+
+      window.Bridge.ready().then(function () {
+        // 获取连接信息
+        window.Bridge.getConnectionStatus().then(function (status) {
+          if (status && status.host) {
+            setServerHost(status.host);
+            setServerPort(String(status.port));
+          }
+        }).catch(function () {});
+      });
+    }, []);
+
+    // 登录成功回调
+    function handleLogin(data) {
+      setUserData(data);
+      // 使用 GSAP 做个过渡效果
+      if (typeof gsap !== 'undefined') {
+        var appEl = document.getElementById('app');
+        if (appEl) {
+          gsap.to(appEl, {
+            opacity: 0,
+            duration: 0.2,
+            onComplete: function () {
+              setView('chat');
+              gsap.set(appEl, { opacity: 1 });
+            }
+          });
+          return;
+        }
+      }
+      setView('chat');
+    }
+
+    if (view === 'login') {
+      return h(window.App.LoginPage, {
+        onLogin: handleLogin,
+        serverHost: serverHost,
+        serverPort: serverPort,
+      });
+    }
+
+    if (view === 'chat') {
+      var initOnlineUsers = (userData && userData.online_users) || {};
+      var initGroups = (userData && userData.groups) || {};
+      var initAvailableGroups = (userData && userData.available_groups) || {};
+      return h(window.App.ChatLayout, {
+        username: userData ? userData.username : 'User',
+        initialOnlineUsers: initOnlineUsers,
+        initialGroups: initGroups,
+        initialAvailableGroups: initAvailableGroups,
+        initialConnected: userData && typeof userData.connected === 'boolean' ? userData.connected : true,
+      });
+    }
+
+    return null;
+  }
+
+  // 挂载 React 应用
+  document.addEventListener('DOMContentLoaded', function () {
+    var root = ReactDOM.createRoot(document.getElementById('app'));
+    root.render(h(App));
+  });
+})();

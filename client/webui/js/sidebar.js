@@ -1,1 +1,191 @@
-LyoqCiAqIHNpZGViYXIuanMg4oCUIOiBlOezu+S6uiAmIOe+pOe7hOWIl+ihqOe7hOS7tu+8iOWQq+acquivu+e6oueCuSArIOaXtumXtOaOkuW6j++8iQogKi8KCihmdW5jdGlvbiAoKSB7CiAgJ3VzZSBzdHJpY3QnOwoKICB2YXIgaCA9IFJlYWN0LmNyZWF0ZUVsZW1lbnQ7CiAgdmFyIHVzZU1lbW8gPSBSZWFjdC51c2VNZW1vOwoKICAvLyAtLS0tIOWktOWDj+minOiJsiAtLS0tCiAgdmFyIEFWQVRBUl9DT0xPUlMgPSBbCiAgICAnIzZjNjNmZicsICcjZTkxZTYzJywgJyNmZjk4MDAnLCAnIzRjYWY1MCcsICcjMjE5NmYzJywKICAgICcjOWMyN2IwJywgJyNmNDQzMzYnLCAnIzAwYmNkNCcsICcjZmY1NzIyJywgJyMzZjUxYjUnLAogIF07CgogIGZ1bmN0aW9uIGdldEF2YXRhckNvbG9yKG5hbWUpIHsKICAgIHZhciBoYXNoID0gMDsKICAgIGZvciAodmFyIGkgPSAwOyBpIDwgbmFtZS5sZW5ndGg7IGkrKykgewogICAgICBoYXNoID0gbmFtZS5jaGFyQ29kZUF0KGkpICsgKChoYXNoIDw8IDUpIC0gaGFzaCk7CiAgICB9CiAgICByZXR1cm4gQVZBVEFSX0NPTE9SU1tNYXRoLmFicyhoYXNoKSAlIEFWQVRBUl9DT0xPUlMubGVuZ3RoXTsKICB9CgogIGZ1bmN0aW9uIGdldEluaXRpYWxzKG5hbWUpIHsKICAgIGlmICghbmFtZSkgcmV0dXJuICc/JzsKICAgIHJldHVybiBuYW1lLmNoYXJBdCgwKS50b1VwcGVyQ2FzZSgpOwogIH0KCiAgZnVuY3Rpb24gZm9ybWF0R3JvdXBMYWJlbChncm91cElkLCBncm91cE5hbWUpIHsKICAgIHZhciBnaWQgPSBTdHJpbmcoZ3JvdXBJZCB8fCAnJykudHJpbSgpOwogICAgdmFyIG5hbWUgPSBTdHJpbmcoZ3JvdXBOYW1lIHx8ICcnKS50cmltKCk7CiAgICByZXR1cm4gbmFtZSB8fCAoJ0dyb3VwICMnICsgZ2lkKTsKICB9CgogIC8vIC0tLS0g6IGU57O75Lq66aG577yI5ZCr5pyq6K+757qi54K577yJIC0tLS0KICBmdW5jdGlvbiBDb250YWN0SXRlbShwcm9wcykgewogICAgdmFyIG5hbWUgPSBwcm9wcy5uYW1lOwogICAgdmFyIGlzQWN0aXZlID0gcHJvcHMuaXNBY3RpdmU7CiAgICB2YXIgaXNPbmxpbmUgPSBwcm9wcy5pc09ubGluZTsKICAgIHZhciBpc0dyb3VwID0gcHJvcHMuaXNHcm91cDsKICAgIHZhciBpc1NlbGYgPSBwcm9wcy5pc1NlbGY7CiAgICB2YXIgb25DbGljayA9IHByb3BzLm9uQ2xpY2s7CiAgICB2YXIgdW5yZWFkQ291bnQgPSBwcm9wcy51bnJlYWRDb3VudCB8fCAwOwoKICAgIHZhciBhdmF0YXJDb2xvciA9IHVzZU1lbW8oZnVuY3Rpb24gKCkgeyByZXR1cm4gZ2V0QXZhdGFyQ29sb3IobmFtZSk7IH0sIFtuYW1lXSk7CgogICAgcmV0dXJuIGgoJ2RpdicsIHsKICAgICAgY2xhc3NOYW1lOiAnY29udGFjdC1pdGVtJyArIChpc0FjdGl2ZSA/ICcgYWN0aXZlJyA6ICcnKSArIChpc1NlbGYgPyAnIHNlbGYnIDogJycpLAogICAgICBvbkNsaWNrOiBpc1NlbGYgPyB1bmRlZmluZWQgOiBvbkNsaWNrLAogICAgICB0aXRsZTogbmFtZSwKICAgIH0sCiAgICAgIGlzR3JvdXAKICAgICAgICA/IGgoJ2RpdicsIHsgY2xhc3NOYW1lOiAnZ3JvdXAtaWNvbicgfSwgJyMnKQogICAgICAgIDogaCgnZGl2JywgeyBjbGFzc05hbWU6ICdjb250YWN0LWF2YXRhcicsIHN0eWxlOiB7IGJhY2tncm91bmQ6IGF2YXRhckNvbG9yIH0gfSwKICAgICAgICAgICAgZ2V0SW5pdGlhbHMobmFtZSksCiAgICAgICAgICAgIGlzT25saW5lCiAgICAgICAgICAgICAgPyBoKCdkaXYnLCB7IGNsYXNzTmFtZTogJ29ubGluZS1kb3QnIH0pCiAgICAgICAgICAgICAgOiBoKCdkaXYnLCB7IGNsYXNzTmFtZTogJ29mZmxpbmUtZG90JyB9KSwKICAgICAgICAgICksCiAgICAgIGgoJ2RpdicsIHsgY2xhc3NOYW1lOiAnY29udGFjdC1uYW1lJyB9LCBpc1NlbGYgPyBuYW1lICsgJyAoWW91KScgOiBuYW1lKSwKICAgICAgdW5yZWFkQ291bnQgPiAwICYmIGgoJ2RpdicsIHsgY2xhc3NOYW1lOiAndW5yZWFkLWJhZGdlJyB9LAogICAgICAgIHVucmVhZENvdW50ID4gOTkgPyAnOTkrJyA6IFN0cmluZyh1bnJlYWRDb3VudCkKICAgICAgKSwKICAgICk7CiAgfQoKICAvLyAtLS0tIOiBlOezu+S6uuWIl+ihqCAtLS0tCiAgZnVuY3Rpb24gU2lkZWJhcihwcm9wcykgewogICAgdmFyIG9ubGluZVVzZXJzID0gcHJvcHMub25saW5lVXNlcnMgfHwge307CiAgICB2YXIgZ3JvdXBzID0gcHJvcHMuZ3JvdXBzIHx8IHt9OwogICAgdmFyIGN1cnJlbnRUYXJnZXQgPSBwcm9wcy5jdXJyZW50VGFyZ2V0OwogICAgdmFyIGN1cnJlbnRDaGF0VHlwZSA9IHByb3BzLmN1cnJlbnRDaGF0VHlwZTsKICAgIHZhciBvblNlbGVjdFRhcmdldCA9IHByb3BzLm9uU2VsZWN0VGFyZ2V0OwogICAgdmFyIHNlYXJjaFF1ZXJ5ID0gcHJvcHMuc2VhcmNoUXVlcnkgfHwgJyc7CiAgICB2YXIgdW5yZWFkQ291bnRzID0gcHJvcHMudW5yZWFkQ291bnRzIHx8IHt9OwogICAgdmFyIGxhc3RNc2dUaW1lcyA9IHByb3BzLmxhc3RNc2dUaW1lcyB8fCB7fTsKCiAgICAvLyDov4fmu6QgKyDmjpLluo/ogZTns7vkurrvvIjmjInmnIDlkI7mtojmga/ml7bpl7TlgJLluo8sIOexu+S8vOW+ruS/oe+8iQogICAgdmFyIGZpbHRlcmVkVXNlcnMgPSB1c2VNZW1vKGZ1bmN0aW9uICgpIHsKICAgICAgdmFyIGVudHJpZXMgPSBPYmplY3QuZW50cmllcyhvbmxpbmVVc2Vycyk7CiAgICAgIGlmIChzZWFyY2hRdWVyeSkgewogICAgICAgIHZhciBxID0gc2VhcmNoUXVlcnkudG9Mb3dlckNhc2UoKTsKICAgICAgICBlbnRyaWVzID0gZW50cmllcy5maWx0ZXIoZnVuY3Rpb24gKGUpIHsgcmV0dXJuIGVbMF0udG9Mb3dlckNhc2UoKS5pbmNsdWRlcyhxKTsgfSk7CiAgICAgIH0KICAgICAgZW50cmllcy5zb3J0KGZ1bmN0aW9uIChhLCBiKSB7CiAgICAgICAgLy8g6Ieq5bex5aeL57uI5o6S5Zyo5pyA5YmN6Z2iCiAgICAgICAgaWYgKGFbMF0gPT09IHByb3BzLnVzZXJuYW1lKSByZXR1cm4gLTE7CiAgICAgICAgaWYgKGJbMF0gPT09IHByb3BzLnVzZXJuYW1lKSByZXR1cm4gMTsKICAgICAgICB2YXIga2V5QSA9ICdwcml2YXRlOicgKyBhWzFdOwogICAgICAgIHZhciBrZXlCID0gJ3ByaXZhdGU6JyArIGJbMV07CiAgICAgICAgdmFyIHVucmVhZEEgPSB1bnJlYWRDb3VudHNba2V5QV0gfHwgMDsKICAgICAgICB2YXIgdW5yZWFkQiA9IHVucmVhZENvdW50c1trZXlCXSB8fCAwOwogICAgICAgIC8vIOacieacquivu+eahOaOkuWJjemdogogICAgICAgIGlmICh1bnJlYWRBICE9PSB1bnJlYWRCKSByZXR1cm4gdW5yZWFkQiAtIHVucmVhZEE7CiAgICAgICAgLy8g54S25ZCO5oyJ5pyA5ZCO5raI5oGv5pe26Ze05YCS5bqP77yI5pyA5paw55qE5Zyo5LiK6Z2i77yJCiAgICAgICAgdmFyIHRpbWVBID0gbGFzdE1zZ1RpbWVzW2tleUFdIHx8IDA7CiAgICAgICAgdmFyIHRpbWVCID0gbGFzdE1zZ1RpbWVzW2tleUJdIHx8IDA7CiAgICAgICAgaWYgKHRpbWVBICE9PSB0aW1lQikgcmV0dXJuIHRpbWVCIC0gdGltZUE7CiAgICAgICAgLy8g5pyA5ZCO5oyJ5a2X5q+N5bqPCiAgICAgICAgcmV0dXJuIGFbMF0ubG9jYWxlQ29tcGFyZShiWzBdKTsKICAgICAgfSk7CiAgICAgIHJldHVybiBlbnRyaWVzOwogICAgfSwgW29ubGluZVVzZXJzLCBzZWFyY2hRdWVyeSwgcHJvcHMudXNlcm5hbWUsIHVucmVhZENvdW50cywgbGFzdE1zZ1RpbWVzXSk7CgogICAgdmFyIGZpbHRlcmVkR3JvdXBzID0gdXNlTWVtbyhmdW5jdGlvbiAoKSB7CiAgICAgIHZhciBlbnRyaWVzID0gT2JqZWN0LmVudHJpZXMoZ3JvdXBzKTsKICAgICAgaWYgKHNlYXJjaFF1ZXJ5KSB7CiAgICAgICAgdmFyIHEgPSBzZWFyY2hRdWVyeS50b0xvd2VyQ2FzZSgpOwogICAgICAgIGVudHJpZXMgPSBlbnRyaWVzLmZpbHRlcihmdW5jdGlvbiAoZSkgeyByZXR1cm4gZVsxXS50b0xvd2VyQ2FzZSgpLmluY2x1ZGVzKHEpOyB9KTsKICAgICAgfQogICAgICBlbnRyaWVzLnNvcnQoZnVuY3Rpb24gKGEsIGIpIHsKICAgICAgICB2YXIga2V5QSA9ICdncm91cDonICsgYVswXTsKICAgICAgICB2YXIga2V5QiA9ICdncm91cDonICsgYlswXTsKICAgICAgICB2YXIgdW5yZWFkQSA9IHVucmVhZENvdW50c1trZXlBXSB8fCAwOwogICAgICAgIHZhciB1bnJlYWRCID0gdW5yZWFkQ291bnRzW2tleUJdIHx8IDA7CiAgICAgICAgaWYgKHVucmVhZEEgIT09IHVucmVhZEIpIHJldHVybiB1bnJlYWRCIC0gdW5yZWFkQTsKICAgICAgICAvLyDmjInmnIDlkI7mtojmga/ml7bpl7TlgJLluo8KICAgICAgICB2YXIgdGltZUEgPSBsYXN0TXNnVGltZXNba2V5QV0gfHwgMDsKICAgICAgICB2YXIgdGltZUIgPSBsYXN0TXNnVGltZXNba2V5Ql0gfHwgMDsKICAgICAgICBpZiAodGltZUEgIT09IHRpbWVCKSByZXR1cm4gdGltZUIgLSB0aW1lQTsKICAgICAgICByZXR1cm4gYVsxXS5sb2NhbGVDb21wYXJlKGJbMV0pOwogICAgICB9KTsKICAgICAgcmV0dXJuIGVudHJpZXM7CiAgICB9LCBbZ3JvdXBzLCBzZWFyY2hRdWVyeSwgdW5yZWFkQ291bnRzLCBsYXN0TXNnVGltZXNdKTsKCiAgICByZXR1cm4gaCgnZGl2JywgeyBjbGFzc05hbWU6ICdjb250YWN0LWxpc3QnIH0sCiAgICAgIC8vIEFJIOWKqeaJi++8iOe9rumhtu+8iQogICAgICBoKCdkaXYnLCB7IGNsYXNzTmFtZTogJ2NvbnRhY3Qtc2VjdGlvbi10aXRsZScgfSwKICAgICAgICBoKCdzcGFuJywgbnVsbCwgJ0FJJyksCiAgICAgICksCiAgICAgIGgoQ29udGFjdEl0ZW0sIHsKICAgICAgICBuYW1lOiAnQUkgQXNzaXN0YW50JywKICAgICAgICBpc0FjdGl2ZTogY3VycmVudFRhcmdldCA9PT0gJ0FJIEFzc2lzdGFudCcgJiYgY3VycmVudENoYXRUeXBlID09PSAnYWknLAogICAgICAgIGlzT25saW5lOiB0cnVlLAogICAgICAgIHVucmVhZENvdW50OiB1bnJlYWRDb3VudHNbJ2FpOkFJIEFzc2lzdGFudCddIHx8IDAsCiAgICAgICAgb25DbGljazogZnVuY3Rpb24gKCkgeyBvblNlbGVjdFRhcmdldCgnYWknLCAnQUkgQXNzaXN0YW50JywgLTEpOyB9LAogICAgICB9KSwKCiAgICAgIC8vIOWcqOe6v+eUqOaIt+WIhue7hAogICAgICBoKCdkaXYnLCB7IGNsYXNzTmFtZTogJ2NvbnRhY3Qtc2VjdGlvbi10aXRsZScsIHN0eWxlOiB7IG1hcmdpblRvcDogJzRweCcgfSB9LAogICAgICAgIGgoJ3NwYW4nLCBudWxsLCAnT25saW5lJyksCiAgICAgICAgaCgnc3BhbicsIHsgY2xhc3NOYW1lOiAnY291bnQnIH0sIE9iamVjdC5rZXlzKG9ubGluZVVzZXJzKS5sZW5ndGgpLAogICAgICApLAogICAgICBmaWx0ZXJlZFVzZXJzLm1hcChmdW5jdGlvbiAoZW50cnkpIHsKICAgICAgICB2YXIgbmFtZSA9IGVudHJ5WzBdOwogICAgICAgIHZhciB1aWQgPSBlbnRyeVsxXTsKICAgICAgICB2YXIgaXNTZWxmID0gbmFtZSA9PT0gcHJvcHMudXNlcm5hbWU7CiAgICAgICAgdmFyIGlzQWN0aXZlID0gIWlzU2VsZiAmJiBjdXJyZW50VGFyZ2V0ID09PSBuYW1lICYmIGN1cnJlbnRDaGF0VHlwZSA9PT0gJ3ByaXZhdGUnOwogICAgICAgIHZhciBrZXkgPSAncHJpdmF0ZTonICsgdWlkOwogICAgICAgIHJldHVybiBoKENvbnRhY3RJdGVtLCB7CiAgICAgICAgICBrZXk6ICd1c2VyLScgKyB1aWQsCiAgICAgICAgICBuYW1lOiBuYW1lLAogICAgICAgICAgaXNBY3RpdmU6IGlzQWN0aXZlLAogICAgICAgICAgaXNPbmxpbmU6IHRydWUsCiAgICAgICAgICBpc1NlbGY6IGlzU2VsZiwKICAgICAgICAgIHVucmVhZENvdW50OiBpc1NlbGYgPyAwIDogKHVucmVhZENvdW50c1trZXldIHx8IDApLAogICAgICAgICAgb25DbGljazogZnVuY3Rpb24gKCkgeyBvblNlbGVjdFRhcmdldCgncHJpdmF0ZScsIG5hbWUsIHVpZCk7IH0sCiAgICAgICAgfSk7CiAgICAgIH0pLAoKICAgICAgLy8g576k57uE5YiG6ZqUCiAgICAgIE9iamVjdC5rZXlzKGdyb3VwcykubGVuZ3RoID4gMCAmJiBoKCdkaXYnLCB7IGNsYXNzTmFtZTogJ2NvbnRhY3Qtc2VjdGlvbi10aXRsZScsIHN0eWxlOiB7IG1hcmdpblRvcDogJzEycHgnIH0gfSwKICAgICAgICBoKCdzcGFuJywgbnVsbCwgJ0dyb3VwcycpLAogICAgICAgIGgoJ3NwYW4nLCB7IGNsYXNzTmFtZTogJ2NvdW50JyB9LCBPYmplY3Qua2V5cyhncm91cHMpLmxlbmd0aCksCiAgICAgICksCiAgICAgIGZpbHRlcmVkR3JvdXBzLm1hcChmdW5jdGlvbiAoZW50cnkpIHsKICAgICAgICB2YXIgZ2lkID0gZW50cnlbMF07CiAgICAgICAgdmFyIGduYW1lID0gZW50cnlbMV07CiAgICAgICAgdmFyIGlzQWN0aXZlID0gY3VycmVudFRhcmdldCA9PT0gZ2lkICYmIGN1cnJlbnRDaGF0VHlwZSA9PT0gJ2dyb3VwJzsKICAgICAgICB2YXIga2V5ID0gJ2dyb3VwOicgKyBnaWQ7CiAgICAgICAgdmFyIGxhYmVsID0gZm9ybWF0R3JvdXBMYWJlbChnaWQsIGduYW1lKTsKICAgICAgICByZXR1cm4gaChDb250YWN0SXRlbSwgewogICAgICAgICAga2V5OiAnZ3JvdXAtJyArIGdpZCwKICAgICAgICAgIG5hbWU6IGxhYmVsLAogICAgICAgICAgaXNBY3RpdmU6IGlzQWN0aXZlLAogICAgICAgICAgaXNHcm91cDogdHJ1ZSwKICAgICAgICAgIHVucmVhZENvdW50OiB1bnJlYWRDb3VudHNba2V5XSB8fCAwLAogICAgICAgICAgb25DbGljazogZnVuY3Rpb24gKCkgeyBvblNlbGVjdFRhcmdldCgnZ3JvdXAnLCBnaWQsIHBhcnNlSW50KGdpZCkpOyB9LAogICAgICAgIH0pOwogICAgICB9KSwKICAgICk7CiAgfQoKICB3aW5kb3cuQXBwID0gd2luZG93LkFwcCB8fCB7fTsKICB3aW5kb3cuQXBwLl9fc2lkZWJhckxvZ2ljID0gewogICAgaXNTZWxmVXNlcjogZnVuY3Rpb24gKG5hbWUsIHVzZXJuYW1lKSB7IHJldHVybiBuYW1lID09PSB1c2VybmFtZTsgfSwKICAgIGZvcm1hdEdyb3VwTGFiZWw6IGZvcm1hdEdyb3VwTGFiZWwsCiAgfTsKICB3aW5kb3cuQXBwLlNpZGViYXIgPSBTaWRlYmFyOwp9KSgpOwo=
+/**
+ * sidebar.js — 联系人 & 群组列表组件（含未读红点 + 时间排序）
+ */
+
+(function () {
+  'use strict';
+
+  var h = React.createElement;
+  var useMemo = React.useMemo;
+
+  // ---- 头像颜色 ----
+  var AVATAR_COLORS = [
+    '#6c63ff', '#e91e63', '#ff9800', '#4caf50', '#2196f3',
+    '#9c27b0', '#f44336', '#00bcd4', '#ff5722', '#3f51b5',
+  ];
+
+  function getAvatarColor(name) {
+    var hash = 0;
+    for (var i = 0; i < name.length; i++) {
+      hash = name.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    return AVATAR_COLORS[Math.abs(hash) % AVATAR_COLORS.length];
+  }
+
+  function getInitials(name) {
+    if (!name) return '?';
+    return name.charAt(0).toUpperCase();
+  }
+
+  function formatGroupLabel(groupId, groupName) {
+    var gid = String(groupId || '').trim();
+    var name = String(groupName || '').trim();
+    return name || ('Group #' + gid);
+  }
+
+  // ---- 联系人项（含未读红点） ----
+  function ContactItem(props) {
+    var name = props.name;
+    var isActive = props.isActive;
+    var isOnline = props.isOnline;
+    var isGroup = props.isGroup;
+    var isSelf = props.isSelf;
+    var onClick = props.onClick;
+    var unreadCount = props.unreadCount || 0;
+
+    var avatarColor = useMemo(function () { return getAvatarColor(name); }, [name]);
+
+    return h('div', {
+      className: 'contact-item' + (isActive ? ' active' : '') + (isSelf ? ' self' : ''),
+      onClick: isSelf ? undefined : onClick,
+      title: name,
+    },
+      isGroup
+        ? h('div', { className: 'group-icon' }, '#')
+        : h('div', { className: 'contact-avatar', style: { background: avatarColor } },
+            getInitials(name),
+            isOnline
+              ? h('div', { className: 'online-dot' })
+              : h('div', { className: 'offline-dot' }),
+          ),
+      h('div', { className: 'contact-name' }, isSelf ? name + ' (You)' : name),
+      unreadCount > 0 && h('div', { className: 'unread-badge' },
+        unreadCount > 99 ? '99+' : String(unreadCount)
+      ),
+    );
+  }
+
+  // ---- 联系人列表 ----
+  function Sidebar(props) {
+    var onlineUsers = props.onlineUsers || {};
+    var groups = props.groups || {};
+    var currentTarget = props.currentTarget;
+    var currentChatType = props.currentChatType;
+    var onSelectTarget = props.onSelectTarget;
+    var searchQuery = props.searchQuery || '';
+    var unreadCounts = props.unreadCounts || {};
+    var lastMsgTimes = props.lastMsgTimes || {};
+
+    // 过滤 + 排序联系人（按最后消息时间倒序, 类似微信）
+    var filteredUsers = useMemo(function () {
+      var entries = Object.entries(onlineUsers);
+      if (searchQuery) {
+        var q = searchQuery.toLowerCase();
+        entries = entries.filter(function (e) { return e[0].toLowerCase().includes(q); });
+      }
+      entries.sort(function (a, b) {
+        // 自己始终排在最前面
+        if (a[0] === props.username) return -1;
+        if (b[0] === props.username) return 1;
+        var keyA = 'private:' + a[1];
+        var keyB = 'private:' + b[1];
+        var unreadA = unreadCounts[keyA] || 0;
+        var unreadB = unreadCounts[keyB] || 0;
+        // 有未读的排前面
+        if (unreadA !== unreadB) return unreadB - unreadA;
+        // 然后按最后消息时间倒序（最新的在上面）
+        var timeA = lastMsgTimes[keyA] || 0;
+        var timeB = lastMsgTimes[keyB] || 0;
+        if (timeA !== timeB) return timeB - timeA;
+        // 最后按字母序
+        return a[0].localeCompare(b[0]);
+      });
+      return entries;
+    }, [onlineUsers, searchQuery, props.username, unreadCounts, lastMsgTimes]);
+
+    var filteredGroups = useMemo(function () {
+      var entries = Object.entries(groups);
+      if (searchQuery) {
+        var q = searchQuery.toLowerCase();
+        entries = entries.filter(function (e) { return e[1].toLowerCase().includes(q); });
+      }
+      entries.sort(function (a, b) {
+        var keyA = 'group:' + a[0];
+        var keyB = 'group:' + b[0];
+        var unreadA = unreadCounts[keyA] || 0;
+        var unreadB = unreadCounts[keyB] || 0;
+        if (unreadA !== unreadB) return unreadB - unreadA;
+        // 按最后消息时间倒序
+        var timeA = lastMsgTimes[keyA] || 0;
+        var timeB = lastMsgTimes[keyB] || 0;
+        if (timeA !== timeB) return timeB - timeA;
+        return a[1].localeCompare(b[1]);
+      });
+      return entries;
+    }, [groups, searchQuery, unreadCounts, lastMsgTimes]);
+
+    return h('div', { className: 'contact-list' },
+      // AI 助手（置顶）
+      h('div', { className: 'contact-section-title' },
+        h('span', null, 'AI'),
+      ),
+      h(ContactItem, {
+        name: 'AI Assistant',
+        isActive: currentTarget === 'AI Assistant' && currentChatType === 'ai',
+        isOnline: true,
+        unreadCount: unreadCounts['ai:AI Assistant'] || 0,
+        onClick: function () { onSelectTarget('ai', 'AI Assistant', -1); },
+      }),
+
+      // 在线用户分组
+      h('div', { className: 'contact-section-title', style: { marginTop: '4px' } },
+        h('span', null, 'Online'),
+        h('span', { className: 'count' }, Object.keys(onlineUsers).length),
+      ),
+      filteredUsers.map(function (entry) {
+        var name = entry[0];
+        var uid = entry[1];
+        var isSelf = name === props.username;
+        var isActive = !isSelf && currentTarget === name && currentChatType === 'private';
+        var key = 'private:' + uid;
+        return h(ContactItem, {
+          key: 'user-' + uid,
+          name: name,
+          isActive: isActive,
+          isOnline: true,
+          isSelf: isSelf,
+          unreadCount: isSelf ? 0 : (unreadCounts[key] || 0),
+          onClick: function () { onSelectTarget('private', name, uid); },
+        });
+      }),
+
+      // 群组分隔
+      Object.keys(groups).length > 0 && h('div', { className: 'contact-section-title', style: { marginTop: '12px' } },
+        h('span', null, 'Groups'),
+        h('span', { className: 'count' }, Object.keys(groups).length),
+      ),
+      filteredGroups.map(function (entry) {
+        var gid = entry[0];
+        var gname = entry[1];
+        var isActive = currentTarget === gid && currentChatType === 'group';
+        var key = 'group:' + gid;
+        var label = formatGroupLabel(gid, gname);
+        return h(ContactItem, {
+          key: 'group-' + gid,
+          name: label,
+          isActive: isActive,
+          isGroup: true,
+          unreadCount: unreadCounts[key] || 0,
+          onClick: function () { onSelectTarget('group', gid, parseInt(gid)); },
+        });
+      }),
+    );
+  }
+
+  window.App = window.App || {};
+  window.App.__sidebarLogic = {
+    isSelfUser: function (name, username) { return name === username; },
+    formatGroupLabel: formatGroupLabel,
+  };
+  window.App.Sidebar = Sidebar;
+})();

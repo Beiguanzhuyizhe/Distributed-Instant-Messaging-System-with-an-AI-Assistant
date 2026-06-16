@@ -1,1 +1,136 @@
-IiIiCue+pOe7hOeuoeeQhuaooeWdlwrmj5DkvpvnvqTnu4TnmoTliJvlu7rjgIHliqDlhaXjgIHpgIDlh7rjgIHmiJDlkZjmn6Xor6LnrYnlip/og73jgIIKIiIiCmltcG9ydCB0aW1lCmltcG9ydCBhc3luY2lvCmZyb20gc2VydmVyLmRhdGFiYXNlIGltcG9ydCBnZXRfZGIKCgpjbGFzcyBHcm91cE1hbmFnZXI6CiAgICAiIiLnvqTnu4TnrqHnkIblmajvvIzlsIHoo4XmiYDmnInnvqTnu4Tnm7jlhbPmk43kvZwiIiIKCiAgICBkZWYgX19pbml0X18oc2VsZiwgZGJfcGF0aDogc3RyKToKICAgICAgICBzZWxmLl9kYl9wYXRoID0gZGJfcGF0aAoKICAgIGFzeW5jIGRlZiBjcmVhdGVfZ3JvdXAoc2VsZiwgbmFtZTogc3RyLCBvd25lcl9pZDogaW50KSAtPiBkaWN0OgogICAgICAgICIiIuWIm+W7uue+pOe7hO+8jOWIm+W7uuiAheiHquWKqOaIkOS4uue+pOS4u+W5tuWKoOWFpee+pOe7hCIiIgogICAgICAgIGlmIG5vdCBpc2luc3RhbmNlKG5hbWUsIHN0cikgb3Igbm90IG5hbWUuc3RyaXAoKToKICAgICAgICAgICAgcmV0dXJuIHsic3VjY2VzcyI6IEZhbHNlLCAiZXJyb3IiOiAi576k5ZCN56ew5LiN6IO95Li656m6In0KICAgICAgICBuYW1lID0gbmFtZS5zdHJpcCgpCiAgICAgICAgaWYgbGVuKG5hbWUpID4gMTI4OgogICAgICAgICAgICByZXR1cm4geyJzdWNjZXNzIjogRmFsc2UsICJlcnJvciI6ICLnvqTlkI3np7Dov4fplb8ifQoKICAgICAgICBkZWYgX3J1bigpOgogICAgICAgICAgICB3aXRoIGdldF9kYihzZWxmLl9kYl9wYXRoKSBhcyBjb25uOgogICAgICAgICAgICAgICAgbm93ID0gdGltZS50aW1lKCkKICAgICAgICAgICAgICAgIGN1ciA9IGNvbm4uZXhlY3V0ZSgKICAgICAgICAgICAgICAgICAgICAiSU5TRVJUIElOVE8gZ3JvdXBzIChuYW1lLCBvd25lcl9pZCwgY3JlYXRlZF9hdCkgVkFMVUVTICg/LCA/LCA/KSIsCiAgICAgICAgICAgICAgICAgICAgKG5hbWUsIG93bmVyX2lkLCBub3cpLAogICAgICAgICAgICAgICAgKQogICAgICAgICAgICAgICAgZ3JvdXBfaWQgPSBjdXIubGFzdHJvd2lkCiAgICAgICAgICAgICAgICBjb25uLmV4ZWN1dGUoCiAgICAgICAgICAgICAgICAgICAgIklOU0VSVCBJTlRPIGdyb3VwX21lbWJlcnMgKGdyb3VwX2lkLCB1c2VyX2lkLCByb2xlLCBqb2luZWRfYXQpIFZBTFVFUyAoPywgPywgPywgPykiLAogICAgICAgICAgICAgICAgICAgIChncm91cF9pZCwgb3duZXJfaWQsICJvd25lciIsIG5vdyksCiAgICAgICAgICAgICAgICApCiAgICAgICAgICAgICAgICBjb25uLmNvbW1pdCgpCiAgICAgICAgICAgICAgICByZXR1cm4geyJzdWNjZXNzIjogVHJ1ZSwgImdyb3VwX2lkIjogZ3JvdXBfaWQsICJuYW1lIjogbmFtZX0KICAgICAgICByZXR1cm4gYXdhaXQgYXN5bmNpby50b190aHJlYWQoX3J1bikKCiAgICBhc3luYyBkZWYgam9pbl9ncm91cChzZWxmLCBncm91cF9pZDogaW50LCB1c2VyX2lkOiBpbnQpIC0+IGRpY3Q6CiAgICAgICAgIiIi5Yqg5YWl576k57uEIiIiCiAgICAgICAgZGVmIF9ydW4oKToKICAgICAgICAgICAgd2l0aCBnZXRfZGIoc2VsZi5fZGJfcGF0aCkgYXMgY29ubjoKICAgICAgICAgICAgICAgIGN1ciA9IGNvbm4uZXhlY3V0ZSgiU0VMRUNUIGlkLCBuYW1lIEZST00gZ3JvdXBzIFdIRVJFIGlkID0gPyIsIChncm91cF9pZCwpKQogICAgICAgICAgICAgICAgcm93ID0gY3VyLmZldGNob25lKCkKICAgICAgICAgICAgICAgIGlmIG5vdCByb3c6CiAgICAgICAgICAgICAgICAgICAgcmV0dXJuIHsic3VjY2VzcyI6IEZhbHNlLCAiZXJyb3IiOiAi576k57uE5LiN5a2Y5ZyoIn0KICAgICAgICAgICAgICAgIGdyb3VwX25hbWUgPSByb3dbIm5hbWUiXQogICAgICAgICAgICAgICAgY3VyID0gY29ubi5leGVjdXRlKAogICAgICAgICAgICAgICAgICAgICJTRUxFQ1QgMSBGUk9NIGdyb3VwX21lbWJlcnMgV0hFUkUgZ3JvdXBfaWQgPSA/IEFORCB1c2VyX2lkID0gPyIsCiAgICAgICAgICAgICAgICAgICAgKGdyb3VwX2lkLCB1c2VyX2lkKSwKICAgICAgICAgICAgICAgICkKICAgICAgICAgICAgICAgIGlmIGN1ci5mZXRjaG9uZSgpOgogICAgICAgICAgICAgICAgICAgIHJldHVybiB7InN1Y2Nlc3MiOiBGYWxzZSwgImVycm9yIjogIuW3suaYr+e+pOaIkOWRmCJ9CiAgICAgICAgICAgICAgICBub3cgPSB0aW1lLnRpbWUoKQogICAgICAgICAgICAgICAgY29ubi5leGVjdXRlKAogICAgICAgICAgICAgICAgICAgICJJTlNFUlQgSU5UTyBncm91cF9tZW1iZXJzIChncm91cF9pZCwgdXNlcl9pZCwgcm9sZSwgam9pbmVkX2F0KSBWQUxVRVMgKD8sID8sID8sID8pIiwKICAgICAgICAgICAgICAgICAgICAoZ3JvdXBfaWQsIHVzZXJfaWQsICJtZW1iZXIiLCBub3cpLAogICAgICAgICAgICAgICAgKQogICAgICAgICAgICAgICAgY29ubi5jb21taXQoKQogICAgICAgICAgICAgICAgcmV0dXJuIHsic3VjY2VzcyI6IFRydWUsICJncm91cF9pZCI6IGdyb3VwX2lkLCAibmFtZSI6IGdyb3VwX25hbWV9CiAgICAgICAgcmV0dXJuIGF3YWl0IGFzeW5jaW8udG9fdGhyZWFkKF9ydW4pCgogICAgYXN5bmMgZGVmIGxlYXZlX2dyb3VwKHNlbGYsIGdyb3VwX2lkOiBpbnQsIHVzZXJfaWQ6IGludCkgLT4gZGljdDoKICAgICAgICAiIiLpgIDlh7rnvqTnu4TjgILnvqTkuLvkuI3og73pgIDlh7rvvIzpnIDlhYjovazorqnnvqTkuLvouqvku70iIiIKICAgICAgICBkZWYgX3J1bigpOgogICAgICAgICAgICB3aXRoIGdldF9kYihzZWxmLl9kYl9wYXRoKSBhcyBjb25uOgogICAgICAgICAgICAgICAgY3VyID0gY29ubi5leGVjdXRlKAogICAgICAgICAgICAgICAgICAgICJTRUxFQ1Qgcm9sZSBGUk9NIGdyb3VwX21lbWJlcnMgV0hFUkUgZ3JvdXBfaWQgPSA/IEFORCB1c2VyX2lkID0gPyIsCiAgICAgICAgICAgICAgICAgICAgKGdyb3VwX2lkLCB1c2VyX2lkKSwKICAgICAgICAgICAgICAgICkKICAgICAgICAgICAgICAgIHJvdyA9IGN1ci5mZXRjaG9uZSgpCiAgICAgICAgICAgICAgICBpZiBub3Qgcm93OgogICAgICAgICAgICAgICAgICAgIHJldHVybiB7InN1Y2Nlc3MiOiBGYWxzZSwgImVycm9yIjogIuS4jeaYr+e+pOaIkOWRmCJ9CiAgICAgICAgICAgICAgICBpZiByb3dbInJvbGUiXSA9PSAib3duZXIiOgogICAgICAgICAgICAgICAgICAgIHJldHVybiB7InN1Y2Nlc3MiOiBGYWxzZSwgImVycm9yIjogIue+pOS4u+S4jeiDvemAgOWHuue+pOe7hCJ9CiAgICAgICAgICAgICAgICBjb25uLmV4ZWN1dGUoCiAgICAgICAgICAgICAgICAgICAgIkRFTEVURSBGUk9NIGdyb3VwX21lbWJlcnMgV0hFUkUgZ3JvdXBfaWQgPSA/IEFORCB1c2VyX2lkID0gPyIsCiAgICAgICAgICAgICAgICAgICAgKGdyb3VwX2lkLCB1c2VyX2lkKSwKICAgICAgICAgICAgICAgICkKICAgICAgICAgICAgICAgIGNvbm4uY29tbWl0KCkKICAgICAgICAgICAgICAgIHJldHVybiB7InN1Y2Nlc3MiOiBUcnVlfQogICAgICAgIHJldHVybiBhd2FpdCBhc3luY2lvLnRvX3RocmVhZChfcnVuKQoKICAgIGFzeW5jIGRlZiBnZXRfZ3JvdXBfbWVtYmVycyhzZWxmLCBncm91cF9pZDogaW50KSAtPiBsaXN0OgogICAgICAgICIiIuiOt+WPlue+pOe7hOaJgOacieaIkOWRmOS/oeaBryIiIgogICAgICAgIGRlZiBfcnVuKCk6CiAgICAgICAgICAgIHdpdGggZ2V0X2RiKHNlbGYuX2RiX3BhdGgpIGFzIGNvbm46CiAgICAgICAgICAgICAgICBjdXIgPSBjb25uLmV4ZWN1dGUoCiAgICAgICAgICAgICAgICAgICAgIiIiU0VMRUNUIHUuaWQsIHUudXNlcm5hbWUsIHUucHVibGljX2tleSwgZ20ucm9sZSwgZ20uam9pbmVkX2F0CiAgICAgICAgICAgICAgICAgICAgICAgRlJPTSBncm91cF9tZW1iZXJzIGdtCiAgICAgICAgICAgICAgICAgICAgICAgSk9JTiB1c2VycyB1IE9OIHUuaWQgPSBnbS51c2VyX2lkCiAgICAgICAgICAgICAgICAgICAgICAgV0hFUkUgZ20uZ3JvdXBfaWQgPSA/IiIiLAogICAgICAgICAgICAgICAgICAgIChncm91cF9pZCwpLAogICAgICAgICAgICAgICAgKQogICAgICAgICAgICAgICAgcmV0dXJuIFtkaWN0KHIpIGZvciByIGluIGN1ci5mZXRjaGFsbCgpXQogICAgICAgIHJldHVybiBhd2FpdCBhc3luY2lvLnRvX3RocmVhZChfcnVuKQoKICAgIGFzeW5jIGRlZiBnZXRfdXNlcl9ncm91cHMoc2VsZiwgdXNlcl9pZDogaW50KSAtPiBsaXN0OgogICAgICAgICIiIuiOt+WPlueUqOaIt+WKoOWFpeeahOaJgOaciee+pOe7hCIiIgogICAgICAgIGRlZiBfcnVuKCk6CiAgICAgICAgICAgIHdpdGggZ2V0X2RiKHNlbGYuX2RiX3BhdGgpIGFzIGNvbm46CiAgICAgICAgICAgICAgICBjdXIgPSBjb25uLmV4ZWN1dGUoCiAgICAgICAgICAgICAgICAgICAgIiIiU0VMRUNUIGcuaWQsIGcubmFtZSwgZy5vd25lcl9pZCwgZ20ucm9sZSwgZ20uam9pbmVkX2F0CiAgICAgICAgICAgICAgICAgICAgICAgRlJPTSBncm91cF9tZW1iZXJzIGdtCiAgICAgICAgICAgICAgICAgICAgICAgSk9JTiBncm91cHMgZyBPTiBnLmlkID0gZ20uZ3JvdXBfaWQKICAgICAgICAgICAgICAgICAgICAgICBXSEVSRSBnbS51c2VyX2lkID0gPyIiIiwKICAgICAgICAgICAgICAgICAgICAodXNlcl9pZCwpLAogICAgICAgICAgICAgICAgKQogICAgICAgICAgICAgICAgcmV0dXJuIFtkaWN0KHIpIGZvciByIGluIGN1ci5mZXRjaGFsbCgpXQogICAgICAgIHJldHVybiBhd2FpdCBhc3luY2lvLnRvX3RocmVhZChfcnVuKQoKICAgIGFzeW5jIGRlZiBnZXRfYWxsX2dyb3VwcyhzZWxmKSAtPiBsaXN0OgogICAgICAgICIiIuiOt+WPluaJgOacieWPr+ingee+pOe7hO+8jOS+m+WuouaIt+err+eUqOS4i+aLieWIl+ihqOWKoOWFpe+8jOmBv+WFjeeUqOaIt+aJi+WKqOi+k+WFpeWGhemDqOaVsOaNruW6kyBJROOAgiIiIgogICAgICAgIGRlZiBfcnVuKCk6CiAgICAgICAgICAgIHdpdGggZ2V0X2RiKHNlbGYuX2RiX3BhdGgpIGFzIGNvbm46CiAgICAgICAgICAgICAgICBjdXIgPSBjb25uLmV4ZWN1dGUoCiAgICAgICAgICAgICAgICAgICAgIiIiU0VMRUNUIGcuaWQsIGcubmFtZSwgZy5vd25lcl9pZCwgQ09VTlQoZ20udXNlcl9pZCkgQVMgbWVtYmVyX2NvdW50CiAgICAgICAgICAgICAgICAgICAgICAgRlJPTSBncm91cHMgZwogICAgICAgICAgICAgICAgICAgICAgIExFRlQgSk9JTiBncm91cF9tZW1iZXJzIGdtIE9OIGdtLmdyb3VwX2lkID0gZy5pZAogICAgICAgICAgICAgICAgICAgICAgIEdST1VQIEJZIGcuaWQsIGcubmFtZSwgZy5vd25lcl9pZAogICAgICAgICAgICAgICAgICAgICAgIE9SREVSIEJZIGcuaWQgQVNDIiIiCiAgICAgICAgICAgICAgICApCiAgICAgICAgICAgICAgICByZXR1cm4gW2RpY3QocikgZm9yIHIgaW4gY3VyLmZldGNoYWxsKCldCiAgICAgICAgcmV0dXJuIGF3YWl0IGFzeW5jaW8udG9fdGhyZWFkKF9ydW4pCgogICAgYXN5bmMgZGVmIGlzX21lbWJlcihzZWxmLCBncm91cF9pZDogaW50LCB1c2VyX2lkOiBpbnQpIC0+IGJvb2w6CiAgICAgICAgIiIi5qOA5p+l55So5oi35piv5ZCm5Li6576k57uE5oiQ5ZGYIiIiCiAgICAgICAgZGVmIF9ydW4oKToKICAgICAgICAgICAgd2l0aCBnZXRfZGIoc2VsZi5fZGJfcGF0aCkgYXMgY29ubjoKICAgICAgICAgICAgICAgIGN1ciA9IGNvbm4uZXhlY3V0ZSgKICAgICAgICAgICAgICAgICAgICAiU0VMRUNUIDEgRlJPTSBncm91cF9tZW1iZXJzIFdIRVJFIGdyb3VwX2lkID0gPyBBTkQgdXNlcl9pZCA9ID8iLAogICAgICAgICAgICAgICAgICAgIChncm91cF9pZCwgdXNlcl9pZCksCiAgICAgICAgICAgICAgICApCiAgICAgICAgICAgICAgICByZXR1cm4gY3VyLmZldGNob25lKCkgaXMgbm90IE5vbmUKICAgICAgICByZXR1cm4gYXdhaXQgYXN5bmNpby50b190aHJlYWQoX3J1bikK
+"""
+群组管理模块
+提供群组的创建、加入、退出、成员查询等功能。
+"""
+import time
+import asyncio
+from server.database import get_db
+
+
+class GroupManager:
+    """群组管理器，封装所有群组相关操作"""
+
+    def __init__(self, db_path: str):
+        self._db_path = db_path
+
+    async def create_group(self, name: str, owner_id: int) -> dict:
+        """创建群组，创建者自动成为群主并加入群组"""
+        if not isinstance(name, str) or not name.strip():
+            return {"success": False, "error": "群名称不能为空"}
+        name = name.strip()
+        if len(name) > 128:
+            return {"success": False, "error": "群名称过长"}
+
+        def _run():
+            with get_db(self._db_path) as conn:
+                now = time.time()
+                cur = conn.execute(
+                    "INSERT INTO groups (name, owner_id, created_at) VALUES (?, ?, ?)",
+                    (name, owner_id, now),
+                )
+                group_id = cur.lastrowid
+                conn.execute(
+                    "INSERT INTO group_members (group_id, user_id, role, joined_at) VALUES (?, ?, ?, ?)",
+                    (group_id, owner_id, "owner", now),
+                )
+                conn.commit()
+                return {"success": True, "group_id": group_id, "name": name}
+        return await asyncio.to_thread(_run)
+
+    async def join_group(self, group_id: int, user_id: int) -> dict:
+        """加入群组"""
+        def _run():
+            with get_db(self._db_path) as conn:
+                cur = conn.execute("SELECT id, name FROM groups WHERE id = ?", (group_id,))
+                row = cur.fetchone()
+                if not row:
+                    return {"success": False, "error": "群组不存在"}
+                group_name = row["name"]
+                cur = conn.execute(
+                    "SELECT 1 FROM group_members WHERE group_id = ? AND user_id = ?",
+                    (group_id, user_id),
+                )
+                if cur.fetchone():
+                    return {"success": False, "error": "已是群成员"}
+                now = time.time()
+                conn.execute(
+                    "INSERT INTO group_members (group_id, user_id, role, joined_at) VALUES (?, ?, ?, ?)",
+                    (group_id, user_id, "member", now),
+                )
+                conn.commit()
+                return {"success": True, "group_id": group_id, "name": group_name}
+        return await asyncio.to_thread(_run)
+
+    async def leave_group(self, group_id: int, user_id: int) -> dict:
+        """退出群组。群主不能退出，需先转让群主身份"""
+        def _run():
+            with get_db(self._db_path) as conn:
+                cur = conn.execute(
+                    "SELECT role FROM group_members WHERE group_id = ? AND user_id = ?",
+                    (group_id, user_id),
+                )
+                row = cur.fetchone()
+                if not row:
+                    return {"success": False, "error": "不是群成员"}
+                if row["role"] == "owner":
+                    return {"success": False, "error": "群主不能退出群组"}
+                conn.execute(
+                    "DELETE FROM group_members WHERE group_id = ? AND user_id = ?",
+                    (group_id, user_id),
+                )
+                conn.commit()
+                return {"success": True}
+        return await asyncio.to_thread(_run)
+
+    async def get_group_members(self, group_id: int) -> list:
+        """获取群组所有成员信息"""
+        def _run():
+            with get_db(self._db_path) as conn:
+                cur = conn.execute(
+                    """SELECT u.id, u.username, u.public_key, gm.role, gm.joined_at
+                       FROM group_members gm
+                       JOIN users u ON u.id = gm.user_id
+                       WHERE gm.group_id = ?""",
+                    (group_id,),
+                )
+                return [dict(r) for r in cur.fetchall()]
+        return await asyncio.to_thread(_run)
+
+    async def get_user_groups(self, user_id: int) -> list:
+        """获取用户加入的所有群组"""
+        def _run():
+            with get_db(self._db_path) as conn:
+                cur = conn.execute(
+                    """SELECT g.id, g.name, g.owner_id, gm.role, gm.joined_at
+                       FROM group_members gm
+                       JOIN groups g ON g.id = gm.group_id
+                       WHERE gm.user_id = ?""",
+                    (user_id,),
+                )
+                return [dict(r) for r in cur.fetchall()]
+        return await asyncio.to_thread(_run)
+
+    async def get_all_groups(self) -> list:
+        """获取所有可见群组，供客户端用下拉列表加入，避免用户手动输入内部数据库 ID。"""
+        def _run():
+            with get_db(self._db_path) as conn:
+                cur = conn.execute(
+                    """SELECT g.id, g.name, g.owner_id, COUNT(gm.user_id) AS member_count
+                       FROM groups g
+                       LEFT JOIN group_members gm ON gm.group_id = g.id
+                       GROUP BY g.id, g.name, g.owner_id
+                       ORDER BY g.id ASC"""
+                )
+                return [dict(r) for r in cur.fetchall()]
+        return await asyncio.to_thread(_run)
+
+    async def is_member(self, group_id: int, user_id: int) -> bool:
+        """检查用户是否为群组成员"""
+        def _run():
+            with get_db(self._db_path) as conn:
+                cur = conn.execute(
+                    "SELECT 1 FROM group_members WHERE group_id = ? AND user_id = ?",
+                    (group_id, user_id),
+                )
+                return cur.fetchone() is not None
+        return await asyncio.to_thread(_run)

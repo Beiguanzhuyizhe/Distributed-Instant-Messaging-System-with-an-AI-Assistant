@@ -1,1 +1,441 @@
-IiIiCuWIhuW4g+W8j+WNs+aXtuiBiuWkqeezu+e7nyAtIOmAmuS/oeWNj+iuruWumuS5ieS4jue8luino+eggeaooeWdlwpNYWdpYygyQikgKyBWZXJzaW9uKDFCKSArIFR5cGUoMUIpICsgU2VxKDRCKSArIFBheWxvYWRMZW4oNEIpID0gMTJCIGhlYWRlciArIEpTT04gcGF5bG9hZAoKVENQIOeymOWMheWkhOeQhu+8muS9v+eUqOmVv+W6puWJjee8gOaWueW8j++8jOavj+asoeS7jiBidWZmZXIg5Lit5o+Q5Y+W5a6M5pW05raI5oGv44CCCiIiIgoKaW1wb3J0IGFzeW5jaW8KaW1wb3J0IGpzb24KaW1wb3J0IHN0cnVjdApmcm9tIGVudW0gaW1wb3J0IEludEVudW0KCk1BR0lDID0gMHhDQUZFClZFUlNJT04gPSAweDAxCkhFQURFUl9GT1JNQVQgPSAiIUggQiBCIEkgSSIgICMgTWFnaWM6SCgyQikgVmVyc2lvbjpCKDFCKSBUeXBlOkIoMUIpIFNlcTpJKDRCKSBQYXlsb2FkTGVuOkkoNEIpCkhFQURFUl9TSVpFID0gc3RydWN0LmNhbGNzaXplKEhFQURFUl9GT1JNQVQpICAjIDEyIGJ5dGVzCgoKY2xhc3MgTWVzc2FnZVR5cGUoSW50RW51bSk6CiAgICAjIOiupOivgQogICAgTE9HSU5fUkVRID0gMHgwMSAgICAgICAgIyBDLT5TIOeZu+W9leivt+axggogICAgTE9HSU5fUkVTUCA9IDB4MDIgICAgICAgIyBTLT5DIOeZu+W9leWTjeW6lAogICAgUkVHSVNURVJfUkVRID0gMHgwMyAgICAgIyBDLT5TIOazqOWGjOivt+axggogICAgUkVHSVNURVJfUkVTUCA9IDB4MDQgICAgIyBTLT5DIOazqOWGjOWTjeW6lAoKICAgICMg5raI5oGvCiAgICBQUklWQVRFX01TRyA9IDB4MDUgICAgICAjIEM8LT5TIOengeiBiua2iOaBrwogICAgR1JPVVBfTVNHID0gMHgwNiAgICAgICAgIyBDPC0+UyDnvqTogYrmtojmga8KCiAgICAjIOW/g+i3swogICAgSEVBUlRCRUFUID0gMHgwNyAgICAgICAgIyBDLT5TIOW/g+i3s+WMhQogICAgSEVBUlRCRUFUX0FDSyA9IDB4MDggICAgIyBTLT5DIOW/g+i3s+ehruiupAoKICAgICMg5paH5Lu25Lyg6L6TICjkuK3nu6fmqKHlvI8pCiAgICBGSUxFX0lOSVQgPSAweDA5ICAgICAgICAjIEM8LT5TIOaWh+S7tuS8oOi+k+WIneWni+WMlgogICAgRklMRV9EQVRBID0gMHgwQSAgICAgICAgIyBDPC0+UyDmlofku7bmlbDmja7lnZcKICAgIEZJTEVfQUNLID0gMHgwQiAgICAgICAgICMgQzwtPlMg5paH5Lu25Z2X56Gu6K6kCgogICAgIyDnvqTnu4TnrqHnkIYKICAgIEdST1VQX0NSRUFURSA9IDB4MEMgICAgICMgQzwtPlMg5Yib5bu6576k57uECiAgICBHUk9VUF9KT0lOID0gMHgwRCAgICAgICAjIEM8LT5TIOWKoOWFpee+pOe7hAogICAgR1JPVVBfTEVBVkUgPSAweDBFICAgICAgIyBDPC0+UyDpgIDlh7rnvqTnu4QKCiAgICAjIOeKtuaAgeS4jumAmuefpQogICAgU1RBVFVTX1VQREFURSA9IDB4MEYgICAgIyBTLT5DIOWcqOe6v+eKtuaAgeaOqOmAgQogICAgTVNHX1JFQ0FMTCA9IDB4MTAgICAgICAgIyBDPC0+UyDmtojmga/mkqTlm54KCiAgICAjIEFJCiAgICBBSV9RVUVSWSA9IDB4MTEgICAgICAgICAjIEMtPlMgQEFJIOafpeivogogICAgQUlfUkVTUCA9IDB4MTIgICAgICAgICAgIyBTLT5DIEFJIOWbnuWkjQogICAgQ09OVEVOVF9XQVJOID0gMHgxMyAgICAgIyBTLT5DIOWGheWuuei/neinhOitpuWRigoKICAgICMg5Y6G5Y+y5raI5oGvCiAgICBISVNUT1JZX1JFUSA9IDB4MTQgICAgICAjIEMtPlMg5Y6G5Y+y5raI5oGv6K+35rGCCiAgICBISVNUT1JZX1JFU1AgPSAweDE1ICAgICAjIFMtPkMg5Y6G5Y+y5raI5oGv5ZON5bqUCgogICAgIyDlnKjnur/nlKjmiLcKICAgIE9OTElORV9VU0VSUyA9IDB4MTYgICAgICMgQzwtPlMg5Zyo57q/55So5oi35YiX6KGoCgogICAgIyBQMlAg5omT5rSeCiAgICBQMlBfSE9MRV9QVU5DSCA9IDB4MTcgICAjIEM8LT5TIFAyUCDmiZPmtJ7ljY/liqkKICAgIFAyUF9SRUFEWSA9IDB4MTggICAgICAgICMgQzwtPlMgUDJQIOWwsee7qumAmuefpQoKICAgICMg6ZSZ6K+vCiAgICBFUlJPUiA9IDB4RkYgICAgICAgICAgICAjIFMtPkMg6ZSZ6K+v5ZON5bqUCgoKIyDplJnor6/noIEKY2xhc3MgRXJyb3JDb2RlKEludEVudW0pOgogICAgU1VDQ0VTUyA9IDAKICAgIElOVkFMSURfUkVRVUVTVCA9IDEKICAgIEFVVEhfRkFJTEVEID0gMgogICAgVVNFUl9FWElTVFMgPSAzCiAgICBVU0VSX05PVF9GT1VORCA9IDQKICAgIEdST1VQX05PVF9GT1VORCA9IDUKICAgIE5PVF9HUk9VUF9NRU1CRVIgPSA2CiAgICBNRVNTQUdFX1RPT19MQVJHRSA9IDcKICAgIEZJTEVfVE9PX0xBUkdFID0gOAogICAgUkFURV9MSU1JVEVEID0gOQogICAgSU5URVJOQUxfRVJST1IgPSAxMAogICAgUDJQX0ZBSUxFRCA9IDExCiAgICBNU0dfTk9UX0ZPVU5EID0gMTIKICAgIFJFQ0FMTF9USU1FT1VUID0gMTMKICAgIENPTlRFTlRfUkVKRUNURUQgPSAxNAogICAgSU5WQUxJRF9QQVlMT0FEID0gMTUKCgpjbGFzcyBTZXF1ZW5jZUdlbmVyYXRvcjoKICAgICIiIuWFqOWxgOW6j+WIl+WPt+eUn+aIkOWZqCIiIgogICAgX3NlcSA9IDAKCiAgICBAY2xhc3NtZXRob2QKICAgIGRlZiBuZXh0KGNscykgLT4gaW50OgogICAgICAgIGNscy5fc2VxID0gKGNscy5fc2VxICsgMSkgJiAweEZGRkZGRkZGCiAgICAgICAgcmV0dXJuIGNscy5fc2VxCgoKZGVmIGVuY29kZV9tZXNzYWdlKG1zZ190eXBlOiBpbnQsIHBheWxvYWQ6IGRpY3QsIHNlcTogaW50ID0gTm9uZSkgLT4gYnl0ZXM6CiAgICAiIiIKICAgIOe8lueggea2iOaBr+S4uuS6jOi/m+WItuagvOW8j+OAggogICAg6L+U5Zue5a6M5pW055qE5LqM6L+b5Yi25YyF77yaaGVhZGVyICsgcGF5bG9hZF9qc29uCiAgICAiIiIKICAgIGlmIHNlcSBpcyBOb25lOgogICAgICAgIHNlcSA9IFNlcXVlbmNlR2VuZXJhdG9yLm5leHQoKQoKICAgIHBheWxvYWRfYnl0ZXMgPSBqc29uLmR1bXBzKHBheWxvYWQsIGVuc3VyZV9hc2NpaT1GYWxzZSwgc2VwYXJhdG9ycz0oIiwiLCAiOiIpKS5lbmNvZGUoInV0Zi04IikKICAgIHBheWxvYWRfbGVuID0gbGVuKHBheWxvYWRfYnl0ZXMpCgogICAgaGVhZGVyID0gc3RydWN0LnBhY2soSEVBREVSX0ZPUk1BVCwgTUFHSUMsIFZFUlNJT04sIG1zZ190eXBlLCBzZXEsIHBheWxvYWRfbGVuKQogICAgcmV0dXJuIGhlYWRlciArIHBheWxvYWRfYnl0ZXMKCgpkZWYgZGVjb2RlX21lc3NhZ2UoZGF0YTogYnl0ZXMpOgogICAgIiIiCiAgICDku47kuozov5vliLbmlbDmja7kuK3op6PnoIHlh7rkuIDmnaHmtojmga/jgIIKICAgIFJldHVybnM6CiAgICAgICAgKG1zZ190eXBlLCBzZXEsIHBheWxvYWRfZGljdCwgY29uc3VtZWRfYnl0ZXMpCiAgICAgICAg5aaC5p6c5pWw5o2u5LiN6Laz5LiA5Liq5a6M5pW05raI5oGv77yMY29uc3VtZWRfYnl0ZXMgPSAw77yM5YmN5LiJ5Liq6L+U5ZueIE5vbmXjgIIKICAgICAgICDlpoLmnpzop6PmnpDmiJDlip/vvIxjb25zdW1lZF9ieXRlcyDkuLrlrp7pmYXmtojogJflrZfoioLmlbDjgIIKICAgICIiIgogICAgaWYgbGVuKGRhdGEpIDwgSEVBREVSX1NJWkU6CiAgICAgICAgcmV0dXJuIE5vbmUsIDAsIE5vbmUsIDAKCiAgICBtYWdpYywgdmVyc2lvbiwgbXNnX3R5cGUsIHNlcSwgcGF5bG9hZF9sZW4gPSBzdHJ1Y3QudW5wYWNrKEhFQURFUl9GT1JNQVQsIGRhdGFbOkhFQURFUl9TSVpFXSkKCiAgICBpZiBtYWdpYyAhPSBNQUdJQzoKICAgICAgICByYWlzZSBWYWx1ZUVycm9yKGYiSW52YWxpZCBtYWdpYzoge21hZ2ljOiN4fSwgZXhwZWN0ZWQge01BR0lDOiN4fSIpCgogICAgdG90YWxfc2l6ZSA9IEhFQURFUl9TSVpFICsgcGF5bG9hZF9sZW4KICAgIGlmIGxlbihkYXRhKSA8IHRvdGFsX3NpemU6CiAgICAgICAgcmV0dXJuIE5vbmUsIDAsIE5vbmUsIDAgICMg5LiN5a6M5pW05YyF77yM562J5b6F5pu05aSa5pWw5o2uCgogICAgaWYgcGF5bG9hZF9sZW4gPiAwOgogICAgICAgIHBheWxvYWRfYnl0ZXMgPSBkYXRhW0hFQURFUl9TSVpFOnRvdGFsX3NpemVdCiAgICAgICAgcGF5bG9hZCA9IGpzb24ubG9hZHMocGF5bG9hZF9ieXRlcy5kZWNvZGUoInV0Zi04IikpCiAgICBlbHNlOgogICAgICAgIHBheWxvYWQgPSB7fQoKICAgIHJldHVybiBtc2dfdHlwZSwgc2VxLCBwYXlsb2FkLCB0b3RhbF9zaXplCgoKZGVmIGRlY29kZV9tZXNzYWdlcyhkYXRhOiBieXRlcyk6CiAgICAiIiIKICAgIOS7juWtl+iKgua1geS4reino+eggeaJgOacieWujOaVtOa2iOaBr++8iOWkhOeQhueymOWMhe+8ieOAggogICAgUmV0dXJuczoKICAgICAgICAobWVzc2FnZXMsIHJlbWFpbmluZ19ieXRlcykKICAgICAgICBtZXNzYWdlczogWyhtc2dfdHlwZSwgc2VxLCBwYXlsb2FkKSwgLi4uXQogICAgICAgIHJlbWFpbmluZ19ieXRlczog5pyq5raI6LS555qE5a2X6IqC77yI5LiN5a6M5pW05YyF5bC+6YOo77yJCiAgICAiIiIKICAgIG1lc3NhZ2VzID0gW10KICAgIG9mZnNldCA9IDAKICAgIGRhdGFfbGVuID0gbGVuKGRhdGEpCgogICAgd2hpbGUgb2Zmc2V0IDwgZGF0YV9sZW46CiAgICAgICAgY2h1bmsgPSBkYXRhW29mZnNldDpdCiAgICAgICAgaWYgbGVuKGNodW5rKSA8IEhFQURFUl9TSVpFOgogICAgICAgICAgICBicmVhawoKICAgICAgICBtc2dfdHlwZSwgc2VxLCBwYXlsb2FkLCBjb25zdW1lZCA9IGRlY29kZV9tZXNzYWdlKGNodW5rKQogICAgICAgIGlmIGNvbnN1bWVkID09IDA6CiAgICAgICAgICAgIGJyZWFrICAjIOS4jeWujOaVtOWMhQoKICAgICAgICBtZXNzYWdlcy5hcHBlbmQoKG1zZ190eXBlLCBzZXEsIHBheWxvYWQpKQogICAgICAgIG9mZnNldCArPSBjb25zdW1lZAoKICAgIHJldHVybiBtZXNzYWdlcywgZGF0YVtvZmZzZXQ6XQoKCiMgPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CiMgVDEzOiBUQ1Ag5Y2P6K6u57yW6Kej56CB5aKe5by6CiMgPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09CgpjbGFzcyBNZXNzYWdlUHJvdG9jb2w6CiAgICAiIiIKICAgIOWkhOeQhiBUQ1Ag57KY5YyFL+WNiuWMheeahOa2iOaBr+WNj+iuruWkhOeQhuWZqOOAggogICAg5YaF6YOo57u05oqk5LiA5LiqIGJ1ZmZlcu+8jOavj+asoeiwg+eUqCBmZWVkKGRhdGEpIOWwhuaWsOaVsOaNruWKoOWFpe+8jAogICAg54S25ZCO6YCa6L+HIG5leHRfbWVzc2FnZSgpIOWwneivleaPkOWPluWujOaVtOa2iOaBr+OAggogICAgIiIiCgogICAgZGVmIF9faW5pdF9fKHNlbGYpOgogICAgICAgIHNlbGYuX2J1ZmZlciA9IGJ5dGVhcnJheSgpCiAgICAgICAgc2VsZi5fbXNnX2NvdW50ID0gMAoKICAgIGRlZiBmZWVkKHNlbGYsIGRhdGE6IGJ5dGVzKToKICAgICAgICAiIiLlsIbmjqXmlLbliLDnmoTlrZfoioLmlbDmja7lloLlhaUgYnVmZmVyIiIiCiAgICAgICAgc2VsZi5fYnVmZmVyLmV4dGVuZChkYXRhKQoKICAgIEBwcm9wZXJ0eQogICAgZGVmIGJ1ZmZlcmVkX2J5dGVzKHNlbGYpIC0+IGludDoKICAgICAgICByZXR1cm4gbGVuKHNlbGYuX2J1ZmZlcikKCiAgICBAcHJvcGVydHkKICAgIGRlZiBtZXNzYWdlX2NvdW50KHNlbGYpIC0+IGludDoKICAgICAgICByZXR1cm4gc2VsZi5fbXNnX2NvdW50CgogICAgZGVmIG5leHRfbWVzc2FnZShzZWxmKToKICAgICAgICAiIiIKICAgICAgICDlsJ3or5Xku44gYnVmZmVyIOS4reaPkOWPluS4gOadoeWujOaVtOa2iOaBr+OAggogICAgICAgIFJldHVybnM6CiAgICAgICAgICAgIChtc2dfdHlwZSwgc2VxLCBwYXlsb2FkKSB8IE5vbmUKICAgICAgICAgICAg5aaC5p6c5rKh5pyJ5a6M5pW05raI5oGv5YiZ6L+U5ZueIE5vbmXjgIIKICAgICAgICAiIiIKICAgICAgICBpZiBsZW4oc2VsZi5fYnVmZmVyKSA8IEhFQURFUl9TSVpFOgogICAgICAgICAgICByZXR1cm4gTm9uZQoKICAgICAgICB0b3RhbF9zaXplID0gc2VsZi5fZ2V0X21lc3NhZ2VfdG90YWxfc2l6ZSgpCiAgICAgICAgaWYgdG90YWxfc2l6ZSBpcyBOb25lOgogICAgICAgICAgICByZXR1cm4gTm9uZQoKICAgICAgICBpZiBsZW4oc2VsZi5fYnVmZmVyKSA8IHRvdGFsX3NpemU6CiAgICAgICAgICAgIHJldHVybiBOb25lICAjIOaVsOaNrui/mOS4jeWknwoKICAgICAgICBjaHVuayA9IGJ5dGVzKHNlbGYuX2J1ZmZlcls6dG90YWxfc2l6ZV0pCiAgICAgICAgc2VsZi5fYnVmZmVyID0gc2VsZi5fYnVmZmVyW3RvdGFsX3NpemU6XQoKICAgICAgICBtc2dfdHlwZSwgc2VxLCBwYXlsb2FkLCBfID0gZGVjb2RlX21lc3NhZ2UoY2h1bmspCiAgICAgICAgc2VsZi5fbXNnX2NvdW50ICs9IDEKICAgICAgICByZXR1cm4gbXNnX3R5cGUsIHNlcSwgcGF5bG9hZAoKICAgIGRlZiBuZXh0X21lc3NhZ2VzKHNlbGYpOgogICAgICAgICIiIgogICAgICAgIOaPkOWPliBidWZmZXIg5Lit5omA5pyJ5a6M5pW05raI5oGv44CCCiAgICAgICAgUmV0dXJuczoKICAgICAgICAgICAgWyhtc2dfdHlwZSwgc2VxLCBwYXlsb2FkKSwgLi4uXQogICAgICAgICIiIgogICAgICAgIG1zZ3MgPSBbXQogICAgICAgIHdoaWxlIFRydWU6CiAgICAgICAgICAgIG1zZyA9IHNlbGYubmV4dF9tZXNzYWdlKCkKICAgICAgICAgICAgaWYgbXNnIGlzIE5vbmU6CiAgICAgICAgICAgICAgICBicmVhawogICAgICAgICAgICBtc2dzLmFwcGVuZChtc2cpCiAgICAgICAgcmV0dXJuIG1zZ3MKCiAgICBkZWYgX2dldF9tZXNzYWdlX3RvdGFsX3NpemUoc2VsZik6CiAgICAgICAgIiIi5Lyw566X5b2T5YmNIGJ1ZmZlciDkuK3nrKzkuIDmnaHmtojmga/nmoTlrozmlbTplb/luqbvvIjlkKsgaGVhZGVy77yJ44CCIiIiCiAgICAgICAgaWYgbGVuKHNlbGYuX2J1ZmZlcikgPCBIRUFERVJfU0laRToKICAgICAgICAgICAgcmV0dXJuIE5vbmUKICAgICAgICBfLCBfLCBfLCBfLCBwYXlsb2FkX2xlbiA9IHN0cnVjdC51bnBhY2soSEVBREVSX0ZPUk1BVCwgc2VsZi5fYnVmZmVyWzpIRUFERVJfU0laRV0pCiAgICAgICAgcmV0dXJuIEhFQURFUl9TSVpFICsgcGF5bG9hZF9sZW4KCiAgICBkZWYgcmVzZXQoc2VsZik6CiAgICAgICAgIiIi5riF56m6IGJ1ZmZlciIiIgogICAgICAgIHNlbGYuX2J1ZmZlci5jbGVhcigpCiAgICAgICAgc2VsZi5fbXNnX2NvdW50ID0gMAoKCmNsYXNzIENvbm5lY3Rpb246CiAgICAiIiIKICAgIOWwgeijhSBhc3luY2lvIHNvY2tldCDov57mjqXnmoTlvILmraXor7vlhpnjgIIKICAgIOaPkOS+myBzZW5kX21lc3NhZ2UgLyByZWFkX21lc3NhZ2Ug6auY6Zi25o6l5Y+j44CCCiAgICAiIiIKCiAgICBkZWYgX19pbml0X18oc2VsZiwgcmVhZGVyOiBhc3luY2lvLlN0cmVhbVJlYWRlciwgd3JpdGVyOiBhc3luY2lvLlN0cmVhbVdyaXRlciwKICAgICAgICAgICAgICAgICBwcm90b2NvbDogTWVzc2FnZVByb3RvY29sID0gTm9uZSk6CiAgICAgICAgc2VsZi5yZWFkZXIgPSByZWFkZXIKICAgICAgICBzZWxmLndyaXRlciA9IHdyaXRlcgogICAgICAgIHNlbGYucHJvdG9jb2wgPSBwcm90b2NvbCBvciBNZXNzYWdlUHJvdG9jb2woKQogICAgICAgIHNlbGYuX2Nsb3NlZCA9IEZhbHNlCiAgICAgICAgc2VsZi5fcmVtb3RlX2FkZHIgPSB3cml0ZXIuZ2V0X2V4dHJhX2luZm8oInBlZXJuYW1lIikgaWYgd3JpdGVyIGVsc2UgTm9uZQoKICAgIEBwcm9wZXJ0eQogICAgZGVmIHJlbW90ZV9hZGRyKHNlbGYpOgogICAgICAgIHJldHVybiBzZWxmLl9yZW1vdGVfYWRkcgoKICAgIEBwcm9wZXJ0eQogICAgZGVmIGlzX2Nsb3NlZChzZWxmKSAtPiBib29sOgogICAgICAgIHJldHVybiBzZWxmLl9jbG9zZWQKCiAgICBhc3luYyBkZWYgc2VuZF9tZXNzYWdlKHNlbGYsIG1zZ190eXBlOiBpbnQsIHBheWxvYWQ6IGRpY3QsIHNlcTogaW50ID0gTm9uZSk6CiAgICAgICAgIiIi5byC5q2l5Y+R6YCB5LiA5p2h57yW56CB5ZCO55qE5raI5oGvIiIiCiAgICAgICAgaWYgc2VsZi5fY2xvc2VkOgogICAgICAgICAgICByYWlzZSBDb25uZWN0aW9uRXJyb3IoIkNvbm5lY3Rpb24gaXMgY2xvc2VkIikKICAgICAgICBkYXRhID0gZW5jb2RlX21lc3NhZ2UobXNnX3R5cGUsIHBheWxvYWQsIHNlcSkKICAgICAgICBzZWxmLndyaXRlci53cml0ZShkYXRhKQogICAgICAgIGF3YWl0IHNlbGYud3JpdGVyLmRyYWluKCkKCiAgICBhc3luYyBkZWYgcmVhZF9tZXNzYWdlKHNlbGYpOgogICAgICAgICIiIgogICAgICAgIOW8guatpeivu+WPluS4gOadoeWujOaVtOa2iOaBr+OAguWGhemDqOiHquWKqOWkhOeQhueymOWMhS/ljYrljIXjgIIKICAgICAgICBSZXR1cm5zOgogICAgICAgICAgICAobXNnX3R5cGUsIHNlcSwgcGF5bG9hZCkgfCBOb25lICjov57mjqXlhbPpl60pCiAgICAgICAgIiIiCiAgICAgICAgd2hpbGUgVHJ1ZToKICAgICAgICAgICAgbXNnID0gc2VsZi5wcm90b2NvbC5uZXh0X21lc3NhZ2UoKQogICAgICAgICAgICBpZiBtc2cgaXMgbm90IE5vbmU6CiAgICAgICAgICAgICAgICByZXR1cm4gbXNnCgogICAgICAgICAgICB0cnk6CiAgICAgICAgICAgICAgICBjaHVuayA9IGF3YWl0IHNlbGYucmVhZGVyLnJlYWQoNDA5NikKICAgICAgICAgICAgZXhjZXB0IChDb25uZWN0aW9uRXJyb3IsIE9TRXJyb3IpOgogICAgICAgICAgICAgICAgc2VsZi5fY2xvc2VkID0gVHJ1ZQogICAgICAgICAgICAgICAgcmV0dXJuIE5vbmUKCiAgICAgICAgICAgIGlmIG5vdCBjaHVuazoKICAgICAgICAgICAgICAgICMg6L+e5o6l5YWz6ZetCiAgICAgICAgICAgICAgICBzZWxmLl9jbG9zZWQgPSBUcnVlCiAgICAgICAgICAgICAgICAjIOajgOafpSBidWZmZXIg6YeM5piv5ZCm6L+Y5pyJ5q6L55WZ5raI5oGvCiAgICAgICAgICAgICAgICBtc2cgPSBzZWxmLnByb3RvY29sLm5leHRfbWVzc2FnZSgpCiAgICAgICAgICAgICAgICByZXR1cm4gbXNnCgogICAgICAgICAgICBzZWxmLnByb3RvY29sLmZlZWQoY2h1bmspCgogICAgYXN5bmMgZGVmIHJlYWRfdW50aWxfdGltZW91dChzZWxmLCB0aW1lb3V0OiBmbG9hdCA9IE5vbmUpOgogICAgICAgICIiIgogICAgICAgIOW4pui2heaXtueahOWNleadoea2iOaBr+ivu+WPluOAggogICAgICAgIFJldHVybnM6CiAgICAgICAgICAgIChtc2dfdHlwZSwgc2VxLCBwYXlsb2FkKSB8IE5vbmUgKOi2heaXtuaIlui/nuaOpeWFs+mXrSkKICAgICAgICAiIiIKICAgICAgICB0cnk6CiAgICAgICAgICAgIHJldHVybiBhd2FpdCBhc3luY2lvLndhaXRfZm9yKHNlbGYucmVhZF9tZXNzYWdlKCksIHRpbWVvdXQ9dGltZW91dCkKICAgICAgICBleGNlcHQgYXN5bmNpby5UaW1lb3V0RXJyb3I6CiAgICAgICAgICAgIHJldHVybiBOb25lCgogICAgYXN5bmMgZGVmIHNlbmRfaGVhcnRiZWF0KHNlbGYpOgogICAgICAgICIiIuWPkemAgeW/g+i3s+WMhSIiIgogICAgICAgIGF3YWl0IHNlbGYuc2VuZF9tZXNzYWdlKE1lc3NhZ2VUeXBlLkhFQVJUQkVBVCwge30pCgogICAgZGVmIGNsb3NlKHNlbGYpOgogICAgICAgICIiIuWFs+mXrei/nuaOpSIiIgogICAgICAgIGlmIG5vdCBzZWxmLl9jbG9zZWQ6CiAgICAgICAgICAgIHNlbGYuX2Nsb3NlZCA9IFRydWUKICAgICAgICAgICAgdHJ5OgogICAgICAgICAgICAgICAgc2VsZi53cml0ZXIuY2xvc2UoKQogICAgICAgICAgICBleGNlcHQgRXhjZXB0aW9uOgogICAgICAgICAgICAgICAgcGFzcwoKICAgIGFzeW5jIGRlZiB3YWl0X2Nsb3NlZChzZWxmKToKICAgICAgICAiIiLnrYnlvoXov57mjqXlrozlhajlhbPpl60iIiIKICAgICAgICB0cnk6CiAgICAgICAgICAgIGF3YWl0IHNlbGYud3JpdGVyLndhaXRfY2xvc2VkKCkKICAgICAgICBleGNlcHQgRXhjZXB0aW9uOgogICAgICAgICAgICBwYXNzCgoKIyA9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0KIyBQYXlsb2FkIOaehOW7uui+heWKqeWHveaVsAojID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQoKZGVmIG1ha2VfbG9naW5fcGF5bG9hZCh1c2VybmFtZTogc3RyLCBwYXNzd29yZF9oYXNoOiBzdHIpIC0+IGRpY3Q6CiAgICByZXR1cm4geyJ1c2VybmFtZSI6IHVzZXJuYW1lLCAicGFzc3dvcmRfaGFzaCI6IHBhc3N3b3JkX2hhc2h9CgoKZGVmIG1ha2VfcmVnaXN0ZXJfcGF5bG9hZCh1c2VybmFtZTogc3RyLCBwYXNzd29yZF9oYXNoOiBzdHIsIHB1YmxpY19rZXk6IHN0ciA9ICIiKSAtPiBkaWN0OgogICAgcmV0dXJuIHsidXNlcm5hbWUiOiB1c2VybmFtZSwgInBhc3N3b3JkX2hhc2giOiBwYXNzd29yZF9oYXNoLCAicHVibGljX2tleSI6IHB1YmxpY19rZXl9CgoKZGVmIG1ha2VfcHJpdmF0ZV9tc2dfcGF5bG9hZChmcm9tX2lkOiBpbnQsIHRvX2lkOiBpbnQsIGNvbnRlbnQ6IHN0ciwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICBtc2dfaWQ6IGludCA9IDAsIHRpbWVzdGFtcDogaW50ID0gMCkgLT4gZGljdDoKICAgIHJldHVybiB7CiAgICAgICAgImZyb21faWQiOiBmcm9tX2lkLAogICAgICAgICJ0b19pZCI6IHRvX2lkLAogICAgICAgICJjb250ZW50IjogY29udGVudCwKICAgICAgICAibXNnX2lkIjogbXNnX2lkLAogICAgICAgICJ0aW1lc3RhbXAiOiB0aW1lc3RhbXAgb3IgX25vdygpLAogICAgfQoKCmRlZiBtYWtlX2dyb3VwX21zZ19wYXlsb2FkKGZyb21faWQ6IGludCwgZ3JvdXBfaWQ6IGludCwgY29udGVudDogc3RyLAogICAgICAgICAgICAgICAgICAgICAgICAgICBtc2dfaWQ6IGludCA9IDAsIHRpbWVzdGFtcDogaW50ID0gMCkgLT4gZGljdDoKICAgIHJldHVybiB7CiAgICAgICAgImZyb21faWQiOiBmcm9tX2lkLAogICAgICAgICJncm91cF9pZCI6IGdyb3VwX2lkLAogICAgICAgICJjb250ZW50IjogY29udGVudCwKICAgICAgICAibXNnX2lkIjogbXNnX2lkLAogICAgICAgICJ0aW1lc3RhbXAiOiB0aW1lc3RhbXAgb3IgX25vdygpLAogICAgfQoKCmRlZiBtYWtlX2Vycm9yX3BheWxvYWQoY29kZTogaW50LCBtZXNzYWdlOiBzdHIpIC0+IGRpY3Q6CiAgICByZXR1cm4geyJjb2RlIjogY29kZSwgIm1lc3NhZ2UiOiBtZXNzYWdlfQoKCmRlZiBtYWtlX3AycF9ob2xlX3B1bmNoX3BheWxvYWQodXNlcl9pZDogaW50LCB0YXJnZXRfaWQ6IGludCwgYWRkcjogc3RyID0gIiIpIC0+IGRpY3Q6CiAgICByZXR1cm4geyJ1c2VyX2lkIjogdXNlcl9pZCwgInRhcmdldF9pZCI6IHRhcmdldF9pZCwgImFkZHIiOiBhZGRyfQoKCmRlZiBtYWtlX2FpX3F1ZXJ5X3BheWxvYWQodXNlcl9pZDogaW50LCBncm91cF9pZDogaW50LCBxdWVyeTogc3RyLAogICAgICAgICAgICAgICAgICAgICAgICAgIG1zZ19pZDogaW50ID0gMCkgLT4gZGljdDoKICAgIHBheWxvYWQgPSB7InVzZXJfaWQiOiB1c2VyX2lkLCAiZnJvbV9pZCI6IHVzZXJfaWQsICJncm91cF9pZCI6IGdyb3VwX2lkLCAicXVlcnkiOiBxdWVyeX0KICAgIGlmIG1zZ19pZDoKICAgICAgICBwYXlsb2FkWyJtc2dfaWQiXSA9IG1zZ19pZAogICAgcmV0dXJuIHBheWxvYWQKCgpkZWYgbWFrZV9haV9yZXNwX3BheWxvYWQoZ3JvdXBfaWQ6IGludCwgY29udGVudDogc3RyLCB1c2VyX2lkOiBpbnQgPSAwLAogICAgICAgICAgICAgICAgICAgICAgICAgcXVlcnk6IHN0ciA9ICIiLCBtc2dfaWQ6IGludCA9IDApIC0+IGRpY3Q6CiAgICBwYXlsb2FkID0geyJncm91cF9pZCI6IGdyb3VwX2lkLCAiY29udGVudCI6IGNvbnRlbnQsICJyZXBseSI6IGNvbnRlbnR9CiAgICBpZiB1c2VyX2lkOgogICAgICAgIHBheWxvYWRbInVzZXJfaWQiXSA9IHVzZXJfaWQKICAgICAgICBwYXlsb2FkWyJmcm9tX2lkIl0gPSB1c2VyX2lkCiAgICBpZiBxdWVyeToKICAgICAgICBwYXlsb2FkWyJxdWVyeSJdID0gcXVlcnkKICAgIGlmIG1zZ19pZDoKICAgICAgICBwYXlsb2FkWyJtc2dfaWQiXSA9IG1zZ19pZAogICAgcmV0dXJuIHBheWxvYWQKCgpkZWYgbWFrZV9jb250ZW50X3dhcm5fcGF5bG9hZCh1c2VyX2lkOiBpbnQsIHJlYXNvbjogc3RyLCBsZXZlbDogc3RyID0gIm1pZCIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIG1zZ19pZDogaW50ID0gMCkgLT4gZGljdDoKICAgIHBheWxvYWQgPSB7InVzZXJfaWQiOiB1c2VyX2lkLCAicmVhc29uIjogcmVhc29uLCAibWVzc2FnZSI6IHJlYXNvbiwgImxldmVsIjogbGV2ZWx9CiAgICBpZiBtc2dfaWQ6CiAgICAgICAgcGF5bG9hZFsibXNnX2lkIl0gPSBtc2dfaWQKICAgIHJldHVybiBwYXlsb2FkCgoKZGVmIG1ha2VfZmlsZV9pbml0X3BheWxvYWQoZnJvbV9pZDogaW50LCBmaWxlbmFtZTogc3RyLCBmaWxlc2l6ZTogaW50LAogICAgICAgICAgICAgICAgICAgICAgICAgICBmaWxlX2lkOiBzdHIgPSAiIiwgdG9faWQ6IGludCA9IDAsCiAgICAgICAgICAgICAgICAgICAgICAgICAgIGdyb3VwX2lkOiBpbnQgPSAwKSAtPiBkaWN0OgogICAgcGF5bG9hZCA9IHsKICAgICAgICAiZnJvbV9pZCI6IGZyb21faWQsCiAgICAgICAgImZpbGVuYW1lIjogZmlsZW5hbWUsCiAgICAgICAgImZpbGVzaXplIjogZmlsZXNpemUsCiAgICAgICAgImZpbGVfaWQiOiBmaWxlX2lkLAogICAgfQogICAgaWYgdG9faWQ6CiAgICAgICAgcGF5bG9hZFsidG9faWQiXSA9IHRvX2lkCiAgICBpZiBncm91cF9pZDoKICAgICAgICBwYXlsb2FkWyJncm91cF9pZCJdID0gZ3JvdXBfaWQKICAgIHJldHVybiBwYXlsb2FkCgoKZGVmIG1ha2VfZmlsZV9kYXRhX3BheWxvYWQoZmlsZV9pZDogc3RyLCBvZmZzZXQ6IGludCwgZGF0YTogc3RyLAogICAgICAgICAgICAgICAgICAgICAgICAgICBpc19sYXN0OiBib29sID0gRmFsc2UpIC0+IGRpY3Q6CiAgICByZXR1cm4geyJmaWxlX2lkIjogZmlsZV9pZCwgIm9mZnNldCI6IG9mZnNldCwgImRhdGEiOiBkYXRhLCAiaXNfbGFzdCI6IGlzX2xhc3R9CgoKZGVmIG1ha2VfZmlsZV9hY2tfcGF5bG9hZChmaWxlX2lkOiBzdHIsIG9mZnNldDogaW50LCByZWNlaXZlZDogaW50LAogICAgICAgICAgICAgICAgICAgICAgICAgIHN1Y2Nlc3M6IGJvb2wgPSBUcnVlKSAtPiBkaWN0OgogICAgcmV0dXJuIHsiZmlsZV9pZCI6IGZpbGVfaWQsICJvZmZzZXQiOiBvZmZzZXQsICJyZWNlaXZlZCI6IHJlY2VpdmVkLCAic3VjY2VzcyI6IHN1Y2Nlc3N9CgoKZGVmIG1ha2VfcmVjYWxsX3BheWxvYWQobXNnX2lkLCB1c2VyX2lkOiBpbnQgPSAwKSAtPiBkaWN0OgogICAgcGF5bG9hZCA9IHsibXNnX2lkIjogbXNnX2lkfQogICAgaWYgdXNlcl9pZDoKICAgICAgICBwYXlsb2FkWyJ1c2VyX2lkIl0gPSB1c2VyX2lkCiAgICByZXR1cm4gcGF5bG9hZAoKCmRlZiBfbm93KCkgLT4gaW50OgogICAgaW1wb3J0IHRpbWUKICAgIHJldHVybiBpbnQodGltZS50aW1lKCkpCg==
+"""
+分布式即时聊天系统 - 通信协议定义与编解码模块
+Magic(2B) + Version(1B) + Type(1B) + Seq(4B) + PayloadLen(4B) = 12B header + JSON payload
+
+TCP 粘包处理：使用长度前缀方式，每次从 buffer 中提取完整消息。
+"""
+
+import asyncio
+import json
+import struct
+from enum import IntEnum
+
+MAGIC = 0xCAFE
+VERSION = 0x01
+HEADER_FORMAT = "!H B B I I"  # Magic:H(2B) Version:B(1B) Type:B(1B) Seq:I(4B) PayloadLen:I(4B)
+HEADER_SIZE = struct.calcsize(HEADER_FORMAT)  # 12 bytes
+
+
+class MessageType(IntEnum):
+    # 认证
+    LOGIN_REQ = 0x01        # C->S 登录请求
+    LOGIN_RESP = 0x02       # S->C 登录响应
+    REGISTER_REQ = 0x03     # C->S 注册请求
+    REGISTER_RESP = 0x04    # S->C 注册响应
+
+    # 消息
+    PRIVATE_MSG = 0x05      # C<->S 私聊消息
+    GROUP_MSG = 0x06        # C<->S 群聊消息
+
+    # 心跳
+    HEARTBEAT = 0x07        # C->S 心跳包
+    HEARTBEAT_ACK = 0x08    # S->C 心跳确认
+
+    # 文件传输 (中继模式)
+    FILE_INIT = 0x09        # C<->S 文件传输初始化
+    FILE_DATA = 0x0A        # C<->S 文件数据块
+    FILE_ACK = 0x0B         # C<->S 文件块确认
+
+    # 群组管理
+    GROUP_CREATE = 0x0C     # C<->S 创建群组
+    GROUP_JOIN = 0x0D       # C<->S 加入群组
+    GROUP_LEAVE = 0x0E      # C<->S 退出群组
+
+    # 状态与通知
+    STATUS_UPDATE = 0x0F    # S->C 在线状态推送
+    MSG_RECALL = 0x10       # C<->S 消息撤回
+
+    # AI
+    AI_QUERY = 0x11         # C->S @AI 查询
+    AI_RESP = 0x12          # S->C AI 回复
+    CONTENT_WARN = 0x13     # S->C 内容违规警告
+
+    # 历史消息
+    HISTORY_REQ = 0x14      # C->S 历史消息请求
+    HISTORY_RESP = 0x15     # S->C 历史消息响应
+
+    # 在线用户
+    ONLINE_USERS = 0x16     # C<->S 在线用户列表
+
+    # P2P 打洞
+    P2P_HOLE_PUNCH = 0x17   # C<->S P2P 打洞协助
+    P2P_READY = 0x18        # C<->S P2P 就绪通知
+
+    # 错误
+    ERROR = 0xFF            # S->C 错误响应
+
+
+# 错误码
+class ErrorCode(IntEnum):
+    SUCCESS = 0
+    INVALID_REQUEST = 1
+    AUTH_FAILED = 2
+    USER_EXISTS = 3
+    USER_NOT_FOUND = 4
+    GROUP_NOT_FOUND = 5
+    NOT_GROUP_MEMBER = 6
+    MESSAGE_TOO_LARGE = 7
+    FILE_TOO_LARGE = 8
+    RATE_LIMITED = 9
+    INTERNAL_ERROR = 10
+    P2P_FAILED = 11
+    MSG_NOT_FOUND = 12
+    RECALL_TIMEOUT = 13
+    CONTENT_REJECTED = 14
+    INVALID_PAYLOAD = 15
+
+
+class SequenceGenerator:
+    """全局序列号生成器"""
+    _seq = 0
+
+    @classmethod
+    def next(cls) -> int:
+        cls._seq = (cls._seq + 1) & 0xFFFFFFFF
+        return cls._seq
+
+
+def encode_message(msg_type: int, payload: dict, seq: int = None) -> bytes:
+    """
+    编码消息为二进制格式。
+    返回完整的二进制包：header + payload_json
+    """
+    if seq is None:
+        seq = SequenceGenerator.next()
+
+    payload_bytes = json.dumps(payload, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+    payload_len = len(payload_bytes)
+
+    header = struct.pack(HEADER_FORMAT, MAGIC, VERSION, msg_type, seq, payload_len)
+    return header + payload_bytes
+
+
+def decode_message(data: bytes):
+    """
+    从二进制数据中解码出一条消息。
+    Returns:
+        (msg_type, seq, payload_dict, consumed_bytes)
+        如果数据不足一个完整消息，consumed_bytes = 0，前三个返回 None。
+        如果解析成功，consumed_bytes 为实际消耗字节数。
+    """
+    if len(data) < HEADER_SIZE:
+        return None, 0, None, 0
+
+    magic, version, msg_type, seq, payload_len = struct.unpack(HEADER_FORMAT, data[:HEADER_SIZE])
+
+    if magic != MAGIC:
+        raise ValueError(f"Invalid magic: {magic:#x}, expected {MAGIC:#x}")
+
+    total_size = HEADER_SIZE + payload_len
+    if len(data) < total_size:
+        return None, 0, None, 0  # 不完整包，等待更多数据
+
+    if payload_len > 0:
+        payload_bytes = data[HEADER_SIZE:total_size]
+        payload = json.loads(payload_bytes.decode("utf-8"))
+    else:
+        payload = {}
+
+    return msg_type, seq, payload, total_size
+
+
+def decode_messages(data: bytes):
+    """
+    从字节流中解码所有完整消息（处理粘包）。
+    Returns:
+        (messages, remaining_bytes)
+        messages: [(msg_type, seq, payload), ...]
+        remaining_bytes: 未消费的字节（不完整包尾部）
+    """
+    messages = []
+    offset = 0
+    data_len = len(data)
+
+    while offset < data_len:
+        chunk = data[offset:]
+        if len(chunk) < HEADER_SIZE:
+            break
+
+        msg_type, seq, payload, consumed = decode_message(chunk)
+        if consumed == 0:
+            break  # 不完整包
+
+        messages.append((msg_type, seq, payload))
+        offset += consumed
+
+    return messages, data[offset:]
+
+
+# ============================================================
+# T13: TCP 协议编解码增强
+# ============================================================
+
+class MessageProtocol:
+    """
+    处理 TCP 粘包/半包的消息协议处理器。
+    内部维护一个 buffer，每次调用 feed(data) 将新数据加入，
+    然后通过 next_message() 尝试提取完整消息。
+    """
+
+    def __init__(self):
+        self._buffer = bytearray()
+        self._msg_count = 0
+
+    def feed(self, data: bytes):
+        """将接收到的字节数据喂入 buffer"""
+        self._buffer.extend(data)
+
+    @property
+    def buffered_bytes(self) -> int:
+        return len(self._buffer)
+
+    @property
+    def message_count(self) -> int:
+        return self._msg_count
+
+    def next_message(self):
+        """
+        尝试从 buffer 中提取一条完整消息。
+        Returns:
+            (msg_type, seq, payload) | None
+            如果没有完整消息则返回 None。
+        """
+        if len(self._buffer) < HEADER_SIZE:
+            return None
+
+        total_size = self._get_message_total_size()
+        if total_size is None:
+            return None
+
+        if len(self._buffer) < total_size:
+            return None  # 数据还不够
+
+        chunk = bytes(self._buffer[:total_size])
+        self._buffer = self._buffer[total_size:]
+
+        msg_type, seq, payload, _ = decode_message(chunk)
+        self._msg_count += 1
+        return msg_type, seq, payload
+
+    def next_messages(self):
+        """
+        提取 buffer 中所有完整消息。
+        Returns:
+            [(msg_type, seq, payload), ...]
+        """
+        msgs = []
+        while True:
+            msg = self.next_message()
+            if msg is None:
+                break
+            msgs.append(msg)
+        return msgs
+
+    def _get_message_total_size(self):
+        """估算当前 buffer 中第一条消息的完整长度（含 header）。"""
+        if len(self._buffer) < HEADER_SIZE:
+            return None
+        _, _, _, _, payload_len = struct.unpack(HEADER_FORMAT, self._buffer[:HEADER_SIZE])
+        return HEADER_SIZE + payload_len
+
+    def reset(self):
+        """清空 buffer"""
+        self._buffer.clear()
+        self._msg_count = 0
+
+
+class Connection:
+    """
+    封装 asyncio socket 连接的异步读写。
+    提供 send_message / read_message 高阶接口。
+    """
+
+    def __init__(self, reader: asyncio.StreamReader, writer: asyncio.StreamWriter,
+                 protocol: MessageProtocol = None):
+        self.reader = reader
+        self.writer = writer
+        self.protocol = protocol or MessageProtocol()
+        self._closed = False
+        self._remote_addr = writer.get_extra_info("peername") if writer else None
+
+    @property
+    def remote_addr(self):
+        return self._remote_addr
+
+    @property
+    def is_closed(self) -> bool:
+        return self._closed
+
+    async def send_message(self, msg_type: int, payload: dict, seq: int = None):
+        """异步发送一条编码后的消息"""
+        if self._closed:
+            raise ConnectionError("Connection is closed")
+        data = encode_message(msg_type, payload, seq)
+        self.writer.write(data)
+        await self.writer.drain()
+
+    async def read_message(self):
+        """
+        异步读取一条完整消息。内部自动处理粘包/半包。
+        Returns:
+            (msg_type, seq, payload) | None (连接关闭)
+        """
+        while True:
+            msg = self.protocol.next_message()
+            if msg is not None:
+                return msg
+
+            try:
+                chunk = await self.reader.read(4096)
+            except (ConnectionError, OSError):
+                self._closed = True
+                return None
+
+            if not chunk:
+                # 连接关闭
+                self._closed = True
+                # 检查 buffer 里是否还有残留消息
+                msg = self.protocol.next_message()
+                return msg
+
+            self.protocol.feed(chunk)
+
+    async def read_until_timeout(self, timeout: float = None):
+        """
+        带超时的单条消息读取。
+        Returns:
+            (msg_type, seq, payload) | None (超时或连接关闭)
+        """
+        try:
+            return await asyncio.wait_for(self.read_message(), timeout=timeout)
+        except asyncio.TimeoutError:
+            return None
+
+    async def send_heartbeat(self):
+        """发送心跳包"""
+        await self.send_message(MessageType.HEARTBEAT, {})
+
+    def close(self):
+        """关闭连接"""
+        if not self._closed:
+            self._closed = True
+            try:
+                self.writer.close()
+            except Exception:
+                pass
+
+    async def wait_closed(self):
+        """等待连接完全关闭"""
+        try:
+            await self.writer.wait_closed()
+        except Exception:
+            pass
+
+
+# ============================================================
+# Payload 构建辅助函数
+# ============================================================
+
+def make_login_payload(username: str, password_hash: str) -> dict:
+    return {"username": username, "password_hash": password_hash}
+
+
+def make_register_payload(username: str, password_hash: str, public_key: str = "") -> dict:
+    return {"username": username, "password_hash": password_hash, "public_key": public_key}
+
+
+def make_private_msg_payload(from_id: int, to_id: int, content: str,
+                             msg_id: int = 0, timestamp: int = 0) -> dict:
+    return {
+        "from_id": from_id,
+        "to_id": to_id,
+        "content": content,
+        "msg_id": msg_id,
+        "timestamp": timestamp or _now(),
+    }
+
+
+def make_group_msg_payload(from_id: int, group_id: int, content: str,
+                           msg_id: int = 0, timestamp: int = 0) -> dict:
+    return {
+        "from_id": from_id,
+        "group_id": group_id,
+        "content": content,
+        "msg_id": msg_id,
+        "timestamp": timestamp or _now(),
+    }
+
+
+def make_error_payload(code: int, message: str) -> dict:
+    return {"code": code, "message": message}
+
+
+def make_p2p_hole_punch_payload(user_id: int, target_id: int, addr: str = "") -> dict:
+    return {"user_id": user_id, "target_id": target_id, "addr": addr}
+
+
+def make_ai_query_payload(user_id: int, group_id: int, query: str,
+                          msg_id: int = 0) -> dict:
+    payload = {"user_id": user_id, "from_id": user_id, "group_id": group_id, "query": query}
+    if msg_id:
+        payload["msg_id"] = msg_id
+    return payload
+
+
+def make_ai_resp_payload(group_id: int, content: str, user_id: int = 0,
+                         query: str = "", msg_id: int = 0) -> dict:
+    payload = {"group_id": group_id, "content": content, "reply": content}
+    if user_id:
+        payload["user_id"] = user_id
+        payload["from_id"] = user_id
+    if query:
+        payload["query"] = query
+    if msg_id:
+        payload["msg_id"] = msg_id
+    return payload
+
+
+def make_content_warn_payload(user_id: int, reason: str, level: str = "mid",
+                              msg_id: int = 0) -> dict:
+    payload = {"user_id": user_id, "reason": reason, "message": reason, "level": level}
+    if msg_id:
+        payload["msg_id"] = msg_id
+    return payload
+
+
+def make_file_init_payload(from_id: int, filename: str, filesize: int,
+                           file_id: str = "", to_id: int = 0,
+                           group_id: int = 0) -> dict:
+    payload = {
+        "from_id": from_id,
+        "filename": filename,
+        "filesize": filesize,
+        "file_id": file_id,
+    }
+    if to_id:
+        payload["to_id"] = to_id
+    if group_id:
+        payload["group_id"] = group_id
+    return payload
+
+
+def make_file_data_payload(file_id: str, offset: int, data: str,
+                           is_last: bool = False) -> dict:
+    return {"file_id": file_id, "offset": offset, "data": data, "is_last": is_last}
+
+
+def make_file_ack_payload(file_id: str, offset: int, received: int,
+                          success: bool = True) -> dict:
+    return {"file_id": file_id, "offset": offset, "received": received, "success": success}
+
+
+def make_recall_payload(msg_id, user_id: int = 0) -> dict:
+    payload = {"msg_id": msg_id}
+    if user_id:
+        payload["user_id"] = user_id
+    return payload
+
+
+def _now() -> int:
+    import time
+    return int(time.time())

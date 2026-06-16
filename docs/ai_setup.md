@@ -1,1 +1,60 @@
-IyBBSSDmnI3liqHphY3nva7or7TmmI4KCiMjIOebruaghwoKYEBBSWAg5Yqf6IO96YCa6L+H5pyN5Yqh56uv5byC5q2l6LCD55SoIE9wZW5BSS1jb21wYXRpYmxlIENoYXQgQ29tcGxldGlvbnMg5o6l5Y+j5a6e546w44CC5pyN5Yqh56uv5LiN5Lya5Zyo5Luj56CB5oiWIGJhdCDohJrmnKzkuK3kv53lrZggQVBJIEtlee+8jOWPquS7jueOr+Wig+WPmOmHj+ivu+WPluOAggoKIyMg546v5aKD5Y+Y6YeP5LyY5YWI57qnCgoxLiDlpoLmnpzorr7nva7kuoYgYEJJR01PREVMX0FQSV9LRVlg77yM5LyY5YWI5L2/55SoIEJpZ01vZGVs44CCCjIuIOWmguaenOayoeaciSBgQklHTU9ERUxfQVBJX0tFWWDvvIzkvYborr7nva7kuoYgYERBU0hTQ09QRV9BUElfS0VZYO+8jOS9v+eUqCBEYXNoU2NvcGUgT3BlbkFJLWNvbXBhdGlibGUg5o6l5Y+j44CCCjMuIGBBSV9BUElfQkFTRWAg5ZKMIGBBSV9NT0RFTGAg5Y+v5Lul5omL5Yqo6KaG55uW6buY6K6k5o6l5Y+j5Zyw5Z2A5ZKM5qih5Z6L5ZCN44CCCgrpu5jorqTlgLzvvJoKCnwg5Zy65pmvIHwg6buY6K6kIEFQSSBCYXNlIHwg6buY6K6k5qih5Z6LIHwKfC0tLS0tLXwtLS0tLS0tLS0tLS0tLS18LS0tLS0tLS0tLXwKfCBgQklHTU9ERUxfQVBJX0tFWWAgfCBgaHR0cHM6Ly9vcGVuLmJpZ21vZGVsLmNuL2FwaS9wYWFzL3Y0YCB8IGBnbG0tNC1mbGFzaC0yNTA0MTRgIHwKfCDku4UgYERBU0hTQ09QRV9BUElfS0VZYCB8IGBodHRwczovL2Rhc2hzY29wZS5hbGl5dW5jcy5jb20vY29tcGF0aWJsZS1tb2RlL3YxYCB8IGBxd2VuLXR1cmJvYCB8CgojIyBXaW5kb3dzIFBvd2VyU2hlbGwg56S65L6LCgpgYGBwb3dlcnNoZWxsCiRlbnY6QklHTU9ERUxfQVBJX0tFWT0ieW91cl9iaWdtb2RlbF9rZXkiCnB5dGhvbiAtbSBzZXJ2ZXIubWFpbgpgYGAKCuaIlu+8mgoKYGBgcG93ZXJzaGVsbAokZW52OkRBU0hTQ09QRV9BUElfS0VZPSJ5b3VyX2Rhc2hzY29wZV9rZXkiCnB5dGhvbiAtbSBzZXJ2ZXIubWFpbgpgYGAKCuaJi+WKqOaMh+WumuWFvOWuueaOpeWPo++8mgoKYGBgcG93ZXJzaGVsbAokZW52OkFJX0FQSV9CQVNFPSJodHRwczovL2V4YW1wbGUuY29tL3YxIgokZW52OkFJX01PREVMPSJjdXN0b20tbW9kZWwiCnB5dGhvbiAtbSBzZXJ2ZXIubWFpbgpgYGAKCiMjIOWksei0peWFnOW6lQoKYHNlcnZlci9haV9zZXJ2aWNlLnB5YCDlt7Lopobnm5bku6XkuIvmg4XlhrXvvJoKCi0g5pyq6YWN572uIEFQSSBLZXnvvJrov5Tlm57igJxBSSDmnI3liqHmnKrphY3nva7igJ3mj5DnpLoKLSBIVFRQIDQwMe+8mui/lOWbnuiupOivgeWksei0peaPkOekugotIEhUVFAgNDI577ya6L+U5Zue6K+35rGC6L+H5LqO6aKR57mB5o+Q56S6Ci0gSFRUUCA1eHjvvJrov5Tlm57mnI3liqHnq6/mmoLkuI3lj6/nlKjmj5DnpLoKLSDor7fmsYLotoXml7bvvJrov5Tlm57otoXml7bmj5DnpLoKLSDnvZHnu5zplJnor6/vvJrov5Tlm57nvZHnu5zplJnor6/mj5DnpLoKLSDlk43lupTop6PmnpDlpLHotKXvvJrov5Tlm57op6PmnpDlpLHotKXmj5DnpLoKCuebuOWFs+WNleWFg+a1i+ivle+8mmB0ZXN0cy90ZXN0X2FpX3NlcnZpY2UucHlg44CC5rWL6K+V6YCa6L+HIG1vY2sgSFRUUCDooYzkuLrvvIzkuI3kvp3otZbnnJ/lrp4gQVBJIEtleeOAggoKIyMg5a6J5YWo6KaB5rGCCgotIOS4jeimgeaKiiBBUEkgS2V5IOWGmeWFpSBgLmJhdGDjgIFgLnB5YOOAgWAubWRgIOaIluaIquWbvuOAggotIGAuY2xhdWRlL2DjgIFgLmVudmDjgIFgKi5lbnZgIOW3suWcqCBgLmdpdGlnbm9yZWAg5Lit5b+955Wl44CCCi0g5Lqk5LuY5Y6L57yp5YyF5YmN5LuN5bqU5Lq65bel56Gu6K6kIGAuY2xhdWRlL2DjgIFgYWdlbnQtd29ya3NwYWNlL2Ag5LiN6KKr5omT5YyF44CCCg==
+# AI 服务配置说明
+
+## 目标
+
+`@AI` 功能通过服务端异步调用 OpenAI-compatible Chat Completions 接口实现。服务端不会在代码或 bat 脚本中保存 API Key，只从环境变量读取。
+
+## 环境变量优先级
+
+1. 如果设置了 `BIGMODEL_API_KEY`，优先使用 BigModel。
+2. 如果没有 `BIGMODEL_API_KEY`，但设置了 `DASHSCOPE_API_KEY`，使用 DashScope OpenAI-compatible 接口。
+3. `AI_API_BASE` 和 `AI_MODEL` 可以手动覆盖默认接口地址和模型名。
+
+默认值：
+
+| 场景 | 默认 API Base | 默认模型 |
+|------|---------------|----------|
+| `BIGMODEL_API_KEY` | `https://open.bigmodel.cn/api/paas/v4` | `glm-4-flash-250414` |
+| 仅 `DASHSCOPE_API_KEY` | `https://dashscope.aliyuncs.com/compatible-mode/v1` | `qwen-turbo` |
+
+## Windows PowerShell 示例
+
+```powershell
+$env:BIGMODEL_API_KEY="your_bigmodel_key"
+python -m server.main
+```
+
+或：
+
+```powershell
+$env:DASHSCOPE_API_KEY="your_dashscope_key"
+python -m server.main
+```
+
+手动指定兼容接口：
+
+```powershell
+$env:AI_API_BASE="https://example.com/v1"
+$env:AI_MODEL="custom-model"
+python -m server.main
+```
+
+## 失败兜底
+
+`server/ai_service.py` 已覆盖以下情况：
+
+- 未配置 API Key：返回“AI 服务未配置”提示
+- HTTP 401：返回认证失败提示
+- HTTP 429：返回请求过于频繁提示
+- HTTP 5xx：返回服务端暂不可用提示
+- 请求超时：返回超时提示
+- 网络错误：返回网络错误提示
+- 响应解析失败：返回解析失败提示
+
+相关单元测试：`tests/test_ai_service.py`。测试通过 mock HTTP 行为，不依赖真实 API Key。
+
+## 安全要求
+
+- 不要把 API Key 写入 `.bat`、`.py`、`.md` 或截图。
+- `.claude/`、`.env`、`*.env` 已在 `.gitignore` 中忽略。
+- 交付压缩包前仍应人工确认 `.claude/`、`agent-workspace/` 不被打包。

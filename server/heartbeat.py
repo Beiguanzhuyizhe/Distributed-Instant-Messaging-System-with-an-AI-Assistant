@@ -1,1 +1,70 @@
-IiIiCuW/g+i3s+ajgOa1i+aooeWdlwrlkI7lj7Dlvqrnjq/mo4Dmn6XmiYDmnInov57mjqXnmoTlv4Pot7PnirbmgIHvvIzotoXml7bov57mjqXoh6rliqjmuIXnkIbjgIIKIiIiCmltcG9ydCBhc3luY2lvCmltcG9ydCB0aW1lCmltcG9ydCBsb2dnaW5nCgpsb2dnZXIgPSBsb2dnaW5nLmdldExvZ2dlcihfX25hbWVfXykKCgpjbGFzcyBIZWFydGJlYXRNb25pdG9yOgogICAgIiIi5b+D6Lez5qOA5rWL5Zmo77yM5ZCO5Y+w5Lu75Yqh5ZGo5pyf5oCn5qOA5p+l6L+e5o6l5rS75oCnIiIiCgogICAgZGVmIF9faW5pdF9fKHNlbGYsIGNvbm5fbWFuYWdlciwgdXNlcl9tYW5hZ2VyLCBtc2dfcm91dGVyLAogICAgICAgICAgICAgICAgIGNoZWNrX2ludGVydmFsOiBpbnQgPSA1LCB0aW1lb3V0OiBpbnQgPSAzMCwgcDJwX2hlbHBlcj1Ob25lKToKICAgICAgICBzZWxmLmNvbm5fbWFuYWdlciA9IGNvbm5fbWFuYWdlcgogICAgICAgIHNlbGYudXNlcl9tYW5hZ2VyID0gdXNlcl9tYW5hZ2VyCiAgICAgICAgc2VsZi5tc2dfcm91dGVyID0gbXNnX3JvdXRlcgogICAgICAgIHNlbGYuX2NoZWNrX2ludGVydmFsID0gY2hlY2tfaW50ZXJ2YWwKICAgICAgICBzZWxmLl90aW1lb3V0ID0gdGltZW91dAogICAgICAgIHNlbGYuX3AycF9oZWxwZXIgPSBwMnBfaGVscGVyCiAgICAgICAgc2VsZi5fdGFzayA9IE5vbmUKCiAgICBkZWYgc3RhcnQoc2VsZik6CiAgICAgICAgIiIi5ZCv5Yqo5ZCO5Y+w5b+D6Lez5qOA5rWL5Lu75YqhIiIiCiAgICAgICAgaWYgc2VsZi5fdGFzayBpcyBOb25lOgogICAgICAgICAgICBzZWxmLl90YXNrID0gYXN5bmNpby5jcmVhdGVfdGFzayhzZWxmLl9ydW4oKSkKICAgICAgICAgICAgbG9nZ2VyLmluZm8oIkhlYXJ0YmVhdCBtb25pdG9yIHN0YXJ0ZWQgKGludGVydmFsPSVkcywgdGltZW91dD0lZHMpIiwKICAgICAgICAgICAgICAgICAgICAgICAgc2VsZi5fY2hlY2tfaW50ZXJ2YWwsIHNlbGYuX3RpbWVvdXQpCgogICAgZGVmIHN0b3Aoc2VsZik6CiAgICAgICAgIiIi5YGc5q2i5b+D6Lez5qOA5rWL5Lu75YqhIiIiCiAgICAgICAgaWYgc2VsZi5fdGFzazoKICAgICAgICAgICAgc2VsZi5fdGFzay5jYW5jZWwoKQogICAgICAgICAgICBzZWxmLl90YXNrID0gTm9uZQogICAgICAgICAgICBsb2dnZXIuaW5mbygiSGVhcnRiZWF0IG1vbml0b3Igc3RvcHBlZCIpCgogICAgYXN5bmMgZGVmIF9ydW4oc2VsZik6CiAgICAgICAgIiIi5b+D6Lez5qOA5rWL5Li75b6q546vIiIiCiAgICAgICAgd2hpbGUgVHJ1ZToKICAgICAgICAgICAgdHJ5OgogICAgICAgICAgICAgICAgYXdhaXQgYXN5bmNpby5zbGVlcChzZWxmLl9jaGVja19pbnRlcnZhbCkKICAgICAgICAgICAgICAgIGF3YWl0IHNlbGYuX2NoZWNrKCkKICAgICAgICAgICAgZXhjZXB0IGFzeW5jaW8uQ2FuY2VsbGVkRXJyb3I6CiAgICAgICAgICAgICAgICBicmVhawogICAgICAgICAgICBleGNlcHQgRXhjZXB0aW9uIGFzIGU6CiAgICAgICAgICAgICAgICBsb2dnZXIuZXJyb3IoIkhlYXJ0YmVhdCBjaGVjayBlcnJvcjogJXMiLCBlKQoKICAgIGFzeW5jIGRlZiBfY2hlY2soc2VsZik6CiAgICAgICAgIiIi5qOA5p+l5omA5pyJ6L+e5o6l77yM5riF55CG6LaF5pe255qE56a757q/6L+e5o6lIiIiCiAgICAgICAgbm93ID0gdGltZS50aW1lKCkKICAgICAgICBjdXRvZmYgPSBub3cgLSBzZWxmLl90aW1lb3V0CiAgICAgICAgc3RhbGVfY29ubl9pZHMgPSBzZWxmLmNvbm5fbWFuYWdlci5nZXRfc3RhbGVfY29ubmVjdGlvbnMoY3V0b2ZmKQoKICAgICAgICBmb3IgY29ubl9pZCBpbiBzdGFsZV9jb25uX2lkczoKICAgICAgICAgICAgdXNlcl9pZCA9IHNlbGYuY29ubl9tYW5hZ2VyLmdldF91c2VyX2lkKGNvbm5faWQpCiAgICAgICAgICAgIGF3YWl0IHNlbGYuY29ubl9tYW5hZ2VyLnJlbW92ZShjb25uX2lkKQogICAgICAgICAgICBpZiBub3QgdXNlcl9pZCBvciBzZWxmLmNvbm5fbWFuYWdlci5nZXRfYnlfdXNlcih1c2VyX2lkKToKICAgICAgICAgICAgICAgIGNvbnRpbnVlCgogICAgICAgICAgICBsb2dnZXIuaW5mbygiSGVhcnRiZWF0IHRpbWVvdXQgZm9yIHVzZXIgJXMgKGNvbm5faWQ9JXMpLCBjbGVhbmluZyB1cCIsIHVzZXJfaWQsIGNvbm5faWQpCiAgICAgICAgICAgIGlmIHNlbGYuX3AycF9oZWxwZXI6CiAgICAgICAgICAgICAgICBzZWxmLl9wMnBfaGVscGVyLnVucmVnaXN0ZXJfdXNlcih1c2VyX2lkKQogICAgICAgICAgICBhd2FpdCBzZWxmLnVzZXJfbWFuYWdlci5zZXRfb25saW5lX3N0YXR1cyh1c2VyX2lkLCBGYWxzZSkKICAgICAgICAgICAgIyDov57mjqXmuIXnkIblkozph43mlrDnmbvlvZXlj6/og73lubblj5Hlj5HnlJ/vvIzlub/mkq3liY3lho3noa7orqTkuIDmrKHjgIIKICAgICAgICAgICAgaWYgc2VsZi5jb25uX21hbmFnZXIuZ2V0X2J5X3VzZXIodXNlcl9pZCk6CiAgICAgICAgICAgICAgICBhd2FpdCBzZWxmLnVzZXJfbWFuYWdlci5zZXRfb25saW5lX3N0YXR1cyh1c2VyX2lkLCBUcnVlKQogICAgICAgICAgICAgICAgY29udGludWUKICAgICAgICAgICAgYXdhaXQgc2VsZi5tc2dfcm91dGVyLmJyb2FkY2FzdF9vbmxpbmVfc3RhdHVzKHVzZXJfaWQsIEZhbHNlKQo=
+"""
+心跳检测模块
+后台循环检查所有连接的心跳状态，超时连接自动清理。
+"""
+import asyncio
+import time
+import logging
+
+logger = logging.getLogger(__name__)
+
+
+class HeartbeatMonitor:
+    """心跳检测器，后台任务周期性检查连接活性"""
+
+    def __init__(self, conn_manager, user_manager, msg_router,
+                 check_interval: int = 5, timeout: int = 30, p2p_helper=None):
+        self.conn_manager = conn_manager
+        self.user_manager = user_manager
+        self.msg_router = msg_router
+        self._check_interval = check_interval
+        self._timeout = timeout
+        self._p2p_helper = p2p_helper
+        self._task = None
+
+    def start(self):
+        """启动后台心跳检测任务"""
+        if self._task is None:
+            self._task = asyncio.create_task(self._run())
+            logger.info("Heartbeat monitor started (interval=%ds, timeout=%ds)",
+                        self._check_interval, self._timeout)
+
+    def stop(self):
+        """停止心跳检测任务"""
+        if self._task:
+            self._task.cancel()
+            self._task = None
+            logger.info("Heartbeat monitor stopped")
+
+    async def _run(self):
+        """心跳检测主循环"""
+        while True:
+            try:
+                await asyncio.sleep(self._check_interval)
+                await self._check()
+            except asyncio.CancelledError:
+                break
+            except Exception as e:
+                logger.error("Heartbeat check error: %s", e)
+
+    async def _check(self):
+        """检查所有连接，清理超时的离线连接"""
+        now = time.time()
+        cutoff = now - self._timeout
+        stale_conn_ids = self.conn_manager.get_stale_connections(cutoff)
+
+        for conn_id in stale_conn_ids:
+            user_id = self.conn_manager.get_user_id(conn_id)
+            await self.conn_manager.remove(conn_id)
+            if not user_id or self.conn_manager.get_by_user(user_id):
+                continue
+
+            logger.info("Heartbeat timeout for user %s (conn_id=%s), cleaning up", user_id, conn_id)
+            if self._p2p_helper:
+                self._p2p_helper.unregister_user(user_id)
+            await self.user_manager.set_online_status(user_id, False)
+            # 连接清理和重新登录可能并发发生，广播前再确认一次。
+            if self.conn_manager.get_by_user(user_id):
+                await self.user_manager.set_online_status(user_id, True)
+                continue
+            await self.msg_router.broadcast_online_status(user_id, False)

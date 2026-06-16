@@ -1,1 +1,108 @@
-IiIiCua2iOaBr+WOhuWPsueuoeeQhuaooeWdlwrmj5Dkvpvmtojmga/nmoTmjIHkuYXljJblrZjlgqjjgIHljoblj7Lmn6Xor6LlkozmkqTlm57lip/og73jgIIKIiIiCmltcG9ydCB0aW1lCmltcG9ydCBhc3luY2lvCmltcG9ydCB1dWlkCmZyb20gc2VydmVyLmRhdGFiYXNlIGltcG9ydCBnZXRfZGIKCgpjbGFzcyBNZXNzYWdlSGlzdG9yeToKICAgICIiIua2iOaBr+WOhuWPsueuoeeQhuWZqCIiIgoKICAgIGRlZiBfX2luaXRfXyhzZWxmLCBkYl9wYXRoOiBzdHIsIHJlY2FsbF93aW5kb3c6IGludCA9IDEyMCk6CiAgICAgICAgc2VsZi5fZGJfcGF0aCA9IGRiX3BhdGgKICAgICAgICBzZWxmLl9yZWNhbGxfd2luZG93ID0gcmVjYWxsX3dpbmRvdyAgIyDmkqTlm57ml7bpl7Tnqpflj6PvvIjnp5LvvIkKCiAgICBkZWYgX2dlbl9tc2dfaWQoc2VsZikgLT4gc3RyOgogICAgICAgIHJldHVybiBzdHIodXVpZC51dWlkNCgpKQoKICAgIGFzeW5jIGRlZiBzdG9yZV9tZXNzYWdlKAogICAgICAgIHNlbGYsCiAgICAgICAgc2VuZGVyX2lkOiBpbnQsCiAgICAgICAgcmVjZWl2ZXJfaWQ6IGludCwKICAgICAgICBncm91cF9pZDogaW50LAogICAgICAgIG1zZ190eXBlOiBpbnQsCiAgICAgICAgY29udGVudDogc3RyLAogICAgICAgIG1zZ19pZDogc3RyID0gTm9uZSwKICAgICAgICBpc19lbmNyeXB0ZWQ6IGludCA9IDAsCiAgICApIC0+IHN0cjoKICAgICAgICAiIiLlrZjlgqjmtojmga/liLDmlbDmja7lupPvvIzov5Tlm54gbXNnX2lk77yI5aeL57uI5L2/55So5pyN5Yqh56uvIFVVSUTvvIzpgb/lhY3lpJrlrqLmiLfnq6/lhrLnqoHvvIkiIiIKICAgICAgICBhY3R1YWxfbXNnX2lkID0gc2VsZi5fZ2VuX21zZ19pZCgpCiAgICAgICAgbm93ID0gdGltZS50aW1lKCkKCiAgICAgICAgZGVmIF9ydW4oKToKICAgICAgICAgICAgd2l0aCBnZXRfZGIoc2VsZi5fZGJfcGF0aCkgYXMgY29ubjoKICAgICAgICAgICAgICAgIGNvbm4uZXhlY3V0ZSgKICAgICAgICAgICAgICAgICAgICAiIiJJTlNFUlQgSU5UTyBtZXNzYWdlcwogICAgICAgICAgICAgICAgICAgICAgIChtc2dfaWQsIHNlbmRlcl9pZCwgcmVjZWl2ZXJfaWQsIGdyb3VwX2lkLCBtc2dfdHlwZSwgY29udGVudCwgaXNfZW5jcnlwdGVkLCBjcmVhdGVkX2F0KQogICAgICAgICAgICAgICAgICAgICAgIFZBTFVFUyAoPywgPywgPywgPywgPywgPywgPywgPykiIiIsCiAgICAgICAgICAgICAgICAgICAgKGFjdHVhbF9tc2dfaWQsIHNlbmRlcl9pZCwgcmVjZWl2ZXJfaWQsIGdyb3VwX2lkLCBtc2dfdHlwZSwgY29udGVudCwgaXNfZW5jcnlwdGVkLCBub3cpLAogICAgICAgICAgICAgICAgKQogICAgICAgICAgICAgICAgY29ubi5jb21taXQoKQogICAgICAgICAgICAgICAgcmV0dXJuIGFjdHVhbF9tc2dfaWQKICAgICAgICByZXR1cm4gYXdhaXQgYXN5bmNpby50b190aHJlYWQoX3J1bikKCiAgICBhc3luYyBkZWYgZ2V0X3ByaXZhdGVfaGlzdG9yeSgKICAgICAgICBzZWxmLCB1c2VyX2lkOiBpbnQsIHRhcmdldF9pZDogaW50LCBsaW1pdDogaW50ID0gNTAsIGJlZm9yZV9pZDogaW50ID0gTm9uZQogICAgKSAtPiBsaXN0OgogICAgICAgICIiIuiOt+WPluengeiBiuWOhuWPsua2iOaBr++8jOaMieaXtumXtOato+W6j+i/lOWbniIiIgogICAgICAgIGRlZiBfcnVuKCk6CiAgICAgICAgICAgIHdpdGggZ2V0X2RiKHNlbGYuX2RiX3BhdGgpIGFzIGNvbm46CiAgICAgICAgICAgICAgICB3aGVyZSA9ICIiIigoc2VuZGVyX2lkID0gPyBBTkQgcmVjZWl2ZXJfaWQgPSA/KQogICAgICAgICAgICAgICAgICAgICAgICAgICAgT1IgKHNlbmRlcl9pZCA9ID8gQU5EIHJlY2VpdmVyX2lkID0gPykpIiIiCiAgICAgICAgICAgICAgICBwYXJhbXMgPSBbdXNlcl9pZCwgdGFyZ2V0X2lkLCB0YXJnZXRfaWQsIHVzZXJfaWRdCiAgICAgICAgICAgICAgICBpZiBiZWZvcmVfaWQ6CiAgICAgICAgICAgICAgICAgICAgd2hlcmUgKz0gIiBBTkQgaWQgPCA/IgogICAgICAgICAgICAgICAgICAgIHBhcmFtcy5hcHBlbmQoYmVmb3JlX2lkKQogICAgICAgICAgICAgICAgcXVlcnkgPSBmIlNFTEVDVCAqIEZST00gbWVzc2FnZXMgV0hFUkUge3doZXJlfSBPUkRFUiBCWSBpZCBERVNDIExJTUlUID8iCiAgICAgICAgICAgICAgICBwYXJhbXMuYXBwZW5kKGxpbWl0KQogICAgICAgICAgICAgICAgY3VyID0gY29ubi5leGVjdXRlKHF1ZXJ5LCBwYXJhbXMpCiAgICAgICAgICAgICAgICByb3dzID0gW2RpY3QocikgZm9yIHIgaW4gY3VyLmZldGNoYWxsKCldCiAgICAgICAgICAgICAgICByb3dzLnJldmVyc2UoKQogICAgICAgICAgICAgICAgcmV0dXJuIHJvd3MKICAgICAgICByZXR1cm4gYXdhaXQgYXN5bmNpby50b190aHJlYWQoX3J1bikKCiAgICBhc3luYyBkZWYgZ2V0X2dyb3VwX2hpc3RvcnkoCiAgICAgICAgc2VsZiwgZ3JvdXBfaWQ6IGludCwgbGltaXQ6IGludCA9IDUwLCBiZWZvcmVfaWQ6IGludCA9IE5vbmUKICAgICkgLT4gbGlzdDoKICAgICAgICAiIiLojrflj5bnvqTogYrljoblj7Lmtojmga/vvIzmjInml7bpl7TmraPluo/ov5Tlm54iIiIKICAgICAgICBkZWYgX3J1bigpOgogICAgICAgICAgICB3aXRoIGdldF9kYihzZWxmLl9kYl9wYXRoKSBhcyBjb25uOgogICAgICAgICAgICAgICAgd2hlcmUgPSAiZ3JvdXBfaWQgPSA/IgogICAgICAgICAgICAgICAgcGFyYW1zID0gW2dyb3VwX2lkXQogICAgICAgICAgICAgICAgaWYgYmVmb3JlX2lkOgogICAgICAgICAgICAgICAgICAgIHdoZXJlICs9ICIgQU5EIGlkIDwgPyIKICAgICAgICAgICAgICAgICAgICBwYXJhbXMuYXBwZW5kKGJlZm9yZV9pZCkKICAgICAgICAgICAgICAgIHF1ZXJ5ID0gZiJTRUxFQ1QgKiBGUk9NIG1lc3NhZ2VzIFdIRVJFIHt3aGVyZX0gT1JERVIgQlkgaWQgREVTQyBMSU1JVCA/IgogICAgICAgICAgICAgICAgcGFyYW1zLmFwcGVuZChsaW1pdCkKICAgICAgICAgICAgICAgIGN1ciA9IGNvbm4uZXhlY3V0ZShxdWVyeSwgcGFyYW1zKQogICAgICAgICAgICAgICAgcm93cyA9IFtkaWN0KHIpIGZvciByIGluIGN1ci5mZXRjaGFsbCgpXQogICAgICAgICAgICAgICAgcm93cy5yZXZlcnNlKCkKICAgICAgICAgICAgICAgIHJldHVybiByb3dzCiAgICAgICAgcmV0dXJuIGF3YWl0IGFzeW5jaW8udG9fdGhyZWFkKF9ydW4pCgogICAgYXN5bmMgZGVmIHJlY2FsbF9tZXNzYWdlKHNlbGYsIG1zZ19pZDogc3RyLCB1c2VyX2lkOiBpbnQpIC0+IGRpY3Q6CiAgICAgICAgIiIi5pKk5Zue5raI5oGv77yIMuWIhumSn+WGheWPr+aSpOWbnu+8ie+8jOaIkOWKn+aXtui/lOWbnua2iOaBr+WFs+iBlOS/oeaBr+eUqOS6jumAmuefpSIiIgogICAgICAgIGRlZiBfcnVuKCk6CiAgICAgICAgICAgIHdpdGggZ2V0X2RiKHNlbGYuX2RiX3BhdGgpIGFzIGNvbm46CiAgICAgICAgICAgICAgICBjdXIgPSBjb25uLmV4ZWN1dGUoIlNFTEVDVCAqIEZST00gbWVzc2FnZXMgV0hFUkUgbXNnX2lkID0gPyIsIChtc2dfaWQsKSkKICAgICAgICAgICAgICAgIHJvdyA9IGN1ci5mZXRjaG9uZSgpCiAgICAgICAgICAgICAgICBpZiBub3Qgcm93OgogICAgICAgICAgICAgICAgICAgIHJldHVybiB7InN1Y2Nlc3MiOiBGYWxzZSwgImVycm9yIjogIua2iOaBr+S4jeWtmOWcqCJ9CiAgICAgICAgICAgICAgICBtc2cgPSBkaWN0KHJvdykKICAgICAgICAgICAgICAgIGlmIG1zZ1sic2VuZGVyX2lkIl0gIT0gdXNlcl9pZDoKICAgICAgICAgICAgICAgICAgICByZXR1cm4geyJzdWNjZXNzIjogRmFsc2UsICJlcnJvciI6ICLlj6rog73mkqTlm57oh6rlt7HnmoTmtojmga8ifQogICAgICAgICAgICAgICAgbm93ID0gdGltZS50aW1lKCkKICAgICAgICAgICAgICAgIGlmIG5vdyAtIG1zZ1siY3JlYXRlZF9hdCJdID4gc2VsZi5fcmVjYWxsX3dpbmRvdzoKICAgICAgICAgICAgICAgICAgICByZXR1cm4geyJzdWNjZXNzIjogRmFsc2UsICJlcnJvciI6ICLotoXov4fmkqTlm57ml7bpl7Tnqpflj6MifQogICAgICAgICAgICAgICAgY29ubi5leGVjdXRlKCJVUERBVEUgbWVzc2FnZXMgU0VUIHJlY2FsbGVkID0gMSBXSEVSRSBtc2dfaWQgPSA/IiwgKG1zZ19pZCwpKQogICAgICAgICAgICAgICAgY29ubi5jb21taXQoKQogICAgICAgICAgICAgICAgcmV0dXJuIHsKICAgICAgICAgICAgICAgICAgICAic3VjY2VzcyI6IFRydWUsCiAgICAgICAgICAgICAgICAgICAgIm1zZ19pZCI6IG1zZ19pZCwKICAgICAgICAgICAgICAgICAgICAicmVjZWl2ZXJfaWQiOiBtc2dbInJlY2VpdmVyX2lkIl0sCiAgICAgICAgICAgICAgICAgICAgImdyb3VwX2lkIjogbXNnWyJncm91cF9pZCJdLAogICAgICAgICAgICAgICAgfQogICAgICAgIHJldHVybiBhd2FpdCBhc3luY2lvLnRvX3RocmVhZChfcnVuKQo=
+"""
+消息历史管理模块
+提供消息的持久化存储、历史查询和撤回功能。
+"""
+import time
+import asyncio
+import uuid
+from server.database import get_db
+
+
+class MessageHistory:
+    """消息历史管理器"""
+
+    def __init__(self, db_path: str, recall_window: int = 120):
+        self._db_path = db_path
+        self._recall_window = recall_window  # 撤回时间窗口（秒）
+
+    def _gen_msg_id(self) -> str:
+        return str(uuid.uuid4())
+
+    async def store_message(
+        self,
+        sender_id: int,
+        receiver_id: int,
+        group_id: int,
+        msg_type: int,
+        content: str,
+        msg_id: str = None,
+        is_encrypted: int = 0,
+    ) -> str:
+        """存储消息到数据库，返回 msg_id（始终使用服务端 UUID，避免多客户端冲突）"""
+        actual_msg_id = self._gen_msg_id()
+        now = time.time()
+
+        def _run():
+            with get_db(self._db_path) as conn:
+                conn.execute(
+                    """INSERT INTO messages
+                       (msg_id, sender_id, receiver_id, group_id, msg_type, content, is_encrypted, created_at)
+                       VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
+                    (actual_msg_id, sender_id, receiver_id, group_id, msg_type, content, is_encrypted, now),
+                )
+                conn.commit()
+                return actual_msg_id
+        return await asyncio.to_thread(_run)
+
+    async def get_private_history(
+        self, user_id: int, target_id: int, limit: int = 50, before_id: int = None
+    ) -> list:
+        """获取私聊历史消息，按时间正序返回"""
+        def _run():
+            with get_db(self._db_path) as conn:
+                where = """((sender_id = ? AND receiver_id = ?)
+                            OR (sender_id = ? AND receiver_id = ?))"""
+                params = [user_id, target_id, target_id, user_id]
+                if before_id:
+                    where += " AND id < ?"
+                    params.append(before_id)
+                query = f"SELECT * FROM messages WHERE {where} ORDER BY id DESC LIMIT ?"
+                params.append(limit)
+                cur = conn.execute(query, params)
+                rows = [dict(r) for r in cur.fetchall()]
+                rows.reverse()
+                return rows
+        return await asyncio.to_thread(_run)
+
+    async def get_group_history(
+        self, group_id: int, limit: int = 50, before_id: int = None
+    ) -> list:
+        """获取群聊历史消息，按时间正序返回"""
+        def _run():
+            with get_db(self._db_path) as conn:
+                where = "group_id = ?"
+                params = [group_id]
+                if before_id:
+                    where += " AND id < ?"
+                    params.append(before_id)
+                query = f"SELECT * FROM messages WHERE {where} ORDER BY id DESC LIMIT ?"
+                params.append(limit)
+                cur = conn.execute(query, params)
+                rows = [dict(r) for r in cur.fetchall()]
+                rows.reverse()
+                return rows
+        return await asyncio.to_thread(_run)
+
+    async def recall_message(self, msg_id: str, user_id: int) -> dict:
+        """撤回消息（2分钟内可撤回），成功时返回消息关联信息用于通知"""
+        def _run():
+            with get_db(self._db_path) as conn:
+                cur = conn.execute("SELECT * FROM messages WHERE msg_id = ?", (msg_id,))
+                row = cur.fetchone()
+                if not row:
+                    return {"success": False, "error": "消息不存在"}
+                msg = dict(row)
+                if msg["sender_id"] != user_id:
+                    return {"success": False, "error": "只能撤回自己的消息"}
+                now = time.time()
+                if now - msg["created_at"] > self._recall_window:
+                    return {"success": False, "error": "超过撤回时间窗口"}
+                conn.execute("UPDATE messages SET recalled = 1 WHERE msg_id = ?", (msg_id,))
+                conn.commit()
+                return {
+                    "success": True,
+                    "msg_id": msg_id,
+                    "receiver_id": msg["receiver_id"],
+                    "group_id": msg["group_id"],
+                }
+        return await asyncio.to_thread(_run)

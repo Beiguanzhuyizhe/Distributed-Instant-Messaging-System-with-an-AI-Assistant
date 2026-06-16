@@ -1,1 +1,165 @@
-IiIiCua2iOaBr+i3r+eUseaooeWdlwrotJ/otKPnp4HogYrjgIHnvqTogYrmtojmga/nmoTovazlj5HlkozlnKjnur/nirbmgIHlub/mkq3jgIIK6ZuG5oiQ5YaF5a655a6h5qC444CBQUkg5pm66IO95Zue5aSN44CCCiIiIgppbXBvcnQgdGltZQppbXBvcnQgbG9nZ2luZwpmcm9tIHNlcnZlci5wcm90b2NvbCBpbXBvcnQgTWVzc2FnZVR5cGUKCmxvZ2dlciA9IGxvZ2dpbmcuZ2V0TG9nZ2VyKF9fbmFtZV9fKQoKCmNsYXNzIE1lc3NhZ2VSb3V0ZXI6CiAgICAiIiLmtojmga/ot6/nlLHlmajvvIzlpITnkIbmtojmga/nmoTlrZjlgqjkuI7ovazlj5EiIiIKCiAgICBkZWYgX19pbml0X18oc2VsZiwgY29ubl9tYW5hZ2VyLCBtc2dfaGlzdG9yeSwgdXNlcl9tYW5hZ2VyLCBncm91cF9tYW5hZ2VyKToKICAgICAgICBzZWxmLmNvbm5fbWFuYWdlciA9IGNvbm5fbWFuYWdlcgogICAgICAgIHNlbGYubXNnX2hpc3RvcnkgPSBtc2dfaGlzdG9yeQogICAgICAgIHNlbGYudXNlcl9tYW5hZ2VyID0gdXNlcl9tYW5hZ2VyCiAgICAgICAgc2VsZi5ncm91cF9tYW5hZ2VyID0gZ3JvdXBfbWFuYWdlcgogICAgICAgIHNlbGYuX2NvbmZpZyA9IE5vbmUKICAgICAgICBzZWxmLl9tb2RlcmF0b3IgPSBOb25lCgogICAgZGVmIF9nZXRfbW9kZXJhdG9yKHNlbGYpOgogICAgICAgIGlmIHNlbGYuX21vZGVyYXRvciBpcyBOb25lOgogICAgICAgICAgICBmcm9tIHNlcnZlci5jb250ZW50X21vZGVyYXRvciBpbXBvcnQgZ2V0X21vZGVyYXRvcgogICAgICAgICAgICBzZWxmLl9tb2RlcmF0b3IgPSBnZXRfbW9kZXJhdG9yKCkKICAgICAgICByZXR1cm4gc2VsZi5fbW9kZXJhdG9yCgogICAgZGVmIF9tb2RlcmF0ZShzZWxmLCBjb250ZW50OiBzdHIpIC0+IGRpY3Q6CiAgICAgICAgIiIi5a6h5qC45raI5oGv5YaF5a6577yM6L+U5ZueIHsicmVqZWN0ZWQiOiBib29sLCAibGV2ZWwiOiBzdHIsICJjbGVhbl9jb250ZW50Ijogc3RyfSIiIgogICAgICAgIGZyb20gc2VydmVyLmNvbmZpZyBpbXBvcnQgU2VydmVyQ29uZmlnCiAgICAgICAgaWYgc2VsZi5fY29uZmlnIGlzIE5vbmU6CiAgICAgICAgICAgIHNlbGYuX2NvbmZpZyA9IFNlcnZlckNvbmZpZygpCiAgICAgICAgaWYgbm90IHNlbGYuX2NvbmZpZy5lbmFibGVfY29udGVudF9tb2RlcmF0aW9uOgogICAgICAgICAgICByZXR1cm4geyJyZWplY3RlZCI6IEZhbHNlLCAibGV2ZWwiOiAibG93IiwgImNsZWFuX2NvbnRlbnQiOiBjb250ZW50fQoKICAgICAgICBtb2RlcmF0b3IgPSBzZWxmLl9nZXRfbW9kZXJhdG9yKCkKICAgICAgICByZXN1bHQgPSBtb2RlcmF0b3IubW9kZXJhdGUoY29udGVudCkKICAgICAgICBpZiByZXN1bHQucGFzc2VkOgogICAgICAgICAgICByZXR1cm4geyJyZWplY3RlZCI6IEZhbHNlLCAibGV2ZWwiOiAibG93IiwgImNsZWFuX2NvbnRlbnQiOiBjb250ZW50fQoKICAgICAgICBpZiByZXN1bHQubGV2ZWwgPT0gImhpZ2giOgogICAgICAgICAgICBsb2dnZXIuaW5mbyhmIuWGheWuueWuoeaguOaLpuaIqiAoaGlnaCk6IHtyZXN1bHQucmVhc29ufSIpCiAgICAgICAgICAgIHJldHVybiB7InJlamVjdGVkIjogVHJ1ZSwgImxldmVsIjogImhpZ2giLCAiY2xlYW5fY29udGVudCI6IGNvbnRlbnR9CgogICAgICAgICMgbWlkIOe6p+WIq++8muabv+aNouaVj+aEn+ivjeWQjuaUvuihjAogICAgICAgIGNsZWFuID0gbW9kZXJhdG9yLnJlcGxhY2Vfc2Vuc2l0aXZlKGNvbnRlbnQpCiAgICAgICAgcmV0dXJuIHsicmVqZWN0ZWQiOiBGYWxzZSwgImxldmVsIjogIm1pZCIsICJjbGVhbl9jb250ZW50IjogY2xlYW59CgogICAgYXN5bmMgZGVmIHJvdXRlX3ByaXZhdGVfbXNnKHNlbGYsIGZyb21faWQ6IGludCwgdG9faWQ6IGludCwgY29udGVudDogc3RyLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsaWVudF9tc2dfaWQ9MCkgLT4gZGljdDoKICAgICAgICAiIiLovazlj5Hnp4HogYrmtojmga/vvJrlhYjlrZjlgqjvvIzlho3lsJ3or5Xnm7TmjqXovazlj5Hnu5nlnKjnur/mjqXmlLbmlrkiIiIKICAgICAgICAjIOWGheWuueWuoeaguAogICAgICAgIG1vZCA9IHNlbGYuX21vZGVyYXRlKGNvbnRlbnQpCiAgICAgICAgaWYgbW9kWyJyZWplY3RlZCJdOgogICAgICAgICAgICBhd2FpdCBzZWxmLmNvbm5fbWFuYWdlci5zZW5kX3RvX3VzZXIoCiAgICAgICAgICAgICAgICBmcm9tX2lkLCBNZXNzYWdlVHlwZS5DT05URU5UX1dBUk4sCiAgICAgICAgICAgICAgICB7Im1lc3NhZ2UiOiAi5raI5oGv5YyF5ZCr6L+d6KeE5YaF5a6577yM5bey6KKr5oum5oiqIiwgImxldmVsIjogbW9kWyJsZXZlbCJdfSwKICAgICAgICAgICAgKQogICAgICAgICAgICByZXR1cm4geyJtc2dfaWQiOiAiIiwgInRpbWVzdGFtcCI6IDAsICJzdGF0dXMiOiAicmVqZWN0ZWQifQogICAgICAgIGNvbnRlbnQgPSBtb2RbImNsZWFuX2NvbnRlbnQiXQoKICAgICAgICBtc2dfaWQgPSBhd2FpdCBzZWxmLm1zZ19oaXN0b3J5LnN0b3JlX21lc3NhZ2UoCiAgICAgICAgICAgIHNlbmRlcl9pZD1mcm9tX2lkLAogICAgICAgICAgICByZWNlaXZlcl9pZD10b19pZCwKICAgICAgICAgICAgZ3JvdXBfaWQ9Tm9uZSwKICAgICAgICAgICAgbXNnX3R5cGU9TWVzc2FnZVR5cGUuUFJJVkFURV9NU0csCiAgICAgICAgICAgIGNvbnRlbnQ9Y29udGVudCwKICAgICAgICAgICAgbXNnX2lkPXN0cihjbGllbnRfbXNnX2lkKSBpZiBjbGllbnRfbXNnX2lkIGFuZCBjbGllbnRfbXNnX2lkICE9IDAgZWxzZSBOb25lLAogICAgICAgICkKCiAgICAgICAgbm93X3RzID0gaW50KHRpbWUudGltZSgpKQoKICAgICAgICAjIOiOt+WPluWPkemAgeaWueeUqOaIt+WQjQogICAgICAgIHNlbmRlcl9pbmZvID0gYXdhaXQgc2VsZi51c2VyX21hbmFnZXIuZ2V0X3VzZXJfaW5mbyhmcm9tX2lkKQogICAgICAgIGZyb21fdXNlcm5hbWUgPSBzZW5kZXJfaW5mby5nZXQoInVzZXJuYW1lIiwgZiJVc2VyI3tmcm9tX2lkfSIpIGlmIHNlbmRlcl9pbmZvIGVsc2UgZiJVc2VyI3tmcm9tX2lkfSIKCiAgICAgICAgcGF5bG9hZCA9IHsKICAgICAgICAgICAgImZyb21faWQiOiBmcm9tX2lkLAogICAgICAgICAgICAiZnJvbV91c2VybmFtZSI6IGZyb21fdXNlcm5hbWUsCiAgICAgICAgICAgICJ0b19pZCI6IHRvX2lkLAogICAgICAgICAgICAiY29udGVudCI6IGNvbnRlbnQsCiAgICAgICAgICAgICJtc2dfaWQiOiBtc2dfaWQsCiAgICAgICAgICAgICJ0aW1lc3RhbXAiOiBub3dfdHMsCiAgICAgICAgfQoKICAgICAgICBzZW50ID0gYXdhaXQgc2VsZi5jb25uX21hbmFnZXIuc2VuZF90b191c2VyKAogICAgICAgICAgICB0b19pZCwgTWVzc2FnZVR5cGUuUFJJVkFURV9NU0csIHBheWxvYWQKICAgICAgICApCgogICAgICAgIHJldHVybiB7CiAgICAgICAgICAgICJtc2dfaWQiOiBtc2dfaWQsCiAgICAgICAgICAgICJ0aW1lc3RhbXAiOiBub3dfdHMsCiAgICAgICAgICAgICJzdGF0dXMiOiAiZGVsaXZlcmVkIiBpZiBzZW50IGVsc2UgInN0b3JlZCIsCiAgICAgICAgfQoKICAgIGFzeW5jIGRlZiByb3V0ZV9ncm91cF9tc2coc2VsZiwgZnJvbV9pZDogaW50LCBncm91cF9pZDogaW50LCBjb250ZW50OiBzdHIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNsaWVudF9tc2dfaWQ9MCkgLT4gZGljdDoKICAgICAgICAiIiLovazlj5HnvqTogYrmtojmga/vvJrlrZjlgqjlkI7lub/mkq3nu5nnvqTlhoXmiYDmnInlhbbku5bmiJDlkZgiIiIKICAgICAgICAjIOWGheWuueWuoeaguAogICAgICAgIG1vZCA9IHNlbGYuX21vZGVyYXRlKGNvbnRlbnQpCiAgICAgICAgaWYgbW9kWyJyZWplY3RlZCJdOgogICAgICAgICAgICBhd2FpdCBzZWxmLmNvbm5fbWFuYWdlci5zZW5kX3RvX3VzZXIoCiAgICAgICAgICAgICAgICBmcm9tX2lkLCBNZXNzYWdlVHlwZS5DT05URU5UX1dBUk4sCiAgICAgICAgICAgICAgICB7Im1lc3NhZ2UiOiAi5raI5oGv5YyF5ZCr6L+d6KeE5YaF5a6577yM5bey6KKr5oum5oiqIiwgImxldmVsIjogbW9kWyJsZXZlbCJdfSwKICAgICAgICAgICAgKQogICAgICAgICAgICByZXR1cm4geyJtc2dfaWQiOiAiIiwgInRpbWVzdGFtcCI6IDAsICJzdGF0dXMiOiAicmVqZWN0ZWQifQogICAgICAgIGNvbnRlbnQgPSBtb2RbImNsZWFuX2NvbnRlbnQiXQoKICAgICAgICBtc2dfaWQgPSBhd2FpdCBzZWxmLm1zZ19oaXN0b3J5LnN0b3JlX21lc3NhZ2UoCiAgICAgICAgICAgIHNlbmRlcl9pZD1mcm9tX2lkLAogICAgICAgICAgICByZWNlaXZlcl9pZD1Ob25lLAogICAgICAgICAgICBncm91cF9pZD1ncm91cF9pZCwKICAgICAgICAgICAgbXNnX3R5cGU9TWVzc2FnZVR5cGUuR1JPVVBfTVNHLAogICAgICAgICAgICBjb250ZW50PWNvbnRlbnQsCiAgICAgICAgICAgIG1zZ19pZD1zdHIoY2xpZW50X21zZ19pZCkgaWYgY2xpZW50X21zZ19pZCBhbmQgY2xpZW50X21zZ19pZCAhPSAwIGVsc2UgTm9uZSwKICAgICAgICApCgogICAgICAgIG5vd190cyA9IGludCh0aW1lLnRpbWUoKSkKCiAgICAgICAgc2VuZGVyX2luZm8gPSBhd2FpdCBzZWxmLnVzZXJfbWFuYWdlci5nZXRfdXNlcl9pbmZvKGZyb21faWQpCiAgICAgICAgZnJvbV91c2VybmFtZSA9IHNlbmRlcl9pbmZvLmdldCgidXNlcm5hbWUiLCBmIlVzZXIje2Zyb21faWR9IikgaWYgc2VuZGVyX2luZm8gZWxzZSBmIlVzZXIje2Zyb21faWR9IgoKICAgICAgICBwYXlsb2FkID0gewogICAgICAgICAgICAiZnJvbV9pZCI6IGZyb21faWQsCiAgICAgICAgICAgICJmcm9tX3VzZXJuYW1lIjogZnJvbV91c2VybmFtZSwKICAgICAgICAgICAgImdyb3VwX2lkIjogZ3JvdXBfaWQsCiAgICAgICAgICAgICJjb250ZW50IjogY29udGVudCwKICAgICAgICAgICAgIm1zZ19pZCI6IG1zZ19pZCwKICAgICAgICAgICAgInRpbWVzdGFtcCI6IG5vd190cywKICAgICAgICB9CgogICAgICAgIG1lbWJlcnMgPSBhd2FpdCBzZWxmLmdyb3VwX21hbmFnZXIuZ2V0X2dyb3VwX21lbWJlcnMoZ3JvdXBfaWQpCiAgICAgICAgZm9yIG1lbWJlciBpbiBtZW1iZXJzOgogICAgICAgICAgICBpZiBtZW1iZXJbImlkIl0gIT0gZnJvbV9pZDoKICAgICAgICAgICAgICAgIGF3YWl0IHNlbGYuY29ubl9tYW5hZ2VyLnNlbmRfdG9fdXNlcigKICAgICAgICAgICAgICAgICAgICBtZW1iZXJbImlkIl0sIE1lc3NhZ2VUeXBlLkdST1VQX01TRywgcGF5bG9hZAogICAgICAgICAgICAgICAgKQoKICAgICAgICByZXR1cm4geyJtc2dfaWQiOiBtc2dfaWQsICJ0aW1lc3RhbXAiOiBub3dfdHMsICJzdGF0dXMiOiAic2VudCJ9CgogICAgYXN5bmMgZGVmIGJyb2FkY2FzdF9vbmxpbmVfc3RhdHVzKHNlbGYsIHVzZXJfaWQ6IGludCwgaXNfb25saW5lOiBib29sKToKICAgICAgICAiIiLlkJHmiYDmnInlnKjnur/nlKjmiLflub/mkq3mn5DnlKjmiLfnmoTlnKjnur/nirbmgIHlj5jljJYiIiIKICAgICAgICB1c2VyX2luZm8gPSBhd2FpdCBzZWxmLnVzZXJfbWFuYWdlci5nZXRfdXNlcl9pbmZvKHVzZXJfaWQpCiAgICAgICAgaWYgbm90IHVzZXJfaW5mbzoKICAgICAgICAgICAgcmV0dXJuCiAgICAgICAgcGF5bG9hZCA9IHsKICAgICAgICAgICAgInVzZXJfaWQiOiB1c2VyX2lkLAogICAgICAgICAgICAidXNlcm5hbWUiOiB1c2VyX2luZm9bInVzZXJuYW1lIl0sCiAgICAgICAgICAgICJpc19vbmxpbmUiOiAxIGlmIGlzX29ubGluZSBlbHNlIDAsCiAgICAgICAgfQogICAgICAgIGF3YWl0IHNlbGYuY29ubl9tYW5hZ2VyLmJyb2FkY2FzdCgKICAgICAgICAgICAgTWVzc2FnZVR5cGUuU1RBVFVTX1VQREFURSwgcGF5bG9hZCwgZXhjbHVkZV91c2VyX2lkPXVzZXJfaWQKICAgICAgICApCgogICAgYXN5bmMgZGVmIHNlbmRfdG9fZ3JvdXAoc2VsZiwgZ3JvdXBfaWQ6IGludCwgbXNnX3R5cGU6IGludCwgcGF5bG9hZDogZGljdCwKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGV4Y2x1ZGVfdXNlcl9pZDogaW50ID0gTm9uZSk6CiAgICAgICAgIiIi5ZCR576k57uE5YaF5omA5pyJ5oiQ5ZGY5Y+R6YCB5raI5oGv77yI55So5LqO54q25oCB6YCa55+l562J77yJIiIiCiAgICAgICAgbWVtYmVycyA9IGF3YWl0IHNlbGYuZ3JvdXBfbWFuYWdlci5nZXRfZ3JvdXBfbWVtYmVycyhncm91cF9pZCkKICAgICAgICBmb3IgbWVtYmVyIGluIG1lbWJlcnM6CiAgICAgICAgICAgIGlmIGV4Y2x1ZGVfdXNlcl9pZCBpcyBOb25lIG9yIG1lbWJlclsiaWQiXSAhPSBleGNsdWRlX3VzZXJfaWQ6CiAgICAgICAgICAgICAgICBhd2FpdCBzZWxmLmNvbm5fbWFuYWdlci5zZW5kX3RvX3VzZXIoCiAgICAgICAgICAgICAgICAgICAgbWVtYmVyWyJpZCJdLCBtc2dfdHlwZSwgcGF5bG9hZAogICAgICAgICAgICAgICAgKQo=
+"""
+消息路由模块
+负责私聊、群聊消息的转发和在线状态广播。
+集成内容审核、AI 智能回复。
+"""
+import time
+import logging
+from server.protocol import MessageType
+
+logger = logging.getLogger(__name__)
+
+
+class MessageRouter:
+    """消息路由器，处理消息的存储与转发"""
+
+    def __init__(self, conn_manager, msg_history, user_manager, group_manager):
+        self.conn_manager = conn_manager
+        self.msg_history = msg_history
+        self.user_manager = user_manager
+        self.group_manager = group_manager
+        self._config = None
+        self._moderator = None
+
+    def _get_moderator(self):
+        if self._moderator is None:
+            from server.content_moderator import get_moderator
+            self._moderator = get_moderator()
+        return self._moderator
+
+    def _moderate(self, content: str) -> dict:
+        """审核消息内容，返回 {"rejected": bool, "level": str, "clean_content": str}"""
+        from server.config import ServerConfig
+        if self._config is None:
+            self._config = ServerConfig()
+        if not self._config.enable_content_moderation:
+            return {"rejected": False, "level": "low", "clean_content": content}
+
+        moderator = self._get_moderator()
+        result = moderator.moderate(content)
+        if result.passed:
+            return {"rejected": False, "level": "low", "clean_content": content}
+
+        if result.level == "high":
+            logger.info(f"内容审核拦截 (high): {result.reason}")
+            return {"rejected": True, "level": "high", "clean_content": content}
+
+        # mid 级别：替换敏感词后放行
+        clean = moderator.replace_sensitive(content)
+        return {"rejected": False, "level": "mid", "clean_content": clean}
+
+    async def route_private_msg(self, from_id: int, to_id: int, content: str,
+                                client_msg_id=0) -> dict:
+        """转发私聊消息：先存储，再尝试直接转发给在线接收方"""
+        # 内容审核
+        mod = self._moderate(content)
+        if mod["rejected"]:
+            await self.conn_manager.send_to_user(
+                from_id, MessageType.CONTENT_WARN,
+                {"message": "消息包含违规内容，已被拦截", "level": mod["level"]},
+            )
+            return {"msg_id": "", "timestamp": 0, "status": "rejected"}
+        content = mod["clean_content"]
+
+        msg_id = await self.msg_history.store_message(
+            sender_id=from_id,
+            receiver_id=to_id,
+            group_id=None,
+            msg_type=MessageType.PRIVATE_MSG,
+            content=content,
+            msg_id=str(client_msg_id) if client_msg_id and client_msg_id != 0 else None,
+        )
+
+        now_ts = int(time.time())
+
+        # 获取发送方用户名
+        sender_info = await self.user_manager.get_user_info(from_id)
+        from_username = sender_info.get("username", f"User#{from_id}") if sender_info else f"User#{from_id}"
+
+        payload = {
+            "from_id": from_id,
+            "from_username": from_username,
+            "to_id": to_id,
+            "content": content,
+            "msg_id": msg_id,
+            "timestamp": now_ts,
+        }
+
+        sent = await self.conn_manager.send_to_user(
+            to_id, MessageType.PRIVATE_MSG, payload
+        )
+
+        return {
+            "msg_id": msg_id,
+            "timestamp": now_ts,
+            "status": "delivered" if sent else "stored",
+        }
+
+    async def route_group_msg(self, from_id: int, group_id: int, content: str,
+                              client_msg_id=0) -> dict:
+        """转发群聊消息：存储后广播给群内所有其他成员"""
+        # 内容审核
+        mod = self._moderate(content)
+        if mod["rejected"]:
+            await self.conn_manager.send_to_user(
+                from_id, MessageType.CONTENT_WARN,
+                {"message": "消息包含违规内容，已被拦截", "level": mod["level"]},
+            )
+            return {"msg_id": "", "timestamp": 0, "status": "rejected"}
+        content = mod["clean_content"]
+
+        msg_id = await self.msg_history.store_message(
+            sender_id=from_id,
+            receiver_id=None,
+            group_id=group_id,
+            msg_type=MessageType.GROUP_MSG,
+            content=content,
+            msg_id=str(client_msg_id) if client_msg_id and client_msg_id != 0 else None,
+        )
+
+        now_ts = int(time.time())
+
+        sender_info = await self.user_manager.get_user_info(from_id)
+        from_username = sender_info.get("username", f"User#{from_id}") if sender_info else f"User#{from_id}"
+
+        payload = {
+            "from_id": from_id,
+            "from_username": from_username,
+            "group_id": group_id,
+            "content": content,
+            "msg_id": msg_id,
+            "timestamp": now_ts,
+        }
+
+        members = await self.group_manager.get_group_members(group_id)
+        for member in members:
+            if member["id"] != from_id:
+                await self.conn_manager.send_to_user(
+                    member["id"], MessageType.GROUP_MSG, payload
+                )
+
+        return {"msg_id": msg_id, "timestamp": now_ts, "status": "sent"}
+
+    async def broadcast_online_status(self, user_id: int, is_online: bool):
+        """向所有在线用户广播某用户的在线状态变化"""
+        user_info = await self.user_manager.get_user_info(user_id)
+        if not user_info:
+            return
+        payload = {
+            "user_id": user_id,
+            "username": user_info["username"],
+            "is_online": 1 if is_online else 0,
+        }
+        await self.conn_manager.broadcast(
+            MessageType.STATUS_UPDATE, payload, exclude_user_id=user_id
+        )
+
+    async def send_to_group(self, group_id: int, msg_type: int, payload: dict,
+                            exclude_user_id: int = None):
+        """向群组内所有成员发送消息（用于状态通知等）"""
+        members = await self.group_manager.get_group_members(group_id)
+        for member in members:
+            if exclude_user_id is None or member["id"] != exclude_user_id:
+                await self.conn_manager.send_to_user(
+                    member["id"], msg_type, payload
+                )

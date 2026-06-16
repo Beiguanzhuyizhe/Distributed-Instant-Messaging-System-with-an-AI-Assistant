@@ -1,1 +1,40 @@
-QGVjaG8gb2ZmCmVjaG8gPT09PT0gUmVzdGFydCBDaGF0IFN5c3RlbSA9PT09PQoKOjogMS4gS2lsbCBvbGQgc2VydmVyIG9uIHBvcnQgODg4OAplY2hvIFsxLzRdIENsZWFuaW5nIG9sZCBzZXJ2ZXIuLi4KZm9yIC9mICJ0b2tlbnM9NSIgJSVhIGluICgnbmV0c3RhdCAtYW5vIF58IGZpbmRzdHIgIjo4ODg4IicpIGRvICgKICAgIGlmIG5vdCAiJSVhIj09IiIgdGFza2tpbGwgL0YgL1BJRCAlJWEgPm51bCAyPiYxCikKdGltZW91dCAvdCAyIC9ub2JyZWFrID5udWwKCjo6IDIuIEtlZXAgZGF0YWJhc2UgZm9yIHJlY29ubmVjdC9oaXN0b3J5IGRlbW8KZWNobyBbMi80XSBLZWVwaW5nIGV4aXN0aW5nIGRhdGFiYXNlLi4uCmVjaG8gSU5GTzogc2VydmVyXGRhdGFcY2hhdC5kYiBpcyBwcmVzZXJ2ZWQgc28gZ3JvdXBzIGFuZCBjaGF0IGhpc3Rvcnkgc3Vydml2ZSBzZXJ2ZXIgcmVzdGFydC4KCjo6IDMuIFZlcmlmeSBwb3J0IGlzIGZyZWUKZWNobyBbMy80XSBDaGVja2luZyBwb3J0Li4uCnB5dGhvbiAtYyAiaW1wb3J0IHNvY2tldDtzPXNvY2tldC5zb2NrZXQoKTtzLmJpbmQoKCcxMjcuMC4wLjEnLDg4ODgpKTtzLmNsb3NlKCkiCmlmIGVycm9ybGV2ZWwgMSAoCiAgICBlY2hvIEVSUk9SOiBQb3J0IDg4ODggc3RpbGwgaW4gdXNlLiBDbG9zZSBvdGhlciBwcm9ncmFtcyBhbmQgcmV0cnkuCiAgICBwYXVzZQogICAgZXhpdCAvYiAxCikKCjo6IDQuIFN0YXJ0IHNlcnZlciAoQUkga2V5IGlzIHJlYWQgZnJvbSBlbnZpcm9ubWVudCB2YXJpYWJsZXMpCmVjaG8gWzQvNF0gU3RhcnRpbmcgc2VydmVyLi4uCmlmICIlQklHTU9ERUxfQVBJX0tFWSUiPT0iIiBpZiAiJURBU0hTQ09QRV9BUElfS0VZJSI9PSIiICgKICAgIGVjaG8gSU5GTzogQklHTU9ERUxfQVBJX0tFWSBvciBEQVNIU0NPUEVfQVBJX0tFWSBpcyBub3Qgc2V0LiBBSSBmZWF0dXJlIHdpbGwgYmUgZGlzYWJsZWQuCikKc3RhcnQgIkNoYXRTZXJ2ZXIiIGNtZCAvYyAicHl0aG9uIC1tIHNlcnZlci5tYWluICYgcGF1c2UiCgplY2hvLgplY2hvIERvbmUhIFNlcnZlciBzdGFydGVkIG9uIHBvcnQgODg4OC4KZWNoby4KZWNobyBOb3cgb3BlbiBhIGNsaWVudDoKZWNobyAgIHB5dGhvbiAtbSBjbGllbnQubWFpbiAtLWNsaSAgICAodGV4dCBtb2RlKQplY2hvICAgcHl0aG9uIC1tIGNsaWVudC5tYWluIC0tZ3VpICAgIChncmFwaGljIG1vZGUpCmVjaG8uCmVjaG8gVGVzdCBhY2NvdW50czogYWxpY2UvcGFzczEyMyAgYm9iL3Bhc3M0NTYKZWNoby4KcGF1c2UK
+@echo off
+echo ===== Restart Chat System =====
+
+:: 1. Kill old server on port 8888
+echo [1/4] Cleaning old server...
+for /f "tokens=5" %%a in ('netstat -ano ^| findstr ":8888"') do (
+    if not "%%a"=="" taskkill /F /PID %%a >nul 2>&1
+)
+timeout /t 2 /nobreak >nul
+
+:: 2. Keep database for reconnect/history demo
+echo [2/4] Keeping existing database...
+echo INFO: server\data\chat.db is preserved so groups and chat history survive server restart.
+
+:: 3. Verify port is free
+echo [3/4] Checking port...
+python -c "import socket;s=socket.socket();s.bind(('127.0.0.1',8888));s.close()"
+if errorlevel 1 (
+    echo ERROR: Port 8888 still in use. Close other programs and retry.
+    pause
+    exit /b 1
+)
+
+:: 4. Start server (AI key is read from environment variables)
+echo [4/4] Starting server...
+if "%BIGMODEL_API_KEY%"=="" if "%DASHSCOPE_API_KEY%"=="" (
+    echo INFO: BIGMODEL_API_KEY or DASHSCOPE_API_KEY is not set. AI feature will be disabled.
+)
+start "ChatServer" cmd /c "python -m server.main & pause"
+
+echo.
+echo Done! Server started on port 8888.
+echo.
+echo Now open a client:
+echo   python -m client.main --cli    (text mode)
+echo   python -m client.main --gui    (graphic mode)
+echo.
+echo Test accounts: alice/pass123  bob/pass456
+echo.
+pause

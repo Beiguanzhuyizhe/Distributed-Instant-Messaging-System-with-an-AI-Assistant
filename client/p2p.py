@@ -1,1 +1,480 @@
-IiIiClAyUCBVRFAg5omT5rSe55u06L+e5qih5Z2XCumAmui/h+acjeWKoeWZqOWNj+WKqei/m+ihjCBOQVQg56m/6YCP77yM5bu656uL54K55a+554K5IFVEUCDnm7Tov54K5pSv5oyB5Yqg5a+G5paH5Lu25Lyg6L6T44CB5pat54K557ut5LygCgrmtYHnqIs6CjEuIEEg6K+35rGC57uZIEIg5Lyg5paH5Lu2IOKGkiBBIOWPkSBQMlBfSE9MRV9QVU5DSCDnu5nmnI3liqHlmajvvIjluKbkuIroh6rlt7HnmoTnnJ/lrp4gVURQIOWcsOWdgO+8iQoyLiDmnI3liqHlmajkuqTmjaIgQSDlkowgQiDnmoTlnLDlnYAKMy4g5Y+M5pa55LqS55u45ZCR5a+55pa55Zyw5Z2A5Y+RIFVEUCDljIXvvIjmiZPmtJ7vvIkKNC4gTkFUIOWFgeiuuOWFpeermeWMheWQju+8jOi/nuaOpeW7uueriwo1LiDpgJrov4fnm7Tov57ov5vooYzliIblnZfliqDlr4bmlofku7bkvKDovpMKIiIiCgppbXBvcnQgYXN5bmNpbwppbXBvcnQgb3MKaW1wb3J0IGpzb24KaW1wb3J0IGxvZ2dpbmcKaW1wb3J0IHN0cnVjdAppbXBvcnQgdGltZQpmcm9tIHR5cGluZyBpbXBvcnQgT3B0aW9uYWwsIENhbGxhYmxlCgpmcm9tIGNyeXB0b2dyYXBoeS5oYXptYXQucHJpbWl0aXZlcy5jaXBoZXJzLmFlYWQgaW1wb3J0IEFFU0dDTQoKZnJvbSBjb25maWcgaW1wb3J0IENvbmZpZwpmcm9tIGNvbm5lY3Rpb24gaW1wb3J0IENoYXRDb25uZWN0aW9uCmZyb20gcHJvdG9jb2wgaW1wb3J0IE1lc3NhZ2VUeXBlCgpsb2dnZXIgPSBsb2dnaW5nLmdldExvZ2dlcihfX25hbWVfXykKCiMgUDJQIOWNj+iuruW4uOmHjwpQMlBfTUFHSUMgPSAweDUwNDUgICMgIlBFIgpQMlBfVkVSU0lPTiA9IDB4MDEKUDJQX0hFQURFUl9GT1JNQVQgPSAiIUggQiBCIFEgSSIgICMgTWFnaWMoMkIpICsgVmVyc2lvbigxQikgKyBUeXBlKDFCKSArIFNlcSg4QikgKyBQYXlsb2FkTGVuKDRCKSA9IDE2QgpQMlBfSEVBREVSX1NJWkUgPSBzdHJ1Y3QuY2FsY3NpemUoUDJQX0hFQURFUl9GT1JNQVQpCgpQMlBfRklMRV9JTklUID0gMHgwMSAgICAgIyDmlofku7bkvKDovpPliJ3lp4vljJYKUDJQX0ZJTEVfREFUQSA9IDB4MDIgICAgICMg5paH5Lu25pWw5o2u5Z2XClAyUF9GSUxFX0FDSyA9IDB4MDMgICAgICAjIOaVsOaNruWdl+ehruiupApQMlBfRklMRV9SRVNVTUUgPSAweDA0ICAgIyDmlq3ngrnnu63kvKDor7fmsYIKUDJQX1BVTkNIID0gMHgwNSAgICAgICAgICMg5omT5rSe5YyFClAyUF9QVU5DSF9BQ0sgPSAweDA2ICAgICAjIOaJk+a0nuehruiupApQMlBfRklMRV9ET05FID0gMHgwNyAgICAgIyDmlofku7bkvKDovpPlrozmiJAKCk1BWF9SRVRSSUVTID0gMyAgICAgICAgICAgIyDmr4/lnZfmnIDlpKfph43kvKDmrKHmlbAKQUNLX1RJTUVPVVQgPSAxLjAgICAgICAgICAjIEFDSyDnrYnlvoXotoXml7bvvIjnp5LvvIkKUFVOQ0hfQ09VTlQgPSA4ICAgICAgICAgICAjIOaJk+a0nuWMheaVsOmHjwpQVU5DSF9JTlRFUlZBTCA9IDAuMyAgICAgICMg5omT5rSe6Ze06ZqU77yI56eS77yJCgoKY2xhc3MgUDJQRXJyb3IoRXhjZXB0aW9uKToKICAgIHBhc3MKCgpjbGFzcyBQMlBDbGllbnQ6CiAgICAiIiJQMlAg5a6i5oi356uv77yaVURQIOaJk+a0niArIOebtOi/nuaWh+S7tuS8oOi+kyIiIgoKICAgIGRlZiBfX2luaXRfXyhzZWxmLCBjb25maWc6IE9wdGlvbmFsW0NvbmZpZ10gPSBOb25lKToKICAgICAgICBzZWxmLmNvbmZpZyA9IGNvbmZpZyBvciBDb25maWcoKQogICAgICAgIHNlbGYuX3VkcF90cmFuc3BvcnQ6IE9wdGlvbmFsW2FzeW5jaW8uRGF0YWdyYW1UcmFuc3BvcnRdID0gTm9uZQogICAgICAgIHNlbGYuX2xvY2FsX3VkcF9wb3J0ID0gMAogICAgICAgIHNlbGYuX3J1bm5pbmcgPSBGYWxzZQogICAgICAgIHNlbGYuX2NodW5rX3NpemUgPSA2NTUzNiAgIyA2NEtCCgogICAgICAgICMg5paH5Lu25o6l5pS254q25oCBCiAgICAgICAgc2VsZi5fcmVjdl9zYXZlX2RpciA9ICIuIgogICAgICAgIHNlbGYuX3JlY3ZfYWVzX2tleTogT3B0aW9uYWxbYnl0ZXNdID0gTm9uZQogICAgICAgIHNlbGYuX3JlY3ZfcHJvZ3Jlc3M6IE9wdGlvbmFsW0NhbGxhYmxlXSA9IE5vbmUKICAgICAgICBzZWxmLl9yZWN2X2ZpbGVfaW5mbzogT3B0aW9uYWxbZGljdF0gPSBOb25lCgogICAgICAgICMgUDJQIOS/nea0uwogICAgICAgIHNlbGYuX3BlbmRpbmdfYWNrczogZGljdCA9IHt9ICAjIHNlcSAtPiBhc3luY2lvLkV2ZW50CgogICAgYXN5bmMgZGVmIHN0YXJ0KHNlbGYpIC0+IGludDoKICAgICAgICBsb29wID0gYXN5bmNpby5nZXRfZXZlbnRfbG9vcCgpCgogICAgICAgIGNsYXNzIFAyUFByb3RvY29sKGFzeW5jaW8uRGF0YWdyYW1Qcm90b2NvbCk6CiAgICAgICAgICAgIGRlZiBfX2luaXRfXyhzZWxmLCBwMnApOgogICAgICAgICAgICAgICAgc2VsZi5wMnAgPSBwMnAKICAgICAgICAgICAgICAgIHNlbGYudHJhbnNwb3J0ID0gTm9uZQoKICAgICAgICAgICAgZGVmIGNvbm5lY3Rpb25fbWFkZShzZWxmLCB0cmFuc3BvcnQpOgogICAgICAgICAgICAgICAgc2VsZi50cmFuc3BvcnQgPSB0cmFuc3BvcnQKICAgICAgICAgICAgICAgIHNlbGYucDJwLl91ZHBfdHJhbnNwb3J0ID0gdHJhbnNwb3J0CgogICAgICAgICAgICBkZWYgZGF0YWdyYW1fcmVjZWl2ZWQoc2VsZiwgZGF0YSwgYWRkcik6CiAgICAgICAgICAgICAgICBhc3luY2lvLmVuc3VyZV9mdXR1cmUoc2VsZi5wMnAuX2hhbmRsZV9kYXRhZ3JhbShkYXRhLCBhZGRyKSkKCiAgICAgICAgICAgIGRlZiBlcnJvcl9yZWNlaXZlZChzZWxmLCBleGMpOgogICAgICAgICAgICAgICAgbG9nZ2VyLmVycm9yKGYiUDJQIFVEUCDplJnor686IHtleGN9IikKCiAgICAgICAgc2VsZi5fdWRwX3RyYW5zcG9ydCwgXyA9IGF3YWl0IGxvb3AuY3JlYXRlX2RhdGFncmFtX2VuZHBvaW50KAogICAgICAgICAgICBsYW1iZGE6IFAyUFByb3RvY29sKHNlbGYpLAogICAgICAgICAgICBsb2NhbF9hZGRyPSgiMC4wLjAuMCIsIDApLAogICAgICAgICkKCiAgICAgICAgc29ja25hbWUgPSBzZWxmLl91ZHBfdHJhbnNwb3J0LmdldF9leHRyYV9pbmZvKCJzb2NrbmFtZSIpCiAgICAgICAgc2VsZi5fbG9jYWxfdWRwX3BvcnQgPSBzb2NrbmFtZVsxXQogICAgICAgIHNlbGYuX3J1bm5pbmcgPSBUcnVlCiAgICAgICAgbG9nZ2VyLmluZm8oZiJQMlAgVURQIOebkeWQrOW3suWQr+WKqO+8jOerr+WPozoge3NlbGYuX2xvY2FsX3VkcF9wb3J0fSIpCiAgICAgICAgcmV0dXJuIHNlbGYuX2xvY2FsX3VkcF9wb3J0CgogICAgZGVmIHN0b3Aoc2VsZik6CiAgICAgICAgc2VsZi5fcnVubmluZyA9IEZhbHNlCiAgICAgICAgaWYgc2VsZi5fdWRwX3RyYW5zcG9ydDoKICAgICAgICAgICAgc2VsZi5fdWRwX3RyYW5zcG9ydC5jbG9zZSgpCiAgICAgICAgICAgIHNlbGYuX3VkcF90cmFuc3BvcnQgPSBOb25lCiAgICAgICAgbG9nZ2VyLmluZm8oIlAyUCDmnI3liqHlt7LlgZzmraIiKQoKICAgIEBwcm9wZXJ0eQogICAgZGVmIGxvY2FsX3BvcnQoc2VsZikgLT4gaW50OgogICAgICAgIHJldHVybiBzZWxmLl9sb2NhbF91ZHBfcG9ydAoKICAgICMgLS0tLSBVRFAg5pS25Y+RIC0tLS0KCiAgICBkZWYgX3NlbmRfdWRwKHNlbGYsIGFkZHI6IHR1cGxlLCBtc2dfdHlwZTogaW50LCBwYXlsb2FkX2J5dGVzOiBieXRlcywgc2VxOiBpbnQgPSAwKToKICAgICAgICBpZiBub3Qgc2VsZi5fdWRwX3RyYW5zcG9ydDoKICAgICAgICAgICAgcmFpc2UgUDJQRXJyb3IoIlAyUCDmnI3liqHmnKrlkK/liqgiKQogICAgICAgIGhlYWRlciA9IHN0cnVjdC5wYWNrKFAyUF9IRUFERVJfRk9STUFULCBQMlBfTUFHSUMsIFAyUF9WRVJTSU9OLCBtc2dfdHlwZSwgc2VxLCBsZW4ocGF5bG9hZF9ieXRlcykpCiAgICAgICAgc2VsZi5fdWRwX3RyYW5zcG9ydC5zZW5kdG8oaGVhZGVyICsgcGF5bG9hZF9ieXRlcywgYWRkcikKCiAgICBhc3luYyBkZWYgX2hhbmRsZV9kYXRhZ3JhbShzZWxmLCBkYXRhOiBieXRlcywgYWRkcjogdHVwbGUpOgogICAgICAgIHRyeToKICAgICAgICAgICAgaWYgbGVuKGRhdGEpIDwgUDJQX0hFQURFUl9TSVpFOgogICAgICAgICAgICAgICAgcmV0dXJuCiAgICAgICAgICAgIG1hZ2ljLCB2ZXJzaW9uLCBtc2dfdHlwZSwgc2VxLCBwYXlsb2FkX2xlbiA9IHN0cnVjdC51bnBhY2soCiAgICAgICAgICAgICAgICBQMlBfSEVBREVSX0ZPUk1BVCwgZGF0YVs6UDJQX0hFQURFUl9TSVpFXQogICAgICAgICAgICApCiAgICAgICAgICAgIGlmIG1hZ2ljICE9IFAyUF9NQUdJQzoKICAgICAgICAgICAgICAgIHJldHVybgogICAgICAgICAgICB0b3RhbF9zaXplID0gUDJQX0hFQURFUl9TSVpFICsgcGF5bG9hZF9sZW4KICAgICAgICAgICAgaWYgbGVuKGRhdGEpIDwgdG90YWxfc2l6ZToKICAgICAgICAgICAgICAgIHJldHVybgogICAgICAgICAgICBwYXlsb2FkX2RhdGEgPSBkYXRhW1AyUF9IRUFERVJfU0laRTp0b3RhbF9zaXplXSBpZiBwYXlsb2FkX2xlbiA+IDAgZWxzZSBiIiIKICAgICAgICAgICAgYXdhaXQgc2VsZi5fZGlzcGF0Y2goYWRkciwgbXNnX3R5cGUsIHNlcSwgcGF5bG9hZF9kYXRhKQogICAgICAgIGV4Y2VwdCBFeGNlcHRpb24gYXMgZToKICAgICAgICAgICAgbG9nZ2VyLmVycm9yKGYiUDJQIOaVsOaNruaKpeWkhOeQhuWksei0pToge2V9IikKCiAgICBhc3luYyBkZWYgX2Rpc3BhdGNoKHNlbGYsIGFkZHI6IHR1cGxlLCBtc2dfdHlwZTogaW50LCBzZXE6IGludCwgcGF5bG9hZDogYnl0ZXMpOgogICAgICAgIGhhbmRsZXIgPSB7CiAgICAgICAgICAgIFAyUF9GSUxFX0lOSVQ6IHNlbGYuX2hhbmRsZV9maWxlX2luaXQsCiAgICAgICAgICAgIFAyUF9GSUxFX0RBVEE6IHNlbGYuX2hhbmRsZV9maWxlX2RhdGEsCiAgICAgICAgICAgIFAyUF9GSUxFX0FDSzogc2VsZi5faGFuZGxlX2ZpbGVfYWNrLAogICAgICAgICAgICBQMlBfRklMRV9SRVNVTUU6IHNlbGYuX2hhbmRsZV9maWxlX3Jlc3VtZSwKICAgICAgICAgICAgUDJQX0ZJTEVfRE9ORTogc2VsZi5faGFuZGxlX2ZpbGVfZG9uZSwKICAgICAgICAgICAgUDJQX1BVTkNIOiBzZWxmLl9oYW5kbGVfcHVuY2gsCiAgICAgICAgICAgIFAyUF9QVU5DSF9BQ0s6IHNlbGYuX2hhbmRsZV9wdW5jaF9hY2ssCiAgICAgICAgfS5nZXQobXNnX3R5cGUpCiAgICAgICAgaWYgaGFuZGxlcjoKICAgICAgICAgICAgYXdhaXQgaGFuZGxlcihhZGRyLCBzZXEsIHBheWxvYWQpCiAgICAgICAgZWxzZToKICAgICAgICAgICAgbG9nZ2VyLndhcm5pbmcoZiLmnKrnn6UgUDJQIOa2iOaBr+exu+Weizoge21zZ190eXBlfSIpCgogICAgIyAtLS0tIOaJk+a0niAtLS0tCgogICAgYXN5bmMgZGVmIGhvbGVfcHVuY2goCiAgICAgICAgc2VsZiwKICAgICAgICBzZXJ2ZXJfY29ubjogQ2hhdENvbm5lY3Rpb24sCiAgICAgICAgbXlfdXNlcl9pZDogaW50LAogICAgICAgIHRhcmdldF91c2VyX2lkOiBpbnQsCiAgICAgICAgbXlfcHVibGljX2FkZHI6IHN0ciA9ICIiLAogICAgICAgIHB1bmNoX3RpbWVvdXQ6IGZsb2F0ID0gNS4wLAogICAgKSAtPiBPcHRpb25hbFt0dXBsZV06CiAgICAgICAgIiIiCiAgICAgICAg6YCa6L+H5pyN5Yqh5Zmo5Y2P5Yqp6L+b6KGMIFVEUCDmiZPmtJ4KCiAgICAgICAgQXJnczoKICAgICAgICAgICAgc2VydmVyX2Nvbm46IOS4juacjeWKoeerr+eahCBUQ1Ag6L+e5o6l77yIQ2hhdENvbm5lY3Rpb27vvIxzZW5kX21lc3NhZ2Ug5Li65ZCM5q2l6LCD55So77yJCiAgICAgICAgICAgIG15X3VzZXJfaWQ6IOW9k+WJjeeUqOaItyBJRAogICAgICAgICAgICB0YXJnZXRfdXNlcl9pZDog55uu5qCH55So5oi3IElECiAgICAgICAgICAgIG15X3B1YmxpY19hZGRyOiDlvZPliY3nlKjmiLfnmoTlhaznvZHlnLDlnYAgImlwOnBvcnQi77yI55Sx5pyN5Yqh5Zmo5LuOIFRDUCDov57mjqXojrfnn6XlkI7lm57kvKDvvIkKICAgICAgICAgICAgcHVuY2hfdGltZW91dDog5omT5rSe6LaF5pe2CgogICAgICAgIFJldHVybnM6CiAgICAgICAgICAgIOaIkOWKn+i/lOWbniAodGFyZ2V0X2hvc3QsIHRhcmdldF9wb3J0Ke+8jOWksei0pei/lOWbniBOb25lCiAgICAgICAgIiIiCiAgICAgICAgaWYgbm90IHNlbGYuX3J1bm5pbmc6CiAgICAgICAgICAgIGF3YWl0IHNlbGYuc3RhcnQoKQoKICAgICAgICB1ZHBfYWRkciA9IG15X3B1YmxpY19hZGRyIG9yIGYiMC4wLjAuMDp7c2VsZi5fbG9jYWxfdWRwX3BvcnR9IgoKICAgICAgICAjIENoYXRDb25uZWN0aW9uLnNlbmRfbWVzc2FnZSDmmK/lkIzmraXmlrnms5XvvIzkuI3pnIDopoEgYXdhaXQKICAgICAgICBzZXJ2ZXJfY29ubi5zZW5kX21lc3NhZ2UoCiAgICAgICAgICAgIE1lc3NhZ2VUeXBlLlAyUF9IT0xFX1BVTkNILAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAidXNlcl9pZCI6IG15X3VzZXJfaWQsCiAgICAgICAgICAgICAgICAidGFyZ2V0X2lkIjogdGFyZ2V0X3VzZXJfaWQsCiAgICAgICAgICAgICAgICAiYWRkciI6IHVkcF9hZGRyLAogICAgICAgICAgICB9LAogICAgICAgICkKCiAgICAgICAgbG9nZ2VyLmluZm8oZiJQMlAg5omT5rSe6K+35rGC5bey5Y+R6YCBOiBteV9pZD17bXlfdXNlcl9pZH0sIHRhcmdldD17dGFyZ2V0X3VzZXJfaWR9IikKICAgICAgICByZXR1cm4gYXdhaXQgc2VsZi5fd2FpdF9mb3JfdGFyZ2V0X2FkZHIodGFyZ2V0X3VzZXJfaWQsIHB1bmNoX3RpbWVvdXQpCgogICAgYXN5bmMgZGVmIF93YWl0X2Zvcl90YXJnZXRfYWRkcihzZWxmLCB0YXJnZXRfaWQ6IGludCwgdGltZW91dDogZmxvYXQpIC0+IE9wdGlvbmFsW3R1cGxlXToKICAgICAgICAiIiLnrYnlvoXmnI3liqHlmajov5Tlm57nm67moIflnLDlnYAiIiIKICAgICAgICBzZWxmLl90YXJnZXRfZXZlbnQgPSBhc3luY2lvLkV2ZW50KCkKICAgICAgICBzZWxmLl90YXJnZXRfYWRkciA9IE5vbmUKICAgICAgICB0cnk6CiAgICAgICAgICAgIGF3YWl0IGFzeW5jaW8ud2FpdF9mb3Ioc2VsZi5fdGFyZ2V0X2V2ZW50LndhaXQoKSwgdGltZW91dD10aW1lb3V0KQogICAgICAgICAgICByZXR1cm4gc2VsZi5fdGFyZ2V0X2FkZHIKICAgICAgICBleGNlcHQgYXN5bmNpby5UaW1lb3V0RXJyb3I6CiAgICAgICAgICAgIGxvZ2dlci53YXJuaW5nKGYiUDJQIOaJk+a0nui2heaXtjogdGFyZ2V0PXt0YXJnZXRfaWR9IikKICAgICAgICAgICAgcmV0dXJuIE5vbmUKCiAgICBkZWYgX29uX3RhcmdldF9hZGRyKHNlbGYsIGFkZHJfc3RyOiBzdHIpOgogICAgICAgICIiIuaUtuWIsOacjeWKoeWZqOi/lOWbnueahOebruagh+WcsOWdgO+8jOiuvue9ruS6i+S7tuWUpOmGkuetieW+heeahCBob2xlX3B1bmNoIOWNj+eoiyIiIgogICAgICAgIHRyeToKICAgICAgICAgICAgaG9zdCwgcG9ydF9zdHIgPSBhZGRyX3N0ci5yc3BsaXQoIjoiLCAxKQogICAgICAgICAgICBzZWxmLl90YXJnZXRfYWRkciA9IChob3N0LCBpbnQocG9ydF9zdHIpKQogICAgICAgICAgICBpZiBoYXNhdHRyKHNlbGYsICJfdGFyZ2V0X2V2ZW50Iik6CiAgICAgICAgICAgICAgICBzZWxmLl90YXJnZXRfZXZlbnQuc2V0KCkKICAgICAgICBleGNlcHQgKFZhbHVlRXJyb3IsIEF0dHJpYnV0ZUVycm9yKSBhcyBlOgogICAgICAgICAgICBsb2dnZXIuZXJyb3IoZiJQMlAg55uu5qCH5Zyw5Z2A5qC85byP5peg5pWIOiB7YWRkcl9zdHJ9OiB7ZX0iKQoKICAgIGRlZiBfb25faG9sZV9wdW5jaF9yZXNwb25zZShzZWxmLCBtc2dfdHlwZSwgc2VxLCBwYXlsb2FkOiBkaWN0KToKICAgICAgICAiIiIKICAgICAgICBUQ1Ag5raI5oGv5Zue6LCD77ya5aSE55CG5pyN5Yqh56uv6L+U5Zue55qEIFAyUF9IT0xFX1BVTkNIIOWTjeW6lAogICAgICAgIOWwhiBhZGRyIOWtl+auteaPkOWPluWQjuS8oOe7mSBfb25fdGFyZ2V0X2FkZHIg5Lul5ZSk6YaS562J5b6F55qEIGhvbGVfcHVuY2gg5Y2P56iLCiAgICAgICAgIiIiCiAgICAgICAgYWRkciA9IHBheWxvYWQuZ2V0KCJhZGRyIiwgIiIpCiAgICAgICAgaWYgYWRkcjoKICAgICAgICAgICAgc2VsZi5fb25fdGFyZ2V0X2FkZHIoYWRkcikKICAgICAgICBlbHNlOgogICAgICAgICAgICBlcnJvciA9IHBheWxvYWQuZ2V0KCJlcnJvciIsICIiKQogICAgICAgICAgICBsb2dnZXIud2FybmluZyhmIlAyUCDmiZPmtJ7lk43lupTplJnor686IHtlcnJvcn0iKQogICAgICAgICAgICAjIOmHiuaUvuetieW+heWNj+eoi++8iOi/lOWbniBOb25l77yJCiAgICAgICAgICAgIGlmIGhhc2F0dHIoc2VsZiwgIl90YXJnZXRfZXZlbnQiKToKICAgICAgICAgICAgICAgIHNlbGYuX3RhcmdldF9ldmVudC5zZXQoKQoKICAgIGRlZiByZWdpc3Rlcl9tZXNzYWdlX2hhbmRsZXIoc2VsZiwgaGFuZGxlcik6CiAgICAgICAgIiIiCiAgICAgICAg5rOo5YaMIE1lc3NhZ2VIYW5kbGVyIOWbnuiwg++8jOS9vyBQMlBfSE9MRV9QVU5DSCBUQ1Ag5ZON5bqU6IO96Lev55Sx5YiwIFAyUENsaWVudAoKICAgICAgICBBcmdzOgogICAgICAgICAgICBoYW5kbGVyOiBjbGllbnQubWVzc2FnZV9oYW5kbGVyLk1lc3NhZ2VIYW5kbGVyIOWunuS+iwogICAgICAgICIiIgogICAgICAgIGhhbmRsZXIucmVnaXN0ZXIoTWVzc2FnZVR5cGUuUDJQX0hPTEVfUFVOQ0gsIHNlbGYuX29uX2hvbGVfcHVuY2hfcmVzcG9uc2UpCgogICAgZGVmIHN0YXJ0X3B1bmNoX3RvKHNlbGYsIHRhcmdldF9hZGRyOiB0dXBsZSk6CiAgICAgICAgIiIi5ZCR55uu5qCH5Zyw5Z2A5Y+R6YCB5omT5rSe5YyFIiIiCiAgICAgICAgcHVuY2hfZGF0YSA9IGpzb24uZHVtcHMoeyJ0eXBlIjogInB1bmNoIiwgInRzIjogdGltZS50aW1lKCl9KS5lbmNvZGUoInV0Zi04IikKCiAgICAgICAgYXN5bmMgZGVmIF9wdW5jaCgpOgogICAgICAgICAgICBmb3IgaSBpbiByYW5nZShQVU5DSF9DT1VOVCk6CiAgICAgICAgICAgICAgICBpZiBub3Qgc2VsZi5fcnVubmluZzoKICAgICAgICAgICAgICAgICAgICBicmVhawogICAgICAgICAgICAgICAgc2VsZi5fc2VuZF91ZHAodGFyZ2V0X2FkZHIsIFAyUF9QVU5DSCwgcHVuY2hfZGF0YSwgc2VxPWkpCiAgICAgICAgICAgICAgICBhd2FpdCBhc3luY2lvLnNsZWVwKFBVTkNIX0lOVEVSVkFMKQoKICAgICAgICBhc3luY2lvLmVuc3VyZV9mdXR1cmUoX3B1bmNoKCkpCgogICAgYXN5bmMgZGVmIHN0YXJ0X3B1bmNoX3RvX2FzeW5jKHNlbGYsIHRhcmdldF9hZGRyOiB0dXBsZSk6CiAgICAgICAgIiIi5ZCR55uu5qCH5Zyw5Z2A5Y+R6YCB5omT5rSe5YyF77yI5Y+v562J5b6F54mI5pys77yJIiIiCiAgICAgICAgcHVuY2hfZGF0YSA9IGpzb24uZHVtcHMoeyJ0eXBlIjogInB1bmNoIiwgInRzIjogdGltZS50aW1lKCl9KS5lbmNvZGUoInV0Zi04IikKICAgICAgICBmb3IgaSBpbiByYW5nZShQVU5DSF9DT1VOVCk6CiAgICAgICAgICAgIGlmIG5vdCBzZWxmLl9ydW5uaW5nOgogICAgICAgICAgICAgICAgYnJlYWsKICAgICAgICAgICAgc2VsZi5fc2VuZF91ZHAodGFyZ2V0X2FkZHIsIFAyUF9QVU5DSCwgcHVuY2hfZGF0YSwgc2VxPWkpCiAgICAgICAgICAgIGF3YWl0IGFzeW5jaW8uc2xlZXAoUFVOQ0hfSU5URVJWQUwpCgogICAgYXN5bmMgZGVmIF9oYW5kbGVfcHVuY2goc2VsZiwgYWRkcjogdHVwbGUsIHNlcTogaW50LCBwYXlsb2FkOiBieXRlcyk6CiAgICAgICAgc2VsZi5fc2VuZF91ZHAoYWRkciwgUDJQX1BVTkNIX0FDSywgYiJvayIsIHNlcT1zZXEpCgogICAgYXN5bmMgZGVmIF9oYW5kbGVfcHVuY2hfYWNrKHNlbGYsIGFkZHI6IHR1cGxlLCBzZXE6IGludCwgcGF5bG9hZDogYnl0ZXMpOgogICAgICAgIGxvZ2dlci5pbmZvKGYiUDJQIOaJk+a0nuaIkOWKn++8geS4jiB7YWRkcn0g55u06L+e5bey5bu656uLIikKCiAgICAjIC0tLS0g5paH5Lu25Y+R6YCBIC0tLS0KCiAgICBhc3luYyBkZWYgc2VuZF9maWxlX3AycCgKICAgICAgICBzZWxmLAogICAgICAgIHRhcmdldF9hZGRyOiB0dXBsZSwKICAgICAgICBmaWxlcGF0aDogc3RyLAogICAgICAgIGFlc19rZXk6IE9wdGlvbmFsW2J5dGVzXSA9IE5vbmUsCiAgICAgICAgcHJvZ3Jlc3NfY2FsbGJhY2s6IE9wdGlvbmFsW0NhbGxhYmxlW1tpbnQsIGludF0sIE5vbmVdXSA9IE5vbmUsCiAgICApIC0+IGJvb2w6CiAgICAgICAgIiIi6YCa6L+HIFAyUCDnm7Tov57lj5HpgIHmlofku7bvvIzmlK/mjIHmlq3ngrnnu63kvKDlkozkuKLljIXph43kvKAiIiIKICAgICAgICBmaWxlcGF0aCA9IHN0cihmaWxlcGF0aCkKICAgICAgICBpZiBub3Qgb3MucGF0aC5leGlzdHMoZmlsZXBhdGgpOgogICAgICAgICAgICBsb2dnZXIuZXJyb3IoZiLmlofku7bkuI3lrZjlnKg6IHtmaWxlcGF0aH0iKQogICAgICAgICAgICByZXR1cm4gRmFsc2UKCiAgICAgICAgZmlsZXNpemUgPSBvcy5wYXRoLmdldHNpemUoZmlsZXBhdGgpCiAgICAgICAgZmlsZW5hbWUgPSBvcy5wYXRoLmJhc2VuYW1lKGZpbGVwYXRoKQogICAgICAgIHRvdGFsX2NodW5rcyA9IChmaWxlc2l6ZSArIHNlbGYuX2NodW5rX3NpemUgLSAxKSAvLyBzZWxmLl9jaHVua19zaXplCgogICAgICAgIGxvZ2dlci5pbmZvKGYiUDJQIOWPkemAgeaWh+S7tjoge2ZpbGVuYW1lfSAoe2ZpbGVzaXplfSBieXRlcywge3RvdGFsX2NodW5rc30g5Z2XKSIpCgogICAgICAgICMg5Y+R6YCB5paH5Lu25Yid5aeL5YyWCiAgICAgICAgaW5pdF9kYXRhID0ganNvbi5kdW1wcyh7CiAgICAgICAgICAgICJmaWxlbmFtZSI6IGZpbGVuYW1lLAogICAgICAgICAgICAiZmlsZXNpemUiOiBmaWxlc2l6ZSwKICAgICAgICAgICAgImNodW5rX3NpemUiOiBzZWxmLl9jaHVua19zaXplLAogICAgICAgICAgICAidG90YWxfY2h1bmtzIjogdG90YWxfY2h1bmtzLAogICAgICAgIH0pLmVuY29kZSgidXRmLTgiKQogICAgICAgIHNlbGYuX3NlbmRfdWRwKHRhcmdldF9hZGRyLCBQMlBfRklMRV9JTklULCBpbml0X2RhdGEpCgogICAgICAgICMg562J5b6FIEFDSyDnoa7orqTmjqXmlLbmlrnlsLHnu6oKICAgICAgICBpbml0X3NlcSA9IGludCh0aW1lLnRpbWUoKSAqIDEwMDApCiAgICAgICAgYWNrX2V2ZW50ID0gYXN5bmNpby5FdmVudCgpCiAgICAgICAgc2VsZi5fcGVuZGluZ19hY2tzW2luaXRfc2VxXSA9IGFja19ldmVudAogICAgICAgIHRyeToKICAgICAgICAgICAgYXdhaXQgYXN5bmNpby53YWl0X2ZvcihhY2tfZXZlbnQud2FpdCgpLCB0aW1lb3V0PTMuMCkKICAgICAgICBleGNlcHQgYXN5bmNpby5UaW1lb3V0RXJyb3I6CiAgICAgICAgICAgIGxvZ2dlci53YXJuaW5nKGYiUDJQIOaWh+S7tuWIneWni+WMluacquaUtuWIsOehruiupO+8jOe7p+e7reWPkemAgSIpCiAgICAgICAgZmluYWxseToKICAgICAgICAgICAgc2VsZi5fcGVuZGluZ19hY2tzLnBvcChpbml0X3NlcSwgTm9uZSkKCiAgICAgICAgIyDliIblnZflj5HpgIHvvIjluKbph43kvKDvvIkKICAgICAgICBzdGFydF9jaHVuayA9IDAKICAgICAgICBzZW50ID0gMAogICAgICAgIHdpdGggb3BlbihmaWxlcGF0aCwgInJiIikgYXMgZjoKICAgICAgICAgICAgZm9yIGNodW5rX2lkeCBpbiByYW5nZShzdGFydF9jaHVuaywgdG90YWxfY2h1bmtzKToKICAgICAgICAgICAgICAgIGNodW5rX2RhdGEgPSBmLnJlYWQoc2VsZi5fY2h1bmtfc2l6ZSkKCiAgICAgICAgICAgICAgICBpZiBhZXNfa2V5OgogICAgICAgICAgICAgICAgICAgIGFlc2djbSA9IEFFU0dDTShhZXNfa2V5KQogICAgICAgICAgICAgICAgICAgIG5vbmNlID0gc3RydWN0LnBhY2soIj5RIiwgY2h1bmtfaWR4KS5yanVzdCgxMiwgYiJceDAwIikKICAgICAgICAgICAgICAgICAgICBjaHVua19kYXRhID0gYWVzZ2NtLmVuY3J5cHQobm9uY2UsIGNodW5rX2RhdGEsIE5vbmUpCgogICAgICAgICAgICAgICAgIyDluKbph43kvKDnmoTlj5HpgIEKICAgICAgICAgICAgICAgIGZvciBhdHRlbXB0IGluIHJhbmdlKE1BWF9SRVRSSUVTICsgMSk6CiAgICAgICAgICAgICAgICAgICAgaGVhZGVyX2luZm8gPSBqc29uLmR1bXBzKHsKICAgICAgICAgICAgICAgICAgICAgICAgImNodW5rX2lkeCI6IGNodW5rX2lkeCwKICAgICAgICAgICAgICAgICAgICAgICAgIm9mZnNldCI6IHNlbnQsCiAgICAgICAgICAgICAgICAgICAgfSkuZW5jb2RlKCJ1dGYtOCIpCiAgICAgICAgICAgICAgICAgICAgc2VsZi5fc2VuZF91ZHAodGFyZ2V0X2FkZHIsIFAyUF9GSUxFX0RBVEEsIGhlYWRlcl9pbmZvICsgYiJ8IiArIGNodW5rX2RhdGEpCgogICAgICAgICAgICAgICAgICAgIGlmIGF0dGVtcHQgPCBNQVhfUkVUUklFUzoKICAgICAgICAgICAgICAgICAgICAgICAgIyDnrYnlvoUgQUNLCiAgICAgICAgICAgICAgICAgICAgICAgIGFja19ldnQgPSBhc3luY2lvLkV2ZW50KCkKICAgICAgICAgICAgICAgICAgICAgICAgc2VsZi5fcGVuZGluZ19hY2tzW2NodW5rX2lkeF0gPSBhY2tfZXZ0CiAgICAgICAgICAgICAgICAgICAgICAgIHRyeToKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGF3YWl0IGFzeW5jaW8ud2FpdF9mb3IoYWNrX2V2dC53YWl0KCksIHRpbWVvdXQ9QUNLX1RJTUVPVVQpCiAgICAgICAgICAgICAgICAgICAgICAgICAgICBicmVhayAgIyDmlLbliLAgQUNL77yM57un57ut5LiL5LiA5Z2XCiAgICAgICAgICAgICAgICAgICAgICAgIGV4Y2VwdCBhc3luY2lvLlRpbWVvdXRFcnJvcjoKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGxvZ2dlci5kZWJ1ZyhmIlAyUCDlnZcgI3tjaHVua19pZHh9IOi2heaXtu+8jOmHjeS8oCAoe2F0dGVtcHQrMX0ve01BWF9SRVRSSUVTfSkiKQogICAgICAgICAgICAgICAgICAgICAgICBmaW5hbGx5OgogICAgICAgICAgICAgICAgICAgICAgICAgICAgc2VsZi5fcGVuZGluZ19hY2tzLnBvcChjaHVua19pZHgsIE5vbmUpCgogICAgICAgICAgICAgICAgc2VudCArPSBzZWxmLl9jaHVua19zaXplCgogICAgICAgICAgICAgICAgaWYgcHJvZ3Jlc3NfY2FsbGJhY2s6CiAgICAgICAgICAgICAgICAgICAgcHJvZ3Jlc3NfY2FsbGJhY2sobWluKHNlbnQsIGZpbGVzaXplKSwgZmlsZXNpemUpCgogICAgICAgICMg5Y+R6YCB5a6M5oiQ6YCa55+lCiAgICAgICAgZG9uZV9kYXRhID0ganNvbi5kdW1wcyh7ImZpbGVuYW1lIjogZmlsZW5hbWUsICJ0b3RhbF9jaHVua3MiOiB0b3RhbF9jaHVua3N9KS5lbmNvZGUoInV0Zi04IikKICAgICAgICBzZWxmLl9zZW5kX3VkcCh0YXJnZXRfYWRkciwgUDJQX0ZJTEVfRE9ORSwgZG9uZV9kYXRhKQogICAgICAgIGxvZ2dlci5pbmZvKGYiUDJQIOaWh+S7tuWPkemAgeWujOaIkDoge2ZpbGVuYW1lfSIpCiAgICAgICAgcmV0dXJuIFRydWUKCiAgICAjIC0tLS0g5paH5Lu25o6l5pS2IC0tLS0KCiAgICBhc3luYyBkZWYgcmVjZWl2ZV9maWxlX3AycCgKICAgICAgICBzZWxmLAogICAgICAgIHNhdmVfZGlyOiBzdHIsCiAgICAgICAgYWVzX2tleTogT3B0aW9uYWxbYnl0ZXNdID0gTm9uZSwKICAgICAgICBwcm9ncmVzc19jYWxsYmFjazogT3B0aW9uYWxbQ2FsbGFibGVbW2ludCwgaW50XSwgTm9uZV1dID0gTm9uZSwKICAgICk6CiAgICAgICAgIiIi6YWN572u5o6l5pS25Y+C5pWw77yM562J5b6F5a+556uv5Y+R6YCB5paH5Lu244CC6LCD55So5ZCO6YCa6L+HIF9oYW5kbGVfZmlsZV9pbml0IOWSjCBfaGFuZGxlX2ZpbGVfZGF0YSDmjqXmlLYiIiIKICAgICAgICBzZWxmLl9yZWN2X3NhdmVfZGlyID0gc2F2ZV9kaXIKICAgICAgICBzZWxmLl9yZWN2X2Flc19rZXkgPSBhZXNfa2V5CiAgICAgICAgc2VsZi5fcmVjdl9wcm9ncmVzcyA9IHByb2dyZXNzX2NhbGxiYWNrCgogICAgYXN5bmMgZGVmIF9oYW5kbGVfZmlsZV9pbml0KHNlbGYsIGFkZHI6IHR1cGxlLCBzZXE6IGludCwgcGF5bG9hZDogYnl0ZXMpOgogICAgICAgIHRyeToKICAgICAgICAgICAgaW5mbyA9IGpzb24ubG9hZHMocGF5bG9hZC5kZWNvZGUoInV0Zi04IikpCiAgICAgICAgICAgIHNhdmVfZGlyID0gc2VsZi5fcmVjdl9zYXZlX2RpcgogICAgICAgICAgICBmaWxlbmFtZSA9IGluZm9bImZpbGVuYW1lIl0KICAgICAgICAgICAgZmlsZXNpemUgPSBpbmZvWyJmaWxlc2l6ZSJdCiAgICAgICAgICAgIHRvdGFsX2NodW5rcyA9IGluZm9bInRvdGFsX2NodW5rcyJdCgogICAgICAgICAgICBzYXZlX3BhdGggPSBvcy5wYXRoLmpvaW4oc2F2ZV9kaXIsIGZpbGVuYW1lKQogICAgICAgICAgICBvcy5tYWtlZGlycyhvcy5wYXRoLmRpcm5hbWUoc2F2ZV9wYXRoKSBvciAiLiIsIGV4aXN0X29rPVRydWUpCgogICAgICAgICAgICByZXN1bWVfb2Zmc2V0ID0gMAogICAgICAgICAgICBpZiBvcy5wYXRoLmV4aXN0cyhzYXZlX3BhdGgpOgogICAgICAgICAgICAgICAgcmVzdW1lX29mZnNldCA9IG9zLnBhdGguZ2V0c2l6ZShzYXZlX3BhdGgpCiAgICAgICAgICAgICAgICBpZiByZXN1bWVfb2Zmc2V0IDwgZmlsZXNpemU6CiAgICAgICAgICAgICAgICAgICAgbG9nZ2VyLmluZm8oZiLmo4DmtYvliLDpg6jliIbkuIvovb06IHtzYXZlX3BhdGh9ICh7cmVzdW1lX29mZnNldH0ve2ZpbGVzaXplfSkiKQogICAgICAgICAgICAgICAgICAgIHJlc3VtZV9kYXRhID0ganNvbi5kdW1wcyh7ImZpbGVuYW1lIjogZmlsZW5hbWUsICJvZmZzZXQiOiByZXN1bWVfb2Zmc2V0fSkuZW5jb2RlKCJ1dGYtOCIpCiAgICAgICAgICAgICAgICAgICAgc2VsZi5fc2VuZF91ZHAoYWRkciwgUDJQX0ZJTEVfUkVTVU1FLCByZXN1bWVfZGF0YSkKICAgICAgICAgICAgICAgICAgICAjIOS/neWtmOe7reS8oOS/oeaBr+eUqOS6jiBfaGFuZGxlX2ZpbGVfZGF0YQogICAgICAgICAgICAgICAgICAgIHNlbGYuX2ZpbGVfcmVzdW1lX29mZnNldCA9IHJlc3VtZV9vZmZzZXQKICAgICAgICAgICAgICAgICAgICBzZWxmLl9maWxlX3Jlc3VtZV9wYXRoID0gc2F2ZV9wYXRoCiAgICAgICAgICAgICAgICAgICAgcmV0dXJuCgogICAgICAgICAgICAjIOWbnuWkjSBBQ0sg6KGo56S65bCx57uqCiAgICAgICAgICAgIGFja19kYXRhID0ganNvbi5kdW1wcyh7Im9mZnNldCI6IDB9KS5lbmNvZGUoInV0Zi04IikKICAgICAgICAgICAgc2VsZi5fc2VuZF91ZHAoYWRkciwgUDJQX0ZJTEVfQUNLLCBhY2tfZGF0YSkKCiAgICAgICAgICAgIHNlbGYuX3JlY3ZfZmlsZV9pbmZvID0gewogICAgICAgICAgICAgICAgImFkZHIiOiBhZGRyLAogICAgICAgICAgICAgICAgInNhdmVfcGF0aCI6IHNhdmVfcGF0aCwKICAgICAgICAgICAgICAgICJmaWxlc2l6ZSI6IGZpbGVzaXplLAogICAgICAgICAgICAgICAgInRvdGFsX2NodW5rcyI6IHRvdGFsX2NodW5rcywKICAgICAgICAgICAgICAgICJyZWNlaXZlZCI6IGdldGF0dHIoc2VsZiwgIl9maWxlX3Jlc3VtZV9vZmZzZXQiLCAwKSwKICAgICAgICAgICAgICAgICJhZXNfa2V5Ijogc2VsZi5fcmVjdl9hZXNfa2V5LAogICAgICAgICAgICAgICAgInByb2dyZXNzIjogc2VsZi5fcmVjdl9wcm9ncmVzcywKICAgICAgICAgICAgICAgICJmaWxlbmFtZSI6IGZpbGVuYW1lLAogICAgICAgICAgICB9CgogICAgICAgICAgICBpZiBoYXNhdHRyKHNlbGYsICJfZmlsZV9yZXN1bWVfb2Zmc2V0Iik6CiAgICAgICAgICAgICAgICBzZWxmLl9yZWN2X2ZpbGVfaW5mb1sicmVjZWl2ZWQiXSA9IHNlbGYuX2ZpbGVfcmVzdW1lX29mZnNldAoKICAgICAgICAgICAgbG9nZ2VyLmluZm8oZiJQMlAg5YeG5aSH5o6l5pS2OiB7ZmlsZW5hbWV9ICh7ZmlsZXNpemV9IGJ5dGVzLCB7dG90YWxfY2h1bmtzfSDlnZcpIikKICAgICAgICBleGNlcHQgRXhjZXB0aW9uIGFzIGU6CiAgICAgICAgICAgIGxvZ2dlci5lcnJvcihmIlAyUCDmlofku7bliJ3lp4vljJblpITnkIblpLHotKU6IHtlfSIpCgogICAgYXN5bmMgZGVmIF9oYW5kbGVfZmlsZV9kYXRhKHNlbGYsIGFkZHI6IHR1cGxlLCBzZXE6IGludCwgcGF5bG9hZDogYnl0ZXMpOgogICAgICAgIHRyeToKICAgICAgICAgICAgc2VwX2lkeCA9IHBheWxvYWQuZmluZChiInwiKQogICAgICAgICAgICBpZiBzZXBfaWR4ID09IC0xOgogICAgICAgICAgICAgICAgcmV0dXJuCiAgICAgICAgICAgIGhlYWRlcl9kYXRhID0gcGF5bG9hZFs6c2VwX2lkeF0KICAgICAgICAgICAgY2h1bmtfcmF3ID0gcGF5bG9hZFtzZXBfaWR4ICsgMTpdCgogICAgICAgICAgICBoZWFkZXIgPSBqc29uLmxvYWRzKGhlYWRlcl9kYXRhLmRlY29kZSgidXRmLTgiKSkKICAgICAgICAgICAgY2h1bmtfaWR4ID0gaGVhZGVyWyJjaHVua19pZHgiXQogICAgICAgICAgICBvZmZzZXQgPSBoZWFkZXIuZ2V0KCJvZmZzZXQiLCBjaHVua19pZHggKiBzZWxmLl9jaHVua19zaXplKQoKICAgICAgICAgICAgZmlsZV9pbmZvID0gc2VsZi5fcmVjdl9maWxlX2luZm8KICAgICAgICAgICAgaWYgbm90IGZpbGVfaW5mbyBvciBmaWxlX2luZm9bImFkZHIiXSAhPSBhZGRyOgogICAgICAgICAgICAgICAgcmV0dXJuCgogICAgICAgICAgICBzYXZlX3BhdGggPSBmaWxlX2luZm9bInNhdmVfcGF0aCJdCiAgICAgICAgICAgIGFlc19rZXkgPSBmaWxlX2luZm8uZ2V0KCJhZXNfa2V5IikKCiAgICAgICAgICAgIGlmIGFlc19rZXkgYW5kIGNodW5rX3JhdzoKICAgICAgICAgICAgICAgIGFlc2djbSA9IEFFU0dDTShhZXNfa2V5KQogICAgICAgICAgICAgICAgbm9uY2UgPSBzdHJ1Y3QucGFjaygiPlEiLCBjaHVua19pZHgpLnJqdXN0KDEyLCBiIlx4MDAiKQogICAgICAgICAgICAgICAgY2h1bmtfcmF3ID0gYWVzZ2NtLmRlY3J5cHQobm9uY2UsIGNodW5rX3JhdywgTm9uZSkKCiAgICAgICAgICAgICMg5YaZ5YWl5paH5Lu277yI55So6L+95Yqg5qih5byP77yMc2VlayDliLDmraPnoa7lgY/np7vvvIkKICAgICAgICAgICAgd2l0aCBvcGVuKHNhdmVfcGF0aCwgImFiIikgYXMgZjoKICAgICAgICAgICAgICAgIGYuc2VlayhvZmZzZXQpCiAgICAgICAgICAgICAgICBmLndyaXRlKGNodW5rX3JhdykKCiAgICAgICAgICAgIGZpbGVfaW5mb1sicmVjZWl2ZWQiXSA9IG1pbihmaWxlX2luZm9bInJlY2VpdmVkIl0gKyBsZW4oY2h1bmtfcmF3KSwgZmlsZV9pbmZvWyJmaWxlc2l6ZSJdKQoKICAgICAgICAgICAgaWYgZmlsZV9pbmZvLmdldCgicHJvZ3Jlc3MiKToKICAgICAgICAgICAgICAgIGZpbGVfaW5mb1sicHJvZ3Jlc3MiXShmaWxlX2luZm9bInJlY2VpdmVkIl0sIGZpbGVfaW5mb1siZmlsZXNpemUiXSkKCiAgICAgICAgICAgICMg5Y+R6YCBIEFDSwogICAgICAgICAgICBhY2tfZGF0YSA9IGpzb24uZHVtcHMoeyJjaHVua19pZHgiOiBjaHVua19pZHgsICJvZmZzZXQiOiBvZmZzZXQgKyBsZW4oY2h1bmtfcmF3KX0pLmVuY29kZSgidXRmLTgiKQogICAgICAgICAgICBzZWxmLl9zZW5kX3VkcChhZGRyLCBQMlBfRklMRV9BQ0ssIGFja19kYXRhLCBzZXE9Y2h1bmtfaWR4KQogICAgICAgIGV4Y2VwdCBFeGNlcHRpb24gYXMgZToKICAgICAgICAgICAgbG9nZ2VyLmVycm9yKGYiUDJQIOaWh+S7tuaVsOaNruWdl+WkhOeQhuWksei0pToge2V9IikKCiAgICBhc3luYyBkZWYgX2hhbmRsZV9maWxlX2FjayhzZWxmLCBhZGRyOiB0dXBsZSwgc2VxOiBpbnQsIHBheWxvYWQ6IGJ5dGVzKToKICAgICAgICAiIiLmlLbliLAgQUNL77yM5ZSk6YaS562J5b6F55qE5Y+R6YCB5Y2P56iLIiIiCiAgICAgICAgdHJ5OgogICAgICAgICAgICBhY2sgPSBqc29uLmxvYWRzKHBheWxvYWQuZGVjb2RlKCJ1dGYtOCIpKQogICAgICAgICAgICBjaHVua19pZHggPSBhY2suZ2V0KCJjaHVua19pZHgiLCBzZXEpCiAgICAgICAgICAgIGV2dCA9IHNlbGYuX3BlbmRpbmdfYWNrcy5nZXQoY2h1bmtfaWR4KQogICAgICAgICAgICBpZiBldnQ6CiAgICAgICAgICAgICAgICBldnQuc2V0KCkKICAgICAgICBleGNlcHQgRXhjZXB0aW9uOgogICAgICAgICAgICBwYXNzCgogICAgYXN5bmMgZGVmIF9oYW5kbGVfZmlsZV9kb25lKHNlbGYsIGFkZHI6IHR1cGxlLCBzZXE6IGludCwgcGF5bG9hZDogYnl0ZXMpOgogICAgICAgICIiIuaWh+S7tuS8oOi+k+WujOaIkCIiIgogICAgICAgIHRyeToKICAgICAgICAgICAgZG9uZSA9IGpzb24ubG9hZHMocGF5bG9hZC5kZWNvZGUoInV0Zi04IikpCiAgICAgICAgICAgIGxvZ2dlci5pbmZvKGYiUDJQIOaWh+S7tuaOpeaUtuWujOaIkDoge2RvbmUuZ2V0KCdmaWxlbmFtZScsICd1bmtub3duJyl9IikKICAgICAgICBleGNlcHQgRXhjZXB0aW9uIGFzIGU6CiAgICAgICAgICAgIGxvZ2dlci53YXJuaW5nKGYiUDJQIOWujOaIkOmAmuefpeino+aekOWksei0pToge2V9IikKCiAgICBhc3luYyBkZWYgX2hhbmRsZV9maWxlX3Jlc3VtZShzZWxmLCBhZGRyOiB0dXBsZSwgc2VxOiBpbnQsIHBheWxvYWQ6IGJ5dGVzKToKICAgICAgICAiIiLmlLbliLDmlq3ngrnnu63kvKDor7fmsYIiIiIKICAgICAgICB0cnk6CiAgICAgICAgICAgIHJlc3VtZSA9IGpzb24ubG9hZHMocGF5bG9hZC5kZWNvZGUoInV0Zi04IikpCiAgICAgICAgICAgIGxvZ2dlci5pbmZvKGYiUDJQIOe7reS8oOivt+axgjogb2Zmc2V0PXtyZXN1bWUuZ2V0KCdvZmZzZXQnLCAwKX0iKQogICAgICAgIGV4Y2VwdCBFeGNlcHRpb246CiAgICAgICAgICAgIHBhc3MKCgphc3luYyBkZWYgY3JlYXRlX3AycF9jbGllbnQoY29uZmlnOiBPcHRpb25hbFtDb25maWddID0gTm9uZSkgLT4gUDJQQ2xpZW50OgogICAgY2xpZW50ID0gUDJQQ2xpZW50KGNvbmZpZykKICAgIGF3YWl0IGNsaWVudC5zdGFydCgpCiAgICByZXR1cm4gY2xpZW50Cg==
+"""
+P2P UDP 打洞直连模块
+通过服务器协助进行 NAT 穿透，建立点对点 UDP 直连
+支持加密文件传输、断点续传
+
+流程:
+1. A 请求给 B 传文件 → A 发 P2P_HOLE_PUNCH 给服务器（带上自己的真实 UDP 地址）
+2. 服务器交换 A 和 B 的地址
+3. 双方互相向对方地址发 UDP 包（打洞）
+4. NAT 允许入站包后，连接建立
+5. 通过直连进行分块加密文件传输
+"""
+
+import asyncio
+import os
+import json
+import logging
+import struct
+import time
+from typing import Optional, Callable
+
+from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+
+from config import Config
+from connection import ChatConnection
+from protocol import MessageType
+
+logger = logging.getLogger(__name__)
+
+# P2P 协议常量
+P2P_MAGIC = 0x5045  # "PE"
+P2P_VERSION = 0x01
+P2P_HEADER_FORMAT = "!H B B Q I"  # Magic(2B) + Version(1B) + Type(1B) + Seq(8B) + PayloadLen(4B) = 16B
+P2P_HEADER_SIZE = struct.calcsize(P2P_HEADER_FORMAT)
+
+P2P_FILE_INIT = 0x01     # 文件传输初始化
+P2P_FILE_DATA = 0x02     # 文件数据块
+P2P_FILE_ACK = 0x03      # 数据块确认
+P2P_FILE_RESUME = 0x04   # 断点续传请求
+P2P_PUNCH = 0x05         # 打洞包
+P2P_PUNCH_ACK = 0x06     # 打洞确认
+P2P_FILE_DONE = 0x07     # 文件传输完成
+
+MAX_RETRIES = 3           # 每块最大重传次数
+ACK_TIMEOUT = 1.0         # ACK 等待超时（秒）
+PUNCH_COUNT = 8           # 打洞包数量
+PUNCH_INTERVAL = 0.3      # 打洞间隔（秒）
+
+
+class P2PError(Exception):
+    pass
+
+
+class P2PClient:
+    """P2P 客户端：UDP 打洞 + 直连文件传输"""
+
+    def __init__(self, config: Optional[Config] = None):
+        self.config = config or Config()
+        self._udp_transport: Optional[asyncio.DatagramTransport] = None
+        self._local_udp_port = 0
+        self._running = False
+        self._chunk_size = 65536  # 64KB
+
+        # 文件接收状态
+        self._recv_save_dir = "."
+        self._recv_aes_key: Optional[bytes] = None
+        self._recv_progress: Optional[Callable] = None
+        self._recv_file_info: Optional[dict] = None
+
+        # P2P 保活
+        self._pending_acks: dict = {}  # seq -> asyncio.Event
+
+    async def start(self) -> int:
+        loop = asyncio.get_event_loop()
+
+        class P2PProtocol(asyncio.DatagramProtocol):
+            def __init__(self, p2p):
+                self.p2p = p2p
+                self.transport = None
+
+            def connection_made(self, transport):
+                self.transport = transport
+                self.p2p._udp_transport = transport
+
+            def datagram_received(self, data, addr):
+                asyncio.ensure_future(self.p2p._handle_datagram(data, addr))
+
+            def error_received(self, exc):
+                logger.error(f"P2P UDP 错误: {exc}")
+
+        self._udp_transport, _ = await loop.create_datagram_endpoint(
+            lambda: P2PProtocol(self),
+            local_addr=("0.0.0.0", 0),
+        )
+
+        sockname = self._udp_transport.get_extra_info("sockname")
+        self._local_udp_port = sockname[1]
+        self._running = True
+        logger.info(f"P2P UDP 监听已启动，端口: {self._local_udp_port}")
+        return self._local_udp_port
+
+    def stop(self):
+        self._running = False
+        if self._udp_transport:
+            self._udp_transport.close()
+            self._udp_transport = None
+        logger.info("P2P 服务已停止")
+
+    @property
+    def local_port(self) -> int:
+        return self._local_udp_port
+
+    # ---- UDP 收发 ----
+
+    def _send_udp(self, addr: tuple, msg_type: int, payload_bytes: bytes, seq: int = 0):
+        if not self._udp_transport:
+            raise P2PError("P2P 服务未启动")
+        header = struct.pack(P2P_HEADER_FORMAT, P2P_MAGIC, P2P_VERSION, msg_type, seq, len(payload_bytes))
+        self._udp_transport.sendto(header + payload_bytes, addr)
+
+    async def _handle_datagram(self, data: bytes, addr: tuple):
+        try:
+            if len(data) < P2P_HEADER_SIZE:
+                return
+            magic, version, msg_type, seq, payload_len = struct.unpack(
+                P2P_HEADER_FORMAT, data[:P2P_HEADER_SIZE]
+            )
+            if magic != P2P_MAGIC:
+                return
+            total_size = P2P_HEADER_SIZE + payload_len
+            if len(data) < total_size:
+                return
+            payload_data = data[P2P_HEADER_SIZE:total_size] if payload_len > 0 else b""
+            await self._dispatch(addr, msg_type, seq, payload_data)
+        except Exception as e:
+            logger.error(f"P2P 数据报处理失败: {e}")
+
+    async def _dispatch(self, addr: tuple, msg_type: int, seq: int, payload: bytes):
+        handler = {
+            P2P_FILE_INIT: self._handle_file_init,
+            P2P_FILE_DATA: self._handle_file_data,
+            P2P_FILE_ACK: self._handle_file_ack,
+            P2P_FILE_RESUME: self._handle_file_resume,
+            P2P_FILE_DONE: self._handle_file_done,
+            P2P_PUNCH: self._handle_punch,
+            P2P_PUNCH_ACK: self._handle_punch_ack,
+        }.get(msg_type)
+        if handler:
+            await handler(addr, seq, payload)
+        else:
+            logger.warning(f"未知 P2P 消息类型: {msg_type}")
+
+    # ---- 打洞 ----
+
+    async def hole_punch(
+        self,
+        server_conn: ChatConnection,
+        my_user_id: int,
+        target_user_id: int,
+        my_public_addr: str = "",
+        punch_timeout: float = 5.0,
+    ) -> Optional[tuple]:
+        """
+        通过服务器协助进行 UDP 打洞
+
+        Args:
+            server_conn: 与服务端的 TCP 连接（ChatConnection，send_message 为同步调用）
+            my_user_id: 当前用户 ID
+            target_user_id: 目标用户 ID
+            my_public_addr: 当前用户的公网地址 "ip:port"（由服务器从 TCP 连接获知后回传）
+            punch_timeout: 打洞超时
+
+        Returns:
+            成功返回 (target_host, target_port)，失败返回 None
+        """
+        if not self._running:
+            await self.start()
+
+        udp_addr = my_public_addr or f"0.0.0.0:{self._local_udp_port}"
+
+        # ChatConnection.send_message 是同步方法，不需要 await
+        server_conn.send_message(
+            MessageType.P2P_HOLE_PUNCH,
+            {
+                "user_id": my_user_id,
+                "target_id": target_user_id,
+                "addr": udp_addr,
+            },
+        )
+
+        logger.info(f"P2P 打洞请求已发送: my_id={my_user_id}, target={target_user_id}")
+        return await self._wait_for_target_addr(target_user_id, punch_timeout)
+
+    async def _wait_for_target_addr(self, target_id: int, timeout: float) -> Optional[tuple]:
+        """等待服务器返回目标地址"""
+        self._target_event = asyncio.Event()
+        self._target_addr = None
+        try:
+            await asyncio.wait_for(self._target_event.wait(), timeout=timeout)
+            return self._target_addr
+        except asyncio.TimeoutError:
+            logger.warning(f"P2P 打洞超时: target={target_id}")
+            return None
+
+    def _on_target_addr(self, addr_str: str):
+        """收到服务器返回的目标地址，设置事件唤醒等待的 hole_punch 协程"""
+        try:
+            host, port_str = addr_str.rsplit(":", 1)
+            self._target_addr = (host, int(port_str))
+            if hasattr(self, "_target_event"):
+                self._target_event.set()
+        except (ValueError, AttributeError) as e:
+            logger.error(f"P2P 目标地址格式无效: {addr_str}: {e}")
+
+    def _on_hole_punch_response(self, msg_type, seq, payload: dict):
+        """
+        TCP 消息回调：处理服务端返回的 P2P_HOLE_PUNCH 响应
+        将 addr 字段提取后传给 _on_target_addr 以唤醒等待的 hole_punch 协程
+        """
+        addr = payload.get("addr", "")
+        if addr:
+            self._on_target_addr(addr)
+        else:
+            error = payload.get("error", "")
+            logger.warning(f"P2P 打洞响应错误: {error}")
+            # 释放等待协程（返回 None）
+            if hasattr(self, "_target_event"):
+                self._target_event.set()
+
+    def register_message_handler(self, handler):
+        """
+        注册 MessageHandler 回调，使 P2P_HOLE_PUNCH TCP 响应能路由到 P2PClient
+
+        Args:
+            handler: client.message_handler.MessageHandler 实例
+        """
+        handler.register(MessageType.P2P_HOLE_PUNCH, self._on_hole_punch_response)
+
+    def start_punch_to(self, target_addr: tuple):
+        """向目标地址发送打洞包"""
+        punch_data = json.dumps({"type": "punch", "ts": time.time()}).encode("utf-8")
+
+        async def _punch():
+            for i in range(PUNCH_COUNT):
+                if not self._running:
+                    break
+                self._send_udp(target_addr, P2P_PUNCH, punch_data, seq=i)
+                await asyncio.sleep(PUNCH_INTERVAL)
+
+        asyncio.ensure_future(_punch())
+
+    async def start_punch_to_async(self, target_addr: tuple):
+        """向目标地址发送打洞包（可等待版本）"""
+        punch_data = json.dumps({"type": "punch", "ts": time.time()}).encode("utf-8")
+        for i in range(PUNCH_COUNT):
+            if not self._running:
+                break
+            self._send_udp(target_addr, P2P_PUNCH, punch_data, seq=i)
+            await asyncio.sleep(PUNCH_INTERVAL)
+
+    async def _handle_punch(self, addr: tuple, seq: int, payload: bytes):
+        self._send_udp(addr, P2P_PUNCH_ACK, b"ok", seq=seq)
+
+    async def _handle_punch_ack(self, addr: tuple, seq: int, payload: bytes):
+        logger.info(f"P2P 打洞成功！与 {addr} 直连已建立")
+
+    # ---- 文件发送 ----
+
+    async def send_file_p2p(
+        self,
+        target_addr: tuple,
+        filepath: str,
+        aes_key: Optional[bytes] = None,
+        progress_callback: Optional[Callable[[int, int], None]] = None,
+    ) -> bool:
+        """通过 P2P 直连发送文件，支持断点续传和丢包重传"""
+        filepath = str(filepath)
+        if not os.path.exists(filepath):
+            logger.error(f"文件不存在: {filepath}")
+            return False
+
+        filesize = os.path.getsize(filepath)
+        filename = os.path.basename(filepath)
+        total_chunks = (filesize + self._chunk_size - 1) // self._chunk_size
+
+        logger.info(f"P2P 发送文件: {filename} ({filesize} bytes, {total_chunks} 块)")
+
+        # 发送文件初始化
+        init_data = json.dumps({
+            "filename": filename,
+            "filesize": filesize,
+            "chunk_size": self._chunk_size,
+            "total_chunks": total_chunks,
+        }).encode("utf-8")
+        self._send_udp(target_addr, P2P_FILE_INIT, init_data)
+
+        # 等待 ACK 确认接收方就绪
+        init_seq = int(time.time() * 1000)
+        ack_event = asyncio.Event()
+        self._pending_acks[init_seq] = ack_event
+        try:
+            await asyncio.wait_for(ack_event.wait(), timeout=3.0)
+        except asyncio.TimeoutError:
+            logger.warning(f"P2P 文件初始化未收到确认，继续发送")
+        finally:
+            self._pending_acks.pop(init_seq, None)
+
+        # 分块发送（带重传）
+        start_chunk = 0
+        sent = 0
+        with open(filepath, "rb") as f:
+            for chunk_idx in range(start_chunk, total_chunks):
+                chunk_data = f.read(self._chunk_size)
+
+                if aes_key:
+                    aesgcm = AESGCM(aes_key)
+                    nonce = struct.pack(">Q", chunk_idx).rjust(12, b"\x00")
+                    chunk_data = aesgcm.encrypt(nonce, chunk_data, None)
+
+                # 带重传的发送
+                for attempt in range(MAX_RETRIES + 1):
+                    header_info = json.dumps({
+                        "chunk_idx": chunk_idx,
+                        "offset": sent,
+                    }).encode("utf-8")
+                    self._send_udp(target_addr, P2P_FILE_DATA, header_info + b"|" + chunk_data)
+
+                    if attempt < MAX_RETRIES:
+                        # 等待 ACK
+                        ack_evt = asyncio.Event()
+                        self._pending_acks[chunk_idx] = ack_evt
+                        try:
+                            await asyncio.wait_for(ack_evt.wait(), timeout=ACK_TIMEOUT)
+                            break  # 收到 ACK，继续下一块
+                        except asyncio.TimeoutError:
+                            logger.debug(f"P2P 块 #{chunk_idx} 超时，重传 ({attempt+1}/{MAX_RETRIES})")
+                        finally:
+                            self._pending_acks.pop(chunk_idx, None)
+
+                sent += self._chunk_size
+
+                if progress_callback:
+                    progress_callback(min(sent, filesize), filesize)
+
+        # 发送完成通知
+        done_data = json.dumps({"filename": filename, "total_chunks": total_chunks}).encode("utf-8")
+        self._send_udp(target_addr, P2P_FILE_DONE, done_data)
+        logger.info(f"P2P 文件发送完成: {filename}")
+        return True
+
+    # ---- 文件接收 ----
+
+    async def receive_file_p2p(
+        self,
+        save_dir: str,
+        aes_key: Optional[bytes] = None,
+        progress_callback: Optional[Callable[[int, int], None]] = None,
+    ):
+        """配置接收参数，等待对端发送文件。调用后通过 _handle_file_init 和 _handle_file_data 接收"""
+        self._recv_save_dir = save_dir
+        self._recv_aes_key = aes_key
+        self._recv_progress = progress_callback
+
+    async def _handle_file_init(self, addr: tuple, seq: int, payload: bytes):
+        try:
+            info = json.loads(payload.decode("utf-8"))
+            save_dir = self._recv_save_dir
+            filename = info["filename"]
+            filesize = info["filesize"]
+            total_chunks = info["total_chunks"]
+
+            save_path = os.path.join(save_dir, filename)
+            os.makedirs(os.path.dirname(save_path) or ".", exist_ok=True)
+
+            resume_offset = 0
+            if os.path.exists(save_path):
+                resume_offset = os.path.getsize(save_path)
+                if resume_offset < filesize:
+                    logger.info(f"检测到部分下载: {save_path} ({resume_offset}/{filesize})")
+                    resume_data = json.dumps({"filename": filename, "offset": resume_offset}).encode("utf-8")
+                    self._send_udp(addr, P2P_FILE_RESUME, resume_data)
+                    # 保存续传信息用于 _handle_file_data
+                    self._file_resume_offset = resume_offset
+                    self._file_resume_path = save_path
+                    return
+
+            # 回复 ACK 表示就绪
+            ack_data = json.dumps({"offset": 0}).encode("utf-8")
+            self._send_udp(addr, P2P_FILE_ACK, ack_data)
+
+            self._recv_file_info = {
+                "addr": addr,
+                "save_path": save_path,
+                "filesize": filesize,
+                "total_chunks": total_chunks,
+                "received": getattr(self, "_file_resume_offset", 0),
+                "aes_key": self._recv_aes_key,
+                "progress": self._recv_progress,
+                "filename": filename,
+            }
+
+            if hasattr(self, "_file_resume_offset"):
+                self._recv_file_info["received"] = self._file_resume_offset
+
+            logger.info(f"P2P 准备接收: {filename} ({filesize} bytes, {total_chunks} 块)")
+        except Exception as e:
+            logger.error(f"P2P 文件初始化处理失败: {e}")
+
+    async def _handle_file_data(self, addr: tuple, seq: int, payload: bytes):
+        try:
+            sep_idx = payload.find(b"|")
+            if sep_idx == -1:
+                return
+            header_data = payload[:sep_idx]
+            chunk_raw = payload[sep_idx + 1:]
+
+            header = json.loads(header_data.decode("utf-8"))
+            chunk_idx = header["chunk_idx"]
+            offset = header.get("offset", chunk_idx * self._chunk_size)
+
+            file_info = self._recv_file_info
+            if not file_info or file_info["addr"] != addr:
+                return
+
+            save_path = file_info["save_path"]
+            aes_key = file_info.get("aes_key")
+
+            if aes_key and chunk_raw:
+                aesgcm = AESGCM(aes_key)
+                nonce = struct.pack(">Q", chunk_idx).rjust(12, b"\x00")
+                chunk_raw = aesgcm.decrypt(nonce, chunk_raw, None)
+
+            # 写入文件（用追加模式，seek 到正确偏移）
+            with open(save_path, "ab") as f:
+                f.seek(offset)
+                f.write(chunk_raw)
+
+            file_info["received"] = min(file_info["received"] + len(chunk_raw), file_info["filesize"])
+
+            if file_info.get("progress"):
+                file_info["progress"](file_info["received"], file_info["filesize"])
+
+            # 发送 ACK
+            ack_data = json.dumps({"chunk_idx": chunk_idx, "offset": offset + len(chunk_raw)}).encode("utf-8")
+            self._send_udp(addr, P2P_FILE_ACK, ack_data, seq=chunk_idx)
+        except Exception as e:
+            logger.error(f"P2P 文件数据块处理失败: {e}")
+
+    async def _handle_file_ack(self, addr: tuple, seq: int, payload: bytes):
+        """收到 ACK，唤醒等待的发送协程"""
+        try:
+            ack = json.loads(payload.decode("utf-8"))
+            chunk_idx = ack.get("chunk_idx", seq)
+            evt = self._pending_acks.get(chunk_idx)
+            if evt:
+                evt.set()
+        except Exception:
+            pass
+
+    async def _handle_file_done(self, addr: tuple, seq: int, payload: bytes):
+        """文件传输完成"""
+        try:
+            done = json.loads(payload.decode("utf-8"))
+            logger.info(f"P2P 文件接收完成: {done.get('filename', 'unknown')}")
+        except Exception as e:
+            logger.warning(f"P2P 完成通知解析失败: {e}")
+
+    async def _handle_file_resume(self, addr: tuple, seq: int, payload: bytes):
+        """收到断点续传请求"""
+        try:
+            resume = json.loads(payload.decode("utf-8"))
+            logger.info(f"P2P 续传请求: offset={resume.get('offset', 0)}")
+        except Exception:
+            pass
+
+
+async def create_p2p_client(config: Optional[Config] = None) -> P2PClient:
+    client = P2PClient(config)
+    await client.start()
+    return client

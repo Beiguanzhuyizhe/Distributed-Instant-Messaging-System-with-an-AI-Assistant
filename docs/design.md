@@ -1,1 +1,438 @@
-IyDliIbluIPlvI/ljbPml7bogYrlpKnns7vnu58g4oCU4oCUIOiuvuiuoeaWh+ahowoKIyMgMS4g57O757uf5p625p6E5qaC6KeICgrns7vnu5/ph4fnlKjlrqLmiLfnq68t5pyN5Yqh5Zmo5p625p6E44CC5a6i5oi356uv6LSf6LSj55WM6Z2i5Lqk5LqS44CB5pys5Zyw5raI5oGv5bGV56S644CB5paH5Lu26YCJ5oup5ZKM5Y+v6YCJ5Yqg5a+G77yb5pyN5Yqh56uv6LSf6LSj6K6k6K+B44CB5Zyo57q/54q25oCB44CB5raI5oGv6Lev55Sx44CB576k57uE566h55CG44CB5Y6G5Y+y5a2Y5YKo44CB5YaF5a655a6h5qC444CBQUkg6LCD55So5ZKM5paH5Lu25Lit57un44CC5omA5pyJ5qC45b+D5o6n5Yi25raI5oGv6YCa6L+HIFRDUCDoh6rlrprkuYnkuozov5vliLbljY/orq7kvKDovpPvvIzmtojmga/kvZPkvb/nlKggVVRGLTggSlNPTuOAggoKYGBgbWVybWFpZApmbG93Y2hhcnQgTFIKICAgIENMSVsiQ0xJIOWuouaIt+erryJdIC0tPiBUQ1BbIlRDUCDoh6rlrprkuYnljY/orq5cbjEyQiBIZWFkZXIgKyBKU09OIl0KICAgIEdVSVsiR1VJIOWuouaIt+erryJdIC0tPiBUQ1AKICAgIFRDUCAtLT4gU2VydmVyWyJhc3luY2lvIENoYXRTZXJ2ZXIiXQogICAgU2VydmVyIC0tPiBBdXRoWyLnlKjmiLfms6jlhowv55m75b2VXG7lnKjnur/nirbmgIEiXQogICAgU2VydmVyIC0tPiBSb3V0ZXJbIua2iOaBr+i3r+eUsVxu56eB6IGKL+e+pOiBii/mkqTlm54iXQogICAgU2VydmVyIC0tPiBHcm91cFsi576k57uE566h55CGXG7liJvlu7ov5Yqg5YWlL+mAgOWHuiJdCiAgICBTZXJ2ZXIgLS0+IEZpbGVbIuaWh+S7tuS4ree7p1xu5YiG5Z2XL+ehruiupC/kuIvovb0iXQogICAgU2VydmVyIC0tPiBBdWRpdFsi5YaF5a655a6h5qC4XG5BaG8tQ29yYXNpY2siXQogICAgU2VydmVyIC0tPiBBSVsiQUkgU2VydmljZVxuT3BlbkFJLWNvbXBhdGlibGUgSFRUUCJdCiAgICBTZXJ2ZXIgLS0+IERCWygiU1FMaXRlXG7nlKjmiLcv576k57uEL+a2iOaBry/mlofku7YiKV0KICAgIEdVSSAtLT4gTG9jYWxTdG9yZVsi5a6i5oi356uvIEpTT04g5Y6G5Y+yIl0KICAgIENMSSAtLT4gTG9jYWxTdG9yZQogICAgU2VydmVyIC0u5a6e6aqM5oCn5omp5bGVLi0+IFAyUFsiUDJQIEhlbHBlclxuVURQIOaJk+a0nuWNj+WKqSJdCmBgYAoKYGBgdGV4dAorLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tKwp8ICAgICAgICAgICAgICAgICAgICAgICAgIENsaWVudCAoVENQKSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwKfCAgKy0tLS0tLS0tLS0rICArLS0tLS0tLS0rICArLS0tLS0tLSsgICstLS0tLS0tLSsgICstLS0tLS0tLS0tLSsgIHwKfCAgfCAgR1VJICAgICB8ICB8ICBDTEkgICB8ICB8IENyeXB0b3wgIHwgIFAyUCAgIHwgIHwgTXNnU3RvcmUgIHwgIHwKfCAgfCAodGtpbnRlcil8ICB8IChyaWNoKSB8ICB8KEUyRUUpIHwgIHwoVURQKSAgIHwgIHwgKEpTT04pICAgIHwgIHwKfCAgKy0tLS0rLS0tLS0rICArLS0tLSstLS0rICArLS0tKy0tLSsgICstLS0rLS0tLSsgICstLS0tLSstLS0tLSsgIHwKfCAgICAgICB8ICAgICAgICAgICAgIHwgICAgICAgICAgIHwgICAgICAgICAgIHwgICAgICAgICAgICB8ICAgICAgICB8CnwgICAgICAgKy0tLS0tLSstLS0tLS0rLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tKyAgICAgICAgfAp8ICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8CnwgICAgICAgICArLS0tLSstLS0tLS0rICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwKfCAgICAgICAgIHwgTXNnSGFuZGxlcnwgICAgKOa2iOaBr+WIhuWPkS/ot6/nlLEpICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwKfCAgICAgICAgICstLS0tKy0tLS0tLSsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfAp8ICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8CnwgICAgICAgICArLS0tLSstLS0tLS0rICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwKfCAgICAgICAgIHwgQ29ubmVjdGlvbnwgICAgKFRDUCBzb2NrZXQgKyBNZXNzYWdlUHJvdG9jb2wpICAgICAgICAgICAgfAp8ICAgICAgICAgKy0tLS0rLS0tLS0tKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8CnwgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwKKy0tLS0tLS0tLS0tLS0tKy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tKwogICAgICAgICAgICAgICB8ICBUQ1AgKEJpbmFyeSBQcm90b2NvbDogMTJCIEhlYWRlciArIEpTT04gUGF5bG9hZCkKICAgICAgICAgICAgICAgfAorLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rCnwgICAgICAgICAgICAgICAgICAgICAgU2VydmVyIChhc3luY2lvKSAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwKfCAgICAgICAgICstLS0tKy0tLS0tLSsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfAp8ICAgICAgICAgfCBDb25uZWN0aW9ufCAgICAoYXN5bmNpbyArIE1lc3NhZ2VQcm90b2NvbCkgICAgICAgICAgICAgICB8CnwgICAgICAgICArLS0tLSstLS0tLS0rICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwKfCAgICAgICAgICAgICAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfAp8ICAgICAgICAgKy0tLS0rLS0tLS0tLS0tKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8CnwgICAgICAgICB8IENvbm5lY3Rpb25NYW5hZ2VyICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwKfCAgICAgICAgIHwgKGNvbm5faWQ8LT51c2VyX2lkIOaYoOWwhCkgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfAp8ICAgICAgICAgKy0tLS0rLS0tLS0tLS0tKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8CnwgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwKfCAgICArLS0tLS0tLS0tKy0tLS0tLS0tLS0tKy0tLS0tLS0tLS0tKy0tLS0tLS0tLS0tKyAgICAgICAgICAgICAgICAgfAp8ICAgIHwgICAgICAgICB8ICAgICAgICAgICB8ICAgICAgICAgICB8ICAgICAgICAgICB8ICAgICAgICAgICAgICAgICB8CnwgKy0tKy0tLSsgKy0tKy0tLSsgKy0tLS0tKy0tLS0tKyArLS0rLS0tLS0tKyArLS0rLS0tLS0tKyAgICAgICAgICAgfAp8IHxBdXRoICB8IHwgTXNnICB8IHwgR3JvdXAgICAgIHwgfCBGaWxlICAgIHwgfCBNc2cgICAgIHwgICAgICAgICAgIHwKfCB8TG9naW4gfCB8Um91dGVyfCB8IE1hbmFnZXIgICB8IHxUcmFuc2ZlciB8IHwgSGlzdG9yeSB8ICAgICAgICAgICB8CnwgfFJlZyAgIHwgfCAgICAgIHwgfCAgICAgICAgICAgfCB8KFJlbGF5KSAgfCB8IFJlY2FsbCAgfCAgICAgICAgICAgfAp8ICstLS0tLS0rICstLS0tLS0rICstLS0tLS0tLS0tLSsgKy0tLS0tLS0tLSsgKy0tLS0tLS0tLSsgICAgICAgICAgIHwKfCAgICB8ICAgICAgICAgfCAgICAgICAgICAgfCAgICAgICAgICAgfCAgICAgICAgICAgfCAgICAgICAgICAgICAgICAgfAp8ICAgICstLS0tLS0tLS0rLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0rICAgICAgICAgICAgICAgICB8CnwgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwKfCAgICArLS0tLS0tLS0tKy0tLS0tLS0tLSsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfAp8ICAgIHwgSGVhcnRiZWF0TW9uaXRvciAgfCAgKOi2heaXtua4heeQhikgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwKfCAgICArLS0tLS0tLS0tKy0tLS0tLS0tLSsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfAp8ICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8CnwgICAgKy0tLS0tLS0tLSstLS0tLS0tLS0rLS0tLS0tLSstLS0tLS0tLS0rICAgICAgICAgICAgICAgICAgICAgICAgIHwKfCAgICB8ICAgICAgICAgICAgICAgICAgIHwgICAgICAgfCAgICAgICAgIHwgICAgICAgICAgICAgICAgICAgICAgICAgfAp8ICstLSstLS0rICAgICArLS0tLS0tLS0rLSsgICstLSstLS0rICArLS0rLS0tLS0tKyAgICAgICAgICAgICAgICAgIHwKfCB8IEFJICAgfCAgICAgfCBDb250ZW50IHwgIHwgUDJQICB8ICB8IEtleSAgICAgfCAgICAgICAgICAgICAgICAgIHwKfCB8U2VydmljZXwgICAgfE1vZGVyYXRlIHwgIHxIZWxwZXJ8ICB8TWFuYWdlciAgfCAgICAgICAgICAgICAgICAgIHwKfCB8KEJpZ01vZGVsKXwgfChBQ+iHquWKqOacuil8ICB8ICAgICAgfCAgfCjlhazpkqUpICAgfCAgICAgICAgICAgICAgICAgIHwKfCArLS0tLS0tKyAgICAgKy0tLS0tLS0tLSsgICstLS0tLS0rICArLS0tLS0tLS0tKyAgICAgICAgICAgICAgICAgIHwKfCAgICAgICAgICAgICAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfAp8ICAgICAgICAgKy0tLS0rLS0tLS0tLS0rICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8CnwgICAgICAgICB8ICAgRGF0YWJhc2UgICAgfCAoU1FMaXRlLCA2IHRhYmxlcykgICAgICAgICAgICAgICAgICAgICAgIHwKfCAgICAgICAgICstLS0tLS0tLS0tLS0tKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfAorLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rCmBgYAoKLS0tCgojIyAyLiDmnI3liqHlmajmnrbmnoQKCiMjIyAyLjEg5qih5Z2X5riF5Y2VCgp8IOaooeWdlyB8IOaWh+S7tiB8IOiBjOi0oyB8CnwtLS0tLS18LS0tLS0tfC0tLS0tLXwKfCBUQ1AgU2VydmVyIENvcmUgfCBgc2VydmVyL3RjcF9zZXJ2ZXIucHlgIHwgYXN5bmNpbyDkuovku7blvqrnjq/jgIHov57mjqXnrqHnkIbjgIHmtojmga/mtL7lj5EgfAp8IFByb3RvY29sIHwgYHNlcnZlci9wcm90b2NvbC5weWAgfCDkuozov5vliLbljY/orq7nvJbop6PnoIHjgIHnspjljIXlpITnkIbjgIFDb25uZWN0aW9uIOWwgeijhSB8CnwgQ29uZmlnIHwgYHNlcnZlci9jb25maWcucHlgIHwg6YWN572u6aG577yI572R57uc44CB5b+D6Lez44CBQUnjgIHmlofku7bjgIFEQu+8iSB8CnwgRGF0YWJhc2UgfCBgc2VydmVyL2RhdGFiYXNlLnB5YCB8IFNRTGl0ZSDlrZjlgqjvvJrnlKjmiLcv576k57uEL+a2iOaBry/mlofku7bkvKDovpMgfAp8IFVzZXIgTWFuYWdlciB8IGBzZXJ2ZXIvdXNlcl9tYW5hZ2VyLnB5YCB8IOeUqOaIt+azqOWGjOOAgeeZu+W9leOAgeWcqOe6v+eKtuaAgeeuoeeQhiB8CnwgR3JvdXAgTWFuYWdlciB8IGBzZXJ2ZXIvZ3JvdXBfbWFuYWdlci5weWAgfCDnvqTnu4TliJvlu7rjgIHliqDlhaXjgIHpgIDlh7rjgIHmiJDlkZjmn6Xor6IgfAp8IE1lc3NhZ2UgUm91dGVyIHwgYHNlcnZlci9tZXNzYWdlX3JvdXRlci5weWAgfCDnp4HogYov576k6IGK5raI5oGv5a2Y5YKo5LiO6L2s5Y+R44CB5Zyo57q/54q25oCB5bm/5pKtIHwKfCBNZXNzYWdlIEhpc3RvcnkgfCBgc2VydmVyL21lc3NhZ2VfaGlzdG9yeS5weWAgfCDljoblj7Lmtojmga/mn6Xor6LjgIHliIbpobUgfAp8IE1lc3NhZ2UgUmVjYWxsIHwgYHNlcnZlci9tZXNzYWdlX3JlY2FsbC5weWAgfCDmtojmga/mkqTlm57vvIgyIOWIhumSn+eql+WPo++8iSB8CnwgSGVhcnRiZWF0IHwgYHNlcnZlci9oZWFydGJlYXQucHlgIHwg5b+D6Lez6LaF5pe25qOA5rWL44CB6Ieq5Yqo5riF55CG56a757q/6L+e5o6lIHwKfCBGaWxlIFRyYW5zZmVyIHwgYHNlcnZlci9maWxlX3RyYW5zZmVyLnB5YCB8IOaWh+S7tuS4ree7p+WtmOWCqOS4juWIhuWdl+S8oOi+kyB8CnwgQUkgU2VydmljZSB8IGBzZXJ2ZXIvYWlfc2VydmljZS5weWAgfCBAQUkg5pm66IO95Zue5aSN77yI6buY6K6k5pm66LCxIEJpZ01vZGVs77yM5YW85a65IERhc2hTY29wZS9PcGVuQUkg5qC85byP5o6l5Y+j77yJIHwKfCBDb250ZW50IE1vZGVyYXRvciB8IGBzZXJ2ZXIvY29udGVudF9tb2RlcmF0b3IucHlgIHwg5YaF5a655a6h5qC477yIQWhvLUNvcmFzaWNrIOWFs+mUruivjeWMuemFje+8iSB8CnwgUDJQIEhlbHBlciB8IGBzZXJ2ZXIvcDJwX2hlbHBlci5weWAgfCBQMlAg5omT5rSe5Y2P5Yqp44CB5Zyw5Z2A5Lqk5o2iIHwKfCBLZXkgTWFuYWdlciB8IGBzZXJ2ZXIvY3J5cHRvLnB5YCB8IOeUqOaItyBSU0Eg5YWs6ZKl5a2Y5YKo5LiO5p+l6K+iIHwKCiMjIyAyLjIg5qC45b+D5rWB56iL77ya6L+e5o6l55Sf5ZG95ZGo5pyfCgpgYGB0ZXh0CuW7uueri+i/nuaOpSDihpIg6K6k6K+BIOKGkiDmtojmga/mlLblj5Eg4oaSIOW/g+i3s+e7tOaMgSDihpIg5pat5byA5riF55CGCiAgfCAgICAgICAgICB8ICAgICAgICAgfCAgICAgICAgICB8ICAgICAgICAgIHwKICB8ICAgTE9HSU5fUkVRICAgUFJJVkFURV9NU0cgIEhFQVJUQkVBVCAg56e76Zmk5pig5bCECiAgfCAgIExPR0lOX1JFU1AgIEdST1VQX01TRyAgICBIRUFSVEJFQVQgIOW5v+aSreemu+e6vwogIHwgICBSRUdJU1RFUiAgICBGSUxFX0lOSVQgICAgQUNLICAgICAgICDlhbPpl60gc29ja2V0CiAgfCAgICAgICAgICAgICAgIE1TR19SRUNBTEwKYGBgCgojIyMgMi4zIFRDUCBTZXJ2ZXIg5qC45b+DCgpgQ2hhdFNlcnZlcmAg5L2/55SoIGBhc3luY2lvLnN0YXJ0X3NlcnZlcmAg5a6e546w6auY5bm25Y+R77yaCi0g5q+P5Liq5a6i5oi356uv6L+e5o6l5LiA5Liq5Y2P56iLIChgX2hhbmRsZV9jbGllbnRgKQotIGBDb25uZWN0aW9uTWFuYWdlcmAg57u05oqkIGBjb25uX2lkIC0+IENvbm5lY3Rpb25gIOWSjCBgdXNlcl9pZCAtPiBjb25uX2lkYCDkuKTlpZfmmKDlsIQKLSBgTWVzc2FnZVJvdXRlcmAg6LSf6LSj5Lia5Yqh5YiG5Y+R77ya56eB6IGK5a2Y5YKo5ZCO5o6o6YCB44CB576k6IGK5a2Y5YKo5ZCO5bm/5pKt44CB5Zyo57q/54q25oCB5YWo572R5bm/5pKtCgoqKkNvbm5lY3Rpb25NYW5hZ2VyIOWFs+mUrueJueaApyoq77yaCi0g5LqS5pal6ZSB5L+d5oqk5pig5bCE6KGo77yIYXN5bmNpby5Mb2Nr77yJCi0gYGJpbmRfdXNlcigpYCDlkIzkuIDnlKjmiLfph43lpI3nmbvlvZXml7bkuLvliqjouKLmjonml6fov57mjqUKLSBgc2VuZF90b191c2VyKClgIOaMiSB1c2VyX2lkIOeyvuehruaOqOmAgQotIGBicm9hZGNhc3QoKWAg5bm/5pKt77yI5Y+v6YCJ5o6S6Zmk5Y+R6YCB6ICF77yJCgotLS0KCiMjIDMuIOWuouaIt+err+aetuaehAoKIyMjIDMuMSDmqKHlnZfmuIXljZUKCnwg5qih5Z2XIHwg5paH5Lu2IHwg6IGM6LSjIHwKfC0tLS0tLXwtLS0tLS18LS0tLS0tfAp8IEVudHJ5IHwgYGNsaWVudC9tYWluLnB5YCB8IENMSSDlj4LmlbDop6PmnpDjgIHpgInmi6kgR1VJL0NMSSDmqKHlvI8gfAp8IENvbm5lY3Rpb24gfCBgY2xpZW50L2Nvbm5lY3Rpb24ucHlgIHwg6Zi75aGeIHNvY2tldCArIOWQjuWPsOe6v+eoi++8jOW/g+i3sy/ph43ov54gfAp8IFByb3RvY29sIHwgYGNsaWVudC9wcm90b2NvbC5weWAgfCDkuI7mnI3liqHnq6/kuIDoh7TnmoTljY/orq7nvJbop6PnoIEgfAp8IE1lc3NhZ2UgSGFuZGxlciB8IGBjbGllbnQvbWVzc2FnZV9oYW5kbGVyLnB5YCB8IOa2iOaBr+WIhuWPkSArIOW/q+aNt+WPkemAgeaWueazlSB8CnwgR1VJIHwgYGNsaWVudC9ndWkucHlgIHwgdGtpbnRlciDlm77lvaLnlYzpnaIgfAp8IENMSSB8IGBjbGllbnQvY2xpLnB5YCB8IHJpY2gg5ZG95Luk6KGM55WM6Z2iIHwKfCBNZXNzYWdlIFN0b3JlIHwgYGNsaWVudC9tZXNzYWdlX3N0b3JlLnB5YCB8IEpTT04g5pys5Zyw5raI5oGv5oyB5LmF5YyWIHwKfCBDcnlwdG8gfCBgY2xpZW50L2NyeXB0by5weWAgfCBSU0EtMjA0OCArIEFFUy0yNTYtR0NNIOerr+WIsOerr+WKoOWvhiB8CnwgUDJQIHwgYGNsaWVudC9wMnAucHlgIHwg5a6e6aqM5oCnIFVEUCDmiZPmtJ7kuI4gUDJQIOaWh+S7tuS8oOi+k+S7o+eggSB8CgojIyMgMy4yIOi/nuaOpeeuoeeQhgoKYENoYXRDb25uZWN0aW9uYCDkvb/nlKjpmLvloZ4gc29ja2V0ICsg5ZCO5Y+w5o6l5pS257q/56iL5qih5byP77yaCi0g5Li757q/56iL5LiN6Zi75aGe77yM6YCC5ZCIIEdVSS9DTEkKLSDlkK/liqjni6znq4vnur/nqIvov5DooYzmjqXmlLblvqrnjq8KLSDoh6rliqjlv4Pot7PvvIgxNSDnp5Lpl7TpmpTvvIkKLSDmjIfmlbDpgIDpgb/oh6rliqjph43ov57vvIjmnIDlpJogNSDmrKHvvIkKCiMjIyAzLjMg5raI5oGv5YiG5Y+RCgpgTWVzc2FnZUhhbmRsZXJgIOiHquWKqOWwhiBDb25uZWN0aW9uIOaUtuWIsOeahOaJgOaciea2iOaBr+i3r+eUseWIsOW6lOeUqOWxguazqOWGjOeahOWbnuiwg++8mgotIGByZWdpc3Rlcihtc2dfdHlwZSwgY2FsbGJhY2spYCDigJQg5oyJ5raI5oGv57G75Z6L5rOo5YaM5Zue6LCDCi0g5bqU55So5bGC5LiN6ZyA6KaB5YWz5b+D5bqV5bGC5Y2P6K6u57uG6IqCCgotLS0KCiMjIDQuIOmAmuS/oeWNj+iurgoK6K+m6KeBIGBkb2NzL3Byb3RvY29sLm1kYOOAggoKKirljY/orq7opoHngrkqKu+8mgotICoq5Lyg6L6T5bGCKirvvJpUQ1DvvIzkuozov5vliLbljY/orq4KLSAqKua2iOaBr+WktCoq77yaMTIg5a2X6IqC5Zu65a6a5aS0IGAhSCBCIEIgSSBJYAogIC0gTWFnaWMoMkIpID0gMHhDQUZFLCBWZXJzaW9uKDFCKSA9IDB4MDEsIFR5cGUoMUIpLCBTZXEoNEIpLCBQYXlsb2FkTGVuKDRCKQotICoq5raI5oGv5L2TKirvvJpKU09OIOe8lueggeeahCBwYXlsb2Fk77yIVVRGLTjvvIkKLSAqKueymOWMheWkhOeQhioq77ya6YCa6L+HIGBQYXlsb2FkTGVuYCDlrZfmrrUgKyBgTWVzc2FnZVByb3RvY29sYCDlhoXpg6ggYnVmZmVyIOino+WGswotICoq5raI5oGv57G75Z6LKirvvJoyNSDnp43vvIzopobnm5borqTor4HjgIHmtojmga/jgIHmlofku7bjgIHnvqTnu4TjgIFBSeOAgVAyUCDkuI7plJnor6/lk43lupQKLSAqKumUmeivr+eggSoq77yaMTYg56eN77yIU1VDQ0VTUz0wIH4gSU5WQUxJRF9QQVlMT0FEPTE177yJCgotLS0KCiMjIDUuIEFJIOaZuuiDveWbnuWkjeiuvuiuoQoKIyMjIDUuMSDln7rmnKzljp/nkIYKCuW9k+eUqOaIt+WcqOe+pOiBiuS4rSBgQEFJYCDml7bvvIzlrqLmiLfnq6/lj5HpgIEgYEFJX1FVRVJZYOOAguacjeWKoeerr+ehruiupOivpeeUqOaIt+aYr+e+pOaIkOWRmOWQju+8jOivu+WPluacgOi/kee+pOiBiuS4iuS4i+aWh++8jOiwg+eUqCBPcGVuQUktY29tcGF0aWJsZSBDaGF0IENvbXBsZXRpb25zIOaOpeWPo+eUn+aIkOWbnuWkje+8jOWGjeaKiiBBSSDlm57lpI3kvZzkuLrnvqTogYrlj6/op4Hmtojmga/lub/mkq3nu5nmiYDmnInnvqTmiJDlkZjjgILmnKrphY3nva4gQVBJIEtleSDmiJblpJbpg6jmjqXlj6PlpLHotKXml7bvvIzmnI3liqHnq6/ov5Tlm57lj4vlpb3plJnor6/vvIzkuI3lvbHlk43mma7pgJrogYrlpKnjgIIKCiMjIyA1LjIg5p625p6ECgpgYGB0ZXh0Cue+pOiBiui+k+WFpSBAQUkg6Zeu6aKYCiAgICDihpIgR1VJL0NMSSDlrqLmiLfnq6/lj5HpgIEgQUlfUVVFUlkge2dyb3VwX2lkLCBxdWVyeX0KICAgIOKGkiBDaGF0U2VydmVyIOagoemqjOeZu+W9leaAgeWSjOe+pOaIkOWRmOi6q+S7vQogICAg4oaSIE1lc3NhZ2VIaXN0b3J5IOivu+WPluacgOi/kee+pOiBiuS4iuS4i+aWhwogICAg4oaSIEFJU2VydmljZS5xdWVyeV93aXRoX2NvbnRleHQocXVlcnksIHVzZXJuYW1lLCBoaXN0b3J5KQogICAg4oaSIGFpb2h0dHAg5byC5q2l6K+35rGCIEJpZ01vZGVsIC8gRGFzaFNjb3BlIC8g6Ieq5a6a5LmJIE9wZW5BSS1jb21wYXRpYmxlIEFQSQogICAg4oaSIEFJX1JFU1Ag5YaZ5YWl5raI5oGv5Y6G5Y+y5bm25bm/5pKt5Yiw6K+l576k5omA5pyJ5Zyo57q/5oiQ5ZGYCiAgICDihpIg5omA5pyJ576k5oiQ5ZGY55yL5Yiw57u/6ImyIEFJIOWbnuWkjeawlOazoQpgYGAKCiMjIyA1LjMg5YWz6ZSu5oqA5pyvCgotICoq5byC5q2lIEhUVFAqKu+8muS9v+eUqCBgYWlvaHR0cGAg6Z2e6Zi75aGe6LCD55So77yM5LiN6Zi75aGe5pyN5Yqh56uv5LqL5Lu25b6q546vCi0gKirotoXml7blhZzlupUqKu+8muWklumDqCBBUEkg6LaF5pe244CB572R57uc6ZSZ6K+v44CBSFRUUCDplJnor6/lkozop6PmnpDplJnor6/lnYfov5Tlm57lj4vlpb3mj5DnpLoKLSAqKuWvueivneS4iuS4i+aWhyoq77ya5pC65bim5pyA6L+RIE4g5p2h576k6IGK5raI5oGv5L2c5Li65LiK5LiL5paHCi0gKirnvqTogYrlub/mkq0qKu+8mkFJIOWbnuWkjeW4puaciSBgcmVsYXRlZF90eXBlPWdyb3VwYOOAgWByZWxhdGVkX3RhcmdldD08Z3JvdXBfaWQ+YCDlkoznqLPlrpogYGNoYXRfa2V5YO+8jOWuouaIt+err+WPquaKiuWug+aYvuekuuWcqOWvueW6lOe+pOiBiu+8jOS4jeWQjOatpeWIsOengeiBiuaIliBBSSBhc3Npc3RhbnQg5L6n5qCPCi0gKirliY3nvIDmuIXnkIYqKu+8muacjeWKoeerr+S8mua4heeQhuaooeWei+WBtuWPkeeUn+aIkOeahOaIkOWRmOWQjeWGkuWPt+WJjee8gO+8jOmBv+WFjSBBSSDlm57lpI3liY3lh7rnjrDlhbbku5bnlKjmiLflkI3lrZcKLSAqKuaPkOekuuivjeiuvuiuoSoq77ya57O757uf5o+Q56S66K+N5a6a5LmJIEFJIOS4uiLlj4vlpb3jgIHkuZDkuo7liqnkurrnmoTogYrlpKnliqnmiYsiCi0gKipBUEkg5YW85a65KirvvJpgQklHTU9ERUxfQVBJX0tFWWAg5LyY5YWI77yb5LuF6YWN572uIGBEQVNIU0NPUEVfQVBJX0tFWWAg5pe26buY6K6k5L2/55SoIERhc2hTY29wZSBPcGVuQUktY29tcGF0aWJsZSDmjqXlj6PvvJvkuZ/lj6/pgJrov4cgYEFJX0FQSV9CQVNFYCAvIGBBSV9NT0RFTGAg5omL5Yqo6KaG55uWCgojIyMgNS40IEFQSSDphY3nva4KCmBgYHB5dGhvbgpCSUdNT0RFTF9BUElfQkFTRSA9ICJodHRwczovL29wZW4uYmlnbW9kZWwuY24vYXBpL3BhYXMvdjQiCkJJR01PREVMX01PREVMID0gImdsbS00LWZsYXNoLTI1MDQxNCIKREFTSFNDT1BFX0FQSV9CQVNFID0gImh0dHBzOi8vZGFzaHNjb3BlLmFsaXl1bmNzLmNvbS9jb21wYXRpYmxlLW1vZGUvdjEiCkRBU0hTQ09QRV9NT0RFTCA9ICJxd2VuLXR1cmJvIgoKQUlfQVBJX0tFWSA9IG9zLmdldGVudigiQklHTU9ERUxfQVBJX0tFWSIpIG9yIG9zLmdldGVudigiREFTSFNDT1BFX0FQSV9LRVkiKQojIEFJX0FQSV9CQVNFIC8gQUlfTU9ERUwg5Y+v6YCJ6KaG55uW6buY6K6k5YC8CmBgYAoKLS0tCgojIyA2LiBQMlAg5omT5rSe6K6+6K6hCgojIyMgNi4xIOWfuuacrOWOn+eQhgoKTkFUIOeOr+Wig+S4i+S4pOS4quWGhee9keWuouaIt+err+aXoOazleebtOaOpeS6kumAmuOAgumAmui/h+acjeWKoeerr+WNj+WKqeS6pOaNouWcsOWdgOS/oeaBr++8jOWPjOaWueWQjOaXtuWQkeWvueaWueWcsOWdgOWPkemAgSBVRFAg5YyF77yM5ZyoIE5BVCDkuIrlu7rnq4vlh7rnq5nmmKDlsITvvIzkvb/lhaXnq5nljIXog73lpJ/nqb/pgI/jgIIKCiMjIyA2LjIg5a6M5pW05rWB56iLCgpgYGB0ZXh0CjEuIEEg6K+35rGC5ZCRIEIg5Lyg5paH5Lu2CjIuIEEg6YCa6L+HIFRDUCDlkJHmnI3liqHnq6/lj5HpgIEgUDJQX0hPTEVfUFVOQ0gge3RhcmdldF9pZDogQn0KMy4g5pyN5Yqh56uvIFAyUEhlbHBlciDmn6Xor6IgQiDnmoTlnLDlnYDvvIhUQ1Ag5Zyw5Z2AIC8gVURQIOWcsOWdgO+8iQo0LiDmnI3liqHnq6/lsIYgQSDnmoTlnLDlnYDlj5Hnu5kgQu+8jOWwhiBCIOeahOWcsOWdgOWPkee7mSBBCjUuIEEg5byA5aeL5ZCRIEIg55qE5Zyw5Z2A5Y+R6YCBIFVEUCBQVU5DSCDljIUKNi4gQiDlkIzml7blkJEgQSDnmoTlnLDlnYDlj5HpgIEgVURQIFBVTkNIIOWMhQo3LiBOQVQg5bu656uL5pig5bCE77yM5Y+M5pa55Y+v55u06L+eCjguIOi/nuaOpeW7uueri+WQju+8jOWPr+WwneivlemAmui/hyBQMlAgVURQIOmAmumBk+S8oOi+k+aWh+S7tuWIhuWdl++8m+Wksei0peaXtua8lOekuui3r+W+hOS9v+eUqOacjeWKoeerr+S4ree7pwpgYGAKCiMjIyA2LjMgUDJQIOWNj+iuru+8iFVEUCDlsYLvvIkKClVEUCDmlbDmja7ljIXkuZ/kvb/nlKjkuozov5vliLblpLTvvIzkvYbkuI4gVENQIOWNj+iurueLrOeri++8mgoKYGBgdGV4dApNYWdpYygyQik9MHg1MDRFICsgVmVyc2lvbigxQikgKyBUeXBlKDFCKSArIFNlcSg4QikgKyBQYXlsb2FkTGVuKDRCKSA9IDE2QgpgYGAKClAyUCDmtojmga/nsbvlnovvvJoKfCDnsbvlnosgfCDlgLwgfCDor7TmmI4gfAp8LS0tLS0tfC0tLS0tfC0tLS0tLXwKfCBQMlBfRklMRV9JTklUIHwgMHgwMSB8IOaWh+S7tuS8oOi+k+WIneWni+WMliB8CnwgUDJQX0ZJTEVfREFUQSB8IDB4MDIgfCDmlofku7bmlbDmja7lnZcgfAp8IFAyUF9GSUxFX0FDSyB8IDB4MDMgfCDmjqXmlLbnoa7orqQgfAp8IFAyUF9GSUxFX1JFU1VNRSB8IDB4MDQgfCDmlq3ngrnnu63kvKDor7fmsYIgfAp8IFAyUF9QVU5DSCB8IDB4MDUgfCDmiZPmtJ7mjqLmtYvljIUgfAp8IFAyUF9QVU5DSF9BQ0sgfCAweDA2IHwg5omT5rSe56Gu6K6kIHwKCiMjIyA2LjQg5pat54K557ut5LygCgotIOaWh+S7tuWIhuWdl++8iOm7mOiupCA2NEtC77yJ77yM5q+P5Z2X54us56uL5Lyg6L6TCi0g5o6l5pS25pa56K6w5b2V5bey5o6l5pS255qEIG9mZnNldO+8jOWPkemAgeaWueaNruatpOi3s+i/h+W3suS8oOi+k+mDqOWIhgotIFAyUF9GSUxFX1JFU1VNRSDor7fmsYLlj6/mjIflrprotbflp4sgb2Zmc2V077yM5a6e546w57ut5LygCgotLS0KCiMjIDcuIOerr+WIsOerr+WKoOWvhiAoRTJFRSkg6K6+6K6hCgojIyMgNy4xIOWKoOWvhuaWueahiAoK6YeH55SoICoqUlNBLTIwNDggKyBBRVMtMjU2LUdDTSDmt7flkIjliqDlr4YqKu+8mgoKYGBgdGV4dArlj5HpgIHmlrk6CiAgQUVT5a+G6ZKlID0gcmFuZG9tKDMyIGJ5dGVzKSAgICAgICAgICAjIOmaj+acuueUn+aIkCBBRVMtMjU2IOWvhumSpQogIOWvhuaWhyA9IEFFUy1HQ00tRW5jcnlwdCjmmI7mlocsIEFFU+WvhumSpSkgIyDnlKggQUVTIOWKoOWvhua2iOaBr+WGheWuuQogIOWKoOWvhueahEFFU+WvhumSpSA9IFJTQS1FbmNyeXB0KEFFU+WvhumSpSwg5o6l5pS25pa55YWs6ZKlKSAgIyBSU0Eg5Yqg5a+GIEFFUyDlr4bpkqUKICDlj5HpgIE6IHthZXNfa2V5X2VuYywgbm9uY2UsIGNpcGhlcnRleHQsIHRhZ30KCuaOpeaUtuaWuToKICBBRVPlr4bpkqUgPSBSU0EtRGVjcnlwdChhZXNfa2V5X2VuYywg6Ieq5bex55qE56eB6ZKlKQogIOaYjuaWhyA9IEFFUy1HQ00tRGVjcnlwdChjaXBoZXJ0ZXh0ICsgdGFnLCBBRVPlr4bpkqUsIG5vbmNlKQpgYGAKCiMjIyA3LjIg5a+G6ZKl55Sf5ZG95ZGo5pyfCgoxLiAqKuazqOWGjOaXtioq77ya5a6i5oi356uv55Sf5oiQIFJTQS0yMDQ4IOWvhumSpeWvuQoyLiAqKuWFrOmSpeS4iuS8oCoq77ya5YWs6ZKlIChQRU0pIOWcqOazqOWGjOivt+axguS4reWPkemAgee7meacjeWKoeerr++8jOWtmOWFpSBgdXNlcnMucHVibGljX2tleWAKMy4gKirnp4HpkqXmnKzlnLDkv53lrZgqKu+8muengemSpeS/neWtmOWcqOWuouaIt+err+acrOWcsOaWh+S7tu+8jOWvhueggeS/neaKpAo0LiAqKua2iOaBr+WKoOWvhioq77ya5Y+R6YCB5pe255So5o6l5pS25pa55YWs6ZKl5Yqg5a+G77yM5Y+q5pyJ5o6l5pS25pa556eB6ZKl6IO96Kej5a+GCgojIyMgNy4zIOWKoOWvhuS8oOi+k+agvOW8jwoKYGBganNvbgp7CiAgICAiZnJvbV9pZCI6IDEsCiAgICAidG9faWQiOiAyLAogICAgImNvbnRlbnQiOiAie1wiYWVzX2tleV9lbmNcIjpcImJhc2U2NC4uLlwiLFwibm9uY2VcIjpcImJhc2U2NC4uLlwiLFwiY2lwaGVydGV4dFwiOlwiYmFzZTY0Li4uXCIsXCJ0YWdcIjpcImJhc2U2NC4uLlwifSIsCiAgICAibXNnX2lkIjogMTAwLAogICAgInRpbWVzdGFtcCI6IDE3MDAwMDAwMDAKfQpgYGAKCi0g5pyN5Yqh56uv5peg5rOV6Kej5a+G5Yqg5a+G5ZCO55qE5YaF5a65Ci0g5Yqg5a+G5raI5oGv5LuN57uP6L+H5pyN5Yqh56uv5Lit57un6L2s5Y+RCi0gYGNvbnRlbnRgIOWGhemDqCBKU09OIOWtl+auteS4jiBgY2xpZW50L2NyeXB0by5weWAg5L+d5oyB5LiA6Ie077yaYGFlc19rZXlfZW5jYOOAgWBub25jZWDjgIFgY2lwaGVydGV4dGDjgIFgdGFnYAoKIyMjIDcuNCDmlofku7bliqDlr4YKClAyUCDnm7Tov57mlofku7bkvKDovpPku6PnoIHkvZzkuLrlrp7pqozmgKfmianlsZXkv53nlZnvvIzorr7orqHkuIrlj6/kvb/nlKggQUVTLTI1Ni1HQ00g5Yqg5a+G77yaCi0g5q+P5Liq5paH5Lu255Sf5oiQ6ZqP5py6IEFFUyDlr4bpkqUKLSBBRVMg5a+G6ZKl5L2/55So5o6l5pS25pa5IFJTQSDlhazpkqXliqDlr4blkI7vvIzpgJrov4cgVENQIOmAmumBk+WPkemAgQotIOaWh+S7tuaVsOaNruWPr+mAmui/hyBQMlAgVURQIOmAmumBk+WKoOWvhuS8oOi+k++8m+acgOe7iOeos+Wumua8lOekuui3r+W+hOS7jeS9v+eUqOacjeWKoeerr+S4ree7pwoKLS0tCgojIyA4LiDlhoXlrrnlrqHmoLjorr7orqEKCiMjIyA4LjEg5p625p6ECgrkvb/nlKggKipBaG8tQ29yYXNpY2sg6Ieq5Yqo5py6Kiog5a6e546wIE8obikg5aSa5qih5byP5Yy56YWN77yaCgotIOWcqOacjeWKoeerryBgY29udGVudF9tb2RlcmF0b3IucHlgIOS4reWunueOsAotIOaUr+aMgeWFs+mUruivjeWIhuexu+euoeeQhu+8iOi+semqgi/mmrTlipsv6Imy5oOFL+aUv+ayu+aVj+aEn++8iQotIOW7uueriyBmYWlsIOaMh+mSiOeahCBCRlMg6aKE5aSE55CG77yM5Yy56YWN5pe25Y+q6ZyA6YGN5Y6G5LiA5qyh5paH5pysCgojIyMgOC4yIOWkhOeQhua1geeoiwoKYGBgdGV4dArmtojmga/liLDovr4g4oaSIOWGheWuueWuoeaguCDihpIg6YCa6L+HIOKGkiDovazlj5EKICAgICAgICAgICAgICAgICAgICDihpIgaGlnaCDmi5Lnu50g4oaSIOWPkemAgSBDT05URU5UX1dBUk4g57uZ5Y+R6YCB6ICFCiAgICAgICAgICAgICAgICAgICAg4oaSIG1pZCDmm7/mjaLmlY/mhJ/or40g4oaSIOe7p+e7rei9rOWPkeW5tuWPr+aPkOekugpgYGAKCi0g5LuF5a6h5qC45pyq5Yqg5a+G5raI5oGv77yM6Iux5paH5pWP5oSf6K+N5aSn5bCP5YaZ5LiN5pWP5oSfCi0g5Yqg5a+G5raI5oGv6Lez6L+H5a6h5qC477yM5L2G5qCH6K6w5Li6IuWKoOWvhua2iOaBryIKCi0tLQoKIyMgOS4g5pWw5o2u5bqT6K6+6K6hCgojIyMgOS4xIOihqOe7k+aehAoKNiDlvKDooajvvIzor6bop4EgYHNlcnZlci9kYXRhYmFzZS5weWDvvJoKCnwg6KGo5ZCNIHwg55So6YCUIHwg5YWz6ZSu5a2X5q61IHwKfC0tLS0tLXwtLS0tLS18LS0tLS0tLS0tfAp8IHVzZXJzIHwg55So5oi36LSm5oi3IHwgaWQsIHVzZXJuYW1lLCBwYXNzd29yZF9oYXNoLCBwdWJsaWNfa2V5IHwKfCBncm91cHMgfCDnvqTnu4QgfCBpZCwgbmFtZSwgb3duZXJfaWQgfAp8IGdyb3VwX21lbWJlcnMgfCDnvqTnu4TmiJDlkZjlhbPns7sgfCBncm91cF9pZCwgdXNlcl9pZCB8CnwgbWVzc2FnZXMgfCDmtojmga/lrZjlgqggfCBpZCwgc2VuZGVyX2lkLCByZWNlaXZlcl9pZCwgZ3JvdXBfaWQsIGNvbnRlbnQgfAp8IG9mZmxpbmVfbWVzc2FnZXMgfCDnprvnur/mtojmga8gfCB0YXJnZXRfdXNlcl9pZCwgY29udGVudCwgZGVsaXZlcmVkIHwKfCBmaWxlX3RyYW5zZmVycyB8IOaWh+S7tuS8oOi+k+iusOW9lSB8IGZpbGVfaWQsIHNlbmRlcl9pZCwgZmlsZW5hbWUsIHN0YXR1cywgY2h1bmtzIHwKCiMjIyA5LjIg5YWz6ZSu57Si5byVCgpgYGBzcWwKaWR4X21lc3NhZ2VzX3NlbmRlciwgaWR4X21lc3NhZ2VzX3JlY2VpdmVyLCBpZHhfbWVzc2FnZXNfZ3JvdXAKaWR4X21lc3NhZ2VzX2NyZWF0ZWQsIGlkeF9vZmZsaW5lX3RhcmdldApgYGAKCi0tLQoKIyMgMTAuIOmFjee9ruiuvuiuoQoKIyMjIDEwLjEg5pyN5Yqh56uv6YWN572uIChgc2VydmVyL2NvbmZpZy5weWApCgp8IOmFjee9rumhuSB8IOm7mOiupOWAvCB8IOeOr+Wig+WPmOmHjyB8CnwtLS0tLS0tLXwtLS0tLS0tLXwtLS0tLS0tLS18CnwgaG9zdCB8IDAuMC4wLjAgfCAtIHwKfCB0Y3BfcG9ydCB8IDg4ODggfCBDSEFUX1BPUlQgfAp8IGhlYXJ0YmVhdF90aW1lb3V0IHwgOTBzIHwgLSB8CnwgYWlfYXBpX2tleSB8ICIiIHwgQklHTU9ERUxfQVBJX0tFWSAvIERBU0hTQ09QRV9BUElfS0VZIHwKfCBmaWxlX2NodW5rX3NpemUgfCA2NEtCIHwgLSB8CnwgbWF4X2ZpbGVfc2l6ZSB8IDEwME1CIHwgLSB8CnwgcmVjYWxsX3dpbmRvdyB8IDEyMHMgfCAtIHwKCiMjIyAxMC4yIOWuouaIt+err+mFjee9riAoYGNsaWVudC9jb25maWcucHlgKQoKfCDphY3nva7pobkgfCDpu5jorqTlgLwgfCDnjq/looPlj5jph48gfAp8LS0tLS0tLS18LS0tLS0tLS18LS0tLS0tLS0tfAp8IHNlcnZlcl9ob3N0IHwgMTI3LjAuMC4xIHwgQ0hBVF9TRVJWRVJfSE9TVCB8Cnwgc2VydmVyX3BvcnQgfCA4ODg4IHwgQ0hBVF9TRVJWRVJfUE9SVCB8CnwgaGVhcnRiZWF0X2ludGVydmFsIHwgMjVzIHwgLSB8CnwgcmVjb25uZWN0X2RlbGF5X21pbiB8IDFzIHwgLSB8CnwgcmVjb25uZWN0X2RlbGF5X21heCB8IDMwcyB8IC0gfAoKLS0tCgojIyAxMS4g5a6J5YWo6K6+6K6hCgp8IOWxgumdoiB8IOaOquaWvSB8IOivtOaYjiB8CnwtLS0tLS18LS0tLS0tfC0tLS0tLXwKfCDkvKDovpMgfCBFMkVFIOWKoOWvhiB8IFJTQS0yMDQ4ICsgQUVTLTI1Ni1HQ03vvIzmnI3liqHnq6/ml6Dms5Xop6Plr4YgfAp8IOaWh+S7tiB8IOacjeWKoeerr+S4ree7pyArIFAyUCDlrp7pqozmianlsZUgfCDpu5jorqTkuK3nu6fkv53or4Hlj6/mvJTnpLrvvIxQMlAg5Y+XIE5BVC/pmLLngavlopnlvbHlk40gfAp8IOiupOivgSB8IOWvhueggeWTiOW4jCB8IOacjeWKoeerr+S4jeWtmOaYjuaWh+WvhueggSB8Cnwg5a6h5qC4IHwg5YWz6ZSu6K+N6L+H5rukIHwgQWhvLUNvcmFzaWNrIOiHquWKqOacuuWunuaXtuWuoeaguCB8Cnwg6L+e5o6lIHwg5Lya6K+d57uR5a6aIHwg55m75b2V5ZCO5bCGIFRDUCDov57mjqXnu5HlrprliLAgdXNlcl9pZO+8jOacqueZu+W9leivt+axguS8muiiq+aLkue7nSB8CgotLS0KCiMjIDEyLiDlj6/pnaDmgKforr7orqEKCnwg5Zy65pmvIHwg5aSE55CG5pa55byPIHwKfC0tLS0tLXwtLS0tLS0tLS18Cnwg5pyN5Yqh56uv5a6V5py6IHwg5a6i5oi356uv6Ieq5Yqo6YeN6L+e77yI5oyH5pWw6YCA6YG/77yJIHwKfCDnvZHnu5zpl6rmlq0gfCBUQ1Ag6L+e5o6l5pat5byA5ZCO5b+D6Lez6LaF5pe25riF55CGIHwKfCDmtojmga/mnKrpgIHovr4gfCDnprvnur/mtojmga/lrZjlgqjvvIzkuIrnur/lkI7mjqjpgIEgfAp8IOWkp+aWh+S7tuS8oOi+kyB8IOWIhuWdl+S8oOi+kyArIOaWreeCuee7reS8oCArIEZJTEVfQUNLIOehruiupCB8CgotLS0KCiMjIDEzLiDlv6vpgJ/lkK/liqgKCiMjIyDmnI3liqHnq68KYGBgYmFzaApleHBvcnQgQklHTU9ERUxfQVBJX0tFWT0ieW91ci1hcGkta2V5IiAgIyBBSSDlip/og73lj6/pgIkKcHl0aG9uIC1tIHNlcnZlci5tYWluCmBgYAoKIyMjIOWuouaIt+errwpgYGBiYXNoCiMgQ0xJIOaooeW8j++8iOm7mOiupO+8iQpweXRob24gLW0gY2xpZW50Lm1haW4KCiMgR1VJIOaooeW8jwpweXRob24gLW0gY2xpZW50Lm1haW4gLS1ndWkKYGBgCgotLS0KCiMjIDE0LiDlj4LogIPmlofmoaMKCi0gW+mAmuS/oeWNj+iuruaWh+aho10ocHJvdG9jb2wubWQpIOKAlCDlrozmlbTnmoTmtojmga/moLzlvI/lrprkuYkKLSBgc2VydmVyL3Byb3RvY29sLnB5YCDigJQg5Y2P6K6u57yW6Kej56CB5a6e546wCi0gYHNlcnZlci9kYXRhYmFzZS5weWAg4oCUIOaVsOaNruW6kyBTY2hlbWEg5a6a5LmJCg==
+# 分布式即时聊天系统 —— 设计文档
+
+## 1. 系统架构概览
+
+系统采用客户端-服务器架构。客户端负责界面交互、本地消息展示、文件选择和可选加密；服务端负责认证、在线状态、消息路由、群组管理、历史存储、内容审核、AI 调用和文件中继。所有核心控制消息通过 TCP 自定义二进制协议传输，消息体使用 UTF-8 JSON。
+
+```mermaid
+flowchart LR
+    CLI["CLI 客户端"] --> TCP["TCP 自定义协议\n12B Header + JSON"]
+    GUI["GUI 客户端"] --> TCP
+    TCP --> Server["asyncio ChatServer"]
+    Server --> Auth["用户注册/登录\n在线状态"]
+    Server --> Router["消息路由\n私聊/群聊/撤回"]
+    Server --> Group["群组管理\n创建/加入/退出"]
+    Server --> File["文件中继\n分块/确认/下载"]
+    Server --> Audit["内容审核\nAho-Corasick"]
+    Server --> AI["AI Service\nOpenAI-compatible HTTP"]
+    Server --> DB[("SQLite\n用户/群组/消息/文件")]
+    GUI --> LocalStore["客户端 JSON 历史"]
+    CLI --> LocalStore
+    Server -.实验性扩展.-> P2P["P2P Helper\nUDP 打洞协助"]
+```
+
+```text
++------------------------------------------------------------------+
+|                         Client (TCP)                              |
+|  +----------+  +--------+  +-------+  +--------+  +-----------+  |
+|  |  GUI     |  |  CLI   |  | Crypto|  |  P2P   |  | MsgStore  |  |
+|  | (tkinter)|  | (rich) |  |(E2EE) |  |(UDP)   |  | (JSON)    |  |
+|  +----+-----+  +----+---+  +---+---+  +---+----+  +-----+-----+  |
+|       |             |           |           |            |        |
+|       +------+------+-----------+-----------+------------+        |
+|              |                                                     |
+|         +----+------+                                              |
+|         | MsgHandler|    (消息分发/路由)                            |
+|         +----+------+                                              |
+|              |                                                     |
+|         +----+------+                                              |
+|         | Connection|    (TCP socket + MessageProtocol)            |
+|         +----+------+                                              |
+|              |                                                     |
++--------------+-----------------------------------------------------+
+               |  TCP (Binary Protocol: 12B Header + JSON Payload)
+               |
++--------------+-----------------------------------------------------+
+|                      Server (asyncio)                              |
+|         +----+------+                                              |
+|         | Connection|    (asyncio + MessageProtocol)               |
+|         +----+------+                                              |
+|              |                                                     |
+|         +----+---------+                                           |
+|         | ConnectionManager                                        |
+|         | (conn_id<->user_id 映射)                                  |
+|         +----+---------+                                           |
+|              |                                                     |
+|    +---------+-----------+-----------+-----------+                 |
+|    |         |           |           |           |                 |
+| +--+---+ +--+---+ +-----+-----+ +--+------+ +--+------+           |
+| |Auth  | | Msg  | | Group     | | File    | | Msg     |           |
+| |Login | |Router| | Manager   | |Transfer | | History |           |
+| |Reg   | |      | |           | |(Relay)  | | Recall  |           |
+| +------+ +------+ +-----------+ +---------+ +---------+           |
+|    |         |           |           |           |                 |
+|    +---------+-----------+-----------+-----------+                 |
+|              |                                                     |
+|    +---------+---------+                                           |
+|    | HeartbeatMonitor  |  (超时清理)                                |
+|    +---------+---------+                                           |
+|              |                                                     |
+|    +---------+---------+-------+---------+                         |
+|    |                   |       |         |                         |
+| +--+---+     +--------+-+  +--+---+  +--+------+                  |
+| | AI   |     | Content |  | P2P  |  | Key     |                  |
+| |Service|    |Moderate |  |Helper|  |Manager  |                  |
+| |(BigModel)| |(AC自动机)|  |      |  |(公钥)   |                  |
+| +------+     +---------+  +------+  +---------+                  |
+|              |                                                     |
+|         +----+--------+                                            |
+|         |   Database    | (SQLite, 6 tables)                       |
+|         +-------------+                                            |
++--------------------------------------------------------------------+
+```
+
+---
+
+## 2. 服务器架构
+
+### 2.1 模块清单
+
+| 模块 | 文件 | 职责 |
+|------|------|------|
+| TCP Server Core | `server/tcp_server.py` | asyncio 事件循环、连接管理、消息派发 |
+| Protocol | `server/protocol.py` | 二进制协议编解码、粘包处理、Connection 封装 |
+| Config | `server/config.py` | 配置项（网络、心跳、AI、文件、DB） |
+| Database | `server/database.py` | SQLite 存储：用户/群组/消息/文件传输 |
+| User Manager | `server/user_manager.py` | 用户注册、登录、在线状态管理 |
+| Group Manager | `server/group_manager.py` | 群组创建、加入、退出、成员查询 |
+| Message Router | `server/message_router.py` | 私聊/群聊消息存储与转发、在线状态广播 |
+| Message History | `server/message_history.py` | 历史消息查询、分页 |
+| Message Recall | `server/message_recall.py` | 消息撤回（2 分钟窗口） |
+| Heartbeat | `server/heartbeat.py` | 心跳超时检测、自动清理离线连接 |
+| File Transfer | `server/file_transfer.py` | 文件中继存储与分块传输 |
+| AI Service | `server/ai_service.py` | @AI 智能回复（默认智谱 BigModel，兼容 DashScope/OpenAI 格式接口） |
+| Content Moderator | `server/content_moderator.py` | 内容审核（Aho-Corasick 关键词匹配） |
+| P2P Helper | `server/p2p_helper.py` | P2P 打洞协助、地址交换 |
+| Key Manager | `server/crypto.py` | 用户 RSA 公钥存储与查询 |
+
+### 2.2 核心流程：连接生命周期
+
+```text
+建立连接 → 认证 → 消息收发 → 心跳维持 → 断开清理
+  |          |         |          |          |
+  |   LOGIN_REQ   PRIVATE_MSG  HEARTBEAT  移除映射
+  |   LOGIN_RESP  GROUP_MSG    HEARTBEAT  广播离线
+  |   REGISTER    FILE_INIT    ACK        关闭 socket
+  |               MSG_RECALL
+```
+
+### 2.3 TCP Server 核心
+
+`ChatServer` 使用 `asyncio.start_server` 实现高并发：
+- 每个客户端连接一个协程 (`_handle_client`)
+- `ConnectionManager` 维护 `conn_id -> Connection` 和 `user_id -> conn_id` 两套映射
+- `MessageRouter` 负责业务分发：私聊存储后推送、群聊存储后广播、在线状态全网广播
+
+**ConnectionManager 关键特性**：
+- 互斥锁保护映射表（asyncio.Lock）
+- `bind_user()` 同一用户重复登录时主动踢掉旧连接
+- `send_to_user()` 按 user_id 精确推送
+- `broadcast()` 广播（可选排除发送者）
+
+---
+
+## 3. 客户端架构
+
+### 3.1 模块清单
+
+| 模块 | 文件 | 职责 |
+|------|------|------|
+| Entry | `client/main.py` | CLI 参数解析、选择 GUI/CLI 模式 |
+| Connection | `client/connection.py` | 阻塞 socket + 后台线程，心跳/重连 |
+| Protocol | `client/protocol.py` | 与服务端一致的协议编解码 |
+| Message Handler | `client/message_handler.py` | 消息分发 + 快捷发送方法 |
+| GUI | `client/gui.py` | tkinter 图形界面 |
+| CLI | `client/cli.py` | rich 命令行界面 |
+| Message Store | `client/message_store.py` | JSON 本地消息持久化 |
+| Crypto | `client/crypto.py` | RSA-2048 + AES-256-GCM 端到端加密 |
+| P2P | `client/p2p.py` | 实验性 UDP 打洞与 P2P 文件传输代码 |
+
+### 3.2 连接管理
+
+`ChatConnection` 使用阻塞 socket + 后台接收线程模式：
+- 主线程不阻塞，适合 GUI/CLI
+- 启动独立线程运行接收循环
+- 自动心跳（15 秒间隔）
+- 指数退避自动重连（最多 5 次）
+
+### 3.3 消息分发
+
+`MessageHandler` 自动将 Connection 收到的所有消息路由到应用层注册的回调：
+- `register(msg_type, callback)` — 按消息类型注册回调
+- 应用层不需要关心底层协议细节
+
+---
+
+## 4. 通信协议
+
+详见 `docs/protocol.md`。
+
+**协议要点**：
+- **传输层**：TCP，二进制协议
+- **消息头**：12 字节固定头 `!H B B I I`
+  - Magic(2B) = 0xCAFE, Version(1B) = 0x01, Type(1B), Seq(4B), PayloadLen(4B)
+- **消息体**：JSON 编码的 payload（UTF-8）
+- **粘包处理**：通过 `PayloadLen` 字段 + `MessageProtocol` 内部 buffer 解决
+- **消息类型**：25 种，覆盖认证、消息、文件、群组、AI、P2P 与错误响应
+- **错误码**：16 种（SUCCESS=0 ~ INVALID_PAYLOAD=15）
+
+---
+
+## 5. AI 智能回复设计
+
+### 5.1 基本原理
+
+当用户在群聊中 `@AI` 时，客户端发送 `AI_QUERY`。服务端确认该用户是群成员后，读取最近群聊上下文，调用 OpenAI-compatible Chat Completions 接口生成回复，再把 AI 回复作为群聊可见消息广播给所有群成员。未配置 API Key 或外部接口失败时，服务端返回友好错误，不影响普通聊天。
+
+### 5.2 架构
+
+```text
+群聊输入 @AI 问题
+    → GUI/CLI 客户端发送 AI_QUERY {group_id, query}
+    → ChatServer 校验登录态和群成员身份
+    → MessageHistory 读取最近群聊上下文
+    → AIService.query_with_context(query, username, history)
+    → aiohttp 异步请求 BigModel / DashScope / 自定义 OpenAI-compatible API
+    → AI_RESP 写入消息历史并广播到该群所有在线成员
+    → 所有群成员看到绿色 AI 回复气泡
+```
+
+### 5.3 关键技术
+
+- **异步 HTTP**：使用 `aiohttp` 非阻塞调用，不阻塞服务端事件循环
+- **超时兜底**：外部 API 超时、网络错误、HTTP 错误和解析错误均返回友好提示
+- **对话上下文**：携带最近 N 条群聊消息作为上下文
+- **群聊广播**：AI 回复带有 `related_type=group`、`related_target=<group_id>` 和稳定 `chat_key`，客户端只把它显示在对应群聊，不同步到私聊或 AI assistant 侧栏
+- **前缀清理**：服务端会清理模型偶发生成的成员名冒号前缀，避免 AI 回复前出现其他用户名字
+- **提示词设计**：系统提示词定义 AI 为"友好、乐于助人的聊天助手"
+- **API 兼容**：`BIGMODEL_API_KEY` 优先；仅配置 `DASHSCOPE_API_KEY` 时默认使用 DashScope OpenAI-compatible 接口；也可通过 `AI_API_BASE` / `AI_MODEL` 手动覆盖
+
+### 5.4 API 配置
+
+```python
+BIGMODEL_API_BASE = "https://open.bigmodel.cn/api/paas/v4"
+BIGMODEL_MODEL = "glm-4-flash-250414"
+DASHSCOPE_API_BASE = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+DASHSCOPE_MODEL = "qwen-turbo"
+
+AI_API_KEY = os.getenv("BIGMODEL_API_KEY") or os.getenv("DASHSCOPE_API_KEY")
+# AI_API_BASE / AI_MODEL 可选覆盖默认值
+```
+
+---
+
+## 6. P2P 打洞设计
+
+### 6.1 基本原理
+
+NAT 环境下两个内网客户端无法直接互通。通过服务端协助交换地址信息，双方同时向对方地址发送 UDP 包，在 NAT 上建立出站映射，使入站包能够穿透。
+
+### 6.2 完整流程
+
+```text
+1. A 请求向 B 传文件
+2. A 通过 TCP 向服务端发送 P2P_HOLE_PUNCH {target_id: B}
+3. 服务端 P2PHelper 查询 B 的地址（TCP 地址 / UDP 地址）
+4. 服务端将 A 的地址发给 B，将 B 的地址发给 A
+5. A 开始向 B 的地址发送 UDP PUNCH 包
+6. B 同时向 A 的地址发送 UDP PUNCH 包
+7. NAT 建立映射，双方可直连
+8. 连接建立后，可尝试通过 P2P UDP 通道传输文件分块；失败时演示路径使用服务端中继
+```
+
+### 6.3 P2P 协议（UDP 层）
+
+UDP 数据包也使用二进制头，但与 TCP 协议独立：
+
+```text
+Magic(2B)=0x504E + Version(1B) + Type(1B) + Seq(8B) + PayloadLen(4B) = 16B
+```
+
+P2P 消息类型：
+| 类型 | 值 | 说明 |
+|------|-----|------|
+| P2P_FILE_INIT | 0x01 | 文件传输初始化 |
+| P2P_FILE_DATA | 0x02 | 文件数据块 |
+| P2P_FILE_ACK | 0x03 | 接收确认 |
+| P2P_FILE_RESUME | 0x04 | 断点续传请求 |
+| P2P_PUNCH | 0x05 | 打洞探测包 |
+| P2P_PUNCH_ACK | 0x06 | 打洞确认 |
+
+### 6.4 断点续传
+
+- 文件分块（默认 64KB），每块独立传输
+- 接收方记录已接收的 offset，发送方据此跳过已传输部分
+- P2P_FILE_RESUME 请求可指定起始 offset，实现续传
+
+---
+
+## 7. 端到端加密 (E2EE) 设计
+
+### 7.1 加密方案
+
+采用 **RSA-2048 + AES-256-GCM 混合加密**：
+
+```text
+发送方:
+  AES密钥 = random(32 bytes)          # 随机生成 AES-256 密钥
+  密文 = AES-GCM-Encrypt(明文, AES密钥) # 用 AES 加密消息内容
+  加密的AES密钥 = RSA-Encrypt(AES密钥, 接收方公钥)  # RSA 加密 AES 密钥
+  发送: {aes_key_enc, nonce, ciphertext, tag}
+
+接收方:
+  AES密钥 = RSA-Decrypt(aes_key_enc, 自己的私钥)
+  明文 = AES-GCM-Decrypt(ciphertext + tag, AES密钥, nonce)
+```
+
+### 7.2 密钥生命周期
+
+1. **注册时**：客户端生成 RSA-2048 密钥对
+2. **公钥上传**：公钥 (PEM) 在注册请求中发送给服务端，存入 `users.public_key`
+3. **私钥本地保存**：私钥保存在客户端本地文件，密码保护
+4. **消息加密**：发送时用接收方公钥加密，只有接收方私钥能解密
+
+### 7.3 加密传输格式
+
+```json
+{
+    "from_id": 1,
+    "to_id": 2,
+    "content": "{\"aes_key_enc\":\"base64...\",\"nonce\":\"base64...\",\"ciphertext\":\"base64...\",\"tag\":\"base64...\"}",
+    "msg_id": 100,
+    "timestamp": 1700000000
+}
+```
+
+- 服务端无法解密加密后的内容
+- 加密消息仍经过服务端中继转发
+- `content` 内部 JSON 字段与 `client/crypto.py` 保持一致：`aes_key_enc`、`nonce`、`ciphertext`、`tag`
+
+### 7.4 文件加密
+
+P2P 直连文件传输代码作为实验性扩展保留，设计上可使用 AES-256-GCM 加密：
+- 每个文件生成随机 AES 密钥
+- AES 密钥使用接收方 RSA 公钥加密后，通过 TCP 通道发送
+- 文件数据可通过 P2P UDP 通道加密传输；最终稳定演示路径仍使用服务端中继
+
+---
+
+## 8. 内容审核设计
+
+### 8.1 架构
+
+使用 **Aho-Corasick 自动机** 实现 O(n) 多模式匹配：
+
+- 在服务端 `content_moderator.py` 中实现
+- 支持关键词分类管理（辱骂/暴力/色情/政治敏感）
+- 建立 fail 指针的 BFS 预处理，匹配时只需遍历一次文本
+
+### 8.2 处理流程
+
+```text
+消息到达 → 内容审核 → 通过 → 转发
+                    → high 拒绝 → 发送 CONTENT_WARN 给发送者
+                    → mid 替换敏感词 → 继续转发并可提示
+```
+
+- 仅审核未加密消息，英文敏感词大小写不敏感
+- 加密消息跳过审核，但标记为"加密消息"
+
+---
+
+## 9. 数据库设计
+
+### 9.1 表结构
+
+6 张表，详见 `server/database.py`：
+
+| 表名 | 用途 | 关键字段 |
+|------|------|---------|
+| users | 用户账户 | id, username, password_hash, public_key |
+| groups | 群组 | id, name, owner_id |
+| group_members | 群组成员关系 | group_id, user_id |
+| messages | 消息存储 | id, sender_id, receiver_id, group_id, content |
+| offline_messages | 离线消息 | target_user_id, content, delivered |
+| file_transfers | 文件传输记录 | file_id, sender_id, filename, status, chunks |
+
+### 9.2 关键索引
+
+```sql
+idx_messages_sender, idx_messages_receiver, idx_messages_group
+idx_messages_created, idx_offline_target
+```
+
+---
+
+## 10. 配置设计
+
+### 10.1 服务端配置 (`server/config.py`)
+
+| 配置项 | 默认值 | 环境变量 |
+|--------|--------|---------|
+| host | 0.0.0.0 | - |
+| tcp_port | 8888 | CHAT_PORT |
+| heartbeat_timeout | 90s | - |
+| ai_api_key | "" | BIGMODEL_API_KEY / DASHSCOPE_API_KEY |
+| file_chunk_size | 64KB | - |
+| max_file_size | 100MB | - |
+| recall_window | 120s | - |
+
+### 10.2 客户端配置 (`client/config.py`)
+
+| 配置项 | 默认值 | 环境变量 |
+|--------|--------|---------|
+| server_host | 127.0.0.1 | CHAT_SERVER_HOST |
+| server_port | 8888 | CHAT_SERVER_PORT |
+| heartbeat_interval | 25s | - |
+| reconnect_delay_min | 1s | - |
+| reconnect_delay_max | 30s | - |
+
+---
+
+## 11. 安全设计
+
+| 层面 | 措施 | 说明 |
+|------|------|------|
+| 传输 | E2EE 加密 | RSA-2048 + AES-256-GCM，服务端无法解密 |
+| 文件 | 服务端中继 + P2P 实验扩展 | 默认中继保证可演示，P2P 受 NAT/防火墙影响 |
+| 认证 | 密码哈希 | 服务端不存明文密码 |
+| 审核 | 关键词过滤 | Aho-Corasick 自动机实时审核 |
+| 连接 | 会话绑定 | 登录后将 TCP 连接绑定到 user_id，未登录请求会被拒绝 |
+
+---
+
+## 12. 可靠性设计
+
+| 场景 | 处理方式 |
+|------|---------|
+| 服务端宕机 | 客户端自动重连（指数退避） |
+| 网络闪断 | TCP 连接断开后心跳超时清理 |
+| 消息未送达 | 离线消息存储，上线后推送 |
+| 大文件传输 | 分块传输 + 断点续传 + FILE_ACK 确认 |
+
+---
+
+## 13. 快速启动
+
+### 服务端
+```bash
+export BIGMODEL_API_KEY="your-api-key"  # AI 功能可选
+python -m server.main
+```
+
+### 客户端
+```bash
+# CLI 模式（默认）
+python -m client.main
+
+# GUI 模式
+python -m client.main --gui
+```
+
+---
+
+## 14. 参考文档
+
+- [通信协议文档](protocol.md) — 完整的消息格式定义
+- `server/protocol.py` — 协议编解码实现
+- `server/database.py` — 数据库 Schema 定义

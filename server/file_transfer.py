@@ -1,1 +1,362 @@
-IiIiClNlcnZlci1zaWRlIHJlbGF5IGZpbGUgdHJhbnNmZXIgbWFuYWdlci4KClRoZSBjbGllbnQgcHJvdG9jb2wgc3RheXMgdW5jaGFuZ2VkOiBjbGllbnRzIHN0aWxsIHNlbmQgZmlsZV9pZCwgY2h1bmtfaW5kZXgsCnRvdGFsX2NodW5rcyBhbmQgYmFzZTY0IGRhdGEuIFRoaXMgbW9kdWxlIGFkZHMgc2VydmVyLXNpZGUgdmFsaWRhdGlvbiBhbmQKYXV0aG9yaXphdGlvbiBzbyByZWxheSB0cmFuc2ZlciBpcyBzYWZlIGVub3VnaCBmb3IgdGhlIGZpbmFsIGRlbW8uCiIiIgoKaW1wb3J0IGFzeW5jaW8KaW1wb3J0IG9zCmltcG9ydCByZQppbXBvcnQgdGhyZWFkaW5nCmltcG9ydCB0aW1lCmltcG9ydCB1dWlkCgpmcm9tIHNlcnZlci5kYXRhYmFzZSBpbXBvcnQgZ2V0X2RiCgoKX1NBRkVfRklMRV9JRCA9IHJlLmNvbXBpbGUociJeW0EtWmEtejAtOV8tXXsxLDEyOH0kIikKX1dJTkRPV1NfUkVTRVJWRUQgPSB7CiAgICAiQ09OIiwgIlBSTiIsICJBVVgiLCAiTlVMIiwKICAgICooZiJDT017aX0iIGZvciBpIGluIHJhbmdlKDEsIDEwKSksCiAgICAqKGYiTFBUe2l9IiBmb3IgaSBpbiByYW5nZSgxLCAxMCkpLAp9CgoKY2xhc3MgRmlsZVRyYW5zZmVyOgogICAgIiIiTWFuYWdlIHJlbGF5LW1vZGUgZmlsZSB0cmFuc2ZlcnMgb24gdGhlIHNlcnZlci4iIiIKCiAgICBkZWYgX19pbml0X18oc2VsZiwgY29uZmlnKToKICAgICAgICBzZWxmLl9kYl9wYXRoID0gY29uZmlnLmRiX3BhdGgKICAgICAgICBzZWxmLl9zdG9yYWdlX2RpciA9IG9zLnBhdGguYWJzcGF0aChjb25maWcuZmlsZV9zdG9yYWdlX2RpcikKICAgICAgICBzZWxmLl9jaHVua19zaXplID0gaW50KGNvbmZpZy5maWxlX2NodW5rX3NpemUpCiAgICAgICAgc2VsZi5fbWF4X2ZpbGVfc2l6ZSA9IGludChjb25maWcubWF4X2ZpbGVfc2l6ZSkKICAgICAgICBzZWxmLl9yZWNlaXZlZF9jaHVua3M6IGRpY3Rbc3RyLCBzZXRbaW50XV0gPSB7fQogICAgICAgIHNlbGYuX2NodW5rX2xvY2sgPSB0aHJlYWRpbmcuTG9jaygpCiAgICAgICAgb3MubWFrZWRpcnMoc2VsZi5fc3RvcmFnZV9kaXIsIGV4aXN0X29rPVRydWUpCgogICAgZGVmIF9nZW5fZmlsZV9pZChzZWxmKSAtPiBzdHI6CiAgICAgICAgcmV0dXJuIHN0cih1dWlkLnV1aWQ0KCkpCgogICAgZGVmIF9ub3JtYWxpemVfZmlsZV9pZChzZWxmLCB2YWx1ZSkgLT4gc3RyIHwgTm9uZToKICAgICAgICBpZiB2YWx1ZSBpcyBOb25lIG9yIHZhbHVlID09ICIiOgogICAgICAgICAgICByZXR1cm4gc2VsZi5fZ2VuX2ZpbGVfaWQoKQogICAgICAgIGZpbGVfaWQgPSBzdHIodmFsdWUpCiAgICAgICAgaWYgbm90IF9TQUZFX0ZJTEVfSUQuZnVsbG1hdGNoKGZpbGVfaWQpOgogICAgICAgICAgICByZXR1cm4gTm9uZQogICAgICAgIHJldHVybiBmaWxlX2lkCgogICAgZGVmIF9zYWZlX3N0b3JhZ2VfcGF0aChzZWxmLCBmaWxlX2lkOiBzdHIpIC0+IHN0ciB8IE5vbmU6CiAgICAgICAgaWYgbm90IF9TQUZFX0ZJTEVfSUQuZnVsbG1hdGNoKHN0cihmaWxlX2lkKSk6CiAgICAgICAgICAgIHJldHVybiBOb25lCiAgICAgICAgcGF0aCA9IG9zLnBhdGguYWJzcGF0aChvcy5wYXRoLmpvaW4oc2VsZi5fc3RvcmFnZV9kaXIsIHN0cihmaWxlX2lkKSkpCiAgICAgICAgaWYgb3MucGF0aC5jb21tb25wYXRoKFtzZWxmLl9zdG9yYWdlX2RpciwgcGF0aF0pICE9IHNlbGYuX3N0b3JhZ2VfZGlyOgogICAgICAgICAgICByZXR1cm4gTm9uZQogICAgICAgIHJldHVybiBwYXRoCgogICAgQHN0YXRpY21ldGhvZAogICAgZGVmIF9zYW5pdGl6ZV9maWxlbmFtZShmaWxlbmFtZTogc3RyKSAtPiBzdHI6CiAgICAgICAgYmFzZW5hbWUgPSBvcy5wYXRoLmJhc2VuYW1lKHN0cihmaWxlbmFtZSBvciAiIikucmVwbGFjZSgiXFwiLCAiLyIpKS5zdHJpcCgpCiAgICAgICAgYmFzZW5hbWUgPSAiIi5qb2luKAogICAgICAgICAgICAiXyIgaWYgb3JkKGNoKSA8IDMyIG9yIGNoIGluICc8PjoiL1xcfD8qJyBlbHNlIGNoCiAgICAgICAgICAgIGZvciBjaCBpbiBiYXNlbmFtZQogICAgICAgICkucnN0cmlwKCIgLiIpCiAgICAgICAgYmFzZW5hbWUgPSAoYmFzZW5hbWUgb3IgInVubmFtZWRfZmlsZSIpWzoyNTVdCiAgICAgICAgaWYgYmFzZW5hbWUuc3BsaXQoIi4iLCAxKVswXS51cHBlcigpIGluIF9XSU5ET1dTX1JFU0VSVkVEOgogICAgICAgICAgICBiYXNlbmFtZSA9ICJfIiArIGJhc2VuYW1lCiAgICAgICAgcmV0dXJuIGJhc2VuYW1lWzoyNTVdCgogICAgQHN0YXRpY21ldGhvZAogICAgZGVmIF90b19pbnRfb3Jfbm9uZSh2YWx1ZSk6CiAgICAgICAgaWYgdmFsdWUgaW4gKE5vbmUsICIiLCAwLCAiMCIpOgogICAgICAgICAgICByZXR1cm4gTm9uZQogICAgICAgIHRyeToKICAgICAgICAgICAgcmV0dXJuIGludCh2YWx1ZSkKICAgICAgICBleGNlcHQgKFR5cGVFcnJvciwgVmFsdWVFcnJvcik6CiAgICAgICAgICAgIHJldHVybiBOb25lCgogICAgYXN5bmMgZGVmIGluaXRfdHJhbnNmZXIoCiAgICAgICAgc2VsZiwKICAgICAgICBmcm9tX2lkOiBpbnQsCiAgICAgICAgdG9faWQ6IGludCwKICAgICAgICBmaWxlbmFtZTogc3RyLAogICAgICAgIGZpbGVzaXplOiBpbnQsCiAgICAgICAgZ3JvdXBfaWQ6IGludCA9IE5vbmUsCiAgICAgICAgY2xpZW50X2ZpbGVfaWQ9Tm9uZSwKICAgICkgLT4gZGljdDoKICAgICAgICAiIiJJbml0aWFsaXplIGEgcmVsYXkgdHJhbnNmZXIgYW5kIGNyZWF0ZSB0aGUgcGxhY2Vob2xkZXIgZmlsZS4iIiIKICAgICAgICB0cnk6CiAgICAgICAgICAgIGZpbGVzaXplID0gaW50KGZpbGVzaXplKQogICAgICAgIGV4Y2VwdCAoVHlwZUVycm9yLCBWYWx1ZUVycm9yKToKICAgICAgICAgICAgcmV0dXJuIHsic3VjY2VzcyI6IEZhbHNlLCAiZXJyb3IiOiAiaW52YWxpZF9maWxlc2l6ZSJ9CgogICAgICAgIGlmIGZpbGVzaXplIDwgMDoKICAgICAgICAgICAgcmV0dXJuIHsic3VjY2VzcyI6IEZhbHNlLCAiZXJyb3IiOiAiaW52YWxpZF9maWxlc2l6ZSJ9CiAgICAgICAgaWYgZmlsZXNpemUgPiBzZWxmLl9tYXhfZmlsZV9zaXplOgogICAgICAgICAgICByZXR1cm4geyJzdWNjZXNzIjogRmFsc2UsICJlcnJvciI6ICJmaWxlX3Rvb19sYXJnZSJ9CgogICAgICAgIGZpbGVfaWQgPSBzZWxmLl9ub3JtYWxpemVfZmlsZV9pZChjbGllbnRfZmlsZV9pZCkKICAgICAgICBpZiBub3QgZmlsZV9pZDoKICAgICAgICAgICAgcmV0dXJuIHsic3VjY2VzcyI6IEZhbHNlLCAiZXJyb3IiOiAiaW52YWxpZF9maWxlX2lkIn0KCiAgICAgICAgZmlsZXBhdGggPSBzZWxmLl9zYWZlX3N0b3JhZ2VfcGF0aChmaWxlX2lkKQogICAgICAgIGlmIG5vdCBmaWxlcGF0aDoKICAgICAgICAgICAgcmV0dXJuIHsic3VjY2VzcyI6IEZhbHNlLCAiZXJyb3IiOiAiaW52YWxpZF9maWxlX2lkIn0KCiAgICAgICAgcmVjZWl2ZXJfaWQgPSBzZWxmLl90b19pbnRfb3Jfbm9uZSh0b19pZCkKICAgICAgICBncm91cF9pZCA9IHNlbGYuX3RvX2ludF9vcl9ub25lKGdyb3VwX2lkKQogICAgICAgIGlmIHJlY2VpdmVyX2lkIGlzIE5vbmUgYW5kIGdyb3VwX2lkIGlzIE5vbmU6CiAgICAgICAgICAgIHJldHVybiB7InN1Y2Nlc3MiOiBGYWxzZSwgImVycm9yIjogIm1pc3NpbmdfcmVjZWl2ZXIifQogICAgICAgIGlmIHJlY2VpdmVyX2lkIGlzIG5vdCBOb25lIGFuZCBncm91cF9pZCBpcyBub3QgTm9uZToKICAgICAgICAgICAgcmV0dXJuIHsic3VjY2VzcyI6IEZhbHNlLCAiZXJyb3IiOiAiYW1iaWd1b3VzX3JlY2VpdmVyIn0KICAgICAgICBpZiByZWNlaXZlcl9pZCA9PSBpbnQoZnJvbV9pZCk6CiAgICAgICAgICAgIHJldHVybiB7InN1Y2Nlc3MiOiBGYWxzZSwgImVycm9yIjogImNhbm5vdF9zZW5kX3RvX3NlbGYifQoKICAgICAgICBzYWZlX2ZpbGVuYW1lID0gc2VsZi5fc2FuaXRpemVfZmlsZW5hbWUoZmlsZW5hbWUpCiAgICAgICAgY2h1bmtzX3RvdGFsID0gKGZpbGVzaXplICsgc2VsZi5fY2h1bmtfc2l6ZSAtIDEpIC8vIHNlbGYuX2NodW5rX3NpemUgaWYgZmlsZXNpemUgZWxzZSAwCiAgICAgICAgbm93ID0gdGltZS50aW1lKCkKICAgICAgICBzdGF0dXMgPSAiY29tcGxldGVkIiBpZiBjaHVua3NfdG90YWwgPT0gMCBlbHNlICJwZW5kaW5nIgogICAgICAgIGNvbXBsZXRlZF9hdCA9IG5vdyBpZiBjaHVua3NfdG90YWwgPT0gMCBlbHNlIE5vbmUKCiAgICAgICAgZGVmIF9ydW4oKToKICAgICAgICAgICAgdHJ5OgogICAgICAgICAgICAgICAgd2l0aCBnZXRfZGIoc2VsZi5fZGJfcGF0aCkgYXMgY29ubjoKICAgICAgICAgICAgICAgICAgICBpZiBncm91cF9pZCBpcyBub3QgTm9uZToKICAgICAgICAgICAgICAgICAgICAgICAgY3VyID0gY29ubi5leGVjdXRlKAogICAgICAgICAgICAgICAgICAgICAgICAgICAgIlNFTEVDVCAxIEZST00gZ3JvdXBfbWVtYmVycyBXSEVSRSBncm91cF9pZCA9ID8gQU5EIHVzZXJfaWQgPSA/IiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgIChncm91cF9pZCwgZnJvbV9pZCksCiAgICAgICAgICAgICAgICAgICAgICAgICkKICAgICAgICAgICAgICAgICAgICAgICAgaWYgbm90IGN1ci5mZXRjaG9uZSgpOgogICAgICAgICAgICAgICAgICAgICAgICAgICAgcmV0dXJuIHsic3VjY2VzcyI6IEZhbHNlLCAiZXJyb3IiOiAibm90X2dyb3VwX21lbWJlciJ9CiAgICAgICAgICAgICAgICAgICAgZWxpZiByZWNlaXZlcl9pZCBpcyBub3QgTm9uZToKICAgICAgICAgICAgICAgICAgICAgICAgY3VyID0gY29ubi5leGVjdXRlKAogICAgICAgICAgICAgICAgICAgICAgICAgICAgIlNFTEVDVCAxIEZST00gdXNlcnMgV0hFUkUgaWQgPSA/IiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgIChyZWNlaXZlcl9pZCwpLAogICAgICAgICAgICAgICAgICAgICAgICApCiAgICAgICAgICAgICAgICAgICAgICAgIGlmIG5vdCBjdXIuZmV0Y2hvbmUoKToKICAgICAgICAgICAgICAgICAgICAgICAgICAgIHJldHVybiB7InN1Y2Nlc3MiOiBGYWxzZSwgImVycm9yIjogInJlY2VpdmVyX25vdF9mb3VuZCJ9CgogICAgICAgICAgICAgICAgICAgIGNvbm4uZXhlY3V0ZSgKICAgICAgICAgICAgICAgICAgICAgICAgIiIiSU5TRVJUIElOVE8gZmlsZV90cmFuc2ZlcnMKICAgICAgICAgICAgICAgICAgICAgICAgICAgKGZpbGVfaWQsIHNlbmRlcl9pZCwgcmVjZWl2ZXJfaWQsIGdyb3VwX2lkLCBmaWxlbmFtZSwgZmlsZXNpemUsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICBmaWxlcGF0aCwgdHJhbnNmZXJfdHlwZSwgc3RhdHVzLCBjaHVua19zaXplLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgY2h1bmtzX3RvdGFsLCBjaHVua3NfcmVjZWl2ZWQsIGNyZWF0ZWRfYXQsIGNvbXBsZXRlZF9hdCkKICAgICAgICAgICAgICAgICAgICAgICAgICAgVkFMVUVTICg/LCA/LCA/LCA/LCA/LCA/LCA/LCA/LCA/LCA/LCA/LCA/LCA/LCA/KSIiIiwKICAgICAgICAgICAgICAgICAgICAgICAgKAogICAgICAgICAgICAgICAgICAgICAgICAgICAgZmlsZV9pZCwKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGZyb21faWQsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICByZWNlaXZlcl9pZCwKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGdyb3VwX2lkLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgc2FmZV9maWxlbmFtZSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGZpbGVzaXplLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgZmlsZXBhdGgsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAicmVsYXkiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgc3RhdHVzLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgc2VsZi5fY2h1bmtfc2l6ZSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNodW5rc190b3RhbCwKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNodW5rc190b3RhbCBpZiBjaHVua3NfdG90YWwgPT0gMCBlbHNlIDAsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICBub3csCiAgICAgICAgICAgICAgICAgICAgICAgICAgICBjb21wbGV0ZWRfYXQsCiAgICAgICAgICAgICAgICAgICAgICAgICksCiAgICAgICAgICAgICAgICAgICAgKQogICAgICAgICAgICAgICAgICAgIGNvbm4uY29tbWl0KCkKCiAgICAgICAgICAgICAgICB3aXRoIG9wZW4oZmlsZXBhdGgsICJ3YiIpIGFzIGY6CiAgICAgICAgICAgICAgICAgICAgZi50cnVuY2F0ZShmaWxlc2l6ZSkKCiAgICAgICAgICAgICAgICB3aXRoIHNlbGYuX2NodW5rX2xvY2s6CiAgICAgICAgICAgICAgICAgICAgc2VsZi5fcmVjZWl2ZWRfY2h1bmtzW2ZpbGVfaWRdID0gc2V0KCkKCiAgICAgICAgICAgICAgICByZXR1cm4gewogICAgICAgICAgICAgICAgICAgICJzdWNjZXNzIjogVHJ1ZSwKICAgICAgICAgICAgICAgICAgICAiZmlsZV9pZCI6IGZpbGVfaWQsCiAgICAgICAgICAgICAgICAgICAgImNodW5rX3NpemUiOiBzZWxmLl9jaHVua19zaXplLAogICAgICAgICAgICAgICAgICAgICJjaHVua3NfdG90YWwiOiBjaHVua3NfdG90YWwsCiAgICAgICAgICAgICAgICAgICAgImZpbGVuYW1lIjogc2FmZV9maWxlbmFtZSwKICAgICAgICAgICAgICAgICAgICAiY29tcGxldGVkIjogY2h1bmtzX3RvdGFsID09IDAsCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIGV4Y2VwdCBFeGNlcHRpb24gYXMgZXhjOgogICAgICAgICAgICAgICAgcmV0dXJuIHsic3VjY2VzcyI6IEZhbHNlLCAiZXJyb3IiOiBmImluaXRfZmFpbGVkOnt0eXBlKGV4YykuX19uYW1lX199In0KCiAgICAgICAgcmV0dXJuIGF3YWl0IGFzeW5jaW8udG9fdGhyZWFkKF9ydW4pCgogICAgYXN5bmMgZGVmIHN0b3JlX2NodW5rKAogICAgICAgIHNlbGYsCiAgICAgICAgZmlsZV9pZDogc3RyLAogICAgICAgIGNodW5rX2luZGV4OiBpbnQsCiAgICAgICAgZGF0YTogYnl0ZXMsCiAgICAgICAgc2VuZGVyX2lkOiBpbnQgPSBOb25lLAogICAgICAgIHRvdGFsX2NodW5rczogaW50ID0gTm9uZSwKICAgICkgLT4gZGljdDoKICAgICAgICAiIiJTdG9yZSBvbmUgY2h1bmsgYW5kIHVwZGF0ZSBwcm9ncmVzcyB3aXRob3V0IGRvdWJsZS1jb3VudGluZyBkdXBsaWNhdGVzLiIiIgogICAgICAgIGlmIG5vdCBmaWxlX2lkIG9yIG5vdCBfU0FGRV9GSUxFX0lELmZ1bGxtYXRjaChzdHIoZmlsZV9pZCkpOgogICAgICAgICAgICByZXR1cm4geyJzdWNjZXNzIjogRmFsc2UsICJlcnJvciI6ICJpbnZhbGlkX2ZpbGVfaWQifQogICAgICAgIHRyeToKICAgICAgICAgICAgY2h1bmtfaW5kZXggPSBpbnQoY2h1bmtfaW5kZXgpCiAgICAgICAgZXhjZXB0IChUeXBlRXJyb3IsIFZhbHVlRXJyb3IpOgogICAgICAgICAgICByZXR1cm4geyJzdWNjZXNzIjogRmFsc2UsICJlcnJvciI6ICJpbnZhbGlkX2NodW5rX2luZGV4In0KICAgICAgICBpZiBub3QgaXNpbnN0YW5jZShkYXRhLCAoYnl0ZXMsIGJ5dGVhcnJheSkpOgogICAgICAgICAgICByZXR1cm4geyJzdWNjZXNzIjogRmFsc2UsICJlcnJvciI6ICJpbnZhbGlkX2NodW5rX2RhdGEifQogICAgICAgIGNodW5rX2RhdGEgPSBieXRlcyhkYXRhKQogICAgICAgIGV4cGVjdGVkX3RvdGFsX2NodW5rcyA9IE5vbmUKICAgICAgICBpZiB0b3RhbF9jaHVua3MgaXMgbm90IE5vbmU6CiAgICAgICAgICAgIHRyeToKICAgICAgICAgICAgICAgIGV4cGVjdGVkX3RvdGFsX2NodW5rcyA9IGludCh0b3RhbF9jaHVua3MpCiAgICAgICAgICAgIGV4Y2VwdCAoVHlwZUVycm9yLCBWYWx1ZUVycm9yKToKICAgICAgICAgICAgICAgIHJldHVybiB7InN1Y2Nlc3MiOiBGYWxzZSwgImVycm9yIjogImludmFsaWRfdG90YWxfY2h1bmtzIn0KICAgICAgICBzZW5kZXJfaWRfaW50ID0gTm9uZQogICAgICAgIGlmIHNlbmRlcl9pZCBpcyBub3QgTm9uZToKICAgICAgICAgICAgdHJ5OgogICAgICAgICAgICAgICAgc2VuZGVyX2lkX2ludCA9IGludChzZW5kZXJfaWQpCiAgICAgICAgICAgIGV4Y2VwdCAoVHlwZUVycm9yLCBWYWx1ZUVycm9yKToKICAgICAgICAgICAgICAgIHJldHVybiB7InN1Y2Nlc3MiOiBGYWxzZSwgImVycm9yIjogImludmFsaWRfc2VuZGVyIn0KCiAgICAgICAgZGVmIF9ydW4oKToKICAgICAgICAgICAgd2l0aCBnZXRfZGIoc2VsZi5fZGJfcGF0aCkgYXMgY29ubjoKICAgICAgICAgICAgICAgIGN1ciA9IGNvbm4uZXhlY3V0ZSgiU0VMRUNUICogRlJPTSBmaWxlX3RyYW5zZmVycyBXSEVSRSBmaWxlX2lkID0gPyIsIChzdHIoZmlsZV9pZCksKSkKICAgICAgICAgICAgICAgIHJvdyA9IGN1ci5mZXRjaG9uZSgpCiAgICAgICAgICAgICAgICBpZiBub3Qgcm93OgogICAgICAgICAgICAgICAgICAgIHJldHVybiB7InN1Y2Nlc3MiOiBGYWxzZSwgImVycm9yIjogImZpbGVfbm90X2ZvdW5kIn0KICAgICAgICAgICAgICAgIHRyYW5zZmVyID0gZGljdChyb3cpCgogICAgICAgICAgICBpZiBzZW5kZXJfaWRfaW50IGlzIG5vdCBOb25lIGFuZCBpbnQodHJhbnNmZXJbInNlbmRlcl9pZCJdKSAhPSBzZW5kZXJfaWRfaW50OgogICAgICAgICAgICAgICAgcmV0dXJuIHsic3VjY2VzcyI6IEZhbHNlLCAiZXJyb3IiOiAicGVybWlzc2lvbl9kZW5pZWQifQoKICAgICAgICAgICAgY2h1bmtzX3RvdGFsID0gaW50KHRyYW5zZmVyWyJjaHVua3NfdG90YWwiXSkKICAgICAgICAgICAgaWYgY2h1bmtzX3RvdGFsIDw9IDA6CiAgICAgICAgICAgICAgICByZXR1cm4geyJzdWNjZXNzIjogRmFsc2UsICJlcnJvciI6ICJub19jaHVua3NfZXhwZWN0ZWQifQogICAgICAgICAgICBpZiBjaHVua19pbmRleCA8IDAgb3IgY2h1bmtfaW5kZXggPj0gY2h1bmtzX3RvdGFsOgogICAgICAgICAgICAgICAgcmV0dXJuIHsic3VjY2VzcyI6IEZhbHNlLCAiZXJyb3IiOiAiY2h1bmtfaW5kZXhfb3V0X29mX3JhbmdlIn0KICAgICAgICAgICAgaWYgZXhwZWN0ZWRfdG90YWxfY2h1bmtzIGlzIG5vdCBOb25lIGFuZCBleHBlY3RlZF90b3RhbF9jaHVua3MgIT0gY2h1bmtzX3RvdGFsOgogICAgICAgICAgICAgICAgcmV0dXJuIHsic3VjY2VzcyI6IEZhbHNlLCAiZXJyb3IiOiAidG90YWxfY2h1bmtzX21pc21hdGNoIn0KICAgICAgICAgICAgaWYgdHJhbnNmZXJbInN0YXR1cyJdID09ICJjb21wbGV0ZWQiOgogICAgICAgICAgICAgICAgcmV0dXJuIHsKICAgICAgICAgICAgICAgICAgICAic3VjY2VzcyI6IFRydWUsCiAgICAgICAgICAgICAgICAgICAgImNodW5rX2luZGV4IjogY2h1bmtfaW5kZXgsCiAgICAgICAgICAgICAgICAgICAgImNvbXBsZXRlZCI6IFRydWUsCiAgICAgICAgICAgICAgICAgICAgImR1cGxpY2F0ZSI6IFRydWUsCiAgICAgICAgICAgICAgICB9CgogICAgICAgICAgICBvZmZzZXQgPSBjaHVua19pbmRleCAqIGludCh0cmFuc2ZlclsiY2h1bmtfc2l6ZSJdKQogICAgICAgICAgICByZW1haW5pbmcgPSBpbnQodHJhbnNmZXJbImZpbGVzaXplIl0pIC0gb2Zmc2V0CiAgICAgICAgICAgIG1heF9sZW4gPSBtaW4oaW50KHRyYW5zZmVyWyJjaHVua19zaXplIl0pLCByZW1haW5pbmcpCiAgICAgICAgICAgIGlmIG9mZnNldCA8IDAgb3Igb2Zmc2V0ID49IGludCh0cmFuc2ZlclsiZmlsZXNpemUiXSk6CiAgICAgICAgICAgICAgICByZXR1cm4geyJzdWNjZXNzIjogRmFsc2UsICJlcnJvciI6ICJvZmZzZXRfb3V0X29mX3JhbmdlIn0KICAgICAgICAgICAgaWYgbGVuKGNodW5rX2RhdGEpICE9IG1heF9sZW46CiAgICAgICAgICAgICAgICByZXR1cm4geyJzdWNjZXNzIjogRmFsc2UsICJlcnJvciI6ICJpbnZhbGlkX2NodW5rX3NpemUifQoKICAgICAgICAgICAgd2l0aCBzZWxmLl9jaHVua19sb2NrOgogICAgICAgICAgICAgICAgcmVjZWl2ZWQgPSBzZWxmLl9yZWNlaXZlZF9jaHVua3Muc2V0ZGVmYXVsdChzdHIoZmlsZV9pZCksIHNldCgpKQogICAgICAgICAgICAgICAgaWYgY2h1bmtfaW5kZXggaW4gcmVjZWl2ZWQ6CiAgICAgICAgICAgICAgICAgICAgcmV0dXJuIHsKICAgICAgICAgICAgICAgICAgICAgICAgInN1Y2Nlc3MiOiBUcnVlLAogICAgICAgICAgICAgICAgICAgICAgICAiY2h1bmtfaW5kZXgiOiBjaHVua19pbmRleCwKICAgICAgICAgICAgICAgICAgICAgICAgImNvbXBsZXRlZCI6IHRyYW5zZmVyWyJzdGF0dXMiXSA9PSAiY29tcGxldGVkIiwKICAgICAgICAgICAgICAgICAgICAgICAgImR1cGxpY2F0ZSI6IFRydWUsCiAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgcmVjZWl2ZWQuYWRkKGNodW5rX2luZGV4KQogICAgICAgICAgICAgICAgcmVjZWl2ZWRfY291bnQgPSBsZW4ocmVjZWl2ZWQpCgogICAgICAgICAgICBmaWxlcGF0aCA9IG9zLnBhdGguYWJzcGF0aCh0cmFuc2ZlclsiZmlsZXBhdGgiXSkKICAgICAgICAgICAgaWYgb3MucGF0aC5jb21tb25wYXRoKFtzZWxmLl9zdG9yYWdlX2RpciwgZmlsZXBhdGhdKSAhPSBzZWxmLl9zdG9yYWdlX2RpcjoKICAgICAgICAgICAgICAgIHJldHVybiB7InN1Y2Nlc3MiOiBGYWxzZSwgImVycm9yIjogImludmFsaWRfc3RvcmFnZV9wYXRoIn0KCiAgICAgICAgICAgIHdpdGggb3BlbihmaWxlcGF0aCwgInIrYiIpIGFzIGY6CiAgICAgICAgICAgICAgICBmLnNlZWsob2Zmc2V0KQogICAgICAgICAgICAgICAgZi53cml0ZShjaHVua19kYXRhKQoKICAgICAgICAgICAgY29tcGxldGVkID0gcmVjZWl2ZWRfY291bnQgPj0gY2h1bmtzX3RvdGFsCiAgICAgICAgICAgIHdpdGggZ2V0X2RiKHNlbGYuX2RiX3BhdGgpIGFzIGNvbm46CiAgICAgICAgICAgICAgICBjb25uLmV4ZWN1dGUoCiAgICAgICAgICAgICAgICAgICAgIiIiVVBEQVRFIGZpbGVfdHJhbnNmZXJzCiAgICAgICAgICAgICAgICAgICAgICAgU0VUIHN0YXR1cyA9ID8sIGNodW5rc19yZWNlaXZlZCA9ID8sIGNvbXBsZXRlZF9hdCA9IENPQUxFU0NFKGNvbXBsZXRlZF9hdCwgPykKICAgICAgICAgICAgICAgICAgICAgICBXSEVSRSBmaWxlX2lkID0gPyIiIiwKICAgICAgICAgICAgICAgICAgICAoCiAgICAgICAgICAgICAgICAgICAgICAgICJjb21wbGV0ZWQiIGlmIGNvbXBsZXRlZCBlbHNlICJ0cmFuc2ZlcnJpbmciLAogICAgICAgICAgICAgICAgICAgICAgICByZWNlaXZlZF9jb3VudCwKICAgICAgICAgICAgICAgICAgICAgICAgdGltZS50aW1lKCkgaWYgY29tcGxldGVkIGVsc2UgTm9uZSwKICAgICAgICAgICAgICAgICAgICAgICAgc3RyKGZpbGVfaWQpLAogICAgICAgICAgICAgICAgICAgICksCiAgICAgICAgICAgICAgICApCiAgICAgICAgICAgICAgICBjb25uLmNvbW1pdCgpCgogICAgICAgICAgICBpZiBjb21wbGV0ZWQ6CiAgICAgICAgICAgICAgICB3aXRoIHNlbGYuX2NodW5rX2xvY2s6CiAgICAgICAgICAgICAgICAgICAgc2VsZi5fcmVjZWl2ZWRfY2h1bmtzLnBvcChzdHIoZmlsZV9pZCksIE5vbmUpCgogICAgICAgICAgICByZXR1cm4geyJzdWNjZXNzIjogVHJ1ZSwgImNodW5rX2luZGV4IjogY2h1bmtfaW5kZXgsICJjb21wbGV0ZWQiOiBjb21wbGV0ZWR9CgogICAgICAgIHJldHVybiBhd2FpdCBhc3luY2lvLnRvX3RocmVhZChfcnVuKQoKICAgIGFzeW5jIGRlZiBnZXRfY2h1bmsoc2VsZiwgZmlsZV9pZDogc3RyLCBvZmZzZXQ6IGludCwgcmVxdWVzdGVyX2lkOiBpbnQgPSBOb25lKSAtPiBkaWN0OgogICAgICAgICIiIlJlYWQgb25lIGNodW5rIGZvciBhbiBhdXRob3JpemVkIHJlY2VpdmVyIG9yIGdyb3VwIG1lbWJlci4iIiIKICAgICAgICBpZiBub3QgZmlsZV9pZCBvciBub3QgX1NBRkVfRklMRV9JRC5mdWxsbWF0Y2goc3RyKGZpbGVfaWQpKToKICAgICAgICAgICAgcmV0dXJuIHsic3VjY2VzcyI6IEZhbHNlLCAiZXJyb3IiOiAiaW52YWxpZF9maWxlX2lkIn0KICAgICAgICB0cnk6CiAgICAgICAgICAgIG9mZnNldCA9IGludChvZmZzZXQpCiAgICAgICAgZXhjZXB0IChUeXBlRXJyb3IsIFZhbHVlRXJyb3IpOgogICAgICAgICAgICByZXR1cm4geyJzdWNjZXNzIjogRmFsc2UsICJlcnJvciI6ICJpbnZhbGlkX29mZnNldCJ9CiAgICAgICAgcmVxdWVzdGVyX2lkX2ludCA9IE5vbmUKICAgICAgICBpZiByZXF1ZXN0ZXJfaWQgaXMgbm90IE5vbmU6CiAgICAgICAgICAgIHRyeToKICAgICAgICAgICAgICAgIHJlcXVlc3Rlcl9pZF9pbnQgPSBpbnQocmVxdWVzdGVyX2lkKQogICAgICAgICAgICBleGNlcHQgKFR5cGVFcnJvciwgVmFsdWVFcnJvcik6CiAgICAgICAgICAgICAgICByZXR1cm4geyJzdWNjZXNzIjogRmFsc2UsICJlcnJvciI6ICJpbnZhbGlkX3JlcXVlc3RlciJ9CgogICAgICAgIGRlZiBfcnVuKCk6CiAgICAgICAgICAgIHdpdGggZ2V0X2RiKHNlbGYuX2RiX3BhdGgpIGFzIGNvbm46CiAgICAgICAgICAgICAgICBjdXIgPSBjb25uLmV4ZWN1dGUoIlNFTEVDVCAqIEZST00gZmlsZV90cmFuc2ZlcnMgV0hFUkUgZmlsZV9pZCA9ID8iLCAoc3RyKGZpbGVfaWQpLCkpCiAgICAgICAgICAgICAgICByb3cgPSBjdXIuZmV0Y2hvbmUoKQogICAgICAgICAgICAgICAgaWYgbm90IHJvdzoKICAgICAgICAgICAgICAgICAgICByZXR1cm4geyJzdWNjZXNzIjogRmFsc2UsICJlcnJvciI6ICJmaWxlX25vdF9mb3VuZCJ9CiAgICAgICAgICAgICAgICB0cmFuc2ZlciA9IGRpY3Qocm93KQoKICAgICAgICAgICAgICAgIGlmIHJlcXVlc3Rlcl9pZF9pbnQgaXMgbm90IE5vbmU6CiAgICAgICAgICAgICAgICAgICAgcmVxdWVzdGVyID0gcmVxdWVzdGVyX2lkX2ludAogICAgICAgICAgICAgICAgICAgIHJlY2VpdmVyX2lkID0gdHJhbnNmZXJbInJlY2VpdmVyX2lkIl0KICAgICAgICAgICAgICAgICAgICBncm91cF9pZCA9IHRyYW5zZmVyWyJncm91cF9pZCJdCiAgICAgICAgICAgICAgICAgICAgYWxsb3dlZCA9IHJlY2VpdmVyX2lkIGlzIG5vdCBOb25lIGFuZCBpbnQocmVjZWl2ZXJfaWQpID09IHJlcXVlc3RlcgogICAgICAgICAgICAgICAgICAgIGlmIGdyb3VwX2lkIGlzIG5vdCBOb25lOgogICAgICAgICAgICAgICAgICAgICAgICBjdXIgPSBjb25uLmV4ZWN1dGUoCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAiU0VMRUNUIDEgRlJPTSBncm91cF9tZW1iZXJzIFdIRVJFIGdyb3VwX2lkID0gPyBBTkQgdXNlcl9pZCA9ID8iLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgKGdyb3VwX2lkLCByZXF1ZXN0ZXIpLAogICAgICAgICAgICAgICAgICAgICAgICApCiAgICAgICAgICAgICAgICAgICAgICAgIGFsbG93ZWQgPSBjdXIuZmV0Y2hvbmUoKSBpcyBub3QgTm9uZQogICAgICAgICAgICAgICAgICAgIGlmIG5vdCBhbGxvd2VkOgogICAgICAgICAgICAgICAgICAgICAgICByZXR1cm4geyJzdWNjZXNzIjogRmFsc2UsICJlcnJvciI6ICJwZXJtaXNzaW9uX2RlbmllZCJ9CgogICAgICAgICAgICBpZiB0cmFuc2Zlclsic3RhdHVzIl0gIT0gImNvbXBsZXRlZCI6CiAgICAgICAgICAgICAgICByZXR1cm4geyJzdWNjZXNzIjogRmFsc2UsICJlcnJvciI6ICJmaWxlX25vdF9jb21wbGV0ZWQifQoKICAgICAgICAgICAgZmlsZXNpemUgPSBpbnQodHJhbnNmZXJbImZpbGVzaXplIl0pCiAgICAgICAgICAgIGNodW5rX3NpemUgPSBpbnQodHJhbnNmZXJbImNodW5rX3NpemUiXSkKICAgICAgICAgICAgaWYgZmlsZXNpemUgPT0gMDoKICAgICAgICAgICAgICAgIGlmIG9mZnNldCAhPSAwOgogICAgICAgICAgICAgICAgICAgIHJldHVybiB7InN1Y2Nlc3MiOiBGYWxzZSwgImVycm9yIjogIm9mZnNldF9vdXRfb2ZfcmFuZ2UifQogICAgICAgICAgICAgICAgcmV0dXJuIHsic3VjY2VzcyI6IFRydWUsICJkYXRhIjogYiIiLCAib2Zmc2V0IjogMCwgInNpemUiOiAwfQogICAgICAgICAgICBpZiBvZmZzZXQgPCAwIG9yIG9mZnNldCA+PSBmaWxlc2l6ZSBvciBvZmZzZXQgJSBjaHVua19zaXplICE9IDA6CiAgICAgICAgICAgICAgICByZXR1cm4geyJzdWNjZXNzIjogRmFsc2UsICJlcnJvciI6ICJvZmZzZXRfb3V0X29mX3JhbmdlIn0KCiAgICAgICAgICAgIGZpbGVwYXRoID0gb3MucGF0aC5hYnNwYXRoKHRyYW5zZmVyWyJmaWxlcGF0aCJdKQogICAgICAgICAgICBpZiBvcy5wYXRoLmNvbW1vbnBhdGgoW3NlbGYuX3N0b3JhZ2VfZGlyLCBmaWxlcGF0aF0pICE9IHNlbGYuX3N0b3JhZ2VfZGlyOgogICAgICAgICAgICAgICAgcmV0dXJuIHsic3VjY2VzcyI6IEZhbHNlLCAiZXJyb3IiOiAiaW52YWxpZF9zdG9yYWdlX3BhdGgifQoKICAgICAgICAgICAgd2l0aCBvcGVuKGZpbGVwYXRoLCAicmIiKSBhcyBmOgogICAgICAgICAgICAgICAgZi5zZWVrKG9mZnNldCkKICAgICAgICAgICAgICAgIGRhdGEgPSBmLnJlYWQoY2h1bmtfc2l6ZSkKICAgICAgICAgICAgcmV0dXJuIHsic3VjY2VzcyI6IFRydWUsICJkYXRhIjogZGF0YSwgIm9mZnNldCI6IG9mZnNldCwgInNpemUiOiBsZW4oZGF0YSl9CgogICAgICAgIHJldHVybiBhd2FpdCBhc3luY2lvLnRvX3RocmVhZChfcnVuKQoKICAgIGFzeW5jIGRlZiBnZXRfdHJhbnNmZXJfcHJvZ3Jlc3Moc2VsZiwgZmlsZV9pZDogc3RyKSAtPiBkaWN0OgogICAgICAgICIiIlJldHVybiBwZXJzaXN0ZWQgdHJhbnNmZXIgcHJvZ3Jlc3MuIiIiCiAgICAgICAgZGVmIF9ydW4oKToKICAgICAgICAgICAgd2l0aCBnZXRfZGIoc2VsZi5fZGJfcGF0aCkgYXMgY29ubjoKICAgICAgICAgICAgICAgIGN1ciA9IGNvbm4uZXhlY3V0ZSgKICAgICAgICAgICAgICAgICAgICAiU0VMRUNUICogRlJPTSBmaWxlX3RyYW5zZmVycyBXSEVSRSBmaWxlX2lkID0gPyIsIChzdHIoZmlsZV9pZCksKQogICAgICAgICAgICAgICAgKQogICAgICAgICAgICAgICAgcm93ID0gY3VyLmZldGNob25lKCkKICAgICAgICAgICAgICAgIHJldHVybiBkaWN0KHJvdykgaWYgcm93IGVsc2UgTm9uZQoKICAgICAgICByZXR1cm4gYXdhaXQgYXN5bmNpby50b190aHJlYWQoX3J1bikK
+"""
+Server-side relay file transfer manager.
+
+The client protocol stays unchanged: clients still send file_id, chunk_index,
+total_chunks and base64 data. This module adds server-side validation and
+authorization so relay transfer is safe enough for the final demo.
+"""
+
+import asyncio
+import os
+import re
+import threading
+import time
+import uuid
+
+from server.database import get_db
+
+
+_SAFE_FILE_ID = re.compile(r"^[A-Za-z0-9_-]{1,128}$")
+_WINDOWS_RESERVED = {
+    "CON", "PRN", "AUX", "NUL",
+    *(f"COM{i}" for i in range(1, 10)),
+    *(f"LPT{i}" for i in range(1, 10)),
+}
+
+
+class FileTransfer:
+    """Manage relay-mode file transfers on the server."""
+
+    def __init__(self, config):
+        self._db_path = config.db_path
+        self._storage_dir = os.path.abspath(config.file_storage_dir)
+        self._chunk_size = int(config.file_chunk_size)
+        self._max_file_size = int(config.max_file_size)
+        self._received_chunks: dict[str, set[int]] = {}
+        self._chunk_lock = threading.Lock()
+        os.makedirs(self._storage_dir, exist_ok=True)
+
+    def _gen_file_id(self) -> str:
+        return str(uuid.uuid4())
+
+    def _normalize_file_id(self, value) -> str | None:
+        if value is None or value == "":
+            return self._gen_file_id()
+        file_id = str(value)
+        if not _SAFE_FILE_ID.fullmatch(file_id):
+            return None
+        return file_id
+
+    def _safe_storage_path(self, file_id: str) -> str | None:
+        if not _SAFE_FILE_ID.fullmatch(str(file_id)):
+            return None
+        path = os.path.abspath(os.path.join(self._storage_dir, str(file_id)))
+        if os.path.commonpath([self._storage_dir, path]) != self._storage_dir:
+            return None
+        return path
+
+    @staticmethod
+    def _sanitize_filename(filename: str) -> str:
+        basename = os.path.basename(str(filename or "").replace("\\", "/")).strip()
+        basename = "".join(
+            "_" if ord(ch) < 32 or ch in '<>:"/\\|?*' else ch
+            for ch in basename
+        ).rstrip(" .")
+        basename = (basename or "unnamed_file")[:255]
+        if basename.split(".", 1)[0].upper() in _WINDOWS_RESERVED:
+            basename = "_" + basename
+        return basename[:255]
+
+    @staticmethod
+    def _to_int_or_none(value):
+        if value in (None, "", 0, "0"):
+            return None
+        try:
+            return int(value)
+        except (TypeError, ValueError):
+            return None
+
+    async def init_transfer(
+        self,
+        from_id: int,
+        to_id: int,
+        filename: str,
+        filesize: int,
+        group_id: int = None,
+        client_file_id=None,
+    ) -> dict:
+        """Initialize a relay transfer and create the placeholder file."""
+        try:
+            filesize = int(filesize)
+        except (TypeError, ValueError):
+            return {"success": False, "error": "invalid_filesize"}
+
+        if filesize < 0:
+            return {"success": False, "error": "invalid_filesize"}
+        if filesize > self._max_file_size:
+            return {"success": False, "error": "file_too_large"}
+
+        file_id = self._normalize_file_id(client_file_id)
+        if not file_id:
+            return {"success": False, "error": "invalid_file_id"}
+
+        filepath = self._safe_storage_path(file_id)
+        if not filepath:
+            return {"success": False, "error": "invalid_file_id"}
+
+        receiver_id = self._to_int_or_none(to_id)
+        group_id = self._to_int_or_none(group_id)
+        if receiver_id is None and group_id is None:
+            return {"success": False, "error": "missing_receiver"}
+        if receiver_id is not None and group_id is not None:
+            return {"success": False, "error": "ambiguous_receiver"}
+        if receiver_id == int(from_id):
+            return {"success": False, "error": "cannot_send_to_self"}
+
+        safe_filename = self._sanitize_filename(filename)
+        chunks_total = (filesize + self._chunk_size - 1) // self._chunk_size if filesize else 0
+        now = time.time()
+        status = "completed" if chunks_total == 0 else "pending"
+        completed_at = now if chunks_total == 0 else None
+
+        def _run():
+            try:
+                with get_db(self._db_path) as conn:
+                    if group_id is not None:
+                        cur = conn.execute(
+                            "SELECT 1 FROM group_members WHERE group_id = ? AND user_id = ?",
+                            (group_id, from_id),
+                        )
+                        if not cur.fetchone():
+                            return {"success": False, "error": "not_group_member"}
+                    elif receiver_id is not None:
+                        cur = conn.execute(
+                            "SELECT 1 FROM users WHERE id = ?",
+                            (receiver_id,),
+                        )
+                        if not cur.fetchone():
+                            return {"success": False, "error": "receiver_not_found"}
+
+                    conn.execute(
+                        """INSERT INTO file_transfers
+                           (file_id, sender_id, receiver_id, group_id, filename, filesize,
+                            filepath, transfer_type, status, chunk_size,
+                            chunks_total, chunks_received, created_at, completed_at)
+                           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                        (
+                            file_id,
+                            from_id,
+                            receiver_id,
+                            group_id,
+                            safe_filename,
+                            filesize,
+                            filepath,
+                            "relay",
+                            status,
+                            self._chunk_size,
+                            chunks_total,
+                            chunks_total if chunks_total == 0 else 0,
+                            now,
+                            completed_at,
+                        ),
+                    )
+                    conn.commit()
+
+                with open(filepath, "wb") as f:
+                    f.truncate(filesize)
+
+                with self._chunk_lock:
+                    self._received_chunks[file_id] = set()
+
+                return {
+                    "success": True,
+                    "file_id": file_id,
+                    "chunk_size": self._chunk_size,
+                    "chunks_total": chunks_total,
+                    "filename": safe_filename,
+                    "completed": chunks_total == 0,
+                }
+            except Exception as exc:
+                return {"success": False, "error": f"init_failed:{type(exc).__name__}"}
+
+        return await asyncio.to_thread(_run)
+
+    async def store_chunk(
+        self,
+        file_id: str,
+        chunk_index: int,
+        data: bytes,
+        sender_id: int = None,
+        total_chunks: int = None,
+    ) -> dict:
+        """Store one chunk and update progress without double-counting duplicates."""
+        if not file_id or not _SAFE_FILE_ID.fullmatch(str(file_id)):
+            return {"success": False, "error": "invalid_file_id"}
+        try:
+            chunk_index = int(chunk_index)
+        except (TypeError, ValueError):
+            return {"success": False, "error": "invalid_chunk_index"}
+        if not isinstance(data, (bytes, bytearray)):
+            return {"success": False, "error": "invalid_chunk_data"}
+        chunk_data = bytes(data)
+        expected_total_chunks = None
+        if total_chunks is not None:
+            try:
+                expected_total_chunks = int(total_chunks)
+            except (TypeError, ValueError):
+                return {"success": False, "error": "invalid_total_chunks"}
+        sender_id_int = None
+        if sender_id is not None:
+            try:
+                sender_id_int = int(sender_id)
+            except (TypeError, ValueError):
+                return {"success": False, "error": "invalid_sender"}
+
+        def _run():
+            with get_db(self._db_path) as conn:
+                cur = conn.execute("SELECT * FROM file_transfers WHERE file_id = ?", (str(file_id),))
+                row = cur.fetchone()
+                if not row:
+                    return {"success": False, "error": "file_not_found"}
+                transfer = dict(row)
+
+            if sender_id_int is not None and int(transfer["sender_id"]) != sender_id_int:
+                return {"success": False, "error": "permission_denied"}
+
+            chunks_total = int(transfer["chunks_total"])
+            if chunks_total <= 0:
+                return {"success": False, "error": "no_chunks_expected"}
+            if chunk_index < 0 or chunk_index >= chunks_total:
+                return {"success": False, "error": "chunk_index_out_of_range"}
+            if expected_total_chunks is not None and expected_total_chunks != chunks_total:
+                return {"success": False, "error": "total_chunks_mismatch"}
+            if transfer["status"] == "completed":
+                return {
+                    "success": True,
+                    "chunk_index": chunk_index,
+                    "completed": True,
+                    "duplicate": True,
+                }
+
+            offset = chunk_index * int(transfer["chunk_size"])
+            remaining = int(transfer["filesize"]) - offset
+            max_len = min(int(transfer["chunk_size"]), remaining)
+            if offset < 0 or offset >= int(transfer["filesize"]):
+                return {"success": False, "error": "offset_out_of_range"}
+            if len(chunk_data) != max_len:
+                return {"success": False, "error": "invalid_chunk_size"}
+
+            with self._chunk_lock:
+                received = self._received_chunks.setdefault(str(file_id), set())
+                if chunk_index in received:
+                    return {
+                        "success": True,
+                        "chunk_index": chunk_index,
+                        "completed": transfer["status"] == "completed",
+                        "duplicate": True,
+                    }
+                received.add(chunk_index)
+                received_count = len(received)
+
+            filepath = os.path.abspath(transfer["filepath"])
+            if os.path.commonpath([self._storage_dir, filepath]) != self._storage_dir:
+                return {"success": False, "error": "invalid_storage_path"}
+
+            with open(filepath, "r+b") as f:
+                f.seek(offset)
+                f.write(chunk_data)
+
+            completed = received_count >= chunks_total
+            with get_db(self._db_path) as conn:
+                conn.execute(
+                    """UPDATE file_transfers
+                       SET status = ?, chunks_received = ?, completed_at = COALESCE(completed_at, ?)
+                       WHERE file_id = ?""",
+                    (
+                        "completed" if completed else "transferring",
+                        received_count,
+                        time.time() if completed else None,
+                        str(file_id),
+                    ),
+                )
+                conn.commit()
+
+            if completed:
+                with self._chunk_lock:
+                    self._received_chunks.pop(str(file_id), None)
+
+            return {"success": True, "chunk_index": chunk_index, "completed": completed}
+
+        return await asyncio.to_thread(_run)
+
+    async def get_chunk(self, file_id: str, offset: int, requester_id: int = None) -> dict:
+        """Read one chunk for an authorized receiver or group member."""
+        if not file_id or not _SAFE_FILE_ID.fullmatch(str(file_id)):
+            return {"success": False, "error": "invalid_file_id"}
+        try:
+            offset = int(offset)
+        except (TypeError, ValueError):
+            return {"success": False, "error": "invalid_offset"}
+        requester_id_int = None
+        if requester_id is not None:
+            try:
+                requester_id_int = int(requester_id)
+            except (TypeError, ValueError):
+                return {"success": False, "error": "invalid_requester"}
+
+        def _run():
+            with get_db(self._db_path) as conn:
+                cur = conn.execute("SELECT * FROM file_transfers WHERE file_id = ?", (str(file_id),))
+                row = cur.fetchone()
+                if not row:
+                    return {"success": False, "error": "file_not_found"}
+                transfer = dict(row)
+
+                if requester_id_int is not None:
+                    requester = requester_id_int
+                    receiver_id = transfer["receiver_id"]
+                    group_id = transfer["group_id"]
+                    allowed = receiver_id is not None and int(receiver_id) == requester
+                    if group_id is not None:
+                        cur = conn.execute(
+                            "SELECT 1 FROM group_members WHERE group_id = ? AND user_id = ?",
+                            (group_id, requester),
+                        )
+                        allowed = cur.fetchone() is not None
+                    if not allowed:
+                        return {"success": False, "error": "permission_denied"}
+
+            if transfer["status"] != "completed":
+                return {"success": False, "error": "file_not_completed"}
+
+            filesize = int(transfer["filesize"])
+            chunk_size = int(transfer["chunk_size"])
+            if filesize == 0:
+                if offset != 0:
+                    return {"success": False, "error": "offset_out_of_range"}
+                return {"success": True, "data": b"", "offset": 0, "size": 0}
+            if offset < 0 or offset >= filesize or offset % chunk_size != 0:
+                return {"success": False, "error": "offset_out_of_range"}
+
+            filepath = os.path.abspath(transfer["filepath"])
+            if os.path.commonpath([self._storage_dir, filepath]) != self._storage_dir:
+                return {"success": False, "error": "invalid_storage_path"}
+
+            with open(filepath, "rb") as f:
+                f.seek(offset)
+                data = f.read(chunk_size)
+            return {"success": True, "data": data, "offset": offset, "size": len(data)}
+
+        return await asyncio.to_thread(_run)
+
+    async def get_transfer_progress(self, file_id: str) -> dict:
+        """Return persisted transfer progress."""
+        def _run():
+            with get_db(self._db_path) as conn:
+                cur = conn.execute(
+                    "SELECT * FROM file_transfers WHERE file_id = ?", (str(file_id),)
+                )
+                row = cur.fetchone()
+                return dict(row) if row else None
+
+        return await asyncio.to_thread(_run)

@@ -1,1 +1,601 @@
-IiIiClBsYXllcjIg5a6i5oi356uv5Yqf6IO95Zue5b2S5rWL6K+V44CCCgrov5nkupvmtYvor5XogZrnhKYgQ0xJL0dVSSDlhbHnlKjnmoTlrqLmiLfnq6/ooYzkuLrvvJrmkqTlm57jgIHljoblj7LjgIHmlofku7bkvKDovpPlkowgQUNLIOWvuem9kOOAggrmtYvor5XkuI3lkK/liqjnnJ/lrp7mnI3liqHlmajvvIzogIzmmK/nlKjlgYfov57mjqUv5YGHIGhhbmRsZXIg5o2V6I635a6i5oi356uv5Y+R5Ye655qE5Y2P6K6uIHBheWxvYWTjgIIKIiIiCgpmcm9tIGNsaWVudC5tZXNzYWdlX2hhbmRsZXIgaW1wb3J0IE1lc3NhZ2VIYW5kbGVyCmZyb20gY2xpZW50LnByb3RvY29sIGltcG9ydCBNZXNzYWdlVHlwZQpmcm9tIGNsaWVudC5jbGkgaW1wb3J0IENoYXRDTEkKZnJvbSBjbGllbnQuZ3VpIGltcG9ydCBDaGF0R1VJCmltcG9ydCBjbGllbnQud2ViX2JyaWRnZSBhcyB3ZWJfYnJpZGdlX21vZHVsZQpmcm9tIGNsaWVudC53ZWJfYnJpZGdlIGltcG9ydCBXZWJCcmlkZ2UKZnJvbSB0ZXN0cy50ZW1wX3V0aWxzIGltcG9ydCBtYWtlX3J1bnRpbWVfZGlyLCByZW1vdmVfcnVudGltZV9kaXIKCgpjbGFzcyBEdW1teUNvbm5lY3Rpb246CiAgICAiIiLorrDlvZUgTWVzc2FnZUhhbmRsZXIg5Y+R5Ye655qE5raI5oGv77yM6YG/5YWN5L6d6LWW55yf5a6eIFRDUCDov57mjqXjgIIiIiIKCiAgICBkZWYgX19pbml0X18oc2VsZik6CiAgICAgICAgc2VsZi5jYWxsYmFja3MgPSB7fQogICAgICAgIHNlbGYuc2VudCA9IFtdCgogICAgZGVmIHJlZ2lzdGVyX2NhbGxiYWNrKHNlbGYsIG1zZ190eXBlLCBjYWxsYmFjayk6CiAgICAgICAgc2VsZi5jYWxsYmFja3NbbXNnX3R5cGVdID0gY2FsbGJhY2sKCiAgICBkZWYgc2VuZF9tZXNzYWdlKHNlbGYsIG1zZ190eXBlLCBwYXlsb2FkLCBzZXE9Tm9uZSk6CiAgICAgICAgc2VsZi5zZW50LmFwcGVuZCh7Im1zZ190eXBlIjogbXNnX3R5cGUsICJwYXlsb2FkIjogcGF5bG9hZCwgInNlcSI6IHNlcX0pCiAgICAgICAgcmV0dXJuIFRydWUKCiAgICBAcHJvcGVydHkKICAgIGRlZiBpc19jb25uZWN0ZWQoc2VsZik6CiAgICAgICAgcmV0dXJuIFRydWUKCgpjbGFzcyBPZmZsaW5lQ29ubmVjdGlvbihEdW1teUNvbm5lY3Rpb24pOgogICAgQHByb3BlcnR5CiAgICBkZWYgaXNfY29ubmVjdGVkKHNlbGYpOgogICAgICAgIHJldHVybiBGYWxzZQoKCmNsYXNzIER1bW15SGFuZGxlcjoKICAgICIiIuiusOW9lSBDTEkvR1VJIOiwg+eUqOeahOmrmOWxguWPkemAgeaOpeWPo+OAgiIiIgoKICAgIGRlZiBfX2luaXRfXyhzZWxmKToKICAgICAgICBzZWxmLmNhbGxzID0gW10KICAgICAgICBzZWxmLl9zZXEgPSAwCgogICAgZGVmIHJlcXVlc3RfaGlzdG9yeShzZWxmLCB0YXJnZXRfdHlwZSwgdGFyZ2V0X2lkLCBsaW1pdD01MCk6CiAgICAgICAgc2VsZi5jYWxscy5hcHBlbmQoKCJoaXN0b3J5IiwgdGFyZ2V0X3R5cGUsIHRhcmdldF9pZCwgbGltaXQpKQoKICAgIGRlZiByZXF1ZXN0X29ubGluZV91c2VycyhzZWxmKToKICAgICAgICBzZWxmLmNhbGxzLmFwcGVuZCgoIm9ubGluZV91c2VycyIsKSkKCiAgICBkZWYgc2VuZF9wcml2YXRlX21zZyhzZWxmLCBmcm9tX2lkLCB0b19pZCwgY29udGVudCk6CiAgICAgICAgc2VsZi5fc2VxICs9IDEKICAgICAgICBzZWxmLmNhbGxzLmFwcGVuZCgoInByaXZhdGUiLCBmcm9tX2lkLCB0b19pZCwgY29udGVudCkpCiAgICAgICAgcmV0dXJuIHsib2siOiBUcnVlLCAic2VxIjogc2VsZi5fc2VxLCAiY2xpZW50X21zZ19pZCI6IGYibG9jYWwte3NlbGYuX3NlcX0ifQoKICAgIGRlZiBzZW5kX2dyb3VwX21zZyhzZWxmLCBmcm9tX2lkLCBncm91cF9pZCwgY29udGVudCk6CiAgICAgICAgc2VsZi5fc2VxICs9IDEKICAgICAgICBzZWxmLmNhbGxzLmFwcGVuZCgoImdyb3VwIiwgZnJvbV9pZCwgZ3JvdXBfaWQsIGNvbnRlbnQpKQogICAgICAgIHJldHVybiB7Im9rIjogVHJ1ZSwgInNlcSI6IHNlbGYuX3NlcSwgImNsaWVudF9tc2dfaWQiOiBmImxvY2FsLXtzZWxmLl9zZXF9In0KCiAgICBkZWYgc2VuZF9yZWNhbGwoc2VsZiwgbXNnX2lkKToKICAgICAgICBzZWxmLmNhbGxzLmFwcGVuZCgoInJlY2FsbCIsIG1zZ19pZCkpCgogICAgZGVmIHNlbmRfZmlsZV9pbml0KHNlbGYsIGZyb21faWQsIHRvX2lkLCBmaWxlbmFtZSwgZmlsZXNpemUsIGZpbGVfaWQsIGdyb3VwX2lkPU5vbmUpOgogICAgICAgIHNlbGYuY2FsbHMuYXBwZW5kKCgiZmlsZV9pbml0IiwgZnJvbV9pZCwgdG9faWQsIGZpbGVuYW1lLCBmaWxlc2l6ZSwgZmlsZV9pZCwgZ3JvdXBfaWQpKQogICAgICAgIHJldHVybiB7Im9rIjogVHJ1ZSwgInNlcSI6IDEsICJjbGllbnRfZmlsZV9pZCI6IGZpbGVfaWR9CgogICAgZGVmIHNlbmRfZmlsZV9kYXRhKHNlbGYsIGZpbGVfaWQsIGNodW5rX2RhdGEsIGNodW5rX2luZGV4LCB0b3RhbF9jaHVua3MpOgogICAgICAgIHNlbGYuY2FsbHMuYXBwZW5kKCgiZmlsZV9kYXRhIiwgZmlsZV9pZCwgY2h1bmtfaW5kZXgsIHRvdGFsX2NodW5rcywgY2h1bmtfZGF0YSkpCiAgICAgICAgcmV0dXJuIHsib2siOiBUcnVlfQoKICAgIGRlZiBzZW5kX2FpX3F1ZXJ5KHNlbGYsIGZyb21faWQsIGdyb3VwX2lkLCBxdWVyeSwgY29udGV4dD1Ob25lKToKICAgICAgICBzZWxmLl9zZXEgKz0gMQogICAgICAgIHNlbGYuY2FsbHMuYXBwZW5kKCgiYWkiLCBmcm9tX2lkLCBncm91cF9pZCwgcXVlcnksIGNvbnRleHQpKQogICAgICAgIHJldHVybiB7Im9rIjogVHJ1ZSwgInNlcSI6IHNlbGYuX3NlcX0KCiAgICBkZWYgZ3JvdXBfY3JlYXRlKHNlbGYsIG5hbWUsIHVzZXJfaWQpOgogICAgICAgIHNlbGYuX3NlcSArPSAxCiAgICAgICAgc2VsZi5jYWxscy5hcHBlbmQoKCJjcmVhdGUiLCBuYW1lLCB1c2VyX2lkKSkKICAgICAgICByZXR1cm4geyJvayI6IFRydWUsICJzZXEiOiBzZWxmLl9zZXF9CgogICAgZGVmIGdyb3VwX2pvaW4oc2VsZiwgZ3JvdXBfaWQsIHVzZXJfaWQpOgogICAgICAgIHNlbGYuX3NlcSArPSAxCiAgICAgICAgc2VsZi5jYWxscy5hcHBlbmQoKCJqb2luIiwgZ3JvdXBfaWQsIHVzZXJfaWQpKQogICAgICAgIHJldHVybiB7Im9rIjogVHJ1ZSwgInNlcSI6IHNlbGYuX3NlcX0KCiAgICBkZWYgZ3JvdXBfbGVhdmUoc2VsZiwgZ3JvdXBfaWQsIHVzZXJfaWQpOgogICAgICAgIHNlbGYuX3NlcSArPSAxCiAgICAgICAgc2VsZi5jYWxscy5hcHBlbmQoKCJsZWF2ZSIsIGdyb3VwX2lkLCB1c2VyX2lkKSkKICAgICAgICByZXR1cm4geyJvayI6IFRydWUsICJzZXEiOiBzZWxmLl9zZXF9CgoKY2xhc3MgRHVtbXlTdG9yZToKICAgIGRlZiBfX2luaXRfXyhzZWxmKToKICAgICAgICBzZWxmLnN0YXR1c191cGRhdGVzID0gW10KICAgICAgICBzZWxmLmlkX3VwZGF0ZXMgPSBbXQoKICAgIGRlZiB1cGRhdGVfbWVzc2FnZV9zdGF0dXMoc2VsZiwgdXNlcm5hbWUsIG1zZ19pZCwgc3RhdHVzKToKICAgICAgICBzZWxmLnN0YXR1c191cGRhdGVzLmFwcGVuZCgodXNlcm5hbWUsIG1zZ19pZCwgc3RhdHVzKSkKICAgICAgICByZXR1cm4gVHJ1ZQoKICAgIGRlZiB1cGRhdGVfbWVzc2FnZV9pZChzZWxmLCB1c2VybmFtZSwgbG9jYWxfbXNnX2lkLCBzZXJ2ZXJfbXNnX2lkLCB0aW1lc3RhbXA9Tm9uZSwgc3RhdHVzPSIiKToKICAgICAgICBzZWxmLmlkX3VwZGF0ZXMuYXBwZW5kKCh1c2VybmFtZSwgbG9jYWxfbXNnX2lkLCBzZXJ2ZXJfbXNnX2lkLCB0aW1lc3RhbXAsIHN0YXR1cykpCiAgICAgICAgcmV0dXJuIFRydWUKCgpkZWYgdGVzdF9tZXNzYWdlX2hhbmRsZXJfcmV0dXJuc190cmFja2luZ19pbmZvX2Zvcl9wcml2YXRlX21lc3NhZ2UoKToKICAgIGNvbm4gPSBEdW1teUNvbm5lY3Rpb24oKQogICAgaGFuZGxlciA9IE1lc3NhZ2VIYW5kbGVyKGNvbm4pCgogICAgcmVzdWx0ID0gaGFuZGxlci5zZW5kX3ByaXZhdGVfbXNnKDEsIDIsICJoZWxsbyIpCgogICAgYXNzZXJ0IHJlc3VsdFsib2siXSBpcyBUcnVlCiAgICBhc3NlcnQgcmVzdWx0WyJzZXEiXSA9PSBjb25uLnNlbnRbLTFdWyJzZXEiXQogICAgYXNzZXJ0IHJlc3VsdFsicGF5bG9hZCJdID09IGNvbm4uc2VudFstMV1bInBheWxvYWQiXQogICAgYXNzZXJ0IHJlc3VsdFsiY2xpZW50X21zZ19pZCJdID09IGNvbm4uc2VudFstMV1bInBheWxvYWQiXVsibXNnX2lkIl0KICAgIGFzc2VydCBjb25uLnNlbnRbLTFdWyJtc2dfdHlwZSJdID09IE1lc3NhZ2VUeXBlLlBSSVZBVEVfTVNHCgoKZGVmIHRlc3RfbWVzc2FnZV9oYW5kbGVyX2ZpbGVfaW5pdF9zdXBwb3J0c19ncm91cF9pZCgpOgogICAgY29ubiA9IER1bW15Q29ubmVjdGlvbigpCiAgICBoYW5kbGVyID0gTWVzc2FnZUhhbmRsZXIoY29ubikKCiAgICByZXN1bHQgPSBoYW5kbGVyLnNlbmRfZmlsZV9pbml0KDEsIE5vbmUsICJncm91cC50eHQiLCA0LCAiZmlsZS1nIiwgZ3JvdXBfaWQ9OSkKCiAgICBhc3NlcnQgcmVzdWx0WyJvayJdIGlzIFRydWUKICAgIHBheWxvYWQgPSBjb25uLnNlbnRbLTFdWyJwYXlsb2FkIl0KICAgIGFzc2VydCBwYXlsb2FkWyJncm91cF9pZCJdID09IDkKICAgIGFzc2VydCAidG9faWQiIG5vdCBpbiBwYXlsb2FkCiAgICBhc3NlcnQgcGF5bG9hZFsiZmlsZV9pZCJdID09ICJmaWxlLWciCgoKZGVmIHRlc3RfY2xpX3JlY2FsbF9hY2NlcHRzX3NlcnZlcl91dWlkX21zZ19pZCgpOgogICAgY2xpID0gQ2hhdENMSS5fX25ld19fKENoYXRDTEkpCiAgICBjbGkuaGFuZGxlciA9IER1bW15SGFuZGxlcigpCiAgICBjbGkuX3ByaW50ID0gbGFtYmRhICphcmdzLCAqKmt3YXJnczogTm9uZQoKICAgIGNsaS5faGFuZGxlX2NvbW1hbmQoIi9yZWNhbGwgNmYxYjFlOGQtOWM4NC00ZTZmLTlkOGMtMTIzNDU2Nzg5YWJjIikKCiAgICBhc3NlcnQgY2xpLmhhbmRsZXIuY2FsbHMgPT0gWwogICAgICAgICgicmVjYWxsIiwgIjZmMWIxZThkLTljODQtNGU2Zi05ZDhjLTEyMzQ1Njc4OWFiYyIpCiAgICBdCgoKZGVmIHRlc3RfY2xpX3ByaXZhdGVfaGlzdG9yeV9yZXNvbHZlc191c2VybmFtZV90b191c2VyX2lkKCk6CiAgICBjbGkgPSBDaGF0Q0xJLl9fbmV3X18oQ2hhdENMSSkKICAgIGNsaS5oYW5kbGVyID0gRHVtbXlIYW5kbGVyKCkKICAgIGNsaS5fcHJpbnQgPSBsYW1iZGEgKmFyZ3MsICoqa3dhcmdzOiBOb25lCiAgICBjbGkuX29ubGluZV91c2VycyA9IHsiYWxpY2UiOiAyfQogICAgY2xpLl9jaGF0X3R5cGUgPSAicHJpdmF0ZSIKCiAgICBjbGkuX2hhbmRsZV9jb21tYW5kKCIvaGlzdG9yeSBhbGljZSIpCgogICAgYXNzZXJ0IGNsaS5oYW5kbGVyLmNhbGxzID09IFsoImhpc3RvcnkiLCAicHJpdmF0ZSIsIDIsIDUwKV0KCgpkZWYgdGVzdF9jbGlfYWNrX3VwZGF0ZXNfcGVuZGluZ19tZXNzYWdlX3RvX3NlcnZlcl91dWlkKCk6CiAgICBjbGkgPSBDaGF0Q0xJLl9fbmV3X18oQ2hhdENMSSkKICAgIGNsaS5fcGVuZGluZ19hY2tzID0ge30KICAgIGNsaS5fbGFzdF9zZW50X21zZ19pZCA9IE5vbmUKICAgIGNsaS5fdXNlcm5hbWUgPSBOb25lCiAgICBjbGkuX3ByaW50ID0gbGFtYmRhICphcmdzLCAqKmt3YXJnczogTm9uZQogICAgbXNnID0geyJsb2NhbF9tc2dfaWQiOiAiMTAxIiwgIm1zZ19pZCI6ICIxMDEiLCAic3RhdHVzIjogInBlbmRpbmcifQogICAgY2xpLl9wZW5kaW5nX2Fja3NbN10gPSBtc2cKCiAgICBjbGkuX2FwcGx5X21lc3NhZ2VfYWNrKDcsIHsKICAgICAgICAibXNnX2lkIjogIjZmMWIxZThkLTljODQtNGU2Zi05ZDhjLTEyMzQ1Njc4OWFiYyIsCiAgICAgICAgInRpbWVzdGFtcCI6IDE3MDAwMDAwMDAsCiAgICAgICAgInN0YXR1cyI6ICJkZWxpdmVyZWQiLAogICAgfSkKCiAgICBhc3NlcnQgbXNnWyJtc2dfaWQiXSA9PSAiNmYxYjFlOGQtOWM4NC00ZTZmLTlkOGMtMTIzNDU2Nzg5YWJjIgogICAgYXNzZXJ0IG1zZ1sic2VydmVyX21zZ19pZCJdID09ICI2ZjFiMWU4ZC05Yzg0LTRlNmYtOWQ4Yy0xMjM0NTY3ODlhYmMiCiAgICBhc3NlcnQgbXNnWyJzdGF0dXMiXSA9PSAiZGVsaXZlcmVkIgogICAgYXNzZXJ0IGNsaS5fbGFzdF9zZW50X21zZ19pZCA9PSAiNmYxYjFlOGQtOWM4NC00ZTZmLTlkOGMtMTIzNDU2Nzg5YWJjIgogICAgYXNzZXJ0IGNsaS5fcGVuZGluZ19hY2tzID09IHt9CgoKZGVmIHRlc3RfY2xpX2Fja193aXRob3V0X3NlcnZlcl9tc2dfaWRfZG9lc19ub3RfY3JlYXRlX3JlY2FsbGFibGVfaWQoKToKICAgIGNsaSA9IENoYXRDTEkuX19uZXdfXyhDaGF0Q0xJKQogICAgY2xpLl9wZW5kaW5nX2Fja3MgPSB7fQogICAgY2xpLl9sYXN0X3NlbnRfbXNnX2lkID0gTm9uZQogICAgY2xpLl91c2VybmFtZSA9IE5vbmUKICAgIG1zZyA9IHsibG9jYWxfbXNnX2lkIjogIjEwMSIsICJtc2dfaWQiOiAiMTAxIiwgInN0YXR1cyI6ICJwZW5kaW5nIn0KICAgIGNsaS5fcGVuZGluZ19hY2tzWzddID0gbXNnCgogICAgY2xpLl9hcHBseV9tZXNzYWdlX2Fjayg3LCB7Im1zZ19pZCI6ICIiLCAidGltZXN0YW1wIjogMCwgInN0YXR1cyI6ICJyZWplY3RlZCJ9KQoKICAgIGFzc2VydCBtc2dbIm1zZ19pZCJdID09ICIxMDEiCiAgICBhc3NlcnQgbXNnWyJzdGF0dXMiXSA9PSAicmVqZWN0ZWQiCiAgICBhc3NlcnQgInNlcnZlcl9tc2dfaWQiIG5vdCBpbiBtc2cKICAgIGFzc2VydCBjbGkuX2xhc3Rfc2VudF9tc2dfaWQgaXMgTm9uZQogICAgYXNzZXJ0IGNsaS5fcGVuZGluZ19hY2tzID09IHt9CgoKZGVmIHRlc3RfY2xpX3NlbmRfZmlsZV91c2VzX3N0cmluZ19maWxlX2lkKCk6CiAgICB0bXBfZGlyID0gbWFrZV9ydW50aW1lX2RpcigiY2xpZW50X3BsYXllcjJfIikKICAgIHRyeToKICAgICAgICBzYW1wbGUgPSB0bXBfZGlyIC8gIm5vdy5tZCIKICAgICAgICBzYW1wbGUud3JpdGVfdGV4dCgiZGVtbyIsIGVuY29kaW5nPSJ1dGYtOCIpCgogICAgICAgIGNsaSA9IENoYXRDTEkuX19uZXdfXyhDaGF0Q0xJKQogICAgICAgIGNsaS5oYW5kbGVyID0gRHVtbXlIYW5kbGVyKCkKICAgICAgICBjbGkuX3ByaW50ID0gbGFtYmRhICphcmdzLCAqKmt3YXJnczogTm9uZQogICAgICAgIGNsaS5fb25saW5lX3VzZXJzID0geyJib2IiOiAyfQogICAgICAgIGNsaS5fdXNlcl9pZCA9IDEKCiAgICAgICAgY2xpLl9zZW5kX2ZpbGUoImJvYiIsIHN0cihzYW1wbGUpKQoKICAgICAgICBpbml0X2NhbGwgPSBjbGkuaGFuZGxlci5jYWxsc1swXQogICAgICAgIGRhdGFfY2FsbCA9IGNsaS5oYW5kbGVyLmNhbGxzWzFdCiAgICAgICAgYXNzZXJ0IGluaXRfY2FsbFswXSA9PSAiZmlsZV9pbml0IgogICAgICAgIGFzc2VydCBpc2luc3RhbmNlKGluaXRfY2FsbFs1XSwgc3RyKQogICAgICAgIGFzc2VydCBkYXRhX2NhbGxbMV0gPT0gaW5pdF9jYWxsWzVdCiAgICBmaW5hbGx5OgogICAgICAgIHJlbW92ZV9ydW50aW1lX2Rpcih0bXBfZGlyKQoKCmRlZiB0ZXN0X2d1aV9wcml2YXRlX2hpc3RvcnlfcmVzb2x2ZXNfc2VsZWN0ZWRfdXNlcl9pZCgpOgogICAgZ3VpID0gQ2hhdEdVSSgpCiAgICBndWkuaGFuZGxlciA9IER1bW15SGFuZGxlcigpCiAgICBndWkuX2N1cnJlbnRfdGFyZ2V0ID0gImFsaWNlIgogICAgZ3VpLl9jdXJyZW50X3RhcmdldF9pZCA9IDIKICAgIGd1aS5fY2hhdF90eXBlID0gInByaXZhdGUiCgogICAgZ3VpLl9tZW51X2hpc3RvcnkoKQoKICAgIGFzc2VydCBndWkuaGFuZGxlci5jYWxscyA9PSBbKCJoaXN0b3J5IiwgInByaXZhdGUiLCAyLCA1MCldCgoKZGVmIHRlc3RfY2xpX3ByaXZhdGVfbWVzc2FnZXNfdXNlX3N0YWJsZV9wZWVyX2NvbnRleHQoKToKICAgIGNsaSA9IENoYXRDTEkuX19uZXdfXyhDaGF0Q0xJKQogICAgY2xpLmhhbmRsZXIgPSBEdW1teUhhbmRsZXIoKQogICAgY2xpLl9wcmludCA9IGxhbWJkYSAqYXJncywgKiprd2FyZ3M6IE5vbmUKICAgIGNsaS5fb25saW5lX3VzZXJzID0geyJib2IiOiAyLCAiY2Fyb2wiOiAzfQogICAgY2xpLl91c2VyX2lkID0gMQogICAgY2xpLl91c2VybmFtZSA9ICJhbGljZSIKICAgIGNhcHR1cmVkID0gW10KICAgIGNsaS5fYXBwZW5kX2FuZF9zdG9yZSA9IGNhcHR1cmVkLmFwcGVuZAogICAgY2xpLl9wZW5kaW5nX2Fja3MgPSB7fQoKICAgIGNsaS5fc2VuZF9wcml2YXRlKCJib2IiLCAiaGVsbG8gYm9iIikKICAgIGNsaS5fc2VuZF9wcml2YXRlKCJjYXJvbCIsICJoZWxsbyBjYXJvbCIpCgogICAgYXNzZXJ0IFttWyJjaGF0X2tleSJdIGZvciBtIGluIGNhcHR1cmVkXSA9PSBbInByaXZhdGU6MiIsICJwcml2YXRlOjMiXQogICAgYXNzZXJ0IFttWyJyZWxhdGVkX3RhcmdldCJdIGZvciBtIGluIGNhcHR1cmVkXSA9PSBbIjIiLCAiMyJdCiAgICBhc3NlcnQgY2FwdHVyZWRbMF1bInRhcmdldF9pZCJdID09IDIKICAgIGFzc2VydCBjYXB0dXJlZFsxXVsidGFyZ2V0X2lkIl0gPT0gMwoKCmRlZiB0ZXN0X2NsaV9pbmNvbWluZ19wcml2YXRlX21lc3NhZ2VfaXNfYm91bmRfdG9fc2VuZGVyX3BlZXIoKToKICAgIGNsaSA9IENoYXRDTEkuX19uZXdfXyhDaGF0Q0xJKQogICAgY2xpLl91c2VyX2lkID0gMQogICAgY2xpLl91c2VybmFtZSA9ICJhbGljZSIKICAgIGNsaS5fcHJpbnQgPSBsYW1iZGEgKmFyZ3MsICoqa3dhcmdzOiBOb25lCiAgICBjYXB0dXJlZCA9IFtdCiAgICBjbGkuX2FwcGVuZF9hbmRfc3RvcmUgPSBjYXB0dXJlZC5hcHBlbmQKCiAgICBjbGkuX29uX3ByaXZhdGVfbXNnKE1lc3NhZ2VUeXBlLlBSSVZBVEVfTVNHLCAxLCB7CiAgICAgICAgImZyb21faWQiOiAyLAogICAgICAgICJ0b19pZCI6IDEsCiAgICAgICAgImZyb21fdXNlcm5hbWUiOiAiYm9iIiwKICAgICAgICAiY29udGVudCI6ICJmcm9tIGJvYiIsCiAgICAgICAgIm1zZ19pZCI6ICJzZXJ2ZXItMSIsCiAgICAgICAgInRpbWVzdGFtcCI6IDE3MDAwMDAwMDAsCiAgICB9KQoKICAgIGFzc2VydCBjYXB0dXJlZCA9PSBbewogICAgICAgICJ0eXBlIjogInByaXZhdGUiLAogICAgICAgICJzZW5kZXIiOiAiYm9iIiwKICAgICAgICAicmVjZWl2ZXJfaWQiOiAxLAogICAgICAgICJjb250ZW50IjogImZyb20gYm9iIiwKICAgICAgICAibXNnX2lkIjogInNlcnZlci0xIiwKICAgICAgICAidGltZXN0YW1wIjogMTcwMDAwMDAwMCwKICAgICAgICAiZnJvbV9pZCI6IDIsCiAgICAgICAgInRhcmdldF9pZCI6IDIsCiAgICAgICAgInJlbGF0ZWRfdHlwZSI6ICJwcml2YXRlIiwKICAgICAgICAicmVsYXRlZF90YXJnZXQiOiAiMiIsCiAgICAgICAgImNoYXRfa2V5IjogInByaXZhdGU6MiIsCiAgICB9XQoKCmRlZiB0ZXN0X3dlYl9icmlkZ2VfcHJpdmF0ZV9tZXNzYWdlc191c2Vfc3RhYmxlX3BlZXJfY29udGV4dCgpOgogICAgYnJpZGdlID0gV2ViQnJpZGdlLl9fbmV3X18oV2ViQnJpZGdlKQogICAgYnJpZGdlLmNvbm4gPSBEdW1teUNvbm5lY3Rpb24oKQogICAgYnJpZGdlLmhhbmRsZXIgPSBEdW1teUhhbmRsZXIoKQogICAgYnJpZGdlLl91c2VyX2lkID0gMQogICAgYnJpZGdlLl91c2VybmFtZSA9ICJhbGljZSIKICAgIGJyaWRnZS5fbWVzc2FnZXMgPSBbXQogICAgYnJpZGdlLl9wZW5kaW5nX2Fja3MgPSB7fQogICAgY2FwdHVyZWQgPSBbXQogICAgYnJpZGdlLl9hcHBlbmRfYW5kX3N0b3JlID0gY2FwdHVyZWQuYXBwZW5kCiAgICBicmlkZ2UuX3JlbWVtYmVyX3BlbmRpbmcgPSBsYW1iZGEgcmVzdWx0LCBtc2c6IE5vbmUKICAgIGJyaWRnZS5fcHVzaF9tc2cgPSBsYW1iZGEgbXNnOiBOb25lCgogICAgcmVzdWx0ID0gYnJpZGdlLnNlbmRfcHJpdmF0ZV9tc2coMywgImhlbGxvIGNhcm9sIikKCiAgICBhc3NlcnQgcmVzdWx0WyJvayJdIGlzIFRydWUKICAgIGFzc2VydCBjYXB0dXJlZFswXVsiY2hhdF9rZXkiXSA9PSAicHJpdmF0ZTozIgogICAgYXNzZXJ0IGNhcHR1cmVkWzBdWyJyZWxhdGVkX3RhcmdldCJdID09ICIzIgogICAgYXNzZXJ0IGNhcHR1cmVkWzBdWyJyZWNlaXZlcl9pZCJdID09IDMKCgpkZWYgdGVzdF93ZWJfYnJpZGdlX2xvZ2luX3Jlc3RvcmVzX2dyb3Vwc19hbmRfYXZhaWxhYmxlX2dyb3VwcygpOgogICAgYnJpZGdlID0gV2ViQnJpZGdlLl9fbmV3X18oV2ViQnJpZGdlKQogICAgYnJpZGdlLmhhbmRsZXIgPSBEdW1teUhhbmRsZXIoKQogICAgYnJpZGdlLl91c2VybmFtZSA9ICJhbGljZSIKICAgIGJyaWRnZS5fdXNlcl9pZCA9IE5vbmUKICAgIGJyaWRnZS5fbG9nZ2VkX2luID0gRmFsc2UKICAgIGJyaWRnZS5fb25saW5lX3VzZXJzID0ge30KICAgIGJyaWRnZS5fZ3JvdXBzID0ge30KICAgIGJyaWRnZS5fYXZhaWxhYmxlX2dyb3VwcyA9IHt9CiAgICBldmVudHMgPSBbXQogICAgYnJpZGdlLl9wdXNoID0gbGFtYmRhIGV2ZW50X3R5cGUsIGRhdGE6IGV2ZW50cy5hcHBlbmQoKGV2ZW50X3R5cGUsIGRhdGEpKQoKICAgIGJyaWRnZS5fb25fbG9naW5fcmVzcChNZXNzYWdlVHlwZS5MT0dJTl9SRVNQLCAxLCB7CiAgICAgICAgInN1Y2Nlc3MiOiBUcnVlLAogICAgICAgICJ1c2VyX2lkIjogMSwKICAgICAgICAidXNlcm5hbWUiOiAiYWxpY2UiLAogICAgICAgICJncm91cHMiOiB7IjIiOiAiZGVtb19ncm91cCJ9LAogICAgICAgICJhdmFpbGFibGVfZ3JvdXBzIjogewogICAgICAgICAgICAiMiI6IHsiaWQiOiAyLCAibmFtZSI6ICJkZW1vX2dyb3VwIiwgImpvaW5lZCI6IFRydWV9LAogICAgICAgICAgICAiMyI6IHsiaWQiOiAzLCAibmFtZSI6ICJvdGhlcl9ncm91cCIsICJqb2luZWQiOiBGYWxzZX0sCiAgICAgICAgfSwKICAgIH0pCgogICAgYXNzZXJ0IGJyaWRnZS5fZ3JvdXBzID09IHsiMiI6ICJkZW1vX2dyb3VwIn0KICAgIGFzc2VydCBicmlkZ2UuX2F2YWlsYWJsZV9ncm91cHNbIjMiXVsibmFtZSJdID09ICJvdGhlcl9ncm91cCIKICAgIGFzc2VydCBldmVudHNbLTFdWzBdID09ICJsb2dpbl9zdWNjZXNzIgogICAgYXNzZXJ0IGV2ZW50c1stMV1bMV1bImdyb3VwcyJdID09IHsiMiI6ICJkZW1vX2dyb3VwIn0KICAgIGFzc2VydCAiYXZhaWxhYmxlX2dyb3VwcyIgaW4gZXZlbnRzWy0xXVsxXQogICAgYXNzZXJ0ICgib25saW5lX3VzZXJzIiwpIGluIGJyaWRnZS5oYW5kbGVyLmNhbGxzCgoKZGVmIHRlc3Rfd2ViX2JyaWRnZV9vZmZsaW5lX3NlbmRfcmVwb3J0c19zeXN0ZW1fbWVzc2FnZSgpOgogICAgYnJpZGdlID0gV2ViQnJpZGdlLl9fbmV3X18oV2ViQnJpZGdlKQogICAgYnJpZGdlLmNvbm4gPSBPZmZsaW5lQ29ubmVjdGlvbigpCiAgICBicmlkZ2UuaGFuZGxlciA9IER1bW15SGFuZGxlcigpCiAgICBicmlkZ2UuX3VzZXJfaWQgPSAxCiAgICBicmlkZ2UuX3VzZXJuYW1lID0gImFsaWNlIgogICAgYnJpZGdlLl9jaGF0X3R5cGUgPSAicHJpdmF0ZSIKICAgIGJyaWRnZS5fY3VycmVudF90YXJnZXQgPSAiYm9iIgogICAgYnJpZGdlLl9jdXJyZW50X3RhcmdldF9pZCA9IDIKICAgIGV2ZW50cyA9IFtdCiAgICBicmlkZ2UuX3B1c2hfbXNnID0gbGFtYmRhIG1zZzogZXZlbnRzLmFwcGVuZCgoIm5ld19tZXNzYWdlIiwgbXNnKSkKICAgIGJyaWRnZS5fcHVzaCA9IGxhbWJkYSBldmVudF90eXBlLCBkYXRhOiBldmVudHMuYXBwZW5kKChldmVudF90eXBlLCBkYXRhKSkKCiAgICByZXN1bHQgPSBicmlkZ2Uuc2VuZF9wcml2YXRlX21zZygyLCAib2ZmbGluZSIpCgogICAgYXNzZXJ0IHJlc3VsdCA9PSB7Im9rIjogRmFsc2UsICJlcnJvciI6ICJEaXNjb25uZWN0ZWQifQogICAgYXNzZXJ0ICgicHJpdmF0ZSIsIDEsIDIsICJvZmZsaW5lIikgbm90IGluIGJyaWRnZS5oYW5kbGVyLmNhbGxzCiAgICBhc3NlcnQgYW55KCJDYW5ub3Qgc2VuZCB3aGlsZSBkaXNjb25uZWN0ZWQiIGluIGV2ZW50WzFdLmdldCgiY29udGVudCIsICIiKSBmb3IgZXZlbnQgaW4gZXZlbnRzIGlmIGV2ZW50WzBdID09ICJuZXdfbWVzc2FnZSIpCiAgICBhc3NlcnQgKCJjb25uZWN0aW9uX3N0YXR1cyIsIHsic3RhdHVzIjogImRpc2Nvbm5lY3RlZCJ9KSBpbiBldmVudHMKCgpkZWYgdGVzdF93ZWJfYnJpZGdlX2hpc3RvcnlfZm9ybWF0c19wcml2YXRlX21lc3NhZ2VzX2Zvcl9yZXF1ZXN0ZWRfcGVlcigpOgogICAgYnJpZGdlID0gV2ViQnJpZGdlLl9fbmV3X18oV2ViQnJpZGdlKQogICAgYnJpZGdlLl91c2VyX2lkID0gMQogICAgYnJpZGdlLl91c2VybmFtZSA9ICJhbGljZSIKICAgIGJyaWRnZS5fb25saW5lX3VzZXJzID0geyJhbGljZSI6IDEsICJib2IiOiAyLCAiY2Fyb2wiOiAzfQogICAgYnJpZGdlLl9tZXNzYWdlcyA9IFtdCiAgICBwdXNoZWQgPSBbXQogICAgYnJpZGdlLl9wdXNoID0gbGFtYmRhIGV2ZW50X3R5cGUsIGRhdGE6IHB1c2hlZC5hcHBlbmQoKGV2ZW50X3R5cGUsIGRhdGEpKQoKICAgIGJyaWRnZS5fb25faGlzdG9yeShNZXNzYWdlVHlwZS5ISVNUT1JZX1JFU1AsIDEwLCB7CiAgICAgICAgInR5cGUiOiAicHJpdmF0ZSIsCiAgICAgICAgInRhcmdldF9pZCI6IDIsCiAgICAgICAgIm1lc3NhZ2VzIjogWwogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAibXNnX2lkIjogIm0xIiwKICAgICAgICAgICAgICAgICJzZW5kZXJfaWQiOiAxLAogICAgICAgICAgICAgICAgInJlY2VpdmVyX2lkIjogMiwKICAgICAgICAgICAgICAgICJjb250ZW50IjogInRvIGJvYiIsCiAgICAgICAgICAgICAgICAiY3JlYXRlZF9hdCI6IDE3MDAwMDAwMDAuMCwKICAgICAgICAgICAgfSwKICAgICAgICAgICAgewogICAgICAgICAgICAgICAgIm1zZ19pZCI6ICJtMiIsCiAgICAgICAgICAgICAgICAic2VuZGVyX2lkIjogMiwKICAgICAgICAgICAgICAgICJyZWNlaXZlcl9pZCI6IDEsCiAgICAgICAgICAgICAgICAiY29udGVudCI6ICJmcm9tIGJvYiIsCiAgICAgICAgICAgICAgICAiY3JlYXRlZF9hdCI6IDE3MDAwMDAwMDEuMCwKICAgICAgICAgICAgfSwKICAgICAgICBdLAogICAgfSkKCiAgICBhc3NlcnQgcHVzaGVkWzBdWzBdID09ICJoaXN0b3J5IgogICAgZGF0YSA9IHB1c2hlZFswXVsxXQogICAgYXNzZXJ0IGRhdGFbInRhcmdldF9pZCJdID09IDIKICAgIGFzc2VydCBbbVsiY2hhdF9rZXkiXSBmb3IgbSBpbiBkYXRhWyJtZXNzYWdlcyJdXSA9PSBbInByaXZhdGU6MiIsICJwcml2YXRlOjIiXQogICAgYXNzZXJ0IFttWyJyZWxhdGVkX3RhcmdldCJdIGZvciBtIGluIGRhdGFbIm1lc3NhZ2VzIl1dID09IFsiMiIsICIyIl0KCgpkZWYgdGVzdF93ZWJfYnJpZGdlX3JlamVjdGVkX2Fja191cGRhdGVzX3BlbmRpbmdfc3RhdHVzKCk6CiAgICBicmlkZ2UgPSBXZWJCcmlkZ2UuX19uZXdfXyhXZWJCcmlkZ2UpCiAgICBicmlkZ2UuX3BlbmRpbmdfYWNrcyA9IHsKICAgICAgICA3OiB7CiAgICAgICAgICAgICJsb2NhbF9tc2dfaWQiOiAibG9jYWwtNyIsCiAgICAgICAgICAgICJtc2dfaWQiOiAibG9jYWwtNyIsCiAgICAgICAgICAgICJzdGF0dXMiOiAicGVuZGluZyIsCiAgICAgICAgfQogICAgfQogICAgYnJpZGdlLl91c2VybmFtZSA9ICJhbGljZSIKICAgIGJyaWRnZS5fY2hhdF90eXBlID0gInByaXZhdGUiCiAgICBicmlkZ2UuX2N1cnJlbnRfdGFyZ2V0X2lkID0gMgogICAgYnJpZGdlLl9jdXJyZW50X3RhcmdldCA9ICJib2IiCiAgICBicmlkZ2Uuc3RvcmUgPSBEdW1teVN0b3JlKCkKICAgIGV2ZW50cyA9IFtdCiAgICBicmlkZ2UuX3B1c2ggPSBsYW1iZGEgZXZlbnRfdHlwZSwgZGF0YTogZXZlbnRzLmFwcGVuZCgoZXZlbnRfdHlwZSwgZGF0YSkpCiAgICBicmlkZ2UuX3B1c2hfbXNnID0gbGFtYmRhIG1zZzogZXZlbnRzLmFwcGVuZCgoIm5ld19tZXNzYWdlIiwgbXNnKSkKCiAgICBicmlkZ2UuX2FwcGx5X21lc3NhZ2VfYWNrKDcsIHsKICAgICAgICAibXNnX2lkIjogIiIsCiAgICAgICAgInN0YXR1cyI6ICJyZWplY3RlZCIsCiAgICAgICAgImVycm9yIjogIuS4jeiDvee7meiHquW3seWPkemAgeengeiBiiIsCiAgICB9KQoKICAgIGFzc2VydCBicmlkZ2UuX3BlbmRpbmdfYWNrcyA9PSB7fQogICAgYXNzZXJ0IGJyaWRnZS5zdG9yZS5zdGF0dXNfdXBkYXRlcyA9PSBbKCJhbGljZSIsICJsb2NhbC03IiwgInJlamVjdGVkIildCiAgICBhc3NlcnQgZXZlbnRzWy0yXVswXSA9PSAibmV3X21lc3NhZ2UiCiAgICBhc3NlcnQgIuS4jeiDvee7meiHquW3seWPkemAgeengeiBiiIgaW4gZXZlbnRzWy0yXVsxXVsiY29udGVudCJdCiAgICBhc3NlcnQgZXZlbnRzWy0xXSA9PSAoCiAgICAgICAgIm1lc3NhZ2VfYWNrZWQiLAogICAgICAgIHsKICAgICAgICAgICAgImxvY2FsX21zZ19pZCI6ICJsb2NhbC03IiwKICAgICAgICAgICAgIm1zZ19pZCI6ICJsb2NhbC03IiwKICAgICAgICAgICAgInRpbWVzdGFtcCI6IGV2ZW50c1stMV1bMV1bInRpbWVzdGFtcCJdLAogICAgICAgICAgICAic3RhdHVzIjogInJlamVjdGVkIiwKICAgICAgICAgICAgImVycm9yIjogIuS4jeiDvee7meiHquW3seWPkemAgeengeiBiiIsCiAgICAgICAgfSwKICAgICkKCgpkZWYgdGVzdF93ZWJfYnJpZGdlX2FpX2NvbnRleHRfaXNfY29ycmVsYXRlZF9ieV9zZXF1ZW5jZSgpOgogICAgYnJpZGdlID0gV2ViQnJpZGdlLl9fbmV3X18oV2ViQnJpZGdlKQogICAgYnJpZGdlLmhhbmRsZXIgPSBEdW1teUhhbmRsZXIoKQogICAgYnJpZGdlLnN0b3JlID0gRHVtbXlTdG9yZSgpCiAgICBicmlkZ2UuX3BlbmRpbmdfYWlfY29udGV4dCA9IHt9CiAgICBicmlkZ2UuX3VzZXJuYW1lID0gImFsaWNlIgogICAgYnJpZGdlLl91c2VyX2lkID0gMQogICAgYnJpZGdlLl9jaGF0X3R5cGUgPSAicHJpdmF0ZSIKICAgIGJyaWRnZS5fY3VycmVudF90YXJnZXQgPSAiYm9iIgogICAgYnJpZGdlLl9jdXJyZW50X3RhcmdldF9pZCA9IDIKICAgIGJyaWRnZS5fbWVzc2FnZXMgPSBbXQogICAgZXZlbnRzID0gW10KICAgIGJyaWRnZS5fcHVzaF9tc2cgPSBsYW1iZGEgbXNnOiBldmVudHMuYXBwZW5kKG1zZykKICAgIGJyaWRnZS5fYXBwZW5kX2FuZF9zdG9yZSA9IGxhbWJkYSBtc2c6IGJyaWRnZS5fbWVzc2FnZXMuYXBwZW5kKG1zZykKCiAgICBicmlkZ2Uuc2VuZF9haV9xdWVyeSgiZmlyc3QiKQogICAgZmlyc3Rfc2VxID0gYnJpZGdlLmhhbmRsZXIuX3NlcQogICAgYnJpZGdlLl9jdXJyZW50X3RhcmdldCA9ICJjYXJvbCIKICAgIGJyaWRnZS5fY3VycmVudF90YXJnZXRfaWQgPSAzCiAgICBicmlkZ2Uuc2VuZF9haV9xdWVyeSgic2Vjb25kIikKICAgIHNlY29uZF9zZXEgPSBicmlkZ2UuaGFuZGxlci5fc2VxCgogICAgYnJpZGdlLl9vbl9haV9yZXNwKE1lc3NhZ2VUeXBlLkFJX1JFU1AsIHNlY29uZF9zZXEsIHsiY29udGVudCI6ICJzZWNvbmQgcmVwbHkifSkKICAgIGJyaWRnZS5fb25fYWlfcmVzcChNZXNzYWdlVHlwZS5BSV9SRVNQLCBmaXJzdF9zZXEsIHsiY29udGVudCI6ICJmaXJzdCByZXBseSJ9KQoKICAgIGFzc2VydCBbbVsiY2hhdF9rZXkiXSBmb3IgbSBpbiBicmlkZ2UuX21lc3NhZ2VzXSA9PSBbInByaXZhdGU6MyIsICJwcml2YXRlOjIiXQogICAgYXNzZXJ0IFttWyJyZWxhdGVkX3RhcmdldCJdIGZvciBtIGluIGJyaWRnZS5fbWVzc2FnZXNdID09IFsiMyIsICIyIl0KCgpkZWYgdGVzdF93ZWJfYnJpZGdlX2dyb3VwX2FpX2Jyb2FkY2FzdF91c2VzX2dyb3VwX2NvbnRleHQoKToKICAgIGJyaWRnZSA9IFdlYkJyaWRnZS5fX25ld19fKFdlYkJyaWRnZSkKICAgIGJyaWRnZS5zdG9yZSA9IER1bW15U3RvcmUoKQogICAgYnJpZGdlLl9tZXNzYWdlcyA9IFtdCiAgICBicmlkZ2UuX2FwcGVuZF9hbmRfc3RvcmUgPSBsYW1iZGEgbXNnOiBicmlkZ2UuX21lc3NhZ2VzLmFwcGVuZChtc2cpCiAgICBicmlkZ2UuX3B1c2hfbXNnID0gbGFtYmRhIG1zZzogTm9uZQoKICAgIGJyaWRnZS5fb25fYWlfcmVzcChNZXNzYWdlVHlwZS5BSV9SRVNQLCBOb25lLCB7CiAgICAgICAgImNvbnRlbnQiOiAiZ3JvdXAgcmVwbHkiLAogICAgICAgICJncm91cF9pZCI6IDksCiAgICB9KQoKICAgIGFzc2VydCBicmlkZ2UuX21lc3NhZ2VzWzBdWyJjaGF0X2tleSJdID09ICJncm91cDo5IgogICAgYXNzZXJ0IGJyaWRnZS5fbWVzc2FnZXNbMF1bInJlbGF0ZWRfdHlwZSJdID09ICJncm91cCIKICAgIGFzc2VydCBicmlkZ2UuX21lc3NhZ2VzWzBdWyJyZWxhdGVkX3RhcmdldCJdID09ICI5IgoKCmRlZiB0ZXN0X3dlYl9icmlkZ2VfbGVhdmVfZ3JvdXBfcmVtb3Zlc19zaWRlYmFyX2VudHJ5X3dpdGhvdXRfcGF5bG9hZF9ncm91cF9pZCgpOgogICAgYnJpZGdlID0gV2ViQnJpZGdlLl9fbmV3X18oV2ViQnJpZGdlKQogICAgYnJpZGdlLmhhbmRsZXIgPSBEdW1teUhhbmRsZXIoKQogICAgYnJpZGdlLl91c2VyX2lkID0gMQogICAgYnJpZGdlLl9ncm91cHMgPSB7IjkiOiAiZGVtbyJ9CiAgICBicmlkZ2UuX3BlbmRpbmdfZ3JvdXBfbGVhdmUgPSB7fQogICAgZXZlbnRzID0gW10KICAgIGJyaWRnZS5fcHVzaCA9IGxhbWJkYSBldmVudF90eXBlLCBkYXRhOiBldmVudHMuYXBwZW5kKChldmVudF90eXBlLCBkYXRhKSkKICAgIGJyaWRnZS5fcHVzaF9tc2cgPSBsYW1iZGEgbXNnOiBldmVudHMuYXBwZW5kKCgibmV3X21lc3NhZ2UiLCBtc2cpKQoKICAgIGJyaWRnZS5ncm91cF9sZWF2ZSg5KQogICAgc2VxID0gYnJpZGdlLmhhbmRsZXIuX3NlcQogICAgYnJpZGdlLl9vbl9ncm91cF9sZWF2ZV9yZXNwKE1lc3NhZ2VUeXBlLkdST1VQX0xFQVZFLCBzZXEsIHsic3VjY2VzcyI6IFRydWV9KQoKICAgIGFzc2VydCAiOSIgbm90IGluIGJyaWRnZS5fZ3JvdXBzCiAgICBhc3NlcnQgKCJncm91cF9sZWZ0IiwgeyJncm91cF9pZCI6ICI5IiwgImdyb3VwcyI6IHt9LCAiYXZhaWxhYmxlX2dyb3VwcyI6IHt9fSkgaW4gZXZlbnRzCgoKZGVmIHRlc3Rfd2ViX2JyaWRnZV9ncm91cF9jcmVhdGVfam9pbl9rZWVwX3NlcnZlcl9pZF9jbGVhcigpOgogICAgYnJpZGdlID0gV2ViQnJpZGdlLl9fbmV3X18oV2ViQnJpZGdlKQogICAgYnJpZGdlLmhhbmRsZXIgPSBEdW1teUhhbmRsZXIoKQogICAgYnJpZGdlLl9ncm91cHMgPSB7fQogICAgYnJpZGdlLl9hdmFpbGFibGVfZ3JvdXBzID0ge30KICAgIGV2ZW50cyA9IFtdCiAgICBicmlkZ2UuX3B1c2ggPSBsYW1iZGEgZXZlbnRfdHlwZSwgZGF0YTogZXZlbnRzLmFwcGVuZCgoZXZlbnRfdHlwZSwgZGF0YSkpCiAgICBicmlkZ2UuX3B1c2hfbXNnID0gbGFtYmRhIG1zZzogZXZlbnRzLmFwcGVuZCgoIm5ld19tZXNzYWdlIiwgbXNnKSkKCiAgICBicmlkZ2UuX29uX2dyb3VwX2NyZWF0ZV9yZXNwKE1lc3NhZ2VUeXBlLkdST1VQX0NSRUFURSwgMSwgewogICAgICAgICJzdWNjZXNzIjogVHJ1ZSwKICAgICAgICAiZ3JvdXBfaWQiOiAyLAogICAgICAgICJuYW1lIjogIjEiLAogICAgfSkKICAgIGJyaWRnZS5fb25fZ3JvdXBfam9pbl9yZXNwKE1lc3NhZ2VUeXBlLkdST1VQX0pPSU4sIDIsIHsKICAgICAgICAic3VjY2VzcyI6IFRydWUsCiAgICAgICAgImdyb3VwX2lkIjogMSwKICAgICAgICAibmFtZSI6ICJncm91cCIsCiAgICB9KQoKICAgIGFzc2VydCBicmlkZ2UuX2dyb3VwcyA9PSB7IjIiOiAiMSIsICIxIjogImdyb3VwIn0KICAgIGFzc2VydCAoIm5ld19tZXNzYWdlIiwgeyJ0eXBlIjogInN5c3RlbSIsICJjb250ZW50IjogIkNyZWF0ZWQgZ3JvdXAgIzIgXCIxXCIifSkgaW4gZXZlbnRzCiAgICBhc3NlcnQgKCJuZXdfbWVzc2FnZSIsIHsidHlwZSI6ICJzeXN0ZW0iLCAiY29udGVudCI6ICJKb2luZWQgZ3JvdXAgIzEgXCJncm91cFwiIn0pIGluIGV2ZW50cwoKCmRlZiB0ZXN0X3dlYl9icmlkZ2VfZ3JvdXBfZmlsZV9pbml0X3VzZXNfZ3JvdXBfY29udGV4dChtb25rZXlwYXRjaCk6CiAgICBjbGFzcyBJbmxpbmVUaHJlYWQ6CiAgICAgICAgZGVmIF9faW5pdF9fKHNlbGYsIHRhcmdldCwgYXJncz0oKSwgZGFlbW9uPU5vbmUpOgogICAgICAgICAgICBzZWxmLnRhcmdldCA9IHRhcmdldAogICAgICAgICAgICBzZWxmLmFyZ3MgPSBhcmdzCgogICAgICAgIGRlZiBzdGFydChzZWxmKToKICAgICAgICAgICAgc2VsZi50YXJnZXQoKnNlbGYuYXJncykKCiAgICBtb25rZXlwYXRjaC5zZXRhdHRyKHdlYl9icmlkZ2VfbW9kdWxlLnRocmVhZGluZywgIlRocmVhZCIsIElubGluZVRocmVhZCkKCiAgICBicmlkZ2UgPSBXZWJCcmlkZ2UuX19uZXdfXyhXZWJCcmlkZ2UpCiAgICBicmlkZ2UuX3VzZXJfaWQgPSAxCiAgICBicmlkZ2UuX3VzZXJuYW1lID0gImFsaWNlIgogICAgYnJpZGdlLl9jaGF0X3R5cGUgPSAiZ3JvdXAiCiAgICBicmlkZ2UuX2N1cnJlbnRfdGFyZ2V0ID0gIjkiCiAgICBicmlkZ2UuX2N1cnJlbnRfdGFyZ2V0X2lkID0gOQogICAgYnJpZGdlLmNvbm4gPSBEdW1teUNvbm5lY3Rpb24oKQogICAgYnJpZGdlLmhhbmRsZXIgPSBEdW1teUhhbmRsZXIoKQogICAgdG1wX2RpciA9IG1ha2VfcnVudGltZV9kaXIoIndlYl9icmlkZ2VfZmlsZV8iKQogICAgc2FtcGxlID0gdG1wX2RpciAvICJncm91cC50eHQiCiAgICBzYW1wbGUud3JpdGVfdGV4dCgiZGVtbyIsIGVuY29kaW5nPSJ1dGYtOCIpCiAgICBicmlkZ2UuX3RrX2ZpbGVfZGlhbG9nID0gbGFtYmRhOiBzdHIoc2FtcGxlKQogICAgZXZlbnRzID0gW10KICAgIGJyaWRnZS5fcHVzaCA9IGxhbWJkYSBldmVudF90eXBlLCBkYXRhOiBldmVudHMuYXBwZW5kKChldmVudF90eXBlLCBkYXRhKSkKCiAgICB0cnk6CiAgICAgICAgcmVzdWx0ID0gYnJpZGdlLnNlbGVjdF9hbmRfc2VuZF9maWxlKCkKICAgIGZpbmFsbHk6CiAgICAgICAgcmVtb3ZlX3J1bnRpbWVfZGlyKHRtcF9kaXIpCgogICAgYXNzZXJ0IHJlc3VsdFsib2siXSBpcyBUcnVlCiAgICBpbml0X2NhbGwgPSBicmlkZ2UuaGFuZGxlci5jYWxsc1swXQogICAgYXNzZXJ0IGluaXRfY2FsbFswXSA9PSAiZmlsZV9pbml0IgogICAgYXNzZXJ0IGluaXRfY2FsbFsyXSBpcyBOb25lCiAgICBhc3NlcnQgaW5pdF9jYWxsWzZdID09IDkKICAgIGFzc2VydCBldmVudHNbLTFdWzBdID09ICJmaWxlX3NlbnQiCiAgICBhc3NlcnQgZXZlbnRzWy0xXVsxXVsiY2hhdF9rZXkiXSA9PSAiZ3JvdXA6OSIKICAgIGFzc2VydCBldmVudHNbLTFdWzFdWyJyZWxhdGVkX3R5cGUiXSA9PSAiZ3JvdXAiCiAgICBhc3NlcnQgZXZlbnRzWy0xXVsxXVsicmVsYXRlZF90YXJnZXQiXSA9PSAiOSIKCgpkZWYgdGVzdF93ZWJfYnJpZGdlX2dyb3VwX2ZpbGVfbm90aWZpY2F0aW9uX3JvdXRlc19kb3dubG9hZF90b19ncm91cCgpOgogICAgYnJpZGdlID0gV2ViQnJpZGdlLl9fbmV3X18oV2ViQnJpZGdlKQogICAgYnJpZGdlLl9vbmxpbmVfdXNlcnMgPSB7ImFsaWNlIjogMSwgImJvYiI6IDJ9CiAgICBicmlkZ2UuX2Rvd25sb2FkX2RpciA9ICIuIgogICAgcHVzaGVkID0gW10KICAgIGJyaWRnZS5fcHVzaCA9IGxhbWJkYSBldmVudF90eXBlLCBkYXRhOiBwdXNoZWQuYXBwZW5kKChldmVudF90eXBlLCBkYXRhKSkKICAgIGRvd25sb2FkcyA9IFtdCiAgICBicmlkZ2UuX2d1aV9kb3dubG9hZF9maWxlID0gbGFtYmRhIGZpbGVfaWQsIGZpbGVuYW1lLCBmaWxlc2l6ZSwgY29udGV4dDogZG93bmxvYWRzLmFwcGVuZCgKICAgICAgICAoZmlsZV9pZCwgZmlsZW5hbWUsIGZpbGVzaXplLCBjb250ZXh0KQogICAgKQoKICAgIGJyaWRnZS5fb25fZmlsZV9pbml0KE1lc3NhZ2VUeXBlLkZJTEVfSU5JVCwgMSwgewogICAgICAgICJzdGF0dXMiOiAiY29tcGxldGVkIiwKICAgICAgICAiZmlsZV9pZCI6ICJmaWxlLWciLAogICAgICAgICJmcm9tX2lkIjogMiwKICAgICAgICAiZmlsZW5hbWUiOiAiZ3JvdXAudHh0IiwKICAgICAgICAiZmlsZXNpemUiOiA0LAogICAgICAgICJncm91cF9pZCI6IDksCiAgICAgICAgImNoYXRfa2V5IjogImdyb3VwOjkiLAogICAgfSkKCiAgICBhc3NlcnQgcHVzaGVkWzBdWzBdID09ICJmaWxlX2luY29taW5nIgogICAgYXNzZXJ0IHB1c2hlZFswXVsxXVsiY2hhdF9rZXkiXSA9PSAiZ3JvdXA6OSIKICAgIGFzc2VydCBwdXNoZWRbMF1bMV1bInJlbGF0ZWRfdHlwZSJdID09ICJncm91cCIKICAgIGFzc2VydCBwdXNoZWRbMF1bMV1bInJlbGF0ZWRfdGFyZ2V0Il0gPT0gIjkiCiAgICBhc3NlcnQgZG93bmxvYWRzID09IFsoCiAgICAgICAgImZpbGUtZyIsICJncm91cC50eHQiLCA0LAogICAgICAgIHsKICAgICAgICAgICAgInJlbGF0ZWRfdHlwZSI6ICJncm91cCIsCiAgICAgICAgICAgICJyZWxhdGVkX3RhcmdldCI6ICI5IiwKICAgICAgICAgICAgImNoYXRfa2V5IjogImdyb3VwOjkiLAogICAgICAgICAgICAiZ3JvdXBfaWQiOiAiOSIsCiAgICAgICAgfSwKICAgICldCg==
+"""
+Player2 客户端功能回归测试。
+
+这些测试聚焦 CLI/GUI 共用的客户端行为：撤回、历史、文件传输和 ACK 对齐。
+测试不启动真实服务器，而是用假连接/假 handler 捕获客户端发出的协议 payload。
+"""
+
+from client.message_handler import MessageHandler
+from client.protocol import MessageType
+from client.cli import ChatCLI
+from client.gui import ChatGUI
+import client.web_bridge as web_bridge_module
+from client.web_bridge import WebBridge
+from tests.temp_utils import make_runtime_dir, remove_runtime_dir
+
+
+class DummyConnection:
+    """记录 MessageHandler 发出的消息，避免依赖真实 TCP 连接。"""
+
+    def __init__(self):
+        self.callbacks = {}
+        self.sent = []
+
+    def register_callback(self, msg_type, callback):
+        self.callbacks[msg_type] = callback
+
+    def send_message(self, msg_type, payload, seq=None):
+        self.sent.append({"msg_type": msg_type, "payload": payload, "seq": seq})
+        return True
+
+    @property
+    def is_connected(self):
+        return True
+
+
+class OfflineConnection(DummyConnection):
+    @property
+    def is_connected(self):
+        return False
+
+
+class DummyHandler:
+    """记录 CLI/GUI 调用的高层发送接口。"""
+
+    def __init__(self):
+        self.calls = []
+        self._seq = 0
+
+    def request_history(self, target_type, target_id, limit=50):
+        self.calls.append(("history", target_type, target_id, limit))
+
+    def request_online_users(self):
+        self.calls.append(("online_users",))
+
+    def send_private_msg(self, from_id, to_id, content):
+        self._seq += 1
+        self.calls.append(("private", from_id, to_id, content))
+        return {"ok": True, "seq": self._seq, "client_msg_id": f"local-{self._seq}"}
+
+    def send_group_msg(self, from_id, group_id, content):
+        self._seq += 1
+        self.calls.append(("group", from_id, group_id, content))
+        return {"ok": True, "seq": self._seq, "client_msg_id": f"local-{self._seq}"}
+
+    def send_recall(self, msg_id):
+        self.calls.append(("recall", msg_id))
+
+    def send_file_init(self, from_id, to_id, filename, filesize, file_id, group_id=None):
+        self.calls.append(("file_init", from_id, to_id, filename, filesize, file_id, group_id))
+        return {"ok": True, "seq": 1, "client_file_id": file_id}
+
+    def send_file_data(self, file_id, chunk_data, chunk_index, total_chunks):
+        self.calls.append(("file_data", file_id, chunk_index, total_chunks, chunk_data))
+        return {"ok": True}
+
+    def send_ai_query(self, from_id, group_id, query, context=None):
+        self._seq += 1
+        self.calls.append(("ai", from_id, group_id, query, context))
+        return {"ok": True, "seq": self._seq}
+
+    def group_create(self, name, user_id):
+        self._seq += 1
+        self.calls.append(("create", name, user_id))
+        return {"ok": True, "seq": self._seq}
+
+    def group_join(self, group_id, user_id):
+        self._seq += 1
+        self.calls.append(("join", group_id, user_id))
+        return {"ok": True, "seq": self._seq}
+
+    def group_leave(self, group_id, user_id):
+        self._seq += 1
+        self.calls.append(("leave", group_id, user_id))
+        return {"ok": True, "seq": self._seq}
+
+
+class DummyStore:
+    def __init__(self):
+        self.status_updates = []
+        self.id_updates = []
+
+    def update_message_status(self, username, msg_id, status):
+        self.status_updates.append((username, msg_id, status))
+        return True
+
+    def update_message_id(self, username, local_msg_id, server_msg_id, timestamp=None, status=""):
+        self.id_updates.append((username, local_msg_id, server_msg_id, timestamp, status))
+        return True
+
+
+def test_message_handler_returns_tracking_info_for_private_message():
+    conn = DummyConnection()
+    handler = MessageHandler(conn)
+
+    result = handler.send_private_msg(1, 2, "hello")
+
+    assert result["ok"] is True
+    assert result["seq"] == conn.sent[-1]["seq"]
+    assert result["payload"] == conn.sent[-1]["payload"]
+    assert result["client_msg_id"] == conn.sent[-1]["payload"]["msg_id"]
+    assert conn.sent[-1]["msg_type"] == MessageType.PRIVATE_MSG
+
+
+def test_message_handler_file_init_supports_group_id():
+    conn = DummyConnection()
+    handler = MessageHandler(conn)
+
+    result = handler.send_file_init(1, None, "group.txt", 4, "file-g", group_id=9)
+
+    assert result["ok"] is True
+    payload = conn.sent[-1]["payload"]
+    assert payload["group_id"] == 9
+    assert "to_id" not in payload
+    assert payload["file_id"] == "file-g"
+
+
+def test_cli_recall_accepts_server_uuid_msg_id():
+    cli = ChatCLI.__new__(ChatCLI)
+    cli.handler = DummyHandler()
+    cli._print = lambda *args, **kwargs: None
+
+    cli._handle_command("/recall 6f1b1e8d-9c84-4e6f-9d8c-123456789abc")
+
+    assert cli.handler.calls == [
+        ("recall", "6f1b1e8d-9c84-4e6f-9d8c-123456789abc")
+    ]
+
+
+def test_cli_private_history_resolves_username_to_user_id():
+    cli = ChatCLI.__new__(ChatCLI)
+    cli.handler = DummyHandler()
+    cli._print = lambda *args, **kwargs: None
+    cli._online_users = {"alice": 2}
+    cli._chat_type = "private"
+
+    cli._handle_command("/history alice")
+
+    assert cli.handler.calls == [("history", "private", 2, 50)]
+
+
+def test_cli_ack_updates_pending_message_to_server_uuid():
+    cli = ChatCLI.__new__(ChatCLI)
+    cli._pending_acks = {}
+    cli._last_sent_msg_id = None
+    cli._username = None
+    cli._print = lambda *args, **kwargs: None
+    msg = {"local_msg_id": "101", "msg_id": "101", "status": "pending"}
+    cli._pending_acks[7] = msg
+
+    cli._apply_message_ack(7, {
+        "msg_id": "6f1b1e8d-9c84-4e6f-9d8c-123456789abc",
+        "timestamp": 1700000000,
+        "status": "delivered",
+    })
+
+    assert msg["msg_id"] == "6f1b1e8d-9c84-4e6f-9d8c-123456789abc"
+    assert msg["server_msg_id"] == "6f1b1e8d-9c84-4e6f-9d8c-123456789abc"
+    assert msg["status"] == "delivered"
+    assert cli._last_sent_msg_id == "6f1b1e8d-9c84-4e6f-9d8c-123456789abc"
+    assert cli._pending_acks == {}
+
+
+def test_cli_ack_without_server_msg_id_does_not_create_recallable_id():
+    cli = ChatCLI.__new__(ChatCLI)
+    cli._pending_acks = {}
+    cli._last_sent_msg_id = None
+    cli._username = None
+    msg = {"local_msg_id": "101", "msg_id": "101", "status": "pending"}
+    cli._pending_acks[7] = msg
+
+    cli._apply_message_ack(7, {"msg_id": "", "timestamp": 0, "status": "rejected"})
+
+    assert msg["msg_id"] == "101"
+    assert msg["status"] == "rejected"
+    assert "server_msg_id" not in msg
+    assert cli._last_sent_msg_id is None
+    assert cli._pending_acks == {}
+
+
+def test_cli_send_file_uses_string_file_id():
+    tmp_dir = make_runtime_dir("client_player2_")
+    try:
+        sample = tmp_dir / "now.md"
+        sample.write_text("demo", encoding="utf-8")
+
+        cli = ChatCLI.__new__(ChatCLI)
+        cli.handler = DummyHandler()
+        cli._print = lambda *args, **kwargs: None
+        cli._online_users = {"bob": 2}
+        cli._user_id = 1
+
+        cli._send_file("bob", str(sample))
+
+        init_call = cli.handler.calls[0]
+        data_call = cli.handler.calls[1]
+        assert init_call[0] == "file_init"
+        assert isinstance(init_call[5], str)
+        assert data_call[1] == init_call[5]
+    finally:
+        remove_runtime_dir(tmp_dir)
+
+
+def test_gui_private_history_resolves_selected_user_id():
+    gui = ChatGUI()
+    gui.handler = DummyHandler()
+    gui._current_target = "alice"
+    gui._current_target_id = 2
+    gui._chat_type = "private"
+
+    gui._menu_history()
+
+    assert gui.handler.calls == [("history", "private", 2, 50)]
+
+
+def test_cli_private_messages_use_stable_peer_context():
+    cli = ChatCLI.__new__(ChatCLI)
+    cli.handler = DummyHandler()
+    cli._print = lambda *args, **kwargs: None
+    cli._online_users = {"bob": 2, "carol": 3}
+    cli._user_id = 1
+    cli._username = "alice"
+    captured = []
+    cli._append_and_store = captured.append
+    cli._pending_acks = {}
+
+    cli._send_private("bob", "hello bob")
+    cli._send_private("carol", "hello carol")
+
+    assert [m["chat_key"] for m in captured] == ["private:2", "private:3"]
+    assert [m["related_target"] for m in captured] == ["2", "3"]
+    assert captured[0]["target_id"] == 2
+    assert captured[1]["target_id"] == 3
+
+
+def test_cli_incoming_private_message_is_bound_to_sender_peer():
+    cli = ChatCLI.__new__(ChatCLI)
+    cli._user_id = 1
+    cli._username = "alice"
+    cli._print = lambda *args, **kwargs: None
+    captured = []
+    cli._append_and_store = captured.append
+
+    cli._on_private_msg(MessageType.PRIVATE_MSG, 1, {
+        "from_id": 2,
+        "to_id": 1,
+        "from_username": "bob",
+        "content": "from bob",
+        "msg_id": "server-1",
+        "timestamp": 1700000000,
+    })
+
+    assert captured == [{
+        "type": "private",
+        "sender": "bob",
+        "receiver_id": 1,
+        "content": "from bob",
+        "msg_id": "server-1",
+        "timestamp": 1700000000,
+        "from_id": 2,
+        "target_id": 2,
+        "related_type": "private",
+        "related_target": "2",
+        "chat_key": "private:2",
+    }]
+
+
+def test_web_bridge_private_messages_use_stable_peer_context():
+    bridge = WebBridge.__new__(WebBridge)
+    bridge.conn = DummyConnection()
+    bridge.handler = DummyHandler()
+    bridge._user_id = 1
+    bridge._username = "alice"
+    bridge._messages = []
+    bridge._pending_acks = {}
+    captured = []
+    bridge._append_and_store = captured.append
+    bridge._remember_pending = lambda result, msg: None
+    bridge._push_msg = lambda msg: None
+
+    result = bridge.send_private_msg(3, "hello carol")
+
+    assert result["ok"] is True
+    assert captured[0]["chat_key"] == "private:3"
+    assert captured[0]["related_target"] == "3"
+    assert captured[0]["receiver_id"] == 3
+
+
+def test_web_bridge_login_restores_groups_and_available_groups():
+    bridge = WebBridge.__new__(WebBridge)
+    bridge.handler = DummyHandler()
+    bridge._username = "alice"
+    bridge._user_id = None
+    bridge._logged_in = False
+    bridge._online_users = {}
+    bridge._groups = {}
+    bridge._available_groups = {}
+    events = []
+    bridge._push = lambda event_type, data: events.append((event_type, data))
+
+    bridge._on_login_resp(MessageType.LOGIN_RESP, 1, {
+        "success": True,
+        "user_id": 1,
+        "username": "alice",
+        "groups": {"2": "demo_group"},
+        "available_groups": {
+            "2": {"id": 2, "name": "demo_group", "joined": True},
+            "3": {"id": 3, "name": "other_group", "joined": False},
+        },
+    })
+
+    assert bridge._groups == {"2": "demo_group"}
+    assert bridge._available_groups["3"]["name"] == "other_group"
+    assert events[-1][0] == "login_success"
+    assert events[-1][1]["groups"] == {"2": "demo_group"}
+    assert "available_groups" in events[-1][1]
+    assert ("online_users",) in bridge.handler.calls
+
+
+def test_web_bridge_offline_send_reports_system_message():
+    bridge = WebBridge.__new__(WebBridge)
+    bridge.conn = OfflineConnection()
+    bridge.handler = DummyHandler()
+    bridge._user_id = 1
+    bridge._username = "alice"
+    bridge._chat_type = "private"
+    bridge._current_target = "bob"
+    bridge._current_target_id = 2
+    events = []
+    bridge._push_msg = lambda msg: events.append(("new_message", msg))
+    bridge._push = lambda event_type, data: events.append((event_type, data))
+
+    result = bridge.send_private_msg(2, "offline")
+
+    assert result == {"ok": False, "error": "Disconnected"}
+    assert ("private", 1, 2, "offline") not in bridge.handler.calls
+    assert any("Cannot send while disconnected" in event[1].get("content", "") for event in events if event[0] == "new_message")
+    assert ("connection_status", {"status": "disconnected"}) in events
+
+
+def test_web_bridge_history_formats_private_messages_for_requested_peer():
+    bridge = WebBridge.__new__(WebBridge)
+    bridge._user_id = 1
+    bridge._username = "alice"
+    bridge._online_users = {"alice": 1, "bob": 2, "carol": 3}
+    bridge._messages = []
+    pushed = []
+    bridge._push = lambda event_type, data: pushed.append((event_type, data))
+
+    bridge._on_history(MessageType.HISTORY_RESP, 10, {
+        "type": "private",
+        "target_id": 2,
+        "messages": [
+            {
+                "msg_id": "m1",
+                "sender_id": 1,
+                "receiver_id": 2,
+                "content": "to bob",
+                "created_at": 1700000000.0,
+            },
+            {
+                "msg_id": "m2",
+                "sender_id": 2,
+                "receiver_id": 1,
+                "content": "from bob",
+                "created_at": 1700000001.0,
+            },
+        ],
+    })
+
+    assert pushed[0][0] == "history"
+    data = pushed[0][1]
+    assert data["target_id"] == 2
+    assert [m["chat_key"] for m in data["messages"]] == ["private:2", "private:2"]
+    assert [m["related_target"] for m in data["messages"]] == ["2", "2"]
+
+
+def test_web_bridge_rejected_ack_updates_pending_status():
+    bridge = WebBridge.__new__(WebBridge)
+    bridge._pending_acks = {
+        7: {
+            "local_msg_id": "local-7",
+            "msg_id": "local-7",
+            "status": "pending",
+        }
+    }
+    bridge._username = "alice"
+    bridge._chat_type = "private"
+    bridge._current_target_id = 2
+    bridge._current_target = "bob"
+    bridge.store = DummyStore()
+    events = []
+    bridge._push = lambda event_type, data: events.append((event_type, data))
+    bridge._push_msg = lambda msg: events.append(("new_message", msg))
+
+    bridge._apply_message_ack(7, {
+        "msg_id": "",
+        "status": "rejected",
+        "error": "不能给自己发送私聊",
+    })
+
+    assert bridge._pending_acks == {}
+    assert bridge.store.status_updates == [("alice", "local-7", "rejected")]
+    assert events[-2][0] == "new_message"
+    assert "不能给自己发送私聊" in events[-2][1]["content"]
+    assert events[-1] == (
+        "message_acked",
+        {
+            "local_msg_id": "local-7",
+            "msg_id": "local-7",
+            "timestamp": events[-1][1]["timestamp"],
+            "status": "rejected",
+            "error": "不能给自己发送私聊",
+        },
+    )
+
+
+def test_web_bridge_ai_context_is_correlated_by_sequence():
+    bridge = WebBridge.__new__(WebBridge)
+    bridge.handler = DummyHandler()
+    bridge.store = DummyStore()
+    bridge._pending_ai_context = {}
+    bridge._username = "alice"
+    bridge._user_id = 1
+    bridge._chat_type = "private"
+    bridge._current_target = "bob"
+    bridge._current_target_id = 2
+    bridge._messages = []
+    events = []
+    bridge._push_msg = lambda msg: events.append(msg)
+    bridge._append_and_store = lambda msg: bridge._messages.append(msg)
+
+    bridge.send_ai_query("first")
+    first_seq = bridge.handler._seq
+    bridge._current_target = "carol"
+    bridge._current_target_id = 3
+    bridge.send_ai_query("second")
+    second_seq = bridge.handler._seq
+
+    bridge._on_ai_resp(MessageType.AI_RESP, second_seq, {"content": "second reply"})
+    bridge._on_ai_resp(MessageType.AI_RESP, first_seq, {"content": "first reply"})
+
+    assert [m["chat_key"] for m in bridge._messages] == ["private:3", "private:2"]
+    assert [m["related_target"] for m in bridge._messages] == ["3", "2"]
+
+
+def test_web_bridge_group_ai_broadcast_uses_group_context():
+    bridge = WebBridge.__new__(WebBridge)
+    bridge.store = DummyStore()
+    bridge._messages = []
+    bridge._append_and_store = lambda msg: bridge._messages.append(msg)
+    bridge._push_msg = lambda msg: None
+
+    bridge._on_ai_resp(MessageType.AI_RESP, None, {
+        "content": "group reply",
+        "group_id": 9,
+    })
+
+    assert bridge._messages[0]["chat_key"] == "group:9"
+    assert bridge._messages[0]["related_type"] == "group"
+    assert bridge._messages[0]["related_target"] == "9"
+
+
+def test_web_bridge_leave_group_removes_sidebar_entry_without_payload_group_id():
+    bridge = WebBridge.__new__(WebBridge)
+    bridge.handler = DummyHandler()
+    bridge._user_id = 1
+    bridge._groups = {"9": "demo"}
+    bridge._pending_group_leave = {}
+    events = []
+    bridge._push = lambda event_type, data: events.append((event_type, data))
+    bridge._push_msg = lambda msg: events.append(("new_message", msg))
+
+    bridge.group_leave(9)
+    seq = bridge.handler._seq
+    bridge._on_group_leave_resp(MessageType.GROUP_LEAVE, seq, {"success": True})
+
+    assert "9" not in bridge._groups
+    assert ("group_left", {"group_id": "9", "groups": {}, "available_groups": {}}) in events
+
+
+def test_web_bridge_group_create_join_keep_server_id_clear():
+    bridge = WebBridge.__new__(WebBridge)
+    bridge.handler = DummyHandler()
+    bridge._groups = {}
+    bridge._available_groups = {}
+    events = []
+    bridge._push = lambda event_type, data: events.append((event_type, data))
+    bridge._push_msg = lambda msg: events.append(("new_message", msg))
+
+    bridge._on_group_create_resp(MessageType.GROUP_CREATE, 1, {
+        "success": True,
+        "group_id": 2,
+        "name": "1",
+    })
+    bridge._on_group_join_resp(MessageType.GROUP_JOIN, 2, {
+        "success": True,
+        "group_id": 1,
+        "name": "group",
+    })
+
+    assert bridge._groups == {"2": "1", "1": "group"}
+    assert ("new_message", {"type": "system", "content": "Created group #2 \"1\""}) in events
+    assert ("new_message", {"type": "system", "content": "Joined group #1 \"group\""}) in events
+
+
+def test_web_bridge_group_file_init_uses_group_context(monkeypatch):
+    class InlineThread:
+        def __init__(self, target, args=(), daemon=None):
+            self.target = target
+            self.args = args
+
+        def start(self):
+            self.target(*self.args)
+
+    monkeypatch.setattr(web_bridge_module.threading, "Thread", InlineThread)
+
+    bridge = WebBridge.__new__(WebBridge)
+    bridge._user_id = 1
+    bridge._username = "alice"
+    bridge._chat_type = "group"
+    bridge._current_target = "9"
+    bridge._current_target_id = 9
+    bridge.conn = DummyConnection()
+    bridge.handler = DummyHandler()
+    tmp_dir = make_runtime_dir("web_bridge_file_")
+    sample = tmp_dir / "group.txt"
+    sample.write_text("demo", encoding="utf-8")
+    bridge._tk_file_dialog = lambda: str(sample)
+    events = []
+    bridge._push = lambda event_type, data: events.append((event_type, data))
+
+    try:
+        result = bridge.select_and_send_file()
+    finally:
+        remove_runtime_dir(tmp_dir)
+
+    assert result["ok"] is True
+    init_call = bridge.handler.calls[0]
+    assert init_call[0] == "file_init"
+    assert init_call[2] is None
+    assert init_call[6] == 9
+    assert events[-1][0] == "file_sent"
+    assert events[-1][1]["chat_key"] == "group:9"
+    assert events[-1][1]["related_type"] == "group"
+    assert events[-1][1]["related_target"] == "9"
+
+
+def test_web_bridge_group_file_notification_routes_download_to_group():
+    bridge = WebBridge.__new__(WebBridge)
+    bridge._online_users = {"alice": 1, "bob": 2}
+    bridge._download_dir = "."
+    pushed = []
+    bridge._push = lambda event_type, data: pushed.append((event_type, data))
+    downloads = []
+    bridge._gui_download_file = lambda file_id, filename, filesize, context: downloads.append(
+        (file_id, filename, filesize, context)
+    )
+
+    bridge._on_file_init(MessageType.FILE_INIT, 1, {
+        "status": "completed",
+        "file_id": "file-g",
+        "from_id": 2,
+        "filename": "group.txt",
+        "filesize": 4,
+        "group_id": 9,
+        "chat_key": "group:9",
+    })
+
+    assert pushed[0][0] == "file_incoming"
+    assert pushed[0][1]["chat_key"] == "group:9"
+    assert pushed[0][1]["related_type"] == "group"
+    assert pushed[0][1]["related_target"] == "9"
+    assert downloads == [(
+        "file-g", "group.txt", 4,
+        {
+            "related_type": "group",
+            "related_target": "9",
+            "chat_key": "group:9",
+            "group_id": "9",
+        },
+    )]

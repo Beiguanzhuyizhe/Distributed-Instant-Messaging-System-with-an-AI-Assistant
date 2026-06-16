@@ -1,1 +1,178 @@
-IiIiCuacjeWKoeerryBQMlAg5omT5rSe5Y2P5Yqp5qih5Z2XCui0n+i0o+WcqOWuouaIt+err+S5i+mXtOWNj+iwgyBVRFAg5omT5rSe77yM5Lqk5o2i5b285q2k55qE5Zyw5Z2A5L+h5oGvCiIiIgoKaW1wb3J0IGFzeW5jaW8KaW1wb3J0IGxvZ2dpbmcKZnJvbSB0eXBpbmcgaW1wb3J0IE9wdGlvbmFsLCBEaWN0LCBUdXBsZQoKZnJvbSBzZXJ2ZXIuY29uZmlnIGltcG9ydCBTZXJ2ZXJDb25maWcKZnJvbSBzZXJ2ZXIucHJvdG9jb2wgaW1wb3J0ICgKICAgIENvbm5lY3Rpb24sCiAgICBNZXNzYWdlVHlwZSwKICAgIG1ha2VfcDJwX2hvbGVfcHVuY2hfcGF5bG9hZCwKKQoKbG9nZ2VyID0gbG9nZ2luZy5nZXRMb2dnZXIoX19uYW1lX18pCgoKY2xhc3MgUDJQSG9sZVB1bmNoSGVscGVyOgogICAgIiIiCiAgICBQMlAgVURQIOaJk+a0nuWNj+WKqeWZqAogICAg57u05oqk5Zyo57q/55So5oi355qE5Zyw5Z2A5pig5bCE77yM5Y2P5YqpIE5BVCDnqb/pgI8KICAgICIiIgoKICAgIGRlZiBfX2luaXRfXyhzZWxmLCBjb25maWc6IFNlcnZlckNvbmZpZyk6CiAgICAgICAgc2VsZi5jb25maWcgPSBjb25maWcKICAgICAgICAjIHVzZXJfaWQgLT4gKGhvc3QsIHBvcnQpIFRDUCDov57mjqXlnLDlnYDvvIznlKjkuo7ljY/liqnmiZPmtJ4KICAgICAgICBzZWxmLl9vbmxpbmVfdXNlcnM6IERpY3RbaW50LCBUdXBsZVtzdHIsIGludF1dID0ge30KICAgICAgICAjIHVzZXJfaWQgLT4gKHVkcF9ob3N0LCB1ZHBfcG9ydCkgVURQIOWcsOWdgAogICAgICAgIHNlbGYuX3VkcF9hZGRyczogRGljdFtpbnQsIFR1cGxlW3N0ciwgaW50XV0gPSB7fQoKICAgIGRlZiByZWdpc3Rlcl91c2VyKHNlbGYsIHVzZXJfaWQ6IGludCwgdGNwX2FkZHI6IFR1cGxlW3N0ciwgaW50XSk6CiAgICAgICAgIiIi5rOo5YaM55So5oi35Y+K5YW2IFRDUCDov57mjqXlnLDlnYAiIiIKICAgICAgICBzZWxmLl9vbmxpbmVfdXNlcnNbdXNlcl9pZF0gPSB0Y3BfYWRkcgogICAgICAgIGxvZ2dlci5pbmZvKGYiUDJQOiDnlKjmiLcge3VzZXJfaWR9IOW3suazqOWGjO+8jOWcsOWdgCB7dGNwX2FkZHJ9IikKCiAgICBkZWYgcmVnaXN0ZXJfdWRwX2FkZHIoc2VsZiwgdXNlcl9pZDogaW50LCB1ZHBfYWRkcjogVHVwbGVbc3RyLCBpbnRdKToKICAgICAgICAiIiLms6jlhoznlKjmiLfnmoQgVURQIOWcsOWdgCIiIgogICAgICAgIHNlbGYuX3VkcF9hZGRyc1t1c2VyX2lkXSA9IHVkcF9hZGRyCiAgICAgICAgbG9nZ2VyLmluZm8oZiJQMlA6IOeUqOaItyB7dXNlcl9pZH0gVURQIOWcsOWdgCB7dWRwX2FkZHJ9IikKCiAgICBkZWYgdW5yZWdpc3Rlcl91c2VyKHNlbGYsIHVzZXJfaWQ6IGludCk6CiAgICAgICAgIiIi55So5oi35LiL57q/5pe25riF55CGIiIiCiAgICAgICAgc2VsZi5fb25saW5lX3VzZXJzLnBvcCh1c2VyX2lkLCBOb25lKQogICAgICAgIHNlbGYuX3VkcF9hZGRycy5wb3AodXNlcl9pZCwgTm9uZSkKCiAgICBkZWYgZ2V0X3VzZXJfYWRkcihzZWxmLCB1c2VyX2lkOiBpbnQpIC0+IE9wdGlvbmFsW1R1cGxlW3N0ciwgaW50XV06CiAgICAgICAgIiIi6I635Y+W55So5oi355qEIFRDUCDov57mjqXlnLDlnYAiIiIKICAgICAgICByZXR1cm4gc2VsZi5fb25saW5lX3VzZXJzLmdldCh1c2VyX2lkKQoKICAgIGRlZiBnZXRfdWRwX2FkZHIoc2VsZiwgdXNlcl9pZDogaW50KSAtPiBPcHRpb25hbFtUdXBsZVtzdHIsIGludF1dOgogICAgICAgICIiIuiOt+WPlueUqOaIt+eahCBVRFAg5Zyw5Z2AIiIiCiAgICAgICAgcmV0dXJuIHNlbGYuX3VkcF9hZGRycy5nZXQodXNlcl9pZCkKCiAgICBkZWYgaXNfb25saW5lKHNlbGYsIHVzZXJfaWQ6IGludCkgLT4gYm9vbDoKICAgICAgICAiIiLmo4Dmn6XnlKjmiLfmmK/lkKblnKjnur8iIiIKICAgICAgICByZXR1cm4gdXNlcl9pZCBpbiBzZWxmLl9vbmxpbmVfdXNlcnMKCiAgICBhc3luYyBkZWYgaGFuZGxlX2hvbGVfcHVuY2goCiAgICAgICAgc2VsZiwKICAgICAgICByZXFfY29ubjogQ29ubmVjdGlvbiwKICAgICAgICBwYXlsb2FkOiBkaWN0LAogICAgICAgIHRhcmdldF9jb25uOiBPcHRpb25hbFtDb25uZWN0aW9uXSA9IE5vbmUsCiAgICApIC0+IGJvb2w6CiAgICAgICAgIiIiCiAgICAgICAg5aSE55CGIFAyUCDmiZPmtJ7or7fmsYIKCiAgICAgICAg5rWB56iLOgogICAgICAgIDEuIOaUtuWIsCBBIOeahOaJk+a0nuivt+axgiAodXNlcl9pZD3lj5HotbfogIVJRCwgdGFyZ2V0X2lkPeebruagh0lEKQogICAgICAgIDIuIOafpeivoiBBIOWSjCBCIOeahOWcsOWdgAogICAgICAgIDMuIOaKiiBCIOeahOWcsOWdgOWPkee7mSBBCiAgICAgICAgNC4g5oqKIEEg55qE5Zyw5Z2A5Y+R57uZIELvvIjlj4zmlrnpg73pnIDopoHlr7nmlrnlnLDlnYDmiY3og73lj4zlkJHmiZPmtJ7vvIkKICAgICAgICA1LiDlj4zmlrnmlLbliLDlr7nmlrnlnLDlnYDlkI7lvIDlp4vkupLlj5EgVURQIOWMheepv+mAjyBOQVQKCiAgICAgICAgQXJnczoKICAgICAgICAgICAgcmVxX2Nvbm46IOWPkei1t+iAheeahOi/nuaOpQogICAgICAgICAgICBwYXlsb2FkOiB7dXNlcl9pZCwgdGFyZ2V0X2lkLCBhZGRyKG9wdGlvbmFsKX0KICAgICAgICAgICAgdGFyZ2V0X2Nvbm46IOebruagh+eUqOaIt+eahOi/nuaOpe+8iOWmguaenOW3suefpe+8iQoKICAgICAgICBSZXR1cm5zOgogICAgICAgICAgICDmmK/lkKbmiJDlip8KICAgICAgICAiIiIKICAgICAgICB1c2VyX2lkID0gcGF5bG9hZC5nZXQoInVzZXJfaWQiKQogICAgICAgIHRhcmdldF9pZCA9IHBheWxvYWQuZ2V0KCJ0YXJnZXRfaWQiKQogICAgICAgIHVkcF9hZGRyX3N0ciA9IHBheWxvYWQuZ2V0KCJhZGRyIiwgIiIpCgogICAgICAgIGlmIG5vdCB1c2VyX2lkIG9yIG5vdCB0YXJnZXRfaWQ6CiAgICAgICAgICAgIGxvZ2dlci53YXJuaW5nKGYiUDJQIOaJk+a0nuivt+axguWPguaVsOS4jeWujOaVtDoge3BheWxvYWR9IikKICAgICAgICAgICAgcmV0dXJuIEZhbHNlCgogICAgICAgICMg5aaC5p6c5YyF5ZCrIFVEUCDlnLDlnYDvvIzlhYjms6jlhowKICAgICAgICBpZiB1ZHBfYWRkcl9zdHI6CiAgICAgICAgICAgIHRyeToKICAgICAgICAgICAgICAgIGhvc3QsIHBvcnRfc3RyID0gdWRwX2FkZHJfc3RyLnJzcGxpdCgiOiIsIDEpCiAgICAgICAgICAgICAgICBzZWxmLnJlZ2lzdGVyX3VkcF9hZGRyKHVzZXJfaWQsIChob3N0LCBpbnQocG9ydF9zdHIpKSkKICAgICAgICAgICAgZXhjZXB0IChWYWx1ZUVycm9yLCBBdHRyaWJ1dGVFcnJvcik6CiAgICAgICAgICAgICAgICBsb2dnZXIud2FybmluZyhmIlAyUDogVURQIOWcsOWdgOagvOW8j+aXoOaViDoge3VkcF9hZGRyX3N0cn0iKQoKICAgICAgICAjIOajgOafpeebruagh+aYr+WQpuWcqOe6vwogICAgICAgIGlmIG5vdCBzZWxmLmlzX29ubGluZSh0YXJnZXRfaWQpOgogICAgICAgICAgICBsb2dnZXIud2FybmluZyhmIlAyUDog55uu5qCH55So5oi3IHt0YXJnZXRfaWR9IOS4jeWcqOe6vyIpCiAgICAgICAgICAgIGF3YWl0IHJlcV9jb25uLnNlbmRfbWVzc2FnZSgKICAgICAgICAgICAgICAgIE1lc3NhZ2VUeXBlLlAyUF9IT0xFX1BVTkNILAogICAgICAgICAgICAgICAgewogICAgICAgICAgICAgICAgICAgICJ1c2VyX2lkIjogdXNlcl9pZCwKICAgICAgICAgICAgICAgICAgICAidGFyZ2V0X2lkIjogdGFyZ2V0X2lkLAogICAgICAgICAgICAgICAgICAgICJlcnJvciI6ICJ0YXJnZXRfb2ZmbGluZSIsCiAgICAgICAgICAgICAgICAgICAgIm1lc3NhZ2UiOiAi55uu5qCH55So5oi35LiN5Zyo57q/IiwKICAgICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICkKICAgICAgICAgICAgcmV0dXJuIEZhbHNlCgogICAgICAgICMg6I635Y+W5Y+M5pa555qE5Zyw5Z2A77yI5LyY5YWIIFVEUO+8jOaXoOWImeeUqCBUQ1DvvIkKICAgICAgICBpbml0aWF0b3JfYWRkciA9IHNlbGYuZ2V0X3VkcF9hZGRyKHVzZXJfaWQpIG9yIHNlbGYuZ2V0X3VzZXJfYWRkcih1c2VyX2lkKQogICAgICAgIHRhcmdldF9hZGRyID0gc2VsZi5nZXRfdWRwX2FkZHIodGFyZ2V0X2lkKSBvciBzZWxmLmdldF91c2VyX2FkZHIodGFyZ2V0X2lkKQoKICAgICAgICBpZiBub3QgaW5pdGlhdG9yX2FkZHIgb3Igbm90IHRhcmdldF9hZGRyOgogICAgICAgICAgICBsb2dnZXIud2FybmluZyhmIlAyUDog5peg5rOV6I635Y+W5Y+M5pa55Zyw5Z2AIikKICAgICAgICAgICAgcmV0dXJuIEZhbHNlCgogICAgICAgICMg5ZGK6K+J5Y+R6LW36ICF55uu5qCH5Zyw5Z2ACiAgICAgICAgYXdhaXQgcmVxX2Nvbm4uc2VuZF9tZXNzYWdlKAogICAgICAgICAgICBNZXNzYWdlVHlwZS5QMlBfSE9MRV9QVU5DSCwKICAgICAgICAgICAgbWFrZV9wMnBfaG9sZV9wdW5jaF9wYXlsb2FkKAogICAgICAgICAgICAgICAgdXNlcl9pZD10YXJnZXRfaWQsCiAgICAgICAgICAgICAgICB0YXJnZXRfaWQ9dXNlcl9pZCwKICAgICAgICAgICAgICAgIGFkZHI9ZiJ7dGFyZ2V0X2FkZHJbMF19Ont0YXJnZXRfYWRkclsxXX0iLAogICAgICAgICAgICApLAogICAgICAgICkKICAgICAgICBsb2dnZXIuaW5mbyhmIlAyUDog5bey5ZCR5Y+R6LW36ICFIHt1c2VyX2lkfSDlj5HpgIHnm67moIcge3RhcmdldF9pZH0g55qE5Zyw5Z2AIHt0YXJnZXRfYWRkcn0iKQoKICAgICAgICAjIOWRiuivieebruagh+eUqOaIt+WPkei1t+iAheeahOWcsOWdgO+8iOi/meaYr+aJk+a0nuaIkOWKn+eahOWFs+mUru+8muWPjOaWuemDvemcgOimgeS6kuefpeWcsOWdgO+8iQogICAgICAgIGlmIHRhcmdldF9jb25uOgogICAgICAgICAgICBhd2FpdCB0YXJnZXRfY29ubi5zZW5kX21lc3NhZ2UoCiAgICAgICAgICAgICAgICBNZXNzYWdlVHlwZS5QMlBfSE9MRV9QVU5DSCwKICAgICAgICAgICAgICAgIG1ha2VfcDJwX2hvbGVfcHVuY2hfcGF5bG9hZCgKICAgICAgICAgICAgICAgICAgICB1c2VyX2lkPXVzZXJfaWQsCiAgICAgICAgICAgICAgICAgICAgdGFyZ2V0X2lkPXRhcmdldF9pZCwKICAgICAgICAgICAgICAgICAgICBhZGRyPWYie2luaXRpYXRvcl9hZGRyWzBdfTp7aW5pdGlhdG9yX2FkZHJbMV19IiwKICAgICAgICAgICAgICAgICksCiAgICAgICAgICAgICkKICAgICAgICAgICAgbG9nZ2VyLmluZm8oZiJQMlA6IOW3sumAmuefpeebruaghyB7dGFyZ2V0X2lkfSDlj5HotbfogIUge3VzZXJfaWR9IOeahOWcsOWdgCB7aW5pdGlhdG9yX2FkZHJ9IikKICAgICAgICBlbHNlOgogICAgICAgICAgICBsb2dnZXIud2FybmluZyhmIlAyUDog5peg5rOV6YCa55+l55uu5qCHIHt0YXJnZXRfaWR977yI5pyq5o+Q5L6b6L+e5o6l77yJIikKCiAgICAgICAgbG9nZ2VyLmluZm8oZiJQMlA6IOaJk+a0nuivt+axguWujOaIkCB7dXNlcl9pZH0gPC0+IHt0YXJnZXRfaWR9IikKICAgICAgICByZXR1cm4gVHJ1ZQoKICAgIGFzeW5jIGRlZiBub3RpZnlfcDJwX3JlYWR5KAogICAgICAgIHNlbGYsCiAgICAgICAgdXNlcl9pZDogaW50LAogICAgICAgIHRhcmdldF9pZDogaW50LAogICAgICAgIHRhcmdldF9jb25uOiBDb25uZWN0aW9uLAogICAgKToKICAgICAgICAiIiIKICAgICAgICDpgJrnn6Xnm67moIfnlKjmiLfmnIkgUDJQIOi/nuaOpeivt+axggoKICAgICAgICBBcmdzOgogICAgICAgICAgICB1c2VyX2lkOiDlj5HotbfogIUgSUQKICAgICAgICAgICAgdGFyZ2V0X2lkOiDnm67moIfnlKjmiLcgSUQKICAgICAgICAgICAgdGFyZ2V0X2Nvbm46IOebruagh+eUqOaIt+eahOi/nuaOpQogICAgICAgICIiIgogICAgICAgIHRyeToKICAgICAgICAgICAgaW5pdGlhdG9yX2FkZHIgPSBzZWxmLmdldF91c2VyX2FkZHIodXNlcl9pZCkKICAgICAgICAgICAgaW5pdGlhdG9yX2FkZHJfc3RyID0gZiJ7aW5pdGlhdG9yX2FkZHJbMF19Ontpbml0aWF0b3JfYWRkclsxXX0iIGlmIGluaXRpYXRvcl9hZGRyIGVsc2UgIiIKCiAgICAgICAgICAgIGF3YWl0IHRhcmdldF9jb25uLnNlbmRfbWVzc2FnZSgKICAgICAgICAgICAgICAgIE1lc3NhZ2VUeXBlLlAyUF9SRUFEWSwKICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICAiZnJvbV9pZCI6IHVzZXJfaWQsCiAgICAgICAgICAgICAgICAgICAgImFkZHIiOiBpbml0aWF0b3JfYWRkcl9zdHIsCiAgICAgICAgICAgICAgICAgICAgIm1lc3NhZ2UiOiBmIueUqOaItyB7dXNlcl9pZH0g5oOz5LiO5oKo5bu656uLIFAyUCDnm7Tov54iLAogICAgICAgICAgICAgICAgfSwKICAgICAgICAgICAgKQogICAgICAgICAgICBsb2dnZXIuaW5mbyhmIlAyUDog5bey6YCa55+lIHt0YXJnZXRfaWR9IOadpeiHqiB7dXNlcl9pZH0g55qE6L+e5o6l6K+35rGCIikKICAgICAgICBleGNlcHQgRXhjZXB0aW9uIGFzIGU6CiAgICAgICAgICAgIGxvZ2dlci5lcnJvcihmIlAyUDog6YCa55+lIHt0YXJnZXRfaWR9IOWksei0pToge2V9IikK
+"""
+服务端 P2P 打洞协助模块
+负责在客户端之间协调 UDP 打洞，交换彼此的地址信息
+"""
+
+import asyncio
+import logging
+from typing import Optional, Dict, Tuple
+
+from server.config import ServerConfig
+from server.protocol import (
+    Connection,
+    MessageType,
+    make_p2p_hole_punch_payload,
+)
+
+logger = logging.getLogger(__name__)
+
+
+class P2PHolePunchHelper:
+    """
+    P2P UDP 打洞协助器
+    维护在线用户的地址映射，协助 NAT 穿透
+    """
+
+    def __init__(self, config: ServerConfig):
+        self.config = config
+        # user_id -> (host, port) TCP 连接地址，用于协助打洞
+        self._online_users: Dict[int, Tuple[str, int]] = {}
+        # user_id -> (udp_host, udp_port) UDP 地址
+        self._udp_addrs: Dict[int, Tuple[str, int]] = {}
+
+    def register_user(self, user_id: int, tcp_addr: Tuple[str, int]):
+        """注册用户及其 TCP 连接地址"""
+        self._online_users[user_id] = tcp_addr
+        logger.info(f"P2P: 用户 {user_id} 已注册，地址 {tcp_addr}")
+
+    def register_udp_addr(self, user_id: int, udp_addr: Tuple[str, int]):
+        """注册用户的 UDP 地址"""
+        self._udp_addrs[user_id] = udp_addr
+        logger.info(f"P2P: 用户 {user_id} UDP 地址 {udp_addr}")
+
+    def unregister_user(self, user_id: int):
+        """用户下线时清理"""
+        self._online_users.pop(user_id, None)
+        self._udp_addrs.pop(user_id, None)
+
+    def get_user_addr(self, user_id: int) -> Optional[Tuple[str, int]]:
+        """获取用户的 TCP 连接地址"""
+        return self._online_users.get(user_id)
+
+    def get_udp_addr(self, user_id: int) -> Optional[Tuple[str, int]]:
+        """获取用户的 UDP 地址"""
+        return self._udp_addrs.get(user_id)
+
+    def is_online(self, user_id: int) -> bool:
+        """检查用户是否在线"""
+        return user_id in self._online_users
+
+    async def handle_hole_punch(
+        self,
+        req_conn: Connection,
+        payload: dict,
+        target_conn: Optional[Connection] = None,
+    ) -> bool:
+        """
+        处理 P2P 打洞请求
+
+        流程:
+        1. 收到 A 的打洞请求 (user_id=发起者ID, target_id=目标ID)
+        2. 查询 A 和 B 的地址
+        3. 把 B 的地址发给 A
+        4. 把 A 的地址发给 B（双方都需要对方地址才能双向打洞）
+        5. 双方收到对方地址后开始互发 UDP 包穿透 NAT
+
+        Args:
+            req_conn: 发起者的连接
+            payload: {user_id, target_id, addr(optional)}
+            target_conn: 目标用户的连接（如果已知）
+
+        Returns:
+            是否成功
+        """
+        user_id = payload.get("user_id")
+        target_id = payload.get("target_id")
+        udp_addr_str = payload.get("addr", "")
+
+        if not user_id or not target_id:
+            logger.warning(f"P2P 打洞请求参数不完整: {payload}")
+            return False
+
+        # 如果包含 UDP 地址，先注册
+        if udp_addr_str:
+            try:
+                host, port_str = udp_addr_str.rsplit(":", 1)
+                self.register_udp_addr(user_id, (host, int(port_str)))
+            except (ValueError, AttributeError):
+                logger.warning(f"P2P: UDP 地址格式无效: {udp_addr_str}")
+
+        # 检查目标是否在线
+        if not self.is_online(target_id):
+            logger.warning(f"P2P: 目标用户 {target_id} 不在线")
+            await req_conn.send_message(
+                MessageType.P2P_HOLE_PUNCH,
+                {
+                    "user_id": user_id,
+                    "target_id": target_id,
+                    "error": "target_offline",
+                    "message": "目标用户不在线",
+                },
+            )
+            return False
+
+        # 获取双方的地址（优先 UDP，无则用 TCP）
+        initiator_addr = self.get_udp_addr(user_id) or self.get_user_addr(user_id)
+        target_addr = self.get_udp_addr(target_id) or self.get_user_addr(target_id)
+
+        if not initiator_addr or not target_addr:
+            logger.warning(f"P2P: 无法获取双方地址")
+            return False
+
+        # 告诉发起者目标地址
+        await req_conn.send_message(
+            MessageType.P2P_HOLE_PUNCH,
+            make_p2p_hole_punch_payload(
+                user_id=target_id,
+                target_id=user_id,
+                addr=f"{target_addr[0]}:{target_addr[1]}",
+            ),
+        )
+        logger.info(f"P2P: 已向发起者 {user_id} 发送目标 {target_id} 的地址 {target_addr}")
+
+        # 告诉目标用户发起者的地址（这是打洞成功的关键：双方都需要互知地址）
+        if target_conn:
+            await target_conn.send_message(
+                MessageType.P2P_HOLE_PUNCH,
+                make_p2p_hole_punch_payload(
+                    user_id=user_id,
+                    target_id=target_id,
+                    addr=f"{initiator_addr[0]}:{initiator_addr[1]}",
+                ),
+            )
+            logger.info(f"P2P: 已通知目标 {target_id} 发起者 {user_id} 的地址 {initiator_addr}")
+        else:
+            logger.warning(f"P2P: 无法通知目标 {target_id}（未提供连接）")
+
+        logger.info(f"P2P: 打洞请求完成 {user_id} <-> {target_id}")
+        return True
+
+    async def notify_p2p_ready(
+        self,
+        user_id: int,
+        target_id: int,
+        target_conn: Connection,
+    ):
+        """
+        通知目标用户有 P2P 连接请求
+
+        Args:
+            user_id: 发起者 ID
+            target_id: 目标用户 ID
+            target_conn: 目标用户的连接
+        """
+        try:
+            initiator_addr = self.get_user_addr(user_id)
+            initiator_addr_str = f"{initiator_addr[0]}:{initiator_addr[1]}" if initiator_addr else ""
+
+            await target_conn.send_message(
+                MessageType.P2P_READY,
+                {
+                    "from_id": user_id,
+                    "addr": initiator_addr_str,
+                    "message": f"用户 {user_id} 想与您建立 P2P 直连",
+                },
+            )
+            logger.info(f"P2P: 已通知 {target_id} 来自 {user_id} 的连接请求")
+        except Exception as e:
+            logger.error(f"P2P: 通知 {target_id} 失败: {e}")

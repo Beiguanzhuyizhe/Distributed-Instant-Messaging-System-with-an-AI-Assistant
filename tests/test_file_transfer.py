@@ -1,1 +1,268 @@
-aW1wb3J0IGFzeW5jaW8KaW1wb3J0IHRpbWUKCmltcG9ydCBweXRlc3QKCmZyb20gc2VydmVyLmNvbmZpZyBpbXBvcnQgU2VydmVyQ29uZmlnCmZyb20gc2VydmVyLmRhdGFiYXNlIGltcG9ydCBjbG9zZV9jb25uZWN0aW9uLCBnZXRfZGIsIGluaXRfZGIKZnJvbSBzZXJ2ZXIuZmlsZV90cmFuc2ZlciBpbXBvcnQgRmlsZVRyYW5zZmVyCmZyb20gdGVzdHMudGVtcF91dGlscyBpbXBvcnQgbWFrZV9ydW50aW1lX2RpciwgcmVtb3ZlX3J1bnRpbWVfZGlyCgoKQHB5dGVzdC5maXh0dXJlCmRlZiBmaWxlX3RyYW5zZmVyKCk6CiAgICBydW50aW1lX2RpciA9IG1ha2VfcnVudGltZV9kaXIoImZpbGVfdHJhbnNmZXJfIikKICAgIGNsb3NlX2Nvbm5lY3Rpb24oKQogICAgZGJfcGF0aCA9IHN0cihydW50aW1lX2RpciAvICJjaGF0LmRiIikKICAgIHN0b3JhZ2VfZGlyID0gc3RyKHJ1bnRpbWVfZGlyIC8gImZpbGVzIikKICAgIGluaXRfZGIoZGJfcGF0aCkKICAgIG5vdyA9IHRpbWUudGltZSgpCiAgICB3aXRoIGdldF9kYihkYl9wYXRoKSBhcyBjb25uOgogICAgICAgIGNvbm4uZXhlY3V0ZSgKICAgICAgICAgICAgIklOU0VSVCBJTlRPIHVzZXJzIChpZCwgdXNlcm5hbWUsIHBhc3N3b3JkX2hhc2gsIGNyZWF0ZWRfYXQpIFZBTFVFUyAoPywgPywgPywgPykiLAogICAgICAgICAgICAoMSwgImFsaWNlIiwgImhhc2giLCBub3cpLAogICAgICAgICkKICAgICAgICBjb25uLmV4ZWN1dGUoCiAgICAgICAgICAgICJJTlNFUlQgSU5UTyB1c2VycyAoaWQsIHVzZXJuYW1lLCBwYXNzd29yZF9oYXNoLCBjcmVhdGVkX2F0KSBWQUxVRVMgKD8sID8sID8sID8pIiwKICAgICAgICAgICAgKDIsICJib2IiLCAiaGFzaCIsIG5vdyksCiAgICAgICAgKQogICAgICAgIGNvbm4uZXhlY3V0ZSgKICAgICAgICAgICAgIklOU0VSVCBJTlRPIHVzZXJzIChpZCwgdXNlcm5hbWUsIHBhc3N3b3JkX2hhc2gsIGNyZWF0ZWRfYXQpIFZBTFVFUyAoPywgPywgPywgPykiLAogICAgICAgICAgICAoMywgIm1hbGxvcnkiLCAiaGFzaCIsIG5vdyksCiAgICAgICAgKQogICAgICAgIGNvbm4uZXhlY3V0ZSgKICAgICAgICAgICAgIklOU0VSVCBJTlRPIGdyb3VwcyAoaWQsIG5hbWUsIG93bmVyX2lkLCBjcmVhdGVkX2F0KSBWQUxVRVMgKD8sID8sID8sID8pIiwKICAgICAgICAgICAgKDEsICJkZW1vIiwgMSwgbm93KSwKICAgICAgICApCiAgICAgICAgY29ubi5leGVjdXRlKAogICAgICAgICAgICAiSU5TRVJUIElOVE8gZ3JvdXBfbWVtYmVycyAoZ3JvdXBfaWQsIHVzZXJfaWQsIHJvbGUsIGpvaW5lZF9hdCkgVkFMVUVTICg/LCA/LCA/LCA/KSIsCiAgICAgICAgICAgICgxLCAxLCAib3duZXIiLCBub3cpLAogICAgICAgICkKICAgICAgICBjb25uLmV4ZWN1dGUoCiAgICAgICAgICAgICJJTlNFUlQgSU5UTyBncm91cF9tZW1iZXJzIChncm91cF9pZCwgdXNlcl9pZCwgcm9sZSwgam9pbmVkX2F0KSBWQUxVRVMgKD8sID8sID8sID8pIiwKICAgICAgICAgICAgKDEsIDIsICJtZW1iZXIiLCBub3cpLAogICAgICAgICkKICAgICAgICBjb25uLmNvbW1pdCgpCgogICAgY29uZmlnID0gU2VydmVyQ29uZmlnKAogICAgICAgIGRiX3BhdGg9ZGJfcGF0aCwKICAgICAgICBmaWxlX3N0b3JhZ2VfZGlyPXN0b3JhZ2VfZGlyLAogICAgICAgIGZpbGVfY2h1bmtfc2l6ZT00LAogICAgICAgIG1heF9maWxlX3NpemU9MzIsCiAgICApCiAgICB5aWVsZCBGaWxlVHJhbnNmZXIoY29uZmlnKQogICAgY2xvc2VfY29ubmVjdGlvbigpCiAgICByZW1vdmVfcnVudGltZV9kaXIocnVudGltZV9kaXIpCgoKZGVmIHRlc3RfcmVqZWN0c191bnNhZmVfZmlsZV9pZChmaWxlX3RyYW5zZmVyKToKICAgIHJlc3VsdCA9IGFzeW5jaW8ucnVuKAogICAgICAgIGZpbGVfdHJhbnNmZXIuaW5pdF90cmFuc2ZlcigKICAgICAgICAgICAgZnJvbV9pZD0xLAogICAgICAgICAgICB0b19pZD0yLAogICAgICAgICAgICBmaWxlbmFtZT0ic2FmZS50eHQiLAogICAgICAgICAgICBmaWxlc2l6ZT00LAogICAgICAgICAgICBjbGllbnRfZmlsZV9pZD0iLi4vZXZpbCIsCiAgICAgICAgKQogICAgKQoKICAgIGFzc2VydCByZXN1bHQgPT0geyJzdWNjZXNzIjogRmFsc2UsICJlcnJvciI6ICJpbnZhbGlkX2ZpbGVfaWQifQoKCmRlZiB0ZXN0X3Nhbml0aXplc19maWxlbmFtZShmaWxlX3RyYW5zZmVyKToKICAgIHJlc3VsdCA9IGFzeW5jaW8ucnVuKAogICAgICAgIGZpbGVfdHJhbnNmZXIuaW5pdF90cmFuc2ZlcigKICAgICAgICAgICAgZnJvbV9pZD0xLAogICAgICAgICAgICB0b19pZD0yLAogICAgICAgICAgICBmaWxlbmFtZT0iLi4vbmVzdGVkL3NlY3JldC50eHQiLAogICAgICAgICAgICBmaWxlc2l6ZT00LAogICAgICAgICAgICBjbGllbnRfZmlsZV9pZD0iZmlsZV9hIiwKICAgICAgICApCiAgICApCgogICAgYXNzZXJ0IHJlc3VsdFsic3VjY2VzcyJdIGlzIFRydWUKICAgIGFzc2VydCByZXN1bHRbImZpbGVuYW1lIl0gPT0gInNlY3JldC50eHQiCiAgICBwcm9ncmVzcyA9IGFzeW5jaW8ucnVuKGZpbGVfdHJhbnNmZXIuZ2V0X3RyYW5zZmVyX3Byb2dyZXNzKCJmaWxlX2EiKSkKICAgIGFzc2VydCBwcm9ncmVzc1siZmlsZW5hbWUiXSA9PSAic2VjcmV0LnR4dCIKCgpkZWYgdGVzdF9zYW5pdGl6ZXNfd2luZG93c19yZXNlcnZlZF9maWxlbmFtZShmaWxlX3RyYW5zZmVyKToKICAgIHJlc3VsdCA9IGFzeW5jaW8ucnVuKAogICAgICAgIGZpbGVfdHJhbnNmZXIuaW5pdF90cmFuc2ZlcigKICAgICAgICAgICAgZnJvbV9pZD0xLAogICAgICAgICAgICB0b19pZD0yLAogICAgICAgICAgICBmaWxlbmFtZT0iQ09OLnR4dCIsCiAgICAgICAgICAgIGZpbGVzaXplPTQsCiAgICAgICAgICAgIGNsaWVudF9maWxlX2lkPSJmaWxlX3Jlc2VydmVkIiwKICAgICAgICApCiAgICApCgogICAgYXNzZXJ0IHJlc3VsdFsic3VjY2VzcyJdIGlzIFRydWUKICAgIGFzc2VydCByZXN1bHRbImZpbGVuYW1lIl0uc3RhcnRzd2l0aCgiX0NPTiIpCgoKZGVmIHRlc3RfcmVqZWN0c19hbWJpZ3VvdXNfb3Jfc2VsZl9yZWNlaXZlcihmaWxlX3RyYW5zZmVyKToKICAgIGFtYmlndW91cyA9IGFzeW5jaW8ucnVuKAogICAgICAgIGZpbGVfdHJhbnNmZXIuaW5pdF90cmFuc2ZlcigKICAgICAgICAgICAgZnJvbV9pZD0xLAogICAgICAgICAgICB0b19pZD0yLAogICAgICAgICAgICBmaWxlbmFtZT0iYS50eHQiLAogICAgICAgICAgICBmaWxlc2l6ZT00LAogICAgICAgICAgICBncm91cF9pZD0xLAogICAgICAgICAgICBjbGllbnRfZmlsZV9pZD0iZmlsZV9hbWJpZ3VvdXMiLAogICAgICAgICkKICAgICkKICAgIHNlbGZfc2VuZCA9IGFzeW5jaW8ucnVuKAogICAgICAgIGZpbGVfdHJhbnNmZXIuaW5pdF90cmFuc2ZlcigKICAgICAgICAgICAgZnJvbV9pZD0xLAogICAgICAgICAgICB0b19pZD0xLAogICAgICAgICAgICBmaWxlbmFtZT0iYS50eHQiLAogICAgICAgICAgICBmaWxlc2l6ZT00LAogICAgICAgICAgICBjbGllbnRfZmlsZV9pZD0iZmlsZV9zZWxmIiwKICAgICAgICApCiAgICApCgogICAgYXNzZXJ0IGFtYmlndW91cyA9PSB7InN1Y2Nlc3MiOiBGYWxzZSwgImVycm9yIjogImFtYmlndW91c19yZWNlaXZlciJ9CiAgICBhc3NlcnQgc2VsZl9zZW5kID09IHsic3VjY2VzcyI6IEZhbHNlLCAiZXJyb3IiOiAiY2Fubm90X3NlbmRfdG9fc2VsZiJ9CgoKZGVmIHRlc3RfcmVqZWN0c19taXNzaW5nX3JlY2VpdmVyX3VzZXIoZmlsZV90cmFuc2Zlcik6CiAgICByZXN1bHQgPSBhc3luY2lvLnJ1bigKICAgICAgICBmaWxlX3RyYW5zZmVyLmluaXRfdHJhbnNmZXIoCiAgICAgICAgICAgIGZyb21faWQ9MSwKICAgICAgICAgICAgdG9faWQ9OTk5LAogICAgICAgICAgICBmaWxlbmFtZT0iYS50eHQiLAogICAgICAgICAgICBmaWxlc2l6ZT00LAogICAgICAgICAgICBjbGllbnRfZmlsZV9pZD0iZmlsZV9taXNzaW5nX3JlY2VpdmVyIiwKICAgICAgICApCiAgICApCgogICAgYXNzZXJ0IHJlc3VsdCA9PSB7InN1Y2Nlc3MiOiBGYWxzZSwgImVycm9yIjogInJlY2VpdmVyX25vdF9mb3VuZCJ9CgoKZGVmIHRlc3RfemVyb19ieXRlX2ZpbGVfY29tcGxldGVzX2ltbWVkaWF0ZWx5KGZpbGVfdHJhbnNmZXIpOgogICAgcmVzdWx0ID0gYXN5bmNpby5ydW4oCiAgICAgICAgZmlsZV90cmFuc2Zlci5pbml0X3RyYW5zZmVyKAogICAgICAgICAgICBmcm9tX2lkPTEsCiAgICAgICAgICAgIHRvX2lkPTIsCiAgICAgICAgICAgIGZpbGVuYW1lPSJlbXB0eS50eHQiLAogICAgICAgICAgICBmaWxlc2l6ZT0wLAogICAgICAgICAgICBjbGllbnRfZmlsZV9pZD0iZmlsZV9lbXB0eSIsCiAgICAgICAgKQogICAgKQoKICAgIGFzc2VydCByZXN1bHRbInN1Y2Nlc3MiXSBpcyBUcnVlCiAgICBhc3NlcnQgcmVzdWx0WyJjaHVua3NfdG90YWwiXSA9PSAwCiAgICBhc3NlcnQgcmVzdWx0WyJjb21wbGV0ZWQiXSBpcyBUcnVlCiAgICBwcm9ncmVzcyA9IGFzeW5jaW8ucnVuKGZpbGVfdHJhbnNmZXIuZ2V0X3RyYW5zZmVyX3Byb2dyZXNzKCJmaWxlX2VtcHR5IikpCiAgICBhc3NlcnQgcHJvZ3Jlc3NbInN0YXR1cyJdID09ICJjb21wbGV0ZWQiCgoKZGVmIHRlc3Rfc3RvcmVfY2h1bmtfcmVxdWlyZXNfb3JpZ2luYWxfc2VuZGVyKGZpbGVfdHJhbnNmZXIpOgogICAgcmVzdWx0ID0gYXN5bmNpby5ydW4oCiAgICAgICAgZmlsZV90cmFuc2Zlci5pbml0X3RyYW5zZmVyKDEsIDIsICJhLnR4dCIsIDQsIGNsaWVudF9maWxlX2lkPSJmaWxlX2IiKQogICAgKQogICAgYXNzZXJ0IHJlc3VsdFsic3VjY2VzcyJdIGlzIFRydWUKCiAgICBkZW5pZWQgPSBhc3luY2lvLnJ1bigKICAgICAgICBmaWxlX3RyYW5zZmVyLnN0b3JlX2NodW5rKCJmaWxlX2IiLCAwLCBiImFiY2QiLCBzZW5kZXJfaWQ9MiwgdG90YWxfY2h1bmtzPTEpCiAgICApCgogICAgYXNzZXJ0IGRlbmllZCA9PSB7InN1Y2Nlc3MiOiBGYWxzZSwgImVycm9yIjogInBlcm1pc3Npb25fZGVuaWVkIn0KICAgIHByb2dyZXNzID0gYXN5bmNpby5ydW4oZmlsZV90cmFuc2Zlci5nZXRfdHJhbnNmZXJfcHJvZ3Jlc3MoImZpbGVfYiIpKQogICAgYXNzZXJ0IHByb2dyZXNzWyJjaHVua3NfcmVjZWl2ZWQiXSA9PSAwCgoKZGVmIHRlc3RfZHVwbGljYXRlX2NodW5rX2RvZXNfbm90X2luY3JlbWVudF9wcm9ncmVzcyhmaWxlX3RyYW5zZmVyKToKICAgIHJlc3VsdCA9IGFzeW5jaW8ucnVuKAogICAgICAgIGZpbGVfdHJhbnNmZXIuaW5pdF90cmFuc2ZlcigxLCAyLCAiYS50eHQiLCA4LCBjbGllbnRfZmlsZV9pZD0iZmlsZV9jIikKICAgICkKICAgIGFzc2VydCByZXN1bHRbImNodW5rc190b3RhbCJdID09IDIKCiAgICBmaXJzdCA9IGFzeW5jaW8ucnVuKAogICAgICAgIGZpbGVfdHJhbnNmZXIuc3RvcmVfY2h1bmsoImZpbGVfYyIsIDAsIGIiYWJjZCIsIHNlbmRlcl9pZD0xLCB0b3RhbF9jaHVua3M9MikKICAgICkKICAgIGR1cGxpY2F0ZSA9IGFzeW5jaW8ucnVuKAogICAgICAgIGZpbGVfdHJhbnNmZXIuc3RvcmVfY2h1bmsoImZpbGVfYyIsIDAsIGIiYWJjZCIsIHNlbmRlcl9pZD0xLCB0b3RhbF9jaHVua3M9MikKICAgICkKICAgIHByb2dyZXNzID0gYXN5bmNpby5ydW4oZmlsZV90cmFuc2Zlci5nZXRfdHJhbnNmZXJfcHJvZ3Jlc3MoImZpbGVfYyIpKQoKICAgIGFzc2VydCBmaXJzdFsic3VjY2VzcyJdIGlzIFRydWUKICAgIGFzc2VydCBkdXBsaWNhdGVbImR1cGxpY2F0ZSJdIGlzIFRydWUKICAgIGFzc2VydCBwcm9ncmVzc1siY2h1bmtzX3JlY2VpdmVkIl0gPT0gMQogICAgYXNzZXJ0IHByb2dyZXNzWyJzdGF0dXMiXSA9PSAidHJhbnNmZXJyaW5nIgoKICAgIGNvbXBsZXRlZCA9IGFzeW5jaW8ucnVuKAogICAgICAgIGZpbGVfdHJhbnNmZXIuc3RvcmVfY2h1bmsoImZpbGVfYyIsIDEsIGIiZWZnaCIsIHNlbmRlcl9pZD0xLCB0b3RhbF9jaHVua3M9MikKICAgICkKICAgIGFzc2VydCBjb21wbGV0ZWRbImNvbXBsZXRlZCJdIGlzIFRydWUKICAgIHByb2dyZXNzID0gYXN5bmNpby5ydW4oZmlsZV90cmFuc2Zlci5nZXRfdHJhbnNmZXJfcHJvZ3Jlc3MoImZpbGVfYyIpKQogICAgYXNzZXJ0IHByb2dyZXNzWyJjaHVua3NfcmVjZWl2ZWQiXSA9PSAyCiAgICBhc3NlcnQgcHJvZ3Jlc3NbInN0YXR1cyJdID09ICJjb21wbGV0ZWQiCgoKZGVmIHRlc3RfZG93bmxvYWRfcmVxdWlyZXNfcmVjZWl2ZXIoZmlsZV90cmFuc2Zlcik6CiAgICByZXN1bHQgPSBhc3luY2lvLnJ1bigKICAgICAgICBmaWxlX3RyYW5zZmVyLmluaXRfdHJhbnNmZXIoMSwgMiwgImEudHh0IiwgNCwgY2xpZW50X2ZpbGVfaWQ9ImZpbGVfZCIpCiAgICApCiAgICBhc3NlcnQgcmVzdWx0WyJzdWNjZXNzIl0gaXMgVHJ1ZQogICAgYXN5bmNpby5ydW4oZmlsZV90cmFuc2Zlci5zdG9yZV9jaHVuaygiZmlsZV9kIiwgMCwgYiJhYmNkIiwgc2VuZGVyX2lkPTEsIHRvdGFsX2NodW5rcz0xKSkKCiAgICBkZW5pZWQgPSBhc3luY2lvLnJ1bihmaWxlX3RyYW5zZmVyLmdldF9jaHVuaygiZmlsZV9kIiwgMCwgcmVxdWVzdGVyX2lkPTMpKQogICAgYWxsb3dlZCA9IGFzeW5jaW8ucnVuKGZpbGVfdHJhbnNmZXIuZ2V0X2NodW5rKCJmaWxlX2QiLCAwLCByZXF1ZXN0ZXJfaWQ9MikpCgogICAgYXNzZXJ0IGRlbmllZCA9PSB7InN1Y2Nlc3MiOiBGYWxzZSwgImVycm9yIjogInBlcm1pc3Npb25fZGVuaWVkIn0KICAgIGFzc2VydCBhbGxvd2VkWyJzdWNjZXNzIl0gaXMgVHJ1ZQogICAgYXNzZXJ0IGFsbG93ZWRbImRhdGEiXSA9PSBiImFiY2QiCgoKZGVmIHRlc3RfZ3JvdXBfZG93bmxvYWRfYWxsb3dzX21lbWJlcnNfb25seShmaWxlX3RyYW5zZmVyKToKICAgIHJlc3VsdCA9IGFzeW5jaW8ucnVuKAogICAgICAgIGZpbGVfdHJhbnNmZXIuaW5pdF90cmFuc2ZlcigKICAgICAgICAgICAgZnJvbV9pZD0xLAogICAgICAgICAgICB0b19pZD1Ob25lLAogICAgICAgICAgICBmaWxlbmFtZT0iZ3JvdXAudHh0IiwKICAgICAgICAgICAgZmlsZXNpemU9NCwKICAgICAgICAgICAgZ3JvdXBfaWQ9MSwKICAgICAgICAgICAgY2xpZW50X2ZpbGVfaWQ9ImZpbGVfZSIsCiAgICAgICAgKQogICAgKQogICAgYXNzZXJ0IHJlc3VsdFsic3VjY2VzcyJdIGlzIFRydWUKICAgIGFzeW5jaW8ucnVuKGZpbGVfdHJhbnNmZXIuc3RvcmVfY2h1bmsoImZpbGVfZSIsIDAsIGIiYWJjZCIsIHNlbmRlcl9pZD0xLCB0b3RhbF9jaHVua3M9MSkpCgogICAgbWVtYmVyID0gYXN5bmNpby5ydW4oZmlsZV90cmFuc2Zlci5nZXRfY2h1bmsoImZpbGVfZSIsIDAsIHJlcXVlc3Rlcl9pZD0yKSkKICAgIG91dHNpZGVyID0gYXN5bmNpby5ydW4oZmlsZV90cmFuc2Zlci5nZXRfY2h1bmsoImZpbGVfZSIsIDAsIHJlcXVlc3Rlcl9pZD0zKSkKCiAgICBhc3NlcnQgbWVtYmVyWyJzdWNjZXNzIl0gaXMgVHJ1ZQogICAgYXNzZXJ0IG1lbWJlclsiZGF0YSJdID09IGIiYWJjZCIKICAgIGFzc2VydCBvdXRzaWRlciA9PSB7InN1Y2Nlc3MiOiBGYWxzZSwgImVycm9yIjogInBlcm1pc3Npb25fZGVuaWVkIn0KCgpkZWYgdGVzdF9yZWplY3RzX2JhZF9jaHVua19ib3VuZHMoZmlsZV90cmFuc2Zlcik6CiAgICByZXN1bHQgPSBhc3luY2lvLnJ1bigKICAgICAgICBmaWxlX3RyYW5zZmVyLmluaXRfdHJhbnNmZXIoMSwgMiwgImEudHh0IiwgNSwgY2xpZW50X2ZpbGVfaWQ9ImZpbGVfZiIpCiAgICApCiAgICBhc3NlcnQgcmVzdWx0WyJjaHVua3NfdG90YWwiXSA9PSAyCgogICAgb3V0X29mX3JhbmdlID0gYXN5bmNpby5ydW4oCiAgICAgICAgZmlsZV90cmFuc2Zlci5zdG9yZV9jaHVuaygiZmlsZV9mIiwgMiwgYiJ4Iiwgc2VuZGVyX2lkPTEsIHRvdGFsX2NodW5rcz0yKQogICAgKQogICAgd3Jvbmdfc2l6ZSA9IGFzeW5jaW8ucnVuKAogICAgICAgIGZpbGVfdHJhbnNmZXIuc3RvcmVfY2h1bmsoImZpbGVfZiIsIDEsIGIieHkiLCBzZW5kZXJfaWQ9MSwgdG90YWxfY2h1bmtzPTIpCiAgICApCgogICAgYXNzZXJ0IG91dF9vZl9yYW5nZSA9PSB7InN1Y2Nlc3MiOiBGYWxzZSwgImVycm9yIjogImNodW5rX2luZGV4X291dF9vZl9yYW5nZSJ9CiAgICBhc3NlcnQgd3Jvbmdfc2l6ZSA9PSB7InN1Y2Nlc3MiOiBGYWxzZSwgImVycm9yIjogImludmFsaWRfY2h1bmtfc2l6ZSJ9CgoKZGVmIHRlc3RfcmVqZWN0c19pbnZhbGlkX3RvdGFsX2NodW5rc193aXRob3V0X3JhaXNpbmcoZmlsZV90cmFuc2Zlcik6CiAgICByZXN1bHQgPSBhc3luY2lvLnJ1bigKICAgICAgICBmaWxlX3RyYW5zZmVyLmluaXRfdHJhbnNmZXIoMSwgMiwgImEudHh0IiwgNCwgY2xpZW50X2ZpbGVfaWQ9ImZpbGVfZyIpCiAgICApCiAgICBhc3NlcnQgcmVzdWx0WyJzdWNjZXNzIl0gaXMgVHJ1ZQoKICAgIGJhZF90b3RhbCA9IGFzeW5jaW8ucnVuKAogICAgICAgIGZpbGVfdHJhbnNmZXIuc3RvcmVfY2h1bmsoImZpbGVfZyIsIDAsIGIiYWJjZCIsIHNlbmRlcl9pZD0xLCB0b3RhbF9jaHVua3M9ImJhZCIpCiAgICApCgogICAgYXNzZXJ0IGJhZF90b3RhbCA9PSB7InN1Y2Nlc3MiOiBGYWxzZSwgImVycm9yIjogImludmFsaWRfdG90YWxfY2h1bmtzIn0K
+import asyncio
+import time
+
+import pytest
+
+from server.config import ServerConfig
+from server.database import close_connection, get_db, init_db
+from server.file_transfer import FileTransfer
+from tests.temp_utils import make_runtime_dir, remove_runtime_dir
+
+
+@pytest.fixture
+def file_transfer():
+    runtime_dir = make_runtime_dir("file_transfer_")
+    close_connection()
+    db_path = str(runtime_dir / "chat.db")
+    storage_dir = str(runtime_dir / "files")
+    init_db(db_path)
+    now = time.time()
+    with get_db(db_path) as conn:
+        conn.execute(
+            "INSERT INTO users (id, username, password_hash, created_at) VALUES (?, ?, ?, ?)",
+            (1, "alice", "hash", now),
+        )
+        conn.execute(
+            "INSERT INTO users (id, username, password_hash, created_at) VALUES (?, ?, ?, ?)",
+            (2, "bob", "hash", now),
+        )
+        conn.execute(
+            "INSERT INTO users (id, username, password_hash, created_at) VALUES (?, ?, ?, ?)",
+            (3, "mallory", "hash", now),
+        )
+        conn.execute(
+            "INSERT INTO groups (id, name, owner_id, created_at) VALUES (?, ?, ?, ?)",
+            (1, "demo", 1, now),
+        )
+        conn.execute(
+            "INSERT INTO group_members (group_id, user_id, role, joined_at) VALUES (?, ?, ?, ?)",
+            (1, 1, "owner", now),
+        )
+        conn.execute(
+            "INSERT INTO group_members (group_id, user_id, role, joined_at) VALUES (?, ?, ?, ?)",
+            (1, 2, "member", now),
+        )
+        conn.commit()
+
+    config = ServerConfig(
+        db_path=db_path,
+        file_storage_dir=storage_dir,
+        file_chunk_size=4,
+        max_file_size=32,
+    )
+    yield FileTransfer(config)
+    close_connection()
+    remove_runtime_dir(runtime_dir)
+
+
+def test_rejects_unsafe_file_id(file_transfer):
+    result = asyncio.run(
+        file_transfer.init_transfer(
+            from_id=1,
+            to_id=2,
+            filename="safe.txt",
+            filesize=4,
+            client_file_id="../evil",
+        )
+    )
+
+    assert result == {"success": False, "error": "invalid_file_id"}
+
+
+def test_sanitizes_filename(file_transfer):
+    result = asyncio.run(
+        file_transfer.init_transfer(
+            from_id=1,
+            to_id=2,
+            filename="../nested/secret.txt",
+            filesize=4,
+            client_file_id="file_a",
+        )
+    )
+
+    assert result["success"] is True
+    assert result["filename"] == "secret.txt"
+    progress = asyncio.run(file_transfer.get_transfer_progress("file_a"))
+    assert progress["filename"] == "secret.txt"
+
+
+def test_sanitizes_windows_reserved_filename(file_transfer):
+    result = asyncio.run(
+        file_transfer.init_transfer(
+            from_id=1,
+            to_id=2,
+            filename="CON.txt",
+            filesize=4,
+            client_file_id="file_reserved",
+        )
+    )
+
+    assert result["success"] is True
+    assert result["filename"].startswith("_CON")
+
+
+def test_rejects_ambiguous_or_self_receiver(file_transfer):
+    ambiguous = asyncio.run(
+        file_transfer.init_transfer(
+            from_id=1,
+            to_id=2,
+            filename="a.txt",
+            filesize=4,
+            group_id=1,
+            client_file_id="file_ambiguous",
+        )
+    )
+    self_send = asyncio.run(
+        file_transfer.init_transfer(
+            from_id=1,
+            to_id=1,
+            filename="a.txt",
+            filesize=4,
+            client_file_id="file_self",
+        )
+    )
+
+    assert ambiguous == {"success": False, "error": "ambiguous_receiver"}
+    assert self_send == {"success": False, "error": "cannot_send_to_self"}
+
+
+def test_rejects_missing_receiver_user(file_transfer):
+    result = asyncio.run(
+        file_transfer.init_transfer(
+            from_id=1,
+            to_id=999,
+            filename="a.txt",
+            filesize=4,
+            client_file_id="file_missing_receiver",
+        )
+    )
+
+    assert result == {"success": False, "error": "receiver_not_found"}
+
+
+def test_zero_byte_file_completes_immediately(file_transfer):
+    result = asyncio.run(
+        file_transfer.init_transfer(
+            from_id=1,
+            to_id=2,
+            filename="empty.txt",
+            filesize=0,
+            client_file_id="file_empty",
+        )
+    )
+
+    assert result["success"] is True
+    assert result["chunks_total"] == 0
+    assert result["completed"] is True
+    progress = asyncio.run(file_transfer.get_transfer_progress("file_empty"))
+    assert progress["status"] == "completed"
+
+
+def test_store_chunk_requires_original_sender(file_transfer):
+    result = asyncio.run(
+        file_transfer.init_transfer(1, 2, "a.txt", 4, client_file_id="file_b")
+    )
+    assert result["success"] is True
+
+    denied = asyncio.run(
+        file_transfer.store_chunk("file_b", 0, b"abcd", sender_id=2, total_chunks=1)
+    )
+
+    assert denied == {"success": False, "error": "permission_denied"}
+    progress = asyncio.run(file_transfer.get_transfer_progress("file_b"))
+    assert progress["chunks_received"] == 0
+
+
+def test_duplicate_chunk_does_not_increment_progress(file_transfer):
+    result = asyncio.run(
+        file_transfer.init_transfer(1, 2, "a.txt", 8, client_file_id="file_c")
+    )
+    assert result["chunks_total"] == 2
+
+    first = asyncio.run(
+        file_transfer.store_chunk("file_c", 0, b"abcd", sender_id=1, total_chunks=2)
+    )
+    duplicate = asyncio.run(
+        file_transfer.store_chunk("file_c", 0, b"abcd", sender_id=1, total_chunks=2)
+    )
+    progress = asyncio.run(file_transfer.get_transfer_progress("file_c"))
+
+    assert first["success"] is True
+    assert duplicate["duplicate"] is True
+    assert progress["chunks_received"] == 1
+    assert progress["status"] == "transferring"
+
+    completed = asyncio.run(
+        file_transfer.store_chunk("file_c", 1, b"efgh", sender_id=1, total_chunks=2)
+    )
+    assert completed["completed"] is True
+    progress = asyncio.run(file_transfer.get_transfer_progress("file_c"))
+    assert progress["chunks_received"] == 2
+    assert progress["status"] == "completed"
+
+
+def test_download_requires_receiver(file_transfer):
+    result = asyncio.run(
+        file_transfer.init_transfer(1, 2, "a.txt", 4, client_file_id="file_d")
+    )
+    assert result["success"] is True
+    asyncio.run(file_transfer.store_chunk("file_d", 0, b"abcd", sender_id=1, total_chunks=1))
+
+    denied = asyncio.run(file_transfer.get_chunk("file_d", 0, requester_id=3))
+    allowed = asyncio.run(file_transfer.get_chunk("file_d", 0, requester_id=2))
+
+    assert denied == {"success": False, "error": "permission_denied"}
+    assert allowed["success"] is True
+    assert allowed["data"] == b"abcd"
+
+
+def test_group_download_allows_members_only(file_transfer):
+    result = asyncio.run(
+        file_transfer.init_transfer(
+            from_id=1,
+            to_id=None,
+            filename="group.txt",
+            filesize=4,
+            group_id=1,
+            client_file_id="file_e",
+        )
+    )
+    assert result["success"] is True
+    asyncio.run(file_transfer.store_chunk("file_e", 0, b"abcd", sender_id=1, total_chunks=1))
+
+    member = asyncio.run(file_transfer.get_chunk("file_e", 0, requester_id=2))
+    outsider = asyncio.run(file_transfer.get_chunk("file_e", 0, requester_id=3))
+
+    assert member["success"] is True
+    assert member["data"] == b"abcd"
+    assert outsider == {"success": False, "error": "permission_denied"}
+
+
+def test_rejects_bad_chunk_bounds(file_transfer):
+    result = asyncio.run(
+        file_transfer.init_transfer(1, 2, "a.txt", 5, client_file_id="file_f")
+    )
+    assert result["chunks_total"] == 2
+
+    out_of_range = asyncio.run(
+        file_transfer.store_chunk("file_f", 2, b"x", sender_id=1, total_chunks=2)
+    )
+    wrong_size = asyncio.run(
+        file_transfer.store_chunk("file_f", 1, b"xy", sender_id=1, total_chunks=2)
+    )
+
+    assert out_of_range == {"success": False, "error": "chunk_index_out_of_range"}
+    assert wrong_size == {"success": False, "error": "invalid_chunk_size"}
+
+
+def test_rejects_invalid_total_chunks_without_raising(file_transfer):
+    result = asyncio.run(
+        file_transfer.init_transfer(1, 2, "a.txt", 4, client_file_id="file_g")
+    )
+    assert result["success"] is True
+
+    bad_total = asyncio.run(
+        file_transfer.store_chunk("file_g", 0, b"abcd", sender_id=1, total_chunks="bad")
+    )
+
+    assert bad_total == {"success": False, "error": "invalid_total_chunks"}

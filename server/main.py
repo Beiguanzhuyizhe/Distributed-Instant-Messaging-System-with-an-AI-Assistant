@@ -1,1 +1,42 @@
-IiIiCuWIhuW4g+W8j+WNs+aXtuiBiuWkqeezu+e7nyAtIOacjeWKoeerr+WFpeWPowoiIiIKaW1wb3J0IGFzeW5jaW8KaW1wb3J0IGxvZ2dpbmcKaW1wb3J0IHN5cwoKZnJvbSBzZXJ2ZXIuY29uZmlnIGltcG9ydCBTZXJ2ZXJDb25maWcKZnJvbSBzZXJ2ZXIudGNwX3NlcnZlciBpbXBvcnQgQ2hhdFNlcnZlcgoKCmRlZiBzZXR1cF9sb2dnaW5nKGNvbmZpZzogU2VydmVyQ29uZmlnKToKICAgIGxldmVsID0gZ2V0YXR0cihsb2dnaW5nLCBjb25maWcubG9nX2xldmVsLnVwcGVyKCksIGxvZ2dpbmcuSU5GTykKICAgIGt3YXJncyA9IHsKICAgICAgICAibGV2ZWwiOiBsZXZlbCwKICAgICAgICAiZm9ybWF0IjogIiUoYXNjdGltZSlzIFslKGxldmVsbmFtZSlzXSAlKG5hbWUpczogJShtZXNzYWdlKXMiLAogICAgICAgICJkYXRlZm10IjogIiVZLSVtLSVkICVIOiVNOiVTIiwKICAgICAgICAic3RyZWFtIjogc3lzLnN0ZG91dCwKICAgIH0KICAgIGlmIGNvbmZpZy5sb2dfZmlsZToKICAgICAgICBrd2FyZ3NbImZpbGVuYW1lIl0gPSBjb25maWcubG9nX2ZpbGUKICAgICAgICBrd2FyZ3NbImZpbGVtb2RlIl0gPSAiYSIKICAgIGxvZ2dpbmcuYmFzaWNDb25maWcoKiprd2FyZ3MpCgoKYXN5bmMgZGVmIG1haW4oKToKICAgIGNvbmZpZyA9IFNlcnZlckNvbmZpZygpCiAgICBzZXR1cF9sb2dnaW5nKGNvbmZpZykKICAgIHNlcnZlciA9IENoYXRTZXJ2ZXIoY29uZmlnKQogICAgdHJ5OgogICAgICAgIGF3YWl0IHNlcnZlci5zdGFydCgpCiAgICBleGNlcHQgS2V5Ym9hcmRJbnRlcnJ1cHQ6CiAgICAgICAgcHJpbnQoIlxuU2VydmVyIHNodXR0aW5nIGRvd24uLi4iKQogICAgZmluYWxseToKICAgICAgICBhd2FpdCBzZXJ2ZXIuc3RvcCgpCgoKaWYgX19uYW1lX18gPT0gIl9fbWFpbl9fIjoKICAgIHRyeToKICAgICAgICBhc3luY2lvLnJ1bihtYWluKCkpCiAgICBleGNlcHQgS2V5Ym9hcmRJbnRlcnJ1cHQ6CiAgICAgICAgcGFzcwo=
+"""
+分布式即时聊天系统 - 服务端入口
+"""
+import asyncio
+import logging
+import sys
+
+from server.config import ServerConfig
+from server.tcp_server import ChatServer
+
+
+def setup_logging(config: ServerConfig):
+    level = getattr(logging, config.log_level.upper(), logging.INFO)
+    kwargs = {
+        "level": level,
+        "format": "%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+        "datefmt": "%Y-%m-%d %H:%M:%S",
+        "stream": sys.stdout,
+    }
+    if config.log_file:
+        kwargs["filename"] = config.log_file
+        kwargs["filemode"] = "a"
+    logging.basicConfig(**kwargs)
+
+
+async def main():
+    config = ServerConfig()
+    setup_logging(config)
+    server = ChatServer(config)
+    try:
+        await server.start()
+    except KeyboardInterrupt:
+        print("\nServer shutting down...")
+    finally:
+        await server.stop()
+
+
+if __name__ == "__main__":
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        pass

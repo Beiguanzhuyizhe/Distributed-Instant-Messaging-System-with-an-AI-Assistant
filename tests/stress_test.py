@@ -1,1 +1,419 @@
-IiIiCkNvbmN1cnJlbnQgVENQIHN0cmVzcyB0ZXN0IGZvciB0aGUgY2hhdCBzZXJ2ZXIuCgpVc2FnZToKICBweXRob24gdGVzdHMvc3RyZXNzX3Rlc3QucHkKICBweXRob24gdGVzdHMvc3RyZXNzX3Rlc3QucHkgLS1jbGllbnRzIDUwIC0tY29uY3VycmVuY3kgMjAgLS1tZXNzYWdlcyAzCgpTdGFydCB0aGUgc2VydmVyIGZpcnN0IHdpdGg6CiAgcHl0aG9uIC1tIHNlcnZlci5tYWluCiIiIgoKaW1wb3J0IGFyZ3BhcnNlCmltcG9ydCBhc3luY2lvCmltcG9ydCBsb2dnaW5nCmltcG9ydCBzeXMKaW1wb3J0IHRpbWUKaW1wb3J0IHV1aWQKZnJvbSBkYXRhY2xhc3NlcyBpbXBvcnQgZGF0YWNsYXNzLCBmaWVsZApmcm9tIHBhdGhsaWIgaW1wb3J0IFBhdGgKZnJvbSB0eXBpbmcgaW1wb3J0IE9wdGlvbmFsCgoKUFJPSkVDVF9ST09UID0gUGF0aChfX2ZpbGVfXykucmVzb2x2ZSgpLnBhcmVudC5wYXJlbnQKaWYgc3RyKFBST0pFQ1RfUk9PVCkgbm90IGluIHN5cy5wYXRoOgogICAgc3lzLnBhdGguaW5zZXJ0KDAsIHN0cihQUk9KRUNUX1JPT1QpKQoKZnJvbSBzZXJ2ZXIucHJvdG9jb2wgaW1wb3J0IE1lc3NhZ2VUeXBlLCBkZWNvZGVfbWVzc2FnZXMsIGVuY29kZV9tZXNzYWdlCgoKbG9nZ2luZy5iYXNpY0NvbmZpZyhsZXZlbD1sb2dnaW5nLklORk8sIGZvcm1hdD0iJShhc2N0aW1lKXMgWyUobGV2ZWxuYW1lKXNdICUobWVzc2FnZSlzIikKbG9nZ2VyID0gbG9nZ2luZy5nZXRMb2dnZXIoInN0cmVzc190ZXN0IikKCgpAZGF0YWNsYXNzCmNsYXNzIFN0YXRzOgogICAgY2xpZW50X2lkOiBpbnQKICAgIGNvbm5lY3RlZDogYm9vbCA9IEZhbHNlCiAgICByZWdpc3RlcmVkOiBib29sID0gRmFsc2UKICAgIGxvZ2dlZF9pbjogYm9vbCA9IEZhbHNlCiAgICB1c2VyX2lkOiBPcHRpb25hbFtpbnRdID0gTm9uZQogICAgbWVzc2FnZXNfc2VudDogaW50ID0gMAogICAgbWVzc2FnZXNfYWNrZWQ6IGludCA9IDAKICAgIG1lc3NhZ2VzX3JlY2VpdmVkOiBpbnQgPSAwCiAgICBlcnJvcnM6IGxpc3Rbc3RyXSA9IGZpZWxkKGRlZmF1bHRfZmFjdG9yeT1saXN0KQogICAgbGF0ZW5jaWVzOiBsaXN0W2Zsb2F0XSA9IGZpZWxkKGRlZmF1bHRfZmFjdG9yeT1saXN0KQoKCkBkYXRhY2xhc3MKY2xhc3MgQWdncmVnYXRlUmVwb3J0OgogICAgdG90YWxfY2xpZW50czogaW50ID0gMAogICAgY29ubmVjdGVkOiBpbnQgPSAwCiAgICByZWdpc3RlcmVkOiBpbnQgPSAwCiAgICBsb2dpbl9zdWNjZXNzOiBpbnQgPSAwCiAgICB0b3RhbF9tZXNzYWdlc19zZW50OiBpbnQgPSAwCiAgICB0b3RhbF9tZXNzYWdlc19hY2tlZDogaW50ID0gMAogICAgdG90YWxfbWVzc2FnZXNfcmVjZWl2ZWQ6IGludCA9IDAKICAgIHRvdGFsX2Vycm9yczogaW50ID0gMAogICAgYXZnX2xhdGVuY3k6IGZsb2F0ID0gMC4wCiAgICBwNTBfbGF0ZW5jeTogZmxvYXQgPSAwLjAKICAgIHA5OV9sYXRlbmN5OiBmbG9hdCA9IDAuMAogICAgbWF4X2xhdGVuY3k6IGZsb2F0ID0gMC4wCiAgICBtaW5fbGF0ZW5jeTogZmxvYXQgPSAwLjAKICAgIHRocm91Z2hwdXQ6IGZsb2F0ID0gMC4wCiAgICBkdXJhdGlvbjogZmxvYXQgPSAwLjAKICAgIHNhbXBsZV9lcnJvcnM6IGxpc3Rbc3RyXSA9IGZpZWxkKGRlZmF1bHRfZmFjdG9yeT1saXN0KQoKICAgIEBwcm9wZXJ0eQogICAgZGVmIG9rKHNlbGYpIC0+IGJvb2w6CiAgICAgICAgcmV0dXJuICgKICAgICAgICAgICAgc2VsZi5jb25uZWN0ZWQgPT0gc2VsZi50b3RhbF9jbGllbnRzCiAgICAgICAgICAgIGFuZCBzZWxmLnJlZ2lzdGVyZWQgPT0gc2VsZi50b3RhbF9jbGllbnRzCiAgICAgICAgICAgIGFuZCBzZWxmLmxvZ2luX3N1Y2Nlc3MgPT0gc2VsZi50b3RhbF9jbGllbnRzCiAgICAgICAgICAgIGFuZCBzZWxmLnRvdGFsX2Vycm9ycyA9PSAwCiAgICAgICAgICAgIGFuZCBzZWxmLnRvdGFsX21lc3NhZ2VzX3NlbnQgPT0gc2VsZi50b3RhbF9tZXNzYWdlc19hY2tlZAogICAgICAgICAgICBhbmQgc2VsZi50b3RhbF9tZXNzYWdlc19zZW50ID09IHNlbGYudG90YWxfbWVzc2FnZXNfcmVjZWl2ZWQKICAgICAgICApCgoKY2xhc3MgVmlydHVhbENsaWVudDoKICAgIGRlZiBfX2luaXRfXygKICAgICAgICBzZWxmLAogICAgICAgIGNsaWVudF9pZDogaW50LAogICAgICAgIGhvc3Q6IHN0ciwKICAgICAgICBwb3J0OiBpbnQsCiAgICAgICAgdGltZW91dDogZmxvYXQgPSAxMC4wLAogICAgICAgIG1lc3NhZ2VzX3Blcl9jbGllbnQ6IGludCA9IDUsCiAgICApOgogICAgICAgIHNlbGYuY2xpZW50X2lkID0gY2xpZW50X2lkCiAgICAgICAgc2VsZi5ob3N0ID0gaG9zdAogICAgICAgIHNlbGYucG9ydCA9IHBvcnQKICAgICAgICBzZWxmLnRpbWVvdXQgPSB0aW1lb3V0CiAgICAgICAgc2VsZi5tZXNzYWdlc19wZXJfY2xpZW50ID0gbWVzc2FnZXNfcGVyX2NsaWVudAogICAgICAgIHNlbGYuc3RhdHMgPSBTdGF0cyhjbGllbnRfaWQ9Y2xpZW50X2lkKQogICAgICAgIHNlbGYuX3JlYWRlcjogT3B0aW9uYWxbYXN5bmNpby5TdHJlYW1SZWFkZXJdID0gTm9uZQogICAgICAgIHNlbGYuX3dyaXRlcjogT3B0aW9uYWxbYXN5bmNpby5TdHJlYW1Xcml0ZXJdID0gTm9uZQogICAgICAgIHNlbGYuX3VzZXJuYW1lID0gZiJzdHJlc3Nfe2ludCh0aW1lLnRpbWUoKSl9X3tjbGllbnRfaWR9X3t1dWlkLnV1aWQ0KCkuaGV4Wzo2XX0iCiAgICAgICAgc2VsZi5fcGFzc3dvcmQgPSAic3RyZXNzX3Bhc3MiCiAgICAgICAgc2VsZi5fYnVmZmVyID0gYiIiCiAgICAgICAgc2VsZi5faW5ib3g6IGxpc3RbdHVwbGVbaW50LCBpbnQsIGRpY3RdXSA9IFtdCiAgICAgICAgc2VsZi5fc2VxID0gY2xpZW50X2lkICogMTAwMDAwCgogICAgZGVmIF9uZXh0X3NlcShzZWxmKSAtPiBpbnQ6CiAgICAgICAgc2VsZi5fc2VxICs9IDEKICAgICAgICByZXR1cm4gc2VsZi5fc2VxICYgMHhGRkZGRkZGRgoKICAgIGFzeW5jIGRlZiBjb25uZWN0X3JlZ2lzdGVyX2xvZ2luKHNlbGYpIC0+IFN0YXRzOgogICAgICAgIHRyeToKICAgICAgICAgICAgaWYgbm90IGF3YWl0IHNlbGYuX2Nvbm5lY3QoKToKICAgICAgICAgICAgICAgIHJldHVybiBzZWxmLnN0YXRzCiAgICAgICAgICAgIGlmIG5vdCBhd2FpdCBzZWxmLl9yZWdpc3RlcigpOgogICAgICAgICAgICAgICAgcmV0dXJuIHNlbGYuc3RhdHMKICAgICAgICAgICAgaWYgbm90IGF3YWl0IHNlbGYuX2xvZ2luKCk6CiAgICAgICAgICAgICAgICByZXR1cm4gc2VsZi5zdGF0cwogICAgICAgIGV4Y2VwdCBhc3luY2lvLlRpbWVvdXRFcnJvcjoKICAgICAgICAgICAgc2VsZi5zdGF0cy5lcnJvcnMuYXBwZW5kKCJ0aW1lb3V0IikKICAgICAgICBleGNlcHQgQ29ubmVjdGlvblJlc2V0RXJyb3I6CiAgICAgICAgICAgIHNlbGYuc3RhdHMuZXJyb3JzLmFwcGVuZCgiY29ubmVjdGlvbl9yZXNldCIpCiAgICAgICAgZXhjZXB0IEV4Y2VwdGlvbiBhcyBleGM6CiAgICAgICAgICAgIHNlbGYuc3RhdHMuZXJyb3JzLmFwcGVuZChmInVuZXhwZWN0ZWQ6e3R5cGUoZXhjKS5fX25hbWVfX306e2V4Y30iKQogICAgICAgIHJldHVybiBzZWxmLnN0YXRzCgogICAgYXN5bmMgZGVmIF9jb25uZWN0KHNlbGYpIC0+IGJvb2w6CiAgICAgICAgdHJ5OgogICAgICAgICAgICBzZWxmLl9yZWFkZXIsIHNlbGYuX3dyaXRlciA9IGF3YWl0IGFzeW5jaW8ud2FpdF9mb3IoCiAgICAgICAgICAgICAgICBhc3luY2lvLm9wZW5fY29ubmVjdGlvbihzZWxmLmhvc3QsIHNlbGYucG9ydCksCiAgICAgICAgICAgICAgICB0aW1lb3V0PXNlbGYudGltZW91dCwKICAgICAgICAgICAgKQogICAgICAgICAgICBzZWxmLnN0YXRzLmNvbm5lY3RlZCA9IFRydWUKICAgICAgICAgICAgcmV0dXJuIFRydWUKICAgICAgICBleGNlcHQgRXhjZXB0aW9uIGFzIGV4YzoKICAgICAgICAgICAgc2VsZi5zdGF0cy5lcnJvcnMuYXBwZW5kKGYiY29ubmVjdF9mYWlsZWQ6e3R5cGUoZXhjKS5fX25hbWVfX306e2V4Y30iKQogICAgICAgICAgICByZXR1cm4gRmFsc2UKCiAgICBhc3luYyBkZWYgX3NlbmQoc2VsZiwgbXNnX3R5cGU6IGludCwgcGF5bG9hZDogZGljdCwgc2VxOiBpbnQgPSBOb25lKToKICAgICAgICBpZiBzZXEgaXMgTm9uZToKICAgICAgICAgICAgc2VxID0gc2VsZi5fbmV4dF9zZXEoKQogICAgICAgIHNlbGYuX3dyaXRlci53cml0ZShlbmNvZGVfbWVzc2FnZShtc2dfdHlwZSwgcGF5bG9hZCwgc2VxPXNlcSkpCiAgICAgICAgYXdhaXQgc2VsZi5fd3JpdGVyLmRyYWluKCkKICAgICAgICByZXR1cm4gc2VxCgogICAgYXN5bmMgZGVmIF9yZWFkX21hdGNoaW5nKHNlbGYsIGV4cGVjdGVkX3R5cGU9Tm9uZSwgcHJlZGljYXRlPU5vbmUsIHRpbWVvdXQ6IGZsb2F0ID0gNS4wKToKICAgICAgICBkZWFkbGluZSA9IHRpbWUudGltZSgpICsgdGltZW91dAogICAgICAgIHdoaWxlIHRpbWUudGltZSgpIDwgZGVhZGxpbmU6CiAgICAgICAgICAgIGZvciBpZHgsIG1zZyBpbiBlbnVtZXJhdGUobGlzdChzZWxmLl9pbmJveCkpOgogICAgICAgICAgICAgICAgbXNnX3R5cGUsIHNlcSwgcGF5bG9hZCA9IG1zZwogICAgICAgICAgICAgICAgaWYgZXhwZWN0ZWRfdHlwZSBpcyBub3QgTm9uZSBhbmQgbXNnX3R5cGUgIT0gZXhwZWN0ZWRfdHlwZToKICAgICAgICAgICAgICAgICAgICBjb250aW51ZQogICAgICAgICAgICAgICAgaWYgcHJlZGljYXRlIGlzIG5vdCBOb25lIGFuZCBub3QgcHJlZGljYXRlKHNlcSwgcGF5bG9hZCk6CiAgICAgICAgICAgICAgICAgICAgY29udGludWUKICAgICAgICAgICAgICAgIHNlbGYuX2luYm94LnBvcChpZHgpCiAgICAgICAgICAgICAgICByZXR1cm4gbXNnCgogICAgICAgICAgICByZW1haW5pbmcgPSBtYXgoMC4wNSwgZGVhZGxpbmUgLSB0aW1lLnRpbWUoKSkKICAgICAgICAgICAgdHJ5OgogICAgICAgICAgICAgICAgY2h1bmsgPSBhd2FpdCBhc3luY2lvLndhaXRfZm9yKHNlbGYuX3JlYWRlci5yZWFkKDQwOTYpLCB0aW1lb3V0PXJlbWFpbmluZykKICAgICAgICAgICAgZXhjZXB0IGFzeW5jaW8uVGltZW91dEVycm9yOgogICAgICAgICAgICAgICAgcmV0dXJuIE5vbmUKICAgICAgICAgICAgaWYgbm90IGNodW5rOgogICAgICAgICAgICAgICAgcmV0dXJuIE5vbmUKCiAgICAgICAgICAgIHNlbGYuX2J1ZmZlciArPSBjaHVuawogICAgICAgICAgICBtZXNzYWdlcywgc2VsZi5fYnVmZmVyID0gZGVjb2RlX21lc3NhZ2VzKHNlbGYuX2J1ZmZlcikKICAgICAgICAgICAgZm9yIG1zZ190eXBlLCBzZXEsIHBheWxvYWQgaW4gbWVzc2FnZXM6CiAgICAgICAgICAgICAgICBpZiBtc2dfdHlwZSBpbiAoTWVzc2FnZVR5cGUuUFJJVkFURV9NU0csIE1lc3NhZ2VUeXBlLkdST1VQX01TRykgYW5kIG5vdCBwYXlsb2FkLmdldCgiX2FjayIpOgogICAgICAgICAgICAgICAgICAgIHNlbGYuc3RhdHMubWVzc2FnZXNfcmVjZWl2ZWQgKz0gMQogICAgICAgICAgICAgICAgc2VsZi5faW5ib3guYXBwZW5kKChtc2dfdHlwZSwgc2VxLCBwYXlsb2FkKSkKCiAgICAgICAgcmV0dXJuIE5vbmUKCiAgICBhc3luYyBkZWYgX3NlbmRfYW5kX3dhaXQoc2VsZiwgbXNnX3R5cGU6IGludCwgcGF5bG9hZDogZGljdCwgZXhwZWN0ZWRfdHlwZTogaW50LCBwcmVkaWNhdGUsIHRpbWVvdXQ9NS4wKToKICAgICAgICBzZXEgPSBhd2FpdCBzZWxmLl9zZW5kKG1zZ190eXBlLCBwYXlsb2FkKQogICAgICAgIHJldHVybiBhd2FpdCBzZWxmLl9yZWFkX21hdGNoaW5nKAogICAgICAgICAgICBleHBlY3RlZF90eXBlLAogICAgICAgICAgICBwcmVkaWNhdGU9bGFtYmRhIHJlc3Bfc2VxLCByZXNwX3BheWxvYWQ6IHJlc3Bfc2VxID09IHNlcSBhbmQgcHJlZGljYXRlKHJlc3BfcGF5bG9hZCksCiAgICAgICAgICAgIHRpbWVvdXQ9dGltZW91dCwKICAgICAgICApCgogICAgYXN5bmMgZGVmIF9yZWdpc3RlcihzZWxmKSAtPiBib29sOgogICAgICAgIHN0YXJ0ID0gdGltZS50aW1lKCkKICAgICAgICByZXNwb25zZSA9IGF3YWl0IHNlbGYuX3NlbmRfYW5kX3dhaXQoCiAgICAgICAgICAgIE1lc3NhZ2VUeXBlLlJFR0lTVEVSX1JFUSwKICAgICAgICAgICAgeyJ1c2VybmFtZSI6IHNlbGYuX3VzZXJuYW1lLCAicGFzc3dvcmRfaGFzaCI6IHNlbGYuX3Bhc3N3b3JkfSwKICAgICAgICAgICAgTWVzc2FnZVR5cGUuUkVHSVNURVJfUkVTUCwKICAgICAgICAgICAgbGFtYmRhIHBheWxvYWQ6IHBheWxvYWQuZ2V0KCJzdWNjZXNzIikgaXMgVHJ1ZSwKICAgICAgICAgICAgdGltZW91dD1zZWxmLnRpbWVvdXQsCiAgICAgICAgKQogICAgICAgIGlmIG5vdCByZXNwb25zZToKICAgICAgICAgICAgc2VsZi5zdGF0cy5lcnJvcnMuYXBwZW5kKCJyZWdpc3Rlcl9mYWlsZWQiKQogICAgICAgICAgICByZXR1cm4gRmFsc2UKICAgICAgICBzZWxmLnN0YXRzLnJlZ2lzdGVyZWQgPSBUcnVlCiAgICAgICAgc2VsZi5zdGF0cy51c2VyX2lkID0gcmVzcG9uc2VbMl0uZ2V0KCJ1c2VyX2lkIikKICAgICAgICBzZWxmLnN0YXRzLmxhdGVuY2llcy5hcHBlbmQodGltZS50aW1lKCkgLSBzdGFydCkKICAgICAgICByZXR1cm4gVHJ1ZQoKICAgIGFzeW5jIGRlZiBfbG9naW4oc2VsZikgLT4gYm9vbDoKICAgICAgICBzdGFydCA9IHRpbWUudGltZSgpCiAgICAgICAgcmVzcG9uc2UgPSBhd2FpdCBzZWxmLl9zZW5kX2FuZF93YWl0KAogICAgICAgICAgICBNZXNzYWdlVHlwZS5MT0dJTl9SRVEsCiAgICAgICAgICAgIHsidXNlcm5hbWUiOiBzZWxmLl91c2VybmFtZSwgInBhc3N3b3JkX2hhc2giOiBzZWxmLl9wYXNzd29yZH0sCiAgICAgICAgICAgIE1lc3NhZ2VUeXBlLkxPR0lOX1JFU1AsCiAgICAgICAgICAgIGxhbWJkYSBwYXlsb2FkOiBwYXlsb2FkLmdldCgic3VjY2VzcyIpIGlzIFRydWUsCiAgICAgICAgICAgIHRpbWVvdXQ9c2VsZi50aW1lb3V0LAogICAgICAgICkKICAgICAgICBpZiBub3QgcmVzcG9uc2U6CiAgICAgICAgICAgIHNlbGYuc3RhdHMuZXJyb3JzLmFwcGVuZCgibG9naW5fZmFpbGVkIikKICAgICAgICAgICAgcmV0dXJuIEZhbHNlCiAgICAgICAgc2VsZi5zdGF0cy5sb2dnZWRfaW4gPSBUcnVlCiAgICAgICAgc2VsZi5zdGF0cy51c2VyX2lkID0gcmVzcG9uc2VbMl0uZ2V0KCJ1c2VyX2lkIikKICAgICAgICBzZWxmLnN0YXRzLmxhdGVuY2llcy5hcHBlbmQodGltZS50aW1lKCkgLSBzdGFydCkKICAgICAgICByZXR1cm4gVHJ1ZQoKICAgIGFzeW5jIGRlZiBleGNoYW5nZV9tZXNzYWdlcyhzZWxmLCB0YXJnZXRfdXNlcl9pZDogaW50KToKICAgICAgICBpZiBub3Qgc2VsZi5zdGF0cy51c2VyX2lkOgogICAgICAgICAgICBzZWxmLnN0YXRzLmVycm9ycy5hcHBlbmQoIm1pc3NpbmdfdXNlcl9pZCIpCiAgICAgICAgICAgIHJldHVybgogICAgICAgIGlmIG5vdCB0YXJnZXRfdXNlcl9pZCBvciB0YXJnZXRfdXNlcl9pZCA9PSBzZWxmLnN0YXRzLnVzZXJfaWQ6CiAgICAgICAgICAgIHNlbGYuc3RhdHMuZXJyb3JzLmFwcGVuZCgiaW52YWxpZF90YXJnZXRfdXNlcl9pZCIpCiAgICAgICAgICAgIHJldHVybgoKICAgICAgICBmb3IgaSBpbiByYW5nZShzZWxmLm1lc3NhZ2VzX3Blcl9jbGllbnQpOgogICAgICAgICAgICBjb250ZW50ID0gZiJzdHJlc3NfbXNnX3tpfV9mcm9tX3tzZWxmLmNsaWVudF9pZH0iCiAgICAgICAgICAgIHN0YXJ0ID0gdGltZS50aW1lKCkKICAgICAgICAgICAgcmVzcG9uc2UgPSBhd2FpdCBzZWxmLl9zZW5kX2FuZF93YWl0KAogICAgICAgICAgICAgICAgTWVzc2FnZVR5cGUuUFJJVkFURV9NU0csCiAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgInRvX2lkIjogdGFyZ2V0X3VzZXJfaWQsCiAgICAgICAgICAgICAgICAgICAgImNvbnRlbnQiOiBjb250ZW50LAogICAgICAgICAgICAgICAgICAgICJtc2dfaWQiOiBmInN0cmVzcy17c2VsZi5jbGllbnRfaWR9LXtpfSIsCiAgICAgICAgICAgICAgICAgICAgInRpbWVzdGFtcCI6IGludCh0aW1lLnRpbWUoKSksCiAgICAgICAgICAgICAgICB9LAogICAgICAgICAgICAgICAgTWVzc2FnZVR5cGUuUFJJVkFURV9NU0csCiAgICAgICAgICAgICAgICBsYW1iZGEgcGF5bG9hZDogcGF5bG9hZC5nZXQoIl9hY2siKSBpcyBUcnVlIGFuZCBwYXlsb2FkLmdldCgic3RhdHVzIikgaW4geyJkZWxpdmVyZWQiLCAic3RvcmVkIn0sCiAgICAgICAgICAgICAgICB0aW1lb3V0PXNlbGYudGltZW91dCwKICAgICAgICAgICAgKQogICAgICAgICAgICBzZWxmLnN0YXRzLm1lc3NhZ2VzX3NlbnQgKz0gMQogICAgICAgICAgICBpZiBub3QgcmVzcG9uc2U6CiAgICAgICAgICAgICAgICBzZWxmLnN0YXRzLmVycm9ycy5hcHBlbmQoZiJtZXNzYWdlX2Fja19taXNzaW5nOntpfSIpCiAgICAgICAgICAgICAgICBjb250aW51ZQogICAgICAgICAgICBzZWxmLnN0YXRzLm1lc3NhZ2VzX2Fja2VkICs9IDEKICAgICAgICAgICAgc2VsZi5zdGF0cy5sYXRlbmNpZXMuYXBwZW5kKHRpbWUudGltZSgpIC0gc3RhcnQpCgogICAgYXN5bmMgZGVmIGRyYWluX2luY29taW5nKHNlbGYsIHRpbWVvdXQ6IGZsb2F0ID0gMi4wKToKICAgICAgICAiIiLor7vlj5bkuIDlsI/mrrXml7bpl7TlhoXlt7Lnu4/liLDovr7nmoTmjqjpgIHmtojmga/vvIznlKjkuo7nu5/orqHnnJ/lrp7mlLbku7bmlbDjgIIiIiIKICAgICAgICBkZWFkbGluZSA9IHRpbWUudGltZSgpICsgdGltZW91dAogICAgICAgIHdoaWxlIHRpbWUudGltZSgpIDwgZGVhZGxpbmU6CiAgICAgICAgICAgIHJlbWFpbmluZyA9IG1heCgwLjA1LCBkZWFkbGluZSAtIHRpbWUudGltZSgpKQogICAgICAgICAgICBtc2cgPSBhd2FpdCBzZWxmLl9yZWFkX21hdGNoaW5nKHRpbWVvdXQ9cmVtYWluaW5nKQogICAgICAgICAgICBpZiBtc2cgaXMgTm9uZToKICAgICAgICAgICAgICAgIHJldHVybgoKICAgIGFzeW5jIGRlZiBkaXNjb25uZWN0KHNlbGYpOgogICAgICAgIGlmIHNlbGYuX3dyaXRlcjoKICAgICAgICAgICAgdHJ5OgogICAgICAgICAgICAgICAgc2VsZi5fd3JpdGVyLmNsb3NlKCkKICAgICAgICAgICAgICAgIGF3YWl0IHNlbGYuX3dyaXRlci53YWl0X2Nsb3NlZCgpCiAgICAgICAgICAgIGV4Y2VwdCBFeGNlcHRpb246CiAgICAgICAgICAgICAgICBwYXNzCgoKY2xhc3MgU3RyZXNzVGVzdGVyOgogICAgZGVmIF9faW5pdF9fKAogICAgICAgIHNlbGYsCiAgICAgICAgaG9zdDogc3RyID0gIjEyNy4wLjAuMSIsCiAgICAgICAgcG9ydDogaW50ID0gODg4OCwKICAgICAgICBudW1fY2xpZW50czogaW50ID0gMTAsCiAgICAgICAgY29uY3VycmVuY3k6IGludCA9IDEwLAogICAgICAgIG1lc3NhZ2VzX3Blcl9jbGllbnQ6IGludCA9IDUsCiAgICAgICAgdGltZW91dDogZmxvYXQgPSAxMC4wLAogICAgKToKICAgICAgICBzZWxmLmhvc3QgPSBob3N0CiAgICAgICAgc2VsZi5wb3J0ID0gcG9ydAogICAgICAgIHNlbGYubnVtX2NsaWVudHMgPSBudW1fY2xpZW50cwogICAgICAgIHNlbGYuY29uY3VycmVuY3kgPSBjb25jdXJyZW5jeQogICAgICAgIHNlbGYubWVzc2FnZXNfcGVyX2NsaWVudCA9IG1lc3NhZ2VzX3Blcl9jbGllbnQKICAgICAgICBzZWxmLnRpbWVvdXQgPSB0aW1lb3V0CgogICAgYXN5bmMgZGVmIHJ1bihzZWxmKSAtPiBBZ2dyZWdhdGVSZXBvcnQ6CiAgICAgICAgbG9nZ2VyLmluZm8oCiAgICAgICAgICAgICJTdGFydGluZyBzdHJlc3MgdGVzdCB8IGNsaWVudHM9JWQgY29uY3VycmVuY3k9JWQgbWVzc2FnZXMvY2xpZW50PSVkIiwKICAgICAgICAgICAgc2VsZi5udW1fY2xpZW50cywKICAgICAgICAgICAgc2VsZi5jb25jdXJyZW5jeSwKICAgICAgICAgICAgc2VsZi5tZXNzYWdlc19wZXJfY2xpZW50LAogICAgICAgICkKICAgICAgICBzdGFydF90aW1lID0gdGltZS50aW1lKCkKICAgICAgICBzZW1hcGhvcmUgPSBhc3luY2lvLlNlbWFwaG9yZShzZWxmLmNvbmN1cnJlbmN5KQogICAgICAgIGNsaWVudHM6IGxpc3RbVmlydHVhbENsaWVudF0gPSBbXQoKICAgICAgICBhc3luYyBkZWYgX2xvZ2luX2NsaWVudChjbGllbnRfaWQ6IGludCkgLT4gVmlydHVhbENsaWVudDoKICAgICAgICAgICAgYXN5bmMgd2l0aCBzZW1hcGhvcmU6CiAgICAgICAgICAgICAgICBjbGllbnQgPSBWaXJ0dWFsQ2xpZW50KAogICAgICAgICAgICAgICAgICAgIGNsaWVudF9pZD1jbGllbnRfaWQsCiAgICAgICAgICAgICAgICAgICAgaG9zdD1zZWxmLmhvc3QsCiAgICAgICAgICAgICAgICAgICAgcG9ydD1zZWxmLnBvcnQsCiAgICAgICAgICAgICAgICAgICAgdGltZW91dD1zZWxmLnRpbWVvdXQsCiAgICAgICAgICAgICAgICAgICAgbWVzc2FnZXNfcGVyX2NsaWVudD1zZWxmLm1lc3NhZ2VzX3Blcl9jbGllbnQsCiAgICAgICAgICAgICAgICApCiAgICAgICAgICAgICAgICBhd2FpdCBjbGllbnQuY29ubmVjdF9yZWdpc3Rlcl9sb2dpbigpCiAgICAgICAgICAgICAgICByZXR1cm4gY2xpZW50CgogICAgICAgIGFzeW5jIGRlZiBfZXhjaGFuZ2VfY2xpZW50KGNsaWVudDogVmlydHVhbENsaWVudCwgdGFyZ2V0X3VzZXJfaWQ6IGludCk6CiAgICAgICAgICAgIGFzeW5jIHdpdGggc2VtYXBob3JlOgogICAgICAgICAgICAgICAgYXdhaXQgY2xpZW50LmV4Y2hhbmdlX21lc3NhZ2VzKHRhcmdldF91c2VyX2lkKQoKICAgICAgICBhc3luYyBkZWYgX2RyYWluX2NsaWVudChjbGllbnQ6IFZpcnR1YWxDbGllbnQpOgogICAgICAgICAgICBhc3luYyB3aXRoIHNlbWFwaG9yZToKICAgICAgICAgICAgICAgIGF3YWl0IGNsaWVudC5kcmFpbl9pbmNvbWluZyh0aW1lb3V0PW1pbig1LjAsIHNlbGYudGltZW91dCkpCgogICAgICAgIHRyeToKICAgICAgICAgICAgY2xpZW50cyA9IGF3YWl0IGFzeW5jaW8uZ2F0aGVyKCpbX2xvZ2luX2NsaWVudChpKSBmb3IgaSBpbiByYW5nZShzZWxmLm51bV9jbGllbnRzKV0pCiAgICAgICAgICAgIGFjdGl2ZV9jbGllbnRzID0gW2NsaWVudCBmb3IgY2xpZW50IGluIGNsaWVudHMgaWYgY2xpZW50LnN0YXRzLmxvZ2dlZF9pbiBhbmQgY2xpZW50LnN0YXRzLnVzZXJfaWRdCgogICAgICAgICAgICBpZiBsZW4oYWN0aXZlX2NsaWVudHMpID49IDI6CiAgICAgICAgICAgICAgICBleGNoYW5nZV90YXNrcyA9IFtdCiAgICAgICAgICAgICAgICBmb3IgaWR4LCBjbGllbnQgaW4gZW51bWVyYXRlKGFjdGl2ZV9jbGllbnRzKToKICAgICAgICAgICAgICAgICAgICB0YXJnZXQgPSBhY3RpdmVfY2xpZW50c1soaWR4ICsgMSkgJSBsZW4oYWN0aXZlX2NsaWVudHMpXQogICAgICAgICAgICAgICAgICAgIGV4Y2hhbmdlX3Rhc2tzLmFwcGVuZChfZXhjaGFuZ2VfY2xpZW50KGNsaWVudCwgdGFyZ2V0LnN0YXRzLnVzZXJfaWQpKQogICAgICAgICAgICAgICAgYXdhaXQgYXN5bmNpby5nYXRoZXIoKmV4Y2hhbmdlX3Rhc2tzKQogICAgICAgICAgICAgICAgYXdhaXQgYXN5bmNpby5nYXRoZXIoKltfZHJhaW5fY2xpZW50KGNsaWVudCkgZm9yIGNsaWVudCBpbiBhY3RpdmVfY2xpZW50c10pCiAgICAgICAgICAgIGVsaWYgYWN0aXZlX2NsaWVudHM6CiAgICAgICAgICAgICAgICBhY3RpdmVfY2xpZW50c1swXS5zdGF0cy5lcnJvcnMuYXBwZW5kKCJub3RfZW5vdWdoX3BlZXJzX2Zvcl9wcml2YXRlX21lc3NhZ2VzIikKCiAgICAgICAgICAgIHJlc3VsdHMgPSBbY2xpZW50LnN0YXRzIGZvciBjbGllbnQgaW4gY2xpZW50c10KICAgICAgICAgICAgcmV0dXJuIHNlbGYuX2FnZ3JlZ2F0ZShyZXN1bHRzLCB0aW1lLnRpbWUoKSAtIHN0YXJ0X3RpbWUpCiAgICAgICAgZmluYWxseToKICAgICAgICAgICAgYXdhaXQgYXN5bmNpby5nYXRoZXIoCiAgICAgICAgICAgICAgICAqKGNsaWVudC5kaXNjb25uZWN0KCkgZm9yIGNsaWVudCBpbiBjbGllbnRzKSwKICAgICAgICAgICAgICAgIHJldHVybl9leGNlcHRpb25zPVRydWUsCiAgICAgICAgICAgICkKCiAgICBkZWYgX2FnZ3JlZ2F0ZShzZWxmLCByZXN1bHRzOiBsaXN0W1N0YXRzXSwgZHVyYXRpb246IGZsb2F0KSAtPiBBZ2dyZWdhdGVSZXBvcnQ6CiAgICAgICAgcmVwb3J0ID0gQWdncmVnYXRlUmVwb3J0KGR1cmF0aW9uPWR1cmF0aW9uKQogICAgICAgIGxhdGVuY2llczogbGlzdFtmbG9hdF0gPSBbXQoKICAgICAgICBmb3Igc3RhdHMgaW4gcmVzdWx0czoKICAgICAgICAgICAgcmVwb3J0LmNvbm5lY3RlZCArPSBpbnQoc3RhdHMuY29ubmVjdGVkKQogICAgICAgICAgICByZXBvcnQucmVnaXN0ZXJlZCArPSBpbnQoc3RhdHMucmVnaXN0ZXJlZCkKICAgICAgICAgICAgcmVwb3J0LmxvZ2luX3N1Y2Nlc3MgKz0gaW50KHN0YXRzLmxvZ2dlZF9pbikKICAgICAgICAgICAgcmVwb3J0LnRvdGFsX21lc3NhZ2VzX3NlbnQgKz0gc3RhdHMubWVzc2FnZXNfc2VudAogICAgICAgICAgICByZXBvcnQudG90YWxfbWVzc2FnZXNfYWNrZWQgKz0gc3RhdHMubWVzc2FnZXNfYWNrZWQKICAgICAgICAgICAgcmVwb3J0LnRvdGFsX21lc3NhZ2VzX3JlY2VpdmVkICs9IHN0YXRzLm1lc3NhZ2VzX3JlY2VpdmVkCiAgICAgICAgICAgIHJlcG9ydC50b3RhbF9lcnJvcnMgKz0gbGVuKHN0YXRzLmVycm9ycykKICAgICAgICAgICAgcmVwb3J0LnNhbXBsZV9lcnJvcnMuZXh0ZW5kKGYiY2xpZW50I3tzdGF0cy5jbGllbnRfaWR9OntlcnJ9IiBmb3IgZXJyIGluIHN0YXRzLmVycm9yc1s6M10pCiAgICAgICAgICAgIGxhdGVuY2llcy5leHRlbmQoc3RhdHMubGF0ZW5jaWVzKQoKICAgICAgICByZXBvcnQudG90YWxfY2xpZW50cyA9IGxlbihyZXN1bHRzKQogICAgICAgIGlmIGxhdGVuY2llczoKICAgICAgICAgICAgbGF0ZW5jaWVzLnNvcnQoKQogICAgICAgICAgICByZXBvcnQuYXZnX2xhdGVuY3kgPSBzdW0obGF0ZW5jaWVzKSAvIGxlbihsYXRlbmNpZXMpCiAgICAgICAgICAgIHJlcG9ydC5taW5fbGF0ZW5jeSA9IGxhdGVuY2llc1swXQogICAgICAgICAgICByZXBvcnQubWF4X2xhdGVuY3kgPSBsYXRlbmNpZXNbLTFdCiAgICAgICAgICAgIHJlcG9ydC5wNTBfbGF0ZW5jeSA9IGxhdGVuY2llc1tsZW4obGF0ZW5jaWVzKSAvLyAyXQogICAgICAgICAgICByZXBvcnQucDk5X2xhdGVuY3kgPSBsYXRlbmNpZXNbbWluKGxlbihsYXRlbmNpZXMpIC0gMSwgaW50KGxlbihsYXRlbmNpZXMpICogMC45OSkpXQogICAgICAgIHJlcG9ydC50aHJvdWdocHV0ID0gcmVwb3J0LnRvdGFsX21lc3NhZ2VzX2Fja2VkIC8gZHVyYXRpb24gaWYgZHVyYXRpb24gPiAwIGVsc2UgMC4wCiAgICAgICAgcmV0dXJuIHJlcG9ydAoKCmRlZiBwcmludF9yZXBvcnQocmVwb3J0OiBBZ2dyZWdhdGVSZXBvcnQpOgogICAgc2VwYXJhdG9yID0gIj0iICogNjAKICAgIHByaW50KGYiXG57c2VwYXJhdG9yfSIpCiAgICBwcmludCgiICBTVFJFU1MgVEVTVCBSRVBPUlQiKQogICAgcHJpbnQoc2VwYXJhdG9yKQogICAgcHJpbnQoZiIgIER1cmF0aW9uOiAgICAgICAgICAgICAge3JlcG9ydC5kdXJhdGlvbjouMmZ9IHMiKQogICAgcHJpbnQoZiIgIFRvdGFsIENsaWVudHM6ICAgICAgICAge3JlcG9ydC50b3RhbF9jbGllbnRzfSIpCiAgICBwcmludChmIiAgQ29ubmVjdGVkOiAgICAgICAgICAgICB7cmVwb3J0LmNvbm5lY3RlZH0iKQogICAgcHJpbnQoZiIgIFJlZ2lzdGVyZWQ6ICAgICAgICAgICAge3JlcG9ydC5yZWdpc3RlcmVkfSIpCiAgICBwcmludChmIiAgTG9naW4gU3VjY2VzczogICAgICAgICB7cmVwb3J0LmxvZ2luX3N1Y2Nlc3N9IikKICAgIHByaW50KGYiICBNZXNzYWdlcyBTZW50OiAgICAgICAgIHtyZXBvcnQudG90YWxfbWVzc2FnZXNfc2VudH0iKQogICAgcHJpbnQoZiIgIE1lc3NhZ2VzIEFDS2VkOiAgICAgICAge3JlcG9ydC50b3RhbF9tZXNzYWdlc19hY2tlZH0iKQogICAgcHJpbnQoZiIgIE1lc3NhZ2VzIFJlY2VpdmVkOiAgICAge3JlcG9ydC50b3RhbF9tZXNzYWdlc19yZWNlaXZlZH0iKQogICAgcHJpbnQoZiIgIFRvdGFsIEVycm9yczogICAgICAgICAge3JlcG9ydC50b3RhbF9lcnJvcnN9IikKICAgIHByaW50KHNlcGFyYXRvcikKICAgIHByaW50KCIgIC0tIExhdGVuY3kgKHNlY29uZHMpIC0tIikKICAgIHByaW50KGYiICBBdmcgTGF0ZW5jeTogICAgICAgICAgIHtyZXBvcnQuYXZnX2xhdGVuY3k6LjRmfSIpCiAgICBwcmludChmIiAgTWluIExhdGVuY3k6ICAgICAgICAgICB7cmVwb3J0Lm1pbl9sYXRlbmN5Oi40Zn0iKQogICAgcHJpbnQoZiIgIE1heCBMYXRlbmN5OiAgICAgICAgICAge3JlcG9ydC5tYXhfbGF0ZW5jeTouNGZ9IikKICAgIHByaW50KGYiICBQNTAgTGF0ZW5jeTogICAgICAgICAgIHtyZXBvcnQucDUwX2xhdGVuY3k6LjRmfSIpCiAgICBwcmludChmIiAgUDk5IExhdGVuY3k6ICAgICAgICAgICB7cmVwb3J0LnA5OV9sYXRlbmN5Oi40Zn0iKQogICAgcHJpbnQoc2VwYXJhdG9yKQogICAgcHJpbnQoZiIgIFRocm91Z2hwdXQ6ICAgICAgICAgICAge3JlcG9ydC50aHJvdWdocHV0Oi4yZn0gYWNrZWQgbXNnL3MiKQogICAgcHJpbnQoc2VwYXJhdG9yKQoKICAgIGlmIHJlcG9ydC50b3RhbF9lcnJvcnM6CiAgICAgICAgcHJpbnQoIiAgU2FtcGxlIGVycm9yczoiKQogICAgICAgIGZvciBlcnIgaW4gcmVwb3J0LnNhbXBsZV9lcnJvcnNbOjEwXToKICAgICAgICAgICAgcHJpbnQoZiIgICAgLSB7ZXJyfSIpCiAgICAgICAgcHJpbnQoc2VwYXJhdG9yKQoKICAgIHByaW50KGYiICBSZXN1bHQ6ICAgICAgICAgICAgICAgIHsnUEFTUycgaWYgcmVwb3J0Lm9rIGVsc2UgJ0ZBSUwnfSIpCiAgICBwcmludChzZXBhcmF0b3IpCgoKZGVmIHBhcnNlX2FyZ3MoKToKICAgIHBhcnNlciA9IGFyZ3BhcnNlLkFyZ3VtZW50UGFyc2VyKGRlc2NyaXB0aW9uPSJDaGF0IHNlcnZlciBzdHJlc3MgdGVzdCIpCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KCItLWhvc3QiLCBkZWZhdWx0PSIxMjcuMC4wLjEiLCBoZWxwPSJzZXJ2ZXIgaG9zdCIpCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KCItLXBvcnQiLCB0eXBlPWludCwgZGVmYXVsdD04ODg4LCBoZWxwPSJzZXJ2ZXIgVENQIHBvcnQiKQogICAgcGFyc2VyLmFkZF9hcmd1bWVudCgiLS1jbGllbnRzIiwgdHlwZT1pbnQsIGRlZmF1bHQ9MTAsIGhlbHA9InZpcnR1YWwgY2xpZW50IGNvdW50IikKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoIi0tY29uY3VycmVuY3kiLCB0eXBlPWludCwgZGVmYXVsdD0xMCwgaGVscD0iY29uY3VycmVudCBjbGllbnRzIikKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoIi0tbWVzc2FnZXMiLCB0eXBlPWludCwgZGVmYXVsdD01LCBoZWxwPSJtZXNzYWdlcyBwZXIgY2xpZW50IikKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoIi0tdGltZW91dCIsIHR5cGU9ZmxvYXQsIGRlZmF1bHQ9MTAuMCwgaGVscD0ib3BlcmF0aW9uIHRpbWVvdXQgc2Vjb25kcyIpCiAgICByZXR1cm4gcGFyc2VyLnBhcnNlX2FyZ3MoKQoKCmFzeW5jIGRlZiBtYWluKCk6CiAgICBhcmdzID0gcGFyc2VfYXJncygpCiAgICB0ZXN0ZXIgPSBTdHJlc3NUZXN0ZXIoCiAgICAgICAgaG9zdD1hcmdzLmhvc3QsCiAgICAgICAgcG9ydD1hcmdzLnBvcnQsCiAgICAgICAgbnVtX2NsaWVudHM9YXJncy5jbGllbnRzLAogICAgICAgIGNvbmN1cnJlbmN5PWFyZ3MuY29uY3VycmVuY3ksCiAgICAgICAgbWVzc2FnZXNfcGVyX2NsaWVudD1hcmdzLm1lc3NhZ2VzLAogICAgICAgIHRpbWVvdXQ9YXJncy50aW1lb3V0LAogICAgKQogICAgcmVwb3J0ID0gYXdhaXQgdGVzdGVyLnJ1bigpCiAgICBwcmludF9yZXBvcnQocmVwb3J0KQogICAgcmV0dXJuIDAgaWYgcmVwb3J0Lm9rIGVsc2UgMQoKCmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAgICBzeXMuZXhpdChhc3luY2lvLnJ1bihtYWluKCkpKQo=
+"""
+Concurrent TCP stress test for the chat server.
+
+Usage:
+  python tests/stress_test.py
+  python tests/stress_test.py --clients 50 --concurrency 20 --messages 3
+
+Start the server first with:
+  python -m server.main
+"""
+
+import argparse
+import asyncio
+import logging
+import sys
+import time
+import uuid
+from dataclasses import dataclass, field
+from pathlib import Path
+from typing import Optional
+
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from server.protocol import MessageType, decode_messages, encode_message
+
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
+logger = logging.getLogger("stress_test")
+
+
+@dataclass
+class Stats:
+    client_id: int
+    connected: bool = False
+    registered: bool = False
+    logged_in: bool = False
+    user_id: Optional[int] = None
+    messages_sent: int = 0
+    messages_acked: int = 0
+    messages_received: int = 0
+    errors: list[str] = field(default_factory=list)
+    latencies: list[float] = field(default_factory=list)
+
+
+@dataclass
+class AggregateReport:
+    total_clients: int = 0
+    connected: int = 0
+    registered: int = 0
+    login_success: int = 0
+    total_messages_sent: int = 0
+    total_messages_acked: int = 0
+    total_messages_received: int = 0
+    total_errors: int = 0
+    avg_latency: float = 0.0
+    p50_latency: float = 0.0
+    p99_latency: float = 0.0
+    max_latency: float = 0.0
+    min_latency: float = 0.0
+    throughput: float = 0.0
+    duration: float = 0.0
+    sample_errors: list[str] = field(default_factory=list)
+
+    @property
+    def ok(self) -> bool:
+        return (
+            self.connected == self.total_clients
+            and self.registered == self.total_clients
+            and self.login_success == self.total_clients
+            and self.total_errors == 0
+            and self.total_messages_sent == self.total_messages_acked
+            and self.total_messages_sent == self.total_messages_received
+        )
+
+
+class VirtualClient:
+    def __init__(
+        self,
+        client_id: int,
+        host: str,
+        port: int,
+        timeout: float = 10.0,
+        messages_per_client: int = 5,
+    ):
+        self.client_id = client_id
+        self.host = host
+        self.port = port
+        self.timeout = timeout
+        self.messages_per_client = messages_per_client
+        self.stats = Stats(client_id=client_id)
+        self._reader: Optional[asyncio.StreamReader] = None
+        self._writer: Optional[asyncio.StreamWriter] = None
+        self._username = f"stress_{int(time.time())}_{client_id}_{uuid.uuid4().hex[:6]}"
+        self._password = "stress_pass"
+        self._buffer = b""
+        self._inbox: list[tuple[int, int, dict]] = []
+        self._seq = client_id * 100000
+
+    def _next_seq(self) -> int:
+        self._seq += 1
+        return self._seq & 0xFFFFFFFF
+
+    async def connect_register_login(self) -> Stats:
+        try:
+            if not await self._connect():
+                return self.stats
+            if not await self._register():
+                return self.stats
+            if not await self._login():
+                return self.stats
+        except asyncio.TimeoutError:
+            self.stats.errors.append("timeout")
+        except ConnectionResetError:
+            self.stats.errors.append("connection_reset")
+        except Exception as exc:
+            self.stats.errors.append(f"unexpected:{type(exc).__name__}:{exc}")
+        return self.stats
+
+    async def _connect(self) -> bool:
+        try:
+            self._reader, self._writer = await asyncio.wait_for(
+                asyncio.open_connection(self.host, self.port),
+                timeout=self.timeout,
+            )
+            self.stats.connected = True
+            return True
+        except Exception as exc:
+            self.stats.errors.append(f"connect_failed:{type(exc).__name__}:{exc}")
+            return False
+
+    async def _send(self, msg_type: int, payload: dict, seq: int = None):
+        if seq is None:
+            seq = self._next_seq()
+        self._writer.write(encode_message(msg_type, payload, seq=seq))
+        await self._writer.drain()
+        return seq
+
+    async def _read_matching(self, expected_type=None, predicate=None, timeout: float = 5.0):
+        deadline = time.time() + timeout
+        while time.time() < deadline:
+            for idx, msg in enumerate(list(self._inbox)):
+                msg_type, seq, payload = msg
+                if expected_type is not None and msg_type != expected_type:
+                    continue
+                if predicate is not None and not predicate(seq, payload):
+                    continue
+                self._inbox.pop(idx)
+                return msg
+
+            remaining = max(0.05, deadline - time.time())
+            try:
+                chunk = await asyncio.wait_for(self._reader.read(4096), timeout=remaining)
+            except asyncio.TimeoutError:
+                return None
+            if not chunk:
+                return None
+
+            self._buffer += chunk
+            messages, self._buffer = decode_messages(self._buffer)
+            for msg_type, seq, payload in messages:
+                if msg_type in (MessageType.PRIVATE_MSG, MessageType.GROUP_MSG) and not payload.get("_ack"):
+                    self.stats.messages_received += 1
+                self._inbox.append((msg_type, seq, payload))
+
+        return None
+
+    async def _send_and_wait(self, msg_type: int, payload: dict, expected_type: int, predicate, timeout=5.0):
+        seq = await self._send(msg_type, payload)
+        return await self._read_matching(
+            expected_type,
+            predicate=lambda resp_seq, resp_payload: resp_seq == seq and predicate(resp_payload),
+            timeout=timeout,
+        )
+
+    async def _register(self) -> bool:
+        start = time.time()
+        response = await self._send_and_wait(
+            MessageType.REGISTER_REQ,
+            {"username": self._username, "password_hash": self._password},
+            MessageType.REGISTER_RESP,
+            lambda payload: payload.get("success") is True,
+            timeout=self.timeout,
+        )
+        if not response:
+            self.stats.errors.append("register_failed")
+            return False
+        self.stats.registered = True
+        self.stats.user_id = response[2].get("user_id")
+        self.stats.latencies.append(time.time() - start)
+        return True
+
+    async def _login(self) -> bool:
+        start = time.time()
+        response = await self._send_and_wait(
+            MessageType.LOGIN_REQ,
+            {"username": self._username, "password_hash": self._password},
+            MessageType.LOGIN_RESP,
+            lambda payload: payload.get("success") is True,
+            timeout=self.timeout,
+        )
+        if not response:
+            self.stats.errors.append("login_failed")
+            return False
+        self.stats.logged_in = True
+        self.stats.user_id = response[2].get("user_id")
+        self.stats.latencies.append(time.time() - start)
+        return True
+
+    async def exchange_messages(self, target_user_id: int):
+        if not self.stats.user_id:
+            self.stats.errors.append("missing_user_id")
+            return
+        if not target_user_id or target_user_id == self.stats.user_id:
+            self.stats.errors.append("invalid_target_user_id")
+            return
+
+        for i in range(self.messages_per_client):
+            content = f"stress_msg_{i}_from_{self.client_id}"
+            start = time.time()
+            response = await self._send_and_wait(
+                MessageType.PRIVATE_MSG,
+                {
+                    "to_id": target_user_id,
+                    "content": content,
+                    "msg_id": f"stress-{self.client_id}-{i}",
+                    "timestamp": int(time.time()),
+                },
+                MessageType.PRIVATE_MSG,
+                lambda payload: payload.get("_ack") is True and payload.get("status") in {"delivered", "stored"},
+                timeout=self.timeout,
+            )
+            self.stats.messages_sent += 1
+            if not response:
+                self.stats.errors.append(f"message_ack_missing:{i}")
+                continue
+            self.stats.messages_acked += 1
+            self.stats.latencies.append(time.time() - start)
+
+    async def drain_incoming(self, timeout: float = 2.0):
+        """读取一小段时间内已经到达的推送消息，用于统计真实收件数。"""
+        deadline = time.time() + timeout
+        while time.time() < deadline:
+            remaining = max(0.05, deadline - time.time())
+            msg = await self._read_matching(timeout=remaining)
+            if msg is None:
+                return
+
+    async def disconnect(self):
+        if self._writer:
+            try:
+                self._writer.close()
+                await self._writer.wait_closed()
+            except Exception:
+                pass
+
+
+class StressTester:
+    def __init__(
+        self,
+        host: str = "127.0.0.1",
+        port: int = 8888,
+        num_clients: int = 10,
+        concurrency: int = 10,
+        messages_per_client: int = 5,
+        timeout: float = 10.0,
+    ):
+        self.host = host
+        self.port = port
+        self.num_clients = num_clients
+        self.concurrency = concurrency
+        self.messages_per_client = messages_per_client
+        self.timeout = timeout
+
+    async def run(self) -> AggregateReport:
+        logger.info(
+            "Starting stress test | clients=%d concurrency=%d messages/client=%d",
+            self.num_clients,
+            self.concurrency,
+            self.messages_per_client,
+        )
+        start_time = time.time()
+        semaphore = asyncio.Semaphore(self.concurrency)
+        clients: list[VirtualClient] = []
+
+        async def _login_client(client_id: int) -> VirtualClient:
+            async with semaphore:
+                client = VirtualClient(
+                    client_id=client_id,
+                    host=self.host,
+                    port=self.port,
+                    timeout=self.timeout,
+                    messages_per_client=self.messages_per_client,
+                )
+                await client.connect_register_login()
+                return client
+
+        async def _exchange_client(client: VirtualClient, target_user_id: int):
+            async with semaphore:
+                await client.exchange_messages(target_user_id)
+
+        async def _drain_client(client: VirtualClient):
+            async with semaphore:
+                await client.drain_incoming(timeout=min(5.0, self.timeout))
+
+        try:
+            clients = await asyncio.gather(*[_login_client(i) for i in range(self.num_clients)])
+            active_clients = [client for client in clients if client.stats.logged_in and client.stats.user_id]
+
+            if len(active_clients) >= 2:
+                exchange_tasks = []
+                for idx, client in enumerate(active_clients):
+                    target = active_clients[(idx + 1) % len(active_clients)]
+                    exchange_tasks.append(_exchange_client(client, target.stats.user_id))
+                await asyncio.gather(*exchange_tasks)
+                await asyncio.gather(*[_drain_client(client) for client in active_clients])
+            elif active_clients:
+                active_clients[0].stats.errors.append("not_enough_peers_for_private_messages")
+
+            results = [client.stats for client in clients]
+            return self._aggregate(results, time.time() - start_time)
+        finally:
+            await asyncio.gather(
+                *(client.disconnect() for client in clients),
+                return_exceptions=True,
+            )
+
+    def _aggregate(self, results: list[Stats], duration: float) -> AggregateReport:
+        report = AggregateReport(duration=duration)
+        latencies: list[float] = []
+
+        for stats in results:
+            report.connected += int(stats.connected)
+            report.registered += int(stats.registered)
+            report.login_success += int(stats.logged_in)
+            report.total_messages_sent += stats.messages_sent
+            report.total_messages_acked += stats.messages_acked
+            report.total_messages_received += stats.messages_received
+            report.total_errors += len(stats.errors)
+            report.sample_errors.extend(f"client#{stats.client_id}:{err}" for err in stats.errors[:3])
+            latencies.extend(stats.latencies)
+
+        report.total_clients = len(results)
+        if latencies:
+            latencies.sort()
+            report.avg_latency = sum(latencies) / len(latencies)
+            report.min_latency = latencies[0]
+            report.max_latency = latencies[-1]
+            report.p50_latency = latencies[len(latencies) // 2]
+            report.p99_latency = latencies[min(len(latencies) - 1, int(len(latencies) * 0.99))]
+        report.throughput = report.total_messages_acked / duration if duration > 0 else 0.0
+        return report
+
+
+def print_report(report: AggregateReport):
+    separator = "=" * 60
+    print(f"\n{separator}")
+    print("  STRESS TEST REPORT")
+    print(separator)
+    print(f"  Duration:              {report.duration:.2f} s")
+    print(f"  Total Clients:         {report.total_clients}")
+    print(f"  Connected:             {report.connected}")
+    print(f"  Registered:            {report.registered}")
+    print(f"  Login Success:         {report.login_success}")
+    print(f"  Messages Sent:         {report.total_messages_sent}")
+    print(f"  Messages ACKed:        {report.total_messages_acked}")
+    print(f"  Messages Received:     {report.total_messages_received}")
+    print(f"  Total Errors:          {report.total_errors}")
+    print(separator)
+    print("  -- Latency (seconds) --")
+    print(f"  Avg Latency:           {report.avg_latency:.4f}")
+    print(f"  Min Latency:           {report.min_latency:.4f}")
+    print(f"  Max Latency:           {report.max_latency:.4f}")
+    print(f"  P50 Latency:           {report.p50_latency:.4f}")
+    print(f"  P99 Latency:           {report.p99_latency:.4f}")
+    print(separator)
+    print(f"  Throughput:            {report.throughput:.2f} acked msg/s")
+    print(separator)
+
+    if report.total_errors:
+        print("  Sample errors:")
+        for err in report.sample_errors[:10]:
+            print(f"    - {err}")
+        print(separator)
+
+    print(f"  Result:                {'PASS' if report.ok else 'FAIL'}")
+    print(separator)
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(description="Chat server stress test")
+    parser.add_argument("--host", default="127.0.0.1", help="server host")
+    parser.add_argument("--port", type=int, default=8888, help="server TCP port")
+    parser.add_argument("--clients", type=int, default=10, help="virtual client count")
+    parser.add_argument("--concurrency", type=int, default=10, help="concurrent clients")
+    parser.add_argument("--messages", type=int, default=5, help="messages per client")
+    parser.add_argument("--timeout", type=float, default=10.0, help="operation timeout seconds")
+    return parser.parse_args()
+
+
+async def main():
+    args = parse_args()
+    tester = StressTester(
+        host=args.host,
+        port=args.port,
+        num_clients=args.clients,
+        concurrency=args.concurrency,
+        messages_per_client=args.messages,
+        timeout=args.timeout,
+    )
+    report = await tester.run()
+    print_report(report)
+    return 0 if report.ok else 1
+
+
+if __name__ == "__main__":
+    sys.exit(asyncio.run(main()))

@@ -1,1 +1,177 @@
-IiIiCkBBSSDmmbrog73lm57lpI3mqKHlnZcK6LCD55SoIEJpZ01vZGVsIC8gRGFzaFNjb3BlIE9wZW5BSS1jb21wYXRpYmxlIEFQSeOAggpBUEkgS2V5IOeUsSBTZXJ2ZXJDb25maWcg5LuOIEJJR01PREVMX0FQSV9LRVkg5oiWIERBU0hTQ09QRV9BUElfS0VZIOivu+WPluOAggoiIiIKCmltcG9ydCBqc29uCmltcG9ydCBhc3luY2lvCmltcG9ydCBsb2dnaW5nCmZyb20gdHlwaW5nIGltcG9ydCBPcHRpb25hbAoKaW1wb3J0IGFpb2h0dHAKaW1wb3J0IGFpb2h0dHAuY2xpZW50X2V4Y2VwdGlvbnMKCmZyb20gc2VydmVyLmNvbmZpZyBpbXBvcnQgU2VydmVyQ29uZmlnCgpsb2dnZXIgPSBsb2dnaW5nLmdldExvZ2dlcihfX25hbWVfXykKCgpjbGFzcyBBSVNlcnZpY2U6CiAgICAiIiIKICAgIEFJIOaZuuiDveWbnuWkjeacjeWKoQogICAg6YCa6L+HIGFpb2h0dHAg5byC5q2l6LCD55So5aSn5qih5Z6LIEFQSe+8jOS4jemYu+WhnuS6i+S7tuW+queOrwogICAg6buY6K6k5LyY5YWI5L2/55SoIEJpZ01vZGVs77yb5LuF6YWN572uIERhc2hTY29wZSBLZXkg5pe25L2/55SoIERhc2hTY29wZSDlhbzlrrnmjqXlj6PjgIIKICAgICIiIgoKICAgIGRlZiBfX2luaXRfXyhzZWxmLCBjb25maWc6IE9wdGlvbmFsW1NlcnZlckNvbmZpZ10gPSBOb25lKToKICAgICAgICBzZWxmLmNvbmZpZyA9IGNvbmZpZyBvciBTZXJ2ZXJDb25maWcoKQogICAgICAgIHNlbGYuX2FwaV9rZXkgPSBzZWxmLmNvbmZpZy5haV9hcGlfa2V5IG9yICIiCiAgICAgICAgc2VsZi5fYXBpX2Jhc2UgPSBnZXRhdHRyKHNlbGYuY29uZmlnLCAiYWlfYXBpX2Jhc2UiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiaHR0cHM6Ly9vcGVuLmJpZ21vZGVsLmNuL2FwaS9wYWFzL3Y0IikKICAgICAgICBzZWxmLl9tb2RlbCA9IHNlbGYuY29uZmlnLmFpX21vZGVsIG9yICJnbG0tNC1mbGFzaC0yNTA0MTQiCiAgICAgICAgc2VsZi5fdGltZW91dCA9IDE1ICAjIOenkgoKICAgICAgICAjIOezu+e7n+aPkOekuuivje+8muWumuS5iSBBSSDouqvku70KICAgICAgICBzZWxmLl9zeXN0ZW1fcHJvbXB0ID0gewogICAgICAgICAgICAicm9sZSI6ICJzeXN0ZW0iLAogICAgICAgICAgICAiY29udGVudCI6ICgKICAgICAgICAgICAgICAgICLkvaDmmK/kuIDkuKrlj4vlpb3jgIHkuZDkuo7liqnkurrnmoTogYrlpKnliqnmiYvjgIIiCiAgICAgICAgICAgICAgICAi5L2g5Zyo5LiA5Liq5Y2z5pe26YCa6K6v576k57uE5Lit5Zue562U6Zeu6aKY44CCIgogICAgICAgICAgICAgICAgIuivt+eUqOS4reaWh+WbnuetlO+8jOS/neaMgeWbnuetlOeugOa0geaYjuS6hu+8iOS4gOiIrOS4jei2hei/hzIwMOWtl++8ieOAgiIKICAgICAgICAgICAgICAgICLlpoLmnpzkuI3nn6XpgZPnrZTmoYjvvIzor7flpoLlrp7lkYrnn6XjgIIiCiAgICAgICAgICAgICkKICAgICAgICB9CgogICAgICAgIGlmIG5vdCBzZWxmLl9hcGlfa2V5OgogICAgICAgICAgICBsb2dnZXIud2FybmluZygiQklHTU9ERUxfQVBJX0tFWS9EQVNIU0NPUEVfQVBJX0tFWSDmnKrorr7nva7vvIxBSSDmnI3liqHlsIbkuI3lj6/nlKgiKQoKICAgIEBwcm9wZXJ0eQogICAgZGVmIGF2YWlsYWJsZShzZWxmKSAtPiBib29sOgogICAgICAgICIiIkFJIOacjeWKoeaYr+WQpuWPr+eUqO+8iEFQSSBLZXkg5bey6YWN572u77yJIiIiCiAgICAgICAgcmV0dXJuIGJvb2woc2VsZi5fYXBpX2tleSkKCiAgICBhc3luYyBkZWYgcXVlcnkoc2VsZiwgcHJvbXB0OiBzdHIsIGhpc3Rvcnk6IE9wdGlvbmFsW2xpc3RdID0gTm9uZSkgLT4gc3RyOgogICAgICAgICIiIgogICAgICAgIOiwg+eUqCBBSSBBUEkg6I635Y+W5pm66IO95Zue5aSNCgogICAgICAgIEFyZ3M6CiAgICAgICAgICAgIHByb21wdDog55So5oi35o+Q6Zeu5YaF5a65CiAgICAgICAgICAgIGhpc3Rvcnk6IOWPr+mAieeahOWOhuWPsua2iOaBr+WIl+ihqO+8jOagvOW8jyBbeyJyb2xlIjogInVzZXIifCJhc3Npc3RhbnQiLCAiY29udGVudCI6IHN0cn0sIC4uLl0KCiAgICAgICAgUmV0dXJuczoKICAgICAgICAgICAg5Zue5aSN5paH5pys77yM5aSx6LSl5pe26L+U5Zue6ZSZ6K+v5o+Q56S6CiAgICAgICAgIiIiCiAgICAgICAgaWYgbm90IHNlbGYuX2FwaV9rZXk6CiAgICAgICAgICAgIHJldHVybiAiQUkg5pyN5Yqh5pyq6YWN572u77yI6K+36K6+572uIEJJR01PREVMX0FQSV9LRVkg5oiWIERBU0hTQ09QRV9BUElfS0VZ77yJIgoKICAgICAgICBpZiBub3QgcHJvbXB0IG9yIG5vdCBwcm9tcHQuc3RyaXAoKToKICAgICAgICAgICAgcmV0dXJuICLor7fovpPlhaXmnInmlYjnmoTpl67popgiCgogICAgICAgIG1lc3NhZ2VzID0gW3NlbGYuX3N5c3RlbV9wcm9tcHRdCgogICAgICAgICMg5re75Yqg5Y6G5Y+y5raI5oGv77yI5pyA5aSaIDEwIOadoe+8iQogICAgICAgIGlmIGhpc3Rvcnk6CiAgICAgICAgICAgIGZvciBtc2cgaW4gaGlzdG9yeVstMTA6XToKICAgICAgICAgICAgICAgIGlmIGlzaW5zdGFuY2UobXNnLCBkaWN0KSBhbmQgInJvbGUiIGluIG1zZyBhbmQgImNvbnRlbnQiIGluIG1zZzoKICAgICAgICAgICAgICAgICAgICBtZXNzYWdlcy5hcHBlbmQobXNnKQoKICAgICAgICAjIOa3u+WKoOW9k+WJjemXrumimAogICAgICAgIG1lc3NhZ2VzLmFwcGVuZCh7InJvbGUiOiAidXNlciIsICJjb250ZW50IjogcHJvbXB0LnN0cmlwKCl9KQoKICAgICAgICAjIOWFvOWuuSBPcGVuQUkg5qC85byP55qE6K+35rGC5L2TCiAgICAgICAgcGF5bG9hZCA9IHsKICAgICAgICAgICAgIm1vZGVsIjogc2VsZi5fbW9kZWwsCiAgICAgICAgICAgICJtZXNzYWdlcyI6IG1lc3NhZ2VzLAogICAgICAgICAgICAibWF4X3Rva2VucyI6IDUxMiwKICAgICAgICAgICAgInRlbXBlcmF0dXJlIjogMC43LAogICAgICAgIH0KCiAgICAgICAgaGVhZGVycyA9IHsKICAgICAgICAgICAgIkF1dGhvcml6YXRpb24iOiBmIkJlYXJlciB7c2VsZi5fYXBpX2tleX0iLAogICAgICAgICAgICAiQ29udGVudC1UeXBlIjogImFwcGxpY2F0aW9uL2pzb24iLAogICAgICAgIH0KCiAgICAgICAgdXJsID0gZiJ7c2VsZi5fYXBpX2Jhc2UucnN0cmlwKCcvJyl9L2NoYXQvY29tcGxldGlvbnMiCgogICAgICAgIHRyeToKICAgICAgICAgICAgYXN5bmMgd2l0aCBhaW9odHRwLkNsaWVudFNlc3Npb24oKSBhcyBzZXNzaW9uOgogICAgICAgICAgICAgICAgYXN5bmMgd2l0aCBzZXNzaW9uLnBvc3QoCiAgICAgICAgICAgICAgICAgICAgdXJsLAogICAgICAgICAgICAgICAgICAgIGhlYWRlcnM9aGVhZGVycywKICAgICAgICAgICAgICAgICAgICBqc29uPXBheWxvYWQsCiAgICAgICAgICAgICAgICAgICAgdGltZW91dD1haW9odHRwLkNsaWVudFRpbWVvdXQodG90YWw9c2VsZi5fdGltZW91dCksCiAgICAgICAgICAgICAgICApIGFzIHJlc3A6CiAgICAgICAgICAgICAgICAgICAgaWYgcmVzcC5zdGF0dXMgIT0gMjAwOgogICAgICAgICAgICAgICAgICAgICAgICBlcnJvcl90ZXh0ID0gYXdhaXQgcmVzcC50ZXh0KCkKICAgICAgICAgICAgICAgICAgICAgICAgbG9nZ2VyLmVycm9yKGYiQUkgQVBJIOi/lOWbnumUmeivryAoSFRUUCB7cmVzcC5zdGF0dXN9KToge2Vycm9yX3RleHR9IikKICAgICAgICAgICAgICAgICAgICAgICAgcmV0dXJuIHNlbGYuX2Vycm9yX21lc3NhZ2UocmVzcC5zdGF0dXMpCgogICAgICAgICAgICAgICAgICAgIHJlc3VsdCA9IGF3YWl0IHJlc3AuanNvbigpCiAgICAgICAgICAgICAgICAgICAgcmV0dXJuIHNlbGYuX2V4dHJhY3RfcmVwbHkocmVzdWx0KQoKICAgICAgICBleGNlcHQgYXN5bmNpby5UaW1lb3V0RXJyb3I6CiAgICAgICAgICAgIGxvZ2dlci53YXJuaW5nKCJBSSBBUEkg6K+35rGC6LaF5pe2IikKICAgICAgICAgICAgcmV0dXJuICJBSSDmnI3liqHmmoLml7bkuI3lj6/nlKjvvIjor7fmsYLotoXml7bvvIkiCiAgICAgICAgZXhjZXB0IGFpb2h0dHAuY2xpZW50X2V4Y2VwdGlvbnMuQ2xpZW50RXJyb3IgYXMgZToKICAgICAgICAgICAgbG9nZ2VyLmVycm9yKGYiQUkgQVBJIOivt+axguWksei0pToge2V9IikKICAgICAgICAgICAgcmV0dXJuICJBSSDmnI3liqHmmoLml7bkuI3lj6/nlKjvvIjnvZHnu5zplJnor6/vvIkiCiAgICAgICAgZXhjZXB0IChqc29uLkpTT05EZWNvZGVFcnJvciwgS2V5RXJyb3IsIFR5cGVFcnJvcikgYXMgZToKICAgICAgICAgICAgbG9nZ2VyLmVycm9yKGYiQUkgQVBJIOi/lOWbnuino+aekOWksei0pToge2V9IikKICAgICAgICAgICAgcmV0dXJuICJBSSDmnI3liqHmmoLml7bkuI3lj6/nlKjvvIjlk43lupTop6PmnpDlpLHotKXvvIkiCgogICAgZGVmIF9leHRyYWN0X3JlcGx5KHNlbGYsIHJlc3VsdDogZGljdCkgLT4gc3RyOgogICAgICAgICIiIuS7jiBBUEkg5ZON5bqU5Lit5o+Q5Y+W5Zue5aSN5paH5pysIiIiCiAgICAgICAgIyBPcGVuQUkg5YW85a655qC85byPCiAgICAgICAgY2hvaWNlcyA9IHJlc3VsdC5nZXQoImNob2ljZXMiLCBbXSkKICAgICAgICBpZiBub3QgY2hvaWNlczoKICAgICAgICAgICAgcmV0dXJuICJBSSDmnI3liqHmmoLml7bkuI3lj6/nlKjvvIjov5Tlm57kuLrnqbrvvIkiCgogICAgICAgIG1lc3NhZ2UgPSBjaG9pY2VzWzBdLmdldCgibWVzc2FnZSIsIHt9KQogICAgICAgIGNvbnRlbnQgPSBtZXNzYWdlLmdldCgiY29udGVudCIsICIiKQogICAgICAgIGlmIG5vdCBjb250ZW50OgogICAgICAgICAgICBjb250ZW50ID0gY2hvaWNlc1swXS5nZXQoInRleHQiLCAiIikKCiAgICAgICAgcmV0dXJuIGNvbnRlbnQuc3RyaXAoKSBvciAiQUkg5pyN5Yqh5pqC5pe25LiN5Y+v55So77yI6L+U5Zue5Li656m677yJIgoKICAgIGRlZiBfZXJyb3JfbWVzc2FnZShzZWxmLCBzdGF0dXNfY29kZTogaW50KSAtPiBzdHI6CiAgICAgICAgIiIi5qC55o2uIEhUVFAg54q25oCB56CB6L+U5Zue55So5oi35Y+L5aW955qE6ZSZ6K+v5L+h5oGvIiIiCiAgICAgICAgaWYgc3RhdHVzX2NvZGUgPT0gNDAxOgogICAgICAgICAgICByZXR1cm4gIkFJIOacjeWKoeiupOivgeWksei0pe+8iEFQSSBLZXkg5peg5pWI77yJIgogICAgICAgIGVsaWYgc3RhdHVzX2NvZGUgPT0gNDI5OgogICAgICAgICAgICByZXR1cm4gIkFJIOacjeWKoeivt+axgui/h+S6jumikee5ge+8jOivt+eojeWQjuWGjeivlSIKICAgICAgICBlbGlmIHN0YXR1c19jb2RlID49IDUwMDoKICAgICAgICAgICAgcmV0dXJuICJBSSDmnI3liqHmmoLml7bkuI3lj6/nlKjvvIjmnI3liqHnq6/plJnor6/vvIkiCiAgICAgICAgZWxzZToKICAgICAgICAgICAgcmV0dXJuIGYiQUkg5pyN5Yqh5pqC5pe25LiN5Y+v55So77yI6ZSZ6K+v56CBOiB7c3RhdHVzX2NvZGV9KSIKCiAgICBhc3luYyBkZWYgcXVlcnlfd2l0aF9jb250ZXh0KAogICAgICAgIHNlbGYsCiAgICAgICAgcHJvbXB0OiBzdHIsCiAgICAgICAgdXNlcm5hbWU6IHN0ciA9ICIiLAogICAgICAgIGhpc3Rvcnk6IE9wdGlvbmFsW2xpc3RdID0gTm9uZSwKICAgICkgLT4gc3RyOgogICAgICAgICIiIgogICAgICAgIOW4puS4iuS4i+aWh+eahCBBSSDmn6Xor6IKCiAgICAgICAgQXJnczoKICAgICAgICAgICAgcHJvbXB0OiDnlKjmiLfpl67popgKICAgICAgICAgICAgdXNlcm5hbWU6IOaPkOmXruiAheeUqOaIt+WQje+8iOeUqOS6juS4quaAp+WMlu+8iQogICAgICAgICAgICBoaXN0b3J5OiDmnIDov5HogYrlpKnljoblj7IKICAgICAgICAiIiIKICAgICAgICBjb250ZXh0X3Byb21wdCA9IHByb21wdAogICAgICAgIGlmIHVzZXJuYW1lOgogICAgICAgICAgICBjb250ZXh0X3Byb21wdCA9IGYie3VzZXJuYW1lfSDmj5Dpl646IHtwcm9tcHR9IgoKICAgICAgICByZXR1cm4gYXdhaXQgc2VsZi5xdWVyeShjb250ZXh0X3Byb21wdCwgaGlzdG9yeSkKCgojIOWFqOWxgOWNleS+iwpfc2VydmljZTogT3B0aW9uYWxbQUlTZXJ2aWNlXSA9IE5vbmUKCgpkZWYgZ2V0X2FpX3NlcnZpY2UoY29uZmlnOiBPcHRpb25hbFtTZXJ2ZXJDb25maWddID0gTm9uZSkgLT4gQUlTZXJ2aWNlOgogICAgZ2xvYmFsIF9zZXJ2aWNlCiAgICBpZiBfc2VydmljZSBpcyBOb25lOgogICAgICAgIF9zZXJ2aWNlID0gQUlTZXJ2aWNlKGNvbmZpZykKICAgIHJldHVybiBfc2VydmljZQo=
+"""
+@AI 智能回复模块
+调用 BigModel / DashScope OpenAI-compatible API。
+API Key 由 ServerConfig 从 BIGMODEL_API_KEY 或 DASHSCOPE_API_KEY 读取。
+"""
+
+import json
+import asyncio
+import logging
+from typing import Optional
+
+import aiohttp
+import aiohttp.client_exceptions
+
+from server.config import ServerConfig
+
+logger = logging.getLogger(__name__)
+
+
+class AIService:
+    """
+    AI 智能回复服务
+    通过 aiohttp 异步调用大模型 API，不阻塞事件循环
+    默认优先使用 BigModel；仅配置 DashScope Key 时使用 DashScope 兼容接口。
+    """
+
+    def __init__(self, config: Optional[ServerConfig] = None):
+        self.config = config or ServerConfig()
+        self._api_key = self.config.ai_api_key or ""
+        self._api_base = getattr(self.config, "ai_api_base",
+                                 "https://open.bigmodel.cn/api/paas/v4")
+        self._model = self.config.ai_model or "glm-4-flash-250414"
+        self._timeout = 15  # 秒
+
+        # 系统提示词：定义 AI 身份
+        self._system_prompt = {
+            "role": "system",
+            "content": (
+                "你是一个友好、乐于助人的聊天助手。"
+                "你在一个即时通讯群组中回答问题。"
+                "请用中文回答，保持回答简洁明了（一般不超过200字）。"
+                "如果不知道答案，请如实告知。"
+            )
+        }
+
+        if not self._api_key:
+            logger.warning("BIGMODEL_API_KEY/DASHSCOPE_API_KEY 未设置，AI 服务将不可用")
+
+    @property
+    def available(self) -> bool:
+        """AI 服务是否可用（API Key 已配置）"""
+        return bool(self._api_key)
+
+    async def query(self, prompt: str, history: Optional[list] = None) -> str:
+        """
+        调用 AI API 获取智能回复
+
+        Args:
+            prompt: 用户提问内容
+            history: 可选的历史消息列表，格式 [{"role": "user"|"assistant", "content": str}, ...]
+
+        Returns:
+            回复文本，失败时返回错误提示
+        """
+        if not self._api_key:
+            return "AI 服务未配置（请设置 BIGMODEL_API_KEY 或 DASHSCOPE_API_KEY）"
+
+        if not prompt or not prompt.strip():
+            return "请输入有效的问题"
+
+        messages = [self._system_prompt]
+
+        # 添加历史消息（最多 10 条）
+        if history:
+            for msg in history[-10:]:
+                if isinstance(msg, dict) and "role" in msg and "content" in msg:
+                    messages.append(msg)
+
+        # 添加当前问题
+        messages.append({"role": "user", "content": prompt.strip()})
+
+        # 兼容 OpenAI 格式的请求体
+        payload = {
+            "model": self._model,
+            "messages": messages,
+            "max_tokens": 512,
+            "temperature": 0.7,
+        }
+
+        headers = {
+            "Authorization": f"Bearer {self._api_key}",
+            "Content-Type": "application/json",
+        }
+
+        url = f"{self._api_base.rstrip('/')}/chat/completions"
+
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.post(
+                    url,
+                    headers=headers,
+                    json=payload,
+                    timeout=aiohttp.ClientTimeout(total=self._timeout),
+                ) as resp:
+                    if resp.status != 200:
+                        error_text = await resp.text()
+                        logger.error(f"AI API 返回错误 (HTTP {resp.status}): {error_text}")
+                        return self._error_message(resp.status)
+
+                    result = await resp.json()
+                    return self._extract_reply(result)
+
+        except asyncio.TimeoutError:
+            logger.warning("AI API 请求超时")
+            return "AI 服务暂时不可用（请求超时）"
+        except aiohttp.client_exceptions.ClientError as e:
+            logger.error(f"AI API 请求失败: {e}")
+            return "AI 服务暂时不可用（网络错误）"
+        except (json.JSONDecodeError, KeyError, TypeError) as e:
+            logger.error(f"AI API 返回解析失败: {e}")
+            return "AI 服务暂时不可用（响应解析失败）"
+
+    def _extract_reply(self, result: dict) -> str:
+        """从 API 响应中提取回复文本"""
+        # OpenAI 兼容格式
+        choices = result.get("choices", [])
+        if not choices:
+            return "AI 服务暂时不可用（返回为空）"
+
+        message = choices[0].get("message", {})
+        content = message.get("content", "")
+        if not content:
+            content = choices[0].get("text", "")
+
+        return content.strip() or "AI 服务暂时不可用（返回为空）"
+
+    def _error_message(self, status_code: int) -> str:
+        """根据 HTTP 状态码返回用户友好的错误信息"""
+        if status_code == 401:
+            return "AI 服务认证失败（API Key 无效）"
+        elif status_code == 429:
+            return "AI 服务请求过于频繁，请稍后再试"
+        elif status_code >= 500:
+            return "AI 服务暂时不可用（服务端错误）"
+        else:
+            return f"AI 服务暂时不可用（错误码: {status_code})"
+
+    async def query_with_context(
+        self,
+        prompt: str,
+        username: str = "",
+        history: Optional[list] = None,
+    ) -> str:
+        """
+        带上下文的 AI 查询
+
+        Args:
+            prompt: 用户问题
+            username: 提问者用户名（用于个性化）
+            history: 最近聊天历史
+        """
+        context_prompt = prompt
+        if username:
+            context_prompt = f"{username} 提问: {prompt}"
+
+        return await self.query(context_prompt, history)
+
+
+# 全局单例
+_service: Optional[AIService] = None
+
+
+def get_ai_service(config: Optional[ServerConfig] = None) -> AIService:
+    global _service
+    if _service is None:
+        _service = AIService(config)
+    return _service

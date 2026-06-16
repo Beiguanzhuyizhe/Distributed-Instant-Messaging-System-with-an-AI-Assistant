@@ -1,1 +1,231 @@
-IyDljbPml7bogYrlpKnns7vnu58gLSDnlKjmiLfmiYvlhowKCiMjIOS4gOOAgeezu+e7n+amgui/sAoK5YiG5biD5byP5Y2z5pe26IGK5aSp57O757uf77yM5pSv5oyB5paH5a2X6IGK5aSp44CB576k57uE6IGK5aSp44CBQUkg5pm66IO95Zue5aSN44CB5pyN5Yqh56uv5Lit57un5paH5Lu25Lyg6L6T562J5Yqf6IO944CCCgojIyMg5oqA5pyv5qCICi0gKiror63oqIAqKjogUHl0aG9uIDMuMTArCi0gKirnvZHnu5wqKjogVENQ77yI5paH5a2XL+aOp+WItua2iOaBr+OAgeacjeWKoeerr+S4ree7p+aWh+S7tuS8oOi+k++8iSsgVURQ77yI5a6e6aqM5oCnIFAyUO+8iQotICoq5pWw5o2u5bqTKio6IFNRTGl0Ze+8iOacjeWKoeerr+aMgeS5heWMlu+8iS8gSlNPTu+8iOWuouaIt+err+acrOWcsOWtmOWCqO+8iQotICoqQUkqKjogQmlnTW9kZWwg5LyY5YWI77yM5YW85a65IERhc2hTY29wZSBPcGVuQUktY29tcGF0aWJsZSDmjqXlj6MKLSAqKueVjOmdoioqOiBDTEkgKHJpY2gpICsgR1VJICh0a2ludGVyKSDlj4zmqKEKCi0tLQoKIyMg5LqM44CB546v5aKD6KaB5rGCCgotIFB5dGhvbiAzLjEwIOaIluabtOmrmOeJiOacrAotIOaTjeS9nOezu+e7n++8mldpbmRvd3MgLyBMaW51eCAvIG1hY09TCgojIyMg5L6d6LWW5a6J6KOFCgpgYGBiYXNoCnB5dGhvbiAtbSBwaXAgaW5zdGFsbCAtciByZXF1aXJlbWVudHMudHh0CmBgYAoKLS0tCgojIyDkuInjgIHlv6vpgJ/lkK/liqgKCiMjIyAzLjEg5ZCv5Yqo5pyN5Yqh5ZmoCgpgYGBiYXNoCmNkIOmhueebruagueebruW9lQpweXRob24gLW0gc2VydmVyLm1haW4KYGBgCgrmnI3liqHlmajpu5jorqTlnKggYDAuMC4wLjA6ODg4OGAg55uR5ZCs44CC5Y+v6YCa6L+H5L+u5pS5IGBzZXJ2ZXIvY29uZmlnLnB5YCDmm7TmlLnnq6/lj6PjgIIK5aaC5p6c5L2/55SoIFdpbmRvd3Mg5ZCv5Yqo6ISa5pysIGDlhYjngrnmiJHlkK/liqjmnI3liqHlmagtcmVzdGFydC5iYXRg77yM6ISa5pys5Lya55u05o6l6K+75Y+W5b2T5YmN546v5aKD5Y+Y6YeP5Lit55qEIGBCSUdNT0RFTF9BUElfS0VZYCDmiJYgYERBU0hTQ09QRV9BUElfS0VZYO+8jOS4jeS8muWcqOiEmuacrOWGheS/neWtmCBBUEkgS2V544CCCgrmiJDlip/lkK/liqjml6Xlv5fvvJoKYGBgCjIwMjYtMDQtMzAgW0lORk9dIHNlcnZlci5oZWFydGJlYXQ6IEhlYXJ0YmVhdCBtb25pdG9yIHN0YXJ0ZWQgKGludGVydmFsPTMwcywgdGltZW91dD05MHMpCjIwMjYtMDQtMzAgW0lORk9dIHNlcnZlci50Y3Bfc2VydmVyOiBDaGF0U2VydmVyIGxpc3RlbmluZyBvbiAwLjAuMC4wOjg4ODgKYGBgCgojIyMgMy4yIOWQr+WKqOWuouaIt+err++8iENMSSDmqKHlvI/vvIkKCmBgYGJhc2gKcHl0aG9uIC1tIGNsaWVudC5tYWluIC0tY2xpCmBgYAoKIyMjIDMuMyDlkK/liqjlrqLmiLfnq6/vvIhHVUkg5qih5byP77yJCgpgYGBiYXNoCnB5dGhvbiAtbSBjbGllbnQubWFpbiAtLWd1aQpgYGAKCi0tLQoKIyMg5Zub44CBQ0xJIOWuouaIt+err+S9v+eUqOaMh+WNlwoKIyMjIDQuMSDms6jlhowgLyDnmbvlvZUKCuWQr+WKqOWuouaIt+err+WQju+8jOmmluWFiOi/m+WFpeeZu+W9leeVjOmdou+8mgoKYGBgCuKVlOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVlwrilZEgICAgICAgICAg5Y2z5pe26IGK5aSp57O757ufIHYxLjAgICAgICAgICAgICDilZEK4pWg4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWQ4pWjCuKVkSAgMS4g55m75b2VICAgICAgICAgICAgICAgICAgICAgICAgICAgICDilZEK4pWRICAyLiDms6jlhowgICAgICAgICAgICAgICAgICAgICAgICAgICAgIOKVkQrilZEgIDMuIOmAgOWHuiAgICAgICAgICAgICAgICAgICAgICAgICAgICAg4pWRCuKVmuKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVkOKVnQpgYGAKCumAieaLqSAqKjIqKiDms6jlhozmlrDotKblj7fvvIjnlKjmiLflkI3pnIDllK/kuIDvvInvvIzms6jlhozmiJDlip/lkI7pgInmi6kgKioxKiog55m75b2V44CCCgojIyMgNC4yIOS4u+eVjOmdogoK55m75b2V5ZCO6L+b5YWl6IGK5aSp5Li755WM6Z2i77yM5YiG5Li65LiJ5Liq5Yy65Z+f77yaCi0gKirpobbpg6gqKjog57O757uf54q25oCB5qCP77yI5pi+56S655So5oi35ZCN44CB6L+e5o6l54q25oCB77yJCi0gKirkuK3pg6gqKjog5raI5oGv5YiX6KGo77yI5a6e5pe25pi+56S66IGK5aSp5raI5oGv77yJCi0gKirlupXpg6gqKjog5ZG95Luk6L6T5YWl5qGGCgojIyMgNC4zIOWPr+eUqOWRveS7pAoKfCDlkb3ku6QgfCDor7TmmI4gfCDnpLrkvosgfAp8LS0tLS0tfC0tLS0tLXwtLS0tLS18CnwgYC9tc2cgPOeUqOaItz4gPOWGheWuuT5gIHwg5Y+R6YCB56eB6IGK5raI5oGvIHwgYC9tc2cgYWxpY2Ug5L2g5aW9IWAgfAp8IGAvY3JlYXRlIDznvqTlkI0+YCB8IOWIm+W7uue+pOe7hCB8IGAvY3JlYXRlIOaKgOacr+S6pOa1gee+pGAgfAp8IGAvam9pbiA8576kSUQ+YCB8IOWKoOWFpee+pOe7hCB8IGAvam9pbiAxYCB8CnwgYC9sZWF2ZSA8576kSUQ+YCB8IOmAgOWHuue+pOe7hCB8IGAvbGVhdmUgMWAgfAp8IGAvZ3JvdXAgPOe+pElEPiA85YaF5a65PmAgfCDlj5HpgIHnvqTogYrmtojmga8gfCBgL2dyb3VwIDEg5aSn5a625aW9IWAgfAp8IGBAQUkgPOmXrumimD5gIHwg5ZCRIEFJIOaPkOmXru+8iOmcgOWcqOe+pOiBiuS4re+8iSB8IGBAQUkg5LuA5LmI5pivIFRDUCDljY/orq4/YCB8CnwgYC91c2Vyc2AgfCDmn6XnnIvlnKjnur/nlKjmiLcgfCBgL3VzZXJzYCB8CnwgYC9zZW5kZmlsZSA855So5oi3PiA85paH5Lu26Lev5b6EPmAgfCDlj5HpgIHmlofku7YgfCBgL3NlbmRmaWxlIGJvYiAuL2RvYy5wZGZgIHwKfCBgL3JlY2FsbCA85raI5oGvSUQ+YCB8IOaSpOWbnua2iOaBr++8iDLliIbpkp/lhoXvvIzkvb/nlKjmnI3liqHnq6/noa7orqTnmoQgVVVJRO+8iSB8IGAvcmVjYWxsIDZmMWIxZThkLTljODQtNGU2Zi05ZDhjLTEyMzQ1Njc4OWFiY2AgfAp8IGAvaGlzdG9yeSA855So5oi35oiW576kSUQ+YCB8IOafpeeci+WOhuWPsua2iOaBr++8m+engeiBiuWPr+i+k+WFpeWcqOe6v+eUqOaIt+WQje+8jOe+pOiBiui+k+WFpee+pCBJRCB8IGAvaGlzdG9yeSBhbGljZWAgfAp8IGAvcXVpdGAgfCDpgIDlh7rnqIvluo8gfCBgL3F1aXRgIHwKCiMjIyA0LjQg5raI5oGv5pKk5ZueCgrlj5HpgIHmtojmga/lkI7vvIzlrqLmiLfnq6/kvJrlnKjmnI3liqHnq6/noa7orqTml7bmmL7npLrkuIDooYzmtojmga8gSUTvvJoKYGBgCk1lc3NhZ2UgY29uZmlybWVkOiA2ZjFiMWU4ZC05Yzg0LTRlNmYtOWQ4Yy0xMjM0NTY3ODlhYmMKYGBgCgoyIOWIhumSn+WGheWPr+S9v+eUqOivpSBJRCDmkqTlm57vvJoKYGBgCi9yZWNhbGwgNmYxYjFlOGQtOWM4NC00ZTZmLTlkOGMtMTIzNDU2Nzg5YWJjCmBgYArns7vnu5/mmL7npLrvvJpgW+ezu+e7n10gQWxpY2Ug5pKk5Zue5LqG5LiA5p2h5raI5oGvYAoK5pKk5Zue5oiQ5Yqf5ZCO77yM5a6i5oi356uv5pys5Zyw5Y6G5Y+y5Lya5ZCM5q2l5oqK6K+l5raI5oGv5qCH6K6w5Li64oCc5bey5pKk5Zue4oCd44CC5aaC5p6c6LaF6L+HIDIg5YiG6ZKf5oiW5bCd6K+V5pKk5Zue5LuW5Lq65raI5oGv77yM5pyN5Yqh56uv5Lya6L+U5Zue5aSx6LSl5o+Q56S644CCCgojIyMgNC41IOWOhuWPsuiusOW9lQoKQ0xJIOaUr+aMgeS7juacjeWKoeWZqOaLieWPluengeiBiuaIlue+pOiBiuWOhuWPsu+8mgoKYGBgYmFzaAovaGlzdG9yeSBhbGljZQovaGlzdG9yeSAxCmBgYAoK5b2T5b2T5YmN5Lya6K+d5piv56eB6IGK5pe277yMYC9oaXN0b3J5IGFsaWNlYCDkvJrmiorlnKjnur/nlKjmiLflkI3op6PmnpDkuLrnlKjmiLcgSUQg5ZCO5ZCR5pyN5Yqh56uv5p+l6K+i77yb5b2T5b2T5YmN5Lya6K+d5piv576k6IGK5pe277yMYC9oaXN0b3J5IDFgIOafpeivoiAxIOWPt+e+pOeahOWOhuWPsuOAguWOhuWPsua2iOaBr+S8mumAkOadoeaYvuekuu+8jOW5tumZhOW4puWPr+eUqOS6juaSpOWbnueahOacjeWKoeerryBgbXNnX2lkYOOAggoKIyMjIDQuNiDmlofku7bkvKDovpMKCum7mOiupOa8lOekuuWSjOaXpeW4uOS9v+eUqOW7uuiurumAieaLqeacjeWKoeerr+S4ree7p+aooeW8j++8muaWh+S7tue7j+i/h+acjeWKoeWZqOi9rOWPke+8jOmAguWQiOaJgOaciee9kee7nOeOr+Wig+OAggpgYGAKL3NlbmRmaWxlIGJvYiAuL2RvY3VtZW50LnBkZgpgYGAKCumhueebruS4reS/neeVmeS6hiBQMlAgVURQIOaJk+a0nuWunumqjOS7o+egge+8jOWPr+WcqOWQjOacuuaIluWxgOWfn+e9keeOr+Wig+WwneivleOAglAyUCDmiJDlip/njoflj5cgTkFU44CB6Ziy54Gr5aKZ5ZKM5qCh5Zut572R6ZqU56a75b2x5ZON77yM546w5Zy65ryU56S65LiN5bu66K6u5oqK5a6D5L2c5Li65b+F5oiQ6Lev5b6E44CCCgojIyMgNC43IEBBSSDmmbrog73lm57lpI0KCuWcqOe+pOiBiuS4reS9v+eUqCBgQEFJYCDop6blj5EgQUkg5Zue5aSN77yaCmBgYApAQUkg6K+355So566A5Y2V55qE6K+d6Kej6YeKIFRDUCDkuInmrKHmj6HmiYsKYGBgCgrns7vnu5/kvJrmmL7npLogQUkg55qE5Zue5aSN5raI5oGv44CCCgotLS0KCiMjIOS6lOOAgUdVSSDlrqLmiLfnq6/kvb/nlKjmjIfljZcKCiMjIyA1LjEg55m75b2V56qX5Y+jCgrlkK/liqggR1VJIOWQju+8jOmmluWFiOaYvuekuueZu+W9leeql+WPo++8mgotIOi+k+WFpeeUqOaIt+WQjeWSjOWvhueggQotIOeCueWHuyLnmbvlvZUi5oiWIuazqOWGjCLmjInpkq4KCiMjIyA1LjIg5Li756qX5Y+jCgrnmbvlvZXmiJDlip/lkI7ov5vlhaXkuLvnlYzpnaLvvJoKLSAqKuW3puS+p+mdouadvyoqOiDlvZPliY3nlKjmiLfnirbmgIHjgIHogZTns7vkurrliJfooajjgIHnvqTnu4TliJfooajvvIjlnKjnur/nlKjmiLfmnInnu7/oibLmoIfor4bvvIkKLSAqKuWPs+S+p+mdouadvyoqOiDogYrlpKnljLrln58KICAtIOa2iOaBr+S7peawlOazoeW9ouW8j+aYvuekugogIC0g5bqV6YOo6L6T5YWl5qGG6L6T5YWl5raI5oGvCiAgLSDngrnlh7si5Y+R6YCBIuaMiemSruaIluaMiSBFbnRlciDlj5HpgIEKLSAqKueKtuaAgeaYvuekuioqOiDov57mjqXmraPluLjml7blt6bkuIrop5LmmL7npLrnu7/ngrkgYE9ubGluZWDvvJvmnI3liqHnq6/mlq3lvIDlkI7mmL7npLrnuqLngrkgYE9mZmxpbmVg77yM5oGi5aSN6L+e5o6l5ZCO6Ieq5Yqo5Zue5Yiw57u/54K5IGBPbmxpbmVgCgojIyMgNS4zIOWKn+iDveaTjeS9nAoKLSAqKuengeiBiioqOiDlj4zlh7vlt6bkvqfogZTns7vkurrmiZPlvIDnp4HogYrnqpflj6MKLSAqKuWIm+W7uue+pOe7hCoqOiDngrnlh7sgYCsgTmV3IEdyb3VwYO+8jOi+k+WFpee+pOWQjeWQjuehruiupAotICoq5Yqg5YWl576k57uEKio6IOeCueWHuyBgKyBKb2luYO+8jOS7juS4i+aLieWIl+ihqOmAieaLqee+pOWQjeWQjuehruiupO+8m+S4i+aLieWIl+ihqOWPquaYvuekuuW9k+WJjei0puWPt+W3suWKoOWFpeeahOe+pOWSjOW9k+WJjeWcqOe6v+eUqOaIt+WIm+W7uueahOe+pAotICoq6YCA5Ye6576k57uEKio6IOmAieaLqee+pOe7hOWQjueCueWHuyBgLSBMZWF2ZWAKLSAqKue+pOiBiioqOiDlnKjlt6bkvqcgR3JvdXBzIOWMuuWfn+mAieaLqee+pOe7hO+8jOWPs+S+p+aYvuekuue+pOiBiu+8m+e+pOWktOWDj+aWh+Wtl+S4jue+pOWQjeS4gOiHtAotICoq5paH5Lu25Lyg6L6TKio6IOeCueWHu+W3peWFt+agj+aWh+S7tuWbvuagh+mAieaLqeaWh+S7tgotICoqQEFJKio6IOWcqOe+pOiBiui+k+WFpeahhuS4reS7pSBgQEFJYCDlvIDlpLTovpPlhaXpl67popjvvIxBSSDlm57lpI3kvJrmmL7npLrlnKjnvqTogYrkuK3vvIznvqTlhoXlnKjnur/miJDlkZjlnYflj6/nnIvliLAKLSAqKuWOhuWPsuiusOW9lSoqOiDoj5zljZXmoI/pgInmi6kgYENoYXQgLT4gTG9hZCBIaXN0b3J5YAotICoq5raI5oGv5pKk5ZueKio6IOiPnOWNleagj+mAieaLqSBgQ2hhdCAtPiBSZWNhbGwgTGFzdCBTZW50YO+8jOaSpOWbnuacgOi/keS4gOadoeW3sueUseacjeWKoeerr+ehruiupOeahOacrOS6uua2iOaBrwotICoq5pat57q/6YeN6L+eKio6IOacjeWKoeerr+WBnOatouWQjuWuouaIt+err+S8muaYvuekuuemu+e6v+eKtuaAgeW5tumYu+atouWPkemAge+8m+acjeWKoeerr+aBouWkjeWQjuWuouaIt+err+iHquWKqOmHjei/nuW5tuWIt+aWsOWcqOe6v+eUqOaIt+WSjOe+pOe7hOWIl+ihqAoKLS0tCgojIyDlha3jgIFBSSDlip/og73phY3nva4KCiMjIyDorr7nva4gQVBJIEtleQoKQUkg5Yqf6IO95LyY5YWI5L2/55SoIEJpZ01vZGVs77yb5aaC5p6c5Y+q6K6+572u5LqGIGBEQVNIU0NPUEVfQVBJX0tFWWDvvIzmnI3liqHnq6/kvJrpu5jorqTliIfmjaLliLAgRGFzaFNjb3BlIE9wZW5BSS1jb21wYXRpYmxlIOaOpeWPo+OAggoKYGBgYmFzaAojIFdpbmRvd3MgKENNRCkKc2V0IEJJR01PREVMX0FQSV9LRVk9eW91cl9hcGlfa2V5X2hlcmUKCiMgV2luZG93cyAoUG93ZXJTaGVsbCkKJGVudjpCSUdNT0RFTF9BUElfS0VZPSJ5b3VyX2FwaV9rZXlfaGVyZSIKCiMgTGludXggLyBtYWNPUwpleHBvcnQgQklHTU9ERUxfQVBJX0tFWT15b3VyX2FwaV9rZXlfaGVyZQpgYGAKCuS5n+WPr+S7peS9v+eUqCBEYXNoU2NvcGXvvJoKCmBgYGJhc2gKIyBXaW5kb3dzIChQb3dlclNoZWxsKQokZW52OkRBU0hTQ09QRV9BUElfS0VZPSJ5b3VyX2FwaV9rZXlfaGVyZSIKYGBgCgrpq5jnuqfphY3nva7lj6/nlKggYEFJX0FQSV9CQVNFYCAvIGBBSV9NT0RFTGAg6KaG55uW6buY6K6k5o6l5Y+j5Zyw5Z2A5ZKM5qih5Z6L5ZCN44CC6K+m6KeBIGBkb2NzL2FpX3NldHVwLm1kYOOAggoKLS0tCgojIyDkuIPjgIHmlYXpmpzmjpLpmaQKCnwg6Zeu6aKYIHwg5Y+v6IO95Y6f5ZugIHwg6Kej5Yaz5pa55rOVIHwKfC0tLS0tLXwtLS0tLS0tLS18LS0tLS0tLS0tfAp8IOi/nuaOpeWksei0pSB8IOacjeWKoeWZqOacquWQr+WKqCB8IOehruiupOW3sui/kOihjCBgcHl0aG9uIC1tIHNlcnZlci5tYWluYCB8Cnwg6L+e5o6l6KKr5ouS57udIHwg56uv5Y+j6ZSZ6K+vIHwg5qOA5p+l5pyN5Yqh5Zmo56uv5Y+j77yI6buY6K6kIDg4ODjvvIkgfAp8IOazqOWGjOWksei0pe+8iOeUqOaIt+WQjeW3suWtmOWcqO+8iSB8IOeUqOaIt+WQjeiiq+WNoOeUqCB8IOabtOaNoueUqOaIt+WQjSB8CnwgQUkg5peg5Zue5aSNIHwgQVBJIEtleSDmnKrorr7nva4gfCDorr7nva4gYEJJR01PREVMX0FQSV9LRVlgIOaIliBgREFTSFNDT1BFX0FQSV9LRVlgIOeOr+Wig+WPmOmHjyB8CnwgQUkg5Zue5aSN6LaF5pe2IHwg572R57uc6Zeu6aKYIHwg5qOA5p+l572R57uc6L+e5o6l77yM56iN5ZCO6YeN6K+VIHwKfCDmlofku7bkvKDovpPlpLHotKUgfCDmlofku7bot6/lvoTplJnor68gfCDnoa7orqTmlofku7bot6/lvoTmraPnoa4gfAp8IEpvaW4gR3JvdXAg55yL5LiN5Yiw55uu5qCH576kIHwg576k5Li75a6i5oi356uv5LiN5Zyo57q/77yM5LiU5b2T5YmN6LSm5Y+35pyq5Yqg5YWl6K+l576kIHwg6K6p576k5Li755m75b2V5ZCO5YaN5omT5byAIEpvaW4gR3JvdXDvvIzmiJbkvb/nlKjlt7LliqDlhaXnvqQgfAp8IOmAgOWHuue+pOWQjuS7jeS4jeiDveWPkemAgSB8IOW9k+WJjei0puWPt+W3suS4jeaYr+e+pOaIkOWRmCB8IOmHjeaWsOWKoOWFpee+pOe7hOWQjuWGjeWPkemAgSB8Cnwg5bem5LiK6KeS5pi+56S6IE9mZmxpbmUgfCDmnI3liqHnq6/mlq3lvIDmiJbmraPlnKjph43ov54gfCDlkK/liqjmnI3liqHnq6/vvIznrYnlvoXlrqLmiLfnq6/oh6rliqjmgaLlpI0gT25saW5lIHwKfCBQMlAg5Lyg6L6T5aSx6LSlIHwgTkFUL+mYsueBq+WimS/lsYDln5/nvZHpmpTnprsgfCDkvb/nlKjpu5jorqTmnI3liqHnq6/kuK3nu6fmlofku7bkvKDovpMgfAp8IEdVSSDnlYzpnaLml6Dms5XlkK/liqggfCB0a2ludGVyIOacquWuieijhSB8IGBwaXAgaW5zdGFsbCB0a2DvvIhMaW51eCDpnIDpop3lpJblronoo4XvvIkgfAoKLS0tCgojIyDlhavjgIHljbjovb0KCuebtOaOpeWIoOmZpOmhueebruebruW9leWNs+WPr+OAgueUqOaIt+aVsOaNruWtmOWCqOWcqO+8mgotIOacjeWKoeerr++8mmBzZXJ2ZXIvZGF0YS9jaGF0LmRiYO+8iFNRTGl0ZSDmlbDmja7lupPvvIkKLSDlrqLmiLfnq6/vvJpgY2xpZW50L2RhdGEvYO+8iEpTT04g5raI5oGv5Y6G5Y+y5paH5Lu277yJCg==
+# 即时聊天系统 - 用户手册
+
+## 一、系统概述
+
+分布式即时聊天系统，支持文字聊天、群组聊天、AI 智能回复、服务端中继文件传输等功能。
+
+### 技术栈
+- **语言**: Python 3.10+
+- **网络**: TCP（文字/控制消息、服务端中继文件传输）+ UDP（实验性 P2P）
+- **数据库**: SQLite（服务端持久化）/ JSON（客户端本地存储）
+- **AI**: BigModel 优先，兼容 DashScope OpenAI-compatible 接口
+- **界面**: CLI (rich) + GUI (tkinter) 双模
+
+---
+
+## 二、环境要求
+
+- Python 3.10 或更高版本
+- 操作系统：Windows / Linux / macOS
+
+### 依赖安装
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+---
+
+## 三、快速启动
+
+### 3.1 启动服务器
+
+```bash
+cd 项目根目录
+python -m server.main
+```
+
+服务器默认在 `0.0.0.0:8888` 监听。可通过修改 `server/config.py` 更改端口。
+如果使用 Windows 启动脚本 `先点我启动服务器-restart.bat`，脚本会直接读取当前环境变量中的 `BIGMODEL_API_KEY` 或 `DASHSCOPE_API_KEY`，不会在脚本内保存 API Key。
+
+成功启动日志：
+```
+2026-04-30 [INFO] server.heartbeat: Heartbeat monitor started (interval=30s, timeout=90s)
+2026-04-30 [INFO] server.tcp_server: ChatServer listening on 0.0.0.0:8888
+```
+
+### 3.2 启动客户端（CLI 模式）
+
+```bash
+python -m client.main --cli
+```
+
+### 3.3 启动客户端（GUI 模式）
+
+```bash
+python -m client.main --gui
+```
+
+---
+
+## 四、CLI 客户端使用指南
+
+### 4.1 注册 / 登录
+
+启动客户端后，首先进入登录界面：
+
+```
+╔══════════════════════════════════════╗
+║          即时聊天系统 v1.0            ║
+╠══════════════════════════════════════╣
+║  1. 登录                             ║
+║  2. 注册                             ║
+║  3. 退出                             ║
+╚══════════════════════════════════════╝
+```
+
+选择 **2** 注册新账号（用户名需唯一），注册成功后选择 **1** 登录。
+
+### 4.2 主界面
+
+登录后进入聊天主界面，分为三个区域：
+- **顶部**: 系统状态栏（显示用户名、连接状态）
+- **中部**: 消息列表（实时显示聊天消息）
+- **底部**: 命令输入框
+
+### 4.3 可用命令
+
+| 命令 | 说明 | 示例 |
+|------|------|------|
+| `/msg <用户> <内容>` | 发送私聊消息 | `/msg alice 你好!` |
+| `/create <群名>` | 创建群组 | `/create 技术交流群` |
+| `/join <群ID>` | 加入群组 | `/join 1` |
+| `/leave <群ID>` | 退出群组 | `/leave 1` |
+| `/group <群ID> <内容>` | 发送群聊消息 | `/group 1 大家好!` |
+| `@AI <问题>` | 向 AI 提问（需在群聊中） | `@AI 什么是 TCP 协议?` |
+| `/users` | 查看在线用户 | `/users` |
+| `/sendfile <用户> <文件路径>` | 发送文件 | `/sendfile bob ./doc.pdf` |
+| `/recall <消息ID>` | 撤回消息（2分钟内，使用服务端确认的 UUID） | `/recall 6f1b1e8d-9c84-4e6f-9d8c-123456789abc` |
+| `/history <用户或群ID>` | 查看历史消息；私聊可输入在线用户名，群聊输入群 ID | `/history alice` |
+| `/quit` | 退出程序 | `/quit` |
+
+### 4.4 消息撤回
+
+发送消息后，客户端会在服务端确认时显示一行消息 ID：
+```
+Message confirmed: 6f1b1e8d-9c84-4e6f-9d8c-123456789abc
+```
+
+2 分钟内可使用该 ID 撤回：
+```
+/recall 6f1b1e8d-9c84-4e6f-9d8c-123456789abc
+```
+系统显示：`[系统] Alice 撤回了一条消息`
+
+撤回成功后，客户端本地历史会同步把该消息标记为“已撤回”。如果超过 2 分钟或尝试撤回他人消息，服务端会返回失败提示。
+
+### 4.5 历史记录
+
+CLI 支持从服务器拉取私聊或群聊历史：
+
+```bash
+/history alice
+/history 1
+```
+
+当当前会话是私聊时，`/history alice` 会把在线用户名解析为用户 ID 后向服务端查询；当当前会话是群聊时，`/history 1` 查询 1 号群的历史。历史消息会逐条显示，并附带可用于撤回的服务端 `msg_id`。
+
+### 4.6 文件传输
+
+默认演示和日常使用建议选择服务端中继模式：文件经过服务器转发，适合所有网络环境。
+```
+/sendfile bob ./document.pdf
+```
+
+项目中保留了 P2P UDP 打洞实验代码，可在同机或局域网环境尝试。P2P 成功率受 NAT、防火墙和校园网隔离影响，现场演示不建议把它作为必成路径。
+
+### 4.7 @AI 智能回复
+
+在群聊中使用 `@AI` 触发 AI 回复：
+```
+@AI 请用简单的话解释 TCP 三次握手
+```
+
+系统会显示 AI 的回复消息。
+
+---
+
+## 五、GUI 客户端使用指南
+
+### 5.1 登录窗口
+
+启动 GUI 后，首先显示登录窗口：
+- 输入用户名和密码
+- 点击"登录"或"注册"按钮
+
+### 5.2 主窗口
+
+登录成功后进入主界面：
+- **左侧面板**: 当前用户状态、联系人列表、群组列表（在线用户有绿色标识）
+- **右侧面板**: 聊天区域
+  - 消息以气泡形式显示
+  - 底部输入框输入消息
+  - 点击"发送"按钮或按 Enter 发送
+- **状态显示**: 连接正常时左上角显示绿点 `Online`；服务端断开后显示红点 `Offline`，恢复连接后自动回到绿点 `Online`
+
+### 5.3 功能操作
+
+- **私聊**: 双击左侧联系人打开私聊窗口
+- **创建群组**: 点击 `+ New Group`，输入群名后确认
+- **加入群组**: 点击 `+ Join`，从下拉列表选择群名后确认；下拉列表只显示当前账号已加入的群和当前在线用户创建的群
+- **退出群组**: 选择群组后点击 `- Leave`
+- **群聊**: 在左侧 Groups 区域选择群组，右侧显示群聊；群头像文字与群名一致
+- **文件传输**: 点击工具栏文件图标选择文件
+- **@AI**: 在群聊输入框中以 `@AI` 开头输入问题，AI 回复会显示在群聊中，群内在线成员均可看到
+- **历史记录**: 菜单栏选择 `Chat -> Load History`
+- **消息撤回**: 菜单栏选择 `Chat -> Recall Last Sent`，撤回最近一条已由服务端确认的本人消息
+- **断线重连**: 服务端停止后客户端会显示离线状态并阻止发送；服务端恢复后客户端自动重连并刷新在线用户和群组列表
+
+---
+
+## 六、AI 功能配置
+
+### 设置 API Key
+
+AI 功能优先使用 BigModel；如果只设置了 `DASHSCOPE_API_KEY`，服务端会默认切换到 DashScope OpenAI-compatible 接口。
+
+```bash
+# Windows (CMD)
+set BIGMODEL_API_KEY=your_api_key_here
+
+# Windows (PowerShell)
+$env:BIGMODEL_API_KEY="your_api_key_here"
+
+# Linux / macOS
+export BIGMODEL_API_KEY=your_api_key_here
+```
+
+也可以使用 DashScope：
+
+```bash
+# Windows (PowerShell)
+$env:DASHSCOPE_API_KEY="your_api_key_here"
+```
+
+高级配置可用 `AI_API_BASE` / `AI_MODEL` 覆盖默认接口地址和模型名。详见 `docs/ai_setup.md`。
+
+---
+
+## 七、故障排除
+
+| 问题 | 可能原因 | 解决方法 |
+|------|---------|---------|
+| 连接失败 | 服务器未启动 | 确认已运行 `python -m server.main` |
+| 连接被拒绝 | 端口错误 | 检查服务器端口（默认 8888） |
+| 注册失败（用户名已存在） | 用户名被占用 | 更换用户名 |
+| AI 无回复 | API Key 未设置 | 设置 `BIGMODEL_API_KEY` 或 `DASHSCOPE_API_KEY` 环境变量 |
+| AI 回复超时 | 网络问题 | 检查网络连接，稍后重试 |
+| 文件传输失败 | 文件路径错误 | 确认文件路径正确 |
+| Join Group 看不到目标群 | 群主客户端不在线，且当前账号未加入该群 | 让群主登录后再打开 Join Group，或使用已加入群 |
+| 退出群后仍不能发送 | 当前账号已不是群成员 | 重新加入群组后再发送 |
+| 左上角显示 Offline | 服务端断开或正在重连 | 启动服务端，等待客户端自动恢复 Online |
+| P2P 传输失败 | NAT/防火墙/局域网隔离 | 使用默认服务端中继文件传输 |
+| GUI 界面无法启动 | tkinter 未安装 | `pip install tk`（Linux 需额外安装） |
+
+---
+
+## 八、卸载
+
+直接删除项目目录即可。用户数据存储在：
+- 服务端：`server/data/chat.db`（SQLite 数据库）
+- 客户端：`client/data/`（JSON 消息历史文件）
