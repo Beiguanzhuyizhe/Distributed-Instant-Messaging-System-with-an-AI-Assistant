@@ -160,6 +160,29 @@ class ContentModerator:
         """统一大小写，使英文敏感词检测对 Fuck/SB 等变体也生效。"""
         return text.lower()
 
+    @staticmethod
+    def _is_ascii_word_char(ch: str) -> bool:
+        return ch.isascii() and (ch.isalnum() or ch == "_")
+
+    @classmethod
+    def _match_allowed(cls, text: str, word: str, start: int, end: int) -> bool:
+        # English/number keywords should match whole tokens only. Otherwise
+        # normal words such as "leave" (av), "skill" (kill) or "a2b" (2B)
+        # get altered by the simple keyword filter.
+        if word and all(cls._is_ascii_word_char(ch) for ch in word):
+            before = text[start - 1] if start > 0 else ""
+            after = text[end] if end < len(text) else ""
+            return not cls._is_ascii_word_char(before) and not cls._is_ascii_word_char(after)
+        return True
+
+    def _filtered_matches(self, normalized_content: str) -> List[Tuple[str, str, int, int]]:
+        matches = self._automaton.search_with_positions(normalized_content)
+        return [
+            (word, cat, start, end)
+            for word, cat, start, end in matches
+            if self._match_allowed(normalized_content, word, start, end)
+        ]
+
     def moderate(self, content: str) -> ModerationResult:
         """
         审核内容，返回审核结果
@@ -172,11 +195,11 @@ class ContentModerator:
             return ModerationResult(passed=True, level="low")
 
         normalized_content = self._normalize(content)
-        matches = self._automaton.search(normalized_content)
+        matches = self._filtered_matches(normalized_content)
         if not matches:
             return ModerationResult(passed=True, level="low")
 
-        categories = {cat for _, cat in matches}
+        categories = {cat for _, cat, _, _ in matches}
 
         # high 级别: 政治敏感、暴力
         if "political" in categories or "violence" in categories:
@@ -201,7 +224,7 @@ class ContentModerator:
         if not content:
             return content
 
-        matches = self._automaton.search_with_positions(self._normalize(content))
+        matches = self._filtered_matches(self._normalize(content))
         if not matches:
             return content
 
