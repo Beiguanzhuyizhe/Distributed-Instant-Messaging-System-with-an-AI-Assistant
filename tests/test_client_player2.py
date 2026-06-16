@@ -434,6 +434,39 @@ def test_web_bridge_rejected_ack_updates_pending_status():
     )
 
 
+def test_web_bridge_rejected_ack_uses_original_chat_context():
+    bridge = WebBridge.__new__(WebBridge)
+    bridge._pending_acks = {
+        7: {
+            "local_msg_id": "local-7",
+            "msg_id": "local-7",
+            "status": "pending",
+            "related_type": "private",
+            "related_target": "2",
+            "chat_key": "private:2",
+        }
+    }
+    bridge._username = "alice"
+    bridge._chat_type = "private"
+    bridge._current_target_id = 3
+    bridge._current_target = "carol"
+    bridge._chat_key = lambda chat_type, target: f"{chat_type}:{target}"
+    bridge.store = DummyStore()
+    events = []
+    bridge._push = lambda event_type, data: events.append((event_type, data))
+    bridge._push_msg = lambda msg: events.append(("new_message", msg))
+
+    bridge._apply_message_ack(7, {
+        "msg_id": "",
+        "status": "rejected",
+        "error": "not member",
+    })
+
+    system_event = events[-2][1]
+    assert system_event["chat_key"] == "private:2"
+    assert system_event["related_target"] == "2"
+
+
 def test_web_bridge_ai_context_is_correlated_by_sequence():
     bridge = WebBridge.__new__(WebBridge)
     bridge.handler = DummyHandler()
@@ -542,6 +575,7 @@ def test_web_bridge_group_file_init_uses_group_context(monkeypatch):
     bridge._current_target_id = 9
     bridge.conn = DummyConnection()
     bridge.handler = DummyHandler()
+    bridge._pending_file_uploads = {}
     tmp_dir = make_runtime_dir("web_bridge_file_")
     sample = tmp_dir / "group.txt"
     sample.write_text("demo", encoding="utf-8")
@@ -551,6 +585,12 @@ def test_web_bridge_group_file_init_uses_group_context(monkeypatch):
 
     try:
         result = bridge.select_and_send_file()
+        assert events == []
+        bridge._on_file_init(MessageType.FILE_INIT, 1, {
+            "success": True,
+            "file_id": "file-g",
+            "filename": "group.txt",
+        })
     finally:
         remove_runtime_dir(tmp_dir)
 
@@ -563,6 +603,69 @@ def test_web_bridge_group_file_init_uses_group_context(monkeypatch):
     assert events[-1][1]["chat_key"] == "group:9"
     assert events[-1][1]["related_type"] == "group"
     assert events[-1][1]["related_target"] == "9"
+
+
+def test_web_bridge_file_init_failure_does_not_send_chunks(monkeypatch):
+    class RejectingHandler(DummyHandler):
+        def send_file_init(self, from_id, to_id, filename, filesize, file_id, group_id=None):
+            self.calls.append(("file_init", from_id, to_id, filename, filesize, file_id, group_id))
+            return {"ok": True, "seq": 11, "client_file_id": file_id}
+
+    bridge = WebBridge.__new__(WebBridge)
+    bridge._user_id = 1
+    bridge._username = "alice"
+    bridge._chat_type = "private"
+    bridge._current_target = "bob"
+    bridge._current_target_id = 2
+    bridge.conn = DummyConnection()
+    bridge.handler = RejectingHandler()
+    bridge._pending_file_uploads = {}
+    tmp_dir = make_runtime_dir("web_bridge_file_reject_")
+    sample = tmp_dir / "reject.txt"
+    sample.write_text("demo", encoding="utf-8")
+    bridge._tk_file_dialog = lambda: str(sample)
+    bridge._chat_key = lambda chat_type, target: f"{chat_type}:{target}"
+    events = []
+    bridge._push_msg = lambda msg: events.append(msg)
+
+    try:
+        result = bridge.select_and_send_file()
+        bridge._on_file_init(MessageType.FILE_INIT, 11, {
+            "success": False,
+            "error": "not_group_member",
+        })
+    finally:
+        remove_runtime_dir(tmp_dir)
+
+    assert result["ok"] is True
+    assert [call[0] for call in bridge.handler.calls] == ["file_init"]
+    assert bridge._pending_file_uploads == {}
+    assert events[-1]["chat_key"] == "private:2"
+    assert "not_group_member" in events[-1]["content"]
+
+
+def test_web_bridge_file_ack_failure_reports_download_error():
+    bridge = WebBridge.__new__(WebBridge)
+    import threading
+    bridge._dl_state = {
+        "file-1": {
+            "data": {},
+            "remaining": 4,
+            "event": threading.Event(),
+            "chunk_size": 65536,
+        }
+    }
+
+    bridge._on_file_ack(MessageType.FILE_ACK, 3, {
+        "success": False,
+        "file_id": "file-1",
+        "offset": 0,
+        "error": "not_receiver",
+    })
+
+    state = bridge._dl_state["file-1"]
+    assert state["error"] == "not_receiver"
+    assert state["event"].is_set()
 
 
 def test_web_bridge_group_file_notification_routes_download_to_group():

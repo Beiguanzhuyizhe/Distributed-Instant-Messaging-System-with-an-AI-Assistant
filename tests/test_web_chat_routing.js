@@ -233,12 +233,39 @@ const historyOwn = {
   msg_id: 'server-1',
   chat_key: 'private:2',
 };
-const merged = routing.mergeMessages([pendingOwn], [historyOwn], 'alice');
-assert.strictEqual(merged.length, 1);
-assert.strictEqual(merged[0].msg_id, 'server-1');
-assert.strictEqual(merged[0].server_msg_id, 'server-1');
-assert.strictEqual(merged[0].local_msg_id, 'local-1');
-assert.strictEqual(merged[0].status, 'sent');
+const beforeAck = routing.mergeMessages([pendingOwn], [historyOwn], 'alice');
+assert.strictEqual(beforeAck.length, 2);
+
+const ackedOwn = Object.assign({}, pendingOwn, {
+  msg_id: 'server-1',
+  server_msg_id: 'server-1',
+  status: 'sent',
+});
+const afterAck = routing.mergeMessages([ackedOwn], [historyOwn], 'alice');
+assert.strictEqual(afterAck.length, 1);
+assert.strictEqual(afterAck[0].msg_id, 'server-1');
+assert.strictEqual(afterAck[0].server_msg_id, 'server-1');
+assert.strictEqual(afterAck[0].local_msg_id, 'local-1');
+assert.strictEqual(afterAck[0].status, 'sent');
+
+const sameContentBeforeAck = routing.mergeMessages([{
+  type: 'private',
+  sender: 'alice',
+  content: 'OK',
+  timestamp: 1700000000,
+  local_msg_id: 'local-2',
+  msg_id: 'local-2',
+  status: 'pending',
+  chat_key: 'private:2',
+}], [{
+  type: 'private',
+  sender: 'alice',
+  content: 'OK',
+  timestamp: 1699999999,
+  msg_id: 'server-old',
+  chat_key: 'private:2',
+}], 'alice');
+assert.strictEqual(sameContentBeforeAck.length, 2);
 
 const repeatedRealMessages = routing.mergeMessages([{
   type: 'private',

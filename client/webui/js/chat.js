@@ -113,19 +113,7 @@
     if (messageIdentity(a, username) && messageIdentity(a, username) === messageIdentity(b, username)) {
       return true;
     }
-    var keyA = chatKeyForMessage(a, username);
-    var keyB = chatKeyForMessage(b, username);
-    if (!keyA || keyA !== keyB) return false;
-    if (String(a.type || '') !== String(b.type || '')) return false;
-    if (String(a.sender || '') !== String(b.sender || '')) return false;
-    if (String(a.content || '') !== String(b.content || '')) return false;
-    var aIsLocal = isLocalMessage(a);
-    var bIsLocal = isLocalMessage(b);
-    if (aIsLocal === bIsLocal) return false;
-    var tsA = Number(a.timestamp || 0);
-    var tsB = Number(b.timestamp || 0);
-    if (!tsA || !tsB) return false;
-    return Math.abs(tsA - tsB) <= 120;
+    return false;
   }
 
   function preferMergedMessage(existing, incoming) {
@@ -646,7 +634,7 @@
 
       unsubs.push(window.Bridge.on('message_acked', function (data) {
         setMessages(function (prev) {
-          return prev.map(function (m) {
+          var updated = prev.map(function (m) {
             if (m.local_msg_id === data.local_msg_id || m.msg_id === data.msg_id) {
               var hasServerId = data.msg_id && data.msg_id !== data.local_msg_id;
               var status = data.status || (hasServerId ? 'sent' : (m.status || 'sent'));
@@ -663,6 +651,7 @@
             }
             return m;
           });
+          return mergeMessages([], updated, username);
         });
       }));
 

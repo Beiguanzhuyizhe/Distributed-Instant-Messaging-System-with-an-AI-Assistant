@@ -1,6 +1,7 @@
 import asyncio
 import json
 
+import server.config as config_module
 from server.config import (
     BIGMODEL_API_BASE,
     BIGMODEL_MODEL,
@@ -49,6 +50,37 @@ def test_ai_manual_overrides(monkeypatch):
 
     assert config.ai_api_base == "https://example.test/v1"
     assert config.ai_model == "custom-model"
+
+
+def test_local_dotenv_can_provide_ai_config(monkeypatch, tmp_path):
+    _clear_ai_env(monkeypatch)
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setattr(config_module, "_LOCAL_ENV_CACHE", None)
+    (tmp_path / ".env").write_text(
+        "BIGMODEL_API_KEY=env-file-key\nAI_MODEL=env-file-model\n",
+        encoding="utf-8",
+    )
+
+    config = ServerConfig()
+
+    assert config.ai_api_key == "env-file-key"
+    assert config.ai_model == "env-file-model"
+
+
+def test_environment_overrides_local_dotenv(monkeypatch, tmp_path):
+    _clear_ai_env(monkeypatch)
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setattr(config_module, "_LOCAL_ENV_CACHE", None)
+    (tmp_path / ".env").write_text(
+        "BIGMODEL_API_KEY=env-file-key\nAI_MODEL=env-file-model\n",
+        encoding="utf-8",
+    )
+    monkeypatch.setenv("BIGMODEL_API_KEY", "real-env-key")
+
+    config = ServerConfig()
+
+    assert config.ai_api_key == "real-env-key"
+    assert config.ai_model == "env-file-model"
 
 
 def test_query_without_key_returns_friendly_message():
