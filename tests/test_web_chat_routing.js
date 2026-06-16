@@ -284,6 +284,47 @@ const repeatedRealMessages = routing.mergeMessages([{
 }], 'alice');
 assert.strictEqual(repeatedRealMessages.length, 2);
 
+const idlessSystemEvents = routing.mergeMessages([{
+  type: 'system',
+  sender: 'System',
+  content: 'same warning',
+  timestamp: 1700000000,
+  chat_key: 'private:2',
+}], [{
+  type: 'system',
+  sender: 'System',
+  content: 'same warning',
+  timestamp: 1700000000,
+  chat_key: 'private:2',
+}], 'alice');
+assert.strictEqual(idlessSystemEvents.length, 2);
+
+const aiDirectContext = routing.buildAiDirectContext([{
+  type: 'ai',
+  sender: 'AI Assistant',
+  content: 'direct reply',
+  related_type: 'ai',
+  related_target: 'AI Assistant',
+  chat_key: 'ai:AI Assistant',
+}, {
+  type: 'ai',
+  sender: 'AI Assistant',
+  content: 'group reply',
+  related_type: 'group',
+  related_target: '9',
+  chat_key: 'group:9',
+}, {
+  type: 'ai',
+  sender: 'AI Assistant',
+  content: 'private contextual reply',
+  related_type: 'private',
+  related_target: '2',
+  chat_key: 'private:2',
+}], 'alice');
+assert.strictEqual(aiDirectContext.length, 1);
+assert.strictEqual(aiDirectContext[0].sender, 'AI Assistant');
+assert.strictEqual(aiDirectContext[0].content, 'direct reply');
+
 assert.strictEqual(sidebarLogic.isSelfUser('alice', 'alice'), true);
 assert.strictEqual(sidebarLogic.isSelfUser('bob', 'alice'), false);
 assert.strictEqual(sidebarLogic.formatGroupLabel('2', '1'), '1');

@@ -101,6 +101,51 @@ async def test_group_nonmember_gets_rejected_ack(server):
 
 
 @pytest.mark.asyncio
+async def test_private_content_warning_is_scoped_to_target_chat(server):
+    conn = DummyConnection()
+    conn_id = await server.conn_manager.add(conn)
+    await server.conn_manager.bind_user(conn_id, 1)
+    server.msg_router._moderate = lambda content: {
+        "rejected": True,
+        "level": "high",
+        "clean_content": content,
+    }
+
+    result = await server.msg_router.route_private_msg(1, 2, "blocked")
+
+    assert result["status"] == "rejected"
+    msg_type, seq, payload = conn.sent[-1]
+    assert msg_type == MessageType.CONTENT_WARN
+    assert seq is None
+    assert payload["related_type"] == "private"
+    assert payload["related_target"] == "2"
+    assert payload["chat_key"] == "private:2"
+
+
+@pytest.mark.asyncio
+async def test_group_content_warning_is_scoped_to_group_chat(server):
+    conn = DummyConnection()
+    conn_id = await server.conn_manager.add(conn)
+    await server.conn_manager.bind_user(conn_id, 1)
+    server.msg_router._moderate = lambda content: {
+        "rejected": True,
+        "level": "high",
+        "clean_content": content,
+    }
+
+    result = await server.msg_router.route_group_msg(1, 9, "blocked")
+
+    assert result["status"] == "rejected"
+    msg_type, seq, payload = conn.sent[-1]
+    assert msg_type == MessageType.CONTENT_WARN
+    assert seq is None
+    assert payload["related_type"] == "group"
+    assert payload["related_target"] == "9"
+    assert payload["chat_key"] == "group:9"
+    assert payload["group_id"] == "9"
+
+
+@pytest.mark.asyncio
 async def test_history_rejects_self_private_chat(server):
     conn = DummyConnection()
     conn_id = await server.conn_manager.add(conn)

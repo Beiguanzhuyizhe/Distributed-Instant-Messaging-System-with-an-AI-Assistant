@@ -467,6 +467,54 @@ def test_web_bridge_rejected_ack_uses_original_chat_context():
     assert system_event["related_target"] == "2"
 
 
+def test_web_bridge_content_warn_uses_payload_context():
+    bridge = WebBridge.__new__(WebBridge)
+    bridge._chat_type = "private"
+    bridge._current_target_id = 3
+    bridge._current_target = "carol"
+    bridge._chat_key = lambda chat_type, target: f"{chat_type}:{target}"
+    events = []
+    bridge._push = lambda event_type, data: events.append((event_type, data))
+
+    bridge._on_content_warn(MessageType.CONTENT_WARN, 1, {
+        "message": "blocked",
+        "related_type": "private",
+        "related_target": "2",
+        "chat_key": "private:2",
+    })
+
+    assert events[-1][0] == "new_message"
+    msg = events[-1][1]
+    assert msg["chat_key"] == "private:2"
+    assert msg["related_target"] == "2"
+    assert msg["event_id"].startswith("evt-")
+
+
+def test_web_bridge_error_uses_payload_context():
+    bridge = WebBridge.__new__(WebBridge)
+    bridge._chat_type = "private"
+    bridge._current_target_id = 3
+    bridge._current_target = "carol"
+    bridge._chat_key = lambda chat_type, target: f"{chat_type}:{target}"
+    events = []
+    bridge._push = lambda event_type, data: events.append((event_type, data))
+
+    bridge._on_error(MessageType.ERROR, 1, {
+        "code": 1,
+        "message": "not member",
+        "related_type": "group",
+        "related_target": "9",
+        "chat_key": "group:9",
+        "group_id": "9",
+    })
+
+    assert events[-1][0] == "new_message"
+    msg = events[-1][1]
+    assert msg["chat_key"] == "group:9"
+    assert msg["related_type"] == "group"
+    assert msg["group_id"] == "9"
+
+
 def test_web_bridge_ai_context_is_correlated_by_sequence():
     bridge = WebBridge.__new__(WebBridge)
     bridge.handler = DummyHandler()
@@ -552,8 +600,9 @@ def test_web_bridge_group_create_join_keep_server_id_clear():
     })
 
     assert bridge._groups == {"2": "1", "1": "group"}
-    assert ("new_message", {"type": "system", "content": "Created group #2 \"1\""}) in events
-    assert ("new_message", {"type": "system", "content": "Joined group #1 \"group\""}) in events
+    system_messages = [event[1] for event in events if event[0] == "new_message"]
+    assert any(msg["content"] == "Created group #2 \"1\"" for msg in system_messages)
+    assert any(msg["content"] == "Joined group #1 \"group\"" for msg in system_messages)
 
 
 def test_web_bridge_group_file_init_uses_group_context(monkeypatch):

@@ -105,6 +105,8 @@ class WebBridge:
 
     def _push_msg(self, msg: dict):
         """推送一条消息对象到 JS（统一格式）"""
+        if not any(msg.get(key) for key in ("msg_id", "local_msg_id", "server_msg_id", "event_id")):
+            msg["event_id"] = f"evt-{uuid.uuid4()}"
         self._push("new_message", msg)
 
     def _sync_group_state(self, payload: dict):
@@ -382,12 +384,12 @@ class WebBridge:
 
     def _on_content_warn(self, msg_type, seq, payload):
         msg = {"type": "system", "content": f"[WARN] {payload.get('message', 'Content warning')}", "timestamp": _now()}
-        msg.update(self._current_chat_context())
+        msg.update(self._context_from_message(payload))
         self._push_msg(msg)
 
     def _on_error(self, msg_type, seq, payload):
         msg = {"type": "system", "content": f"[Error {payload.get('code', -1)}] {payload.get('message', '')}", "timestamp": _now()}
-        msg.update(self._current_chat_context())
+        msg.update(self._context_from_message(payload))
         self._push_msg(msg)
 
     def _on_recall(self, msg_type, seq, payload):
