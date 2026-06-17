@@ -192,6 +192,10 @@
     return 'status-dot ' + (connected ? 'online' : 'offline');
   }
 
+  function connectionStatusTextClass(connected) {
+    return 'status-text ' + (connected ? 'online' : 'offline');
+  }
+
   // ============================================================
   // 聊天头部
   // ============================================================
@@ -930,7 +934,7 @@
           ),
           h('div', { className: 'user-info' },
             h('div', { className: 'username' }, username || 'Loading...'),
-            h('div', { className: 'status-text' }, connectionStatusText(connected)),
+            h('div', { className: connectionStatusTextClass(connected) }, connectionStatusText(connected)),
           ),
         ),
         // 群组管理工具栏
@@ -1039,6 +1043,7 @@
     avatarNameForChat: avatarNameForChat,
     connectionStatusText: connectionStatusText,
     connectionStatusClass: connectionStatusClass,
+    connectionStatusTextClass: connectionStatusTextClass,
   };
   window.App.ChatLayout = ChatLayout;
 })();

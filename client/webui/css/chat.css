@@ -158,7 +158,14 @@
 
 .sidebar-header .user-info .status-text {
   font-size: 11px;
+}
+
+.sidebar-header .user-info .status-text.online {
   color: var(--success);
+}
+
+.sidebar-header .user-info .status-text.offline {
+  color: var(--danger);
 }
 
 /* 联系人列表 */

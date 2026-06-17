@@ -1,6 +1,8 @@
 import pytest
 
 from server.config import ServerConfig
+from server.database import init_db
+from server.group_manager import GroupManager
 from server.protocol import MessageType
 from server.tcp_server import ChatServer, ConnectionManager
 import server.ai_service as ai_service_module
@@ -219,6 +221,30 @@ async def test_group_state_hides_unjoined_groups_from_offline_owners(server):
     assert "1" not in payload["available_groups"]
     assert payload["available_groups"]["2"]["joined"] is True
     assert payload["available_groups"]["3"]["joined"] is False
+
+
+@pytest.mark.asyncio
+async def test_group_manager_rejects_duplicate_group_names():
+    runtime_dir = make_runtime_dir("group_duplicate_")
+    try:
+        db_path = str(runtime_dir / "chat.db")
+        conn = init_db(db_path)
+        conn.executemany(
+            "INSERT INTO users (id, username, password_hash, created_at) VALUES (?, ?, ?, ?)",
+            [(1, "alice", "hash", 1.0), (2, "bob", "hash", 1.0)],
+        )
+        conn.commit()
+        conn.close()
+        manager = GroupManager(db_path)
+
+        first = await manager.create_group("demo_group", 1)
+        second = await manager.create_group("demo_group", 2)
+
+        assert first["success"] is True
+        assert second["success"] is False
+        assert second["error"] == "群名称已存在"
+    finally:
+        remove_runtime_dir(runtime_dir)
 
 
 @pytest.mark.asyncio

@@ -271,3 +271,5 @@ assert.strictEqual(routing.connectionStatusText(true), 'Online');
 assert.strictEqual(routing.connectionStatusText(false), 'Offline');
 assert.strictEqual(routing.connectionStatusClass(true), 'status-dot online');
 assert.strictEqual(routing.connectionStatusClass(false), 'status-dot offline');
+assert.strictEqual(routing.connectionStatusTextClass(true), 'status-text online');
+assert.strictEqual(routing.connectionStatusTextClass(false), 'status-text offline');
