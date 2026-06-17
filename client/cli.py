@@ -7,6 +7,7 @@ import time
 import threading
 import os
 import uuid
+from html import escape as html_escape
 from datetime import datetime
 from typing import Optional
 from collections import deque
@@ -43,6 +44,11 @@ def _fmt_time(ts) -> str:
         return ""
 
 
+def _html(value) -> str:
+    """Escape dynamic text before inserting it into prompt_toolkit HTML."""
+    return html_escape("" if value is None else str(value), quote=False)
+
+
 class ChatCLI:
     """prompt_toolkit 滚动式聊天 CLI — 后台线程打印消息，主线程读输入"""
 
@@ -62,6 +68,7 @@ class ChatCLI:
         self._messages: list[dict] = []
         self._online_users: dict = {}       # {username: user_id}
         self._groups: dict = {}             # {group_id: name}
+        self._available_groups: dict = {}   # {group_id: metadata}
         self._current_target: Optional[str] = None
         self._current_target_id: Optional[int] = None
         self._chat_type: str = "private"
@@ -71,15 +78,14 @@ class ChatCLI:
         # 登录同步
         self._login_event = threading.Event()
         self._login_ok = False
+        self._register_ok = False
+        self._auth_message = ""
         self._pending_acks: dict[int, dict] = {}
         self._last_sent_msg_id: Optional[str] = None
 
         self._msg_lock = threading.Lock()
 
-        self._pt_session = PromptSession(
-            history=InMemoryHistory(),
-            completer=CMD_COMPLETER,
-        )
+        self._pt_session = self._new_prompt_session()
 
         # 文件下载
         self._download_dir = os.path.join(os.path.dirname(__file__), "downloads")
@@ -93,6 +99,13 @@ class ChatCLI:
         self._prompt_busy = False
 
         self._register_callbacks()
+
+    @staticmethod
+    def _new_prompt_session():
+        return PromptSession(
+            history=InMemoryHistory(),
+            completer=CMD_COMPLETER,
+        )
 
     # =============================================================
     # 回调注册
@@ -131,20 +144,20 @@ class ChatCLI:
         """在后台线程直接打印格式化消息"""
         if msg_type == "system":
             print_formatted_text(HTML(
-                f'<ansicyan>{ts}</ansicyan> '
-                f'<ansiwhite>{content}</ansiwhite>'
+                f'<ansicyan>{_html(ts)}</ansicyan> '
+                f'<ansiwhite>{_html(content)}</ansiwhite>'
             ))
         else:
             is_self = (sender == self._username)
             color = "ansigreen" if is_self else "ansiyellow"
             tag = "You" if is_self else sender
-            label = f"<{color}>{tag}:</{color}>"
+            label = f"<{color}>{_html(tag)}:</{color}>"
             if extra:
-                label += f" <ansicyan>{extra}</ansicyan>"
+                label += f" <ansicyan>{_html(extra)}</ansicyan>"
             print_formatted_text(HTML(
-                f'<ansiwhite>{ts}</ansiwhite> '
+                f'<ansiwhite>{_html(ts)}</ansiwhite> '
                 f'{label} '
-                f'{content}'
+                f'{_html(content)}'
             ))
 
     def _remember_pending(self, send_result: dict, msg: dict):
@@ -252,6 +265,25 @@ class ChatCLI:
         msg["chat_key"] = cls._chat_key(chat_type, target)
         return msg
 
+    def _payload_chat_context(self, payload: dict) -> dict:
+        """Prefer explicit server routing metadata over the currently selected CLI chat."""
+        related_type = payload.get("related_type")
+        related_target = payload.get("related_target")
+        if not related_type and payload.get("group_id"):
+            related_type = "group"
+            related_target = str(payload.get("group_id"))
+        if not related_type and payload.get("chat_key"):
+            key = str(payload.get("chat_key"))
+            if ":" in key:
+                related_type, related_target = key.split(":", 1)
+        if related_type and related_target:
+            return {
+                "related_type": str(related_type),
+                "related_target": str(related_target),
+                "chat_key": self._chat_key(str(related_type), related_target),
+            }
+        return self._current_chat_context()
+
     def _current_chat_context(self) -> dict:
         if self._chat_type == "private":
             target = self._current_target_id
@@ -271,13 +303,20 @@ class ChatCLI:
 
     def _on_login_resp(self, msg_type, seq, payload):
         self._login_ok = bool(payload.get("success"))
+        self._auth_message = payload.get("message") or payload.get("error") or ""
         if self._login_ok:
             self._user_id = payload.get("user_id")
             self._username = payload.get("username", self._username)
+            if payload.get("groups"):
+                self._groups = {str(k): v for k, v in payload.get("groups", {}).items()}
+            if payload.get("available_groups"):
+                self._available_groups = {str(k): v for k, v in payload.get("available_groups", {}).items()}
         self._login_event.set()
 
     def _on_register_resp(self, msg_type, seq, payload):
-        self._login_ok = bool(payload.get("success"))
+        self._register_ok = bool(payload.get("success"))
+        self._login_ok = False
+        self._auth_message = payload.get("message") or payload.get("error") or ""
         self._login_event.set()
 
     def _on_private_msg(self, msg_type, seq, payload):
@@ -334,7 +373,7 @@ class ChatCLI:
             ts = _fmt_time(_now())
             self._print("system", ts, "", f"[AI] {content}")
             msg = {"type": "system", "content": f"[AI] {content}", "timestamp": _now()}
-            msg.update(self._current_chat_context())
+            msg.update(self._payload_chat_context(payload))
             with self._msg_lock:
                 self._messages.append(msg)
 
@@ -343,7 +382,7 @@ class ChatCLI:
         ts = _fmt_time(_now())
         self._print("system", ts, "", f"[WARN] {msg}")
         item = {"type": "system", "content": f"[WARN] {msg}", "timestamp": _now()}
-        item.update(self._current_chat_context())
+        item.update(self._payload_chat_context(payload))
         with self._msg_lock:
             self._messages.append(item)
 
@@ -353,7 +392,7 @@ class ChatCLI:
         ts = _fmt_time(_now())
         self._print("system", ts, "", f"[Error {code}] {msg}")
         item = {"type": "system", "content": f"[Error {code}] {msg}", "timestamp": _now()}
-        item.update(self._current_chat_context())
+        item.update(self._payload_chat_context(payload))
         with self._msg_lock:
             self._messages.append(item)
 
@@ -421,8 +460,16 @@ class ChatCLI:
             name = u.get("username", f"User#{uid}")
             self._online_users[name] = uid
             names.append(name)
+        if self._username and self._user_id:
+            self._online_users.setdefault(self._username, self._user_id)
+            if self._username not in names:
+                names.append(self._username)
+        if payload.get("groups"):
+            self._groups = {str(k): v for k, v in payload.get("groups", {}).items()}
+        if payload.get("available_groups"):
+            self._available_groups = {str(k): v for k, v in payload.get("available_groups", {}).items()}
         ts = _fmt_time(_now())
-        self._print("system", ts, "", f"Online ({len(users)}): {', '.join(names)}")
+        self._print("system", ts, "", f"Online ({len(self._online_users)}): {', '.join(names)}")
 
     def _on_group_create_resp(self, msg_type, seq, payload):
         ts = _fmt_time(_now())
@@ -525,10 +572,11 @@ class ChatCLI:
 
     def _on_reconnected(self):
         self._print("system", _fmt_time(_now()), "", "Reconnected.")
-        if self._username and self._password_hash:
+        if self._logged_in and self._username and self._password_hash:
             self._login_event.clear()
             self.handler.send_login(self._username, self._password_hash)
-            self._login_event.wait(timeout=5)
+            if self._login_event.wait(timeout=5) and self._login_ok:
+                self.handler.request_online_users()
 
     # =============================================================
     # 登录界面
@@ -563,6 +611,9 @@ class ChatCLI:
                 continue
 
             self._login_event.clear()
+            self._login_ok = False
+            self._register_ok = False
+            self._auth_message = ""
             self._username = username
             self._password_hash = password
 
@@ -572,14 +623,26 @@ class ChatCLI:
                 self.handler.send_register(username, password)
 
             if self._login_event.wait(timeout=10):
+                if action == "register":
+                    if self._register_ok:
+                        print_formatted_text(HTML(
+                            f'<ansigreen>Registration successful for {_html(username)}. Please login.</ansigreen>'
+                        ))
+                    else:
+                        msg = self._auth_message or "Registration failed."
+                        print_formatted_text(HTML(f'<ansired>{_html(msg)}</ansired>'))
+                    continue
+
                 if self._login_ok:
                     self._logged_in = True
                     self._online_users[self._username] = self._user_id
-                    print_formatted_text(HTML(f'<ansigreen>Welcome, {username}!</ansigreen>'))
+                    self.handler.request_online_users()
+                    print_formatted_text(HTML(f'<ansigreen>Welcome, {_html(username)}!</ansigreen>'))
                     time.sleep(0.3)
                     return True
                 else:
-                    print_formatted_text(HTML('<ansired>Login failed. Check your credentials.</ansired>'))
+                    msg = self._auth_message or "Login failed. Check your credentials."
+                    print_formatted_text(HTML(f'<ansired>{_html(msg)}</ansired>'))
             else:
                 print_formatted_text(HTML('<ansired>Login timeout.</ansired>'))
 
@@ -591,6 +654,7 @@ class ChatCLI:
 
     def _chat_loop(self):
         """主循环：prompt_toolkit 读取输入，消息由后台线程直接打印"""
+        self._pt_session = self._new_prompt_session()
         self._print("system", _fmt_time(_now()), "",
                      "Connected. Type /help for commands. | "
                      f"Target: {self._current_target or 'none'} | "
@@ -600,6 +664,7 @@ class ChatCLI:
             try:
                 text = self._pt_session.prompt(
                     "> ",
+                    is_password=False,
                     bottom_toolbar=f" Target: {self._current_target or 'none'} | Online: {len(self._online_users)} | Groups: {len(self._groups)} ",
                 ).strip()
             except (EOFError, KeyboardInterrupt):
@@ -727,9 +792,14 @@ class ChatCLI:
         stripped = text.strip()
         if stripped.upper().startswith("@AI"):
             query = stripped[3:].strip()
-            if query and self._user_id:
-                gid = int(self._current_target) if (self._current_target and self._chat_type == "group") else 0
-                self.handler.send_ai_query(self._user_id, gid, query)
+            if not query:
+                self._print("system", _fmt_time(_now()), "", "Usage: @AI <question>")
+                return
+            if self._chat_type != "group" or not self._current_target:
+                self._print("system", _fmt_time(_now()), "", "@AI is only available in a group chat. Use /group <id> <text> first.")
+                return
+            if self._user_id:
+                self.handler.send_ai_query(self._user_id, int(self._current_target), query)
             return
 
         if self._chat_type == "group" and self._current_target:
@@ -761,6 +831,9 @@ class ChatCLI:
 
     def _send_group(self, gid: int, content: str):
         if not self._user_id:
+            return
+        if self._groups and str(gid) not in self._groups:
+            self._print("system", _fmt_time(_now()), "", f"You are not in group {gid}. Use /join <group_id> first.")
             return
         result = self.handler.send_group_msg(self._user_id, gid, content)
         ts = _fmt_time(_now())

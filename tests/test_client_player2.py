@@ -146,6 +146,28 @@ def test_cli_recall_accepts_server_uuid_msg_id():
     ]
 
 
+def test_cli_print_escapes_markup_like_usage_text(monkeypatch):
+    captured = []
+    monkeypatch.setattr("client.cli.print_formatted_text", lambda value: captured.append(value))
+    cli = ChatCLI.__new__(ChatCLI)
+    cli._username = "alice"
+
+    cli._print("system", "13:47", "", "Usage: /msg <username> <content>")
+    cli._print("private", "13:48", "bob<2>", "hello <tag>", extra="@Group<1>")
+
+    assert len(captured) == 2
+
+
+def test_cli_help_does_not_treat_usage_placeholders_as_html_tags(monkeypatch):
+    captured = []
+    monkeypatch.setattr("client.cli.print_formatted_text", lambda value: captured.append(value))
+    cli = ChatCLI.__new__(ChatCLI)
+
+    cli._show_help()
+
+    assert captured
+
+
 def test_cli_private_history_resolves_username_to_user_id():
     cli = ChatCLI.__new__(ChatCLI)
     cli.handler = DummyHandler()
@@ -156,6 +178,68 @@ def test_cli_private_history_resolves_username_to_user_id():
     cli._handle_command("/history alice")
 
     assert cli.handler.calls == [("history", "private", 2, 50)]
+
+
+def test_cli_login_response_restores_groups_and_available_groups():
+    cli = ChatCLI.__new__(ChatCLI)
+    cli._username = "alice"
+    cli._groups = {}
+    cli._available_groups = {}
+    cli._login_event = type("Event", (), {"set": lambda self: None})()
+
+    cli._on_login_resp(MessageType.LOGIN_RESP, 1, {
+        "success": True,
+        "user_id": 1,
+        "username": "alice",
+        "groups": {"2": "demo_group"},
+        "available_groups": {
+            "2": {"id": 2, "name": "demo_group", "joined": True},
+        },
+    })
+
+    assert cli._user_id == 1
+    assert cli._groups == {"2": "demo_group"}
+    assert cli._available_groups["2"]["joined"] is True
+
+
+def test_cli_register_response_does_not_mark_user_logged_in():
+    cli = ChatCLI.__new__(ChatCLI)
+    cli._login_ok = True
+    cli._register_ok = False
+    cli._auth_message = ""
+    cli._login_event = type("Event", (), {"set": lambda self: None})()
+
+    cli._on_register_resp(MessageType.REGISTER_RESP, 1, {
+        "success": True,
+        "message": "registered",
+    })
+
+    assert cli._register_ok is True
+    assert cli._login_ok is False
+    assert cli._auth_message == "registered"
+
+
+def test_cli_online_users_updates_count_and_groups():
+    cli = ChatCLI.__new__(ChatCLI)
+    cli._username = "alice"
+    cli._user_id = 1
+    cli._online_users = {}
+    cli._groups = {}
+    cli._available_groups = {}
+    cli._print = lambda *args, **kwargs: None
+
+    cli._on_online_users(MessageType.ONLINE_USERS, 1, {
+        "users": [
+            {"id": 1, "username": "alice"},
+            {"id": 2, "username": "bob"},
+        ],
+        "groups": {"3": "network"},
+        "available_groups": {"3": {"id": 3, "name": "network"}},
+    })
+
+    assert cli._online_users == {"alice": 1, "bob": 2}
+    assert cli._groups == {"3": "network"}
+    assert cli._available_groups["3"]["name"] == "network"
 
 
 def test_cli_ack_updates_pending_message_to_server_uuid():
@@ -252,6 +336,43 @@ def test_cli_private_messages_use_stable_peer_context():
     assert captured[1]["target_id"] == 3
 
 
+def test_cli_ai_requires_group_chat_context():
+    cli = ChatCLI.__new__(ChatCLI)
+    cli.handler = DummyHandler()
+    cli._user_id = 1
+    cli._chat_type = "private"
+    cli._current_target = "bob"
+    cli._print = lambda *args, **kwargs: None
+
+    cli._handle_send("@AI explain tcp")
+
+    assert cli.handler.calls == []
+
+
+def test_cli_ai_uses_current_group_id():
+    cli = ChatCLI.__new__(ChatCLI)
+    cli.handler = DummyHandler()
+    cli._user_id = 1
+    cli._chat_type = "group"
+    cli._current_target = "7"
+
+    cli._handle_send("@AI explain tcp")
+
+    assert cli.handler.calls == [("ai", 1, 7, "explain tcp", None)]
+
+
+def test_cli_rejects_group_send_when_known_groups_do_not_include_target():
+    cli = ChatCLI.__new__(ChatCLI)
+    cli.handler = DummyHandler()
+    cli._user_id = 1
+    cli._groups = {"2": "demo"}
+    cli._print = lambda *args, **kwargs: None
+
+    cli._send_group(9, "hello")
+
+    assert cli.handler.calls == []
+
+
 def test_cli_incoming_private_message_is_bound_to_sender_peer():
     cli = ChatCLI.__new__(ChatCLI)
     cli._user_id = 1
@@ -282,6 +403,30 @@ def test_cli_incoming_private_message_is_bound_to_sender_peer():
         "related_target": "2",
         "chat_key": "private:2",
     }]
+
+
+def test_cli_ai_response_uses_server_group_context_not_current_private_chat():
+    cli = ChatCLI.__new__(ChatCLI)
+    cli._chat_type = "private"
+    cli._current_target = "bob"
+    cli._current_target_id = 2
+    cli._msg_lock = type("Lock", (), {
+        "__enter__": lambda self: self,
+        "__exit__": lambda self, exc_type, exc, tb: False,
+    })()
+    cli._messages = []
+    cli._print = lambda *args, **kwargs: None
+
+    cli._on_ai_resp(MessageType.AI_RESP, 8, {
+        "content": "group reply",
+        "group_id": 5,
+        "related_type": "group",
+        "related_target": "5",
+        "chat_key": "group:5",
+    })
+
+    assert cli._messages[0]["chat_key"] == "group:5"
+    assert cli._messages[0]["related_target"] == "5"
 
 
 def test_web_bridge_private_messages_use_stable_peer_context():
