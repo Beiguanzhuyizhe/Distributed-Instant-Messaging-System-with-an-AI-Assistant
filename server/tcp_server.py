@@ -129,6 +129,15 @@ class ConnectionManager:
                 except (ConnectionError, OSError):
                     pass
 
+    async def authenticated_connections(self):
+        """Return a snapshot of currently authenticated connections as (conn_id, user_id, conn)."""
+        async with self._lock:
+            return [
+                (conn_id, info["user_id"], info["conn"])
+                for conn_id, info in self._connections.items()
+                if info["user_id"] is not None
+            ]
+
     def update_heartbeat(self, conn_id: int):
         """更新连接的最后心跳时间"""
         info = self._connections.get(conn_id)
@@ -376,6 +385,29 @@ class ChatServer:
             if str(g["id"]) in groups or g.get("owner_id") in online_user_ids
         }
         return {"groups": groups, "available_groups": available_groups}
+
+    async def _online_users_payload(self, user_id: int) -> dict:
+        """Build the ONLINE_USERS payload from one user's perspective."""
+        users = await self.user_manager.get_online_users()
+        payload = {
+            "users": users,
+            "count": len(users),
+        }
+        payload.update(await self._group_state_payload(user_id))
+        return payload
+
+    async def _broadcast_group_state(self):
+        """Refresh online user and group lists for every logged-in client after group changes."""
+        for _conn_id, user_id, conn in await self.conn_manager.authenticated_connections():
+            if getattr(conn, "is_closed", False):
+                continue
+            try:
+                await conn.send_message(
+                    MessageType.ONLINE_USERS,
+                    await self._online_users_payload(user_id),
+                )
+            except (ConnectionError, OSError):
+                pass
 
     async def _handle_register(self, conn_id: int, seq: int, payload: dict):
         username = payload.get("username", "")
@@ -683,6 +715,8 @@ class ChatServer:
         conn = self.conn_manager.get_conn(conn_id)
         if conn:
             await conn.send_message(MessageType.GROUP_CREATE, result, seq=seq)
+        if result.get("success"):
+            await self._broadcast_group_state()
 
     async def _handle_group_join(self, conn_id: int, seq: int, payload: dict):
         user_id = self.conn_manager.get_user_id(conn_id)
@@ -700,6 +734,8 @@ class ChatServer:
         conn = self.conn_manager.get_conn(conn_id)
         if conn:
             await conn.send_message(MessageType.GROUP_JOIN, result, seq=seq)
+        if result.get("success"):
+            await self._broadcast_group_state()
 
     async def _handle_group_leave(self, conn_id: int, seq: int, payload: dict):
         user_id = self.conn_manager.get_user_id(conn_id)
@@ -718,6 +754,8 @@ class ChatServer:
         conn = self.conn_manager.get_conn(conn_id)
         if conn:
             await conn.send_message(MessageType.GROUP_LEAVE, result, seq=seq)
+        if result.get("success"):
+            await self._broadcast_group_state()
 
     # ---------------------------------------------------------------
     # 历史消息
@@ -782,15 +820,13 @@ class ChatServer:
         if not user_id:
             await self._send_error(conn_id, seq, "未登录")
             return
-        users = await self.user_manager.get_online_users()
-        payload = {
-            "users": users,
-            "count": len(users),
-        }
-        payload.update(await self._group_state_payload(user_id))
         conn = self.conn_manager.get_conn(conn_id)
         if conn:
-            await conn.send_message(MessageType.ONLINE_USERS, payload, seq=seq)
+            await conn.send_message(
+                MessageType.ONLINE_USERS,
+                await self._online_users_payload(user_id),
+                seq=seq,
+            )
 
     # ---------------------------------------------------------------
     # AI 智能回复

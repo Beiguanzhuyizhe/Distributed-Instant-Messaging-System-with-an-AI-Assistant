@@ -307,10 +307,12 @@ class ChatCLI:
         if self._login_ok:
             self._user_id = payload.get("user_id")
             self._username = payload.get("username", self._username)
-            if payload.get("groups"):
-                self._groups = {str(k): v for k, v in payload.get("groups", {}).items()}
-            if payload.get("available_groups"):
-                self._available_groups = {str(k): v for k, v in payload.get("available_groups", {}).items()}
+            groups = payload.get("groups")
+            if isinstance(groups, dict):
+                self._groups = {str(k): v for k, v in groups.items()}
+            available_groups = payload.get("available_groups")
+            if isinstance(available_groups, dict):
+                self._available_groups = {str(k): v for k, v in available_groups.items()}
         self._login_event.set()
 
     def _on_register_resp(self, msg_type, seq, payload):
@@ -464,10 +466,12 @@ class ChatCLI:
             self._online_users.setdefault(self._username, self._user_id)
             if self._username not in names:
                 names.append(self._username)
-        if payload.get("groups"):
-            self._groups = {str(k): v for k, v in payload.get("groups", {}).items()}
-        if payload.get("available_groups"):
-            self._available_groups = {str(k): v for k, v in payload.get("available_groups", {}).items()}
+        groups = payload.get("groups")
+        if isinstance(groups, dict):
+            self._groups = {str(k): v for k, v in groups.items()}
+        available_groups = payload.get("available_groups")
+        if isinstance(available_groups, dict):
+            self._available_groups = {str(k): v for k, v in available_groups.items()}
         ts = _fmt_time(_now())
         self._print("system", ts, "", f"Online ({len(self._online_users)}): {', '.join(names)}")
 

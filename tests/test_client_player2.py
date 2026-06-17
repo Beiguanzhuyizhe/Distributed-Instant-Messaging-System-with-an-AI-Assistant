@@ -242,6 +242,31 @@ def test_cli_online_users_updates_count_and_groups():
     assert cli._available_groups["3"]["name"] == "network"
 
 
+def test_cli_online_users_broadcast_refreshes_available_groups():
+    cli = ChatCLI.__new__(ChatCLI)
+    cli._username = "bob"
+    cli._user_id = 2
+    cli._online_users = {}
+    cli._groups = {"3": "old_group"}
+    cli._available_groups = {}
+    cli._print = lambda *args, **kwargs: None
+
+    cli._on_online_users(MessageType.ONLINE_USERS, 99, {
+        "users": [
+            {"id": 1, "username": "alice"},
+            {"id": 2, "username": "bob"},
+        ],
+        "groups": {},
+        "available_groups": {
+            "7": {"id": 7, "name": "network", "joined": False},
+        },
+    })
+
+    assert cli._groups == {}
+    assert cli._available_groups["7"]["name"] == "network"
+    assert cli._available_groups["7"]["joined"] is False
+
+
 def test_cli_ack_updates_pending_message_to_server_uuid():
     cli = ChatCLI.__new__(ChatCLI)
     cli._pending_acks = {}
@@ -479,6 +504,32 @@ def test_web_bridge_login_restores_groups_and_available_groups():
     assert events[-1][1]["groups"] == {"2": "demo_group"}
     assert "available_groups" in events[-1][1]
     assert ("online_users",) in bridge.handler.calls
+
+
+def test_web_bridge_online_users_broadcast_refreshes_available_groups():
+    bridge = WebBridge.__new__(WebBridge)
+    bridge._username = "bob"
+    bridge._user_id = 2
+    bridge._online_users = {}
+    bridge._groups = {}
+    bridge._available_groups = {}
+    events = []
+    bridge._push = lambda event_type, data: events.append((event_type, data))
+
+    bridge._on_online_users(MessageType.ONLINE_USERS, 99, {
+        "users": [
+            {"id": 1, "username": "alice"},
+            {"id": 2, "username": "bob"},
+        ],
+        "groups": {},
+        "available_groups": {
+            "7": {"id": 7, "name": "network", "joined": False},
+        },
+    })
+
+    assert bridge._available_groups["7"]["name"] == "network"
+    assert events[-1][0] == "online_users"
+    assert events[-1][1]["available_groups"]["7"]["joined"] is False
 
 
 def test_web_bridge_offline_send_reports_system_message():
