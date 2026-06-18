@@ -56,13 +56,7 @@ class MessageRouter:
         if mod["rejected"]:
             await self.conn_manager.send_to_user(
                 from_id, MessageType.CONTENT_WARN,
-                {
-                    "message": "消息包含违规内容，已被拦截",
-                    "level": mod["level"],
-                    "related_type": "private",
-                    "related_target": str(to_id),
-                    "chat_key": f"private:{to_id}",
-                },
+                {"message": "消息包含违规内容，已被拦截", "level": mod["level"]},
             )
             return {"msg_id": "", "timestamp": 0, "status": "rejected"}
         content = mod["clean_content"]
@@ -109,14 +103,7 @@ class MessageRouter:
         if mod["rejected"]:
             await self.conn_manager.send_to_user(
                 from_id, MessageType.CONTENT_WARN,
-                {
-                    "message": "消息包含违规内容，已被拦截",
-                    "level": mod["level"],
-                    "related_type": "group",
-                    "related_target": str(group_id),
-                    "chat_key": f"group:{group_id}",
-                    "group_id": str(group_id),
-                },
+                {"message": "消息包含违规内容，已被拦截", "level": mod["level"]},
             )
             return {"msg_id": "", "timestamp": 0, "status": "rejected"}
         content = mod["clean_content"]

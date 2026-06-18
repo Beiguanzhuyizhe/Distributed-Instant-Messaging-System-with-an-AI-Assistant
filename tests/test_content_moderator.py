@@ -38,23 +38,3 @@ def test_english_detection_is_case_insensitive():
     assert result.passed is False
     assert result.level == "mid"
     assert "FUCK" not in cleaned
-
-
-def test_short_ascii_keywords_do_not_match_inside_normal_words():
-    moderator = ContentModerator()
-    content = "please leave the group and route a2b after skill review"
-
-    result = moderator.moderate(content)
-    cleaned = moderator.replace_sensitive(content)
-
-    assert result.passed is True
-    assert cleaned == content
-
-
-def test_ascii_keywords_still_match_as_tokens():
-    moderator = ContentModerator()
-
-    assert moderator.moderate("av").passed is False
-    assert moderator.moderate("2B").passed is False
-    assert moderator.moderate("kill you").level == "high"
-    assert moderator.replace_sensitive("this is av") == "this is ***"

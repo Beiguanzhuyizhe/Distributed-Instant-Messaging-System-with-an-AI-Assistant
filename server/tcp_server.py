@@ -633,7 +633,6 @@ class ChatServer:
         )
         conn = self.conn_manager.get_conn(conn_id)
         if conn:
-            result.setdefault("file_id", file_id)
             await conn.send_message(MessageType.FILE_DATA, result, seq=seq)
 
         # 文件传输完成，通知接收方
@@ -666,8 +665,6 @@ class ChatServer:
                 "size": result["size"],
             }, seq=seq)
         else:
-            result.setdefault("file_id", file_id)
-            result.setdefault("offset", offset)
             await conn.send_message(MessageType.FILE_ACK, result, seq=seq)
 
     async def _notify_file_completed(self, file_id: str, transfer: dict):

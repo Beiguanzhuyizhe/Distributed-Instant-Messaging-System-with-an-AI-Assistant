@@ -103,51 +103,6 @@ async def test_group_nonmember_gets_rejected_ack(server):
 
 
 @pytest.mark.asyncio
-async def test_private_content_warning_is_scoped_to_target_chat(server):
-    conn = DummyConnection()
-    conn_id = await server.conn_manager.add(conn)
-    await server.conn_manager.bind_user(conn_id, 1)
-    server.msg_router._moderate = lambda content: {
-        "rejected": True,
-        "level": "high",
-        "clean_content": content,
-    }
-
-    result = await server.msg_router.route_private_msg(1, 2, "blocked")
-
-    assert result["status"] == "rejected"
-    msg_type, seq, payload = conn.sent[-1]
-    assert msg_type == MessageType.CONTENT_WARN
-    assert seq is None
-    assert payload["related_type"] == "private"
-    assert payload["related_target"] == "2"
-    assert payload["chat_key"] == "private:2"
-
-
-@pytest.mark.asyncio
-async def test_group_content_warning_is_scoped_to_group_chat(server):
-    conn = DummyConnection()
-    conn_id = await server.conn_manager.add(conn)
-    await server.conn_manager.bind_user(conn_id, 1)
-    server.msg_router._moderate = lambda content: {
-        "rejected": True,
-        "level": "high",
-        "clean_content": content,
-    }
-
-    result = await server.msg_router.route_group_msg(1, 9, "blocked")
-
-    assert result["status"] == "rejected"
-    msg_type, seq, payload = conn.sent[-1]
-    assert msg_type == MessageType.CONTENT_WARN
-    assert seq is None
-    assert payload["related_type"] == "group"
-    assert payload["related_target"] == "9"
-    assert payload["chat_key"] == "group:9"
-    assert payload["group_id"] == "9"
-
-
-@pytest.mark.asyncio
 async def test_history_rejects_self_private_chat(server):
     conn = DummyConnection()
     conn_id = await server.conn_manager.add(conn)
@@ -187,32 +142,6 @@ async def test_group_file_completion_is_broadcast_with_group_context(server):
     assert payload["related_type"] == "group"
     assert payload["related_target"] == "9"
     assert payload["from_id"] == 1
-
-
-@pytest.mark.asyncio
-async def test_file_ack_failure_echoes_file_id_and_offset(server):
-    async def fake_get_chunk(file_id, offset, requester_id=None):
-        assert file_id == "file-1"
-        assert offset == 65536
-        assert requester_id == 2
-        return {"success": False, "error": "permission_denied"}
-
-    conn = DummyConnection()
-    conn_id = await server.conn_manager.add(conn)
-    await server.conn_manager.bind_user(conn_id, 2)
-    server.file_transfer.get_chunk = fake_get_chunk
-
-    await server._handle_file_ack(
-        conn_id, 30, {"file_id": "file-1", "offset": 65536}
-    )
-
-    msg_type, seq, payload = conn.sent[-1]
-    assert msg_type == MessageType.FILE_ACK
-    assert seq == 30
-    assert payload["success"] is False
-    assert payload["error"] == "permission_denied"
-    assert payload["file_id"] == "file-1"
-    assert payload["offset"] == 65536
 
 
 @pytest.mark.asyncio

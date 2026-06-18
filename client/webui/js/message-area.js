@@ -184,7 +184,7 @@
         messages.map(function (msg, idx) {
           var prev = idx > 0 ? messages[idx - 1] : null;
           return h(MessageBubble, {
-            key: msg.msg_id || msg.local_msg_id || msg.event_id || idx,
+            key: msg.msg_id || msg.local_msg_id || idx,
             message: msg,
             prevMessage: prev,
             username: username,

@@ -89,6 +89,16 @@ python tests/stress_test.py --clients 100 --concurrency 50 --messages 3
 
 最终本机复现结果见 `docs/test_report.md`。
 
+## 文档入口
+
+课程提交文档清单见 `docs/submission_checklist.md`，其中按作业要求对应到：
+
+- `docs/design.md`：系统架构图、AI 功能实现逻辑。
+- `docs/protocol.md`：协议定义和典型消息格式示例。
+- `docs/test_report.md`：单元测试、集成测试、并发压力测试、AI 和内容审核测试结论。
+- `docs/user_manual.md`：客户端安装与使用说明。
+- `docs/manual_test_and_video_guide.md`：现场手动测试和录屏流程。
+
 ## 交付注意
 
 - 不要提交或打包 `.claude/`、`agent-workspace/`、`__pycache__/`、`.pytest_cache/`。

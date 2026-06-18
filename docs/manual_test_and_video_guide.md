@@ -290,8 +290,9 @@ GUI 演示建议使用左侧按钮完成群组操作：
 
 1. Alice 点击 `+ New Group`，输入群名，例如 `demo_group`，点击 Confirm。
 2. Bob 和 Carol 点击 `+ Join`，在下拉列表中选择 `demo_group`，点击 Confirm。
-3. 左侧 Groups 区域应显示群名 `demo_group`，不需要也不应该手动输入群组数字 ID。
-4. 关闭任意客户端后重新登录，之前加入的群组仍应显示在左侧 Groups 区域；点击群名后会自动请求群聊历史。
+3. `+ Join` 下拉列表只应显示“当前账号已经加入的群”和“当前在线用户创建的群”；旧数据库里由离线旧账号留下的测试群不应出现在下拉列表中。
+4. 左侧 Groups 区域应显示群名 `demo_group`，群头像文字也应与群名一致；不需要也不应该手动输入群组数字 ID。
+5. 关闭任意客户端后重新登录，之前加入的群组仍应显示在左侧 Groups 区域；点击群名后会自动请求群聊历史。
 
 CLI 模式仍然可以用下面命令测试，`<群ID>` 是 CLI 创建成功时输出的内部 ID。
 
@@ -538,7 +539,7 @@ python -m server.main
 
 ## 服务器断线重连测试
 
-当前客户端会检测 TCP 断线、状态栏显示 Disconnected，并在服务端恢复后自动重连和重新登录。演示时不要用会删除数据库的方式重启服务端，否则群组、群成员和历史记录会被清空。
+当前客户端会检测 TCP 断线，顶部状态栏会显示 Disconnected；左上角用户头像旁边的状态点会从绿点变成红点，文字从 `Online` 变成 `Offline`。服务端恢复后，客户端会自动重连和重新登录。演示时不要用会删除数据库的方式重启服务端，否则群组、群成员和历史记录会被清空。
 
 ### 1. 正常通信
 
@@ -561,6 +562,7 @@ Ctrl+C
 预期现象：
 
 - GUI 状态栏从 Connected 变为 Disconnected。
+- 左上角用户状态从绿点 `Online` 变为红点 `Offline`。
 - 当前聊天区出现类似 `Disconnected from server. Reconnecting...` 的系统提示。
 - 此时尝试发送消息，应出现 `Cannot send while disconnected. Waiting for reconnect...`，不会误以为消息已经发出。
 
@@ -575,6 +577,7 @@ python -m server.main
 预期现象：
 
 - 客户端状态栏自动恢复 Connected。
+- 左上角用户状态从红点 `Offline` 恢复为绿点 `Online`。
 - 当前聊天区出现类似 `Reconnected to server. Restoring session...` 的系统提示。
 - 客户端会自动重新登录，并刷新在线用户、已加入群组和可加入群组。
 

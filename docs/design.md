@@ -2,6 +2,25 @@
 
 ## 1. 系统架构概览
 
+系统采用客户端-服务器架构。客户端负责界面交互、本地消息展示、文件选择和可选加密；服务端负责认证、在线状态、消息路由、群组管理、历史存储、内容审核、AI 调用和文件中继。所有核心控制消息通过 TCP 自定义二进制协议传输，消息体使用 UTF-8 JSON。
+
+```mermaid
+flowchart LR
+    CLI["CLI 客户端"] --> TCP["TCP 自定义协议\n12B Header + JSON"]
+    GUI["GUI 客户端"] --> TCP
+    TCP --> Server["asyncio ChatServer"]
+    Server --> Auth["用户注册/登录\n在线状态"]
+    Server --> Router["消息路由\n私聊/群聊/撤回"]
+    Server --> Group["群组管理\n创建/加入/退出"]
+    Server --> File["文件中继\n分块/确认/下载"]
+    Server --> Audit["内容审核\nAho-Corasick"]
+    Server --> AI["AI Service\nOpenAI-compatible HTTP"]
+    Server --> DB[("SQLite\n用户/群组/消息/文件")]
+    GUI --> LocalStore["客户端 JSON 历史"]
+    CLI --> LocalStore
+    Server -.实验性扩展.-> P2P["P2P Helper\nUDP 打洞协助"]
+```
+
 ```text
 +------------------------------------------------------------------+
 |                         Client (TCP)                              |
@@ -163,17 +182,19 @@
 
 ### 5.1 基本原理
 
-当用户在群聊中 `@AI` 时，服务端截获消息内容，调用大模型 API 生成回复。
+当用户在群聊中 `@AI` 时，客户端发送 `AI_QUERY`。服务端确认该用户是群成员后，读取最近群聊上下文，调用 OpenAI-compatible Chat Completions 接口生成回复，再把 AI 回复作为群聊可见消息广播给所有群成员。未配置 API Key 或外部接口失败时，服务端返回友好错误，不影响普通聊天。
 
 ### 5.2 架构
 
 ```text
-客户端 @AI 发送 AI_QUERY
-    → 服务端 tcp_server 处理 AI_QUERY
-    → 调用 AIService.query(prompt)
-    → aiohttp 异步请求 BigModel / DashScope OpenAI-compatible API（非阻塞）
-    → 获取回复后以 AI_RESP 类型发回群聊
-    → 所有群成员收到 AI 回复
+群聊输入 @AI 问题
+    → GUI/CLI 客户端发送 AI_QUERY {group_id, query}
+    → ChatServer 校验登录态和群成员身份
+    → MessageHistory 读取最近群聊上下文
+    → AIService.query_with_context(query, username, history)
+    → aiohttp 异步请求 BigModel / DashScope / 自定义 OpenAI-compatible API
+    → AI_RESP 写入消息历史并广播到该群所有在线成员
+    → 所有群成员看到绿色 AI 回复气泡
 ```
 
 ### 5.3 关键技术
@@ -181,6 +202,8 @@
 - **异步 HTTP**：使用 `aiohttp` 非阻塞调用，不阻塞服务端事件循环
 - **超时兜底**：外部 API 超时、网络错误、HTTP 错误和解析错误均返回友好提示
 - **对话上下文**：携带最近 N 条群聊消息作为上下文
+- **群聊广播**：AI 回复带有 `related_type=group`、`related_target=<group_id>` 和稳定 `chat_key`，客户端只把它显示在对应群聊，不同步到私聊或 AI assistant 侧栏
+- **前缀清理**：服务端会清理模型偶发生成的成员名冒号前缀，避免 AI 回复前出现其他用户名字
 - **提示词设计**：系统提示词定义 AI 为"友好、乐于助人的聊天助手"
 - **API 兼容**：`BIGMODEL_API_KEY` 优先；仅配置 `DASHSCOPE_API_KEY` 时默认使用 DashScope OpenAI-compatible 接口；也可通过 `AI_API_BASE` / `AI_MODEL` 手动覆盖
 

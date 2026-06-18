@@ -86,6 +86,158 @@
 
 ---
 
+## 1.4 典型消息示例
+
+以下示例只展示 JSON payload。实际网络传输时，每个 payload 前都会附加 12 字节二进制头部：
+
+```text
+Magic=0xCAFE, Version=0x01, Type=<消息类型>, Seq=<序列号>, PayloadLen=<JSON 字节数>
+```
+
+### 登录请求与响应
+
+```json
+{
+  "username": "alice",
+  "password_hash": "sha256_password_digest"
+}
+```
+
+```json
+{
+  "success": true,
+  "user_id": 1,
+  "username": "alice",
+  "groups": {
+    "2": "demo_group"
+  },
+  "available_groups": {
+    "2": {
+      "id": 2,
+      "name": "demo_group",
+      "member_count": 3,
+      "joined": true
+    }
+  }
+}
+```
+
+### 私聊消息
+
+```json
+{
+  "to_id": 2,
+  "content": "你好 Bob",
+  "encrypted": false
+}
+```
+
+服务端确认和转发时会补充路由字段：
+
+```json
+{
+  "from_id": 1,
+  "to_id": 2,
+  "sender": "alice",
+  "content": "你好 Bob",
+  "msg_id": "6f1b1e8d-9c84-4e6f-9d8c-123456789abc",
+  "timestamp": 1781512695.2,
+  "related_type": "private",
+  "related_target": "2",
+  "chat_key": "private:2"
+}
+```
+
+### 群聊消息
+
+```json
+{
+  "group_id": 2,
+  "content": "大家好",
+  "encrypted": false
+}
+```
+
+```json
+{
+  "group_id": 2,
+  "from_id": 1,
+  "sender": "alice",
+  "content": "大家好",
+  "msg_id": "d8c5f594-6b28-4a5d-91e2-9278d4e8c6ae",
+  "timestamp": 1781512700.4,
+  "related_type": "group",
+  "related_target": "2",
+  "chat_key": "group:2"
+}
+```
+
+### 文件初始化与分块
+
+```json
+{
+  "to_id": 2,
+  "filename": "report.pdf",
+  "filesize": 204800,
+  "file_hash": "sha256_hex",
+  "chunk_size": 65536
+}
+```
+
+```json
+{
+  "transfer_id": "b7a48dd2-7f37-4ad7-8ed6-25bf8ab40cf3",
+  "chunk_index": 0,
+  "data": "base64_encoded_chunk",
+  "offset": 0
+}
+```
+
+### AI 查询与群内回复
+
+```json
+{
+  "group_id": 2,
+  "query": "请用一句话解释 TCP 三次握手。"
+}
+```
+
+```json
+{
+  "group_id": 2,
+  "user_id": 1,
+  "from_id": 1,
+  "query": "请用一句话解释 TCP 三次握手。",
+  "content": "TCP 三次握手是客户端和服务端通过 SYN、SYN-ACK、ACK 三步确认双方收发能力并建立连接的过程。",
+  "reply": "TCP 三次握手是客户端和服务端通过 SYN、SYN-ACK、ACK 三步确认双方收发能力并建立连接的过程。",
+  "sender": "AI",
+  "related_type": "group",
+  "related_target": "2",
+  "chat_key": "group:2"
+}
+```
+
+### 内容审核警告
+
+```json
+{
+  "level": "high",
+  "reason": "content_rejected",
+  "message": "消息包含高风险内容，已被服务端拦截。"
+}
+```
+
+### 错误响应
+
+```json
+{
+  "code": 6,
+  "error": "不是群成员"
+}
+```
+
+---
+
 ## 2. 交互流程
 
 ### 2.1 登录流程
