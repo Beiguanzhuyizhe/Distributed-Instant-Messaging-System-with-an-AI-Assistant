@@ -23,6 +23,9 @@ class GroupManager:
 
         def _run():
             with get_db(self._db_path) as conn:
+                cur = conn.execute("SELECT 1 FROM groups WHERE name = ? LIMIT 1", (name,))
+                if cur.fetchone():
+                    return {"success": False, "error": "群名称已存在"}
                 now = time.time()
                 cur = conn.execute(
                     "INSERT INTO groups (name, owner_id, created_at) VALUES (?, ?, ?)",

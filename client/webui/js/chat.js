@@ -221,6 +221,24 @@
     return name || ('Group #' + gid);
   }
 
+  function avatarNameForChat(chatType, targetName, groupName) {
+    if (chatType === 'ai') return 'AI';
+    if (chatType === 'group') return formatGroupTitle(targetName, groupName);
+    return targetName;
+  }
+
+  function connectionStatusText(connected) {
+    return connected ? 'Online' : 'Offline';
+  }
+
+  function connectionStatusClass(connected) {
+    return 'status-dot ' + (connected ? 'online' : 'offline');
+  }
+
+  function connectionStatusTextClass(connected) {
+    return 'status-text ' + (connected ? 'online' : 'offline');
+  }
+
   // ============================================================
   // 聊天头部
   // ============================================================
@@ -234,14 +252,16 @@
     var isAi = chatType === 'ai';
     var isOnline = chatType === 'private' && onlineUsers[targetName];
     var statusText = isAi ? 'Powered by BigModel AI' : (chatType === 'group' ? 'Group' : (isOnline ? 'Online' : 'Offline'));
-    var avatarColor = getAvatarColor(isAi ? 'AI' : (targetName || '?'));
     var displayName = chatType === 'group' ? formatGroupTitle(targetName, groupName) : targetName;
+    var avatarName = avatarNameForChat(chatType, targetName, groupName);
+    var avatarText = isAi ? 'AI' : getInitials(avatarName);
+    var avatarColor = getAvatarColor(avatarName || '?');
 
     if (!targetName) return null;
 
     return h('div', { className: 'chat-header' + (isAi ? ' ai-header' : ''), ref: function(el) { props.headerRef && props.headerRef(el); } },
       h('div', { className: 'header-avatar' + (isAi ? ' ai-avatar' : ''), style: { background: avatarColor } },
-        isAi ? 'AI' : getInitials(targetName)
+        avatarText
       ),
       h('div', { className: 'header-info' },
         h('div', { className: 'header-name' },
@@ -1013,11 +1033,11 @@
         h('div', { className: 'sidebar-header' },
           h('div', { className: 'avatar', style: { background: getAvatarColor(username || 'Me') } },
             getInitials(username),
-            h('div', { className: 'status-dot online' }),
+            h('div', { className: connectionStatusClass(connected) }),
           ),
           h('div', { className: 'user-info' },
             h('div', { className: 'username' }, username || 'Loading...'),
-            h('div', { className: 'status-text' }, 'Online'),
+            h('div', { className: connectionStatusTextClass(connected) }, connectionStatusText(connected)),
           ),
         ),
         // 群组管理工具栏
@@ -1124,6 +1144,10 @@
     mergeMessages: mergeMessages,
     buildAiDirectContext: buildAiDirectContext,
     formatGroupTitle: formatGroupTitle,
+    avatarNameForChat: avatarNameForChat,
+    connectionStatusText: connectionStatusText,
+    connectionStatusClass: connectionStatusClass,
+    connectionStatusTextClass: connectionStatusTextClass,
   };
   window.App.ChatLayout = ChatLayout;
 })();

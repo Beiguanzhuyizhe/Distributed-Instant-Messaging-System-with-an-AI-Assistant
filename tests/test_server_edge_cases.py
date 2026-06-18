@@ -1,6 +1,8 @@
 import pytest
 
 from server.config import ServerConfig
+from server.database import init_db
+from server.group_manager import GroupManager
 from server.protocol import MessageType
 from server.tcp_server import ChatServer, ConnectionManager
 import server.ai_service as ai_service_module
@@ -222,11 +224,14 @@ async def test_login_response_includes_user_and_available_groups(server):
         "user_id": 1,
     })
     server.group_manager.get_user_groups = _async_return([
-        {"id": 2, "name": "demo_group"},
+        {"id": 2, "name": "demo_group", "owner_id": 9},
     ])
     server.group_manager.get_all_groups = _async_return([
-        {"id": 2, "name": "demo_group", "member_count": 1},
-        {"id": 3, "name": "other_group", "member_count": 0},
+        {"id": 2, "name": "demo_group", "owner_id": 9, "member_count": 1},
+        {"id": 3, "name": "other_group", "owner_id": 1, "member_count": 0},
+    ])
+    server.user_manager.get_online_users = _async_return([
+        {"id": 1, "username": "alice"},
     ])
     calls = []
     server.msg_router.broadcast_online_status = _record_async(calls, "broadcast")
@@ -253,10 +258,10 @@ async def test_online_users_response_includes_group_state(server):
         {"id": 1, "username": "alice"},
     ])
     server.group_manager.get_user_groups = _async_return([
-        {"id": 2, "name": "demo_group"},
+        {"id": 2, "name": "demo_group", "owner_id": 1},
     ])
     server.group_manager.get_all_groups = _async_return([
-        {"id": 2, "name": "demo_group", "member_count": 1},
+        {"id": 2, "name": "demo_group", "owner_id": 1, "member_count": 1},
     ])
 
     await server._handle_online_users(conn_id, 21)
@@ -266,6 +271,91 @@ async def test_online_users_response_includes_group_state(server):
     assert seq == 21
     assert payload["groups"] == {"2": "demo_group"}
     assert payload["available_groups"]["2"]["name"] == "demo_group"
+
+
+@pytest.mark.asyncio
+async def test_group_create_broadcasts_available_groups_to_other_clients(server):
+    alice = DummyConnection()
+    bob = DummyConnection()
+    alice_id = await server.conn_manager.add(alice)
+    bob_id = await server.conn_manager.add(bob)
+    await server.conn_manager.bind_user(alice_id, 1)
+    await server.conn_manager.bind_user(bob_id, 2)
+
+    server.user_manager.get_online_users = _async_return([
+        {"id": 1, "username": "alice"},
+        {"id": 2, "username": "bob"},
+    ])
+    server.group_manager.create_group = _async_return({
+        "success": True,
+        "group_id": 7,
+        "name": "network",
+    })
+
+    def user_groups(user_id):
+        return _async_return(
+            [{"id": 7, "name": "network", "owner_id": 1}] if user_id == 1 else []
+        )()
+
+    server.group_manager.get_user_groups = user_groups
+    server.group_manager.get_all_groups = _async_return([
+        {"id": 7, "name": "network", "owner_id": 1, "member_count": 1},
+    ])
+
+    await server._handle_group_create(alice_id, 31, {"name": "network"})
+
+    assert alice.sent[0][0] == MessageType.GROUP_CREATE
+    bob_updates = [item for item in bob.sent if item[0] == MessageType.ONLINE_USERS]
+    assert bob_updates
+    bob_payload = bob_updates[-1][2]
+    assert bob_payload["groups"] == {}
+    assert bob_payload["available_groups"]["7"]["name"] == "network"
+    assert bob_payload["available_groups"]["7"]["joined"] is False
+
+
+@pytest.mark.asyncio
+async def test_group_state_hides_unjoined_groups_from_offline_owners(server):
+    server.user_manager.get_online_users = _async_return([
+        {"id": 2, "username": "bob"},
+    ])
+    server.group_manager.get_user_groups = _async_return([
+        {"id": 2, "name": "joined_old", "owner_id": 99},
+    ])
+    server.group_manager.get_all_groups = _async_return([
+        {"id": 1, "name": "stale", "owner_id": 99, "member_count": 1},
+        {"id": 2, "name": "joined_old", "owner_id": 99, "member_count": 1},
+        {"id": 3, "name": "live", "owner_id": 2, "member_count": 1},
+    ])
+
+    payload = await server._group_state_payload(1)
+
+    assert "1" not in payload["available_groups"]
+    assert payload["available_groups"]["2"]["joined"] is True
+    assert payload["available_groups"]["3"]["joined"] is False
+
+
+@pytest.mark.asyncio
+async def test_group_manager_rejects_duplicate_group_names():
+    runtime_dir = make_runtime_dir("group_duplicate_")
+    try:
+        db_path = str(runtime_dir / "chat.db")
+        conn = init_db(db_path)
+        conn.executemany(
+            "INSERT INTO users (id, username, password_hash, created_at) VALUES (?, ?, ?, ?)",
+            [(1, "alice", "hash", 1.0), (2, "bob", "hash", 1.0)],
+        )
+        conn.commit()
+        conn.close()
+        manager = GroupManager(db_path)
+
+        first = await manager.create_group("demo_group", 1)
+        second = await manager.create_group("demo_group", 2)
+
+        assert first["success"] is True
+        assert second["success"] is False
+        assert second["error"] == "群名称已存在"
+    finally:
+        remove_runtime_dir(runtime_dir)
 
 
 @pytest.mark.asyncio
