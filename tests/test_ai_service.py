@@ -1,6 +1,7 @@
 import asyncio
 import json
 
+import server.config as config_module
 from server.config import (
     BIGMODEL_API_BASE,
     BIGMODEL_MODEL,
@@ -14,6 +15,7 @@ from server.ai_service import AIService
 def _clear_ai_env(monkeypatch):
     for name in ("BIGMODEL_API_KEY", "DASHSCOPE_API_KEY", "AI_API_BASE", "AI_MODEL"):
         monkeypatch.delenv(name, raising=False)
+    monkeypatch.setattr(config_module, "_LOCAL_ENV_CACHE", {})
 
 
 def test_bigmodel_key_takes_precedence(monkeypatch):
@@ -136,6 +138,36 @@ def test_query_success_uses_openai_compatible_payload(monkeypatch):
     assert requests[0]["headers"]["Authorization"] == "Bearer test-key"
     assert requests[0]["json"]["model"] == "test-model"
     assert requests[0]["json"]["messages"][-1] == {"role": "user", "content": "ping"}
+
+
+def test_query_with_context_keeps_prompt_plain_and_adds_non_impersonation_guard(monkeypatch):
+    response = _FakeResponse(body={"choices": [{"message": {"content": "hello"}}]})
+    requests = _patch_session(monkeypatch, response)
+    service = AIService(
+        ServerConfig(
+            ai_api_key="test-key",
+            ai_api_base="https://example.test/v1",
+            ai_model="test-model",
+        )
+    )
+
+    result = asyncio.run(
+        service.query_with_context(
+            "请向观众打个招呼。",
+            username="alice",
+            history=[{"role": "assistant", "content": "previous"}],
+        )
+    )
+
+    assert result == "hello"
+    messages = requests[0]["json"]["messages"]
+    assert messages[-1] == {"role": "user", "content": "请向观众打个招呼。"}
+    assert any(
+        msg.get("role") == "system"
+        and "alice" in msg.get("content", "")
+        and "AI Assistant" in msg.get("content", "")
+        for msg in messages
+    )
 
 
 def test_query_http_error_returns_fallback(monkeypatch):

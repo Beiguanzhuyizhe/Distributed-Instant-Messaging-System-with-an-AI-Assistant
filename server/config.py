@@ -3,6 +3,7 @@
 """
 import os
 from dataclasses import dataclass, field
+from pathlib import Path
 from typing import Optional
 
 
@@ -11,24 +12,73 @@ BIGMODEL_MODEL = "glm-4-flash-250414"
 DASHSCOPE_API_BASE = "https://dashscope.aliyuncs.com/compatible-mode/v1"
 DASHSCOPE_MODEL = "qwen-turbo"
 
+_LOCAL_ENV_CACHE = None
+
+
+def _parse_env_file(path: Path) -> dict:
+    values = {}
+    try:
+        lines = path.read_text(encoding="utf-8").splitlines()
+    except OSError:
+        return values
+    for raw_line in lines:
+        line = raw_line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        if line.startswith("export "):
+            line = line[len("export "):].strip()
+        key, value = line.split("=", 1)
+        key = key.strip()
+        value = value.strip()
+        if not key:
+            continue
+        if len(value) >= 2 and value[0] == value[-1] and value[0] in {"'", '"'}:
+            value = value[1:-1]
+        values[key] = value
+    return values
+
+
+def _load_local_env() -> dict:
+    global _LOCAL_ENV_CACHE
+    if _LOCAL_ENV_CACHE is not None:
+        return _LOCAL_ENV_CACHE
+
+    project_root = Path(__file__).resolve().parents[1]
+    candidates = []
+    # Project-level defaults load first; cwd-level .env overrides them.
+    for path in (project_root / ".env", Path.cwd() / ".env"):
+        if path not in candidates:
+            candidates.append(path)
+
+    merged = {}
+    for path in candidates:
+        if path.is_file():
+            merged.update(_parse_env_file(path))
+    _LOCAL_ENV_CACHE = merged
+    return _LOCAL_ENV_CACHE
+
+
+def _env(name: str) -> str:
+    return os.environ.get(name) or _load_local_env().get(name, "")
+
 
 def _env_has_dashscope_only() -> bool:
-    return not os.environ.get("BIGMODEL_API_KEY") and bool(os.environ.get("DASHSCOPE_API_KEY"))
+    return not _env("BIGMODEL_API_KEY") and bool(_env("DASHSCOPE_API_KEY"))
 
 
 def _default_ai_api_key() -> str:
-    return os.environ.get("BIGMODEL_API_KEY") or os.environ.get("DASHSCOPE_API_KEY") or ""
+    return _env("BIGMODEL_API_KEY") or _env("DASHSCOPE_API_KEY") or ""
 
 
 def _default_ai_model() -> str:
-    if os.environ.get("AI_MODEL"):
-        return os.environ["AI_MODEL"]
+    if _env("AI_MODEL"):
+        return _env("AI_MODEL")
     return DASHSCOPE_MODEL if _env_has_dashscope_only() else BIGMODEL_MODEL
 
 
 def _default_ai_api_base() -> str:
-    if os.environ.get("AI_API_BASE"):
-        return os.environ["AI_API_BASE"]
+    if _env("AI_API_BASE"):
+        return _env("AI_API_BASE")
     return DASHSCOPE_API_BASE if _env_has_dashscope_only() else BIGMODEL_API_BASE
 
 

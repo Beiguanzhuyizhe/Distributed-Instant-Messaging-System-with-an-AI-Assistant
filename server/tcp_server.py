@@ -974,8 +974,7 @@ class ChatServer:
                 })
 
         reply = await ai.query_with_context(query, username=username, history=history)
-        if group_id:
-            reply = self._strip_ai_speaker_prefix(reply, speaker_aliases)
+        reply = self._strip_ai_speaker_prefix(reply, speaker_aliases)
 
         # 回复发起者
         conn = self.conn_manager.get_conn(conn_id)

@@ -55,6 +55,7 @@ class WebBridge:
         self._pending_ai_context = {}
         self._pending_recall_context = None
         self._pending_group_leave = {}
+        self._pending_file_uploads = {}
 
         self._register_callbacks()
 
@@ -104,7 +105,25 @@ class WebBridge:
 
     def _push_msg(self, msg: dict):
         """推送一条消息对象到 JS（统一格式）"""
+        if not any(msg.get(key) for key in ("msg_id", "local_msg_id", "server_msg_id", "event_id")):
+            msg["event_id"] = f"evt-{uuid.uuid4()}"
         self._push("new_message", msg)
+
+    def _push_demo_notice(self, text: str, level: str = "info", duration_ms: int = 2800):
+        """录屏模式下推送轻量提示，不影响正常业务状态。"""
+        message = str(text or "").strip()
+        if not message:
+            return
+        try:
+            duration = max(1200, min(int(duration_ms), 8000))
+        except (TypeError, ValueError):
+            duration = 2800
+        self._push("demo_notice", {
+            "text": message,
+            "level": str(level or "info"),
+            "duration_ms": duration,
+            "timestamp": _now(),
+        })
 
     def _sync_group_state(self, payload: dict):
         """同步服务端返回的群组状态：groups 是已加入群，available_groups 是可加入群。"""
@@ -151,6 +170,14 @@ class WebBridge:
         if seq is not None:
             self._pending_acks[seq] = msg
 
+    def _context_from_message(self, msg: dict) -> dict:
+        context = {}
+        for key in ("related_type", "related_target", "chat_key", "group_id"):
+            value = msg.get(key)
+            if value not in (None, ""):
+                context[key] = value
+        return context or self._current_chat_context()
+
     def _apply_message_ack(self, seq: int, payload: dict):
         msg = self._pending_acks.pop(seq, None)
         if not msg:
@@ -178,7 +205,7 @@ class WebBridge:
                     "content": f"Message rejected: {payload['error']}",
                     "timestamp": _now(),
                 }
-                system_msg.update(self._current_chat_context())
+                system_msg.update(self._context_from_message(msg))
                 self._push_msg(system_msg)
             self._push("message_acked", ack_event)
             return
@@ -251,11 +278,21 @@ class WebBridge:
             "chat_key": self._chat_key(self._chat_type, target),
         }
 
+    def _explicit_chat_context(self, chat_type: str, target) -> dict:
+        if target in (None, ""):
+            return {}
+        return {
+            "related_type": chat_type,
+            "related_target": str(target),
+            "chat_key": self._chat_key(chat_type, target),
+        }
+
     # =============================================================
     # 消息回调（在后台线程执行）
     # =============================================================
 
     def _on_login_resp(self, msg_type, seq, payload):
+        was_logged_in = self._logged_in
         if payload.get("success"):
             self._user_id = payload.get("user_id")
             self._username = payload.get("username", self._username)
@@ -274,6 +311,8 @@ class WebBridge:
             })
             # 主动请求在线用户列表（响应会通过 _on_online_users 补充其他用户）
             self.handler.request_online_users()
+            if was_logged_in:
+                self._push_demo_notice("连接已恢复，会话已重新登录并同步完成", level="success", duration_ms=4600)
         else:
             msg = payload.get("error") or payload.get("message", "Login failed")
             self._push("login_error", {"error": msg})
@@ -373,12 +412,12 @@ class WebBridge:
 
     def _on_content_warn(self, msg_type, seq, payload):
         msg = {"type": "system", "content": f"[WARN] {payload.get('message', 'Content warning')}", "timestamp": _now()}
-        msg.update(self._current_chat_context())
+        msg.update(self._context_from_message(payload))
         self._push_msg(msg)
 
     def _on_error(self, msg_type, seq, payload):
         msg = {"type": "system", "content": f"[Error {payload.get('code', -1)}] {payload.get('message', '')}", "timestamp": _now()}
-        msg.update(self._current_chat_context())
+        msg.update(self._context_from_message(payload))
         self._push_msg(msg)
 
     def _on_recall(self, msg_type, seq, payload):
@@ -490,6 +529,27 @@ class WebBridge:
             self._push_msg({"type": "system", "content": f"Leave failed: {err}"})
 
     def _on_file_init(self, msg_type, seq, payload):
+        pending_uploads = getattr(self, "_pending_file_uploads", {})
+        pending_upload = pending_uploads.pop(seq, None)
+        if pending_upload is not None:
+            filepath, file_id, filesize, filename, context = pending_upload
+            if payload.get("success"):
+                safe_filename = payload.get("filename") or filename
+                threading.Thread(
+                    target=self._send_file_worker,
+                    args=(filepath, file_id, filesize, safe_filename, context),
+                    daemon=True,
+                ).start()
+            else:
+                event = {
+                    "type": "system",
+                    "content": "File send failed: " + str(payload.get("error") or "unknown error"),
+                    "timestamp": _now(),
+                }
+                event.update(context)
+                self._push_msg(event)
+            return
+
         status = payload.get("status", "")
         if status != "completed":
             return
@@ -532,6 +592,10 @@ class WebBridge:
         offset = payload.get("offset", 0)
         data_b64 = payload.get("data", "")
         if payload.get("success") is False or not data_b64:
+            state = self._dl_state.get(file_id)
+            if state:
+                state["error"] = payload.get("error") or "Download failed"
+                state["event"].set()
             return
         state = self._dl_state.get(file_id)
         if not state:
@@ -545,6 +609,7 @@ class WebBridge:
 
     def _gui_download_file(self, file_id, filename, filesize, context=None):
         CHUNK_SIZE = 64 * 1024
+        filename = os.path.basename(str(filename or "unknown").replace("\\", "/")) or "unknown"
         dest = os.path.join(self._download_dir, filename)
         context = context or {
             "related_type": "private",
@@ -583,6 +648,15 @@ class WebBridge:
             self._push("file_download_result", event)
             self._dl_state.pop(file_id, None)
             return
+        if state.get("error"):
+            event = {
+                "filename": filename, "success": False,
+                "error": state["error"],
+            }
+            event.update(context)
+            self._push("file_download_result", event)
+            self._dl_state.pop(file_id, None)
+            return
         try:
             os.makedirs(self._download_dir, exist_ok=True)
             with open(dest, "wb") as f:
@@ -604,12 +678,14 @@ class WebBridge:
 
     def _on_disconnected(self):
         self._push("connection_status", {"status": "disconnected"})
+        self._push_demo_notice("连接已断开，正在尝试自动重连", level="warning", duration_ms=4800)
         msg = {"type": "system", "content": "Disconnected from server. Reconnecting...", "timestamp": _now()}
         msg.update(self._current_chat_context())
         self._push_msg(msg)
 
     def _on_reconnected(self):
         self._push("connection_status", {"status": "reconnected"})
+        self._push_demo_notice("连接已恢复，正在自动重新登录", level="success", duration_ms=4200)
         msg = {"type": "system", "content": "Reconnected to server. Restoring session...", "timestamp": _now()}
         msg.update(self._current_chat_context())
         self._push_msg(msg)
@@ -683,7 +759,10 @@ class WebBridge:
             return {"ok": False, "error": "Not logged in"}
         # 保存上下文，以便 AI 回复能关联到正确的聊天
         # 注意：AI Assistant 独立对话（chat_type=ai 时）不加 related_target，保持纯 AI 对话独立
-        if self._chat_type == 'ai' or self._current_target == self.AI_USERNAME:
+        if group_id not in (None, 0, "0"):
+            ai_context = self._explicit_chat_context("group", group_id)
+            ai_context["group_id"] = str(group_id)
+        elif self._chat_type == 'ai' or self._current_target == self.AI_USERNAME:
             ai_context = {
                 "related_type": "ai",
                 "related_target": self.AI_USERNAME,
@@ -702,6 +781,14 @@ class WebBridge:
         ctx_list = []
         if context_msgs and isinstance(context_msgs, list):
             for cm in context_msgs[-10:]:  # 最多携带最近10条
+                if not isinstance(cm, dict):
+                    continue
+                if cm.get("role") in {"user", "assistant"}:
+                    ctx_list.append({
+                        "role": cm.get("role"),
+                        "content": cm.get("content", ""),
+                    })
+                    continue
                 role = "user" if cm.get("sender") != self.AI_USERNAME else "assistant"
                 ctx_list.append({"role": role, "content": cm.get("content", "")})
         if not self._connected_or_warn():
@@ -711,6 +798,71 @@ class WebBridge:
         if seq is not None:
             self._pending_ai_context[seq] = ai_context
         return {"ok": True}
+
+    def _demo_collect_ai_direct_context(self) -> list:
+        context = []
+        for msg in self._messages[-20:]:
+            if msg.get("type") == "system":
+                continue
+            if msg.get("chat_key") != self._chat_key("ai", self.AI_USERNAME):
+                continue
+            role = "assistant" if (
+                msg.get("sender") == self.AI_USERNAME or msg.get("type") == "ai"
+            ) else "user"
+            context.append({
+                "role": role,
+                "content": msg.get("content", ""),
+            })
+        return context[-10:]
+
+    def demo_send_ai_query(self, query: str, group_id: int = 0, chat_type: str | None = None, target_id=None) -> dict:
+        """录屏 demo 专用：发送 AI 请求前先补上可视化的提问过程。"""
+        if not self._user_id:
+            return {"ok": False, "error": "Not logged in"}
+
+        if (self._chat_type == "ai" or self._current_target == self.AI_USERNAME) and not group_id:
+            context_msgs = self._demo_collect_ai_direct_context()
+            result = self.send_ai_query(query, 0, context_msgs=context_msgs)
+            if not result.get("ok"):
+                return result
+            msg = {
+                "type": "private",
+                "sender": self._username or "You",
+                "receiver": self.AI_USERNAME,
+                "receiver_id": self.AI_USER_ID,
+                "target_id": self.AI_USER_ID,
+                "content": query,
+                "timestamp": _now(),
+                "status": "sent",
+            }
+            self._with_chat_context(msg, "ai", self.AI_USERNAME)
+            self._append_and_store(msg)
+            self._push_msg(msg)
+            return result
+
+        result = self.send_ai_query(query, group_id)
+        if not result.get("ok"):
+            return result
+        if group_id not in (None, 0, "0"):
+            forced_context = self._explicit_chat_context("group", group_id)
+        elif chat_type and target_id not in (None, ""):
+            forced_context = self._explicit_chat_context(chat_type, target_id)
+        else:
+            context_target = self._current_target if self._chat_type == "group" else self._current_target_id
+            forced_context = {}
+            if self._chat_type and context_target not in (None, ""):
+                forced_context = self._explicit_chat_context(self._chat_type, context_target)
+        system_msg = {
+            "type": "system",
+            "content": f'[AI] Query sent: "{query[:40]}{"..." if len(query) > 40 else ""}"',
+            "timestamp": _now(),
+        }
+        if forced_context:
+            system_msg.update(forced_context)
+            if forced_context.get("related_type") == "group":
+                system_msg["group_id"] = str(forced_context["related_target"])
+        self._push_msg(system_msg)
+        return result
 
     def request_history(self, target_type: str, target_id: int) -> dict:
         """JS 调用：请求历史消息"""
@@ -786,32 +938,54 @@ class WebBridge:
             filepath = self._tk_file_dialog()
             if not filepath:
                 return {"ok": False, "error": "No file selected"}
-            filesize = os.path.getsize(filepath)
-            filename = os.path.basename(filepath)
-            file_id = str(uuid.uuid4())
-            if not self._user_id:
-                return {"ok": False, "error": "Not logged in"}
-            is_group = self._chat_type == "group"
-            target_id = None if is_group else self._current_target_id
-            group_id = int(self._current_target) if is_group and self._current_target else None
-            if (not is_group and not target_id) or (is_group and not group_id):
-                return {"ok": False, "error": "No target selected"}
-            self.handler.send_file_init(
-                self._user_id, target_id, filename, filesize, file_id, group_id=group_id
-            )
-            # 捕获文件上下文（在后台线程完成前聊天可能已切换）
-            context_target = group_id if is_group else target_id
-            file_context = {
-                "related_type": self._chat_type,
-                "related_target": str(context_target),
-                "chat_key": self._chat_key(self._chat_type, context_target),
-            }
-            if is_group:
-                file_context["group_id"] = str(group_id)
-            # 后台发送文件数据
-            threading.Thread(target=self._send_file_worker,
-                             args=(filepath, file_id, filesize, filename, file_context), daemon=True).start()
-            return {"ok": True, "filename": filename, "filesize": filesize}
+            return self._send_file_from_path(filepath)
+        except Exception as e:
+            return {"ok": False, "error": str(e)}
+
+    def _send_file_from_path(self, filepath: str, chat_type_override: str | None = None, target_override=None) -> dict:
+        """按当前聊天上下文发送指定文件；供文件对话框和录屏 demo 复用。"""
+        filesize = os.path.getsize(filepath)
+        filename = os.path.basename(filepath)
+        file_id = str(uuid.uuid4())
+        if not self._user_id:
+            return {"ok": False, "error": "Not logged in"}
+        chat_type = chat_type_override or self._chat_type
+        explicit_target = target_override
+        is_group = chat_type == "group"
+        target_id = None if is_group else (explicit_target if explicit_target is not None else self._current_target_id)
+        group_id = int(explicit_target if explicit_target is not None else self._current_target) if is_group and (explicit_target is not None or self._current_target) else None
+        if (not is_group and not target_id) or (is_group and not group_id):
+            return {"ok": False, "error": "No target selected"}
+        result = self.handler.send_file_init(
+            self._user_id, target_id, filename, filesize, file_id, group_id=group_id
+        )
+        # 捕获文件上下文（在后台线程完成前聊天可能已切换）
+        context_target = group_id if is_group else target_id
+        file_context = {
+            "related_type": chat_type,
+            "related_target": str(context_target),
+            "chat_key": self._chat_key(chat_type, context_target),
+        }
+        if is_group:
+            file_context["group_id"] = str(group_id)
+        seq = result.get("seq") if result else None
+        if not result or not result.get("ok"):
+            return {"ok": False, "error": "Failed to initialize file transfer"}
+        if seq is None:
+            return {"ok": False, "error": "File transfer init missing sequence"}
+        self._pending_file_uploads[seq] = (
+            filepath, file_id, filesize, filename, file_context,
+        )
+        return {"ok": True, "filename": filename, "filesize": filesize}
+
+    def demo_send_file(self, filepath: str, chat_type: str | None = None, target_id=None) -> dict:
+        """录屏 demo 专用：不弹文件选择框，直接发送脚本生成的测试文件。"""
+        try:
+            if not self._connected_or_warn():
+                return {"ok": False, "error": "Disconnected"}
+            if not filepath or not os.path.exists(filepath):
+                return {"ok": False, "error": "Demo file not found"}
+            return self._send_file_from_path(filepath, chat_type_override=chat_type, target_override=target_id)
         except Exception as e:
             return {"ok": False, "error": str(e)}
 
@@ -837,6 +1011,16 @@ class WebBridge:
         self._current_target = target_name
         self._current_target_id = target_id
         self._chat_type = chat_type
+        return {"ok": True}
+
+    def demo_select_chat(self, chat_type: str, target_name: str, target_id=None):
+        """录屏 demo 专用：让真实 GUI 切换到指定私聊/群聊/AI 会话。"""
+        self.set_current_target(target_name, target_id, chat_type)
+        self._push("demo_select_chat", {
+            "chat_type": chat_type,
+            "target_name": target_name,
+            "target_id": target_id,
+        })
         return {"ok": True}
 
     def get_initial_state(self) -> dict:

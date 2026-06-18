@@ -209,6 +209,29 @@ assert.strictEqual(routing.messageBelongsToChat(aiDirect, {
   username: 'alice',
 }), false);
 
+const aiDirectUser = {
+  type: 'private',
+  sender: 'alice',
+  receiver: 'AI Assistant',
+  receiver_id: -1,
+  content: 'ask ai directly',
+  related_type: 'ai',
+  related_target: 'AI Assistant',
+  chat_key: 'ai:AI Assistant',
+};
+assert.strictEqual(routing.messageBelongsToChat(aiDirectUser, {
+  chatType: 'ai',
+  targetName: 'AI Assistant',
+  targetId: -1,
+  username: 'alice',
+}), true);
+assert.strictEqual(routing.messageBelongsToChat(aiDirectUser, {
+  chatType: 'private',
+  targetName: 'bob',
+  targetId: 2,
+  username: 'alice',
+}), false);
+
 const pendingOwn = {
   type: 'private',
   sender: 'alice',
@@ -233,12 +256,95 @@ const historyOwn = {
   msg_id: 'server-1',
   chat_key: 'private:2',
 };
-const merged = routing.mergeMessages([pendingOwn], [historyOwn], 'alice');
-assert.strictEqual(merged.length, 1);
-assert.strictEqual(merged[0].msg_id, 'server-1');
-assert.strictEqual(merged[0].server_msg_id, 'server-1');
-assert.strictEqual(merged[0].local_msg_id, 'local-1');
-assert.strictEqual(merged[0].status, 'sent');
+const beforeAck = routing.mergeMessages([pendingOwn], [historyOwn], 'alice');
+assert.strictEqual(beforeAck.length, 1);
+assert.strictEqual(beforeAck[0].msg_id, 'server-1');
+assert.strictEqual(beforeAck[0].server_msg_id, 'server-1');
+assert.strictEqual(beforeAck[0].local_msg_id, 'local-1');
+assert.strictEqual(beforeAck[0].status, 'sent');
+
+const ackedOwn = Object.assign({}, pendingOwn, {
+  msg_id: 'server-1',
+  server_msg_id: 'server-1',
+  status: 'sent',
+});
+const afterAck = routing.mergeMessages([ackedOwn], [historyOwn], 'alice');
+assert.strictEqual(afterAck.length, 1);
+assert.strictEqual(afterAck[0].msg_id, 'server-1');
+assert.strictEqual(afterAck[0].server_msg_id, 'server-1');
+assert.strictEqual(afterAck[0].local_msg_id, 'local-1');
+assert.strictEqual(afterAck[0].status, 'sent');
+
+const sameContentBeforeAck = routing.mergeMessages([{
+  type: 'private',
+  sender: 'alice',
+  content: 'OK',
+  timestamp: 1700000000,
+  local_msg_id: 'local-2',
+  msg_id: 'local-2',
+  status: 'pending',
+  chat_key: 'private:2',
+}], [{
+  type: 'private',
+  sender: 'alice',
+  content: 'OK',
+  timestamp: 1699999900,
+  msg_id: 'server-old',
+  chat_key: 'private:2',
+}], 'alice');
+assert.strictEqual(sameContentBeforeAck.length, 2);
+
+const pendingGroup = {
+  type: 'group',
+  sender: 'alice',
+  from_id: 1,
+  group_id: '9',
+  target_id: '9',
+  content: 'group duplicate',
+  timestamp: 1700000010,
+  local_msg_id: 'group-local-1',
+  msg_id: 'group-local-1',
+  status: 'pending',
+  chat_key: 'group:9',
+};
+const historyGroup = {
+  type: 'group',
+  sender: 'alice',
+  from_id: 1,
+  group_id: '9',
+  target_id: '9',
+  content: 'group duplicate',
+  timestamp: 1700000011,
+  msg_id: 'group-server-1',
+  chat_key: 'group:9',
+};
+const groupBeforeAck = routing.mergeMessages([pendingGroup], [historyGroup], 'alice');
+assert.strictEqual(groupBeforeAck.length, 1);
+assert.strictEqual(groupBeforeAck[0].msg_id, 'group-server-1');
+assert.strictEqual(groupBeforeAck[0].server_msg_id, 'group-server-1');
+assert.strictEqual(groupBeforeAck[0].local_msg_id, 'group-local-1');
+assert.strictEqual(groupBeforeAck[0].status, 'sent');
+
+const repeatedPendingMessages = routing.mergeMessages([{
+  type: 'private',
+  sender: 'alice',
+  content: 'repeat pending',
+  timestamp: 1700000000,
+  local_msg_id: 'local-a',
+  msg_id: 'local-a',
+  status: 'pending',
+  chat_key: 'private:2',
+}], [{
+  type: 'private',
+  sender: 'alice',
+  content: 'repeat pending',
+  timestamp: 1700000001,
+  local_msg_id: 'local-b',
+  msg_id: 'local-b',
+  status: 'pending',
+  chat_key: 'private:2',
+}], 'alice');
+assert.strictEqual(repeatedPendingMessages.length, 2);
 
 const repeatedRealMessages = routing.mergeMessages([{
   type: 'private',
@@ -256,6 +362,58 @@ const repeatedRealMessages = routing.mergeMessages([{
   chat_key: 'private:2',
 }], 'alice');
 assert.strictEqual(repeatedRealMessages.length, 2);
+
+const idlessSystemEvents = routing.mergeMessages([{
+  type: 'system',
+  sender: 'System',
+  content: 'same warning',
+  timestamp: 1700000000,
+  chat_key: 'private:2',
+}], [{
+  type: 'system',
+  sender: 'System',
+  content: 'same warning',
+  timestamp: 1700000000,
+  chat_key: 'private:2',
+}], 'alice');
+assert.strictEqual(idlessSystemEvents.length, 2);
+
+const aiDirectContext = routing.buildAiDirectContext([{
+  type: 'private',
+  sender: 'alice',
+  receiver: 'AI Assistant',
+  receiver_id: -1,
+  content: 'my direct question',
+  related_type: 'ai',
+  related_target: 'AI Assistant',
+  chat_key: 'ai:AI Assistant',
+}, {
+  type: 'ai',
+  sender: 'AI Assistant',
+  content: 'direct reply',
+  related_type: 'ai',
+  related_target: 'AI Assistant',
+  chat_key: 'ai:AI Assistant',
+}, {
+  type: 'ai',
+  sender: 'AI Assistant',
+  content: 'group reply',
+  related_type: 'group',
+  related_target: '9',
+  chat_key: 'group:9',
+}, {
+  type: 'ai',
+  sender: 'AI Assistant',
+  content: 'private contextual reply',
+  related_type: 'private',
+  related_target: '2',
+  chat_key: 'private:2',
+}], 'alice');
+assert.strictEqual(aiDirectContext.length, 2);
+assert.strictEqual(aiDirectContext[0].sender, 'alice');
+assert.strictEqual(aiDirectContext[0].content, 'my direct question');
+assert.strictEqual(aiDirectContext[1].sender, 'AI Assistant');
+assert.strictEqual(aiDirectContext[1].content, 'direct reply');
 
 assert.strictEqual(sidebarLogic.isSelfUser('alice', 'alice'), true);
 assert.strictEqual(sidebarLogic.isSelfUser('bob', 'alice'), false);

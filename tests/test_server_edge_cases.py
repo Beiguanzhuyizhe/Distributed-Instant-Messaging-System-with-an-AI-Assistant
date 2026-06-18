@@ -338,6 +338,34 @@ async def test_group_ai_reply_strips_member_name_prefix(monkeypatch, server):
 
 
 @pytest.mark.asyncio
+async def test_direct_ai_reply_strips_requester_name_prefix(monkeypatch, server):
+    class FakeAI:
+        available = True
+
+        async def query_with_context(self, query, username="", history=None):
+            return "alice: 这是独立 AI 对话回答"
+
+    monkeypatch.setattr(ai_service_module, "get_ai_service", lambda _config: FakeAI())
+
+    conn = DummyConnection()
+    conn_id = await server.conn_manager.add(conn)
+    await server.conn_manager.bind_user(conn_id, 1)
+    server.user_manager.get_user_info = _user_info({
+        1: "alice",
+    })
+
+    await server._handle_ai_query(conn_id, 22, {
+        "query": "hello",
+    })
+
+    msg_type, seq, payload = conn.sent[-1]
+    assert msg_type == MessageType.AI_RESP
+    assert seq == 22
+    assert payload["content"] == "这是独立 AI 对话回答"
+    assert payload.get("group_id") is None
+
+
+@pytest.mark.asyncio
 async def test_non_object_payload_is_rejected(server):
     conn = DummyConnection()
     conn_id = await server.conn_manager.add(conn)
