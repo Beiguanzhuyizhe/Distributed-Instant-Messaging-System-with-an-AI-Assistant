@@ -947,6 +947,52 @@
   overflow: hidden;
 }
 
+.demo-toast {
+  position: fixed;
+  top: auto;
+  right: 24px;
+  bottom: calc(var(--status-bar-height) + 86px);
+  z-index: 120;
+  pointer-events: none;
+  min-width: 220px;
+  max-width: min(420px, calc(100vw - var(--sidebar-width) - 72px));
+  padding: 9px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(10, 12, 24, 0.86);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.22s ease;
+}
+
+.demo-toast-label {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-right: 8px;
+  margin-bottom: 2px;
+}
+
+.demo-toast-text {
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--text-primary);
+}
+
+.demo-toast-info {
+  border-color: rgba(104, 127, 255, 0.38);
+}
+
+.demo-toast-success {
+  border-color: rgba(76, 175, 80, 0.42);
+}
+
+.demo-toast-warning {
+  border-color: rgba(255, 152, 0, 0.42);
+}
+
 /* ============================================================
    动画
    ============================================================ */

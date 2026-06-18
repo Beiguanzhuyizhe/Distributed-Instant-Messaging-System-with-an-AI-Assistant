@@ -45,7 +45,8 @@ def _load_local_env() -> dict:
 
     project_root = Path(__file__).resolve().parents[1]
     candidates = []
-    for path in (Path.cwd() / ".env", project_root / ".env"):
+    # Project-level defaults load first; cwd-level .env overrides them.
+    for path in (project_root / ".env", Path.cwd() / ".env"):
         if path not in candidates:
             candidates.append(path)
 

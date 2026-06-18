@@ -110,9 +110,49 @@
       Boolean(localId && (!serverId || serverId === localId || msgId === localId));
   }
 
+  function senderKeyForMessage(m, username) {
+    if (!m) return '';
+    if (m.from_id != null && m.from_id !== '') return 'id:' + String(m.from_id);
+    if (m.sender === username) return 'self:' + String(username || '');
+    if (m.sender) return 'name:' + String(m.sender);
+    return '';
+  }
+
+  function timestampValue(m) {
+    var value = Number(m && (m.sort_ts || m.timestamp || 0));
+    return isFinite(value) ? value : 0;
+  }
+
+  function isLocalServerDuplicate(a, b, username) {
+    var aLocal = isLocalMessage(a);
+    var bLocal = isLocalMessage(b);
+    if (aLocal === bLocal) return false;
+    if (a.type !== b.type) return false;
+    if (a.type === 'system' || b.type === 'system') return false;
+
+    var keyA = chatKeyForMessage(a, username);
+    var keyB = chatKeyForMessage(b, username);
+    if (!keyA || keyA !== keyB) return false;
+
+    if (String(a.content || '') !== String(b.content || '')) return false;
+
+    var senderA = senderKeyForMessage(a, username);
+    var senderB = senderKeyForMessage(b, username);
+    if (senderA && senderB && senderA !== senderB) return false;
+
+    var tsA = timestampValue(a);
+    var tsB = timestampValue(b);
+    if (tsA && tsB && Math.abs(tsA - tsB) > 8) return false;
+
+    return true;
+  }
+
   function messageEquivalent(a, b, username) {
     if (!a || !b) return false;
     if (messageIdentity(a, username) && messageIdentity(a, username) === messageIdentity(b, username)) {
+      return true;
+    }
+    if (isLocalServerDuplicate(a, b, username)) {
       return true;
     }
     return false;
@@ -164,7 +204,7 @@
 
   function buildAiDirectContext(messages, username) {
     return (messages || []).filter(function (m) {
-      return m.type === 'ai' && messageBelongsToChat(m, {
+      return m.type !== 'system' && messageBelongsToChat(m, {
         chatType: 'ai',
         targetName: 'AI Assistant',
         targetId: -1,
@@ -437,6 +477,7 @@
     // 未读计数 state + 最后消息时间（用于联系人排序）
     var _useState17 = useState({}), unreadCounts = _useState17[0], setUnreadCounts = _useState17[1];
     var _useState18 = useState({}), lastMsgTimes = _useState18[0], setLastMsgTimes = _useState18[1];
+    var _useState20 = useState(null), demoNotice = _useState20[0], setDemoNotice = _useState20[1];
 
     // 对话框状态
     var _useState10 = useState(false), showAiDialog = _useState10[0], setShowAiDialog = _useState10[1];
@@ -534,6 +575,18 @@
         );
       }
     }, [currentTarget]);
+
+    useEffect(function () {
+      if (!demoNotice) return;
+      var duration = Math.max(1200, Number(demoNotice.duration_ms || 2600));
+      var timer = setTimeout(function () {
+        setDemoNotice(function (current) {
+          if (!current || current.id !== demoNotice.id) return current;
+          return null;
+        });
+      }, duration);
+      return function () { clearTimeout(timer); };
+    }, [demoNotice]);
 
     // 当前聊天的消息过滤（系统消息 + AI 消息按上下文过滤）
     var filteredMessages = useMemo(function () {
@@ -750,6 +803,38 @@
         });
       }));
 
+      unsubs.push(window.Bridge.on('demo_select_chat', function (data) {
+        var type = data.chat_type || 'private';
+        var name = data.target_name;
+        var id = data.target_id != null ? data.target_id : name;
+        setCurrentTarget(name);
+        setCurrentTargetId(id);
+        setCurrentChatType(type);
+
+        var key = type === 'group' ? 'group:' + name :
+                  type === 'ai' ? 'ai:' + name :
+                  'private:' + id;
+        setUnreadCounts(function (prev) {
+          var next = Object.assign({}, prev);
+          delete next[key];
+          return next;
+        });
+        if (type === 'private') {
+          window.Bridge.requestHistory('private', id);
+        } else if (type === 'group') {
+          window.Bridge.requestHistory('group', parseInt(name));
+        }
+      }));
+
+      unsubs.push(window.Bridge.on('demo_notice', function (data) {
+        setDemoNotice({
+          id: newEventId('demo-notice'),
+          text: data && data.text ? String(data.text) : '',
+          level: data && data.level ? String(data.level) : 'info',
+          duration_ms: data && data.duration_ms ? data.duration_ms : 2600,
+        });
+      }));
+
       return function () {
         unsubs.forEach(function (fn) { fn(); });
       };
@@ -785,11 +870,14 @@
         // 收集最近对话作为上下文
         var ctx = buildAiDirectContext(messages, username);
         window.Bridge.sendAiQuery(content, 0, ctx);
-        // 本地显示用户消息
+        // 本地显示用户消息：保留在 AI 会话里，但按“自己发出的普通消息”渲染，
+        // 避免展示上看起来像 AI 自说自话。
         setMessages(function (prev) {
           return prev.concat([{
-            type: 'ai',
+            type: 'private',
             sender: username,
+            receiver: 'AI Assistant',
+            receiver_id: -1,
             content: content,
             timestamp: Math.floor(Date.now() / 1000),
             event_id: newEventId('ai-user'),
@@ -913,6 +1001,12 @@
     }, []);
 
     return h('div', { className: 'chat-layout' },
+      demoNotice && demoNotice.text
+        ? h('div', { className: 'demo-toast demo-toast-' + demoNotice.level },
+            h('div', { className: 'demo-toast-label' }, '当前场景'),
+            h('div', { className: 'demo-toast-text' }, demoNotice.text)
+          )
+        : null,
       // 侧边栏（附带群组管理按钮）
       h('div', { className: 'sidebar', ref: sidebarRef },
         // 用户信息头

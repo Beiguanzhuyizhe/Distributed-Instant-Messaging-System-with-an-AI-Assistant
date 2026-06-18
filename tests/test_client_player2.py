@@ -561,6 +561,62 @@ def test_web_bridge_group_ai_broadcast_uses_group_context():
     assert bridge._messages[0]["related_target"] == "9"
 
 
+def test_web_bridge_demo_ai_query_adds_visible_user_message_for_ai_chat():
+    bridge = WebBridge.__new__(WebBridge)
+    bridge.handler = DummyHandler()
+    bridge.store = DummyStore()
+    bridge._messages = [{
+        "type": "ai",
+        "sender": "AI Assistant",
+        "content": "earlier reply",
+        "chat_key": "ai:AI Assistant",
+    }]
+    bridge._pending_ai_context = {}
+    bridge._username = "alice"
+    bridge._user_id = 1
+    bridge._chat_type = "ai"
+    bridge._current_target = "AI Assistant"
+    bridge._current_target_id = -1
+    pushed = []
+    bridge._append_and_store = lambda msg: bridge._messages.append(msg)
+    bridge._push_msg = lambda msg: pushed.append(msg)
+
+    result = bridge.demo_send_ai_query("hello AI")
+
+    assert result["ok"] is True
+    assert bridge.handler.calls[-1][0] == "ai"
+    assert bridge.handler.calls[-1][4] == [{"role": "assistant", "content": "earlier reply"}]
+    assert bridge._messages[-1]["type"] == "private"
+    assert bridge._messages[-1]["sender"] == "alice"
+    assert bridge._messages[-1]["receiver"] == "AI Assistant"
+    assert bridge._messages[-1]["chat_key"] == "ai:AI Assistant"
+    assert pushed[-1]["content"] == "hello AI"
+
+
+def test_web_bridge_demo_group_ai_query_uses_explicit_group_context():
+    bridge = WebBridge.__new__(WebBridge)
+    bridge.handler = DummyHandler()
+    bridge.store = DummyStore()
+    bridge._messages = []
+    bridge._pending_ai_context = {}
+    bridge._username = "alice"
+    bridge._user_id = 1
+    bridge._chat_type = "private"
+    bridge._current_target = "bob"
+    bridge._current_target_id = 2
+    pushed = []
+    bridge._push_msg = lambda msg: pushed.append(msg)
+
+    result = bridge.demo_send_ai_query("group hello", 9, chat_type="group", target_id="9")
+
+    assert result["ok"] is True
+    assert bridge.handler.calls[-1] == ("ai", 1, 9, "group hello", [])
+    assert pushed[-1]["related_type"] == "group"
+    assert pushed[-1]["related_target"] == "9"
+    assert pushed[-1]["chat_key"] == "group:9"
+    assert pushed[-1]["group_id"] == "9"
+
+
 def test_web_bridge_leave_group_removes_sidebar_entry_without_payload_group_id():
     bridge = WebBridge.__new__(WebBridge)
     bridge.handler = DummyHandler()
@@ -639,6 +695,54 @@ def test_web_bridge_group_file_init_uses_group_context(monkeypatch):
             "success": True,
             "file_id": "file-g",
             "filename": "group.txt",
+        })
+    finally:
+        remove_runtime_dir(tmp_dir)
+
+    assert result["ok"] is True
+    init_call = bridge.handler.calls[0]
+    assert init_call[0] == "file_init"
+    assert init_call[2] is None
+    assert init_call[6] == 9
+    assert events[-1][0] == "file_sent"
+    assert events[-1][1]["chat_key"] == "group:9"
+    assert events[-1][1]["related_type"] == "group"
+    assert events[-1][1]["related_target"] == "9"
+
+
+def test_web_bridge_demo_file_uses_explicit_group_context(monkeypatch):
+    class InlineThread:
+        def __init__(self, target, args=(), daemon=None):
+            self.target = target
+            self.args = args
+
+        def start(self):
+            self.target(*self.args)
+
+    monkeypatch.setattr(web_bridge_module.threading, "Thread", InlineThread)
+
+    bridge = WebBridge.__new__(WebBridge)
+    bridge._user_id = 1
+    bridge._username = "alice"
+    bridge._chat_type = "private"
+    bridge._current_target = "bob"
+    bridge._current_target_id = 2
+    bridge.conn = DummyConnection()
+    bridge.handler = DummyHandler()
+    bridge._pending_file_uploads = {}
+    tmp_dir = make_runtime_dir("web_bridge_demo_file_")
+    sample = tmp_dir / "group-demo.txt"
+    sample.write_text("demo", encoding="utf-8")
+    events = []
+    bridge._push = lambda event_type, data: events.append((event_type, data))
+
+    try:
+        result = bridge.demo_send_file(str(sample), chat_type="group", target_id="9")
+        assert events == []
+        bridge._on_file_init(MessageType.FILE_INIT, 1, {
+            "success": True,
+            "file_id": "file-g",
+            "filename": "group-demo.txt",
         })
     finally:
         remove_runtime_dir(tmp_dir)

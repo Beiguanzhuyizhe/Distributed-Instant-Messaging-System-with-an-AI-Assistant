@@ -159,11 +159,18 @@ class AIService:
             username: 提问者用户名（用于个性化）
             history: 最近聊天历史
         """
-        context_prompt = prompt
+        effective_history = list(history or [])
         if username:
-            context_prompt = f"{username} 提问: {prompt}"
+            effective_history.append({
+                "role": "system",
+                "content": (
+                    f"当前提问者用户名是 {username}。这条信息仅用于理解上下文。"
+                    "你必须始终以 AI Assistant 身份回答，不要自称为该用户，"
+                    "不要扮演该用户，也不要在回复开头添加“用户名：”这类前缀。"
+                ),
+            })
 
-        return await self.query(context_prompt, history)
+        return await self.query(prompt, effective_history)
 
 
 # 全局单例
